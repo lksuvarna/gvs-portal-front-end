@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! C:\GVS-portal\gvs-portal-front-end\src\polyfills.ts */"hN/g");
 
 
 /***/ }),
