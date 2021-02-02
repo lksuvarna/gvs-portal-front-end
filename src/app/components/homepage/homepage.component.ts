@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomepageComponent implements OnInit {
 
   constructor() { }
-
+  fullName=''
+  shortName=''
   ngOnInit(): void {
   }
 
