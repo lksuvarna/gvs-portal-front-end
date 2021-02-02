@@ -1,0 +1,50 @@
+@mixin spacing($prop, $abbrev, $name, $value-map, $breakpoint: '') {
+  $value: 0;
+
+  @if (map-get($value-map, value) == 'auto') {
+    $value: map-get($value-map, value) !important;
+  } @else {
+    $value: map-get($value-map, value) * $font-size !important;
+  }
+
+  .#{$framework-class-prefix}-#{$abbrev}-#{$breakpoint}#{$name} {
+    #{$prop}: $value;
+  }
+
+  .#{$framework-class-prefix}-#{$abbrev}-t-#{$breakpoint}#{$name},
+  .#{$framework-class-prefix}-#{$abbrev}-t-b-#{$breakpoint}#{$name} {
+    #{$prop}-top: $value;
+  }
+
+  .#{$framework-class-prefix}-#{$abbrev}-r-#{$breakpoint}#{$name},
+  .#{$framework-class-prefix}-#{$abbrev}-l-r-#{$breakpoint}#{$name} {
+    #{$prop}-right: $value;
+  }
+
+  .#{$framework-class-prefix}-#{$abbrev}-b-#{$breakpoint}#{$name},
+  .#{$framework-class-prefix}-#{$abbrev}-t-b-#{$breakpoint}#{$name} {
+    #{$prop}-bottom: $value;
+  }
+
+  .#{$framework-class-prefix}-#{$abbrev}-l-#{$breakpoint}#{$name},
+  .#{$framework-class-prefix}-#{$abbrev}-l-r-#{$breakpoint}#{$name} {
+    #{$prop}-left: $value;
+  }
+}
+
+// use above mixins to create margin and padding classes
+@each $prop, $abbrev in (margin: mar, padding: pad) {
+  @each $name, $map in $spacing-intervals {
+    @include spacing($prop, $abbrev, $name, $map)
+  }
+}
+
+@each $breakpoint in $breakpoints {
+  @include breakpoint($breakpoint) {
+    @each $prop, $abbrev in (margin: mar, padding: pad) {
+      @each $name, $map in $spacing-intervals {
+        @include spacing($prop, $abbrev, $name, $map, #{$breakpoint}-);
+      }
+    }
+  }
+}

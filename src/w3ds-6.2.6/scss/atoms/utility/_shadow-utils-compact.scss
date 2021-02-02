@@ -1,0 +1,35 @@
+@import '../../_functions';
+@import '../../_variables-compact';
+
+$shadow-blue-translucent: rgba(get-color('neutral-cool', 6), 0.23);
+
+// raised shadow
+$shadow-raised-offset-x: 0;
+$shadow-raised-offset-y: 1px;
+$shadow-raised-blur: 3px;
+$shadow-raised: $shadow-raised-offset-x $shadow-raised-offset-y $shadow-raised-blur $shadow-blue-translucent;
+
+// floating shadow
+$shadow-floating-offset-x: 0;
+$shadow-floating-offset-y: 3px;
+$shadow-floating-blur: 6px;
+$shadow-floating: $shadow-floating-offset-x $shadow-floating-offset-y $shadow-floating-blur $shadow-blue-translucent;
+
+// text shadow
+$shadow-text-offset-x: $shadow-raised-offset-x;
+$shadow-text-offset-y: $shadow-raised-offset-y;
+$shadow-text-blur: $shadow-raised-blur;
+$shadow-text: $shadow-text-offset-x $shadow-text-offset-y $shadow-text-blur $shadow-blue-translucent;
+
+
+@mixin shadow-raised {
+  box-shadow: $shadow-raised;
+}
+
+@mixin shadow-floating {
+  box-shadow: $shadow-floating;
+}
+
+@mixin shadow-text {
+  text-shadow: $shadow-text;
+}

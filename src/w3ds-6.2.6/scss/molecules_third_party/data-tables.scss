@@ -1,0 +1,98 @@
+@import '../_variables';
+@import '../_functions';
+@import '../mixins';
+@import '../atoms/_button-utils';
+@import '../atoms/_input-utils';
+
+
+.#{$framework-class-prefix}-table-container {
+
+  .dataTables_wrapper {
+
+    //sass-lint:disable-line class-name-format
+    table {
+      &.dataTable {
+
+        //sass-lint:disable-line class-name-format
+        tbody {
+          tr {
+            &.selected {
+              background: solid get-color('neutral', 1);
+            }
+
+            &.group,
+            &.group:hover {
+              //sass-lint:disable-line force-pseudo-nesting
+              background: solid get-color('neutral', 3);
+            }
+          }
+
+        }
+      }
+    }
+
+    .dataTables_filter {
+      //sass-lint:disable-line class-name-format
+
+      label {
+        @include input-label;
+        text-align: left;
+      }
+
+      input {
+        @include input-entry;
+        @include input-entry-bordered;
+        height: $input-entry-height-small;
+        margin-left: 0;
+        // border: 2px solid get-color-old('neutral', 3);
+        // border-radius: 2px;
+        // padding: .5rem .5em;
+        // transition-duration: .2s;
+        // transition-property: background-color, border-color;
+        // transition-timing-function: cubic-bezier(.77, 0, .175, 1);
+      }
+    }
+
+    .dataTables_length {
+      //sass-lint:disable-line class-name-format
+      margin-top: 1.33rem;
+
+      select {
+        @include input-entry-bordered;
+        vertical-align: bottom;
+      }
+    }
+
+    .dataTables_paginate {
+
+      //sass-lint:disable-line class-name-format
+      .paginate_button {
+        //sass-lint:disable-line class-name-format
+        @include button-core;
+        // @include button-flat;
+        @include button-unresponsive;
+        border: 0;
+        color: $button-font-color;
+        display: inline-block;
+
+        &:hover {
+          &:not(.disabled) {
+            background: $button-flat-bg-hover;
+          }
+        }
+
+        &.current,
+        &.current:hover {
+          //sass-lint:disable-line force-pseudo-nesting
+          background: $button-flat-bg-hover;
+          color: $button-font-color;
+        }
+
+        &.disabled {
+          // @include button-flat-disabled;
+          color: $button-flat-color-disabled;
+        }
+      }
+    }
+  }
+}

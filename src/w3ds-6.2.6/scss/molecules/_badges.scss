@@ -1,0 +1,78 @@
+$badge-padding: 0.27rem;
+$badge-padding-sides: 0.5rem;
+$badge-small-padding: 0.21rem;
+$badge-small-padding-sides: 0.32rem;
+
+$badge-default-blue: get-color('blue', 4);
+$badge-warning-yellow: get-contextual-color('yellow', 3);
+$badge-danger-red: get-contextual-color('red', 2);
+$badge-success-green: get-contextual-color('green', 4);
+$badge-neutral: get-color('neutral', 1);
+$badge-neutral-secondary: get-color('neutral', 3);
+$badge-neutral-txt: get-color('neutral', 7);
+
+
+@mixin badge($txt-color, $bg-color, $secondary: false) {
+  background-color: $bg-color;
+  border: 1px solid;
+  border-color: $bg-color;
+  border-radius: 1.5em;
+  color: $txt-color;
+  display: inline-block;
+  line-height: 1;
+  min-width: 1.2rem;
+  text-align: center;
+
+  @if ($secondary) {
+    &.#{$framework-class-prefix}-secondary {
+      background-color: $txt-color;
+      border-color: $bg-color;
+    }
+  }
+}
+
+@mixin badge-variants {
+  @include badge($white, $badge-default-blue, true);
+
+  &.#{$framework-class-prefix}-secondary {
+    color: $black;
+  }
+
+  &.#{$framework-class-prefix}-neutral {
+    @include badge($badge-neutral-txt, $badge-neutral);
+  }
+
+  &.#{$framework-class-prefix}-success {
+    @include badge($white, $badge-success-green);
+  }
+
+  &.#{$framework-class-prefix}-warning {
+    @include badge($black, $badge-warning-yellow);
+  }
+
+  &.#{$framework-class-prefix}-danger {
+    @include badge($white, $badge-danger-red);
+  }
+
+  &.#{$framework-class-prefix}-element {
+    position: absolute;
+    right: 0.1rem;
+    top: -0.5rem;
+  }
+
+  &.#{$framework-class-prefix}-column-width {
+    display: block;
+  }
+}
+
+.#{$framework-class-prefix}-badge {
+  @include text-small;
+  @include badge-variants;
+  padding: $badge-padding $badge-padding-sides;
+}
+
+.#{$framework-class-prefix}-badge-small {
+  @include caption-small-medium;
+  @include badge-variants;
+  padding: $badge-small-padding $badge-small-padding-sides;
+}

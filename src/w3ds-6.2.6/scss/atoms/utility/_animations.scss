@@ -1,0 +1,71 @@
+// Animation Globals
+$duration: 0.5s;
+$timing: ease;
+$fill: forwards;
+$opacity-start: 0;
+$opacity-end: 1;
+$translate-offset: 1.5rem;
+$translate-end: translate3d(0, 0, 0);
+
+// List of animation directions
+$keyframe-list: (
+  slide-up: (
+    name: slide-up,
+    translation: translate3d(0, #{$translate-offset}, 0),
+  ),
+  slide-down: (
+    name: slide-down,
+    translation: translate3d(0, -#{$translate-offset}, 0),
+  ),
+  slide-left: (
+    name: slide-left,
+    translation: translate3d(#{$translate-offset}, 0, 0),
+  ),
+  slide-right: (
+    name: slide-right,
+    translation: translate3d(-#{$translate-offset}, 0, 0),
+  ),
+  fade-in: (
+    name: fade-in,
+  ),
+  fade-out: (
+    name: fade-out,
+  ),
+);
+
+// Generate keyframes from direction list
+@each $keyframe, $map in $keyframe-list {
+  @keyframes #{map-get($map, name)} {
+    0% {
+      opacity: $opacity-start;
+      @if map-get($map, translation) {
+        transform: map-get($map, translation);
+      }
+    }
+
+    100% {
+      opacity: $opacity-end;
+      @if map-get($map, translation) {
+        transform: $translate-end;
+      }
+    }
+  }
+};
+
+// Generate class name with keyframe animation
+@each $keyframe, $map in $keyframe-list {
+  .ds-#{map-get($map, name)} {
+    animation-duration: $duration;
+    animation-fill-mode: $fill;
+    animation-name: $keyframe;
+    animation-timing-function: $timing;
+    opacity: $opacity-start;
+  }
+};
+
+// Generate Animation Delay Classes
+@for $i from 1 through 10 {
+  .ds-delay-#{$i} {
+    animation-delay: #{$i / 10}s;
+  }
+}

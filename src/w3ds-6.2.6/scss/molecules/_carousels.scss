@@ -1,0 +1,90 @@
+@import './carousel-utils.scss';
+
+.#{$framework-class-prefix}-carousel {
+  @extend %carousel;
+}
+
+.#{$framework-class-prefix}-carousel-items {
+  @extend %carousel-items;
+}
+
+.#{$framework-class-prefix}-carousel-arrow {
+  @extend %carousel-move-triggers;
+
+  &:hover {
+
+    span {
+      transform: translate(-50%, -50%) scale(1.15);
+    }
+  }
+
+  .#{$framework-class-prefix}-carousel-img-bg {
+    @extend %carousel-move-triggers-img-bg;
+  }
+
+  .#{$framework-class-prefix}-carousel-dark & {
+    @extend %carousel-move-triggers-light;
+  }
+
+  &.#{$framework-class-prefix}-left {
+    @extend %carousel-move-trigger-left;
+  }
+
+  &.#{$framework-class-prefix}-right {
+    @extend %carousel-move-trigger-right
+  }
+
+  &.#{$framework-class-prefix}-disabled {
+    @extend %carousel-move-triggers-disabled;
+  }
+}
+
+.#{$framework-class-prefix}-carousel-position-indicator {
+  @extend %carousel-position-indicator-container;
+}
+
+.#{$framework-class-prefix}-indicator {
+  display: inline-block;
+  height: 1.43rem + ($carousel-controls-clickable-padding * 2);
+  margin: 0 (5 / 16) * 1rem;
+  padding: $carousel-controls-clickable-padding 0.75rem;
+  position: relative;
+  vertical-align: top;
+  width: ($carousel-position-indicator-circle-size / 16) * 1rem;
+
+  .#{$framework-class-prefix}-circle & {
+    @extend %carousel-position-indicator-circle;
+
+    &.#{$framework-class-prefix}-selected {
+      @extend %carousel-position-indicator-circle-selected;
+    }
+  }
+
+  .#{$framework-class-prefix}-color & {
+    @extend %carousel-position-indicator-circle-blue;
+
+    &.#{$framework-class-prefix}-selected {
+      @extend %carousel-position-indicator-circle-blue-selected;
+    }
+  }
+
+  .#{$framework-class-prefix}-number & {
+    @extend %carousel-position-indicator-number;
+
+    &.#{$framework-class-prefix}-selected {
+      @extend %carousel-position-indicator-number-selected;
+      font-weight: 600;
+    }
+  }
+
+  .#{$framework-class-prefix}-condensed & {
+    @extend %carousel-position-indicator-condensed;
+  }
+}
+
+.#{$framework-class-prefix}-condensed {
+
+  .#{$framework-class-prefix}-carousel-arrow {
+    @extend %carousel-move-triggers-condensed;
+  }
+}

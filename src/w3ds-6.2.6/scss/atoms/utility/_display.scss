@@ -1,0 +1,188 @@
+@import './_shadow-utils';
+
+$display-types: 'inline',
+  'inline-block',
+  'block',
+  'flex';
+$float-directions: 'left',
+  'right',
+  'none';
+$visibility-types: 'hidden',
+  'visible';
+
+.#{$framework-class-prefix}-align-block-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@each $direction in $float-directions {
+  .#{$framework-class-prefix}-float-#{$direction} {
+    float: #{$direction} !important;
+  }
+}
+
+@mixin clearfix {
+  content: ' ';
+  display: table;
+}
+
+.#{$framework-class-prefix}-cf {
+
+  &::before {
+    @include clearfix;
+  }
+
+  &::after {
+    @include clearfix;
+    clear: both;
+  }
+}
+
+@each $type in $display-types {
+
+  .#{$framework-class-prefix}-display-#{$type} {
+    display: #{$type} !important;
+  }
+}
+
+@each $type in $visibility-types {
+
+  .#{$framework-class-prefix}-visibility-#{$type} {
+    visibility: #{$type} !important;
+  }
+}
+
+.#{$framework-class-prefix}-hide {
+  display: none !important;
+}
+
+@each $breakpoint in $breakpoints {
+  @include breakpoint($breakpoint) {
+
+    @each $direction in $float-directions {
+      .#{$framework-class-prefix}-float-#{$breakpoint}-#{$direction} {
+        float: #{$direction} !important;
+      }
+    }
+
+    .#{$framework-class-prefix}-align-#{$breakpoint}-block-center {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .#{$framework-class-prefix}-cf-#{$breakpoint} {
+
+      &::before {
+        content: ' ';
+        display: table;
+      }
+
+      &::after {
+        clear: both;
+        content: ' ';
+        display: table;
+      }
+    }
+
+    @each $type in $display-types {
+      .#{$framework-class-prefix}-display-#{$breakpoint}-#{$type} {
+        display: #{$type} !important;
+      }
+    }
+
+    @each $type in $visibility-types {
+      .#{$framework-class-prefix}-visibility-#{$breakpoint}-#{$type} {
+        visibility: #{$type} !important;
+      }
+    }
+
+    .#{$framework-class-prefix}-hide-#{$breakpoint} {
+      display: none !important;
+    }
+  }
+}
+
+@mixin affix {
+  position: fixed !important;
+}
+
+@mixin affix-full-width {
+  width: 100%;
+}
+
+@mixin affix-full-height {
+  height: 100%;
+}
+
+@mixin affix-bottom {
+  bottom: 0;
+}
+
+@mixin affix-right {
+  right: 0;
+}
+
+@mixin affix-left {
+  left: 0;
+}
+
+.#{$framework-class-prefix}-affix {
+  @include affix;
+  @include shadow-raised;
+
+  &.#{$framework-class-prefix}-full-width {
+    @include affix-full-width;
+  }
+
+  &.#{$framework-class-prefix}-full-height {
+    @include affix-full-height;
+  }
+
+  &.#{$framework-class-prefix}-bottom {
+    @include affix-bottom;
+  }
+
+  &.#{$framework-class-prefix}-right {
+    @include affix-right;
+  }
+
+  &.#{$framework-class-prefix}-left {
+    @include affix-left;
+  }
+}
+
+// Alignment inclusion
+@mixin container-alignment {
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Breakpoint-agnostic class
+.#{$framework-class-prefix}-container-fluid {
+  @include container-alignment;
+  max-width: 1460px;
+}
+
+// Breakpoints and corresponding max widths
+$breakpoint-intervals: (
+  '0': (width: 400,),
+  '779': (width: 650,),
+  '1159': (width: 980,),
+  '1540': (width: 1460,),
+);
+
+// Mixin for class at each breakpoint
+@mixin container-class($breakpoint, $map) {
+  $max-width: map-get($map, width);
+
+  @media screen and (min-width: #{$breakpoint}px) {
+    .#{$framework-class-prefix}-container {
+      @include container-alignment;
+      max-width: #{$max-width}px;
+    }
+  }
+}
+
+@each $name, $map in $breakpoint-intervals {
+  @include container-class($name, $map)
+}

@@ -1,0 +1,248 @@
+@import '../_mixins';
+@import './typography-utils';
+
+* {
+  @include text-rendering;
+
+  &::before,
+  &::after {
+    @include text-rendering;
+  }
+}
+
+body {
+  @include body-default;
+  -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
+  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+}
+
+.#{$framework-class-prefix}-bg-dark {
+  color: $font-color-light;
+}
+
+@each $heading, $map in $headings {
+  .#{$framework-class-prefix}-heading-#{map-get($map, class-name)} {
+    @include heading($map);
+  }
+}
+
+//phonetic
+// @each $phonetic-name in $phonetic-list {
+//   .#{$framework-class-prefix}-type-#{$phonetic-name} {
+//     @include phonetic($phonetic-name);
+
+//     // line-heights
+//     @for $i from 1 through 9 {
+//       @if $phonetic-name==nth($phonetic-list, $i) {
+//         line-height: 1.15;
+//       }
+//     }
+
+//     @for $i from 10 through length($phonetic-list) {
+//       @if $phonetic-name==nth($phonetic-list, $i) {
+//         line-height: 1.4;
+//       }
+//     }
+
+//     // font-weights
+//     @for $i from 1 through 6 {
+//       @if $phonetic-name==nth($phonetic-list, $i) {
+//         font-weight: 300;
+//       }
+//     }
+
+//     @for $i from 8 through 8 {
+//       @if $phonetic-name==nth($phonetic-list, $i) {
+//         font-weight: 400;
+//       }
+//     }
+
+//     @for $i from 9 through 9 {
+//       @if $phonetic-name==nth($phonetic-list, $i) {
+//         font-weight: 500;
+//       }
+//     }
+
+//     @for $i from 10 through length($phonetic-list) {
+//       @if $phonetic-name==nth($phonetic-list, $i) {
+//         font-weight: 400;
+//       }
+//     }
+//   }
+// }
+
+@each $breakpoint in $breakpoints {
+
+  @each $heading, $map in $headings {
+    @include breakpoint($breakpoint) {
+      .#{$framework-class-prefix}-heading-#{$breakpoint}-#{map-get($map, class-name)} {
+        @include heading($map);
+      }
+    }
+  }
+}
+
+p {
+  @include margin-bottom;
+  @include no-top-margin;
+}
+
+a {
+  @include link-default;
+}
+
+.#{$framework-class-prefix}-link-unstyled {
+  @include link-unstyled;
+}
+
+.#{$framework-class-prefix}-label {
+  @include label;
+}
+
+.#{$framework-class-prefix}-caption {
+  @include caption;
+
+  &.#{$framework-class-prefix}-label {
+    @include font-weight('regular');
+  }
+}
+
+.#{$framework-class-prefix}-caption-small {
+  @include caption-small;
+
+  &.#{$framework-class-prefix}-label {
+    @include font-weight('regular');
+  }
+}
+
+
+@each $alignment in $alignments {
+  .#{$framework-class-prefix}-text-align-#{$alignment} {
+    text-align: #{$alignment} !important;
+  }
+}
+
+@each $breakpoint in $breakpoints {
+  @include breakpoint($breakpoint) {
+    @each $alignment in $alignments {
+      .#{$framework-class-prefix}-text-align-#{$breakpoint}-#{$alignment} {
+        text-align: #{$alignment} !important;
+      }
+    }
+  }
+}
+
+.#{$framework-class-prefix}-text-uppercase {
+  text-transform: uppercase;
+}
+
+.#{$framework-class-prefix}-text-lowercase {
+  text-transform: lowercase;
+}
+
+.#{$framework-class-prefix}-text-capitalize {
+  text-transform: capitalize;
+}
+
+.#{$framework-class-prefix}-text-underline {
+  text-decoration: underline;
+}
+
+.#{$framework-class-prefix}-text-strikethrough {
+  text-decoration: line-through;
+}
+
+.#{$framework-class-prefix}-text-italic {
+  @include text-italic;
+}
+
+.#{$framework-class-prefix}-text-sub {
+  @include text-sup-sub;
+  vertical-align: sub;
+}
+
+.#{$framework-class-prefix}-text-super {
+  @include text-sup-sub;
+  vertical-align: super;
+}
+
+.#{$framework-class-prefix}-font-weight-light {
+  @include font-weight('light', true);
+}
+
+.#{$framework-class-prefix}-font-weight-regular {
+  @include font-weight('regular', true);
+}
+
+.#{$framework-class-prefix}-font-weight-medium {
+  @include font-weight('medium', true);
+}
+
+.#{$framework-class-prefix}-font-weight-bold {
+  @include font-weight('bold', true);
+}
+
+.#{$framework-class-prefix}-text-kbd {
+  @include text-keyboard;
+}
+
+.#{$framework-class-prefix}-text-small {
+  @include text-small;
+
+  &.#{$framework-class-prefix}-label {
+    @include font-weight('regular');
+  }
+}
+
+.#{$framework-class-prefix}-text-highlight {
+  @include text-highlight;
+}
+
+.#{$framework-class-prefix}-text-abbr {
+  @include text-abbr;
+}
+
+.#{$framework-class-prefix}-code-inline {
+  @include code-inline;
+}
+
+.#{$framework-class-prefix}-text-monospace {
+  @include text-monospace;
+}
+
+.#{$framework-class-prefix}-text-citation {
+  @include text-citation;
+}
+
+.#{$framework-class-prefix}-blockquote {
+  @include margin-bottom;
+
+  .#{$framework-class-prefix}-quote {
+    @include blockquote-quote;
+  }
+
+  .#{$framework-class-prefix}-long-form {
+    @include blockquote-quote-longform;
+  }
+
+  .#{$framework-class-prefix}-citation {
+    @include text-citation;
+  }
+}
+
+@media reader, speech, aural {
+
+  .#{$framework-class-prefix}-blockquote::before,
+  .#{$framework-class-prefix}-blockquote::after {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.#{$framework-class-prefix}-text-light-color {
+  color: get-color('neutral', 0);
+}
+
+.#{$framework-class-prefix}-text-grey-color {
+  color: get-color('neutral', 6);
+}

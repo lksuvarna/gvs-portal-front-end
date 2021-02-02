@@ -1,0 +1,82 @@
+@import '../atoms/utility/_shadow-utils';
+@import '../atoms/utility/_hover-utils';
+@import '../_variables';
+
+$panel-background: get-color('neutral', 0);
+$panel-border: 1px solid get-color('neutral', 3);
+$panel-link-color: get-contextual-color('blue', 4);
+
+@mixin panel {
+  background-color: $panel-background;
+  border: $panel-border;
+}
+
+.#{$framework-class-prefix}-panel {
+  @include panel;
+
+  &.#{$framework-class-prefix}-no-border {
+    border: 0;
+  }
+
+  &.#{$framework-class-prefix}-panel-bent {
+    border-radius: 2px;
+  }
+
+  &.#{$framework-class-prefix}-panel-rounded {
+    border-radius: (8 / 16) * 1rem;
+  }
+
+  &.#{$framework-class-prefix}-panel-raised {
+    @include shadow-raised;
+  }
+
+  &.#{$framework-class-prefix}-panel-floating {
+    @include shadow-floating;
+  }
+
+  &.#{$framework-class-prefix}-fullwidth {
+    border-left: 0;
+    border-radius: 0;
+    border-right: 0;
+  }
+
+  &.#{$framework-class-prefix}-panel-nester {
+    padding: 0.3rem;
+  }
+
+  .#{$framework-class-prefix}-panel-header {
+    border-bottom: $panel-border;
+    padding: 1.25rem;
+    // height: auto;
+  }
+
+  .#{$framework-class-prefix}-panel-container {
+    // flex: 1 1 auto;
+    padding: 1.25rem;
+  }
+
+  .#{$framework-class-prefix}-panel-footer {
+    border-top: $panel-border;
+    padding: 1.25rem;
+    // height: auto;
+  }
+
+  .#{$framework-class-prefix}-list-unstyled,
+  .#{$framework-class-prefix}-list-lined {
+    margin-bottom: 0;
+
+    .#{$framework-class-prefix}-panel-segment {
+      border-left: 0;
+      border-right: 0;
+      padding: 0.67rem;
+
+      &:first-child {
+        border-top: 0;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}

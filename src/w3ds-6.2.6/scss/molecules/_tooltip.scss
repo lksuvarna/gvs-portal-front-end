@@ -1,0 +1,158 @@
+@import '../atoms/utility/_shadow-utils';
+
+
+$tooltip-blue-dull: get-color('blue', 7);
+$tooltip-neutral: get-color('neutral', 0);
+$tooltip-bg-default: get-color('blue', 0);
+$tooltip-bg-neutral: get-color('neutral', 1);
+$tooltip-outline-neutral: get-color('neutral', 3);
+$tooltip-type-neutral: get-contextual-color('blue', 5);
+$tooltip-bg-color: get-color('blue', 7);
+$tooltip-type-light: get-color('neutral', 5);
+$tooltip-focus-outline: get-color('neutral', 5);
+
+.#{$framework-class-prefix}-tooltip {
+  position: relative;
+
+  &.#{$framework-class-prefix}-click>.#{$framework-class-prefix}-tooltip-trigger {
+    @include clear-vendor-button-styles;
+    cursor: pointer;
+  }
+
+  &.#{$framework-class-prefix}-open {
+
+    .#{$framework-class-prefix}-tooltip-content {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+      z-index: $z-high;
+    }
+  }
+}
+
+.#{$framework-class-prefix}-tooltip-trigger {
+  display: inline-block;
+
+  &:focus {
+    outline: $tooltip-type-light dotted 2px;
+    outline-color: $tooltip-focus-outline;
+    outline-offset: 2px;
+    outline-style: dotted;
+    outline-width: 2px;
+  }
+}
+
+.#{$framework-class-prefix}-tooltip-content {
+  @include font-weight('regular');
+  @include text-small;
+  background: $tooltip-bg-default;
+  border-bottom-color: $tooltip-bg-default;
+  border-color: $tooltip-bg-default;
+  border-radius: 2px;
+  color: $tooltip-blue-dull;
+  left: 50%;
+  margin-top: (4 / 16) * 1rem;
+  opacity: 0;
+  padding: 0.5rem 1rem;
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+  top: 40px;
+  transform: translateX(-50%);
+  transition: opacity $fade, z-index $fade;
+  white-space: nowrap;
+  visibility: hidden;
+  z-index: $z-negative;
+
+  p {
+    white-space: nowrap;
+  }
+
+  &::before,
+  &::after {
+    border: solid transparent;
+    border-bottom-color: inherit;
+    border-width: 10px;
+    bottom: 100%;
+    content: '';
+    height: 0;
+    left: 50%;
+    margin-left: -10px;
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+  }
+
+  &[data-position='left'] {
+
+    &::before,
+    &::after {
+      left: calc(100% + 10px);
+      top: 25%;
+      transform: rotate(90deg);
+    }
+  }
+
+  &[data-position='right'] {
+
+    &::before,
+    &::after {
+      left: 0;
+      top: 25%;
+      transform: rotate(-90deg) translateY(-50%);
+    }
+  }
+
+  &[data-position='top'] {
+
+    &::before,
+    &::after {
+      left: 50%;
+      top: 100%;
+      transform: rotate(180deg);
+    }
+  }
+
+  &.#{$framework-class-prefix}-neutral {
+    background: $tooltip-bg-neutral;
+    border-bottom-color: $tooltip-bg-neutral;
+    border-color: $tooltip-bg-neutral;
+    color: $tooltip-type-neutral;
+  }
+
+  &.#{$framework-class-prefix}-dark {
+    background: $tooltip-blue-dull;
+    border-bottom-color: $tooltip-blue-dull;
+    border-color: $tooltip-blue-dull;
+    color: $tooltip-neutral;
+  }
+
+  &.#{$framework-class-prefix}-light {
+    background: $tooltip-neutral;
+    border-bottom-color: $tooltip-neutral;
+    border-color: $tooltip-neutral;
+    color: $tooltip-type-light;
+  }
+
+  &.#{$framework-class-prefix}-outline {
+    background: $white;
+    border: 1px solid $tooltip-outline-neutral;
+    border-bottom-color: $tooltip-outline-neutral;
+
+    &::before {
+      border-color: transparent transparent $tooltip-outline-neutral;
+      border-width: 11px;
+      margin-left: -11px;
+    }
+
+    &::after {
+      border-bottom-color: $white;
+      border-width: 10px;
+      margin-left: -10px;
+    }
+  }
+
+  &.#{$framework-class-prefix}-shadow {
+    @include shadow-floating;
+  }
+}

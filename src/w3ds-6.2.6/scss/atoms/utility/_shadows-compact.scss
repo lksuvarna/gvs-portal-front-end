@@ -1,0 +1,13 @@
+@import './_shadow-utils-compact';
+
+.#{$framework-class-prefix}-shadow-raised {
+  @include shadow-raised;
+}
+
+.#{$framework-class-prefix}-shadow-floating {
+  @include shadow-floating;
+}
+
+.#{$framework-class-prefix}-shadow-text {
+  @include shadow-text;
+}
