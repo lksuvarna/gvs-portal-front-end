@@ -15,7 +15,40 @@
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: true}));
 
-  const OpenIDConnectStrategy = require('passport-ci-oidc').IDaaSOIDCStrategy;
+   //app.use(methodOverride('X-HTTP-Method-Override'));
+
+
+app.use(session({name: 'GVS_Portal', keys: ['GVS_Portal']}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+//app.use(logger('dev'));
+app.use(cookieParser());
+app.use(session({resave: 'true', saveUninitialized: 'true' , secret: 'a2z in cloud'}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// http body is not parsed and forwarded to the target as-is
+app.use(bodyParser.text({type: '*/*', limit: '10mb'}));
+
+passport.serializeUser(function(user, done) {
+// TODO: Write the user context to cloudant to achieve elastic scaling
+console.log(user['_json'].blueGroups);
+user['_json'].blueGroups = [];
+console.log('Serializing...');
+done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+// TODO: Read the user context to cloudant to achieve elastic scaling
+console.log('Deserializing...');
+done(null, obj);
+});
+
+
+const OpenIDConnectStrategy = require('passport-ci-oidc').IDaaSOIDCStrategy;
 const OIDCStrategy = new OpenIDConnectStrategy({
   discoveryURL: process.env['discovery_url'],
   clientID: process.env['clientID'],
