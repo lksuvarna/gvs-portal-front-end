@@ -10,6 +10,7 @@
   const app = express();
   app.use(compression());
   var w3config = require('./config/w3config');
+  var passport = require('passport');
  // app.use(logger('dev'));
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({extended: true}));
