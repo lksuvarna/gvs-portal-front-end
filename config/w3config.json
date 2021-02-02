@@ -1,0 +1,13 @@
+
+{
+  "authorizationURL": "https://w3id.alpha.sso.ibm.com/isam/oidc/endpoint/amapp-runtime-oidcidp/authorize",
+  "tokenURL": "https://w3id.alpha.sso.ibm.com/isam/oidc/endpoint/amapp-runtime-oidcidp/token",
+  "clientID": "NzZmOWMxMzEtMDRhZS00",
+  "scope": "openid",
+  "response_type": "code",
+  "clientSecret": "NjMyOGIwNGYtNTllYy00",
+  "callbackURL": "https://evolution-reports-dev-app.wdc1a.ciocloud.nonprod.intranet.ibm.com/auth/sso/callback",
+  "skipUserProfile": true,
+  "issuer": "https://w3id.alpha.sso.ibm.com/isam",
+  "CACertPathList": ["/oidc_w3id_staging.cer","/oidc_w3id_prod.cer","/DigiCertGlobalRootCA.crt","/DigiCertSHA2SecureServerCA.crt"]
+}
