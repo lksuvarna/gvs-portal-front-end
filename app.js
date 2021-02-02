@@ -16,6 +16,7 @@
    app.use('/api/rest/get', getApi);
    app.use('/api/rest/post', postApi);
 
+
 console.log('starting app in dev mode '+ path.normalize(__dirname+'/../../'));
     //catch all route
    app.use(express.static(path.join(__dirname, 'dist/gvs-portal-front-end')));
