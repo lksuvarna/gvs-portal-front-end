@@ -33,7 +33,11 @@
               "src/w3ds-6.2.6/w3ds-data-tables.css",
               "src/w3ds-6.2.6/w3ds-prism.css",
               "src/w3ds-6.2.6/w3ds-data-tables.css",
-              "src/w3ds-6.2.6/masterhead.css"               
+              "src/w3ds-6.2.6/masterhead.css", 
+              "src/w3ds-6.2.6/scss/_font-face.scss",
+              "src/w3ds-6.2.6/w3ds-border-sides.css"
+              
+                          
             ],
             "scripts": [
               "src/w3ds-6.2.6/w3ds.js"  
