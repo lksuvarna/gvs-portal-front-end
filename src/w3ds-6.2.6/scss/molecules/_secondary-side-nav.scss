@@ -1,0 +1,343 @@
+@import '../atoms/_typography-utils';
+@import '../atoms/_button-utils';
+
+$side-nav-spacer: $font-size * nth($spacing-list, 2);
+$side-nav-link-item-color: get-color('neutral', 7);
+$side-nav-link-item-sub-color: get-color('neutral', 6);
+$side-nav-highlight-blue: get-color('blue', 5);
+$side-nav-item-highlight-background: get-color('neutral', 1);
+$side-nav-left-border-color: get-color('neutral', 3);
+$side-nav-background-color: get-color('neutral', 0);
+$side-nav-mobile-mask: rgba(get-color('neutral', 7), 0.73);
+
+$side-nav-focus-color: get-color('neutral', 5);
+
+// hacky way to add to nav in mobile
+// $scrollspy-background-filter: rgba(35, 35, 35, .73);
+
+@function spacing-function($multiplier) {
+  @return $side-nav-spacer * $multiplier;
+}
+
+
+
+%seconday-side-nav-item-styling {
+  overflow: hidden;
+  padding-right: 3.5rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+%secondary-side-nav-link-styling {
+  @include text-regular;
+  text-decoration: none;
+}
+
+%secondary-side-nav-default-text-sizing {
+  @include text-regular;
+}
+
+%secondary-side-nav {
+  cursor: pointer;
+  height: 100%;
+  overflow-y: scroll;
+  position: fixed;
+  top: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  &.#{$framework-class-prefix}-right {
+    border-right: 0;
+  }
+
+  a {
+    @extend %secondary-side-nav-link-styling;
+  }
+
+  button {
+    &:focus {
+      outline: 2px dotted $side-nav-focus-color;
+      outline-offset: -2px;
+    }
+  }
+}
+
+%secondary-side-nav-item {
+  @extend %seconday-side-nav-item-styling;
+  @include button-vertical-padding;
+  line-height: $button-line-height;
+  padding-left: 1.5rem;
+
+  span,
+  button {
+    &.subnav-icon {
+      @include font-weight('bold', true);
+      background-color: transparent;
+      right: 2rem;
+      position: absolute;
+      // adding a padding top that is equal to the padding bottom
+      // of the ds-icon class to center the icon
+      padding-top: (3 / 16) * 1rem;
+    }
+  }
+
+  a,
+  span {
+    color: $side-nav-link-item-sub-color;
+    @include font-weight('bold', true);
+  }
+
+  &[data-child] {
+    &.subnav-icon {
+      @include font-weight('bold', true);
+      background-color: transparent;
+      right: 2rem;
+      position: absolute;
+    }
+  }
+
+  &:hover {
+    a {
+      color: $side-nav-link-item-color;
+    }
+
+    background-color: $side-nav-item-highlight-background;
+  }
+}
+
+@mixin secondary-side-nav-item-sub {
+  @include button-vertical-padding;
+  line-height: $button-line-height;
+  padding-left: 3rem;
+
+  &[data-child] {
+    .subnav-icon {
+      @include font-weight('bold', true);
+      display: inline-block;
+      position: absolute;
+      background-color: transparent;
+      right: 2rem;
+      padding-top: (3 / 16) * 1rem;
+    }
+  }
+
+  &:not([data-child]) {
+
+    &:not(.subnav-icon) {
+
+      a {
+        display: block;
+        // including same padding as parent to extend links to full width/height
+        @include button-vertical-padding;
+        padding-left: 3rem;
+        padding-right: 3.5rem;
+
+        // adding negative margins to offset added padding
+        margin-bottom: -0.8rem; // computed button-vertical-padding as margin, made negative
+        margin-left: 3rem * -1;
+        margin-right: 3.5rem * -1;
+        margin-top: -0.8rem; // computed button-vertical-padding as margin, made negative
+      }
+    }
+  }
+
+  a {
+    color: $side-nav-link-item-sub-color;
+    @include font-weight('normal', true);
+  }
+
+  &:hover {
+    background-color: $side-nav-item-highlight-background;
+
+    a {
+      color: $side-nav-link-item-color;
+      @include font-weight('bold', true);
+    }
+  }
+}
+
+%secondary-side-nav-item-sub {
+  @extend %seconday-side-nav-item-styling;
+  @include secondary-side-nav-item-sub;
+}
+
+@mixin secondary-side-nav-item-sub-sub {
+  @include button-vertical-padding;
+  padding-left: spacing-function(3);
+
+  &[data-child] {
+    a {
+      &.subnav-icon {
+        &::before {
+          display: block;
+          position: absolute;
+          right: 1.5rem;
+        }
+      }
+    }
+  }
+
+  a {
+    @include font-weight('medium', false);
+
+    &:hover {
+      color: $side-nav-link-item-color;
+      @include font-weight('bold', true);
+    }
+  }
+}
+
+%secondary-side-nav-item-sub-sub {
+  @extend %seconday-side-nav-item-styling;
+  @include secondary-side-nav-item-sub-sub;
+}
+
+%secondary-side-nav-item-active {
+  background-color: $side-nav-item-highlight-background;
+  position: relative;
+
+  a {
+    color: $side-nav-link-item-color;
+    @include font-weight('bold', true);
+  }
+
+  &::after {
+    border-left: 3px solid $side-nav-highlight-blue;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+}
+
+.#{$framework-class-prefix}-secondary-side-nav,
+.#{$framework-class-prefix}-secondary-scrollspy-nav {
+  @extend %secondary-side-nav;
+
+  &-inserted {
+    &.ds-hide-lg {
+      @include button-vertical-padding;
+      color: $side-nav-link-item-sub-color;
+
+      + .#{$framework-class-prefix}-nav-item {
+        &:hover {
+          a {
+            background-color: $side-nav-item-highlight-background;
+            color: $side-nav-link-item-color;
+            @include font-weight('bold', true);
+          }
+        }
+
+        @media screen and (max-width: 1159px) {
+          & + .#{$framework-class-prefix}-nav-section {
+            .#{$framework-class-prefix}-nav-sub-item {
+              @include secondary-side-nav-item-sub;
+
+              &:hover,
+              &.ds-active {
+                a {
+                  background-color: $side-nav-item-highlight-background;
+                  color: $side-nav-link-item-color;
+                  @include font-weight('bold', true);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &:hover {
+        background-color: $side-nav-item-highlight-background;
+        color: $side-nav-link-item-color;
+        @include font-weight('bold', true);
+      }
+    }
+  }
+
+  &:not(.#{$framework-class-prefix}-right) {
+    @include affix-left;
+  }
+
+  &.#{$framework-class-prefix}-right {
+    @include affix-right;
+  }
+
+  .#{$framework-class-prefix}-nav-item {
+    @extend %secondary-side-nav-item;
+  }
+
+  .#{$framework-class-prefix}-nav-section {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out, visibility 0s 0.1s linear;
+    visibility: hidden;
+
+    &.#{$framework-class-prefix}-expanded {
+      display: block;
+      max-height: 2000px;
+      overflow: hidden;
+      transition: max-height 0.5s ease-in, visibility 0s 0.1s linear;
+      visibility: visible;
+    }
+
+    .#{$framework-class-prefix}-nav-section {
+      .#{$framework-class-prefix}-nav-sub-item {
+        padding-left: 4.5rem;
+      }
+    }
+  }
+
+  .#{$framework-class-prefix}-nav-sub-item {
+    @extend %secondary-side-nav-item-sub;
+
+    & + .#{$framework-class-prefix}-nav-section {
+      .#{$framework-class-prefix}-nav-sub-item {
+        @extend %secondary-side-nav-item-sub-sub;
+      }
+    }
+  }
+
+  .#{$framework-class-prefix}-active {
+    @extend %secondary-side-nav-item-active;
+  }
+
+  button[data-child],
+  div[data-child] {
+    text-align: left;
+    border: none;
+    width: 100%;
+    display: block;
+
+    &:focus {
+      outline: 2px dotted $side-nav-focus-color;
+      outline-offset: -2px;
+    }
+  }
+}
+
+@include breakpoint-max('md') {
+  .#{$framework-class-prefix}-combo-nav {
+    .#{$framework-class-prefix}-nav-item {
+      a {
+        @include text-regular;
+        @include font-weight('normal', true);
+      }
+
+      &:hover {
+        a {
+          color: $side-nav-link-item-color;
+          @include font-weight('bold', true);
+        }
+      }
+
+      &.ds-active {
+        a {
+          color: $side-nav-link-item-color;
+          @include font-weight('bold', true);
+        }
+      }
+    }
+  }
+}

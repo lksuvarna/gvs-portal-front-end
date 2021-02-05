@@ -1,0 +1,97 @@
+// reset border widths due to weird chrome stuff
+%border-reset {
+  border-style: solid;
+  border-width: 0;
+}
+
+@mixin color-class($color-class-prefix, $color-properties...) {
+
+  @each $category-name in map-keys($phase1-colors) {
+
+    $category-list: map-get($phase1-colors, $category-name);
+
+    @each $color in $category-list {
+      $index: index($category-list, $color);
+
+      .#{$framework-class-prefix}-#{$color-class-prefix}-#{$category-name}-#{$index} {
+        @each $property in $color-properties {
+          #{$property}: $color !important;
+        }
+
+        @content;
+      }
+    }
+  }
+}
+
+@include color-class('text', 'color');
+@include color-class('bg', 'background-color');
+@include color-class('border', 'border-color') {
+  @extend %border-reset;
+  border-width: 1px;
+}
+
+@each $breakpoint in $breakpoints {
+  @include breakpoint($breakpoint) {
+    @include color-class('text-#{$breakpoint}', 'color');
+    @include color-class('bg-#{$breakpoint}', 'background-color');
+  }
+}
+
+@each $color-category in map-keys($phase1-contextual-colors) {
+  $color-category-list: map-get($phase1-contextual-colors, $color-category);
+
+  @for $num from 1 through 6 {
+
+    .#{$framework-class-prefix}-bg-contextual-#{$color-category}-#{$num} {
+      background-color: nth($color-category-list, $num) !important;
+    }
+
+    .#{$framework-class-prefix}-text-contextual-#{$color-category}-#{$num} {
+      color: nth($color-category-list, $num) !important;
+    }
+
+    // borders
+    .#{$framework-class-prefix}-border-contextual-#{$color-category}-#{$num} {
+      @extend %border-reset;
+      border-color: nth($color-category-list, $num) !important;
+      border-width: 1px;
+    }
+  }
+}
+
+// Transparent color classes
+.#{$framework-class-prefix}-text-transparent {
+  color: get-color('transparent', 0) !important;
+}
+
+.#{$framework-class-prefix}-bg-transparent {
+  background-color: get-color('transparent', 0) !important;
+}
+
+.#{$framework-class-prefix}-border-transparent {
+  border-color: get-color('transparent', 0) !important;
+  border-style: solid;
+  border-width: 1px;
+}
+
+// Border classes
+@each $side, $abbrev in $sides {
+  .#{$framework-class-prefix}-border-dark-#{$abbrev} {
+    @extend %border-reset;
+    border-#{$side}-width: 1px;
+    border-#{$side}-color: get-color(neutral, 7) !important;
+  }
+
+  .#{$framework-class-prefix}-border-#{$abbrev} {
+    @extend %border-reset;
+    border-#{$side}-width: 1px;
+    border-#{$side}-color: get-color(neutral, 3) !important;
+  }
+
+  .#{$framework-class-prefix}-border-#{$abbrev}-transparent {
+    border-#{$side}-width: 1px;
+    border-#{$side}-color: get-color('transparent', 0) !important;
+    border-style: solid;
+  }
+}

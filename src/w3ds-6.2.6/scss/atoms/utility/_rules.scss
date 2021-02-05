@@ -1,0 +1,36 @@
+// Re-written to use background-color/height instead of border
+// This is to extend the capability of adding ds-bg-[color-name] classes for future flexibility
+
+%hrBaseStyle {
+  background-color: $horizontal-rule-color;
+  width: 100%;
+}
+
+.#{$framework-class-prefix}-hr {
+  @extend %hrBaseStyle;
+  height: (1/16) * 1rem;
+
+  &-thick {
+    @extend %hrBaseStyle;
+    height: (3/16) * 1rem;
+
+    &.#{$framework-class-prefix}-dark {
+      background-color: $horizontal-rule-color-dark;
+    }
+  }
+
+  &.#{$framework-class-prefix}-dark {
+    background-color: $horizontal-rule-color-dark;
+  }
+}
+
+hr {
+
+  &.#{$framework-class-prefix}-hr {
+    @extend %hrBaseStyle;
+    display: block;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+  }
+}

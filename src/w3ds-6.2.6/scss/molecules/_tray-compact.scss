@@ -1,0 +1,127 @@
+@import '../_variables-compact';
+@import '../atoms/_button-utils';
+@import '../atoms/utility/_motion-ui';
+
+$tray-background: get-color('neutral', 0);
+$tray-open-border-bottom: get-color('neutral', 3);
+$tray-border: 1px solid $tray-open-border-bottom;
+
+.#{$framework-class-prefix}-tray-container {
+  position: relative;
+  z-index: $z-low;
+}
+
+.#{$framework-class-prefix}-tray {
+  background-color: $tray-background;
+  height: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  transform: translateY(-100%);
+  transition: transform $motion-time-2 $ease-out-quart, z-index $motion-time-3 $ease-in-out-quint, height $motion-time-2 $ease-out-quart;
+  z-index: $z-negative;
+
+  &.#{$framework-class-prefix}-open {
+    border-bottom: $tray-border;
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+    transition: transform $motion-time-2 $ease-out-quart, z-index $motion-time-3 $ease-in-out-quint, height $motion-time-2 $ease-out-quart;
+    z-index: $z-base;
+
+    &:focus {
+      @include focus-style;
+    }
+  }
+
+  &.#{$framework-class-prefix}-tray-max-height {
+    max-height: 120px;
+    overflow-y: auto;
+  }
+
+  &.#{$framework-class-prefix}-tray-top {
+    border-left: $tray-border;
+    border-right: $tray-border;
+    height: initial;
+    top: 0;
+    transform: translateY(-100%);
+    transition: $motion-time-2 $ease-out-quart;
+
+    &.#{$framework-class-prefix}-open {
+      transform: translateY(0);
+      transition: $motion-time-2 $ease-out-quart;
+    }
+  }
+
+  &.#{$framework-class-prefix}-tray-left {
+    border-right: $tray-border;
+    border-top: $tray-border;
+    left: 0;
+    transform: translateX(-100%);
+    transition: $move-x;
+
+    &.#{$framework-class-prefix}-open {
+      transform: translateX(0);
+    }
+  }
+
+  &.#{$framework-class-prefix}-tray-right {
+    border-left: $tray-border;
+    border-top: $tray-border;
+    right: 0;
+    transform: translateX(200%);
+    transition: $move-x;
+
+    &.#{$framework-class-prefix}-open {
+      transform: translateX(100%);
+    }
+  }
+
+  &.#{$framework-class-prefix}-tray-bottom {
+    border-bottom: 0;
+    border-left: $tray-border;
+    border-right: $tray-border;
+    border-top: $tray-border;
+    bottom: 0;
+    height: initial;
+    transform: translateY(100%);
+    transition: $motion-time-2 $ease-out-quart;
+
+    &.#{$framework-class-prefix}-open {
+      transform: translateY(0);
+      transition: $motion-time-2 $ease-out-quart;
+    }
+  }
+}
+
+.#{$framework-class-prefix}-tray-fit-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  overflow-x: visible;
+  padding: 0;
+  width: 100%;
+
+  .#{$framework-class-prefix}-button {
+    flex-basis: auto;
+    flex-grow: 1;
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+  }
+}
+
+// megamenu specific
+.#{$framework-class-prefix}-tray-open {
+  button {
+    &.active {
+      background-color: $button-flat-bg-hover;
+      color: $button-font-color;
+    }
+  }
+}

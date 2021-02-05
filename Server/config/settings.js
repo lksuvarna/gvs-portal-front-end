@@ -1,0 +1,14 @@
+exports.client_id = "M2IyNTdjOTgtOWFkYy00";
+exports.client_id_prod= "OGRiZTU5ZTctNzYwYS00";
+exports.client_secret = "MzM1OTY0YTYtNGYxZi00";
+exports.client_secret_prod = "MTQ0MzgzYzEtYTMyOC00";
+exports.authorization_url = "https://preprod.login.w3.ibm.com/oidc/endpoint/default/.well-known/openid-configuration";
+exports.authorization_url_prod = "https://w3id.sso.ibm.com/isam/oidc/endpoint/amapp-runtime-oidcidp/authorize";
+exports.token_url = "https://w3id.alpha.sso.ibm.com/isam/oidc/endpoint/amapp-runtime-oidcidp/token";
+exports.token_url_prod = "https://w3id.sso.ibm.com/isam/oidc/endpoint/amapp-runtime-oidcidp/token";
+exports.issuer_id ="https://preprod.login.w3.ibm.com/oidc/endpoint/default";
+exports.issuer_id_prod ="https://w3id.sso.ibm.com/isam";
+exports.callback_url_local = "https://localhost:6005/auth/sso/callback";
+exports.callback_url_dev = "https://mxgdlwl01.gdl.mex.ibm.com:62022/auth/sso/callback";
+exports.callback_url_uat= "https://mxgdlwl02.gdl.mex.ibm.com:62022/auth/sso/callback";
+exports.callback_url_prod= "https://mxgdlwl03.gdl.mex.ibm.com:62022/auth/sso/callback";

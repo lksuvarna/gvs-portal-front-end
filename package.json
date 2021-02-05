@@ -2,7 +2,7 @@
   "name": "gvs-portal-front-end",
   "version": "0.0.0",
   "scripts": {
-    "start": "node app.js"
+    "start": "node  ./Server/server --name spoe"
   },
   "private": true,
   "dependencies": {
@@ -20,13 +20,22 @@
     "config": "^3.3.3",
     "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
+    "debug": "^4.3.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "fs": "0.0.1-security",
     "http": "0.0.1-security",
+    "http-proxy-middleware": "^1.0.6",
+    "https": "^1.0.0",
     "lodash": "^4.17.20",
+    "multer": "^1.4.2",
+    "multer-sftp": "^1.1.1",
     "passport": "^0.4.1",
     "passport-ci-oidc": "^2.0.4",
+    "passport-idaas-openidconnect": "^2.0.3",
     "path": "^0.12.7",
     "query-string": "^6.13.8",
+    "queue": "^6.0.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

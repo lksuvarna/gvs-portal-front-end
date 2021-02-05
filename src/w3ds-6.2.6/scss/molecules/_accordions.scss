@@ -1,0 +1,122 @@
+@import './_accordion-utils';
+@import '../atoms/utility/_motion-ui';
+
+
+.#{$framework-class-prefix}-accordion-container,
+.#{$framework-class-prefix}-accordion-container-sm,
+.#{$framework-class-prefix}-accordion-container-lg {
+  @include accordion;
+
+  .#{$framework-class-prefix}-accordion-item {
+    @include accordion-item;
+    border-bottom: 2px solid $accordion-border-color;
+    margin-left: 0;
+    margin-right: 0;
+
+    &:focus {
+      .#{$framework-class-prefix}-accordion-title {
+        @include focus-style;
+      }
+
+      .#{$framework-class-prefix}-accordion-slidedown {
+        .#{$framework-class-prefix}-accordion-title {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .#{$framework-class-prefix}-accordion-title {
+    @include accordion-title;
+    padding: 0.7rem 2rem 0.7rem 3rem !important;
+    width: 100%;
+
+    &.#{$framework-class-prefix}-open {
+      @include accordion-title-open;
+    }
+  }
+
+  .#{$framework-class-prefix}-accordion-slidedown {
+    @include accordion-slidedown;
+    padding: 0;
+
+    &.#{$framework-class-prefix}-open {
+      @include accordion-slidedown-open;
+      padding: 0 0 0 1rem !important;
+
+      .#{$framework-class-prefix}-accordion-nested {
+
+        .#{$framework-class-prefix}-accordion-item {
+
+          &:first-child {
+            border-top: 2px solid $accordion-border-color;
+          }
+
+          &:last-child {
+            border-bottom: 0;
+          }
+        }
+      }
+
+      & > *:not(.#{$framework-class-prefix}-accordion-nested) {
+
+        &:first-child {
+          padding-top: 2rem;
+        }
+
+        &:last-child {
+          padding-bottom: 2rem;
+        }
+
+      }
+
+      & > p {
+        padding-left: $font-size * nth($spacing-list, 3);
+        padding-right: $font-size * nth($spacing-list, 2);
+      }
+
+      & > ul {
+        margin-top: 0;
+        padding-left: $font-size * nth($spacing-list, 3);
+        padding-right: $font-size * nth($spacing-list, 2);
+      }
+
+      & > img {
+        padding-left: 0;
+        padding-right: $font-size * nth($spacing-list, 2);
+      }
+    }
+  }
+
+  &.#{$framework-class-prefix}-accordion-icon {
+    .#{$framework-class-prefix}-accordion-title {
+      @include accordion-title-icon;
+    }
+
+    // right aligned + is optional
+    &.#{$framework-class-prefix}-accordion-right {
+      .#{$framework-class-prefix}-accordion-title {
+        @include accordion-right-aligned;
+      }
+    }
+  }
+
+  &.#{$framework-class-prefix}-accordion-right {
+    .#{$framework-class-prefix}-accordion-title {
+      @include accordion-right-aligned;
+    }
+  }
+}
+
+
+.#{$framework-class-prefix}-accordion-container-sm {
+  .#{$framework-class-prefix}-accordion-title {
+    @include accordion-title-small;
+  }
+}
+
+.#{$framework-class-prefix}-accordion-container-lg {
+  .#{$framework-class-prefix}-accordion-title {
+    @include accordion-title-large;
+  }
+}

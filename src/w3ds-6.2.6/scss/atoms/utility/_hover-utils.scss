@@ -1,0 +1,12 @@
+@import '../../_functions';
+@import '../../_variables';
+
+$hover-neutral: get-color('neutral', 2);
+
+@mixin hover-list {
+  background-color: $hover-neutral;
+}
+
+@mixin hover-table {
+  background-color: $hover-neutral;
+}

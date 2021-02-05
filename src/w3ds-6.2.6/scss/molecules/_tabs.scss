@@ -1,0 +1,369 @@
+$tab-border-color: get-color('neutral', 3);
+$tab-disabled-text-color: get-color('neutral', 6);
+$tab-basic-disabled-bg: get-color('neutral', 1);
+$tab-flat-disabled-bg: $tab-basic-disabled-bg;
+$divider-width: 1px;
+$tab-row-border-width: 2px;
+
+@mixin tab-variant($border-width, $font-color, $hover-bg-color, $hover-color, $active-bg-color, $border-color: '', $active-color: '') {
+  border-bottom: $border-width solid $border-color;
+  border-color: $border-color;
+  border-top: $border-width solid $border-color;
+  color: $font-color;
+
+  &::after {
+    @include tab-borders;
+  }
+
+  &:hover {
+    background-color: $hover-bg-color;
+    border-color: $hover-bg-color;
+    color: $hover-color;
+
+    &::after {
+      background-color: $hover-bg-color;
+    }
+  }
+
+  &:active {
+    background-color: $active-bg-color;
+    border-color: $active-bg-color;
+    border-top-width: $border-width;
+    color: $active-color;
+  }
+}
+
+@mixin tab-primary {
+  @include tab-variant(0, $font-color-default, $button-primary-bg-hover, $button-primary-font-color, $button-primary-bg-clicked, $tab-border-color, $button-primary-font-color);
+}
+
+@mixin tab-secondary {
+  @include tab-variant($tab-row-border-width, $font-color-default, $button-secondary-bg-hover, $button-secondary-color-hover, $button-secondary-bg-clicked, $tab-border-color, $button-secondary-color-clicked);
+}
+
+@mixin tab-basic {
+  @include tab-variant($tab-row-border-width, get-color('neutral', 6), $button-basic-bg-hover, $font-color-default, $button-basic-bg-clicked, $tab-border-color, $button-basic-color-clicked);
+
+  &:hover,
+  &:active {
+    border-bottom: $tab-row-border-width solid $button-basic-bg-hover;
+    border-top: $tab-row-border-width solid $button-basic-bg-hover;
+  }
+}
+
+@mixin tab-variant-disabled($bg-color, $text-color, $border-color: '') {
+  background-color: $bg-color;
+  border-color: $border-color;
+  color: $text-color;
+  cursor: not-allowed;
+
+  &::before,
+  &::after {
+    background: $bg-color;
+  }
+
+  &:active,
+  &:focus,
+  &:hover,
+  &:visited {
+    background-color: $bg-color;
+    border-color: $border-color;
+    outline: none;
+  }
+}
+
+@mixin tab-primary-disabled {
+  @include tab-variant-disabled(get-color('neutral', 2), $button-primary-disabled-color);
+}
+
+@mixin tab-secondary-disabled {
+  @include tab-variant-disabled($button-primary-disabled-bg, $tab-disabled-text-color, $tab-border-color);
+}
+
+@mixin tab-basic-disabled {
+  @include tab-variant-disabled($tab-basic-disabled-bg, $tab-disabled-text-color, $tab-border-color);
+}
+
+@mixin tab-flat-disabled {
+  @include tab-variant-disabled($tab-flat-disabled-bg, $tab-disabled-text-color);
+}
+
+@mixin tab-borders {
+  background-color: $tab-border-color;
+  content: '';
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: $divider-width;
+}
+
+.#{$framework-class-prefix}-tab-controls {
+  @include button-group-core;
+  @include button-group-horizontal;
+  @include autohide-scrollbarx;
+
+  background-color: transparent;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  // width: 100%;
+
+  &::-webkit-scrollbar {
+    // sass-lint:disable-line no-vendor-prefixes
+    background: transparent;
+  }
+
+  .#{$framework-class-prefix}-button {
+    @include text-capitalize;
+    border-color: $transparent-white;
+    border-radius: 0;
+    border-width: 0;
+    float: left;
+    padding-left: $button-side-padding-modifier / 2 * $button-font-size;
+    padding-right: $button-side-padding-modifier / 2 * $button-font-size;
+    position: relative;
+    width: auto;
+  }
+
+  :not(.#{$framework-class-prefix}-selected) {
+
+    &.#{$framework-class-prefix}-primary {
+      @include tab-primary;
+      background-color: $button-primary-disabled-bg;
+
+      &:last-child {
+        &::after {
+          width: 0;
+        }
+      }
+
+      &.#{$framework-class-prefix}-disabled {
+        @include tab-primary-disabled;
+      }
+    }
+
+    &.#{$framework-class-prefix}-secondary {
+      @include tab-secondary;
+
+      &.#{$framework-class-prefix}-disabled {
+        @include tab-secondary-disabled;
+      }
+    }
+
+    &.#{$framework-class-prefix}-basic {
+      @include tab-basic;
+
+      &.#{$framework-class-prefix}-disabled {
+        @include tab-basic-disabled;
+      }
+    }
+
+    &.#{$framework-class-prefix}-flat {
+      color: get-color('neutral', 6);
+
+      &.#{$framework-class-prefix}-disabled {
+        @include tab-flat-disabled;
+      }
+    }
+  }
+
+  .#{$framework-class-prefix}-selected {
+
+    &.#{$framework-class-prefix}-secondary {
+      background-color: $button-primary-bg-clicked;
+      border-bottom-width: $tab-row-border-width;
+      border-color: $button-primary-bg-clicked;
+      border-top-width: $tab-row-border-width;
+      color: get-color('neutral', 0);
+
+      &::before,
+      &::after {
+        background: $button-primary-bg-clicked;
+        content: '';
+        height: 100%;
+        position: absolute;
+        top: 0;
+        transition-duration: $button-transition-duration;
+        transition-property: $button-hover-transition-properties;
+        transition-timing-function: $button-transition-function;
+        width: 1px;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+        width: 2px;
+      }
+
+      & .#{$framework-class-prefix}-button {
+        border-left-color: $button-secondary-border;
+      }
+
+      &+.#{$framework-class-prefix}-button {
+        border-left-color: $button-secondary-border;
+      }
+
+      &:hover {
+        background: $button-secondary-border-hover;
+        border-color: $button-secondary-border-hover;
+
+        &::before,
+        &::after {
+          background: $button-secondary-border-hover;
+        }
+
+        &+.#{$framework-class-prefix}-button {
+          border-left-color: $button-secondary-border-hover;
+        }
+      }
+    }
+
+    &.#{$framework-class-prefix}-basic {
+      border-bottom-width: $tab-row-border-width;
+      border-color: $black;
+      border-left: $divider-width solid $black;
+      border-top-width: $tab-row-border-width;
+
+      &::before,
+      &::after {
+        background: $black;
+        content: '';
+        height: 100%;
+        position: absolute;
+        top: 0;
+        transition-duration: $button-transition-duration;
+        transition-property: $button-hover-transition-properties;
+        transition-timing-function: $button-transition-function;
+        width: 1px;
+      }
+
+      &::before {
+        left: 0;
+      }
+
+      &::after {
+        right: 0;
+        width: 2px;
+      }
+
+      &:hover {
+        border-color: $button-basic-bg-hover;
+
+        &::before,
+        &::after {
+          background: $button-basic-bg-hover;
+        }
+      }
+
+      &+.#{$framework-class-prefix}-button {
+        border-left-color: $button-basic-border-color;
+      }
+    }
+
+    &.#{$framework-class-prefix}-flat {
+      position: relative;
+
+      &::after {
+        border-bottom: 2px solid $black;
+        content: '';
+        left: 50%;
+        position: absolute;
+        top: 95%;
+        transform: translateX(-50%);
+        width: 75%;
+      }
+
+      &:active {
+        &::after {
+          border-bottom-color: $button-flat-color-clicked;
+        }
+      }
+
+      &:last-of-type {
+
+        &::after {
+          display: block;
+        }
+      }
+    }
+
+    &:first-of-type {
+
+      &::before {
+        display: none;
+      }
+    }
+
+    &:last-of-type {
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  // Disabled state in general
+  .#{$framework-class-prefix}-primary {
+    &.#{$framework-class-prefix}-disabled {
+      @include tab-primary-disabled;
+    }
+  }
+
+  .#{$framework-class-prefix}-secondary {
+    &.#{$framework-class-prefix}-disabled {
+      @include tab-secondary-disabled;
+    }
+  }
+
+  .#{$framework-class-prefix}-basic {
+    &.#{$framework-class-prefix}-disabled {
+      @include tab-basic-disabled;
+    }
+  }
+
+  .#{$framework-class-prefix}-flat {
+    &.#{$framework-class-prefix}-disabled {
+      @include tab-flat-disabled;
+    }
+  }
+}
+
+.#{$framework-class-prefix}-tabs-fit-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  overflow-x: visible;
+  padding: 0;
+  width: 100%;
+
+  .#{$framework-class-prefix}-button {
+    flex-basis: auto;
+    flex-grow: 1;
+    padding-left: 0;
+    padding-right: 0;
+    width: auto;
+  }
+}
+
+// For tab text only
+.#{$framework-class-prefix}-text-wrap {
+  display: flex;
+
+  .#{$framework-class-prefix}-button {
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    overflow: hidden;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+}

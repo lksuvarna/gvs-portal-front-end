@@ -1,0 +1,112 @@
+@import '../atoms/utility/_shadow-utils';
+@import '../atoms/utility/_z-index';
+
+$popover-blue-dull: get-color('blue', 7);
+$popover-outline-neutral: get-color('neutral', 3);
+$popover-focus-outline: get-color('neutral', 5);
+$popover-type-light: get-color('neutral', 5);
+$popover-caret-background: get-color('neutral', 0);
+$popover-caret-border: get-color('neutral', 2);
+
+.#{$framework-class-prefix}-popover {
+  position: relative;
+
+  &.#{$framework-class-prefix}-click > .#{$framework-class-prefix}-popover-trigger {
+    cursor: pointer;
+  }
+
+  .#{$framework-class-prefix}-caret {
+    left: 50%;
+    // margin-top: (6 / 16) * 1rem;
+    margin-top: 14px;
+    position: absolute;
+    top: 100%;
+    // transition: opacity $fade;
+    z-index: $z-mid;
+
+    &::before {
+      background: $popover-caret-background;
+      border-left: 1px solid transparent;
+      border-top: 1px solid transparent;
+      bottom: 0;
+      content: '';
+      height: 15px;
+      left: 50%;
+      pointer-events: none;
+      position: absolute;
+      transform: translateX(-50%) rotate(45deg);
+      transition: border-left $fade, border-top $fade;
+      width: 15px;
+      z-index: 2;
+    }
+  }
+
+  &.#{$framework-class-prefix}-open {
+
+    .#{$framework-class-prefix}-caret {
+
+      &::before {
+        border-left: 1px solid $popover-outline-neutral;
+        border-top: 1px solid $popover-outline-neutral;
+      }
+    }
+
+  }
+
+  &.#{$framework-class-prefix}-caret-top {
+    .#{$framework-class-prefix}-caret {
+      // margin-top: (4 / 16) * 1rem;
+      margin-top: -5px;
+      top: -50%;
+      transform: rotate(-180deg);
+    }
+  }
+}
+
+.#{$framework-class-prefix}-popover-trigger {
+  display: inline-block;
+
+  &:focus {
+    outline: $popover-type-light dotted 2px;
+    outline-color: $popover-focus-outline;
+    outline-offset: 2px;
+    outline-style: dotted;
+    outline-width: 2px;
+  }
+}
+
+.#{$framework-class-prefix}-popover-content {
+  @include font-weight('regular');
+  @include text-small;
+  background: $white;
+  border: 1px solid $popover-outline-neutral;
+  border-bottom-color: $popover-outline-neutral;
+  border-color: $popover-outline-neutral;
+  border-radius: 2px;
+  color: $popover-blue-dull;
+  margin-top: 1 + (13 / 16) * 1rem;
+  opacity: 0;
+  padding: 0.5rem 1rem;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  transform: translateX(-50%);
+  transition: opacity $fade;
+  white-space: nowrap;
+  z-index: $z-low;
+
+  p {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  &.#{$framework-class-prefix}-open {
+    opacity: 1;
+  }
+
+  &.#{$framework-class-prefix}-caret-top {
+    bottom: 0;
+    margin-bottom: 1 + (17 / 16) * 1rem;
+    top: auto;
+  }
+}

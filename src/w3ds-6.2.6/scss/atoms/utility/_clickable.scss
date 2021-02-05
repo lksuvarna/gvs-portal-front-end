@@ -1,0 +1,5 @@
+@import './_clickable-utils';
+
+.#{$framework-class-prefix}-clickable {
+  @include clickable;
+}

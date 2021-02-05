@@ -1,0 +1,139 @@
+@import '../_variables';
+
+$code-syntax-blue-6: get-color('blue', 5);
+$code-syntax-blue-4: get-contextual-color('blue', 4);
+$code-syntax-green-6: get-contextual-color('green', 4);
+$code-syntax-neutral-1: get-color('neutral', 1);
+$code-syntax-neutral-4: get-color('neutral', 5);
+$code-syntax-neutral-6: get-color('neutral', 7);
+$code-syntax-red-4: get-contextual-color('red', 2);
+$code-syntax-red-5: get-contextual-color('red', 3);
+$code-syntax-yellow-6: get-contextual-color('yellow', 5);
+$code-syntax-purple-5: get-contextual-color('purple', 4);
+$code-syntax-blue-4: get-contextual-color('blue', 4);
+
+%javascript-syntax-colors {
+  .token {
+
+    &.comment,
+    &.block-comment,
+    &.prolog,
+    &.doctype,
+    &.cdata {
+      color: $code-syntax-neutral-4 !important;
+    }
+
+    &.operator,
+    &.entity,
+    &.url,
+    &.variable {
+      color: $code-syntax-red-4;
+    }
+
+    &.selector,
+    &.attr-name,
+    &.char,
+    &.builtin,
+    &.inserted,
+    &.atrule,
+    &.attr-value,
+    &.keyword {
+      color: $code-syntax-purple-5;
+    }
+
+    &.property,
+    &.tag,
+    &.boolean,
+    &.number,
+    &.function-name,
+    &.constant,
+    &.symbol,
+    &.string,
+    &.deleted {
+      color: $code-syntax-green-6;
+    }
+
+
+    &.punctuation {
+      color: $code-syntax-neutral-4;
+    }
+
+    &.function {
+      color: $code-syntax-blue-4;
+    }
+  }
+}
+
+pre {
+  &[class*='language-'] {
+    background-color: transparent;
+    background-image: none;
+    border-left: 0;
+  }
+
+  code {
+    &.language-html {
+
+      .token {
+
+        &.comment,
+        &.block-comment,
+        &.prolog,
+        &.doctype,
+        &.cdata {
+          color: $code-syntax-neutral-4 !important;
+        }
+
+        &.punctuation {
+          color: $code-syntax-neutral-4;
+        }
+
+        &.property,
+        &.tag,
+        &.boolean,
+        &.number,
+        &.function-name,
+        &.constant,
+        &.symbol,
+        &.deleted {
+          color: $code-syntax-red-4;
+        }
+
+        &.selector,
+        &.attr-name,
+        &.string,
+        &.char,
+        &.function,
+        &.builtin,
+        &.inserted {
+          color: $code-syntax-green-6;
+        }
+
+        &.operator,
+        &.entity,
+        &.url,
+        &.variable {
+          // color: $code-syntax-yellow-6;
+          color: $code-syntax-purple-5;
+        }
+
+        &.atrule,
+        &.attr-value,
+        &.keyword,
+        &.class-name {
+          color: $code-syntax-blue-4;
+        }
+
+        &.script {
+          &.language-javascript {
+            @extend %javascript-syntax-colors;
+          }
+        }
+      }
+    }
+
+    &.language-javascript {
+      @extend %javascript-syntax-colors;
+    }
+  }
+}

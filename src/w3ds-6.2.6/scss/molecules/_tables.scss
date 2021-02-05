@@ -1,0 +1,224 @@
+@import '../_mixins';
+
+$table-striped-background: get-color('neutral', 1);
+$table-striped-background-header: get-color('blue', 0);
+$table-blue: get-color('blue', 6);
+$table-neutral-light: get-color('neutral', 3);
+$table-neutral-dark: get-color('neutral', 7);
+$border-pattern: 1px solid $table-neutral-light;
+$table-padding-top: 20px;
+$table-no-border: 0;
+$table-font-size: ( 16 / 16 ) * 1rem;
+
+.#{$framework-class-prefix}-table-container {
+  @include autohide-scrollbarx;
+
+  .#{$framework-class-prefix}-table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+
+    th,
+    td {
+      color: $table-neutral-dark;
+      padding: 1.25rem 0.5rem;
+    }
+
+    thead {
+      tr {
+        background-color: $table-striped-background-header;
+        border-bottom: $border-pattern;
+        border-top: $border-pattern;
+
+        th {
+          @include font-weight('bold');
+          @include text-capitalize;
+          font-size: $table-font-size;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: $border-pattern;
+      }
+    }
+
+    &.#{$framework-class-prefix}-table-compact {
+      td {
+        font-size: $table-font-size;
+      }
+
+      thead {
+        tr {
+          th {
+            @include text-capitalize;
+            font-size: $table-font-size;
+          }
+        }
+      }
+
+      th,
+      td {
+        padding-bottom: 0.75rem;
+        padding-top: 0.75rem;
+      }
+
+      &.#{$framework-class-prefix}-striped {
+        thead {
+          tr {
+            th {
+              @include text-capitalize;
+              font-size: $table-font-size;
+            }
+          }
+        }
+      }
+    }
+
+    &.#{$framework-class-prefix}-striped {
+      thead {
+        tr {
+          border-bottom: $table-no-border;
+          border-top: $table-no-border;
+
+          th {
+            @include text-capitalize;
+            @include label;
+            color: $table-blue;
+            font-size: $table-font-size;
+            margin-bottom: 0;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          border-bottom: $table-no-border;
+
+          &:nth-child(even) {
+            background-color: $table-striped-background;
+          }
+        }
+      }
+    }
+
+    &.#{$framework-class-prefix}-centered {
+      th,
+      td {
+        @include text-capitalize;
+        text-align: center;
+      }
+    }
+
+    &.#{$framework-class-prefix}-hover {
+      tbody {
+
+        tr {
+
+          &:hover {
+            @include hover-table;
+            transition-duration: $transition-duration;
+            transition-timing-function: $transition-function;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin collapsible {
+  .#{$framework-class-prefix}-table {
+    thead {
+      tr {
+        border: $table-no-border;
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: $table-no-border;
+      }
+    }
+
+    th,
+    td {
+      display: block;
+      padding: 5px 10px;
+    }
+
+    th {
+      @include text-capitalize;
+
+      &:first-child {
+        padding-top: $table-padding-top;
+      }
+    }
+
+    td {
+      &:first-child {
+        padding-top: $table-padding-top;
+      }
+    }
+
+    th {
+      @include text-capitalize;
+
+      &:last-child {
+        padding-bottom: $table-padding-top;
+      }
+    }
+
+    td {
+      &:last-child {
+        padding-bottom: $table-padding-top;
+      }
+    }
+
+    thead {
+      &tr {
+        background-color: $table-striped-background;
+      }
+    }
+
+    tbody {
+      &tr {
+        &:nth-child(even) {
+          background-color: $table-striped-background;
+        }
+      }
+    }
+
+    &.#{$framework-class-prefix}-striped {
+      thead {
+        tr {
+          background-color: $table-striped-background-header;
+        }
+      }
+    }
+  }
+}
+
+@include breakpoint-max('sm') {
+  .#{$framework-class-prefix}-table-container {
+    &.#{$framework-class-prefix}-collapsible {
+      @include collapsible;
+    }
+  }
+}
+
+@each $breakpoint in $breakpoints {
+  @if ($breakpoint=='xl') {
+    .#{$framework-class-prefix}-collapsible-#{$breakpoint} {
+      @include collapsible;
+    }
+  }
+
+  @else {
+    @include breakpoint-max(#{$breakpoint}) {
+      .#{$framework-class-prefix}-collapsible-#{$breakpoint} {
+        @include collapsible;
+      }
+    }
+  }
+}

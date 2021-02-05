@@ -1,0 +1,173 @@
+@import './_functions';
+
+// Basic, framework-wide variables.
+
+$framework-class-prefix: 'ds';
+
+/* stylelint-disable */
+
+// -------------- COLORS --------------
+// deprecated in 6.0.0.
+$colors: (
+  'blue': (#E5F6FF, #BAE6FF, #82CFFF, #1192E8, #0072c3, #00539a, #003a6d, #061727),
+  'neutral': (#ffffff, #f4f4f4, #e0e0e0, #C6C6C6, #8D8D8D, #6F6F6F, #525252, #262626),
+  'neutral-warm': (#ffffff, #F7F3F2, #e5e0df, #cac5c4, #ada8a8, #736f6f, #565151, #272525),
+  'neutral-cool': (#ffffff, #F2F4F8, #dde1e6, #c1c7cd, #a2a9b0, #697077, #4d5358, #21272A),
+  'transparent': (rgba(0, 0, 0, 0))
+);
+
+//                     0        1        2        3        4        5        6        7
+// placeholder value re-map to be deprecated in 7.0.0
+$phase1-colors: (
+  'blue': (#E5F6FF, #BAE6FF, #82CFFF, #1192E8, #0072C3, #00539A, #003A6D, #061727),
+  'neutral': (#ffffff, #F4F4F4, #E0E0E0, #C6C6C6, #8D8D8D, #6F6F6F, #525252, #262626),
+  'neutral-warm': (#ffffff, #F7F3F2, #E5E0DF, #CAC5C4, #ADA8A8, #736F6F, #565151, #272525),
+  'neutral-cool': (#ffffff, #F2F4F8, #DDE1E6, #C1C7CD, #A2A9B0, #697077, #4D5358, #21272A),
+  'transparent': (rgba(0, 0, 0, 0))
+);
+
+@function get-color($category, $num) {
+  @return nth(map-get($phase1-colors, $category), $num + 1);
+}
+
+//               0        1        2        3        4        5
+$contextual-colors: (
+  'blue': (#eaf4fa, #b7e2fb, #24afff, #038ad8, #0370b0, #012a41),
+  'green': (#ceede3, #59c9a2, #27aa7c, #098b5d, #066544, #054830),
+  'yellow': (#fdf0bf, #fbe798, #f9dc66, #f7cf2b, #e3b602, #cc9e05),
+  'red': (#fcd6d4, #f7685e, #dd2113, #af1a0f, #940a00, #590d08),
+  'purple': (#f0e0fa, #debcf5, #b76de9, #9d37e1, #781bb6, #4f1278)
+);
+
+//               0        1        2        3        4        5
+$phase1-contextual-colors: (
+  'blue': (#EDF5FF, #D0E2FF, #4589FF, #0043CE, #002D9C, #001141),
+  'green': (#DEFBE6, #6FDC8C, #42BE65, #198038, #0E6027, #044317),
+  'yellow': (#fdf0bf, #fbe798, #f9dc66, #f7cf2b, #e3b602, #cc9e05),
+  'red': (#FFD7D9, #FA4D56, #DA1E28, #A2191F, #750E13, #520408),
+  'purple': (#E8DAFF, #D4BBFF, #A56EFF, #8A3FFC, #6929C4, #491D8B)
+);
+
+/* stylelint-enable */
+
+@function get-contextual-color($category, $num) {
+  @return nth(map-get($phase1-contextual-colors, $category), $num + 1);
+}
+
+$black: get-color('neutral', 7) !default;
+$white: get-color('neutral', 0) !default;
+
+$pure-white: #fff;
+$transparent-white: rgba($pure-white, 0.33);
+
+// -------------- UTILITY & LAYOUT --------------
+$margin-bottom: 0.83rem;
+$horizontal-rule-color: get-color('neutral', 3);
+$horizontal-rule-color-dark: get-color('neutral', 5);
+
+
+$spacing-midpoint: 0.5;
+$spacing-intervals: (
+  '0': (value: 0),
+  '0_5': (value: 0.5),
+  '1': (value: 1),
+  '1_5': (value: 1.5),
+  '2': (value: 2),
+  '2_5': (value: 2.5),
+  '3': (value: 3),
+  '3_5': (value: 3.5),
+  '4': (value: 4),
+  '4_5': (value: 4.5),
+  '5': (value: 5),
+  '5_5': (value: 5.5),
+  '6': (value: 6),
+  '6_5': (value: 6.5),
+  '7': (value: 7),
+  '7_5': (value: 7.5),
+  '8': (value: 8),
+  '8_5': (value: 8.5),
+  '9': (value: 9),
+  '9_5': (value: 9.5),
+  '10': (value: 10),
+  '10_5': (value: 10.5),
+  'auto': (value: auto),
+);
+
+$spacing-list: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ];
+
+
+$sides: (top: t, right: r, bottom: b, left: l);
+
+// -------------- TYPOGRAPHY --------------
+$font-color-default: $black !default;
+$background-color-default: $white !default;
+$font-color-light: $background-color-default !default;
+$background-color-dark: $font-color-default !default;
+$font-size: 1rem !default;
+$font-size-px: 16px !default; // Use only for conversions to or from px
+$font-line-height: 1.4;
+
+$font-family: 'IBMPlexSans', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$font-family-mono: 'IBMPlexMono', Consolas, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier, monospace !default;
+$font-family-italic: 'IBMPlexSans', sans-serif !default;
+
+$headings: (
+  'h1': (value: 3rem, class-name: '1'),
+  'h2': (value: 2.25rem, class-name: '2'),
+  'h3': (value: 1.5rem, class-name: '3'),
+  'h4': (value: 1.125rem, class-name: '4'),
+  'h5': (value: 0.875rem, class-name: '5'),
+);
+
+// -------------- BREAKPOINTS --------------
+// gridSize = (screenSize - 1em)
+// sm: 10 columns aka 5/6 of grid size is 20em aka easily readable type width
+// md: 6 columns aka 1/2 of grid size is 20em
+// lg: 4 columns aka 1/3 of grid size is 20em
+// xl: 3 columns aka 3/12 of grid size is 20em
+
+$breakpoints: 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' !default;
+$breakpoint-naming: '', '-xs', '-sm', '-md', '-lg', '-xl', '-xxl' !default;
+$breakpoints-high: 'xs-high', 'sm-high', 'md-high', 'lg-high';
+$breakpoint-xs-low: 0 !default;
+$breakpoint-sm-low: 400px; // 25rem @ 16px rembase
+$breakpoint-md-low: 640px !default; // 40rem @ 16px rembase
+$breakpoint-lg-low: 960px !default; // 60rem @ 16px rembase
+$breakpoint-xl-low: 1280px !default; // 80rem @ 16px rembase
+$breakpoint-xxl-low: 1440px !default; // 90rem @ 16px rembase
+$breakpoint-xs-high: 399px !default;
+$breakpoint-sm-high: 639px !default;
+$breakpoint-md-high: 959px !default;
+$breakpoint-lg-high: 1159px !default;
+$breakpoint-values: (
+  xs: $breakpoint-xs-low,
+  sm: $breakpoint-sm-low,
+  md: $breakpoint-md-low,
+  lg: $breakpoint-lg-low,
+  xl: $breakpoint-xl-low,
+  xxl: $breakpoint-xxl-low,
+  'xs-high': $breakpoint-xs-high,
+  'sm-high': $breakpoint-sm-high,
+  'md-high': $breakpoint-md-high,
+  'lg-high': $breakpoint-lg-high,
+);
+
+
+// -------------- ANIMATIONS & TRANSITIONS --------------
+$transition-duration: 0.2s;
+$transition-function: cubic-bezier(0.77, 0, 0.175, 1); //easeInOutQuart
+$transition-ease-in-out: cubic-bezier(0.86, 0, 0.07, 1); //easeInOutQuint
+$transition-ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$transition-ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+$transition-ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+// -------------- SELECTORS --------------
+$button-selectors: '.#{$framework-class-prefix}-button';
+
+// -------------- Z-INDEX HIERARCHY --------------
+$z-negative: -1;
+$z-base: 1;
+$z-low: 10;
+$z-mid: 100;
+$z-high: 500;
+$z-extreme: 9999;

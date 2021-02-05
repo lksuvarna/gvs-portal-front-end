@@ -1,0 +1,252 @@
+//////////////////////////////////////////////////////
+//     __  ___      __  _                __  ______ //
+//    /  |/  /___  / /_(_)___  ____     / / / /  _/ //
+//   / /|_/ / __ \/ __/ / __ \/ __ \   / / / // /   //
+//  / /  / / /_/ / /_/ / /_/ / / / /  / /_/ // /    //
+// /_/  /_/\____/\__/_/\____/_/ /_/   \____/___/    //
+//                                                  //
+//////////////////////////////////////////////////////
+
+
+/////////////////
+////  Notes  ////
+/////////////////
+
+//   + The most important thing here are the variables. These are our brand guidelines and the crux of our Motion UI.
+//
+//   + Mixins are meant to be helpers, not be-all-end-all approach for animation. Transitions, smart classes, custom keyframes
+//     are all allowed and encouraged.
+//
+//   + Animations usings transform cannot be stacked. we may need to create additional animations for this in the future,
+//     and perhaps revisit the logic in how these are being invented and called.
+//
+//   + Animations using transform can be "soft-stacked" by targeting different areas of an element (scale on the wrapper,
+//     rotate on the child).
+
+
+////////////////////////
+////  Instructions  ////
+////////////////////////
+
+// 1) Include mixin
+//    @include motion-rotate($uniqueNameRotate, $durationRotate, $bezierRotate, $delayRotate, $startValueRotate, $endValueRotate)
+
+// 2) Define animation with corresponding variable. Comma deliniate multiple animations
+//    animation: $motion-rotate;
+
+// Example - rotate and fade
+//   div {
+//     @include motion-rotate('rotate1', 1s, $motion-bezier--base, 1s, 0, 360);
+//     @include motion-fade('fade1', 2s, $motion-bezier--base, 2s, 0, 1);
+//     animation: $motion-rotate, $motion-fade;
+//   }
+
+
+//////////////////////////////////////////
+////  Brand Defined Motion Variables  ////
+//////////////////////////////////////////
+
+$motion-time-2: 0.2s;
+$motion-time-3: 0.3s;
+$motion-time-4: 0.4s;
+$motion-time-5: 0.5s;
+$motion-time-6: 0.6s;
+//
+$ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+$ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+$ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+//
+$motion-delay: 0.3s;
+//
+$move-x: $motion-time-3 $ease-in-out-quart;
+$move-y: $motion-time-3 $ease-out-quart;
+$move-y-up: $move-y;
+$move-y-down: $move-y;
+//
+$fade: $motion-time-3 $ease-out-quint;
+$fade-opacity: $fade;
+//
+$scale: $move-x;
+$rotate: $move-x;
+
+
+////////////////////////////
+////  Animation mixins  ////
+////////////////////////////
+
+// name, duration, bezier, delay, value1, value2
+
+// Scale
+// @mixin motion-scale($unique-name-scale, $delay-scale, $start-value-scale, $end-value-scale) {
+// 	$motion-scale: #{$unique-name-scale} $motion-time-3 $ease-in-out-quart $delay-scale forwards !global;
+// 	@keyframes #{$unique-name-scale} {
+// 		0% {
+// 			transform: scale($start-value-scale);
+// 		}
+
+// 		100% {
+// 			transform: scale($end-value-scale);
+// 		}
+// 	}
+// }
+
+// // Rotate
+// @mixin motion-rotate($unique-name-rotate, $delay-rotate, $start-value-rotate, $end-value-rotate) {
+// 	$motion-rotate: #{$unique-name-rotate} $motion-time-3 $ease-in-out-quart $delay-rotate forwards !global;
+// 	@keyframes #{$unique-name-rotate} {
+// 		0% {
+// 			transform: rotate(#{$start-value-rotate}deg);
+// 		}
+
+// 		100% {
+// 			transform: rotate(#{$end-value-rotate}deg);
+// 		}
+// 	}
+// }
+
+// // Move X
+// @mixin motion-move-x($unique-name-move-x, $delay-move-x, $start-value-move-x, $end-value-move-x) {
+// 	$motion-move-x: #{$unique-name-move-x} $motion-time-3 $ease-in-out-quart $delay-move-x forwards !global;
+// 	@keyframes #{$unique-name-move-x} {
+// 		0% {
+// 			transform: translateX(#{$start-value-move-x});
+// 			// transform-origin: 50%;
+// 		}
+
+// 		100% {
+// 			transform: translateX(#{$end-value-move-x});
+// 			// transform-origin: 50%;
+// 		}
+// 	}
+// }
+
+// // Move Y Up
+// @mixin motion-move-y-up($unique-name-move-y-up, $delay-move-y-up, $start-value-move-y-up, $end-value-move-y-up) {
+// 	$motion-move-y-up: #{$unique-name-move-y-up} $motion-time-3 $ease-out-quart $delay-move-y-up forwards !global;
+// 	@keyframes #{$unique-name-move-y-up} {
+// 		0% {
+// 			transform: translateY(#{$start-value-move-y-up});
+// 		}
+
+// 		100% {
+// 			transform: translateY(#{$end-value-move-y-up});
+// 		}
+// 	}
+// }
+
+// // Move Y Down
+// @mixin motion-move-y-down($unique-name-move-y-down, $delay-move-y-down, $start-value-move-y-down, $end-value-move-y-down) {
+// 	$motion-move-y-down: #{$unique-name-move-y-down} $motion-time-2 $ease-in-quart $delay-move-y-down forwards !global;
+// 	@keyframes #{$unique-name-move-y-down} {
+// 		0% {
+// 			transform: translateY(#{$start-value-move-y-down});
+// 		}
+
+// 		100% {
+// 			transform: translateY(#{$end-value-move-y-down});
+// 		}
+// 	}
+// }
+
+// // Fade
+// @mixin motion-fade($unique-name-fade, $delay-fade, $start-value-fade, $end-value-fade) {
+// 	$motion-fade: #{$unique-name-fade} $motion-time-3 $ease-in-out-quint $delay-fade forwards !global;
+// 	@keyframes #{$unique-name-fade} {
+// 		0% {
+// 			opacity: $start-value-fade;
+// 		}
+
+// 		100% {
+// 			opacity: $end-value-fade;
+// 		}
+// 	}
+// }
+
+// // Fade Color
+// @mixin motion-fade-color($unique-name-fade-color, $delay-fade-color, $start-value-fade-color, $end-value-fade-color) {
+// 	$motion-fade-color: #{$unique-name-fade-color} $motion-time-3 $ease-in-out-quint $delay-fade-color forwards !global;
+// 	@keyframes #{$unique-name-fade-color} {
+// 		0% {
+// 			color: $start-value-fade-color;
+// 		}
+
+// 		100% {
+// 			color: $end-value-fade-color;
+// 		}
+// 	}
+// }
+
+// // Fade BG
+// @mixin motion-fade-bg($unique-name-fade-bg, $delay-fade-bg, $start-value-fade-bg, $end-value-fade-bg) {
+// 	$motion-fade-bg: #{$unique-name-fade-bg} $motion-time-3 $ease-in-out-quint $delay-fade-bg forwards !global;
+// 	@keyframes #{$unique-name-fade-bg} {
+// 		0% {
+// 			background-color: $start-value-fade-bg;
+// 		}
+
+// 		100% {
+// 			background-color: $end-value-fade-bg;
+// 		}
+// 	}
+// }
+
+
+///////////////////
+////  Testing  ////
+///////////////////
+
+// .motion-scale-test {
+// 	@include motion-scale('scale-test', 0s, 1, 1.2);
+// 	animation: $motion-scale infinite;
+// 	display: inline-block;
+// 	transform-origin: 0;
+// }
+
+// .motion-rotate-test {
+// 	@include motion-rotate('rotate-test', 0s, 0, 360);
+// 	animation: $motion-rotate infinite;
+// 	display: inline-block;
+// 	transform-origin: 50%;
+// }
+
+// .motion-move-x-test {
+// 	@include motion-move-x('move-x-test', 0s, 0, 2rem);
+// 	animation: $motion-move-x infinite;
+// 	display: inline-block;
+// }
+
+// .motion-move-y-up-test {
+// 	@include motion-move-y-up('move-y-up-test', 0s, 0, -2rem);
+// 	animation: $motion-move-y-up infinite;
+// 	display: inline-block;
+// }
+
+// .motion-move-y-down-test {
+// 	@include motion-move-y-down('move-y-down-test', 0s, 0, 2rem);
+// 	animation: $motion-move-y-down infinite;
+// 	display: inline-block;
+// }
+
+// .motion-fade-test {
+// 	@include motion-fade('fade-test', 2s, 1, 0);
+// 	animation: $motion-fade infinite;
+// 	display: inline-block;
+// }
+
+// .motion-fade-color-test {
+// 	$blue: get-contextual-color('blue', 1);
+// 	$red: get-contextual-color('red', 1);
+// 	@include motion-fade-color('fade-color-test', 0s, $blue, $red);
+// 	animation: $motion-fade-color infinite;
+// 	display: inline-block;
+// }
+
+// .motion-fade-bg-test {
+// 	$blue: get-contextual-color('blue', 1);
+// 	$red: get-contextual-color('red', 1);
+// 	@include motion-fade-bg('fade-bg-test', 0s, $red, $blue);
+// 	animation: $motion-fade-bg infinite;
+// 	display: inline-block;
+// }
