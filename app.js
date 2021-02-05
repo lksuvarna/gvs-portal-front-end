@@ -6,6 +6,9 @@
   const app = express();
   const {createProxyMiddleware}  = require('http-proxy-middleware');
   app.use(compression());
+  var passport = require('passport');
+  const cookieParser = require('cookie-parser');
+  const session = require('cookie-session');
  // app.use(logger('dev'));
 
  app.use(session({name: 'GVS_Portal', keys: ['GVS_Portal']}));
