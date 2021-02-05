@@ -3,7 +3,6 @@
 /**
  * Module dependencies.
  */
-var open = require('open');
 var app = require('../app');
 var debug = require('debug')('consumer:server');
 var http = require('http');
@@ -25,12 +24,12 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-//var server = http.createServer(app);
+var server = http.createServer(app);
 //create server
-var server = https.createServer({
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-}, app);
+// var server = https.createServer({
+//   key: fs.readFileSync('key.pem'),
+//   cert: fs.readFileSync('cert.pem')
+// }, app);
 
 /**
  * Listen on provided port, on all network interfaces.
