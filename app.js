@@ -113,7 +113,7 @@ app.use('/', ensureAuthenticated);
 
 
    const options={
-     target: 'http://localhost:6800',
+     target:  process.env['target_app'],
      changeOrigin: true,
      secure: false,
      ws:true ,
