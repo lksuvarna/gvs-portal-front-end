@@ -1,0 +1,272 @@
+@import '../_mixins';
+@import './utility/_clickable-utils';
+@import './_typography-utils';
+@import './utility/_motion-ui';
+
+$button-font-size: $font-size-label;
+$button-font-size-em: $font-size-label / 1rem * 1em;
+$button-font-color: $font-color-default;
+$button-background: get-color('neutral', 0);
+$button-min-padding: 0.5rem;
+$button-line-height: 1.15;
+$button-side-padding-modifier: 3.4;
+$button-vertical-padding: ((50 / 16) * 1rem) - ($button-line-height * $button-font-size);
+$button-vertical-padding-small: ((38 / 16) * 1rem) - ($button-line-height * $button-font-size);
+$button-vertical-padding-large: ((75 / 16) * 1rem) - ($button-line-height * $button-font-size);
+$button-border-width: 2px;
+$button-border-radius: 2px;
+$button-small-multiplier: 0.57;
+$button-large-multiplier: 1.65;
+$button-padding-default: $font-size * nth($spacing-list, 5);
+$button-padding-small: $font-size * nth($spacing-list, 3);
+$button-padding-large: $font-size * nth($spacing-list, 7);
+$button-hover-transition-properties: background-color, border-color, color;
+$button-transition-duration: $transition-duration;
+$button-transition-function: $transition-function;
+
+$button-basic-border-color: get-color('neutral', 3);
+$button-basic-bg-hover: get-color('neutral', 3);
+$button-basic-bg-clicked: $button-background;
+$button-basic-color-clicked: get-color('blue', 5);
+$button-basic-border-disabled: get-color('neutral', 3);
+$button-basic-color-disabled: get-color('neutral', 6);
+$button-basic-border: $button-border-width solid $button-basic-border-color;
+
+$button-flat-bg-hover: $button-basic-bg-hover;
+$button-flat-bg-clicked: $button-basic-bg-clicked;
+$button-flat-color-clicked: $button-basic-color-clicked;
+$button-flat-color-disabled: $button-basic-color-disabled;
+
+$button-primary-font-color: $background-color-default;
+$button-primary-bg: get-color('blue', 5);
+$button-primary-bg-hover: get-color('blue', 4);
+$button-primary-bg-clicked: get-color('blue', 7);
+$button-primary-disabled-color: get-color('neutral', 6);
+$button-primary-disabled-bg: get-color('neutral', 1);
+
+$button-secondary-bg: $button-background;
+$button-secondary-color: $button-primary-bg;
+$button-secondary-border: $button-border-width solid $button-secondary-color;
+$button-secondary-border-width: $button-border-width;
+$button-secondary-color-hover: get-color('neutral', 0);
+$button-secondary-bg-hover: get-color('blue', 4);
+$button-secondary-border-hover: $button-secondary-bg-hover;
+$button-secondary-bg-clicked: $button-primary-bg-clicked;
+$button-secondary-color-clicked: $button-secondary-color-hover;
+$button-secondary-border-clicked: $button-secondary-bg-clicked;
+
+$button-secondary-disabled-color: get-color('neutral', 6);
+$button-secondary-disabled-border: get-color('neutral', 3);
+
+$button-danger-bg: get-contextual-color('red', 3);
+$button-danger-font-color: $background-color-default;
+$button-danger-bg-hover: get-contextual-color('red', 2);
+$button-danger-bg-clicked: get-contextual-color('red', 4);
+
+// icon button
+$button-icon-dark: get-color('blue', 7);
+$button-icon-dark-hover: get-color('neutral', 6);
+$button-icon-dark-clicked: get-contextual-color('red', 2);
+$button-icon-neutral: get-color('neutral-warm', 5);
+$button-icon-neutral-hover: get-color('neutral-warm', 6);
+$button-icon-neutral-clicked: get-color('neutral', 7);
+$button-icon-brand: get-color('blue', 5);
+$button-icon-brand-hover: get-contextual-color('blue', 4);
+$button-icon-brand-clicked: get-color('blue', 7);
+$button-icon-inverse: get-color('neutral', 0);
+$button-icon-inverse-hover: get-color('neutral-cool', 3);
+$button-icon-inverse-clicked: get-color('neutral', 0);
+$button-icon-inverse-disabled: get-color('neutral-cool', 5);
+$button-icon-disabled: get-color('neutral', 3);
+
+// hover expand
+$button-hover-expand-size: 0.15 * $button-font-size;
+$button-hover-expand-transition-properties: bottom, left, right, top;
+
+// inline error colors
+$error-red-text: get-contextual-color('red', 3);
+$warning-yellow-text: get-color('neutral', 7);
+$success-green-text: get-contextual-color('green', 4);
+
+@mixin button-offset-msg {
+  padding: 0 0.5rem;
+}
+
+@mixin button-vertical-padding($size: '', $border: false) {
+  $padding: $button-vertical-padding / 2;
+
+  @if ($size == 'small') {
+    $padding: $button-vertical-padding-small / 2;
+  }
+  @if ($size == 'large') {
+    $padding: $button-vertical-padding-large / 2;
+  }
+  @if ($border == true) {
+    $padding: $padding - px-to-rem($button-border-width);
+  }
+
+  padding-bottom: $padding;
+  padding-top: $padding;
+}
+
+@mixin button-core {
+  @include label;
+  @include button-vertical-padding;
+  border-radius: $button-border-radius;
+  border-style: solid;
+  border-width: 0;
+  cursor: pointer;
+  display: block;
+  line-height: $button-line-height;
+  position: relative;
+  text-align: center;
+  transition: background-color $fade-opacity, border-color $fade-opacity, color $fade-opacity;
+  z-index: 0;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    @include focus-style;
+  }
+}
+
+@mixin button-variant($bg-color, $border, $font-color, $hover-bg-color, $active-bg-color, $active-color: '', $active-bor-color: '') {
+  background-color: $bg-color;
+  border: $border;
+  color: $font-color;
+
+  &:visited {
+    color: $font-color;
+  }
+
+  &:hover {
+    background-color: $hover-bg-color;
+    border-color: $hover-bg-color;
+    color: $font-color;
+  }
+
+  &:active {
+    background-color: $active-bg-color;
+    border-color: $active-bor-color;
+    color: $active-color;
+  }
+}
+
+@mixin button-primary {
+  @include button-variant($button-primary-bg, 0, $button-primary-font-color, $button-primary-bg-hover, $button-primary-bg-clicked);
+}
+
+@mixin button-secondary {
+  @include button-variant($button-background, $button-secondary-border, $button-secondary-color, $button-primary-bg-hover, $button-primary-bg-clicked, $button-secondary-color-clicked, $button-primary-bg-clicked);
+}
+
+@mixin button-basic {
+  @include button-variant($button-background, $button-basic-border, $button-font-color, $button-basic-bg-hover, $button-basic-bg-clicked, $button-basic-color-clicked);
+}
+
+@mixin button-flat {
+  @include button-variant($button-background, 0, $button-font-color, $button-flat-bg-hover, $button-background, $button-flat-color-clicked);
+}
+
+@mixin button-danger {
+  @include button-variant($button-danger-bg, 0, $button-danger-font-color, $button-danger-bg-hover, $button-danger-bg-clicked);
+}
+
+@mixin button-variant-disabled($bg-color, $disabled-color) {
+  background-color: $bg-color;
+  color: $disabled-color;
+  cursor: not-allowed;
+}
+
+@mixin icon-button($color, $hover-color, $active-color) {
+  @include clickable; // utility/_clickable-utils
+  background: none;
+  border: 0;
+  color: $color;
+
+  &:hover {
+    color: $hover-color;
+  }
+
+  &:active {
+    color: $active-color;
+  }
+
+  &.#{$framework-class-prefix}-disabled {
+    color: $button-icon-disabled;
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-small($border: '') {
+  @include button-vertical-padding('small', $border);
+}
+
+@mixin button-large($border: '') {
+  @include button-vertical-padding('large', $border);
+}
+
+@mixin button-unresponsive-side-padding($size: '') {
+  $padding: $button-padding-default;
+
+  @if ($size == 'small') {
+    $padding: $button-padding-small;
+  } @else if ($size == 'large') {
+    $padding: $button-padding-large;
+  } @else {
+    $padding: $button-padding-default;
+  }
+
+  padding-left: $padding;
+  padding-right: $padding;
+  width: auto;
+}
+
+@mixin button-unresponsive {
+  @include button-unresponsive-side-padding;
+}
+
+@mixin button-unresponsive-small {
+  @include button-unresponsive-side-padding('small');
+}
+
+@mixin button-unresponsive-large {
+  @include button-unresponsive-side-padding('large');
+}
+
+@mixin close-button {
+  transform: scale(1);
+  transition: color $fade-opacity, background-color $fade-opacity, opacity $fade-opacity, transform $scale, border-color $fade-opacity;
+
+  span {
+    display: block;
+    transition: transform $scale;
+  }
+
+  &:hover {
+    background: transparent;
+
+    span {
+      transform: scale(1.3);
+    }
+  }
+
+  &:focus {
+    background: transparent;
+
+    span {
+      transform: scale(1.3);
+    }
+  }
+}
+
+@mixin clear-vendor-button-styles {
+  background: none;
+  border: none;
+}

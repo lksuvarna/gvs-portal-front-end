@@ -1,0 +1,7 @@
+@mixin clickable {
+  cursor: pointer;
+
+  &:focus {
+    @include focus-style;
+  }
+}

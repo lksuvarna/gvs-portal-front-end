@@ -1,0 +1,37 @@
+@mixin set-height-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin set-height {
+  flex-flow: row wrap;
+
+  .#{$framework-class-prefix}-set-item {
+    @include set-height-flex-column;
+
+    .#{$framework-class-prefix}-panel {
+      @include set-height-flex-column;
+      flex: 1;
+
+      .#{$framework-class-prefix}-panel-container {
+        @include set-height-flex-column;
+        align-items: flex-start;
+        flex: 1 1 auto;
+        justify-content: space-between;
+
+        .#{$framework-class-prefix}-panel-content {
+          flex: 1 1 auto;
+        }
+
+        .#{$framework-class-prefix}-button {
+          align-self: flex-start;
+        }
+      }
+    }
+  }
+}
+
+.#{$framework-class-prefix}-set-height {
+  @include set-height;
+  display: flex;
+}

@@ -1,0 +1,292 @@
+@import '../atoms/utility/_clickable-utils';
+@import '../atoms/_button-utils';
+
+$dropdown-basic-option-color: get-color('neutral', 7);
+$dropdown-basic-border: $button-border-width solid $button-basic-border-color;
+$dropdown-basic-bg: get-color('neutral', 0);
+$dropdown-basic-bg-hover: $button-basic-bg-hover;
+$dropdown-basic-bg-clicked: $button-basic-bg-clicked;
+$dropdown-basic-color-clicked: $button-basic-color-clicked;
+$dropdown-border-radius: $button-border-radius;
+$dropdown-basic-font-color-disabled: get-color('neutral', 6);
+
+$dropdown-primary-font-color: $button-primary-font-color;
+$dropdown-primary-bg: $button-primary-bg;
+$dropdown-primary-bg-hover: $button-primary-bg-hover;
+$dropdown-primary-bg-clicked: $button-primary-bg-clicked;
+$dropdown-primary-bg-disabled: get-color('blue', 6);
+
+$dropdown-secondary-font-color: $button-secondary-color;
+$dropdown-secondary-bg: get-color('neutral', 0);
+$dropdown-secondary-bg-hover: $button-secondary-bg-hover;
+$dropdown-secondary-border: $button-secondary-border;
+;
+$dropdown-secondary-color-hover: $button-secondary-color-hover;
+$dropdown-secondary-bg-clicked: $button-secondary-bg-clicked;
+
+$dropdown-flat-font-color: $dropdown-basic-option-color;
+$dropdown-flat-font-color-hover: $button-font-color;
+$dropdown-flat-color-clicked: $button-flat-color-clicked;
+$dropdown-flat-bg: $dropdown-basic-bg;
+$dropdown-flat-bg-hover: $button-flat-bg-hover;
+$dropdown-flat-bg-clicked: $dropdown-flat-bg;
+$dropdown-flat-font-color-disabled: $dropdown-basic-font-color-disabled;
+
+@mixin dropdown-variant($bg-color, $font-color, $border, $hover-bg-color, $active-bg-color, $disabled-color, $active-color: '') {
+  background-color: $bg-color;
+  color: $font-color;
+
+  .#{$framework-class-prefix}-title {
+    border: $border;
+  }
+
+  .#{$framework-class-prefix}-options {
+    background-color: $bg-color;
+    border: $border;
+  }
+
+  .#{$framework-class-prefix}-option {
+    color: $font-color;
+
+    &:hover,
+    &:focus {
+      background-color: $hover-bg-color;
+    }
+
+    &:active {
+      background-color: $active-bg-color;
+      color: $active-color;
+    }
+
+    &.#{$framework-class-prefix}-disabled {
+      background-color: $bg-color;
+      color: $disabled-color;
+      cursor: not-allowed;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $bg-color;
+      }
+    }
+  }
+}
+
+@mixin dropdown-primary {
+  @include dropdown-variant($dropdown-primary-bg, $dropdown-primary-font-color, 0, $dropdown-primary-bg-hover, $dropdown-primary-bg-clicked, get-color('neutral', 4));
+}
+
+@mixin dropdown-secondary {
+  @include dropdown-variant($dropdown-secondary-bg, $dropdown-secondary-font-color, $dropdown-secondary-border, $dropdown-secondary-bg-hover, $dropdown-secondary-bg-clicked, $button-secondary-disabled-color);
+}
+
+@mixin dropdown-basic {
+  @include dropdown-variant($dropdown-basic-bg, $dropdown-basic-option-color, $dropdown-basic-border, $dropdown-basic-bg-hover, $dropdown-basic-bg-clicked, $dropdown-basic-font-color-disabled, $dropdown-basic-color-clicked);
+}
+
+@mixin dropdown-flat {
+  @include dropdown-variant($dropdown-flat-bg, $dropdown-flat-font-color, 0, $dropdown-flat-bg-hover, $dropdown-flat-bg-clicked, $dropdown-flat-font-color-disabled, $dropdown-flat-color-clicked);
+}
+
+%dropdown-core {
+  @include margin-bottom;
+  border-radius: $dropdown-border-radius;
+  overflow: visible;
+  position: relative;
+
+  &:focus {
+    @include focus-style;
+  }
+
+  .#{$framework-class-prefix}-title {
+    @include button-core;
+    border-radius: $dropdown-border-radius;
+    border-style: solid;
+    margin-bottom: 0;
+    overflow: hidden;
+    padding-left: $button-font-size * 1.5;
+    padding-right: $button-font-size * 1.5;
+    text-overflow: ellipsis;
+    text-align: left;
+
+    &::after {
+      bottom: 33%;
+      content: '\25BE';
+      font-size: ( 16 / 16 ) * 1rem;
+      height: ( 16 / 16 ) * 1rem;
+      margin-bottom: 0;
+      position: absolute;
+      right: 0.75rem;
+    }
+  }
+
+  .#{$framework-class-prefix}-options {
+    border-bottom-left-radius: $dropdown-border-radius;
+    border-bottom-right-radius: $dropdown-border-radius;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    transition: height $move-y-down;
+    width: 100%;
+    visibility: hidden;
+    z-index: $z-mid;
+  }
+
+  .#{$framework-class-prefix}-option {
+    @include clickable;
+    cursor: pointer;
+    padding-bottom: 0.4rem;
+    padding-left: $button-font-size * 1.5;
+    padding-top: 0.35rem;
+
+    &:first-child {
+      padding-top: 0.3rem;
+    }
+  }
+
+  &.#{$framework-class-prefix}-open {
+    overflow: visible;
+
+    .#{$framework-class-prefix}-options {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .#{$framework-class-prefix}-title {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+.#{$framework-class-prefix}-dropdown,
+.#{$framework-class-prefix}-dropup {
+  @extend %dropdown-core;
+  @include dropdown-primary;
+
+  .#{$framework-class-prefix}-option {
+
+    &.#{$framework-class-prefix}-disabled {
+
+      background-color: $dropdown-primary-bg-disabled;
+
+      &:hover,
+      &:focus {
+        background-color: $dropdown-primary-bg-disabled;
+      }
+    }
+  }
+
+  // title level
+  &.#{$framework-class-prefix}-disabled {
+
+    .#{$framework-class-prefix}-title {
+      @include button-variant-disabled(get-color('neutral', 1), get-color('neutral-warm', 6));
+    }
+  }
+
+  &.#{$framework-class-prefix}-secondary {
+    @include dropdown-secondary;
+
+    .#{$framework-class-prefix}-options {
+      border-width: 0 $button-secondary-border-width $button-secondary-border-width;
+    }
+
+    .#{$framework-class-prefix}-option {
+
+      &:hover {
+        color: $dropdown-secondary-color-hover;
+      }
+
+      &.#{$framework-class-prefix}-disabled {
+        color: $button-secondary-disabled-color;
+      }
+    }
+
+    // title level
+    &.#{$framework-class-prefix}-disabled {
+
+      .#{$framework-class-prefix}-title {
+        @include button-variant-disabled($button-secondary-bg, $button-secondary-disabled-color);
+        border-color: $button-secondary-disabled-border;
+      }
+    }
+  }
+
+  &.#{$framework-class-prefix}-flat {
+    @include dropdown-flat;
+
+    // title level
+    &.#{$framework-class-prefix}-disabled {
+
+      .#{$framework-class-prefix}-title {
+        @include button-variant-disabled($dropdown-flat-bg, $button-flat-color-disabled);
+      }
+    }
+  }
+
+  &.#{$framework-class-prefix}-basic {
+    @include dropdown-basic;
+
+    .#{$framework-class-prefix}-options {
+      border-width: 0 $button-secondary-border-width $button-secondary-border-width;
+    }
+
+    // title level
+    &.#{$framework-class-prefix}-disabled {
+
+      .#{$framework-class-prefix}-title {
+        @include button-variant-disabled($dropdown-basic-bg, $button-basic-color-disabled);
+      }
+    }
+  }
+
+  &.#{$framework-class-prefix}-width-auto {
+    display: inline-block;
+    vertical-align: top;
+    width: auto;
+
+    .#{$framework-class-prefix}-title {
+      padding-left: ( 16 / 16 ) * 1rem;
+      padding-right: ( 32 / 16 ) * 1rem;
+    }
+  }
+}
+
+.#{$framework-class-prefix}-dropup {
+
+  .#{$framework-class-prefix}-title {
+
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  .#{$framework-class-prefix}-options {
+    border-radius: $dropdown-border-radius $dropdown-border-radius 0 0;
+    bottom: 100%;
+    top: auto;
+  }
+
+  &.#{$framework-class-prefix}-secondary {
+    .#{$framework-class-prefix}-options {
+      border-bottom-width: 0;
+      border-top-width: $button-border-width;
+    }
+  }
+
+  &.#{$framework-class-prefix}-basic {
+    .#{$framework-class-prefix}-options {
+      border-bottom-width: 0;
+      border-top-width: $button-border-width;
+    }
+  }
+
+  &.#{$framework-class-prefix}-open {
+    .#{$framework-class-prefix}-title {
+      border-radius: 0 0 $dropdown-border-radius $dropdown-border-radius;
+    }
+  }
+}

@@ -1,0 +1,132 @@
+@import '../atoms/_button-utils';
+
+$overlay-mask: rgba(get-color('neutral', 7), 0.73);
+$overlay-bg: get-color('neutral', 0);
+
+%overlay {
+  height: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  transition: background-color $fade-opacity, height 0s linear animation-frames(20), opacity $fade-opacity;
+  visibility: hidden;
+  width: 100%;
+  z-index: $z-extreme;
+
+  .#{$framework-class-prefix}-overlay-box {
+    max-height: calc(100vh - 10rem);
+    top: 50%;
+    transform: scale(0.95) translateY(-50%);
+    transform-origin: 50% 0;
+  }
+
+  .#{$framework-class-prefix}-close {
+    display: none;
+    font-size: (32 / 16) * 1rem;
+  }
+
+  .#{$framework-class-prefix}-close-button-left {
+    left: 0.71rem;
+    right: initial;
+  }
+
+  .#{$framework-class-prefix}-close-button-right {
+    left: initial;
+    right: 0.71rem;
+  }
+
+  &.#{$framework-class-prefix}-open {
+    background-color: $overlay-mask;
+    height: 100%;
+    opacity: 1;
+    transition: background-color $fade-opacity, height 0ms linear 0ms, opacity 0ms linear 0ms;
+    visibility: visible;
+
+    .#{$framework-class-prefix}-overlay-box {
+      position: absolute;
+      transform: translateY(-50%);
+    }
+
+    .#{$framework-class-prefix}-close {
+      display: block;
+      margin: $font-size * nth($spacing-list, 2);
+      padding: $font-size * nth($spacing-list, 2);
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: auto;
+      z-index: $z-mid;
+    }
+
+  }
+}
+
+.#{$framework-class-prefix}-overlay {
+  @extend %overlay;
+  overflow-y: scroll;
+
+  .#{$framework-class-prefix}-overlay-box {
+    margin-bottom: 2em;
+
+    .#{$framework-class-prefix}-overlay-content {
+      background-color: $overlay-bg;
+      margin-bottom: 1.5rem;
+    }
+  }
+  .#{$framework-class-prefix}-overlay-content {
+    padding-bottom: $font-size * nth($spacing-list, 3);
+    padding-top: $font-size * nth($spacing-list, 3);
+  }
+}
+
+.#{$framework-class-prefix}-overlay-focus {
+  @extend %overlay;
+  .#{$framework-class-prefix}-overlay-box {
+    background-color: $overlay-bg;
+    height: 100%;
+    overflow-y: scroll;
+    position: absolute;
+  }
+  .#{$framework-class-prefix}-overlay-content {
+    padding-bottom: $font-size * nth($spacing-list, 3);
+    padding-top: $font-size * nth($spacing-list, 3);
+  }
+}
+
+.#{$framework-class-prefix}-overlay-fullscreen {
+  @extend %overlay;
+  top: 0;
+  z-index: $z-extreme;
+  .#{$framework-class-prefix}-overlay-box {
+    background-color: $overlay-bg;
+    max-height: 100vh;
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity $fade-opacity;
+    visibility: hidden;
+  }
+  &.#{$framework-class-prefix}-open {
+    .#{$framework-class-prefix}-overlay-box {
+      background-color: $overlay-bg;
+      height: 100%;
+      opacity: 1;
+      overflow-y: scroll;
+      top: 0;
+      transform: scale(1);
+      transition: opacity $fade-opacity;
+      visibility: visible;
+      width: 100%;
+    }
+  }
+
+  .#{$framework-class-prefix}-close {
+    position: fixed;
+
+    &.#{$framework-class-prefix}-button {
+      top: 0.71rem;
+      width: auto;
+    }
+  }
+}

@@ -1,0 +1,179 @@
+@import '../_functions';
+@import '../_variables';
+@import '../_mixins';
+@import '../grid/_utils';
+@import '../atoms/_typography-utils';
+@import '../atoms/_button-utils';
+@import '../atoms/utility/_shadow-utils';
+@import '../atoms/utility/_clickable';
+
+$carousel-controls-clickable-padding: 0.3rem;
+
+$carousel-position-indicator-circle-color: get-color('neutral', 5);
+$carousel-position-indicator-circle-border-width: 2px;
+$carousel-position-indicator-circle-size: 10+($carousel-position-indicator-circle-border-width / 1px);
+$carousel-position-indicator-circle-color-blue: get-contextual-color('blue', 4);
+
+$carousel-position-indicator-number-color: get-color('neutral', 5);
+$carousel-position-indicator-number-selected-color: get-color('neutral', 7);
+
+$carousel-transition: $transition-ease-out-quart animation-frames(13);
+$carousel-position-indicator-transition: $carousel-transition;
+
+$carousel-move-trigger-width: 2.5rem;
+$carousel-move-trigger-bg-color: get-color('neutral', 0);
+$carousel-move-trigger-bg-color-hover: get-color('neutral-warm', 1);
+$carousel-move-trigger-bg-img-bg-color: rgba(get-color('neutral', 7), 0.23);
+$carousel-move-trigger-color-light: get-color('neutral', 0);
+$carousel-move-trigger-bg-color-light: rgba(get-color('neutral', 0), 0.23);
+
+%carousel {
+  @include shadow-raised;
+  overflow: hidden;
+  padding: 0 2.5rem;
+  position: relative;
+}
+
+%carousel-items {
+  @include row-base;
+  position: relative;
+  transition: transform 200ms ease;
+
+  &>* {
+    display: inline-block;
+  }
+}
+
+%carousel-arrows {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+%carousel-move-triggers {
+  @include clickable;
+  background-color: $carousel-move-trigger-bg-color;
+  bottom: 0;
+  display: block;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  transition: opacity $fade-opacity, background $fade-opacity;
+  width: $carousel-move-trigger-width;
+  z-index: $z-low;
+
+  span {
+    @extend %carousel-arrows;
+    transition: transform $scale;
+  }
+
+  &:hover {
+    background-color: $carousel-move-trigger-bg-color-hover;
+  }
+}
+
+%carousel-move-triggers-disabled {
+  cursor: auto;
+}
+
+%carousel-move-triggers-condensed {
+  display: block;
+  position: absolute;
+}
+
+%carousel-move-triggers-img-bg {
+  &:hover {
+    background-color: $carousel-move-trigger-bg-img-bg-color;
+  }
+}
+
+%carousel-move-triggers-light {
+  color: $carousel-move-trigger-color-light;
+
+  &:hover {
+    background-color: $carousel-move-trigger-bg-color-light;
+  }
+}
+
+%carousel-move-trigger-left {
+  left: 0;
+}
+
+%carousel-move-trigger-right {
+  right: 0;
+}
+
+%carousel-position-indicator-container {
+  @include row-base;
+  margin: 0 auto 1.5rem;
+  position: static;
+  text-align: center;
+}
+
+%carousel-position-indicator-circle {
+  @include clickable;
+
+  display: inline-block;
+  height: 1.43rem + ($carousel-controls-clickable-padding * 2);
+  margin: 0 (5 / 16) * 1rem;
+  padding: $carousel-controls-clickable-padding 0.75rem;
+  position: relative;
+  vertical-align: top;
+  width: ($carousel-position-indicator-circle-size / 16) * 1rem;
+
+  &::after {
+    border: solid $carousel-position-indicator-circle-border-width $carousel-position-indicator-circle-color;
+    border-radius: 100%;
+    content: '';
+    display: block;
+    height: ($carousel-position-indicator-circle-size / 16) * 1rem;
+    left: 50%;
+    position: absolute;
+    top: 53%;
+    transform: translate(-50%, -50%);
+    transition: background-color $fade-opacity;
+    width: ($carousel-position-indicator-circle-size / 16) * 1rem;
+  }
+}
+
+%carousel-position-indicator-circle-selected {
+
+  &::after {
+    background-color: $carousel-position-indicator-circle-color;
+  }
+}
+
+%carousel-position-indicator-circle-blue {
+
+  &::after {
+    border-color: $carousel-position-indicator-circle-color-blue;
+  }
+}
+
+%carousel-position-indicator-circle-blue-selected {
+
+  &::after {
+    background-color: $carousel-position-indicator-circle-color-blue;
+  }
+}
+
+%carousel-position-indicator-number {
+  @include label;
+  @include clickable;
+
+  color: $carousel-position-indicator-number-color;
+  display: inline-block;
+  margin: 0 (10 / 16) * 1rem;
+  padding: $carousel-controls-clickable-padding 0.5rem;
+  transition: color $fade-opacity;
+}
+
+%carousel-position-indicator-number-selected {
+  color: $carousel-position-indicator-number-selected-color;
+}
+
+%carousel-position-indicator-condensed {
+  @include label;
+  color: $carousel-position-indicator-number-color;
+}

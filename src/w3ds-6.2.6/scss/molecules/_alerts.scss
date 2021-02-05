@@ -1,0 +1,83 @@
+@import '../atoms/_button-utils';
+
+$contextual-red-bg: get-contextual-color('red', 0);
+$contextual-red-text: get-contextual-color('red', 3);
+$contextual-yellow-bg: get-contextual-color('yellow', 0);
+$contextual-yellow-text: get-color('neutral', 7);
+$contextual-green-bg: get-contextual-color('green', 0);
+$contextual-green-text: get-contextual-color('green', 5);
+$contextual-blue-bg: get-contextual-color('blue', 0);
+$contextual-blue-text: get-color('neutral', 7);
+
+$alert-button-transparency: rgba(get-color('neutral', 7), 0.11);
+
+$alert-padding-unit: (16 / 16) * 1rem;
+
+.#{$framework-class-prefix}-alert {
+  @include margin-bottom;
+  opacity: 1;
+  padding: $alert-padding-unit;
+  position: relative;
+  transition: opacity $fade-opacity;
+
+  &.#{$framework-class-prefix}-fade {
+    opacity: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  &.#{$framework-class-prefix}-error {
+    background-color: $contextual-red-bg;
+    color: $contextual-red-text;
+  }
+
+  &.#{$framework-class-prefix}-warning {
+    background-color: $contextual-yellow-bg;
+    color: $contextual-yellow-text;
+  }
+
+  &.#{$framework-class-prefix}-success {
+    background-color: $contextual-green-bg;
+    color: $contextual-green-text;
+  }
+
+  &.#{$framework-class-prefix}-info {
+    background-color: $contextual-blue-bg;
+    color: $contextual-blue-text;
+  }
+
+  &.#{$framework-class-prefix}-dismissible {
+    padding-right: $font-size * nth($spacing-list, 4);
+  }
+
+  a {
+    color: inherit;
+
+    &:hover,
+    &:active,
+    &:visited {
+      color: inherit;
+    }
+  }
+
+  .#{$framework-class-prefix}-button {
+
+    &.#{$framework-class-prefix}-close {
+      height: 100%;
+      margin: 0;
+      padding: $alert-padding-unit;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: auto;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $alert-button-transparency;
+      }
+    }
+  }
+}

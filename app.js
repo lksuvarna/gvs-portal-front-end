@@ -3,24 +3,12 @@
   const path = require('path');
   const compression = require('compression');
   const bodyParser = require('body-parser');
-  const getApi = require('./routes/get');
-  const postApi = require('./routes/post');
-  const index = require('./routes/index');
-  const cfenv = require('cfenv');
   const app = express();
-  const cookieParser = require('cookie-parser');
-const session = require('cookie-session');
-  var w3config = require('./config/w3config');
-  var passport = require('passport');
+  const {createProxyMiddleware}  = require('http-proxy-middleware');
+  app.use(compression());
  // app.use(logger('dev'));
- app.use(compression());
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({extended: true}));
 
-   //app.use(methodOverride('X-HTTP-Method-Override'));
-
-
-app.use(session({name: 'GVS_Portal', keys: ['GVS_Portal']}));
+ app.use(session({name: 'GVS_Portal', keys: ['GVS_Portal']}));
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -119,25 +107,54 @@ app.get('/api/login', passport.authenticate('openidconnect', {}));
 // this router must be the 2nd
 app.use('/', ensureAuthenticated);
 
-   app.use('/api/rest/get', getApi);
-   app.use('/api/rest/post', postApi);
 
+   const options={
+     target: 'http://localhost:6800',
+     changeOrigin: true,
+     secure: false,
+     ws:true ,
+         }
+   app.use('/api/*', createProxyMiddleware(options));
+
+   app.use(bodyParser.json());
+   app.use(bodyParser.urlencoded({extended: true}));
 
 console.log('starting app in dev mode '+ path.normalize(__dirname+'/../../'));
     //catch all route
    app.use(express.static(path.join(__dirname, 'dist/gvs-portal-front-end')));
 
     //catch all route
-    app.use('*', index);
+  //  app.use('*', index);
+  // catch 404 and forward to error handler
+  app.use(function (req, res, next) {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+  });
 
+  // error handlers
 
-    var appEnv = cfenv.getAppEnv();
-    var port = '4200';
-    app.set('port', port);
-    app.listen(port,() => {
-      console.log("server started" + appEnv.url);
+  // development error handler
+  // will print stacktrace
+  if (app.get('env') === 'development') {
+  app.use(function (err, req, res) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
+  });
+  }
 
+  // production error handler
+  // no stacktraces leaked to user
+  app.use(function (err, req, res) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+  });
 
 
 

@@ -1,0 +1,65 @@
+@import '../atoms/_typography-utils';
+@import '../atoms/_button-utils';
+
+$tag-default-border: get-color('neutral', 3);
+$tag-default-text: get-color('neutral-cool', 7);
+$tag-color-border: get-color('blue', 5);
+$tag-color-text: get-color('blue', 5);
+
+.#{$framework-class-prefix}-tag {
+  @include text-small;
+  @include font-weight('medium');
+
+  border-color: $tag-default-border;
+  border-radius: 1.5em;
+  border-style: solid;
+  border-width: 1px;
+  color: $tag-default-text;
+  display: inline-flex;
+  align-items: center;
+  // justify-content: space-between;
+  margin: (3 / 15) * 1em 0;
+  opacity: 1;
+  padding: (8 / 15) * 1em (20 / 15) * 1em;
+  transition: opacity $fade-opacity;
+  white-space: nowrap;
+
+  & * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  &.#{$framework-class-prefix}-fade {
+    opacity: 0;
+  }
+
+  .#{$framework-class-prefix}-label-small {
+    @include caption;
+  }
+
+  &.#{$framework-class-prefix}-color {
+    border-color: $tag-color-border;
+    color: $tag-color-text;
+  }
+
+  &.#{$framework-class-prefix}-dismissible {
+
+    .#{$framework-class-prefix}-close {
+      display: inline-block;
+      font-size: (16 / 16) * 1rem;
+      margin: 0 0 0 0.5rem;
+      padding: 0;
+      width: auto;
+    }
+
+    &.#{$framework-class-prefix}-color {
+
+      .#{$framework-class-prefix}-close {
+
+        .#{$framework-class-prefix}-icon-x {
+          color: $tag-color-text;
+        }
+      }
+    }
+  }
+}

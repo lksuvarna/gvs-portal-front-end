@@ -1,0 +1,18 @@
+@import '../atoms/utility/_motion-ui';
+
+.#{$framework-class-prefix}-dismiss-all {
+
+  &.#{$framework-class-prefix}-clickable {
+    display: inline-block;
+    transition: opacity $fade;
+
+    &.#{$framework-class-prefix}-fade {
+      opacity: 0;
+    }
+
+    .#{$framework-class-prefix}-icon-close {
+      font-size: 1rem;
+      padding-left: 0.5rem;
+    }
+  }
+}

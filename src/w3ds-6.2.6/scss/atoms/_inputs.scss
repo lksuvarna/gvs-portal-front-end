@@ -1,0 +1,305 @@
+@import './_button-utils';
+@import './_input-utils';
+@import './_typography-utils';
+
+// TODO: Investigate simpler html/class structure for inputs
+// e.g: div.ds-input surrounds <label> and <input> and
+// no classes necessary for those elements
+
+.#{$framework-class-prefix}-input-container {
+  @include input-container;
+
+  .#{$framework-class-prefix}-input-msg {
+    @include input-msg;
+
+    & + .#{$framework-class-prefix}-input-msg {
+      margin-top: 0.67rem;
+    }
+  }
+}
+
+.#{$framework-class-prefix}-file-upload-container {
+
+  .#{$framework-class-prefix}-file-name {
+    @include text-small;
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
+
+    &:focus {
+      @include focus-style;
+    }
+
+    ::before {
+      color: get-contextual-color('blue', 4);
+      position: relative;
+      top: 2px;
+    }
+    & > span {
+      &:focus {
+        @include focus-style;
+      }
+    }
+  }
+  label {
+    &:focus-within {
+      @include focus-style;
+    }
+    & > input {
+      display: inline-block;
+      &.#{$framework-class-prefix}-file-upload {
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        width: 0.1px;
+        z-index: $z-negative;
+      }
+    }
+  }
+
+  .#{$framework-class-prefix}-file-upload-msg {
+
+    &.#{$framework-class-prefix}-error {
+      color: $input-error-red-text;
+    }
+
+    &.#{$framework-class-prefix}-uploading {
+      color: get-contextual-color('blue', 4);
+    }
+  }
+}
+
+.#{$framework-class-prefix}-input-msg {
+  font-size: $font-size-text-small;
+
+  &.#{$framework-class-prefix}-error {
+    color: $input-error-red-text;
+  }
+
+  &.#{$framework-class-prefix}-warning {
+    color: $input-warning-yellow-text;
+  }
+
+  &.#{$framework-class-prefix}-success {
+    color: $input-success-green-text;
+  }
+}
+
+.#{$framework-class-prefix}-input-label {
+  @include input-label;
+  font-size: $font-size-label;
+}
+
+.#{$framework-class-prefix}-input {
+  @include input-entry;
+  @include input-entry-bordered;
+
+  // when disabled class is added on later, should change appearance of button and text
+  &.#{$framework-class-prefix}-disabled {
+    @include input-entry-disabled;
+
+    .#{$framework-class-prefix}-input-radio,
+    .#{$framework-class-prefix}-input-checkbox {
+      .#{$framework-class-prefix}-disabled {
+        &+.#{$framework-class-prefix}-input-control {
+          @include input-control-disabled;
+        }
+
+        &~span {
+          color: $input-disabled-text;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+
+  &.#{$framework-class-prefix}-small {
+    @include input-entry-size($input-entry-height-small);
+  }
+
+  &.#{$framework-class-prefix}-large {
+    @include input-entry-size($input-entry-height-large);
+  }
+
+  &.#{$framework-class-prefix}-error {
+    @include input-text-error;
+  }
+
+  &.#{$framework-class-prefix}-warning {
+    @include input-text-warning;
+  }
+
+  &.#{$framework-class-prefix}-success {
+    @include input-text-success;
+  }
+
+  &::-webkit-inner-spin-button {
+    display: none;
+  }
+}
+
+.#{$framework-class-prefix}-select {
+  @include input-select;
+
+  &.#{$framework-class-prefix}-disabled {
+    @include input-select-disabled;
+  }
+
+  &.#{$framework-class-prefix}-error {
+    @include input-text-error;
+  }
+
+  &.#{$framework-class-prefix}-warning {
+    @include input-text-warning;
+  }
+
+  &.#{$framework-class-prefix}-success {
+    @include input-text-success;
+  }
+
+  &.#{$framework-class-prefix}-small {
+    padding: 0.15rem 0.25rem;
+  }
+
+  &.#{$framework-class-prefix}-large {
+    padding: 1.14rem 0.25rem;
+  }
+}
+
+.#{$framework-class-prefix}-input-radio,
+.#{$framework-class-prefix}-input-checkbox {
+  @include input-radio-and-checkbox;
+
+  // start 02/2020 accessibility update
+  & > *:not(label) { // used to play nice with the new mark-up scheme while not effecting the old one
+    pointer-events: none; // remove ability to interact with the input itself. this will be covered below
+
+    & + label {
+      margin: 0.125rem 0 -0.125rem -1.6rem; // these
+      padding-left: 2.1rem; //                       two make the target cover the input itself, making it interactable
+      display: inline-flex; // these
+      align-items: center;  //       three
+      min-height: 1.5rem;   //             ensure the target covers the height of the input and vertically aligns
+    }
+
+    // convoluted way to get that cursor: not-allowed on the proper element. pretty inelegant
+    &.#{$framework-class-prefix}-disabled {
+
+      & + .#{$framework-class-prefix}-input-control {
+
+        & + label {
+
+          &:hover {
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+  // end 02/2020 accessibility update
+
+
+  .#{$framework-class-prefix}-input-control {
+    @include input-control;
+  }
+
+  input {
+    &:focus + .#{$framework-class-prefix}-input-control {
+      @include focus-style;
+    }
+  }
+
+  .#{$framework-class-prefix}-disabled {
+    & + .#{$framework-class-prefix}-input-control {
+      @include input-control-disabled;
+    }
+
+    & ~ span {
+      color: $input-disabled-text;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.#{$framework-class-prefix}-input-radio {
+
+  .#{$framework-class-prefix}-input-control {
+    @include input-control-radio;
+  }
+
+  input {
+    &:checked + .#{$framework-class-prefix}-input-control {
+      @include input-control-radio-checked;
+    }
+
+    &:checked.#{$framework-class-prefix}-disabled+.#{$framework-class-prefix}-input-control {
+      @include input-radio-disabled-checked;
+    }
+  }
+}
+
+.#{$framework-class-prefix}-input-checkbox {
+  input {
+
+    &:checked+.#{$framework-class-prefix}-input-control,
+    &:indeterminate+.#{$framework-class-prefix}-input-control {
+      @include input-control-checkbox-checked;
+    }
+
+    &:indeterminate+.#{$framework-class-prefix}-input-control {
+      @include input-control-checkbox-indeterminate;
+    }
+
+    &:checked.#{$framework-class-prefix}-disabled + .#{$framework-class-prefix}-input-control,
+    &:indeterminate.#{$framework-class-prefix}-disabled + .#{$framework-class-prefix}-input-control {
+      @include input-checkbox-disabled-checked;
+    }
+  }
+}
+
+.#{$framework-class-prefix}-input-toggle {
+
+  .#{$framework-class-prefix}-input-control {
+    @include input-control-toggle;
+  }
+
+  input {
+    @include input-hidden;
+    @include input-control-dimensions;
+
+    &:hover + .#{$framework-class-prefix}-input-control {
+      @include input-control-toggle-hover;
+    }
+
+    &:focus + .#{$framework-class-prefix}-input-control {
+      @include focus-style;
+    }
+
+    &:checked + .#{$framework-class-prefix}-input-control {
+      @include input-control-toggle-checked;
+    }
+
+    &:checked {
+
+      &:hover {
+
+        & + .#{$framework-class-prefix}-input-control {
+          @include input-control-toggle-checked-hover;
+        }
+      }
+    }
+
+  }
+
+  &.#{$framework-class-prefix}-disabled {
+    .#{$framework-class-prefix}-input-control {
+      @include input-control-toggle-disabled;
+    }
+
+    input {
+      &:checked + .#{$framework-class-prefix}-input-control {
+        @include input-control-toggle-disabled-checked;
+      }
+    }
+  }
+}

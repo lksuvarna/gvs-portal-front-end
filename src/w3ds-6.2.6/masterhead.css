@@ -1,0 +1,75 @@
+body.unified-profile #masthead-logo a#ds-w3-injectable-nav {
+ overflow:visible!important
+}
+#ds-w3-injectable-nav {
+ cursor:pointer;
+ display:block;
+ position:absolute;
+ z-index:400;
+ left:0;
+ top:0;
+ font-size:28px
+}
+#ds-w3-injectable-nav #Path-2 {
+ -webkit-transition:transform .2s ease-in-out;
+ -moz-transition:transform .2s ease-in-out;
+ transition:transform .2s ease-in-out
+}
+#ds-w3-injectable-nav.light #w3Masthead #BadgeFill {
+ fill:#fff
+}
+#ds-w3-injectable-nav.light #w3Masthead #w3 {
+ fill:#232323
+}
+#ds-w3-injectable-nav.dark #w3Masthead #BadgeFill {
+ fill:#00598a
+}
+#ds-w3-injectable-nav.dark #w3Masthead #w3 {
+ fill:#fff
+}
+#ds-w3-injectable-nav:hover #Path-2 {
+ transform:scaleY(1.1);
+ -webkit-transform:scaleY(1.1)
+}
+@media only screen and (max-width:475px) {
+ #ds-w3-injectable-nav.xs {
+  position:fixed;
+  transform:rotate(90deg);
+  right:-6px;
+  bottom:40px;
+  top:auto;
+  left:auto;
+  margin-top:15px
+ }
+ #ds-w3-injectable-nav.xs .masthead-svg__text {
+  transform:rotate(-89deg) translate(-67px,4px)
+ }
+}
+@media only screen and (max-width:778px) {
+ #ds-w3-injectable-nav.sm {
+  position:fixed;
+  transform:rotate(90deg);
+  right:-6px;
+  bottom:40px;
+  top:auto;
+  left:auto;
+  margin-top:15px
+ }
+ #ds-w3-injectable-nav.sm .masthead-svg__text {
+  transform:rotate(-89deg) translate(-67px,4px)
+ }
+}
+@media only screen and (max-width:1158px) {
+ #ds-w3-injectable-nav.md {
+  position:fixed;
+  transform:rotate(90deg);
+  right:-6px;
+  bottom:40px;
+  top:auto;
+  left:auto;
+  margin-top:15px
+ }
+ #ds-w3-injectable-nav.md .masthead-svg__text {
+  transform:rotate(-89deg) translate(-67px,4px)
+ }
+}

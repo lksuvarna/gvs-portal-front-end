@@ -1,0 +1,203 @@
+$button-group-primary-border-width: 1px;
+$button-group-primary-border-color: rgba(get-color('neutral', 0), 0.33);
+$button-group-basic-border-color: get-color('neutral', 3);
+$button-group-secondary-border-color: get-color('blue', 5);
+
+@mixin button-group-core {
+
+  #{$button-selectors} {
+    margin-bottom: 0;
+    position: relative;
+
+    &.#{$framework-class-prefix}-icon {
+
+      &-small {
+        font-size: (16 /16) * 1rem;
+      }
+
+      &-medium {
+        font-size: (24 /16) * 1rem;
+      }
+
+      &-large {
+        font-size: (32 /16) * 1rem;
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      z-index: $z-mid;
+    }
+  }
+}
+
+@mixin vertical-button-border($border-width, $border-color) {
+  border-bottom-width: $border-width;
+  border-color: $border-color;
+  border-top-width: $border-width;
+  margin-top: -#{px-to-rem($border-width)};
+
+  &:first-child {
+    border-top-width: $border-width;
+    margin-top: 0;
+  }
+
+  &:last-child {
+    border-bottom-width: $border-width;
+  }
+}
+
+@mixin border-radius($px, $side) {
+  @if (unitless($px)) {
+    $px: #{$px}px;
+  }
+
+  border-#{$side}-width: #{$px};
+  border-bottom-#{$side}-radius: $button-border-radius;
+  border-top-#{$side}-radius: $button-border-radius;
+}
+
+@mixin first-child-horizontal-button {
+  @include border-radius(0, 'left');
+
+  &.#{$framework-class-prefix}-secondary {
+    @include border-radius($button-secondary-border-width, 'left');
+  }
+
+  &.#{$framework-class-prefix}-basic {
+    @include border-radius(2, 'left');
+  }
+}
+
+@mixin last-child-horizontal-button {
+  @include border-radius(0, 'right');
+
+  &.#{$framework-class-prefix}-secondary {
+    @include border-radius($button-secondary-border-width, 'right');
+  }
+
+  &.#{$framework-class-prefix}-basic {
+    @include border-radius(2, 'right');
+  }
+}
+
+@mixin button-group-horizontal {
+  @include margin-bottom;
+  @include button-group-core;
+  font-size: 0;
+
+  #{$button-selectors} {
+    border-left-width: $button-group-primary-border-width;
+    border-radius: 0;
+    border-right-width: $button-group-primary-border-width;
+    border-style: solid;
+    display: inline-block;
+    font-size: $button-font-size;
+
+    &:first-child {
+      @include first-child-horizontal-button;
+    }
+
+    &:last-child {
+      @include last-child-horizontal-button;
+    }
+
+    &.#{$framework-class-prefix}-basic {
+      border-right-width: 0;
+
+      &:last-child {
+        border-right-width: $button-border-width;
+      }
+    }
+
+    &.#{$framework-class-prefix}-secondary {
+      border-right-width: 0;
+
+      &:last-child {
+        border-right-width: $button-secondary-border-width;
+      }
+
+      &:hover {
+        &+.#{$framework-class-prefix}-button {
+          border-left-color: $button-secondary-border-hover;
+        }
+      }
+    }
+
+    &.#{$framework-class-prefix}-flat {
+      border-color: $button-group-primary-border-color;
+    }
+  }
+}
+
+.#{$framework-class-prefix}-button-group {
+  @include margin-bottom;
+  @include button-group-core;
+
+  #{$button-selectors} {
+    border-bottom-width: $button-group-primary-border-width;
+    border-color: $button-group-primary-border-color;
+    border-radius: 0;
+    border-style: solid;
+    border-top-width: $button-group-primary-border-width;
+
+    &:first-child {
+      border-radius: $button-border-radius $button-border-radius 0 0;
+      border-top-width: 0;
+    }
+
+    &:last-child {
+      border-bottom-width: 0;
+      border-radius: 0 0 $button-border-radius $button-border-radius;
+    }
+
+    &.#{$framework-class-prefix}-secondary {
+      @include vertical-button-border($button-secondary-border-width, $button-group-secondary-border-color);
+    }
+
+    &.#{$framework-class-prefix}-basic {
+      @include vertical-button-border($button-border-width, $button-group-basic-border-color);
+    }
+  }
+}
+
+.#{$framework-class-prefix}-button-group-h {
+  @include button-group-horizontal;
+
+  // 779px = md
+  @media screen and (max-width: 779px) {
+
+    .#{$framework-class-prefix}-button {
+      border-color: $button-group-primary-border-color;
+      border-width: 1.25px 0;
+
+      &:first-child {
+        border-radius: 2px 2px 0 0;
+        border-width: 0 1.25px 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 2px 2px;
+        border-width: 1.25px 0 0;
+      }
+
+      &.#{$framework-class-prefix}-secondary,
+      &.#{$framework-class-prefix}-basic {
+        border-width: 2px 2px 1px;
+
+        &:last-child {
+          border-bottom-width: 2px;
+        }
+      }
+
+      &.#{$framework-class-prefix}-secondary {
+        border-color: $button-group-secondary-border-color;
+      }
+
+      &.#{$framework-class-prefix}-basic {
+        border-color: $button-group-basic-border-color;
+      }
+    }
+  }
+}

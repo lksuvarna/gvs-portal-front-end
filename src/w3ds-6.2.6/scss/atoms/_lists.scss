@@ -1,0 +1,142 @@
+$list-rule-color: $horizontal-rule-color;
+
+@mixin list {
+  @include margin-bottom;
+  margin-top: 0;
+  padding: 0;
+
+  li {
+    padding: 0.2rem 0 0.2rem 0.25rem;
+  }
+}
+
+@mixin no-list-style-type {
+  list-style-type: none;
+}
+
+@mixin list-lined {
+  padding-left: 0;
+
+  & > li {
+    border: 0 solid $list-rule-color;
+    border-bottom-width: 1px;
+    padding: 1.25rem 0;
+
+    &:first-of-type {
+      border-top-width: 1px;
+      content: '';
+      top: 0;
+    }
+  }
+}
+
+@mixin list-image {
+  @include list;
+  @include no-list-style-type;
+  @include list-lined;
+}
+
+@mixin list-unstyled {
+  @include list;
+  @include no-list-style-type;
+}
+
+.#{$framework-class-prefix}-list-unstyled {
+  @include list-unstyled;
+}
+
+.#{$framework-class-prefix}-list-unordered {
+  @include list;
+  padding-left: $font-size * nth($spacing-list, 2);
+}
+
+.#{$framework-class-prefix}-list-ordered {
+  @include list;
+  padding-left: 1.75rem;
+
+  li {
+    padding-left: 0.5rem;
+  }
+}
+
+.#{$framework-class-prefix}-list-lined {
+  @include list;
+  @include no-list-style-type;
+  @include list-lined;
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-function;
+
+  &.#{$framework-class-prefix}-hover {
+    cursor: pointer;
+
+    li {
+      &:hover {
+        @include hover-list;
+        transition-duration: $transition-duration;
+        transition-timing-function: $transition-function;
+      }
+    }
+  }
+}
+
+.#{$framework-class-prefix}-list-img-thumbnail {
+  @include list-image;
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-function;
+  $img-square: 2.25rem;
+
+  &.#{$framework-class-prefix}-hover {
+    li {
+      &:hover {
+        @include hover-list;
+        transition-duration: $transition-duration;
+        transition-timing-function: $transition-function;
+      }
+    }
+  }
+
+  img {
+    height: $img-square;
+    margin-right: $font-size * nth($spacing-list, 2);
+    margin-top: -0.15rem;
+    vertical-align: middle;
+    width: $img-square;
+  }
+}
+
+.#{$framework-class-prefix}-list-icon {
+  @include list;
+  @include no-list-style-type;
+  @include list-lined;
+  transition-duration: $transition-duration;
+  transition-timing-function: $transition-function;
+
+  li {
+    display: flex;
+
+    [class^='#{$framework-class-prefix}-icon-'] {
+      position: relative;
+      padding: 0;
+      line-height: 1;
+
+      &::before {
+        padding-right: 1rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &.#{$framework-class-prefix}-hover {
+    li {
+      &:hover {
+        @include hover-list;
+        transition-duration: $transition-duration;
+        transition-timing-function: $transition-function;
+      }
+    }
+  }
+
+
+}

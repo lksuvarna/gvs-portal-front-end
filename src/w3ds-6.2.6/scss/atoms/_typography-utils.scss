@@ -1,0 +1,315 @@
+/* stylelint-disable */
+
+$phonetic-list: [
+  'oscar',
+  'november',
+  'mike',
+  'lima',
+  'kilo',
+  'juliet',
+  'india',
+  'hotel',
+  'golf',
+  'foxtrot',
+  'echo',
+  'delta',
+  'charlie',
+  'bravo',
+  'alpha'
+];
+
+// new phonetic sizes
+$phonetic-sizes: ( // oscar: 61px
+  'oscar': (61 / 16) * 1rem,
+  'november': null,
+  'mike': null,
+  // lima: 48px
+  'lima': (48 / 16) * 1rem,
+  'kilo': null,
+  // juliet 37px
+  'juliet': (37 / 16) * 1rem,
+  'india': null,
+  // hotel: 27px
+  'hotel': (27 / 16) * 1rem,
+  // golf: 23px
+  'golf': (23 / 16) * 1rem,
+  // foxtrot 19px
+  'foxtrot': (19 / 16) * 1rem,
+  // echo: 17px
+  'echo': (17 / 16) * 1rem,
+  // delta: 15px
+  'delta': (15 / 16) * 1rem,
+  // charlie: 13px
+  'charlie': (13 / 16) * 1rem,
+  // bravo: 11px
+  'bravo': (11 / 16) * 1rem,
+  // alpha: 9px
+  'alpha': (9 / 16) * 1rem
+);
+
+/* stylelint-enable */
+
+$link-color: get-color('blue', 5);
+$link-color-hover: get-contextual-color('blue', 4);
+$link-color-visited: get-contextual-color('purple', 4);
+$link-color-clicked: get-color('blue', 6);
+
+$font-size-text-small: (12 / 16) * 1rem;
+$font-size-text-regular: (14 / 16) * 1rem;
+$font-size-label: (16 / 16) * 1rem;
+$font-size-caption: (12 / 16) * 1rem;
+
+$text-highlight-color: get-contextual-color('blue', 1);
+
+$code-inline-color: get-contextual-color('red', 3);
+$code-inline-bg-color: get-color('neutral', 1);
+
+$keyboard-input-border-color: get-color('neutral', 5);
+
+$abbreviation-underline-color: get-color('neutral', 3);
+
+$inline-background-padding: 0.1rem 0.25rem 0.2rem;
+
+$alignments: 'left', 'center', 'right', 'justify';
+
+@mixin text-rendering {
+  text-rendering: optimizeLegibility;
+}
+
+@mixin no-top-margin {
+  margin-top: 0;
+}
+
+@mixin header-line-height {
+  line-height: 1.15;
+}
+
+@mixin quote-line-height {
+  line-height: 1.32;
+}
+
+@mixin quote-longform-line-height {
+  line-height: 1.55;
+}
+
+@mixin font-weight($weight: '', $important: false) {
+  @if ($weight=='light') {
+    font-weight: if($important, 300 !important, 300);
+  }
+
+  @else if ($weight=='medium') {
+    font-weight: if($important, 500 !important, 500);
+  }
+
+  @else if ($weight=='bold') {
+    font-weight: if($important, 600 !important, 600);
+  }
+
+  @else {
+    font-weight: if($important, 400 !important, 400);
+  }
+}
+
+@mixin heading-core {
+  @include no-top-margin;
+  @include margin-bottom;
+}
+
+@mixin heading($heading-map) {
+  @include heading-core;
+  $num: map-get($heading-map, class-name);
+  $value: map-get($heading-map, value);
+
+  @if ($num==5) {
+    line-height: 1.6;
+  }
+
+  @else {
+    @include header-line-height;
+  }
+
+  @if ($num==4) {
+    @include font-weight('medium');
+  }
+
+  @else if ($num==3) {
+    @include font-weight('regular');
+  }
+
+  @else {
+    @include font-weight('light');
+  }
+
+  font-size: $value;
+}
+
+
+@mixin body-default {
+  @include font-weight('regular');
+  color: $font-color-default;
+  font-family: $font-family;
+  line-height: $font-line-height;
+}
+
+@mixin link-default {
+  @include font-weight('medium');
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
+
+  &:hover {
+    color: $link-color-hover;
+  }
+
+  &:focus {
+    @include focus-style;
+  }
+
+  &:active {
+    color: $link-color-clicked;
+  }
+
+  &:visited {
+    color: $link-color-visited;
+  }
+}
+
+@mixin link-unstyled {
+  color: inherit;
+
+  &:hover,
+  &:active,
+  &:visited {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@mixin text-capitalize {
+  text-transform: capitalize;
+}
+
+@mixin text-small {
+  font-size: $font-size-text-small;
+}
+
+@mixin text-regular {
+  font-size: $font-size-text-regular;
+}
+
+@mixin text-medium {
+  font-size: 1rem;
+  @include font-weight('medium');
+}
+
+@mixin label-core {
+  @include margin-bottom;
+  font-family: $font-family;
+}
+
+@mixin label {
+  @include label-core;
+  @include font-weight('medium');
+  font-size: $font-size-label;
+}
+
+@mixin caption {
+  @include font-weight('regular');
+  font-size: (12 / 16) * 1rem;
+  line-height: 1.47;
+}
+
+@mixin caption-small {
+  @include caption;
+  font-size: (10 / 16) * 1rem;
+}
+
+@mixin caption-small-medium {
+  @include caption;
+  font-weight: 500;
+}
+
+@mixin text-italic {
+  // @include font-weight('medium');
+  font-family: $font-family-italic;
+  font-style: italic;
+}
+
+@mixin text-sup-sub {
+  font-size: 0.77em;
+  line-height: 0;
+  position: relative;
+  top: 0;
+}
+
+@mixin text-keyboard {
+  @include font-weight('medium');
+  border: 1px solid $keyboard-input-border-color;
+  border-radius: 2px;
+  font-family: $font-family-mono;
+  padding: 0.05rem 0.6rem;
+}
+
+@mixin text-highlight {
+  background-color: $text-highlight-color;
+  padding: $inline-background-padding;
+  position: relative;
+}
+
+@mixin text-abbr {
+  &[title] {
+    border-bottom: 1px dashed $abbreviation-underline-color;
+    text-decoration: none;
+  }
+}
+
+@mixin text-monospace {
+  @include font-weight('medium');
+  font-family: $font-family-mono;
+}
+
+@mixin code-inline {
+  @include text-small;
+  @include font-weight('medium');
+  background-color: $code-inline-bg-color;
+  color: $code-inline-color;
+  font-family: $font-family-mono;
+  padding: $inline-background-padding;
+}
+
+@mixin blockquote-quote {
+  @include quote-line-height;
+  font-size: map-get(map-get($headings, 'h3'), value);
+  padding-bottom: 1.5rem;
+
+  &::before,
+  &::after {
+    display: block;
+    font-size: map-get(map-get($headings, 'h2'), value);
+    line-height: 0.5;
+    position: relative;
+  }
+
+  &::before {
+    content: '\201C';
+  }
+
+  &::after {
+    content: '\201D';
+    top: 0.5em;
+  }
+}
+
+@mixin text-citation {
+  @include text-small;
+  @include text-italic;
+}
+
+@mixin blockquote-quote-longform {
+  @include quote-longform-line-height;
+  font-size: map-get(map-get($headings, 'h4'), value);
+}

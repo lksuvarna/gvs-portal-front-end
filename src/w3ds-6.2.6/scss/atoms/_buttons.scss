@@ -1,0 +1,179 @@
+@import '_button-utils';
+
+#{$button-selectors} {
+  @include button-core;
+  @include button-primary;
+
+  &:not([class*='#{$framework-class-prefix}-col']) {
+    width: 100%;
+  }
+
+  &.#{$framework-class-prefix}-small {
+    @include button-small;
+  }
+
+  &.#{$framework-class-prefix}-large {
+    @include button-large;
+  }
+
+  &.#{$framework-class-prefix}-disabled {
+    @include button-variant-disabled($button-primary-disabled-bg, $button-primary-disabled-color);
+  }
+
+  &.#{$framework-class-prefix}-secondary {
+    @include button-secondary;
+    @include button-vertical-padding($border: true);
+
+    &:hover {
+      color: $button-primary-font-color;
+    }
+
+    &.#{$framework-class-prefix}-disabled {
+      @include button-variant-disabled($button-background, $button-secondary-disabled-color);
+      border-color: $button-secondary-disabled-border;
+    }
+
+    &.#{$framework-class-prefix}-small {
+      @include button-small($border: true);
+    }
+
+    &.#{$framework-class-prefix}-large {
+      @include button-large($border: true);
+    }
+  }
+
+  &.#{$framework-class-prefix}-flat {
+    @include button-flat;
+
+    &.#{$framework-class-prefix}-disabled {
+      @include button-variant-disabled($button-background, $button-flat-color-disabled);
+    }
+
+    &.#{$framework-class-prefix}-current {
+      position: relative;
+
+      &::before {
+        background-color: $black;
+        bottom: 0;
+        content: '';
+        height: 0.2rem;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
+    }
+  }
+
+  &.#{$framework-class-prefix}-basic {
+    @include button-basic;
+    @include button-vertical-padding($border: true);
+
+    &.#{$framework-class-prefix}-disabled {
+      @include button-variant-disabled($button-background, $button-basic-color-disabled);
+    }
+
+    &.#{$framework-class-prefix}-small {
+      @include button-small($border: true);
+    }
+
+    &.#{$framework-class-prefix}-large {
+      @include button-large($border: true);
+    }
+
+    &.#{$framework-class-prefix}-current {
+      position: relative;
+      z-index: 101;
+
+      &::before {
+        content: '';
+        height: 100%;
+        left: 0;
+        outline: 2px solid $black;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  &.#{$framework-class-prefix}-danger {
+    @include button-danger;
+
+    &.#{$framework-class-prefix}-disabled {
+      @include button-variant-disabled($button-primary-disabled-bg, $button-primary-disabled-color);
+    }
+  }
+
+  &.#{$framework-class-prefix}-full-border {
+
+    &.#{$framework-class-prefix}-secondary {
+      border-width: $button-secondary-border-width !important;
+    }
+
+    &.#{$framework-class-prefix}-basic {
+      border-width: $button-border-width !important;
+    }
+  }
+
+  &.#{$framework-class-prefix}-width-auto {
+    @include button-unresponsive;
+
+    &.#{$framework-class-prefix}-small {
+      @include button-unresponsive-small;
+    }
+
+    &.#{$framework-class-prefix}-large {
+      @include button-unresponsive-large;
+    }
+  }
+
+  &.#{$framework-class-prefix}-truncate {
+    @include truncate;
+  }
+
+  & + .#{$framework-class-prefix}-button-msg {
+    margin-top: -$margin-bottom;
+  }
+
+  &.#{$framework-class-prefix}-close-button {
+    @include close-button;
+  }
+}
+
+.#{$framework-class-prefix}-button-msg {
+  @include button-offset-msg;
+  text-align: center;
+
+  &.#{$framework-class-prefix}-error {
+    color: $error-red-text;
+  }
+
+  &.#{$framework-class-prefix}-warning {
+    color: $warning-yellow-text;
+  }
+
+  &.#{$framework-class-prefix}-success {
+    color: $success-green-text;
+  }
+}
+
+&.#{$framework-class-prefix}-icon-button-dark {
+  @include icon-button($button-icon-dark, $button-icon-dark-hover, $button-icon-dark-clicked);
+}
+
+&.#{$framework-class-prefix}-icon-button-neutral {
+  @include icon-button($button-icon-neutral, $button-icon-neutral-hover, $button-icon-neutral-clicked);
+}
+
+&.#{$framework-class-prefix}-icon-button-brand {
+  @include icon-button($button-icon-brand, $button-icon-brand-hover, $button-icon-brand-clicked);
+}
+
+&.#{$framework-class-prefix}-icon-button-inverse {
+  @include icon-button($button-icon-inverse, $button-icon-inverse-hover, $button-icon-inverse-clicked);
+
+  &.#{$framework-class-prefix}-disabled {
+    color: $button-icon-inverse-disabled;
+    cursor: not-allowed;
+  }
+}

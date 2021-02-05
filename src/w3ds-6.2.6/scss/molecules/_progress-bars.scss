@@ -1,0 +1,77 @@
+$progress-neutral-light: get-color('neutral', 2);
+$progress-neutral-dark: get-color('neutral', 6);
+$progress-blue-background: get-color('blue', 1);
+$progress-blue-primary: get-color('blue', 5);
+
+%progress-container {
+  background-color: $progress-neutral-light;
+}
+
+%progress {
+  background-color: $progress-neutral-dark;
+  height: 100%;
+  transition: width $transition-duration * 2;
+}
+
+%progress-color {
+  background-color: $progress-blue-background;
+
+  .#{$framework-class-prefix}-progress {
+    background-color: $progress-blue-primary;
+  }
+}
+
+.#{$framework-class-prefix}-progress-counter {
+  @include text-small;
+  bottom: 0.25rem;
+  color: $progress-neutral-dark;
+  position: absolute;
+  transition: left $transition-duration * 2;
+
+  &::after {
+    content: '%';
+  }
+}
+
+.#{$framework-class-prefix}-progress-bar {
+  background-color: $progress-neutral-light;
+  height: 0.15rem;
+
+  .#{$framework-class-prefix}-progress {
+    @extend %progress;
+    width: 0%;
+  }
+
+  &.#{$framework-class-prefix}-color {
+    @extend %progress-color;
+
+    .#{$framework-class-prefix}-progress-counter {
+      color: $progress-blue-primary;
+    }
+  }
+}
+
+.#{$framework-class-prefix}-file-upload {
+  @extend %progress-container;
+  height: 0.4rem;
+
+  .#{$framework-class-prefix}-progress {
+    @extend %progress;
+  }
+
+  .#{$framework-class-prefix}-file-name {
+    @include text-small;
+    bottom: $font-size * nth($spacing-list, 2);
+    color: $progress-neutral-dark;
+    left: 0.6rem;
+    position: absolute;
+  }
+
+  &.#{$framework-class-prefix}-color {
+    @extend %progress-color;
+
+    .#{$framework-class-prefix}-file-name {
+      color: $progress-blue-primary;
+    }
+  }
+}
