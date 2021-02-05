@@ -109,7 +109,6 @@ app.get('/api/login', passport.authenticate('openidconnect', {}));
 // this router must be the 2nd
 app.use('/', ensureAuthenticated);
 
-
    const options={
      target:  process.env['target_app'],
      changeOrigin: true,
