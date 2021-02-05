@@ -117,6 +117,7 @@ app.use('/', ensureAuthenticated);
          }
    app.use('/api/*', createProxyMiddleware(options));
 
+
    app.use(bodyParser.json());
    app.use(bodyParser.urlencoded({extended: true}));
    // http body is not parsed and forwarded to the target as-is
