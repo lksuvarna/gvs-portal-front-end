@@ -24,8 +24,6 @@ app.use(session({resave: 'true', saveUninitialized: 'true' , secret: 'a2z in clo
 app.use(passport.initialize());
 app.use(passport.session());
 
-// http body is not parsed and forwarded to the target as-is
-app.use(bodyParser.text({type: '*/*', limit: '10mb'}));
 
 passport.serializeUser(function(user, done) {
 // TODO: Write the user context to cloudant to achieve elastic scaling
@@ -122,6 +120,9 @@ app.use('/', ensureAuthenticated);
 
    app.use(bodyParser.json());
    app.use(bodyParser.urlencoded({extended: true}));
+   // http body is not parsed and forwarded to the target as-is
+   app.use(bodyParser.text({type: '*/*', limit: '10mb'}));
+
 
 console.log('starting app in dev mode '+ path.normalize(__dirname+'/../../'));
     //catch all route
