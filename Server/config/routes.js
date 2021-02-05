@@ -1,6 +1,6 @@
 var express = require('express'),
   passport = require('passport'),
-  router = express.Router() , 
+  router = express.Router() ,
   middleware = require('../lib/middleware.js')(passport);
 
 
@@ -13,7 +13,7 @@ var express = require('express'),
 //***************************************************
 // auth && login
 
-router.get('/login', function (req, res) {
+router.get('/', function (req, res) {
   console.log("Getting session data");
   console.log('Entra a account!');
   if (req.session.isAuthenticated) {
@@ -41,18 +41,19 @@ router.get('/auth/sso/callback', middleware.urlEncodedParser, middleware.passpor
   console.log('Entra a callback');
   req.session.user = req.user['_json'];
   req.session.isAuthenticated = true;
-  req.session.user.roles = [];
+  //req.session.user.roles = [];
   /************Bluegroups**********/
-  
-  var groups = req.session.user.blueGroups;
- 
 
-  var roles = req.session.user.roles;
-  var redirect_url;
+  //var groups = req.session.user.blueGroups;
 
-  
 
-  res.redirect("https://localhost:6005/");
+  //var roles = req.session.user.roles;
+  //var redirect_url;
+
+  var redirect_url = req.session.originalUrl;
+  res.redirect(redirect_url);
+
+ // res.redirect("https://localhost:6005/");
 });
 
 // Failure page
