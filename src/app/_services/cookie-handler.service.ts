@@ -7,14 +7,14 @@ export class CookieHandlerService {
 
   constructor() { }
 
-  setCookie(cname, cvalue, exdays) {
+  setCookie(cname:any, cvalue:any, exdays:any) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   }
 
-  getCookie(cname) {
+  getCookie(cname:any) {
     var name = cname + "=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
