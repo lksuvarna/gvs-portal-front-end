@@ -9,6 +9,7 @@ var debug = require('debug')('consumer:server');
 var http = require('http');
 const https = require('https');
 const fs = require('fs');
+require('dotenv').config();
 //const fs =require('fs');
 //const path = require('path');
 
@@ -25,12 +26,17 @@ app.set('port', port);
  * Create HTTP server.
  */
 
-var server = http.createServer(app);
+ if(process.env.host=="local"){
+  var server = https.createServer({
+    key: fs.readFileSync('key.pem'),
+    cert: fs.readFileSync('cert.pem')
+  }, app);
+ }else{
+  var server = http.createServer(app);
+ }
+//
 //create server
-// var server = https.createServer({
-//   key: fs.readFileSync('key.pem'),
-//   cert: fs.readFileSync('cert.pem')
-// }, app);
+
 
 /**
  * Listen on provided port, on all network interfaces.
