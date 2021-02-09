@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnectCucdmService } from './../../demo.service';
+import { CookieHandlerService } from '../../_services/cookie-handler.service';
 
 @Component({
   selector: 'app-homepage',
@@ -8,9 +9,9 @@ import { ConnectCucdmService } from './../../demo.service';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private Service: ConnectCucdmService) { }
+  constructor(private Service: ConnectCucdmService,private cookie: CookieHandlerService) { }
   res_rec ='';
-
+  fullName='';
 
   generate(cnum : string): void{
     console.log(cnum);
@@ -21,6 +22,7 @@ export class HomepageComponent implements OnInit {
      });
   }
   ngOnInit(): void {
+    this.fullName = this.cookie.getCookie('user');
   }
 
 }
