@@ -9,7 +9,8 @@
   var passport = require('passport');
   const cookieParser = require('cookie-parser');
   const session = require('cookie-session');
-  const w3config= require('./config/w3config')
+  const w3config= require('./config/w3config');
+  require('dotenv').config();
  // app.use(logger('dev'));
 
  app.use(session({name: 'GVS_Portal', keys: ['GVS_Portal']}));
