@@ -19,6 +19,8 @@ import { RequestsComponent } from './components/requests/requests.component';
 import { ApprovalpendingComponent } from './components/approvalpending/approvalpending.component';
 import { RevalidationpendingComponent } from './components/revalidationpending/revalidationpending.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { appRoutingProviders} from './app.routing';
+import { UitoplinksComponent } from './components/uitoplinks/uitoplinks.component';
 
 
 @NgModule({
@@ -40,11 +42,15 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
     ApprovalpendingComponent,
     RevalidationpendingComponent,
     FeedbackComponent,
+    UitoplinksComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    appRoutingProviders
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
