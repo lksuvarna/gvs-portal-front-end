@@ -119,81 +119,15 @@ const environment = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FeedbackComponent", function() { return FeedbackComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
 
 
-
-
-function FeedbackComponent_div_105_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Care to tell us why? Your feedback will help us to improve. ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} }
-function FeedbackComponent_div_106_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "We are so pleased that you feel this way about Global Voice Services! Care to tell us why? ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} }
-function FeedbackComponent_div_107_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 47);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "textarea", 48);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} }
-function FeedbackComponent_div_108_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Note: This feedback is for User Experience of the website. For any other feedback please use ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "a", 50);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Help");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, ".");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} }
 class FeedbackComponent {
-    constructor() {
-        this.textAreaDisplay = false;
-        this.hiddenOn9n10 = false;
-        this.displayOn9n10 = false;
-        this.radioReview = "";
-        this.feedBackForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
-            feedBackArea: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](''),
-            Checkoption: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](''),
-        });
-    }
-    radioSelectAction() {
-        this.textAreaDisplay = true;
-        if (this.radioReview == "9" || this.radioReview == "10") {
-            this.displayOn9n10 = true;
-            this.hiddenOn9n10 = false;
-        }
-        else {
-            this.hiddenOn9n10 = true;
-            this.displayOn9n10 = false;
-        }
-        // alert(this.radioReview);
-    }
-    onSubmit() {
-        if (this.radioReview == null || this.radioReview == '') {
-            alert("Please provide Review");
-        }
-        else {
-            if (this.feedBackForm.value.feedBackArea.length == 0) {
-                alert("Please provide feedback");
-            }
-            else if (this.feedBackForm.value.feedBackArea.length < 5) {
-                alert("Feedback length should be more than 5 characters");
-            }
-        }
+    constructor() { }
+    ngOnInit() {
     }
 }
 FeedbackComponent.ɵfac = function FeedbackComponent_Factory(t) { return new (t || FeedbackComponent)(); };
-FeedbackComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FeedbackComponent, selectors: [["app-feedback"]], decls: 113, vars: 4, consts: [[1, "ds-row"], [1, "ds-row", "ds-pad-t-4"], [1, "ds-col-12"], [1, "ds-text-align-center"], [1, "ds-text-align-center", "ds-pad-t-1"], [1, "ds-input-container"], [1, "ds-input-radio-group"], ["align", "center"], ["cellspacing", "0", "cellpadding", "0", "border", "0", 1, "ds-align-text-center"], ["valign", "top"], ["width", "130"], ["width", "79", 1, "ds-align-text-center"], ["width", "78"], ["width", "126"], ["width", "160"], ["width", "78", 1, "ds-align-text-center"], ["for", "radio0", 1, "ds-input-radio", "ds-padding-left-0_5"], ["type", "radio", "formControlName", "Checkoption", "id", "radio0", "value", "0", 1, "ds-input", 3, "change"], [1, "ds-input-control"], [1, "ds-padding-left-0_5", "ds-text-capitalize"], ["for", "radio1", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio1", "value", "1", 1, "ds-input", 3, "change"], ["for", "radio2", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio2", "value", "2", 1, "ds-input", 3, "change"], ["for", "radio3", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio3", "value", "3", 1, "ds-input", 3, "change"], ["for", "radio4", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio4", "value", "4", 1, "ds-input", 3, "change"], ["for", "radio5", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio5", "value", "5", 1, "ds-input", 3, "change"], ["for", "radio6", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio6", "value", "6", 1, "ds-input", 3, "change"], ["for", "radio7", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio7", "value", "7", 1, "ds-input", 3, "change"], ["for", "radio8", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio8", "value", "8", 1, "ds-input", 3, "change"], ["for", "radio9", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio9", "value", "9", 1, "ds-input", 3, "change"], ["for", "radio10", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio10", "value", "10", 1, "ds-input", 3, "change"], [4, "ngIf"], ["class", "ds-col-4", "id", "comment", 4, "ngIf"], ["class", "ds-padding-top-0_5 ds-align-text-left ds-caption", 4, "ngIf"], [1, "ds-row", "ds-text-align-center"], [1, "ds-col-2"], [1, "ds-button"], [1, "ds-text-contextual-red-2"], ["id", "comment", 1, "ds-col-4"], ["formControlName", "feedBackArea", "tabindex", "3", "rows", "2", "cols", "40", 1, "ds-input"], [1, "ds-padding-top-0_5", "ds-align-text-left", "ds-caption"], ["href", "https://w3.ibm.com/help/#/article/telephony_gvi_spoe/overview"]], template: function FeedbackComponent_Template(rf, ctx) { if (rf & 1) {
+FeedbackComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FeedbackComponent, selectors: [["app-feedback"]], decls: 124, vars: 0, consts: [[1, "ds-row"], [1, "ds-row", "ds-pad-t-4"], [1, "ds-col-12"], [1, "ds-text-align-center"], [1, "ds-text-align-center", "ds-pad-t-1"], [1, "ds-input-container"], [1, "ds-input-radio-group"], ["align", "center"], ["cellspacing", "0", "cellpadding", "0", "border", "0", 1, "ds-align-text-center"], ["valign", "top"], ["width", "130"], ["width", "79", 1, "ds-align-text-center"], ["width", "78"], ["width", "126"], ["width", "160"], ["width", "78", 1, "ds-align-text-center"], ["for", "radio0", 1, "ds-input-radio", "ds-padding-left-0_5"], ["type", "radio", "formControlName", "Checkoption", "id", "radio0", "value", "0", 1, "ds-input"], [1, "ds-input-control"], [1, "ds-padding-left-0_5", "ds-text-capitalize"], ["for", "radio1", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio1", "value", "1", 1, "ds-input"], ["for", "radio2", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio2", "value", "2", 1, "ds-input"], ["for", "radio3", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio3", "value", "3", 1, "ds-input"], ["for", "radio4", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio4", "value", "4", 1, "ds-input"], ["for", "radio5", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio5", "value", "5", 1, "ds-input"], ["for", "radio6", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio6", "value", "6", 1, "ds-input"], ["for", "radio7", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio7", "value", "7", 1, "ds-input"], ["for", "radio8", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio8", "value", "8", 1, "ds-input"], ["for", "radio9", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio9", "value", "9", 1, "ds-input"], ["for", "radio10", 1, "ds-input-radio", "ds-padding-left-0_5", 2, "display", "inline"], ["type", "radio", "formControlName", "Checkoption", "id", "radio10", "value", "10", 1, "ds-input"], [1, "ds-text-contextual-red-2"], ["id", "comment", 1, "ds-col-4"], ["formControlName", "feedBackArea", "tabindex", "3", "rows", "2", "cols", "40", 1, "ds-input"], [1, "ds-padding-top-0_5", "ds-align-text-left", "ds-caption"], ["href", "https://w3.ibm.com/help/#/article/telephony_gvi_spoe/overview"], [1, "ds-row", "ds-text-align-center"], [1, "ds-col-2"], [1, "ds-button"]], template: function FeedbackComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "form");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
@@ -258,99 +192,77 @@ FeedbackComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "td", 15);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "label", 16);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "input", 17);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FeedbackComponent_Template_input_change_46_listener() { return ctx.radioSelectAction(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](46, "input", 17);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](47, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](48, "span", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "td", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "label", 20);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "input", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FeedbackComponent_Template_input_change_51_listener() { return ctx.radioSelectAction(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](51, "input", 21);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](52, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](53, "span", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "td", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "label", 22);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "input", 23);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FeedbackComponent_Template_input_change_56_listener() { return ctx.radioSelectAction(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](56, "input", 23);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](57, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](58, "span", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "td", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "label", 24);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "input", 25);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FeedbackComponent_Template_input_change_61_listener() { return ctx.radioSelectAction(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](61, "input", 25);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](62, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](63, "span", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "td", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "label", 26);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "input", 27);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FeedbackComponent_Template_input_change_66_listener() { return ctx.radioSelectAction(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](66, "input", 27);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](67, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](68, "span", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "td", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "label", 28);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "input", 29);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FeedbackComponent_Template_input_change_71_listener() { return ctx.radioSelectAction(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](71, "input", 29);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](72, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](73, "span", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "td", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "label", 30);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](76, "input", 31);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FeedbackComponent_Template_input_change_76_listener() { return ctx.radioSelectAction(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](76, "input", 31);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](77, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](78, "span", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "td", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](80, "label", 32);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "input", 33);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FeedbackComponent_Template_input_change_81_listener() { return ctx.radioSelectAction(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](81, "input", 33);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](82, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](83, "span", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "td", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](85, "label", 34);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](86, "input", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FeedbackComponent_Template_input_change_86_listener() { return ctx.radioSelectAction(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](86, "input", 35);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](87, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](88, "span", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](89, "td", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](90, "label", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "input", 37);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FeedbackComponent_Template_input_change_91_listener() { return ctx.radioSelectAction(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](91, "input", 37);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](92, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](93, "span", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](94, "td", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](95, "label", 38);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](96, "input", 39);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FeedbackComponent_Template_input_change_96_listener() { return ctx.radioSelectAction(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](96, "input", 39);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](97, "div", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](98, "span", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -370,32 +282,41 @@ FeedbackComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](102, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](103, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](104, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](105, FeedbackComponent_div_105_Template, 4, 0, "div", 40);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](106, FeedbackComponent_div_106_Template, 4, 0, "div", 40);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](107, FeedbackComponent_div_107_Template, 2, 0, "div", 41);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](108, FeedbackComponent_div_108_Template, 5, 0, "div", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](105, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](106, "Care to tell us why? Your feedback will help us to improve. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](107, "span", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](108, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](109, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](110, "We are so pleased that you feel this way about Global Voice Services! Care to tell us why? ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](111, "span", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](112, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](113, "div", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](114, "textarea", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](115, "div", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](116, "Note: This feedback is for User Experience of the website. For any other feedback please use ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](117, "a", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](118, "Help");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](119, ".");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](109, "div", 43);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](110, "div", 44);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](111, "button", 45);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](112, "SUBMIT");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](120, "div", 45);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](121, "div", 46);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](122, "button", 47);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](123, "SUBMIT");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](105);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.hiddenOn9n10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.displayOn9n10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.textAreaDisplay);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.textAreaDisplay);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgIf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJmZWVkYmFjay5jb21wb25lbnQuY3NzIn0= */"] });
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJmZWVkYmFjay5jb21wb25lbnQuY3NzIn0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](FeedbackComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
