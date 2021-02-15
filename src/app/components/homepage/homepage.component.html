@@ -26,11 +26,11 @@
 <br>
 <div class="ds-row ds-align-text-center" style="background-color: #f3f3f3;">
   <div class="
-  ds-col-sm-6   ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5"><a href="https://105.w3-969.ibm.com/tools/voice/SPOEProdUI.nsf/EntryPageUI?OpenForm&amp;IN
+  ds-col-sm-6   ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5"><a [routerLink]="['/services']
   "><img class="ds-text-align-center ds-border-neutral-5" src="744.png"></a></div>
   <div class="ds-col-sm-6 ds-align-text-left ds-padding-top-1"><br><span style="font-size:30px"
       class="ds-padding-left-3">My Country</span><br>
-    <a href="https://105.w3-969.ibm.com/tools/voice/SPOEProdUI.nsf/EntryPageUI?OpenForm&amp;IN
+    <a [routerLink]="['/services']
   ">Click here</a> to view all available <br><span class="ds-padding-left-3">services for India</span>.<br>
   </div>
 </div>
@@ -54,7 +54,7 @@
         <span class="button-blue" id="button2">
           <input type="button" name="next"
             class="ds-button ds-secondary ds-margin-bottom-0 ds-padding-top-1 ds-padding-bottom-1" tabindex="15"
-            onclick="window.location.href='/tools/voice/SPOEProdUI.nsf/EntryPageUI?OpenForm&amp;VOIP_IN'"
+            [routerLink]="['/services']"
             value="Get Started">
 
         </span>

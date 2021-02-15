@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {bpservices} from '../../_services/bp.service';
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedbackComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private bpservice :bpservices) { }
+uname ="kk";
   ngOnInit(): void {
+
+    this.bpservice.bpname().subscribe(data=> {
+      console.log('Response received', data.username);
+      this.uname=data.username;
+     });
+      
   }
 
 }

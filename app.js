@@ -90,8 +90,15 @@ if (!req.isAuthenticated()) {
   res.redirect('/api/login');
 } else {
   console.log('USER =>', req.user.id);
-  res.clearCookie('user');
-  res.cookie("user", req.user.displayName );
+  res.clearCookie('user');         
+    res.cookie('user',req.user.displayName);          
+    req.session.authuser=req.user;       
+    app.post('/api',function(req,res,next){
+      res.status(200).json({
+        authusername: req.user.displayName
+       //username:"Lakkisetty"
+      });
+  });
   // already authenticated, and running in mode == local, force the authentication
   if (req.query.mode === 'local') {
     req.session.mode = 'local';
