@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { RevalidationpendingComponent } from './components/revalidationpending/r
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { appRoutingProviders} from './app.routing';
 import { UitoplinksComponent } from './components/uitoplinks/uitoplinks.component';
+import { cloudantservice } from '../app/_services/cloudant.service'
 
 
 @NgModule({
@@ -48,11 +50,12 @@ import { UitoplinksComponent } from './components/uitoplinks/uitoplinks.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     appRoutingProviders
     
     
   ],
-  providers: [],
+  providers: [cloudantservice],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
