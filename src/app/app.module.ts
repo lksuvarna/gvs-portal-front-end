@@ -21,6 +21,7 @@ import { RevalidationpendingComponent } from './components/revalidationpending/r
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { appRoutingProviders} from './app.routing';
 import { UitoplinksComponent } from './components/uitoplinks/uitoplinks.component';
+import { TopcountryframeComponent } from './components/topcountryframe/topcountryframe.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { UitoplinksComponent } from './components/uitoplinks/uitoplinks.componen
     RevalidationpendingComponent,
     FeedbackComponent,
     UitoplinksComponent,
+    TopcountryframeComponent,
   ],
   imports: [
     BrowserModule,
