@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ConnectCucdmService } from './../../demo.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import {bpservices} from '../../_services/bp.service';
+import { cloudantservice } from '../../_services/cloudant.service';
+import { NgModule } from '@angular/core';
 
 @Component({
   selector: 'app-homepage',
@@ -10,11 +13,13 @@ import {bpservices} from '../../_services/bp.service';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor(private Service: ConnectCucdmService,private cookie: CookieHandlerService,private bpservice :bpservices) { }
+  constructor(private Service: ConnectCucdmService,private cookie: CookieHandlerService,private bpservice :bpservices,private cloudantservice:cloudantservice) { }
   res_rec ='';
-  fullName='';
+  fullName:any
   userDetails:any;
   uname='';
+  countryname:any;
+  ccode='';
 
   generate(cnum : string): void{
     console.log(cnum);
@@ -26,7 +31,14 @@ export class HomepageComponent implements OnInit {
   }
   ngOnInit(): void {
     //this.userDetails = (this.cookie.getCookie('user'));
+
     this.fullName=this.cookie.getCookie('user');
+    this.ccode=this.cookie.getCookie('ccode').substring(6,9);
+    this.cloudantservice.getcountrydetails().subscribe(data=> {
+      console.log('Response received', data.countrydetails.name);
+      this.countryname=data.countrydetails;
+     });
+
     
   }
 
