@@ -12,8 +12,8 @@ uname ="kk";
   ngOnInit(): void {
 
     this.bpservice.bpname().subscribe(data=> {
-      console.log('Response received', data.username);
-      this.uname=data.username;
+      console.log('Response received', data.username+data.userid);
+      this.uname=data.username+data.userid;
      });
       
   }
