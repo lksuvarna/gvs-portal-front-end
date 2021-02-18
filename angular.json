@@ -28,18 +28,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",              
-              "src/w3ds-6.2.6/w3ds.css",              
+              "src/styles.css",
+              "src/w3ds-6.2.6/w3ds.css",
               "src/w3ds-6.2.6/w3ds-data-tables.css",
-              "src/w3ds-6.2.6/w3ds-prism.css",              
-              "src/w3ds-6.2.6/masterhead.css", 
+              "src/w3ds-6.2.6/w3ds-prism.css",
+              "src/w3ds-6.2.6/masterhead.css",
               "src/w3ds-6.2.6/scss/_font-face.scss",
               "src/w3ds-6.2.6/w3ds-border-sides.css"
-              
-                          
             ],
             "scripts": [
-              "src/w3ds-6.2.6/w3ds.js"  
+              "src/w3ds-6.2.6/w3ds.js"
             ]
           },
           "configurations": {
@@ -134,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "gvs-portal-front-end"
+  "defaultProject": "gvs-portal-front-end",
+  "cli": {
+    "analytics": "04cb8905-98b9-49e0-b8e2-49d00c7753e6"
+  }
 }

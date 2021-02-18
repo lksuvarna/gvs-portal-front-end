@@ -1,1 +1,146 @@
-<p>employeeinfo works!</p>
+<div class="ds-row ds-pad-t-2 ds-pad-b-1">
+    <div class="ds-col-4">
+    </div>
+    <div class="ds-col-6">
+        <b>Request new Jabber service</b>        
+        <div class="ds-padding-top-0_5 ">
+        <p>If the following information is correct, click Next. Any errors must be corrected in the employee's <a href="https://w3.ibm.com/bluepages/" target="_blank">BluePages record</a> before continuing.</p>
+        </div>
+        <div class="ds-hr-thick ds-mar-b-1_5"></div>        
+        
+        <div class="ds-col-12 ds-padding-top-0_5">
+        <div class="ds-row">
+            <div class="ds-col-12">
+            <div class="ds-row">
+                <div>
+                    <span class="ds-tooltip ds-hover" id="tooltip-demo1">
+                        <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 1</span>
+                        <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">Employee Search</div>
+                    </span>
+                    <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                    <span class="ds-tooltip ds-hover" id="tooltip-demo1">
+                        <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 2</span>
+                        <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Information</div>
+                    </span>
+                    <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                    <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
+                        <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 3</span>
+                        <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Entry Details</div>
+                    </span>
+                    <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                    <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
+                        <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 4</span>
+                        <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Review Details</div>
+                    </span>
+                </div>
+        
+            </div>
+            </div>
+        </div>
+        </div>
+        
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Employee Information</h2>
+        
+        
+        <table cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr valign="top">
+                    <td width="359">
+                        <label for="NameID">Name:</label><br><br>
+                    </td>
+                    <td width="359">Manisha, Kankanampati</td>
+                </tr>
+        
+                <tr valign="top">
+                    <td width="359">
+                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                    </td>
+                    <td width="359"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                    </td>
+                </tr>
+            
+                <tr valign="top">
+                    <td width="359">
+                        <label for="JobID">Job Responsibility:</label><br><br>
+                    </td>
+                    <td width="359">ServiceNow developer</td>
+                </tr>
+            
+                <tr valign="top">
+                    <td width="359">
+                        <label for="BUID">Business Unit:</label><br><br>
+                    </td>
+                    <td width="359">GBS </td>
+                </tr>
+            
+                <tr valign="top">
+                    <td width="359">
+                        <label for="DeptID">Department:</label><br><br>
+                    </td>
+                    <td width="359">JDP</td>
+                </tr>
+            
+                <tr valign="top">
+                    <td width="359">
+                        <label for="EmpCountryID">Country:<br><br></label>
+                    </td>
+                    <td width="359">India</td>
+                </tr>
+            
+                <tr valign="top">
+                    <td width="359">
+                        <label for="EmailID">E-mail:</label><br><br>
+                    </td>
+                    <td width="359">Kankanampati.Manisha@ibm.com</td>
+                </tr>
+            
+                <tr valign="top">
+                    <td width="359">
+                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                    </td>
+                    <td width="359"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p id="war11" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;"></p>
+        <div id="war2" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
+            <p>
+                <span style="font-size: 1rem;">The serial number that you have entered is not eligible to request Jabber account.<br>
+                The IBM Telephone Number (ITN) that exists for this user is .<br>
+                </span>
+            </p>
+        </div>
+        <div id="war3" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
+            <p>There is no Jabber for this serial number.</p>
+        </div>
+        <div id="war4" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
+            <p>
+                <span style="font-size: 1rem;">The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN <a style="color:blue" target="_blank" href="https://105.w3-969.ibm.com/tools/voice/SPOEProd.nsf/EntryPage?OpenForm&amp;EMEA_Voice">Global Voice Infrastructure.</a> Once you have received the ITN you can then request Jabber.  Thank you.
+                    <br><br>
+                </span>
+            </p>
+        </div>
+        <div id="err-dept1" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
+            <p>The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact <a style="color:blue" target="_blank" href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
+        </div>
+        <div id="err-dept2" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
+            <p>The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact <a style="color:blue" target="_blank" href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
+        </div>
+        <div class="ds-hr-thick"></div>
+
+        <div class="ds-row ds-mar-t-b-3_5">
+            <div class="ds-col-xs-10 ds-col-md-5 ds-col-lg-2 ds-offset-md-3 ds-offset-lg-6 ds-push-md-4 ds-push-lg-4">
+                <button class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%">NEXT</button>
+            </div>
+            <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3 ds-pull-md-5 ds-pull-lg-1">
+                <button class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">BACK</button>
+            </div>
+        </div>
+                   
+    </div>
+        
+        
+        
+</div>  
+
