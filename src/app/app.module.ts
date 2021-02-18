@@ -22,7 +22,9 @@ import { RevalidationpendingComponent } from './components/revalidationpending/r
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { appRoutingProviders} from './app.routing';
 import { UitoplinksComponent } from './components/uitoplinks/uitoplinks.component';
+import { TopcountryframeComponent } from './components/topcountryframe/topcountryframe.component';
 import { cloudantservice } from '../app/_services/cloudant.service'
+
 
 
 @NgModule({
@@ -45,6 +47,7 @@ import { cloudantservice } from '../app/_services/cloudant.service'
     RevalidationpendingComponent,
     FeedbackComponent,
     UitoplinksComponent,
+    TopcountryframeComponent,
   ],
   imports: [
     BrowserModule,
