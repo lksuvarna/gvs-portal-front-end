@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { cloudantservice } from '../../_services/cloudant.service';
 
 @Component({
   selector: 'app-topcountryframe',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopcountryframeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private cloudantservice:cloudantservice) { }
+  countryname:any;
   ngOnInit(): void {
+    this.cloudantservice.getcountrydetails().subscribe(data=> {
+      console.log('Response received', data.countrydetails.name);
+      this.countryname=data.countrydetails;
+     });
   }
 
 }
