@@ -21,12 +21,17 @@
   <h4 class="ds-heading-3 ds-text-align-center"><span style="font-size:30px">What service or country are you looking
       for?</span></h4>
 </div>
+<div class="ds-row"></div>
+<br>
+<div class="ds-padding-top-0_5 ds-row ds-text-align-center "><div class="ds-col-sm-4  md-2 xl-5 ds-padding-bottom-1">
 
+  <input name="searches" value=""   id="searchid" class="ds-input " style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; " placeholder="Search services...       " autocomplete="off">
+  </div></div>
 <br>
 <br>
 <div class="ds-row ds-text-align-center" style="background-color: #f3f3f3;">
-  <div class="ds-col-sm-6   ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5"><a [routerLink]="['/services']"><img class="ds-text-align-center ds-border-neutral-5" src="././assets/744.png"></a></div>
-  <div class="ds-col-sm-6 ds-align-text-left ds-padding-top-1"><br><span style="font-size:30px"
+  <div class="ds-col-sm-6   ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5"><a [routerLink]="['/services']"><img class="ds-text-align-center ds-border-neutral-5" [src]='countryname.flagname'></a></div>
+  <div class="ds-col-sm-6 ds-text-align-left ds-padding-top-1"><br><span style="font-size:30px"
       class="ds-padding-left-3">My Country</span><br>
     <a [routerLink]="['/services']
       ">Click here</a> to view all available <br><span class="ds-padding-left-3">services for {{countryname.name}}</span>.<br>
