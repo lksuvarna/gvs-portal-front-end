@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +24,8 @@ import { FeedbackComponent } from './components/feedback/feedback.component';
 import { appRoutingProviders} from './app.routing';
 import { UitoplinksComponent } from './components/uitoplinks/uitoplinks.component';
 import { TopcountryframeComponent } from './components/topcountryframe/topcountryframe.component';
-import { cloudantservice } from '../app/_services/cloudant.service'
+import { cloudantservice } from '../app/_services/cloudant.service';
+import { MiddleframeComponent } from './components/middleframe/middleframe.component'
 
 
 
@@ -48,6 +50,7 @@ import { cloudantservice } from '../app/_services/cloudant.service'
     FeedbackComponent,
     UitoplinksComponent,
     TopcountryframeComponent,
+    MiddleframeComponent,
   ],
   imports: [
     BrowserModule,

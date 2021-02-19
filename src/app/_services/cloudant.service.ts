@@ -13,9 +13,9 @@ import { catchError } from 'rxjs/operators';
 export class cloudantservice {
   private Url = '/api/countrydetails';
   constructor(private http: HttpClient) { }
-  getcountrydetails(): Observable<any> {
-    console.log("getcountrydetails");
-    return this.http.post(this.Url, undefined)
+  getcountrydetails(ccode:string): Observable<any> {
+    console.log("getcountrydetails"+ccode);
+    return this.http.post(this.Url, {ccode})
       .pipe(catchError(this.errorhandler))
   }
   errorhandler(error: HttpErrorResponse) {

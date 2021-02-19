@@ -7,55 +7,11 @@
     <div class="ds-col-sm-5 ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData"></app-navigation>
     </div>
-    <div class="ds-col-sm-7 ds-pad-t-1 ds-col-md-8 ds-col-xl-8">
-        <div class="ds-row ds-pad-b-1 ds-pad-r-2">
-            <div *ngIf="cloudantData.isjabber" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
-                <a href="./services">
-                    <div class="ds-panel">
-                        <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
-                            <img src="././assets/Jabber.png">
-                            <p class="ds-text-small  ds-padding-t-3">{{servicesData.services[0]}}</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div *ngIf="cloudantData.isfixedphone" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
-                <a href="./services">
-                    <div class="ds-panel">
-                        <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
-                            <img src="././assets/fixedphone.png">
-                            <p class="ds-text-small  ds-padding-t-3">{{servicesData.services[1]}}</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div *ngIf="cloudantData.isfac" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
-                <a href="./services">
-                    <div class="ds-panel">
-                        <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
-                            <img src="././assets/fixedphone.png">
-                            <p class="ds-text-small  ds-padding-t-3">{{servicesData.services[2]}}</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div *ngIf="cloudantData.isspecial" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
-                <a href="./services">
-                    <div class="ds-panel">
-                        <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
-                            <img src="././assets/ss.png">
-                            <p class="ds-text-small  ds-padding-t-3">{{servicesData.services[3]}}</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <a href={{servicesData.termsurl}} class="ds-text-contextual-blue-5 ds-link-unstyled" target="_blank">{{servicesData.titles[0]}}</a>
-        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">{{servicesData.titles[1]}}</h2>
-        <p>{{servicesData.titles[2]}}</p>
-        <ul>
-            <li *ngFor="let usefulinfotext of servicesData.usefulinfotexts">{{usefulinfotext}}</li>
-        </ul>
+    <div *ngIf="product">
+    
+    {{navcomponent}}
     </div>
-</div>
+    <div *ngIf="products">
+        <app-topcountryframe></app-topcountryframe>
+        </div>
+    </div>

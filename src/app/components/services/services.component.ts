@@ -8,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class ServicesComponent implements OnInit {
   cloudantData: any = []
   servicesData: any = []
-
+  product:any
+  products:any
+  navcomponent:any
   constructor() { }
 
   ngOnInit(): void {
-     
+     this.product=true
+     this.products=false
+     this.navcomponent="<app-middleframe></app-middleframe>"
   this.cloudantData  = {
     "code": "744",
     "name": "India",
