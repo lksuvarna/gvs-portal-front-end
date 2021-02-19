@@ -1,0 +1,14 @@
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.ds-text-contextual-green-3 {
+    color: #27aa7c !important;
+}
+
+.ds-text-contextual-blue-5 {
+    color: #0370b0 !important;
+    font-family: "IBMPlexSans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    
+}

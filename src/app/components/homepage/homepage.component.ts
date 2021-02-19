@@ -34,7 +34,7 @@ export class HomepageComponent implements OnInit {
 
     this.fullName=this.cookie.getCookie('user');
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-    this.cloudantservice.getcountrydetails().subscribe(data=> {
+    this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);
       this.countryname=data.countrydetails;
      });

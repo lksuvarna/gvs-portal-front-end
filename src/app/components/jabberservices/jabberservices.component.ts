@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-employeesearch',
-  templateUrl: './employeesearch.component.html',
-  styleUrls: ['./employeesearch.component.css']
+  selector: 'app-jabberservices',
+  templateUrl: './jabberservices.component.html',
+  styleUrls: ['./jabberservices.component.css']
 })
-export class EmployeesearchComponent implements OnInit {
+export class JabberservicesComponent implements OnInit {
 
   constructor() { }
   cloudantData: any = []
