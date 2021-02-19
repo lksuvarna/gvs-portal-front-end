@@ -21,17 +21,20 @@
   <h4 class="ds-heading-3 ds-text-align-center"><span style="font-size:30px">What service or country are you looking
       for?</span></h4>
 </div>
+<div class="ds-row"></div>
+<br>
+<div class="ds-padding-top-0_5 ds-row ds-text-align-center "><div class="ds-col-sm-4  md-2 xl-5 ds-padding-bottom-1">
 
+  <input name="searches" value=""   id="searchid" class="ds-input " style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; " placeholder="Search services...       " autocomplete="off">
+  </div></div>
 <br>
 <br>
-<div class="ds-row ds-align-text-center" style="background-color: #f3f3f3;">
-  <div class="
-  ds-col-sm-6   ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5"><a href="https://105.w3-969.ibm.com/tools/voice/SPOEProdUI.nsf/EntryPageUI?OpenForm&amp;IN
-  "><img class="ds-text-align-center ds-border-neutral-5" src="744.png"></a></div>
-  <div class="ds-col-sm-6 ds-align-text-left ds-padding-top-1"><br><span style="font-size:30px"
+<div class="ds-row ds-text-align-center" style="background-color: #f3f3f3;">
+  <div class="ds-col-sm-6   ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5"><a [routerLink]="['/services'] " routerLinkActive="active"><img class="ds-text-align-center ds-border-neutral-5" [src]='countryname.flagname'></a></div>
+  <div class="ds-col-sm-6 ds-text-align-left ds-padding-top-1"><br><span style="font-size:30px"
       class="ds-padding-left-3">My Country</span><br>
-    <a href="https://105.w3-969.ibm.com/tools/voice/SPOEProdUI.nsf/EntryPageUI?OpenForm&amp;IN
-  ">Click here</a> to view all available <br><span class="ds-padding-left-3">services for India</span>.<br>
+    <a [routerLink]="['/services']
+      ">Click here</a> to view all available <br><span class="ds-padding-left-3">services for {{countryname.name}}</span>.<br>
   </div>
 </div>
 <br>
@@ -47,14 +50,14 @@
   <div class="ds-col-3 ds-padding-left-1">
     <div class="ds-panel">
       <div class="ds-panel-container">
-        <p><img src="JABBER.png" width="93px" height="93px"><br><br>Cisco Jabber</p>
+        <p><img src="././assets/JABBER.png" width="93px" height="93px"><br><br>Cisco Jabber</p>
         <p class="ds-text-small ds-align-text-left ds-padding-bottom-2">Cisco Jabber is a multiple platform soft phone
           application to make and receive phone calls.<br>
         </p><br><br>
         <span class="button-blue" id="button2">
           <input type="button" name="next"
             class="ds-button ds-secondary ds-margin-bottom-0 ds-padding-top-1 ds-padding-bottom-1" tabindex="15"
-            onclick="window.location.href='/tools/voice/SPOEProdUI.nsf/EntryPageUI?OpenForm&amp;VOIP_IN'"
+            [routerLink]="['/services']"
             value="Get Started">
 
         </span>
@@ -65,26 +68,9 @@
 
 
 
+<input name="country_code" type="hidden" [value]="ccode">
 
 
 
 
-<div align="center">
 
-  <form class="form-group" class=" ds-align-text-center ds-heading-2 ds-margin-bottom-0">
-
-    <br>
-    <label for="CNUM">Cnum:</label>
-    <div class="col-sm-4">
-      <input type="text" #cnum>
-      <br>
-    </div>
-    <div>
-      <br>
-      <button type="button" ng-disabled="false" class="btn-primary btn-lg btn-block"
-        (click)="generate(cnum.value)">Submit</button>
-    </div>
-    <br>
-    {{res_rec}}
-  </form>
-</div>
