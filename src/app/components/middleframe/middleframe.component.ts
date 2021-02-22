@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-employeesearch',
-  templateUrl: './employeesearch.component.html',
-  styleUrls: ['./employeesearch.component.css']
+  selector: 'app-middleframe',
+  templateUrl: './middleframe.component.html',
+  styleUrls: ['./middleframe.component.css']
 })
-export class EmployeesearchComponent implements OnInit {
+export class MiddleframeComponent implements OnInit {
 
   constructor() { }
   cloudantData: any = []

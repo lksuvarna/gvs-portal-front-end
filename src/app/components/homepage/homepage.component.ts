@@ -12,7 +12,11 @@ import { NgModule } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-
+  searchText = '';
+  searchItems = [
+    {"name" : "India Jabber", "flag" : "././assets/flags/744.png", "url": ""},
+    {"name" : "India FAC", "flag" : "././assets/flags/744.png", "url": ""}
+  ]
   constructor(private Service: ConnectCucdmService,private cookie: CookieHandlerService,private bpservice :bpservices,private cloudantservice:cloudantservice) { }
   res_rec ='';
   fullName:any
@@ -29,12 +33,18 @@ export class HomepageComponent implements OnInit {
       this.res_rec=data.message;
      });
   }
+
+
+  storeSearchTerm(searchText:string) {
+    sessionStorage.setItem('searchText',searchText)
+  }
+
   ngOnInit(): void {
     //this.userDetails = (this.cookie.getCookie('user'));
 
     this.fullName=this.cookie.getCookie('user');
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-    this.cloudantservice.getcountrydetails().subscribe(data=> {
+    this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);
       this.countryname=data.countrydetails;
      });

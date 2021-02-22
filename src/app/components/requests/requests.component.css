@@ -1,0 +1,24 @@
+.overlay {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      color: black;
+  }
+  .overlay a:hover {
+      cursor: pointer;
+      color: blue;
+  }
+  .overlay-content {    
+      width: 50%;
+      margin-left: 25%;
+      margin-top:5%;
+  }
+  

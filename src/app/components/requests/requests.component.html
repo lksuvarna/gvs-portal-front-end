@@ -1,1 +1,52 @@
-<p>requests works!</p>
+<div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5 ">
+    <p><b>Requests</b></p>
+    <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
+    <div class=" ds-panel ds-col-12 "></div>
+  
+    <!--All Requests code starts-->
+    <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Employee Requests Details</h2>
+    <div class="ds-panel ds-col-12"></div><br>
+    <table style="width:100%; border-collapse: collapse; padding:2px">
+      <tbody>
+      </tbody>
+      <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">
+        <tr>
+          <td style="padding:5px 15px 5px 25px; padding-left:15px ">Resource Type</td>
+          <td style="padding:5px 55px 5px 25px; padding-left:15px">Date</td>
+          <td style="padding:5px 65px 9px 50px; padding-left:15px ">Status</td>
+          <td style="padding:5px 55px 5px 50px ;padding-left:15px">Tracking Number</td>
+          <td style="padding:5px 15px 5px 10px; padding-left:15px ">Additional Comments</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let no of requests'>
+          <td style="padding-top:13px; padding-left:15px">{{ no.fl_typesnow }}</td>
+          <td style="padding-top:13px; padding-left:15px">{{ no.fl_date_submittedsnow }}</td>
+          <td style="padding-top:13px; padding-left:15px">{{ no.fl_statussnow }}</td>
+          <td style="width:30%; padding-top:13px; padding-left:15px">{{ no.fl_ReqNumbersnow }}</td>
+          <td><span *ngIf="no.fl_reqcomments.includes('none' || ''); then text; else link"></span>
+            <ng-template #link><a (click)='openNav(no.fl_reqcomments)' style="color:blue">{{ no.fl_reqcomments[0] }}</a></ng-template>
+            <ng-template #text>{{ no.fl_reqcomments }}</ng-template>
+          </td> 
+        </tr>
+      </tbody>
+    </table>
+    <div class="ds-panel ds-col-12"></div><br>
+    <!--All Requests code Ends-->
+  
+    <!--Model code Starts-->
+    <div id="myNav" class="overlay ds-padding-top-5" [style.display]="DisplayModel">
+      <div class="overlay-content">
+        <div class="ds-row ds-bg-neutral-1">
+          <div class='ds-margin-right-1'><a class="ds-float-right"
+                (click)="closeNav()">×</a><br><br>
+            <div class="ds-padding-left-5 ds-padding-bottom-3 ds-padding-right-1">
+              <div id="inval" style="padding-left: 1rem;" *ngFor='let cmts of allComments'>{{ cmts }}
+              </div><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Model code Ends-->
+  </div>  
