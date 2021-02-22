@@ -27,11 +27,11 @@ export class EmployeesearchComponent implements OnInit {
       "data": [
         {    
           "lhs": [
-            {"name" : "Services", "indented" : false, "highlighted": true},
-            {"name" : "Approvals Pending", "indented" : false, "highlighted": false},
-            {"name" : "Revalidation Pending", "indented" : false, "highlighted": false},
-            {"name" : "Resources", "indented" : false, "highlighted": false},
-            {"name" : "Requests", "indented" : false, "highlighted": false}
+            {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},
+            {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
+            {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
+            {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
+            {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
           ],
           "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
           "titles": [
