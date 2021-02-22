@@ -7,6 +7,7 @@ import { EmployeesearchComponent } from './components/employeesearch/employeesea
 import { ResultpageComponent } from './components/resultpage/resultpage.component';
 import { EmployeeinfoComponent } from './components/employeeinfo/employeeinfo.component';
 import { TopcountryframeComponent } from './components/topcountryframe/topcountryframe.component';
+import { ReviewdetailsComponent } from './components/reviewdetails/reviewdetails.component';
 
 
 const appRoutes: Routes = [
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     { path: 'employeeinfo', component: EmployeeinfoComponent },
     { path: 'resultpage', component: ResultpageComponent },
     { path: 'topcountryframe', component: TopcountryframeComponent },
+    { path: 'reviewdetails', component: ReviewdetailsComponent },
     
 ];
 

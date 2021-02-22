@@ -9,6 +9,13 @@ export class EmployeesearchComponent implements OnInit {
 
   constructor() { }
 
+  employeeSearch = {
+
+    employeeName: "Agarwal,Ashima",
+    serialNumber: "06521V744"
+
+  }
+
   ngOnInit(): void {
   }
 

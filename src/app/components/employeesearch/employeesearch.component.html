@@ -8,7 +8,7 @@
         <div class="ds-panel-row">
             <div>
                 <span class="ds-tooltip ds-hover" id="tooltip-demo1">
-                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 1</span>
+                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5 ds-pad-l-1" aria-label="help" tabindex="0">STEP 1</span>
                     <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">Employee Search</div>
                 </span>
                 <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
@@ -55,18 +55,16 @@
                 <td>
                         <label for="OriginatorNameId">Name</label>  
                      </td>
-                     <td colspan="2">
-                        Agarwal, Ashima
-                    </td>
+                     <td colspan="2">{{employeeSearch.employeeName}}</td>
             </tr>
             <tr>
                 <td>
                     <div class="ds-pad-t-2">
-                        <label for="OriginatorNameId" >Serial Number</label>  
+                        <label for="OriginatorNameId">Serial Number</label>  
                     </div>
                 </td>
                 <td colspan="2">
-                    <div class="ds-pad-t-2">06521V744</div> 
+                    <div class="ds-pad-t-2">{{employeeSearch.serialNumber}}</div> 
                 </td>
             </tr>
             <tr>
