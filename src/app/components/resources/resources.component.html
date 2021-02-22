@@ -1,1 +1,106 @@
-<p>resources works!</p>
+<div class="ds-row ds-pad-t-2 ds-pad-b-1">
+    <div class="ds-col-12">
+      <div class="ds-text-align-center">
+        <img class="ds-border-neutral-5" src="././assets/744.png">
+        <h2><b>India</b></h2>
+      </div>
+    </div>
+  </div>
+  
+  <div class=" ds-panel ds-col-12"></div>
+  
+  
+  <div class="ds-row ds-pad-t-1 ds-pad-b-2 ds-pad-l-5">
+    <div class="ds-col-sm-12 ds-col-md-2 ds-col-xl-4">
+      <div class="ds-panel ds-bg-neutral-warm-1 ds-no-border "></div>
+    </div>
+  
+    <div class="ds-col-sm-2 ds-col-md-7  ds-pad-l-1_5">
+  
+      <span class='ds-pad-l-0_5'><b>Resources</b></span>
+      <div class="ds-col-12 ds-pad-t-0_5">
+        <div class="ds-col-12 ds-pad-t-0_5">
+          <div class="ds-row ">
+            <div class="ds-col-12">
+              <div class="ds-row">
+                <div>
+                  <div class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b>STEP
+                        1</b></span> <span class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Search</span>
+                  </div>
+                  <div id="r21" class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
+                          class="ds-pad-r-1">-----&gt;</span>STEP 2</b></span><span
+                      class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Information</span>
+                  </div>
+                  
+                  <span id="r3" class=" ds-text-contextual-green-3 ds-pad-r-1 ds-pad-l-0_5"><b><span
+                        class="ds-pad-r-1">-----&gt;</span>
+                      <div class="tooltip">STEP 3
+                        <span style="font-weight:normal;" class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee
+                          Resource Details</span>
+                      </div>
+                    </b></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Resources Details</h2>
+  
+        <span class="ds-pad-t-1"></span><br>
+  
+        <table id="t1" cellspacing="0" cellpad="0" border="0">
+          <thead>
+            <tr valign="top">
+              <td width="172" bgcolor="#F1F0EE">
+                <div class="ds-set-height-group-1 ds-col-xs-12  ds-pad-1 ds-bg-neutral-warm-2 ds-text-neutral-7	">
+                  <b>Resource Type</b></div>
+              </td>
+              <td width="172" bgcolor="#F1F0EE">
+                <div class="ds-set-height-group-1   ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Supplier</b>
+                </div>
+              </td>
+              <td width="172" bgcolor="#F1F0EE">
+                <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Phone/Dial
+                    <br>
+                    In number</b></div>
+              </td>
+              <td colspan="2" width="345" bgcolor="#F1F0EE">
+                <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Additional
+                    Information</b></div>
+              </td>
+            </tr>
+            <tr valign="top">
+              <td colspan="5" width="862" bgcolor="#FFFFFF"><br><br></td>
+            </tr>
+          </thead>
+          <tbody *ngFor='let no of resources'>
+  
+            <tr valign="top">
+              <td colspan="5" width="862" bgcolor="#FFFFFF"></td>
+            </tr>
+  
+            <tr valign="top">
+              <td class="ds-pad-l-1" width="172" bgcolor="#FFFFFF">{{no.fl_resoucetype}}</td>
+              <td width="172" bgcolor="#FFFFFF">
+                <font color="#808080"> </font>{{no.fl_supplier}}<font color="#808080"> </font>
+              </td>
+              <td width="172" bgcolor="#FFFFFF">
+                <font color="#808080"> </font>{{no.fl_phone_number}}
+              </td>
+              <td colspan="2" width="345" bgcolor="#FFFFFF">
+                <font color="#808080"> </font>{{no.fl_additional_information}}
+              </td>
+              <br><br>
+            </tr>
+  
+            <tr valign="top">
+              <td colspan="5" width="862" bgcolor="#FFFFFF">
+                <div class="ds-panel ds-col-12"></div>
+              </td>
+            </tr>
+  
+          </tbody>
+        </table>
+      </div>
+    </div>

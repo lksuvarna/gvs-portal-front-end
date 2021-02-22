@@ -26,7 +26,8 @@ import { UitoplinksComponent } from './components/uitoplinks/uitoplinks.componen
 import { JabberservicesComponent } from './components/jabberservices/jabberservices.component';
 import { TopcountryframeComponent } from './components/topcountryframe/topcountryframe.component';
 import { cloudantservice } from '../app/_services/cloudant.service';
-import { MiddleframeComponent } from './components/middleframe/middleframe.component'
+import { MiddleframeComponent } from './components/middleframe/middleframe.component';
+import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component'
 
 
 
@@ -53,6 +54,7 @@ import { MiddleframeComponent } from './components/middleframe/middleframe.compo
     JabberservicesComponent,
     TopcountryframeComponent,
     MiddleframeComponent,
+    VoipInNewComponent,
   ],
   imports: [
     BrowserModule,
