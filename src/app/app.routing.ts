@@ -8,6 +8,7 @@ import { EmployeesearchComponent } from './components/employeesearch/employeesea
 import { ResultpageComponent } from './components/resultpage/resultpage.component';
 import { EmployeeinfoComponent } from './components/employeeinfo/employeeinfo.component';
 import { TopcountryframeComponent } from './components/topcountryframe/topcountryframe.component';
+import { ServicessearchComponent } from './components/servicessearch/servicessearch.component';
 
 const appRoutes: Routes = [
     { path: 'unauthorized', component: HomepageComponent },
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     { path: 'employeeinfo', component: EmployeeinfoComponent },
     { path: 'resultpage', component: ResultpageComponent },
     { path: 'topcountryframe', component: TopcountryframeComponent },
+    { path: 'searchresult', component: ServicessearchComponent },
 
     
 ];
