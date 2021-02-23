@@ -1,7 +1,5 @@
-<a href="https://w3.ibm.com/" id="ds-w3-injectable-nav" data-layout="1" data-height="79" data-breakpoint="md"
-    target="_blank" class="ds-hide-xs ds-display-md-block light md" style="height: 79px; margin-left: 20px;">
-    <svg id="w3-nav-full-overlay-injectable-open" width="91px" height="99px" viewBox="0 0 71 99" version="1.1"
-        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<a href="https://w3.ibm.com/" id="ds-w3-injectable-nav" data-layout="1" data-height="79" data-breakpoint="md" target="_blank" class="ds-hide-xs ds-display-md-block light md" style="height: 79px; margin-left: 20px;">
+    <svg id="w3-nav-full-overlay-injectable-open" width="91px" height="99px" viewBox="0 0 71 99" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <defs>
             <polygon id="path-1" points="0.3828125 0.0936521943 0.3828125 61 35.62839 79 71 61 71 0.151757577">
             </polygon>
@@ -43,23 +41,20 @@
     <div class="ds-row ds-shadow-floating ds-margin-bottom-0">
         <div class="ds-col-8 ds-padding-top-0_8 ds-no-gutter ds-float-lg-right ">
             <div class="ds-tray-fit-content ds-margin-bottom-0">
-                <span style="cursor:default"
-                    class="ds-button ds-flat ds-bg-neutral-5  ds-padding-left-2 ds-padding-right-2 "
-                    [routerLink]="['/']">HOME</span>
-                <a href="https://w3.ibm.com/w3publisher/global-voice-services/about-gvs/data-privacy" target="_blank"
-                    class="ds-button ds-flat ds-flat ds-padding-left-2 ds-padding-right-2">DATA PRIVACY</a>
-                <a  class="ds-button ds-flat ds-flat ds-padding-left-2 ds-padding-right-2"
-                    [routerLink]="['/services']" routerLinkActive="active">SERVICES</a>
-                <a href="https://w3.ibm.com/help/#/article/telephony_gvi_spoe/overview" target="_blank"
-                    class="ds-button ds-flat ds-flat ds-padding-left-2 ds-padding-right-2">HELP</a>
-                <a class="ds-button ds-flat ds-flat ds-padding-left-2 ds-padding-right-2"
-                    [routerLink]="['/feedback']" routerLinkActive="active">FEEDBACK</a>
-                <div class="custom-select" style="width:215px;" onClick="jsFunction();">
-
+                <span style="cursor:default" class="ds-button ds-flat ds-bg-neutral-5  ds-padding-left-2 ds-padding-right-2 " [routerLink]="['/']">HOME</span>
+                <a href="https://w3.ibm.com/w3publisher/global-voice-services/about-gvs/data-privacy" target="_blank" class="ds-button ds-flat ds-flat ds-padding-left-2 ds-padding-right-2">DATA PRIVACY</a>
+                <a class="ds-button ds-flat ds-flat ds-padding-left-2 ds-padding-right-2" [routerLink]="['/services']" routerLinkActive="active">SERVICES</a>
+                <a href="https://w3.ibm.com/help/#/article/telephony_gvi_spoe/overview" target="_blank" class="ds-button ds-flat ds-flat ds-padding-left-2 ds-padding-right-2">HELP</a>
+                <a class="ds-button ds-flat ds-flat ds-padding-left-2 ds-padding-right-2" [routerLink]="['/feedback']" routerLinkActive="active">FEEDBACK</a>
+                <div class="dropdown">
+                    <button (click)="myFunction()" style="width:215px;" class="dropbtn">CHANGE COUNTRY</button>
+                    <div id="myDropdown" class="dropdown-content">
+                        <input type="text" class="ds-input" id="myInput" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Search.." style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; ">
+                        <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | dropdownsearch: searchText; let i=index">
+                            <a [routerLink]="['/services']">{{searchResult.name}}</a>
+                        </div>
+                    </div>
                 </div>
-
-
-
             </div>
         </div>
     </div>
