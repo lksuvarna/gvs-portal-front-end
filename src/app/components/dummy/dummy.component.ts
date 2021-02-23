@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 
+
 @Component({
   selector: 'app-dummy',
   templateUrl: './dummy.component.html',
@@ -13,7 +14,7 @@ export class DummyComponent implements OnInit {
   countryname:any;
   ccode='';
   cloudantData: any = []
-  servicesData: any = []
+   servicesData: any=[]
   ngOnInit(): void {
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
@@ -29,7 +30,7 @@ export class DummyComponent implements OnInit {
   "isspecial": this.countryname.isspecial
     }
   });
-    const servicesData = { 
+  const servicesData = { 
     "data": [
       {    
         "lhs": [
@@ -58,6 +59,7 @@ export class DummyComponent implements OnInit {
     this.servicesData = servicesData.data[0]
   
     }
+    // Get NavigationStart events
+ 
   }
-  
 

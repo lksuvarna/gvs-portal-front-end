@@ -21,9 +21,11 @@ export class ServicesComponent implements OnInit {
      this.products=false
      
      this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-       console.log('Response received', data.countrydetails.name);
-       this.countryname=data.countrydetails;
+    // this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
+     //  console.log('Response received', data.countrydetails.name);
+     //  this.countryname=data.countrydetails;
+     this.countryname=localStorage.getItem('countrydetails');
+     
       
   this.cloudantData  = {
     "code": this.ccode,
@@ -34,12 +36,12 @@ export class ServicesComponent implements OnInit {
     "isfac": this.countryname.isfac,
     "isspecial": this.countryname.isspecial
   }
-});
+//});
   const servicesData = { 
   "data": [
     {    
       "lhs": [
-        {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},
+        {"name" : "Services","routingname":"/services", "indented" : true, "highlighted": true},
             {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},

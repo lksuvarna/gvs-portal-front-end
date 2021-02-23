@@ -46,11 +46,11 @@ export class RequestsComponent implements OnInit {
     "data": [
       {    
         "lhs": [
-          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},
+          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false},
           {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
           {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
           {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
+          {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": true}
         ],
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
         "titles": [

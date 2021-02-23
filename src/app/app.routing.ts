@@ -10,6 +10,7 @@ import { EmployeeinfoComponent } from './components/employeeinfo/employeeinfo.co
 import { TopcountryframeComponent } from './components/topcountryframe/topcountryframe.component';
 import { RequestsComponent } from './components/requests/requests.component';
 import { DummyComponent } from './components/dummy/dummy.component';
+import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
 
 const appRoutes: Routes = [
     { path: 'unauthorized', component: HomepageComponent },
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
     { path: 'resultpage', component: ResultpageComponent },
     { path: 'requests', component: RequestsComponent },    
     { path: 'topcountryframe', component: TopcountryframeComponent },
-    { path: 'inprogress', component: DummyComponent },   
+    { path: 'inprogress', component: DummyComponent },
+    { path: 'entrydetails', component: VoipInNewComponent },      
 ];
 
 

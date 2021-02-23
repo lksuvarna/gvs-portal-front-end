@@ -34,7 +34,7 @@ export class JabberservicesComponent implements OnInit {
       "data": [
         {    
           "lhs": [
-            {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},
+            {"name" : "Services","routingname":"/services", "indented" : true, "highlighted": true},            
             {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
