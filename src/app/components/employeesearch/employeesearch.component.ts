@@ -63,11 +63,6 @@ export class EmployeesearchComponent implements OnInit {
     this.servicesData = servicesData.data[0]
   
     }
-<<<<<<< HEAD
   }
   
    
-=======
-    
-
->>>>>>> d41c40973fb7cea0b0ed492834e104e5ec58f6e7
