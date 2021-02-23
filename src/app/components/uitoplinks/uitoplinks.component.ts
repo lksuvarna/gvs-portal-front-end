@@ -8,16 +8,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class UitoplinksComponent implements OnInit {
   searchText = '';
-  searchItems = [
-    {"name" : "Algeria"},
-    {"name" : "Angola"},
-    {"name" : "China"},
+  searchItems = [    
     {"name" : "India"},
-    {"name" : "Indonesia"},
-    {"name" : "Poland"},
-    {"name" : "Romania"},
-    {"name" : "Senegal"},
-    {"name" : "Singapore"}
+    {"name" : "France"},
+    
   ]
   constructor() {
    }

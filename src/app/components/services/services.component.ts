@@ -34,7 +34,9 @@ export class ServicesComponent implements OnInit {
     "isjabber": this.countryname.isjabber,
     "isfixedphone": this.countryname.isfixphone,
     "isfac": this.countryname.isfac,
-    "isspecial": this.countryname.isspecial
+    "isspecial": this.countryname.isspecial,
+    "isreval": true,
+"isapproval": true
   }
 });
   const servicesData = { 
