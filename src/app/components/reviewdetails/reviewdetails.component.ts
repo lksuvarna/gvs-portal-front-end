@@ -9,6 +9,18 @@ export class ReviewdetailsComponent implements OnInit {
 
   constructor() { }
 
+  reviewDetailsIndia = {
+
+    officeLocation:	"Ahmedabad",
+    campus:	"Titanium",
+    funded:	"Yes",
+    chargeDepartmentCode:	"QADF",
+    businessUnit:	"GBS",
+    projectId: "ABCDS",
+    fixPhoneIdentifier: " "
+
+  }
+
   ngOnInit(): void {
   }
 

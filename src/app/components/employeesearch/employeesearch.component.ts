@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class EmployeesearchComponent implements OnInit {
 
   constructor() { }
+
   cloudantData: any = []
   servicesData: any = []
  
@@ -54,3 +55,4 @@ export class EmployeesearchComponent implements OnInit {
       }
     }
     
+
