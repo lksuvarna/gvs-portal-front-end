@@ -1,11 +1,11 @@
-<div class="ds-row ds-pad-t-2 ds-pad-b-1">
-    <div class="ds-col-12">
-      <div class="ds-text-align-center">
-        <img class="ds-border-neutral-5" src="././assets/744.png">
-        <h2><b>India</b></h2>
-      </div>
+<app-topcountryframe></app-topcountryframe>
+<div class=" ds-panel ds-col-12"></div>
+
+
+<div class="ds-row ds-pad-b-1">
+    <div class="ds-col-sm-5 ds-col-md-4 ds-col-xl-4">
+        <app-navigation [dataNav]="servicesData"></app-navigation>
     </div>
-  </div>
   
   <div class=" ds-panel ds-col-12"></div>
   
@@ -170,7 +170,7 @@
                 value="Back">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
-              <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+              <input (click)="submit()" type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 tabindex="32767" value="Next">
             </span>
           </div>
@@ -178,3 +178,4 @@
       </div>
     </form>
   </div>
+</div>

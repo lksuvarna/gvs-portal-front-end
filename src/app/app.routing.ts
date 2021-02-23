@@ -14,6 +14,7 @@ import { DummyComponent } from './components/dummy/dummy.component';
 import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
 
 
+
 const appRoutes: Routes = [
     { path: 'unauthorized', component: HomepageComponent },
     { path: '', component: HomepageComponent },
@@ -26,7 +27,9 @@ const appRoutes: Routes = [
     { path: 'requests', component: RequestsComponent },    
     { path: 'topcountryframe', component: TopcountryframeComponent },
     { path: 'inprogress', component: DummyComponent },
-    { path: 'entrydetails', component: VoipInNewComponent },      
+    { path: 'entrydetails', component: VoipInNewComponent },  
+    { path: 'reviewdetails', component: ReviewdetailsComponent },  
+    { path: 'resultpage', component: ResultpageComponent },    
 ];
 
 

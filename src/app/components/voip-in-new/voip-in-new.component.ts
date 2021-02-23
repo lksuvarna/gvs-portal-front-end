@@ -33,7 +33,7 @@ campus:string[] | undefined;
   
   }
   submit(){
-    this.router.navigate(['/employeeinfo']) 
+    this.router.navigate(['/reviewdetails']) 
   }
   selectedLocation(loc:String) {
     if(loc.toUpperCase() != 'SELECT OFFICE LOCATION') {
