@@ -47,6 +47,8 @@ export class HomepageComponent implements OnInit {
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);
       this.countryname=data.countrydetails;
+      let countrydetails=data.countrydetails;
+      localStorage.setItem('countrydetails', data.countrydetails);
      });
 
     
