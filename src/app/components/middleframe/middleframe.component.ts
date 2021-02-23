@@ -18,7 +18,8 @@ export class MiddleframeComponent implements OnInit {
       this.ccode=this.cookie.getCookie('ccode').substring(6,9);
       this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
         console.log('Response received', data.countrydetails.name);
-        this.countryname=data.countrydetails;      
+       this.countryname=data.countrydetails; 
+      // this.countryname=localStorage.getItem('countrydetails');     
       this.cloudantData  = {
         "code": this.ccode,
     "name": this.countryname.name,
@@ -26,7 +27,9 @@ export class MiddleframeComponent implements OnInit {
     "isjabber": this.countryname.isjabber,
     "isfixedphone": this.countryname.isfixphone,
     "isfac": this.countryname.isfac,
-    "isspecial": this.countryname.isspecial
+    "isspecial": this.countryname.isspecial,
+    "isreval": true,
+"isapproval": true
       }
     });
       const servicesData = { 

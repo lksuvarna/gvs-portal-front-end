@@ -14,8 +14,10 @@ export class NavigationComponent implements OnInit {
   activeNavClass = ' ds-nav-item ds-bg-blue-1'
   selectedItem: any
   onLoad = true
+  dataNav:any = []
 
-  @Input ('dataNav') dataNav : any
+  @Input ('dataNav') dataNavParent : any
+  @Input ('cloudantData') cloudantData : any
 
   getNavClass(i:any) {
     if(this.dataNav.lhs[i].indented && this.dataNav.lhs[i].highlighted ){
@@ -50,8 +52,38 @@ export class NavigationComponent implements OnInit {
     this.selectedItem = i 
   }
 
+  removeService(service:string){
+    this.dataNav.lhs = this.dataNavParent.lhs.filter((item: any)=> item.name !== service)
+  }
+
+  removeServices() {
+    if(!this.cloudantData.isjabber){
+      this.removeService('Jabber')
+     } 
+
+    if(!this.cloudantData.isfixedphone){
+      this.removeService('Fixed Phone')
+    } 
+
+    if(!this.cloudantData.isfac){
+     this.removeService('FAC Code')
+    } 
+
+    if(!this.cloudantData.isapproval){
+      this.removeService('Approvals Pending')
+     } 
+
+    if(!this.cloudantData.isreval){
+      this.removeService('Revalidation Pending')
+     } 
+  }
+
 
   ngOnInit(): void {
+
+    this.dataNav = this.dataNavParent
+    this.removeServices()
+
   }
 
 }

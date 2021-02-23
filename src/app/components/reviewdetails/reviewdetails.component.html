@@ -1,1 +1,105 @@
-<p>reviewdetails works!</p>
+<app-topcountryframe></app-topcountryframe>
+<div class=" ds-panel ds-col-12"></div>
+
+
+<div class="ds-row ds-pad-b-1">
+    <div class="ds-col-sm-5 ds-col-md-4 ds-col-xl-4">
+        <app-navigation [dataNav]="servicesData"></app-navigation>
+    </div>
+<div class="ds-col-sm-2 ds-col-md-7 ds-pad-l-1_5">
+    <b>Request new Jabber service</b>
+        <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+        </div>
+        <div class="ds-hr-thick ds-mar-b-1_5"></div>
+        <div class="ds-panel-row">
+            <div>
+                <span class="ds-tooltip ds-hover" id="tooltip-demo1">
+                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5 ds-pad-l-1" aria-label="help" tabindex="0">STEP 1</span>
+                    <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">Employee Search</div>
+                </span>
+                <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                <span class="ds-tooltip ds-hover" id="tooltip-demo1">
+                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 2</span>
+                    <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Information</div>
+                </span>
+                <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
+                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 3</span>
+                    <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Entry Details</div>
+                </span>
+                <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
+                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 4</span>
+                    <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Review Details</div>
+                </span>
+            </div>
+        </div>
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Jabber Request Details</h2>
+
+            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="46%" height="10">
+                            <label for="addId1">Office Location</label>
+                        </td>
+                        <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">Campus</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.campus}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">Funded</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.funded}}</td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">Charge Department Code</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.chargeDepartmentCode}}</td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">Business Unit</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.businessUnit}}</td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="Projectid">Project id (for GBS employee only)</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.projectId}}</td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="icano"> Fix Phone Identifier</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.fixPhoneIdentifier}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="ds-hr-thick ds-mar-t-1_5"></div>
+            <div class="ds-row ds-mar-t-b-1_5">
+                <div class="ds-col-xs-10 ds-col-md-5 ds-col-lg-2 ds-offset-md-3 ds-offset-lg-6 ds-push-md-4 ds-push-lg-4">
+                    <button class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%">BACK</button>
+                </div>
+                <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3 ds-pull-md-5 ds-pull-lg-1">
+                    <button (click)="submit()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">SUBMIT</button>
+                </div>
+            </div>
+    
+</div></div>

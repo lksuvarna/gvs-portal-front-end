@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-uitoplinks',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./uitoplinks.component.css']
 })
 export class UitoplinksComponent implements OnInit {
-
-  constructor() { }
+  searchText = '';
+  searchItems = [    
+    {"name" : "India"},
+    {"name" : "France"},
+    
+  ]
+  constructor() {
+   }
 
   ngOnInit(): void {
+ 
+  }
+
+  myFunction() {
+    document.getElementById('myDropdown')?.classList.toggle('show');
   }
 
 }
+
+
