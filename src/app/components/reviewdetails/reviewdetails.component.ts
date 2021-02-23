@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
+import { servicenowservice } from '../../_services/servicenow.service';
 import {Router} from  '@angular/router';
 @Component({
   selector: 'app-reviewdetails',
@@ -12,10 +13,14 @@ export class ReviewdetailsComponent implements OnInit {
   ccode='';
   cloudantData: any = []
   servicesData: any = []
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice) { }
 
   submit(){
-    this.router.navigate(['/resultpage']) 
+  this.servicenowservice.submit_new_jabber_request().subscribe(data=> {
+    console.log('response', data);  
+    if(data)
+    this.router.navigate(['/resultpage']) ;
+   });
   }
   reviewDetailsIndia = {
 
