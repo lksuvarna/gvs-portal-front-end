@@ -28,6 +28,8 @@ import { TopcountryframeComponent } from './components/topcountryframe/topcountr
 import { cloudantservice } from '../app/_services/cloudant.service';
 import { MiddleframeComponent } from './components/middleframe/middleframe.component';
 import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component'
+import { DummyComponent } from './components/dummy/dummy.component'
+
 
 
 
@@ -55,6 +57,8 @@ import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.compone
     TopcountryframeComponent,
     MiddleframeComponent,
     VoipInNewComponent,
+    DummyComponent,
+
   ],
   imports: [
     BrowserModule,
