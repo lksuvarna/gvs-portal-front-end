@@ -29,6 +29,10 @@ import { cloudantservice } from '../app/_services/cloudant.service';
 import { MiddleframeComponent } from './components/middleframe/middleframe.component';
 import { FilterPipe } from './filter.pipe';
 import { DropdownsearchPipe } from './dropdownsearch.pipe'
+import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
+import { DummyComponent } from './components/dummy/dummy.component'
+
+
 
 
 
@@ -57,6 +61,10 @@ import { DropdownsearchPipe } from './dropdownsearch.pipe'
     MiddleframeComponent,
     FilterPipe,
     DropdownsearchPipe,
+    VoipInNewComponent,
+    DummyComponent,
+
+
   ],
   imports: [
     BrowserModule,

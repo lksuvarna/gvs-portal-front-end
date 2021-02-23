@@ -1,44 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from  '@angular/router';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 
-@Component({
-  selector: 'app-employeesearch',
-  templateUrl: './employeesearch.component.html',
-  styleUrls: ['./employeesearch.component.css']
-})
-export class EmployeesearchComponent implements OnInit {
 
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
-  cloudantData: any = []
-  servicesData: any = []
+@Component({
+  selector: 'app-dummy',
+  templateUrl: './dummy.component.html',
+  styleUrls: ['./dummy.component.css']
+})
+export class DummyComponent implements OnInit {
+
+  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
   countryname:any;
   ccode='';
-  submit(){
-    this.router.navigate(['/employeeinfo']) 
-  }
+  cloudantData: any = []
+   servicesData: any=[]
   ngOnInit(): void {
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);
-      this.countryname=data.countrydetails;
-    
+      this.countryname=data.countrydetails;      
     this.cloudantData  = {
       "code": this.ccode,
-      "name": this.countryname.name,
-      "isocode": this.countryname.isocode,
-      "isjabber": this.countryname.isjabber,
-      "isfixedphone": this.countryname.isfixphone,
-      "isfac": this.countryname.isfac,
-      "isspecial": this.countryname.isspecial
+  "name": this.countryname.name,
+  "isocode": this.countryname.isocode,
+  "isjabber": this.countryname.isjabber,
+  "isfixedphone": this.countryname.isfixphone,
+  "isfac": this.countryname.isfac,
+  "isspecial": this.countryname.isspecial
     }
   });
-    const servicesData = { 
+  const servicesData = { 
     "data": [
       {    
         "lhs": [
-          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},            
+          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},
           {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
           {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
           {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
@@ -63,6 +59,7 @@ export class EmployeesearchComponent implements OnInit {
     this.servicesData = servicesData.data[0]
   
     }
+    // Get NavigationStart events
+ 
   }
-  
-   
+
