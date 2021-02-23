@@ -89,13 +89,16 @@ if (!req.isAuthenticated()) {
   }
   res.redirect('/api/login');
 } else {
-  console.log('USER =>', req.user.id);
-  res.clearCookie('user');         
-    res.cookie('user',req.user.displayName);          
+  console.log('USER =>', req.user.name);
+  res.clearCookie('user');  
+  res.clearCookie('ccode');          
+    res.cookie('user',req.user._json.name);  
+    res.cookie('ccode',req.user._json.uid);         
     req.session.authuser=req.user;       
     app.post('/api',function(req,res,next){
       res.status(200).json({
-        authusername: req.user.displayName
+      //  authusername: req.user.displayName
+      authusername: req.user
        //username:"Lakkisetty"
       });
   });

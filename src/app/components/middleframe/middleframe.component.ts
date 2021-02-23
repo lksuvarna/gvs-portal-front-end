@@ -1,29 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { cloudantservice } from '../../_services/cloudant.service';
+import { CookieHandlerService } from '../../_services/cookie-handler.service';
 
 @Component({
-  selector: 'app-employeesearch',
-  templateUrl: './employeesearch.component.html',
-  styleUrls: ['./employeesearch.component.css']
+  selector: 'app-middleframe',
+  templateUrl: './middleframe.component.html',
+  styleUrls: ['./middleframe.component.css']
 })
-export class EmployeesearchComponent implements OnInit {
+export class MiddleframeComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
   cloudantData: any = []
   servicesData: any = []
- 
+  countryname:any;
+  ccode='';
     ngOnInit(): void {
-     
+      this.ccode=this.cookie.getCookie('ccode').substring(6,9);
+      this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
+        console.log('Response received', data.countrydetails.name);
+        this.countryname=data.countrydetails;      
       this.cloudantData  = {
-        "code": "744",
-        "name": "India",
-        "isocode": "IN",
-        "isjabber": true,
-        "isfixedphone": false,
-        "isfac": true,
-        "isspecial": false
+        "code": this.ccode,
+    "name": this.countryname.name,
+    "isocode": this.countryname.isocode,
+    "isjabber": this.countryname.isjabber,
+    "isfixedphone": this.countryname.isfixphone,
+    "isfac": this.countryname.isfac,
+    "isspecial": this.countryname.isspecial
       }
-    
+    });
       const servicesData = { 
       "data": [
         {    
@@ -33,7 +38,7 @@ export class EmployeesearchComponent implements OnInit {
             {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
-          ],
+         ],
           "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
           "titles": [
             "Terms of use",
@@ -55,4 +60,3 @@ export class EmployeesearchComponent implements OnInit {
       }
     }
     
-
