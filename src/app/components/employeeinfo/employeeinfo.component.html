@@ -22,7 +22,7 @@
             <div class="ds-row">
                 <div>
                     <span class="ds-tooltip ds-hover" id="tooltip-demo1">
-                        <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 1</span>
+                        <span class="ds-tooltip-trigger ds-text-contextual-blue-5 ds-pad-l-1" aria-label="help" tabindex="0">STEP 1</span>
                         <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">Employee Search</div>
                     </span>
                     <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
@@ -56,58 +56,45 @@
                     <td width="359">
                         <label for="NameID">Name:</label><br><br>
                     </td>
-                    <td width="359">Manisha, Kankanampati</td>
+                    <td width="359">{{employeeInfo.employeeName}}</td>
                 </tr>
         
                 <tr valign="top">
                     <td width="359">
-                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td>
-                    <td width="359"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td>
-                </tr>
-            
-                <tr valign="top">
-                    <td width="359">
                         <label for="JobID">Job Responsibility:</label><br><br>
                     </td>
-                    <td width="359">ServiceNow developer</td>
+                    <td width="359">{{employeeInfo.jobResponsibility}}</td>
                 </tr>
             
                 <tr valign="top">
                     <td width="359">
                         <label for="BUID">Business Unit:</label><br><br>
                     </td>
-                    <td width="359">GBS </td>
+                    <td width="359">{{employeeInfo.businessUnit}}</td>
                 </tr>
             
                 <tr valign="top">
                     <td width="359">
                         <label for="DeptID">Department:</label><br><br>
                     </td>
-                    <td width="359">JDP</td>
+                    <td width="359">{{employeeInfo.department}}</td>
                 </tr>
             
                 <tr valign="top">
                     <td width="359">
                         <label for="EmpCountryID">Country:<br><br></label>
                     </td>
-                    <td width="359">India</td>
+                    <td width="359">{{employeeInfo.country}}</td>
                 </tr>
             
                 <tr valign="top">
                     <td width="359">
                         <label for="EmailID">E-mail:</label><br><br>
                     </td>
-                    <td width="359">Kankanampati.Manisha@ibm.com</td>
+                    <td width="359">{{employeeInfo.email}}</td>
                 </tr>
             
-                <tr valign="top">
-                    <td width="359">
-                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td>
-                    <td width="359"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                </tr>
+                
             </tbody>
         </table>
 

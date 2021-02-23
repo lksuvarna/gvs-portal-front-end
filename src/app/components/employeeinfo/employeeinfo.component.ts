@@ -10,14 +10,28 @@ import {Router} from  '@angular/router';
 })
 export class EmployeeinfoComponent implements OnInit {
 
+
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
   countryname:any;
   ccode='';
   cloudantData: any = []
   servicesData: any = []
   submit(){
-    this.router.navigate(['/entrydetails']) 
+    this.router.navigate(['/entrydetails']) }
+
+  
+
+  employeeInfo = {
+
+    employeeName: "Manisha, Kankanampati",
+    jobResponsibility: "ServiceNow developer",
+    businessUnit: "GBS",
+    department: "JDP",
+    country: "India",
+    email: "Kankanampati.Manisha@ibm.com"
   }
+
+ 
     ngOnInit(): void {
      
       this.ccode=this.cookie.getCookie('ccode').substring(6,9);
