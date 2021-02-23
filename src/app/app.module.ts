@@ -27,7 +27,8 @@ import { JabberservicesComponent } from './components/jabberservices/jabberservi
 import { TopcountryframeComponent } from './components/topcountryframe/topcountryframe.component';
 import { cloudantservice } from '../app/_services/cloudant.service';
 import { MiddleframeComponent } from './components/middleframe/middleframe.component';
-import { FilterPipe } from './filter.pipe'
+import { FilterPipe } from './filter.pipe';
+import { DropdownsearchPipe } from './dropdownsearch.pipe'
 
 
 
@@ -55,6 +56,7 @@ import { FilterPipe } from './filter.pipe'
     TopcountryframeComponent,
     MiddleframeComponent,
     FilterPipe,
+    DropdownsearchPipe,
   ],
   imports: [
     BrowserModule,

@@ -24,7 +24,9 @@ export class ServicesComponent implements OnInit {
     "isjabber": true,
     "isfixedphone": false,
     "isfac": true,
-    "isspecial": false
+    "isspecial": false,
+    "isapproval": false,
+    "isreval": false,
   }
 
   const servicesData = { 
@@ -32,7 +34,7 @@ export class ServicesComponent implements OnInit {
     {    
       "lhs": [
         {"name" : "Services", "indented" : false, "highlighted": true},
-        {"name" : "Approvals Pending", "indented" : false, "highlighted": false},
+        {"name" : "Approvals Pending", "indented" : true, "highlighted": false},
         {"name" : "Revalidation Pending", "indented" : false, "highlighted": false},
         {"name" : "Resources", "indented" : false, "highlighted": false},
         {"name" : "Requests", "indented" : false, "highlighted": false}
