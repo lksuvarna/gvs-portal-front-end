@@ -21,10 +21,10 @@ export class ServicesComponent implements OnInit {
      this.products=false
      
      this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-    // this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-     //  console.log('Response received', data.countrydetails.name);
-     //  this.countryname=data.countrydetails;
-     this.countryname=localStorage.getItem('countrydetails');
+     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
+      console.log('Response received', data.countrydetails.name);
+       this.countryname=data.countrydetails;
+    // this.countryname=localStorage.getItem('countrydetails');
      
       
   this.cloudantData  = {
@@ -36,7 +36,7 @@ export class ServicesComponent implements OnInit {
     "isfac": this.countryname.isfac,
     "isspecial": this.countryname.isspecial
   }
-//});
+});
   const servicesData = { 
   "data": [
     {    
