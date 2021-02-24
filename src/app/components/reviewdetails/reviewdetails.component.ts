@@ -3,6 +3,7 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { servicenowservice } from '../../_services/servicenow.service';
 import {Router} from  '@angular/router';
+import { servicenowservice } from '../../_services/servicenow.service';
 @Component({
   selector: 'app-reviewdetails',
   templateUrl: './reviewdetails.component.html',
@@ -16,12 +17,13 @@ export class ReviewdetailsComponent implements OnInit {
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice) { }
 
   submit(){
-  this.servicenowservice.submit_new_jabber_request().subscribe(data=> {
-    console.log('response', data);  
+    this.servicenowservice.submit_new_jabber_request().subscribe(data=> {
+    console.log('response', data);
     if(data)
     this.router.navigate(['/resultpage']) ;
-   });
-  }
+    });
+    }
+
   reviewDetailsIndia = {
 
     officeLocation:	"Ahmedabad",

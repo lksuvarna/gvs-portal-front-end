@@ -1,4 +1,4 @@
-<div class="ds-col-sm-7 ds-pad-t-1 ds-col-md-8 ds-col-xl-8">
+<div class="ds-pad-t-1">
     <div class="ds-row ds-pad-b-1 ds-pad-r-2">
         <div *ngIf="cloudantData.isjabber" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
             <a [routerLink]="['/jabberservices']">
@@ -49,4 +49,3 @@
         <li *ngFor="let usefulinfotext of servicesData.usefulinfotexts">{{usefulinfotext}}</li>
     </ul>
 </div>
-
