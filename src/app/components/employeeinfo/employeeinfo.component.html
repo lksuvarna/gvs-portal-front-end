@@ -1,53 +1,52 @@
 <app-topcountryframe></app-topcountryframe>
+
+
 <div class=" ds-panel ds-col-12"></div>
-
-
-<div class="ds-row ds-pad-b-1">
-    <div class="ds-col-sm-5 ds-col-md-4 ds-col-xl-4">
-        <app-navigation [dataNav]="servicesData"></app-navigation>
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+    <div class="ds-col-md-4 ds-col-xl-4">
+        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
     </div>
-    
-    <div class="ds-col-sm-2 ds-col-md-7 ds-pad-l-1_5">
-        <b>Request new Jabber service</b>        
+    <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
+        <b>Request new Jabber service</b>
         <div class="ds-padding-top-0_5 ">
-        <p>If the following information is correct, click Next. Any errors must be corrected in the employee's <a href="https://w3.ibm.com/bluepages/" target="_blank">BluePages record</a> before continuing.</p>
+            <p>If the following information is correct, click Next. Any errors must be corrected in the employee's <a href="https://w3.ibm.com/bluepages/" target="_blank">BluePages record</a> before continuing.</p>
         </div>
-        <div class="ds-hr-thick ds-mar-b-1_5"></div>        
-        
+        <div class="ds-hr-thick ds-mar-b-1_5"></div>
+
         <div class="ds-col-12 ds-padding-top-0_5">
-        <div class="ds-row">
-            <div class="ds-col-12">
             <div class="ds-row">
-                <div>
-                    <span class="ds-tooltip ds-hover" id="tooltip-demo1">
+                <div class="ds-col-12">
+                    <div class="ds-row">
+                        <div>
+                            <span class="ds-tooltip ds-hover" id="tooltip-demo1">
                         <span class="ds-tooltip-trigger ds-text-contextual-blue-5 ds-pad-l-1" aria-label="help" tabindex="0">STEP 1</span>
-                        <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">Employee Search</div>
-                    </span>
-                    <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
-                    <span class="ds-tooltip ds-hover" id="tooltip-demo1">
+                            <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">Employee Search</div>
+                            </span>
+                            <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                            <span class="ds-tooltip ds-hover" id="tooltip-demo1">
                         <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 2</span>
-                        <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Information</div>
-                    </span>
-                    <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
-                    <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
+                            <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Information</div>
+                            </span>
+                            <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                            <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
                         <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 3</span>
-                        <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Entry Details</div>
-                    </span>
-                    <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
-                    <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
+                            <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Entry Details</div>
+                            </span>
+                            <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                            <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
                         <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 4</span>
-                        <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Review Details</div>
-                    </span>
+                            <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Review Details</div>
+                            </span>
+                        </div>
+
+                    </div>
                 </div>
-        
-            </div>
             </div>
         </div>
-        </div>
-        
+
         <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Information</h2>
-        
-        
+
+
         <table cellspacing="0" cellpadding="0" border="0">
             <tbody>
                 <tr valign="top">
@@ -56,43 +55,43 @@
                     </td>
                     <td width="359">{{employeeInfo.employeeName}}</td>
                 </tr>
-        
+
                 <tr valign="top">
                     <td width="359">
                         <label for="JobID">Job Responsibility:</label><br><br>
                     </td>
                     <td width="359">{{employeeInfo.jobResponsibility}}</td>
                 </tr>
-            
+
                 <tr valign="top">
                     <td width="359">
                         <label for="BUID">Business Unit:</label><br><br>
                     </td>
                     <td width="359">{{employeeInfo.businessUnit}}</td>
                 </tr>
-            
+
                 <tr valign="top">
                     <td width="359">
                         <label for="DeptID">Department:</label><br><br>
                     </td>
                     <td width="359">{{employeeInfo.department}}</td>
                 </tr>
-            
+
                 <tr valign="top">
                     <td width="359">
                         <label for="EmpCountryID">Country:<br><br></label>
                     </td>
                     <td width="359">{{employeeInfo.country}}</td>
                 </tr>
-            
+
                 <tr valign="top">
                     <td width="359">
                         <label for="EmailID">E-mail:</label><br><br>
                     </td>
                     <td width="359">{{employeeInfo.email}}</td>
                 </tr>
-            
-                
+
+
             </tbody>
         </table>
 
@@ -115,10 +114,12 @@
             </p>
         </div>
         <div id="err-dept1" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
-            <p>The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact <a style="color:blue" target="_blank" href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
+            <p>The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact <a style="color:blue" target="_blank"
+                    href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
         <div id="err-dept2" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
-            <p>The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact <a style="color:blue" target="_blank" href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
+            <p>The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact <a style="color:blue" target="_blank"
+                    href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
         <div class="ds-hr-thick"></div>
 
@@ -130,11 +131,6 @@
                 <button class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">BACK</button>
             </div>
         </div>
-                   
+
     </div>
-        
-        
-        
-
-</div> 
-
+</div>
