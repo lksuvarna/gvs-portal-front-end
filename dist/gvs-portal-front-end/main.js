@@ -3452,12 +3452,6 @@ class NavigationComponent {
         if (!this.cloudantData.isfac) {
             this.removeService('FAC Code');
         }
-        if (!this.cloudantData.isapproval) {
-            this.removeService('Approvals Pending');
-        }
-        if (!this.cloudantData.isreval) {
-            this.removeService('Revalidation Pending');
-        }
     }
     ngOnInit() {
         this.dataNav = this.dataNavParent;

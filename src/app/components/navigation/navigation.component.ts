@@ -69,13 +69,7 @@ export class NavigationComponent implements OnInit {
      this.removeService('FAC Code')
     } 
 
-    if(!this.cloudantData.isapproval){
-      this.removeService('Approvals Pending')
-     } 
-
-    if(!this.cloudantData.isreval){
-      this.removeService('Revalidation Pending')
-     } 
+     
   }
 
 
