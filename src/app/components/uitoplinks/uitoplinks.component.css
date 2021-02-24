@@ -1,5 +1,9 @@
 .dropbtn {
     background-color: white;
+    font-size: 16px;
+    font-weight: 410;
+    font-family: IBMPlexSans, Helvetica Neue, Helvetica, Arial, sans-serif;
+    width: 215px;
     color: black;
     padding: 16px;
     border: none;
