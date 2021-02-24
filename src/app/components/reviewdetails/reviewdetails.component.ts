@@ -3,7 +3,7 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { servicenowservice } from '../../_services/servicenow.service';
 import {Router} from  '@angular/router';
-import { servicenowservice } from '../../_services/servicenow.service';
+
 @Component({
   selector: 'app-reviewdetails',
   templateUrl: './reviewdetails.component.html',
