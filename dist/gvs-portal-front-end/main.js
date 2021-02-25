@@ -687,6 +687,7 @@ class ServicesComponent {
         this.cloudantData = [];
         this.servicesData = [];
         this.ccode = '';
+        this.pcode = '';
     }
     ngOnInit() {
         const servicesData = {
@@ -1881,7 +1882,6 @@ class TopcountryframeComponent {
         this.pcode = '';
     }
     ngOnInit() {
-        this.ngOnInit();
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
@@ -3515,7 +3515,6 @@ class NavigationComponent {
         }
     }
     ngOnInit() {
-        this.ngOnInit();
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
@@ -4159,8 +4158,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../_services/cookie-handler.service */ "oxqP");
 /* harmony import */ var _services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/cloudant.service */ "Rfmm");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ "ofXK");
 
 
 
@@ -4259,14 +4258,58 @@ function MiddleframeComponent_li_13_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](usefulinfotext_r5);
 } }
 class MiddleframeComponent {
-    constructor(cookie, cloudantservice) {
+    constructor(cookie, cloudantservice, route) {
         this.cookie = cookie;
         this.cloudantservice = cloudantservice;
+        this.route = route;
         this.cloudantData = [];
         this.servicesData = [];
+        this.pcode = '';
         this.ccode = '';
     }
     ngOnInit() {
+        this.route.queryParams
+            .subscribe(params => {
+            console.log(params);
+            this.pcode = params.country;
+            console.log("navigation component" + this.pcode);
+        });
+        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+        this.countryroute = sessionStorage.getItem('countryroute');
+        if (this.pcode == this.ccode == this.countryroute) {
+            this.pcountrydetails = sessionStorage.getItem('countrydetails');
+            console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
+            this.countryname = JSON.parse(this.pcountrydetails);
+            this.cloudantData = {
+                "code": this.ccode,
+                "name": this.countryname.name,
+                "isocode": this.countryname.isocode,
+                "isjabber": this.countryname.isjabber,
+                "isfixedphone": this.countryname.isfixphone,
+                "isfac": this.countryname.isfac,
+                "isspecial": this.countryname.isspecial,
+                "isreval": true
+            };
+        }
+        else {
+            console.log("navigation componentelse" + this.ccode);
+            this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                console.log('Response received navigation', data.countrydetails.isspecial);
+                this.countryname = data.countrydetails;
+                sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                sessionStorage.setItem('countryroute', this.pcode);
+                this.cloudantData = {
+                    "code": this.pcode,
+                    "name": this.countryname.name,
+                    "isocode": this.countryname.isocode,
+                    "isjabber": this.countryname.isjabber,
+                    "isfixedphone": this.countryname.isfixphone,
+                    "isfac": this.countryname.isfac,
+                    "isspecial": this.countryname.isspecial,
+                    "isreval": true
+                };
+            });
+        }
         const servicesData = {
             "data": [
                 {
@@ -4295,7 +4338,7 @@ class MiddleframeComponent {
         this.servicesData = servicesData.data[0];
     }
 }
-MiddleframeComponent.ɵfac = function MiddleframeComponent_Factory(t) { return new (t || MiddleframeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__["cloudantservice"])); };
+MiddleframeComponent.ɵfac = function MiddleframeComponent_Factory(t) { return new (t || MiddleframeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"])); };
 MiddleframeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MiddleframeComponent, selectors: [["app-middleframe"]], decls: 14, vars: 9, consts: [[1, "ds-pad-t-1"], [1, "ds-row", "ds-pad-b-1", "ds-pad-r-2"], ["class", "ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4", 4, "ngIf"], ["target", "_blank", 1, "ds-text-contextual-blue-5", "ds-link-unstyled", 3, "href"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], [4, "ngFor", "ngForOf"], [1, "ds-pad-b-1", "ds-col-xs-12", "ds-col-sm-6", "ds-col-md-6", "ds-col-lg-4"], [3, "routerLink"], [1, "ds-panel"], [1, "ds-panel-container", "ds-text-align-center", 2, "max-height", "215px"], ["src", "././assets/JABBER.png"], [1, "ds-text-small", "ds-padding-t-3"], ["src", "././assets/fixedphone.png"], ["src", "././assets/ss.png"]], template: function MiddleframeComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
@@ -4336,7 +4379,7 @@ MiddleframeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.servicesData.titles[2]);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.servicesData.usefulinfotexts);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterLinkWithHref"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtaWRkbGVmcmFtZS5jb21wb25lbnQuY3NzIn0= */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_4__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtaWRkbGVmcmFtZS5jb21wb25lbnQuY3NzIn0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MiddleframeComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -4344,7 +4387,7 @@ MiddleframeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
                 templateUrl: './middleframe.component.html',
                 styleUrls: ['./middleframe.component.css']
             }]
-    }], function () { return [{ type: _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__["cloudantservice"] }]; }, null); })();
+    }], function () { return [{ type: _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__["cloudantservice"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }]; }, null); })();
 
 
 /***/ }),
