@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import {Router} from  '@angular/router';
+import {Db2Service} from '../../_services/db2.service'
+import {servicenowservice} from '../../_services/servicenow.service'
 
 @Component({
   selector: 'app-employeeinfo',
@@ -11,7 +13,7 @@ import {Router} from  '@angular/router';
 export class EmployeeinfoComponent implements OnInit {
 
 
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice, private Db2Service: Db2Service, private servicenowservice:servicenowservice) { }
   countryname:any;
   ccode='';
   cloudantData: any = []
@@ -34,6 +36,7 @@ export class EmployeeinfoComponent implements OnInit {
  
     ngOnInit(): void {
      
+
       this.ccode=this.cookie.getCookie('ccode').substring(6,9);
       this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
         console.log('Response received', data.countrydetails.name);
@@ -75,8 +78,17 @@ export class EmployeeinfoComponent implements OnInit {
       ]
     }
       
-      this.servicesData = servicesData.data[0]
-    
-      }
+      this.servicesData = servicesData.data[0];
+
+      // Code to search Db2 for Jabber New
+      this.Db2Service.search_db2('06685M744','jabber_new').subscribe(data=> {
+        console.log(' db2 response', data);
+      });
+
+      //code to search snow for jabber new
+      this.servicenowservice.searchsnow('000RQU744','jabber_new').subscribe(data=> {
+        console.log(' snow response', data);
+      });
+  }
     }
     

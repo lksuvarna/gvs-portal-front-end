@@ -3,14 +3,17 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { createOfflineCompileUrlResolver } from '@angular/compiler';
+import { snowsearch } from './payload';
 
 
 @Injectable({ providedIn: 'root' })
 
 export class servicenowservice {
 
-  private Url = '/api/submit_snow';
+  private submitUrl = '/api/submit_snow';
+  private searchUrl ='/api/search_snow';
   sample : any;
+  payload: snowsearch = new snowsearch();
   constructor(private http: HttpClient) { }
   submit_new_jabber_request(): Observable<any> {
     console.log('calling snow');
@@ -39,9 +42,18 @@ export class servicenowservice {
     "SLA_type":"seven_days_reminder",
     "country_code" : "744"
     };
-    return this.http.post(this.Url,this.sample)
+    return this.http.post(this.submitUrl,this.sample)
       .pipe(catchError(this.errorhandler))
   }
+  
+  searchsnow(cnum: string, type: string): Observable<any> {
+    console.log('calling snow swarch');
+    this.payload.cnum=cnum;
+    this.payload.request_type=type;
+    return this.http.post(this.searchUrl,this.payload)
+      .pipe(catchError(this.errorhandler))
+  }
+
   errorhandler(error: HttpErrorResponse) {
     console.log(error.message)
     return Observable.throw(error.message || "Sever Error");
