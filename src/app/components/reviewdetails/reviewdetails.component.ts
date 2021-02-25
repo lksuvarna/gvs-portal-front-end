@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
-import {Router} from  '@angular/router';
 import { servicenowservice } from '../../_services/servicenow.service';
+import {Router} from  '@angular/router';
+
 @Component({
   selector: 'app-reviewdetails',
   templateUrl: './reviewdetails.component.html',
@@ -22,6 +23,7 @@ export class ReviewdetailsComponent implements OnInit {
     this.router.navigate(['/resultpage']) ;
     });
     }
+
   reviewDetailsIndia = {
 
     officeLocation:	"Ahmedabad",
