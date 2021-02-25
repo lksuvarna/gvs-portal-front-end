@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -1881,14 +1881,16 @@ class TopcountryframeComponent {
         this.pcode = '';
     }
     ngOnInit() {
+        this.ngOnInit();
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
             this.pcode = params.country;
             console.log("topcountry component" + this.pcode);
         });
+        this.countryroute = sessionStorage.getItem('countryroute');
         this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-        if (this.pcode == this.ccode) {
+        if (this.pcode == this.ccode == this.countryroute) {
             this.pcountrydetails = sessionStorage.getItem('countrydetails');
             console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code);
             this.countryname = JSON.parse(this.pcountrydetails);
@@ -1899,6 +1901,7 @@ class TopcountryframeComponent {
                 console.log('Response received', data.countrydetails.name);
                 this.countryname = data.countrydetails;
                 sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                sessionStorage.setItem('countryroute', this.pcode);
             });
         }
     }
@@ -2408,7 +2411,7 @@ const appRoutes = [
     { path: 'reviewdetails', component: _components_reviewdetails_reviewdetails_component__WEBPACK_IMPORTED_MODULE_10__["ReviewdetailsComponent"] },
     { path: 'resultpage', component: _components_resultpage_resultpage_component__WEBPACK_IMPORTED_MODULE_6__["ResultpageComponent"] },
 ];
-const appRoutingProviders = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes);
+const appRoutingProviders = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes, { onSameUrlNavigation: 'reload' });
 
 
 /***/ }),
@@ -3247,6 +3250,7 @@ class HomepageComponent {
             this.countryname = data.countrydetails;
             let countrydetails = data.countrydetails;
             sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+            sessionStorage.setItem('countryroute', this.ccode);
         });
     }
 }
@@ -3511,6 +3515,7 @@ class NavigationComponent {
         }
     }
     ngOnInit() {
+        this.ngOnInit();
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
@@ -3518,7 +3523,8 @@ class NavigationComponent {
             console.log("navigation component" + this.pcode);
         });
         this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-        if (this.pcode == this.ccode) {
+        this.countryroute = sessionStorage.getItem('countryroute');
+        if (this.pcode == this.ccode == this.countryroute) {
             this.pcountrydetails = sessionStorage.getItem('countrydetails');
             console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
             this.countryname = JSON.parse(this.pcountrydetails);
@@ -3541,6 +3547,7 @@ class NavigationComponent {
                 console.log('Response received navigation', data.countrydetails.isspecial);
                 this.countryname = data.countrydetails;
                 sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                sessionStorage.setItem('countryroute', this.pcode);
                 this.cloudantData = {
                     "code": this.pcode,
                     "name": this.countryname.name,

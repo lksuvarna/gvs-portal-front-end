@@ -39,4 +39,4 @@ const appRoutes: Routes = [
 ];
 
 
-export const appRoutingProviders = RouterModule.forRoot(appRoutes);
+export const appRoutingProviders = RouterModule.forRoot(appRoutes, {onSameUrlNavigation: 'reload'});
