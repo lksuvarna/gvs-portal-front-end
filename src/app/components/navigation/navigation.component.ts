@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { cloudantservice } from '../../_services/cloudant.service';
+import { CookieHandlerService } from '../../_services/cookie-handler.service';
 
 @Component({
   selector: 'app-navigation',
@@ -6,9 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-
-  constructor() { }
-
+  countryname:any;
+  ccode='';
+  cloudantData: any = []
+   servicesData: any=[]
+  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
+  
   defaultNavClass = 'ds-panel-segment ds-text-uppercase'
   indentNavClass = ' ds-pad-l-2'
   activeNavClass = ' ds-nav-item ds-bg-blue-1'
@@ -17,7 +22,7 @@ export class NavigationComponent implements OnInit {
   dataNav:any = []
 
   @Input ('dataNav') dataNavParent : any
-  @Input ('cloudantData') cloudantData : any
+  @Input ('cloudantData') cloudantData1 : any
 
   getNavClass(i:any) {
     if(this.dataNav.lhs[i].indented && this.dataNav.lhs[i].highlighted ){
@@ -57,6 +62,7 @@ export class NavigationComponent implements OnInit {
   }
 
   removeServices() {
+    console.log("In navigation component"+this.cloudantData.isreval)
     if(!this.cloudantData.isjabber){
       this.removeService('Jabber')
      } 
@@ -68,15 +74,37 @@ export class NavigationComponent implements OnInit {
     if(!this.cloudantData.isfac){
      this.removeService('FAC Code')
     } 
-
+    if(!this.cloudantData.isapproval){
+      this.removeService('Approvals Pending')
+     } 
+ 
+    if(!this.cloudantData.isreval){
+      this.removeService('Revalidation Pending')
+     }
      
   }
 
 
   ngOnInit(): void {
-
-    this.dataNav = this.dataNavParent
+    this.ccode=this.cookie.getCookie('ccode').substring(6,9);
+  this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
+     console.log('Response received', data.countrydetails.isspecial);
+     this.countryname=data.countrydetails;      
+   this.cloudantData  = {
+     "code": this.ccode,
+ "name": this.countryname.name,
+ "isocode": this.countryname.isocode,
+ "isjabber": this.countryname.isjabber,
+ "isfixedphone": this.countryname.isfixphone,
+ "isfac": this.countryname.isfac,
+ "isspecial": this.countryname.isspecial,
+ "isreval":true
+   }
+   this.dataNav = this.dataNavParent
     this.removeServices()
+ });
+
+    
 
   }
 
