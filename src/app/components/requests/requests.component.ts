@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-requests',
@@ -16,11 +17,12 @@ export class RequestsComponent implements OnInit {
   DisplayModel= 'none';
   allComments = [];
 
-  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
+  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute) { }
   cloudantData: any = []
   servicesData: any = []
   countryname:any;
   ccode='';
+  data1:any
   openNav(comments:any) {
     this.DisplayModel = 'block';
     this.allComments = comments;
@@ -30,21 +32,8 @@ export class RequestsComponent implements OnInit {
     this.DisplayModel = 'none';
   }
   ngOnInit(): void {
-    this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-       console.log('Response received', data.countrydetails.name);
-       this.countryname=data.countrydetails;
-      
-    this.cloudantData  = {
-      "code": this.ccode,
-    "name": this.countryname.name,
-    "isocode": this.countryname.isocode,
-    "isjabber": this.countryname.isjabber,
-    "isfixedphone": this.countryname.isfixphone,
-    "isfac": this.countryname.isfac,
-    "isspecial": this.countryname.isspecial
-    }});
-  
+    
+    
     const servicesData = { 
     "data": [
       {    

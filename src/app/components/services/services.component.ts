@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
@@ -14,31 +16,13 @@ export class ServicesComponent implements OnInit {
   navcomponent:any
   countryname:any;
   ccode='';
-  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
+  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-     this.product=true
-     this.products=false
+    
+    
      
-     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-      console.log('Response received', data.countrydetails.name);
-       this.countryname=data.countrydetails;
-    // this.countryname=localStorage.getItem('countrydetails');
      
-      
-  this.cloudantData  = {
-    "code": this.ccode,
-    "name": this.countryname.name,
-    "isocode": this.countryname.isocode,
-    "isjabber": this.countryname.isjabber,
-    "isfixedphone": this.countryname.isfixphone,
-    "isfac": this.countryname.isfac,
-    "isspecial": this.countryname.isspecial,
-    "isreval": true,
-"isapproval": true
-  }
-});
   const servicesData = { 
   "data": [
     {    

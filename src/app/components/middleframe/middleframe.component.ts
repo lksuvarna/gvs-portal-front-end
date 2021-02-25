@@ -15,23 +15,7 @@ export class MiddleframeComponent implements OnInit {
   countryname:any;
   ccode='';
     ngOnInit(): void {
-      this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-      this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-        console.log('Response received', data.countrydetails.name);
-       this.countryname=data.countrydetails; 
-      // this.countryname=localStorage.getItem('countrydetails');     
-      this.cloudantData  = {
-        "code": this.ccode,
-    "name": this.countryname.name,
-    "isocode": this.countryname.isocode,
-    "isjabber": this.countryname.isjabber,
-    "isfixedphone": this.countryname.isfixphone,
-    "isfac": this.countryname.isfac,
-    "isspecial": this.countryname.isspecial,
-    "isreval": true,
-"isapproval": true
-      }
-    });
+     
       const servicesData = { 
       "data": [
         {    

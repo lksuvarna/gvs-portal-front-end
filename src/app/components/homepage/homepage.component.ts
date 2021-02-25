@@ -48,7 +48,7 @@ export class HomepageComponent implements OnInit {
       console.log('Response received', data.countrydetails.name);
       this.countryname=data.countrydetails;
       let countrydetails=data.countrydetails;
-      localStorage.setItem('countrydetails', data.countrydetails);
+      sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
      });
 
     
