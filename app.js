@@ -129,6 +129,7 @@ app.use('/', ensureAuthenticated);
      ws:true ,
          }
    app.use('/api/*', createProxyMiddleware(options));
+  
 
    app.use(bodyParser.json());
    app.use(bodyParser.urlencoded({extended: true}));
