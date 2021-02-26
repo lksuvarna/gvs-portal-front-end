@@ -39,10 +39,10 @@
 <br>
 <div class="ds-row ds-text-align-center " style="background-color: #f3f3f3; ">
     <div class="ds-col-sm-6 ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5 ">
-        <a [routerLink]="[ '/services'] " routerLinkActive="active "><img class="ds-text-align-center ds-border-neutral-5 " [src]='countryname.flagname'></a>
+        <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode}" routerLinkActive="active " data="{cdetails:this.countryname}"><img class="ds-text-align-center ds-border-neutral-5 " [src]='countryname.flagname'></a>
     </div>
     <div class="ds-col-sm-6 ds-text-align-left ds-padding-top-1 "><br><span style="font-size:30px " class="ds-padding-left-3 ">My Country</span><br>
-        <a [routerLink]="[ '/services'] ">Click here</a> to view all available <br><span class="ds-padding-left-3 ">services for {{countryname.name}}</span>.<br>
+        <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode}" data="{cdetails:this.countryname}">Click here</a> to view all available <br><span class="ds-padding-left-3 ">services for {{countryname.name}}</span>.<br>
     </div>
 </div>
 <br>
@@ -63,7 +63,7 @@
                 <span class="button-blue " id="button2 ">
           <input type="button " name="next "
             class="ds-button ds-secondary ds-margin-bottom-0 ds-padding-top-1 ds-padding-bottom-1 " tabindex="15 "
-            [routerLink]="[ '/services'] "
+            [routerLink]="[ '/services'] " [queryParams]="{country:ccode}" data="{cdetails:this.countryname}"
             value="Get Started ">
 
         </span>

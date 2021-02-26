@@ -1,7 +1,7 @@
 <div class="ds-pad-t-1">
     <div class="ds-row ds-pad-b-1 ds-pad-r-2">
         <div *ngIf="cloudantData.isjabber" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
-            <a [routerLink]="['/jabberservices']">
+            <a [routerLink]="['/jabberservices']" [queryParams]="{country:pcode}">
                 <div class="ds-panel">
                     <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
                         <img src="././assets/JABBER.png">
@@ -11,7 +11,7 @@
             </a>
         </div>
         <div *ngIf="cloudantData.isfixedphone" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
-            <a [routerLink]="['/inprogress']">
+            <a [routerLink]="['/inprogress']" [queryParams]="{country:pcode}">
                 <div class="ds-panel">
                     <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
                         <img src="././assets/fixedphone.png">
@@ -21,7 +21,7 @@
             </a>
         </div>
         <div *ngIf="cloudantData.isfac" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
-            <a [routerLink]="['/inprogress']">
+            <a [routerLink]="['/inprogress']" [queryParams]="{country:pcode}">
                 <div class="ds-panel">
                     <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
                         <img src="././assets/fixedphone.png">
@@ -31,7 +31,7 @@
             </a>
         </div>
         <div *ngIf="cloudantData.isspecial" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
-            <a [routerLink]="['/inprogress']">
+            <a [routerLink]="['/inprogress']" [queryParams]="{country:pcode}">
                 <div class="ds-panel">
                     <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
                         <img src="././assets/ss.png">
