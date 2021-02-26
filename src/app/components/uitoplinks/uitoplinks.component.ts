@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CookieHandlerService } from '../../_services/cookie-handler.service';
 
 @Component({
   selector: 'app-uitoplinks',
@@ -9,17 +10,18 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class UitoplinksComponent implements OnInit {
   searchText = '';
+  ccode='';
   searchItems = [    
-    {"name" : "India"},
-    {"name" : "France"},
+    {"name" : "India","code":"744"},
+    {"name" : "France","code":"706"},
     
   ]
 
-  constructor(private _eref: ElementRef) {
+  constructor(private _eref: ElementRef,private cookie: CookieHandlerService) {
    }
 
   ngOnInit(): void {
-
+    this.ccode=this.cookie.getCookie('ccode').substring(6,9);
   }
 
   onClick(event:Event) {

@@ -2,7 +2,7 @@
     <div class="ds-panel ds-bg-neutral-warm-1 ds-no-border ">
         <ul class="ds-list-unstyled ds-hover">
             <li *ngFor="let nav of dataNav.lhs; let i=index" [ngClass]="i==selectedItem ? getNavActiveClass(i) : getNavClass(i) ">
-                <a (click)="clickEvent(i) "  [routerLink]="nav.routingname"  [ngClass]="i==selectedItem ? 'ds-text-contextual-blue-5' : 'ds-text-neutral-7' ">{{nav.name}}</a>
+                <a (click)="clickEvent(i) "  [routerLink]="nav.routingname" [queryParams]="{ page: nav.routingname,country:pcode}"  [ngClass]="i==selectedItem ? 'ds-text-contextual-blue-5' : 'ds-text-neutral-7' ">{{nav.name}}</a>
             </li>
         </ul>
     </div>
