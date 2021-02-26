@@ -1824,7 +1824,7 @@ class TopcountryframeComponent {
         });
         this.countryroute = sessionStorage.getItem('countryroute');
         this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-        if (this.pcode == this.ccode || this.pcode == this.countryroute) {
+        if (this.pcode == this.countryroute) {
             this.pcountrydetails = sessionStorage.getItem('countrydetails');
             console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code);
             this.countryname = JSON.parse(this.pcountrydetails);
@@ -3420,7 +3420,7 @@ class NavigationComponent {
         });
         this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
         this.countryroute = sessionStorage.getItem('countryroute');
-        if (this.pcode == this.ccode || this.pcode == this.countryroute) {
+        if (this.pcode == this.countryroute) {
             this.pcountrydetails = sessionStorage.getItem('countrydetails');
             console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
             this.countryname = JSON.parse(this.pcountrydetails);
@@ -4184,7 +4184,7 @@ class MiddleframeComponent {
         });
         this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
         this.countryroute = sessionStorage.getItem('countryroute');
-        if (this.pcode == this.ccode || this.pcode == this.countryroute) {
+        if (this.pcode == this.countryroute) {
             this.pcountrydetails = sessionStorage.getItem('countrydetails');
             console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
             this.countryname = JSON.parse(this.pcountrydetails);
