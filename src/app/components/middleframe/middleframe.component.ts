@@ -28,7 +28,7 @@ export class MiddleframeComponent implements OnInit {
       })
     this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
     this.countryroute = sessionStorage.getItem('countryroute')
-    if (this.pcode == this.ccode == this.countryroute) {
+    if (this.pcode == this.ccode || this.pcode== this.countryroute) {
       this.pcountrydetails = sessionStorage.getItem('countrydetails')
       console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code)
       this.countryname = JSON.parse(this.pcountrydetails)
@@ -40,7 +40,12 @@ export class MiddleframeComponent implements OnInit {
         "isfixedphone": this.countryname.isfixphone,
         "isfac": this.countryname.isfac,
         "isspecial": this.countryname.isspecial,
-        "isreval": true
+        "isreval": this.countryname.isreval,
+        "isapproval":this.countryname.isapproval,
+        "isjabbernew":this.countryname.isjabbernew,
+        "isjabberdelete":this.countryname.isjabberdelete,
+        "isjabbermove":this.countryname.isjabbermove,
+        "isjabberupdate":this.countryname.isjabberupdate
       }
 
     }
@@ -59,7 +64,12 @@ export class MiddleframeComponent implements OnInit {
           "isfixedphone": this.countryname.isfixphone,
           "isfac": this.countryname.isfac,
           "isspecial": this.countryname.isspecial,
-          "isreval": true
+          "isreval": this.countryname.isreval,
+        "isapproval":this.countryname.isapproval,
+        "isjabbernew":this.countryname.isjabbernew,
+        "isjabberdelete":this.countryname.isjabberdelete,
+        "isjabbermove":this.countryname.isjabbermove,
+        "isjabberupdate":this.countryname.isjabberupdate
         }
       });
 

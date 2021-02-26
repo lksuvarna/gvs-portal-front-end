@@ -18,10 +18,10 @@ export class RequestsComponent implements OnInit {
   allComments = [];
 
   constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute) { }
-  cloudantData: any = []
+  
   servicesData: any = []
   countryname:any;
-  ccode='';
+  
   data1:any
   openNav(comments:any) {
     this.DisplayModel = 'block';
@@ -31,8 +31,7 @@ export class RequestsComponent implements OnInit {
   closeNav() {
     this.DisplayModel = 'none';
   }
-  ngOnInit(): void {
-    
+  ngOnInit(): void {   
     
     const servicesData = { 
     "data": [
@@ -45,26 +44,12 @@ export class RequestsComponent implements OnInit {
           {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": true}
         ],
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "titles": [
-          "Terms of use",
-          "Useful Information",
-          "Please bear in mind the following points when making a request :"
-        ],
-        "usefulinfotexts": [
-          "To make a request the Employee must exist in BluePages (except for cancellation requests).",
-          "You must know the IBM serial Number of the person making the request.",
-          "Only one request per employee per request type is processed at a time."
-        ],
-        "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
       }
     ]
   }
     
-    this.servicesData = servicesData.data[0]
-  
-    
-  }
+    this.servicesData = servicesData.data[0]  
 
-  
+}
 
 }
