@@ -129,6 +129,7 @@ app.use('/', ensureAuthenticated);
      ws:true ,
          }
    app.use('/api/*', createProxyMiddleware(options));
+  
 
    app.use(bodyParser.json());
    app.use(bodyParser.urlencoded({extended: true}));
@@ -141,7 +142,11 @@ console.log('starting app in dev mode '+ path.normalize(__dirname+'/../../'));
    app.use(express.static(path.join(__dirname, 'dist/gvs-portal-front-end')));
 
     //catch all route
-  //  app.use('*', index);
+   app.use('*', (req, res) => {
+    console.log('rootpath = ' + path.normalize(__dirname+'/../../'));
+    res.sendFile(path.join(__dirname, 'dist/gvs-portal-front-end/index.html'));
+  });
+
   // catch 404 and forward to error handler
   app.use(function (req, res, next) {
   const err = new Error('Not Found');
