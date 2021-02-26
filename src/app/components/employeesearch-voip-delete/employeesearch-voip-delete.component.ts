@@ -2,14 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-revalidationpending',
-  templateUrl: './revalidationpending.component.html',
-  styleUrls: ['./revalidationpending.component.css']
+  selector: 'app-employeesearch-voip-delete',
+  templateUrl: './employeesearch-voip-delete.component.html',
+  styleUrls: ['./employeesearch-voip-delete.component.css']
 })
-export class RevalidationpendingComponent implements OnInit {
+export class EmployeesearchVoipDeleteComponent implements OnInit {
 
+  radioAction:string = "";
+  hideDisTextBox:boolean = false;
+  hideDisserial:boolean = true;
+  
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
   cloudantData: any = []
   servicesData: any = []
@@ -20,6 +25,7 @@ export class RevalidationpendingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.radioAction = "mySelf";
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);
@@ -64,4 +70,29 @@ export class RevalidationpendingComponent implements OnInit {
     this.servicesData = servicesData.data[0]
   }
 
+  onSubmit(formData:NgForm)
+  {
+    if(formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true){
+    alert("Please enter serial number");
+    }
+    else if(formData.value.employeeSerial.length < 6  && this.hideDisTextBox == true){
+      alert("Employee Serial Number should be of 6 characters");
+    }
+  }
+
+  onRequestForChange(){
+
+    if(this.radioAction.toLowerCase() == "anotheremployee"){
+        this.hideDisTextBox = true;
+      this.hideDisserial = false;
+
+    }
+    else if(this.radioAction.toLowerCase() == "myself")
+    {
+      this.hideDisTextBox = false;
+      this.hideDisserial = true;
+
+    }
+
+  }
 }
