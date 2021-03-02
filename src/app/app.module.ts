@@ -30,7 +30,10 @@ import { MiddleframeComponent } from './components/middleframe/middleframe.compo
 import { FilterPipe } from './filter.pipe';
 import { DropdownsearchPipe } from './dropdownsearch.pipe'
 import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
-import { DummyComponent } from './components/dummy/dummy.component'
+import { DummyComponent } from './components/dummy/dummy.component';
+import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component';
+import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-voip-delete/employeesearch-voip-delete.component';
+
 
 
 
@@ -63,6 +66,8 @@ import { DummyComponent } from './components/dummy/dummy.component'
     DropdownsearchPipe,
     VoipInNewComponent,
     DummyComponent,
+    VoipInDeleteComponent,
+    EmployeesearchVoipDeleteComponent,
 
 
   ],

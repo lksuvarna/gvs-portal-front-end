@@ -51,7 +51,7 @@
                     <div id="countrydropdown" class="dropdown-content">
                         <input type="text" class="ds-input" id="myInput" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Search.." style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; ">
                         <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | dropdownsearch: searchText; let i=index">
-                            <a (click)="closeDropdown()" [routerLink]="['/services']" [queryParams]="{country:searchResult.code}">{{searchResult.name}}</a>
+                            <a (click)="closeDropdown()" [routerLink]="['/services']" [routerLinkActive]="['active']" [queryParams]="{country:searchResult.code}">{{searchResult.name}}</a>
                         </div>
                     </div>
                 </div>
