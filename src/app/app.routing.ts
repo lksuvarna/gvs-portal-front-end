@@ -25,7 +25,7 @@ const appRoutes: Routes = [
     { path: 'unauthorized', component: HomepageComponent },
     { path: '', component: HomepageComponent },
     { path: 'feedback', component: FeedbackComponent },
-    { path: 'services' ,  component: ServicesComponent },
+    { path: 'services' ,  component: ServicesComponent },    
     { path: 'jabberservices', component: JabberservicesComponent },   
     { path: 'employeesearch', component: EmployeesearchComponent },    
     { path: 'employeeinfo', component: EmployeeinfoComponent },
@@ -38,7 +38,9 @@ const appRoutes: Routes = [
     { path: 'reviewdetails', component: ReviewdetailsComponent },  
     { path: 'resultpage', component: ResultpageComponent },
     { path: 'employeesearchdelete', component: EmployeesearchVoipDeleteComponent},
-    { path: 'revalidationpending', component: RevalidationpendingComponent},
+    { path: 'revalidationpending', component: RevalidationpendingComponent}
+    
+    
 
 ];
 
