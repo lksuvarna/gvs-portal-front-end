@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { ActivatedRoute } from '@angular/router';
+import {servicenowservice} from '../../_services/servicenow.service';
 
 @Component({
   selector: 'app-requests',
@@ -17,7 +18,7 @@ export class RequestsComponent implements OnInit {
   DisplayModel= 'none';
   allComments = [];
 
-  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute) { }
+  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice) { }
   
   servicesData: any = []
   countryname:any;
@@ -48,7 +49,12 @@ export class RequestsComponent implements OnInit {
     ]
   }
     
-    this.servicesData = servicesData.data[0]  
+    this.servicesData = servicesData.data[0];
+
+    //code to search snow for request status
+    this.servicenowservice.searchsnow('000RQU744','all','').subscribe(data=> {
+      console.log(' snow response', data);
+    });
 
 }
 

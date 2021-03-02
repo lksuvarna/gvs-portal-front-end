@@ -46,10 +46,11 @@ export class servicenowservice {
       .pipe(catchError(this.errorhandler))
   }
   
-  searchsnow(cnum: string, type: string): Observable<any> {
+  searchsnow(cnum: string, type: string,reqno : string): Observable<any> {
     console.log('calling snow swarch');
     this.payload.cnum=cnum;
     this.payload.request_type=type;
+    this.payload.reqno=reqno;
     return this.http.post(this.searchUrl,this.payload)
       .pipe(catchError(this.errorhandler))
   }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import {Router} from  '@angular/router';
-import {Db2Service} from '../../_services/db2.service'
-import {servicenowservice} from '../../_services/servicenow.service'
+import {Db2Service} from '../../_services/db2.service';
+import {servicenowservice} from '../../_services/servicenow.service';
 
 @Component({
   selector: 'app-employeeinfo',
@@ -61,7 +61,7 @@ export class EmployeeinfoComponent implements OnInit {
       });
 
       //code to search snow for jabber new
-      this.servicenowservice.searchsnow('000RQU744','jabber_new').subscribe(data=> {
+      this.servicenowservice.searchsnow('000RQU744','jabber_new','IN-NS-000RQU').subscribe(data=> {
         console.log(' snow response', data);
       });
   }

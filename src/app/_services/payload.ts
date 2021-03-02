@@ -17,11 +17,17 @@ export class snowsearch
 {
     cnum!: String;
     request_type!: String;
+    reqno !: String;
+    sysid !: String;
+    number !: String;
 
 snowsearch()
  {
   this.cnum="";
   this.request_type="";
+  this.reqno="";
+  this.sysid="";
+  this.number="";
  }
 
 }
