@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ServicessearchComponent implements OnInit {
   searchText: any
   searchItems = [
-    {"name" : "India Jabber", "flag" : "././assets/flags/744.png", "url": ""},
-    {"name" : "India FAC", "flag" : "././assets/flags/744.png", "url": ""},
+    {"name" : "India Jabber", "flag" : "././assets/flags/744.png", "code": "744"},    
   ]
 
   constructor() { }

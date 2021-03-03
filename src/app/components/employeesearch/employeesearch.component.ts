@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import {Router} from  '@angular/router';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
+import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common'; 
 
 @Component({
   selector: 'app-employeesearch',
@@ -15,18 +17,23 @@ export class EmployeesearchComponent implements OnInit {
   hideDisTextBox:boolean = false;
   hideDisserial:boolean = true;
 
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice, private route: ActivatedRoute) { }
   cloudantData: any = []
   servicesData: any = []
   countryname:any;
   ccode='';
-  submit(){
-    this.router.navigate(['/employeeinfo']) 
-  }
+  pcode = '';
+  
   ngOnInit(): void {
 
-    this.radioAction = "mySelf";
-    
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params);
+
+        this.pcode = params.country;
+        console.log("navigation component" + this.pcode);
+      })
+    this.radioAction = "mySelf";   
 
     
     const servicesData = { 
@@ -51,14 +58,27 @@ export class EmployeesearchComponent implements OnInit {
 
     onSubmit(formData:NgForm)
   {
+    if(this.radioAction.toLowerCase() == "anotheremployee"){
     if(formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true){
     alert("Please enter serial number");
     }
     else if(formData.value.employeeSerial.length < 6  && this.hideDisTextBox == true){
       alert("Employee Serial Number should be of 6 characters");
     }
+    sessionStorage.setItem('cnum',formData.value.employeeSerial)
+    this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode } }) ;
   }
-
+    else{
+     // if(this.radioAction.toLowerCase() == "anotheremployee"){
+      sessionStorage.setItem('cnum','01241O')
+    //  }
+      //else{
+      //  sessionStorage.setItem('cnum',formData.value.employeeSerial)
+     // }
+      this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode } }) ;
+    }
+  }
+   
   onRequestForChange(){
 
     if(this.radioAction.toLowerCase() == "anotheremployee"){

@@ -11,12 +11,14 @@ import { catchError  } from 'rxjs/operators';
 
 
 export class bpservices {
-  private Url = '/api/rest/post';
-aa="ssssss"
+  private Url = '/api/bpdetails';
+
+
   constructor(private http: HttpClient) { }
-  bpname(): Observable<any> {
-   // return this.http.get('/feedback');    
-      return this.http.post(this.Url,undefined)
+  bpdetails(cnum:string): Observable<any> {
+   // return this.http.get('/feedback'); 
+   
+      return this.http.post(this.Url,{cnum})
       .pipe(catchError(this.errorhandler))     }  
     
      
