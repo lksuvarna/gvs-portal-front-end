@@ -3,6 +3,7 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { servicenowservice } from '../../_services/servicenow.service';
 import {Router} from  '@angular/router';
+import {Jabber_New} from '../../../../config/payload';
 
 @Component({
   selector: 'app-reviewdetails',
@@ -16,7 +17,7 @@ export class ReviewdetailsComponent implements OnInit {
   servicesData: any = [];
   isButtonVisible = true;
   isSpinnerVisible= false;
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice) { }
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice, private Jabber_New: Jabber_New) { }
 
   submit(){
     this.isButtonVisible=false;
@@ -43,20 +44,10 @@ export class ReviewdetailsComponent implements OnInit {
   ngOnInit(): void {
      
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-    this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-      console.log('Response received', data.countrydetails.name);
-      this.countryname=data.countrydetails;
+   
     
-    this.cloudantData  = {
-      "code": this.ccode,
-      "name": this.countryname.name,
-      "isocode": this.countryname.isocode,
-      "isjabber": this.countryname.isjabber,
-      "isfixedphone": this.countryname.isfixphone,
-      "isfac": this.countryname.isfac,
-      "isspecial": this.countryname.isspecial
-    }
-  });
+
+  
     const servicesData = { 
     "data": [
       {    

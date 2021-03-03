@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { createOfflineCompileUrlResolver } from '@angular/compiler';
-import { snowsearch } from './payload';
+import { snowsearch } from '../../../config/payload';
 
 
 @Injectable({ providedIn: 'root' })
