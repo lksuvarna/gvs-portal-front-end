@@ -24,8 +24,8 @@
     <div class="ds-padding-top-0_5 ds-row ds-text-align-center ">
         <div class="ds-col-sm-4  md-2 xl-5">
             <input type="text" class="ds-input" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Search service..." style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; ">
-            <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | search: searchText ; let i=index">
-                <a href={{searchResult.url}} *ngIf="i<1"><img class="ds-border-neutral-5" src={{searchResult.flag}} width="28;" height="20;"> {{searchResult.name}} </a>
+            <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | search: searchText; let i=index">
+                <a [routerLink]="['/services']" [queryParams]="{country:searchResult.code}" *ngIf="i<1"><img class="ds-border-neutral-5" src={{searchResult.flag}} width="28;" height="20;"> {{searchResult.name}} </a>
             </div>
             <div class="ds-pad-t-0_5 ds-text-align-left">
                 <a *ngIf="(searchItems | search: searchText).length >= 1" (click)="storeSearchTerm(searchText)" [routerLink]="['/searchresult']">Click here to see all results in GVS search</a>
