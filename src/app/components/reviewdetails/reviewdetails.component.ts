@@ -12,11 +12,15 @@ import {Router} from  '@angular/router';
 export class ReviewdetailsComponent implements OnInit {
   countryname:any;
   ccode='';
-  cloudantData: any = []
-  servicesData: any = []
+  cloudantData: any = [];
+  servicesData: any = [];
+  isButtonVisible = true;
+  isSpinnerVisible= false;
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice) { }
 
   submit(){
+    this.isButtonVisible=false;
+    this.isSpinnerVisible=true;
     this.servicenowservice.submit_new_jabber_request().subscribe(data=> {
     console.log('response', data);
     if(data)
