@@ -27,7 +27,7 @@ export class EmployeeinfoComponent implements OnInit {
   employeeInfo: any
   identifier: any;
   warninginfo = true;
-  buttoninfo = true;
+  warninginfosnow = true;
   cnum: any
   submit() {
     this.router.navigate(['/entrydetails'])
@@ -54,30 +54,27 @@ export class EmployeeinfoComponent implements OnInit {
       ]
     }
     this.cnum = sessionStorage.getItem('cnum') + '744'
-    this.servicesData = servicesData.data[0];
-    this.buttoninfo = true
+    this.servicesData = servicesData.data[0];    
     this.warninginfo = false
+    this.warninginfosnow=false
     // Code to search Db2 for Jabber New
     this.Db2Service.search_db2(this.cnum, 'jabber_new').subscribe(data => {
       console.log(' db2 response', data);
       console.log(' db2 response', data.message.length);
 
       if (data.message.length > 0) {
-        this.warninginfo = true
-        this.buttoninfo = false
+        this.warninginfo = true        
         this.identifier = data.message[0].IDENTIFIER
       }
       else {
-        this.warninginfo = false
-        this.buttoninfo = true
+        this.warninginfo = false        
         this.servicenowservice.searchsnow(this.cnum, 'jabber_new', 'IN-NS-000RQU').subscribe(data => {
           console.log(' snow response', data);
           console.log(' snow response', data.message.length);
           if (data.message.length > 0) {
             console.log(' snow response1', data.message.length);
-            this.warninginfo = true
-            this.buttoninfo = false
-            this.identifier = data.message[0]
+            this.warninginfosnow=true           
+            this.identifier = data.message
           }
 
         });
