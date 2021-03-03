@@ -23,9 +23,11 @@ export class EmployeesearchComponent implements OnInit {
   countryname:any;
   ccode='';
   pcode = '';
+  fullName='';
   
   ngOnInit(): void {
-
+    this.fullName=this.cookie.getCookie('user');
+    this.ccode=this.cookie.getCookie('ccode');
     this.route.queryParams
       .subscribe(params => {
         console.log(params);
@@ -65,12 +67,12 @@ export class EmployeesearchComponent implements OnInit {
     else if(formData.value.employeeSerial.length < 6  && this.hideDisTextBox == true){
       alert("Employee Serial Number should be of 6 characters");
     }
-    sessionStorage.setItem('cnum',formData.value.employeeSerial)
+    sessionStorage.setItem('cnum',formData.value.employeeSerial+this.pcode)
     this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode } }) ;
   }
     else{
      // if(this.radioAction.toLowerCase() == "anotheremployee"){
-      sessionStorage.setItem('cnum','01241O')
+      sessionStorage.setItem('cnum',this.ccode)
     //  }
       //else{
       //  sessionStorage.setItem('cnum',formData.value.employeeSerial)
