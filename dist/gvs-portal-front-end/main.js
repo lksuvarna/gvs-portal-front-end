@@ -1232,7 +1232,7 @@ class EmployeeinfoComponent {
                 }
             ]
         };
-        this.cnum = sessionStorage.getItem('cnum') + '744';
+        this.cnum = sessionStorage.getItem('cnum');
         this.servicesData = servicesData.data[0];
         this.warninginfo = false;
         this.warninginfosnow = false;
@@ -3243,9 +3243,13 @@ function EmployeesearchComponent_tr_64_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Kankanampati,Manisha ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r1.fullName, " ");
 } }
 function EmployeesearchComponent_div_67_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 41);
@@ -3256,8 +3260,12 @@ function EmployeesearchComponent_div_67_Template(rf, ctx) { if (rf & 1) {
 } }
 function EmployeesearchComponent_div_69_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 41);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "000RQU744");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r3.ccode);
 } }
 function EmployeesearchComponent_div_72_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 41);
@@ -3294,8 +3302,11 @@ class EmployeesearchComponent {
         this.servicesData = [];
         this.ccode = '';
         this.pcode = '';
+        this.fullName = '';
     }
     ngOnInit() {
+        this.fullName = this.cookie.getCookie('user');
+        this.ccode = this.cookie.getCookie('ccode');
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
@@ -3327,12 +3338,12 @@ class EmployeesearchComponent {
             else if (formData.value.employeeSerial.length < 6 && this.hideDisTextBox == true) {
                 alert("Employee Serial Number should be of 6 characters");
             }
-            sessionStorage.setItem('cnum', formData.value.employeeSerial);
+            sessionStorage.setItem('cnum', formData.value.employeeSerial + this.pcode);
             this.router.navigate(['/employeeinfo'], { queryParams: { country: this.pcode } });
         }
         else {
             // if(this.radioAction.toLowerCase() == "anotheremployee"){
-            sessionStorage.setItem('cnum', '01241O');
+            sessionStorage.setItem('cnum', this.ccode);
             //  }
             //else{
             //  sessionStorage.setItem('cnum',formData.value.employeeSerial)
@@ -3453,13 +3464,13 @@ EmployeesearchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](64, EmployeesearchComponent_tr_64_Template, 6, 0, "tr", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](64, EmployeesearchComponent_tr_64_Template, 6, 1, "tr", 30);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "tr");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "td");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](67, EmployeesearchComponent_div_67_Template, 3, 0, "div", 31);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "td", 32);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](69, EmployeesearchComponent_div_69_Template, 2, 0, "div", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](69, EmployeesearchComponent_div_69_Template, 2, 1, "div", 31);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "tr");

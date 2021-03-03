@@ -53,7 +53,7 @@ export class EmployeeinfoComponent implements OnInit {
         }
       ]
     }
-    this.cnum = sessionStorage.getItem('cnum') + '744'
+    this.cnum = sessionStorage.getItem('cnum') 
     this.servicesData = servicesData.data[0];    
     this.warninginfo = false
     this.warninginfosnow=false
