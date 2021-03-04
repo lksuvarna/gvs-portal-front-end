@@ -12,10 +12,16 @@ import { catchError } from 'rxjs/operators';
 
 export class cloudantservice {
   private Url = '/api/countrydetails';
+  private Url1 = '/api/locationdetails';
   constructor(private http: HttpClient) { }
   getcountrydetails(ccode:string): Observable<any> {
     console.log("getcountrydetails"+ccode);
     return this.http.post(this.Url, {ccode})
+      .pipe(catchError(this.errorhandler))
+  }
+  getlocationdetails(ccode:string): Observable<any> {
+    console.log("getlocationdetails"+ccode);
+    return this.http.post(this.Url1, {ccode})
       .pipe(catchError(this.errorhandler))
   }
   errorhandler(error: HttpErrorResponse) {
