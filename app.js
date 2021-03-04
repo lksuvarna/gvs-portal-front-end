@@ -89,7 +89,7 @@ if (!req.isAuthenticated()) {
   }
   res.redirect('/api/login');
 } else {
-  console.log('USER =>', req.user.name);
+  console.log('USER =>', req.user._json.name);
   res.clearCookie('user');  
   res.clearCookie('ccode');          
     res.cookie('user',req.user._json.name);  
