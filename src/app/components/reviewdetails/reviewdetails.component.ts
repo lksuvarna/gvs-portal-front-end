@@ -3,6 +3,7 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { servicenowservice } from '../../_services/servicenow.service';
 import {Router} from  '@angular/router';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-reviewdetails',
@@ -14,8 +15,13 @@ export class ReviewdetailsComponent implements OnInit {
   ccode='';
   cloudantData: any = []
   servicesData: any = []
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice) { }
-
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice,private location:Location) { }
+  backClick(){
+    sessionStorage.setItem('backbutton','yes');
+    sessionStorage.setItem('step','step1');
+    this.location.back();
+   // this.router.navigate(['..']);
+  }
   submit(){
     this.servicenowservice.submit_new_jabber_request().subscribe(data=> {
     console.log('response', data);

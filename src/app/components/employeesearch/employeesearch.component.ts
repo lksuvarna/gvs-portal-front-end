@@ -26,6 +26,9 @@ export class EmployeesearchComponent implements OnInit {
   ccode='';
   pcode = '';
   fullName='';
+  service='';
+  backbutton: any;
+  step: any;
   identifier: any;
   warninginfo = true;
   warninginfosnow = true;
@@ -39,18 +42,23 @@ export class EmployeesearchComponent implements OnInit {
     this.route.queryParams
       .subscribe(params => {
         console.log(params);
-
         this.pcode = params.country;
+        this.service = params.service;
         console.log("navigation component" + this.pcode);
       })
-    this.radioAction = "mySelf";   
+      this.backbutton=sessionStorage.getItem('backbutton');
+      this.step=sessionStorage.getItem('step');
+      if(this.backbutton=='yes')
+      {}else{
+    this.radioAction = "mySelf"; }  
 
     
     const servicesData = { 
     "data": [
       {    
         "lhs": [
-          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},            
+          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false},
+          {"name" : "Jabber","routingname":"/services", "indented" : true, "highlighted": true},              
           {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
           {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
           {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
@@ -120,7 +128,7 @@ export class EmployeesearchComponent implements OnInit {
         this.warninginfo = false 
         sessionStorage.setItem('warninginfo', 'false1')  
         //SNOW search for ongoin requests      
-        this.servicenowservice.searchsnow(this.employeeSerial, 'jabber_new', 'IN-NS-000RQU').subscribe(data => {
+        this.servicenowservice.searchsnow(this.employeeSerial, this.service, 'IN-NS-'+this.employeeSerial.substr(0,6)).subscribe(data => {
           console.log(' snow response', data);
           console.log(' snow response', data.message.length);
           if (data.message.length > 0) {

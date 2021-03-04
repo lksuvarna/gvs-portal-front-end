@@ -3,6 +3,7 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { NgForm } from '@angular/forms';
 import {Router} from  '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-voip-in-new',
@@ -10,6 +11,7 @@ import {Router} from  '@angular/router';
   styleUrls: ['./voip-in-new.component.css']
 })
 export class VoipInNewComponent implements OnInit {
+  
 
   Location = [{'Campus':'Select Office Location','Buildings':[]},
     {'Campus':'Banglore','Buildings':['Select One','MTP','SA']},
@@ -24,16 +26,17 @@ campus:string[] | undefined;
   hideBuilding = true;
   countryname:any;
   ccode='';
+  pcode = '';
   cloudantData: any = []
   servicesData: any = []
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { 
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute) { 
    //alert(this.Location[0].Buildings[2]);
    //alert(this.Location[0].Campus);
  
   
   }
   submit(){
-    this.router.navigate(['/reviewdetails']) 
+    this.router.navigate(['/reviewdetails'],{ queryParams: { country: this.pcode } }) ;
   }
   selectedLocation(loc:String) {
     if(loc.toUpperCase() != 'SELECT OFFICE LOCATION') {
@@ -89,42 +92,26 @@ campus:string[] | undefined;
   ngOnInit(): void {
      
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-    this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-      console.log('Response received', data.countrydetails.name);
-      this.countryname=data.countrydetails;
-    
-    this.cloudantData  = {
-      "code": this.ccode,
-      "name": this.countryname.name,
-      "isocode": this.countryname.isocode,
-      "isjabber": this.countryname.isjabber,
-      "isfixedphone": this.countryname.isfixphone,
-      "isfac": this.countryname.isfac,
-      "isspecial": this.countryname.isspecial
-    }
-  });
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params);
+
+        this.pcode = params.country;
+        console.log("navigation component" + this.pcode);
+      })
     const servicesData = { 
     "data": [
       {    
         "lhs": [
-          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},            
+          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false},
+          {"name" : "Jabber","routingname":"/services", "indented" : true, "highlighted": true},              
           {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
           {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
           {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
           {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
         ],
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "titles": [
-          "Terms of use",
-          "Useful Information",
-          "Please bear in mind the following points when making a request :"
-        ],
-        "usefulinfotexts": [
-          "To make a request the Employee must exist in BluePages (except for cancellation requests).",
-          "You must know the IBM serial Number of the person making the request.",
-          "Only one request per employee per request type is processed at a time."
-        ],
-        "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
+        
       }
     ]
   }
