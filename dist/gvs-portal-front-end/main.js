@@ -1756,6 +1756,7 @@ class cloudantservice {
     constructor(http) {
         this.http = http;
         this.Url = '/api/countrydetails';
+        this.Url1 = '/api/locationdetails';
     }
     getcountrydetails(ccode) {
         console.log("getcountrydetails" + ccode);
@@ -1764,7 +1765,7 @@ class cloudantservice {
     }
     getlocationdetails(ccode) {
         console.log("getlocationdetails" + ccode);
-        return this.http.post('/api/locationdetails', { ccode })
+        return this.http.post(this.Url1, { ccode })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorhandler));
     }
     errorhandler(error) {
@@ -3291,7 +3292,7 @@ function EmployeesearchComponent_p_75_Template(rf, ctx) { if (rf & 1) {
 function EmployeesearchComponent_div_77_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 51);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 52);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Please wait data is loading !!!");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Please wait data is loading !");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 53);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -3433,7 +3434,13 @@ class EmployeesearchComponent {
                                 this.router.navigate(['/employeeinfo'], { queryParams: { country: this.pcode } });
                             }
                             else {
-                                this.router.navigate(['/employeeinfo'], { queryParams: { country: this.pcode } });
+                                this.cloudantservice.getlocationdetails(this.pcode).subscribe(data => {
+                                    console.log('Response received navigation', data.locationdetails);
+                                    this.countryname = data.locationdetails;
+                                    sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
+                                    sessionStorage.setItem('countryroute', this.pcode);
+                                    this.router.navigate(['/employeeinfo'], { queryParams: { country: this.pcode } });
+                                });
                             }
                         });
                     }
