@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { db2search } from './payload';
+import { db2search } from '../../../config/payload';
 
 @Injectable({
   providedIn: 'root'

@@ -18,6 +18,11 @@ export class cloudantservice {
     return this.http.post(this.Url, {ccode})
       .pipe(catchError(this.errorhandler))
   }
+  getlocationdetails(ccode:string): Observable<any> {
+    console.log("getlocationdetails"+ccode);
+    return this.http.post('/api/locationdetails', {ccode})
+      .pipe(catchError(this.errorhandler))
+  }
   errorhandler(error: HttpErrorResponse) {
     console.log(error.message)
     return Observable.throw(error.message || "Sever Error");
