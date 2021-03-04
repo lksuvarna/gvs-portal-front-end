@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
+import {Db2Service} from '../../_services/db2.service';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { CookieHandlerService } from '../../_services/cookie-handler.service';
 })
 export class DummyComponent implements OnInit {
 
-  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
+  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private Db2Service: Db2Service) { }
   countryname:any;
   ccode='';
   cloudantData: any = []
@@ -35,7 +36,12 @@ export class DummyComponent implements OnInit {
     ]
   }
     
-    this.servicesData = servicesData.data[0]
+    this.servicesData = servicesData.data[0];
+          // Code to search Db2 for resrouces
+          this.Db2Service.search_db2('06685M744','all').subscribe(data=> {
+            console.log(' db2 response', data);
+          });
+      
   
     }
     // Get NavigationStart events

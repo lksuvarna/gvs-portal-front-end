@@ -89,12 +89,12 @@ if (!req.isAuthenticated()) {
   }
   res.redirect('/api/login');
 } else {
-  console.log('USER =>', req.user.name);
+  console.log('USER =>', req.user._json.name);
   res.clearCookie('user');  
   res.clearCookie('ccode');          
     res.cookie('user',req.user._json.name);  
     res.cookie('ccode',req.user._json.uid);         
-    req.session.authuser=req.user;       
+    req.session.authuser=req.user;        
     app.post('/api',function(req,res,next){
       res.status(200).json({
       //  authusername: req.user.displayName

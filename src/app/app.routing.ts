@@ -15,6 +15,8 @@ import { ReviewdetailsComponent } from './components/reviewdetails/reviewdetails
 import { RequestsComponent } from './components/requests/requests.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
+import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-voip-delete/employeesearch-voip-delete.component';
+import { RevalidationpendingComponent } from './components/revalidationpending/revalidationpending.component';
 
 
 
@@ -23,7 +25,7 @@ const appRoutes: Routes = [
     { path: 'unauthorized', component: HomepageComponent },
     { path: '', component: HomepageComponent },
     { path: 'feedback', component: FeedbackComponent },
-    { path: 'services' ,  component: ServicesComponent },
+    { path: 'services' ,  component: ServicesComponent },    
     { path: 'jabberservices', component: JabberservicesComponent },   
     { path: 'employeesearch', component: EmployeesearchComponent },    
     { path: 'employeeinfo', component: EmployeeinfoComponent },
@@ -34,7 +36,11 @@ const appRoutes: Routes = [
     { path: 'inprogress', component: DummyComponent },
     { path: 'entrydetails', component: VoipInNewComponent },  
     { path: 'reviewdetails', component: ReviewdetailsComponent },  
-    { path: 'resultpage', component: ResultpageComponent },    
+    { path: 'resultpage', component: ResultpageComponent },
+    { path: 'employeesearchdelete', component: EmployeesearchVoipDeleteComponent},
+    { path: 'revalidationpending', component: RevalidationpendingComponent}
+    
+    
 
 ];
 

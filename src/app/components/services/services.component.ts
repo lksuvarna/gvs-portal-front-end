@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 
 
 @Component({
@@ -20,12 +20,18 @@ export class ServicesComponent implements OnInit {
   ccode = '';
   countryroute: any
   pcode = '';
-  constructor(private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute) { }
+  constructor(private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
+    this.route.queryParams
+    .subscribe(params => {
+      console.log(params);
 
+      this.pcode = params.country;
+      console.log("navigation component" + this.pcode);
+    })
+    this.countryroute=sessionStorage.getItem('countryroute')
     
-
     const servicesData = {
       "data": [
         {

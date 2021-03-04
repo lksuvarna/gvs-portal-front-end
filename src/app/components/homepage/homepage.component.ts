@@ -14,8 +14,8 @@ import { NgModule } from '@angular/core';
 export class HomepageComponent implements OnInit {
   searchText = '';
   searchItems = [
-    {"name" : "India Jabber", "flag" : "././assets/flags/744.png", "url": ""},
-    {"name" : "India FAC", "flag" : "././assets/flags/744.png", "url": ""}
+    {"name" : "India Jabber", "flag" : "././assets/flags/744.png", "code": "744"},
+    
   ]
   constructor(private Service: ConnectCucdmService,private cookie: CookieHandlerService,private bpservice :bpservices,private cloudantservice:cloudantservice) { }
   res_rec ='';

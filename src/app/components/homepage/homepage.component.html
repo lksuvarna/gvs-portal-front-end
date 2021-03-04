@@ -12,7 +12,7 @@
 </div>
 
 <div class="ds-row "><br><br>
-    <h3 class="ds-col-xs-15 ds-col-md-5 ds-col-lg-12 ds-offset-md-3 ds-heading-2"><span class="ds-col-xs-30" style="font-size:48px">Welcome, {{fullName}}</span></h3>
+    <h3 class=" ds-text-align-center ds-heading-2 ds-margin-bottom-0 "><span class="ds-col-xs-30" style="font-size:48px">Welcome, {{fullName}}</span></h3>
 </div><br>
 <div class="ds-row">
     <h4 class="ds-heading-3 ds-text-align-center"><span style="font-size:30px">What service or country are you looking
@@ -25,7 +25,7 @@
         <div class="ds-col-sm-4  md-2 xl-5">
             <input type="text" class="ds-input" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Search service..." style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; ">
             <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | search: searchText; let i=index">
-                <a href={{searchResult.url}} *ngIf="i<1"><img class="ds-border-neutral-5" src={{searchResult.flag}} width="28;" height="20;"> {{searchResult.name}} </a>
+                <a [routerLink]="['/services']" [queryParams]="{country:searchResult.code}" *ngIf="i<1"><img class="ds-border-neutral-5" src={{searchResult.flag}} width="28;" height="20;"> {{searchResult.name}} </a>
             </div>
             <div class="ds-pad-t-0_5 ds-text-align-left">
                 <a *ngIf="(searchItems | search: searchText).length >= 1" (click)="storeSearchTerm(searchText)" [routerLink]="['/searchresult']">Click here to see all results in GVS search</a>

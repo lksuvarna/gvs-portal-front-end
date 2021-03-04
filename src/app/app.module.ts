@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -30,7 +31,9 @@ import { MiddleframeComponent } from './components/middleframe/middleframe.compo
 import { FilterPipe } from './filter.pipe';
 import { DropdownsearchPipe } from './dropdownsearch.pipe'
 import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
-import { DummyComponent } from './components/dummy/dummy.component'
+import { DummyComponent } from './components/dummy/dummy.component';
+import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component';
+import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-voip-delete/employeesearch-voip-delete.component';
 
 
 
@@ -63,6 +66,8 @@ import { DummyComponent } from './components/dummy/dummy.component'
     DropdownsearchPipe,
     VoipInNewComponent,
     DummyComponent,
+    VoipInDeleteComponent,
+    EmployeesearchVoipDeleteComponent,
 
 
   ],
@@ -71,7 +76,9 @@ import { DummyComponent } from './components/dummy/dummy.component'
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    appRoutingProviders
+    appRoutingProviders,
+    CommonModule
+   
     
     
   ],

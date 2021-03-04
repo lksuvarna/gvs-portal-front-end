@@ -7,7 +7,7 @@
 <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
 </div>
 <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
-      <form (submit)='entryDetails(formData)' #formData='ngForm'>
+      <form [hidden]="isEntryForm" (submit)='entryDetails(formData)' #formData='ngForm'>
     
         <b>Request new Jabber service</b>
     
@@ -60,8 +60,8 @@
                   <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"
                     style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1"
                     #location (change)='selectedLocation(location.value)' ngModel>
-                    <option name="Location_1" *ngFor='let fl_location of Location' [value]='fl_location.Campus'>
-                      {{ fl_location.Campus }}</option>
+                    <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location'>
+                      {{ fl_location }}</option>
                   </select>
                 </div>
               </td>
@@ -74,10 +74,7 @@
                 <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                   <select name="Buildings" rows="2" cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left"
                     style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1" ngModel>
-                    <option *ngFor="let fl_campus of campus" [value]='fl_campus'>{{ fl_campus }}</option>
-                    <!--<ng-template ngFor let-fl_campus [ngForOf]="array">
-                    <option [value]='fl_campus'>{{ fl_campus }}</option>
-                  </ng-template>-->
+                    <option *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
                   </select>
                 </div>
               </td>
@@ -94,11 +91,11 @@
                 <div class="ds-mar-b-1">
                   <div class="ds-input-radio-group">
                     <label for="radio1" class="ds-input-radio ds-pad-r-1" style="display:inline">
-                      <input type="radio" name="Voice_Type" id="radio1" class="ds-input" value="Y"
+                      <input type="radio" [(ngModel)]="Voice_Type" name="Voice_Type" id="radio1" class="ds-input" value="Yes"
                         (click)='showChargeDepartmentCode()'>
                       <div class="ds-input-control"></div><span class="ds-pad-l-0_5">Yes</span>
                     </label><label for="radio2" class="ds-input-radio ds-pad-r-1" style="display:inline">
-                      <input type="radio" name="Voice_Type" id="radio2" class="ds-input" value="N" checked
+                      <input type="radio" [(ngModel)]="Voice_Type" checked  name="Voice_Type" id="radio2" class="ds-input" value="No" 
                         (click)='hideChargeDepartmentCode()'>
                       <div class="ds-input-control"></div><span class="ds-pad-l-0_5">No</span>
                     </label>
@@ -148,7 +145,7 @@
               <td width="54%">
                 <div class="ds-input-container ">
                   <input name="identifier_hp" value="" tabindex="7" class="ds-input" style="width:300px !important;"
-                    title="Fix Phone Identifier" maxlength="8"></div>
+                    title="Fix Phone Identifier" maxlength="8" ngModel></div>
               </td>
             </tr>
           </tbody>
@@ -164,15 +161,127 @@
                   value="Back">
               </span>
               <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
-                <input (click)="submit()" type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                   tabindex="32767" value="Next">
               </span>
             </div>
           </div>
         </div>
       </form>
-    
-  <!-- </div> -->
-</div>
-</div>
 
+      <form [hidden]="isReviewForm" >
+        <b>Request new Jabber service</b>
+        <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+        </div>
+        <div class="ds-hr-thick ds-mar-b-1_5"></div>
+        <div class="ds-panel-row">
+            <div>
+                <span class="ds-tooltip ds-hover" id="tooltip-demo1">
+                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5 ds-pad-l-1" aria-label="help" tabindex="0">STEP 1</span>
+                <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">Employee Search</div>
+                </span>
+                <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                <span class="ds-tooltip ds-hover" id="tooltip-demo1">
+                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 2</span>
+                <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Information</div>
+                </span>
+                <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
+                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 3</span>
+                <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Entry Details</div>
+                </span>
+                <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
+                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 4</span>
+                <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Review Details</div>
+                </span>
+            </div>
+        </div>
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Jabber Request Details</h2>
+
+        <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr valign="top">
+                    <td colspan="2" width="46%" height="10">
+                        <label for="addId1">Office Location</label>
+                    </td>
+                    <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
+                </tr>
+                <tr valign="top">
+                    <td colspan="2" width="46%">
+                        <label for="addId1">Campus</label>
+                    </td>
+                    <td width="54%">{{reviewDetailsIndia.campus}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <tr valign="top">
+                    <td colspan="2" width="46%">
+                        <label for="addId1">Funded</label>
+                    </td>
+                    <td width="54%">{{reviewDetailsIndia.funded}}</td>
+                </tr>
+
+                <tr valign="top">
+                    <td colspan="2" width="46%">
+                        <label [hidden] = "hideDeptCode" for="addId1">Charge Department Code</label>
+                    </td>
+                    <td [hidden] = "hideDeptCode" width="54%">{{reviewDetailsIndia.chargeDepartmentCode}}</td>
+                </tr>
+
+                <tr valign="top">
+                    <td colspan="2" width="46%">
+                        <label for="addId1">Business Unit</label>
+                    </td>
+                    <td width="54%">{{reviewDetailsIndia.businessUnit}}</td>
+                </tr>
+
+                <tr valign="top">
+                    <td colspan="2" width="46%">
+                        <label for="Projectid">Project id (for GBS employee only)</label>
+                    </td>
+                    <td width="54%">{{reviewDetailsIndia.projectId}}</td>
+                </tr>
+
+                <tr valign="top">
+                    <td colspan="2" width="46%">
+                        <label for="icano"> Fix Phone Identifier</label>
+                    </td>
+                    <td width="54%">{{reviewDetailsIndia.fixPhoneIdentifier}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="ds-hr-thick ds-mar-t-1_5"></div>
+        <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+          <div class="ds-tray-fit-content ds-mar-b-0">
+            <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+              <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                <input type="submit" name="submit"
+                  class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Submit">
+              </span>
+              <span class="ds-pad-l-4" id="button1">
+                <input type="button" name="back"
+                  class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back" (click)='BackButton()'>
+              </span>
+              
+            </div>
+          </div>
+        </div>
+        <!-- <div class="ds-row ds-mar-t-b-1_5">
+            <div class="ds-col-xs-12 ds-col-md-5 ds-col-lg-2 ds-offset-md-3 ds-offset-lg-6 ds-push-md-4 ds-push-lg-4">
+                <button class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%">SUBMIT</button>
+            </div>
+            <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3 ds-pull-md-5 ds-pull-lg-1">
+                <button (click)="BackButton()" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" style="width: 100%">BACK</button>
+            </div>
+        </div> -->
+        
+      </form>
+    
+  
+</div>
+</div>
