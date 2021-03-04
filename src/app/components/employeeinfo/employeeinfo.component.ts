@@ -31,14 +31,18 @@ export class EmployeeinfoComponent implements OnInit {
   identifier: any;
   warninginfo = true;
   warninginfosnow = true;
-  sessionwarninginfo :any
-  sessionwarninginfosnow :any
-  cnum: any
+  sessionwarninginfo :any;
+  sessionwarninginfosnow :any;
+  cnum: any;
+  backbutton: any;
+  step:any;
   isDataLoaded=false
   submit() {
     this.router.navigate(['/entrydetails'],{ queryParams: { country: this.pcode } }) ;
   }
   backClick(){
+    sessionStorage.setItem('backbutton','yes');
+    sessionStorage.setItem('step','step1');
     this.location.back();
   }
   
