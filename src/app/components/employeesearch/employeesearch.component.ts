@@ -36,7 +36,9 @@ export class EmployeesearchComponent implements OnInit {
   employeeSerial=''
   notvalid=false
   dataloading=false
+  showloader=false
   ngOnInit(): void {
+    this.showloader=false
     this.fullName=this.cookie.getCookie('user');
     this.ccode=this.cookie.getCookie('ccode');
     this.route.queryParams
@@ -76,7 +78,7 @@ export class EmployeesearchComponent implements OnInit {
 
     onSubmit(formData:NgForm)
   {
-    
+    this.showloader=true
     if(this.radioAction.toLowerCase() == "anotheremployee"){
     if(formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true){
     alert("Please enter serial number");
@@ -149,6 +151,7 @@ export class EmployeesearchComponent implements OnInit {
     
     }
     else{
+      this.showloader=false
       this.notvalid=true
       
     }
