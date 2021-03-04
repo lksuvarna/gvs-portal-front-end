@@ -75,7 +75,9 @@ export class NavigationComponent implements OnInit {
     if (!this.cloudantData.isfixedphone) {
       this.removeService('Fixed Phone')
     }
-
+    if (!this.cloudantData.isspecial) {
+      this.removeService('Special Request')
+    }
     if (!this.cloudantData.isfac) {
       this.removeService('FAC Code')
     }

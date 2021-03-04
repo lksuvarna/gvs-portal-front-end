@@ -2,7 +2,7 @@
 
 
 <div class=" ds-panel ds-col-12"></div>
-<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4" *ngIf="isDataLoaded">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
     </div>
@@ -139,7 +139,7 @@
                 <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="warninginfo==false&&warninginfosnow==false">NEXT</button>
             </div>
             <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3 ds-pull-md-5 ds-pull-lg-1">
-                <button class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">BACK</button>
+                <button (click)="backClick()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">BACK</button>
             </div>
         </div>
         

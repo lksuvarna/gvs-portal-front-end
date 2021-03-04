@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { Router } from '@angular/router';
-
+import {Location} from '@angular/common';
 import { Db2Service } from '../../_services/db2.service'
 import { servicenowservice } from '../../_services/servicenow.service'
 import { bpservices } from '../../_services/bp.service'
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -19,24 +20,41 @@ import { CommonModule } from '@angular/common';
 export class EmployeeinfoComponent implements OnInit {
 
 
-  constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private Db2Service: Db2Service, private servicenowservice: servicenowservice, private bpservices: bpservices) { }
+  constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private Db2Service: Db2Service, private servicenowservice: servicenowservice, private bpservices: bpservices,private location: Location,private route: ActivatedRoute) { }
   countryname: any;
   ccode = '';
+  pcode = '';
   cloudantData: any = []
   servicesData: any = []
   employeeInfo: any
+  employeeInfo1: any
   identifier: any;
   warninginfo = true;
   warninginfosnow = true;
-  cnum: any
+  sessionwarninginfo :any;
+  sessionwarninginfosnow :any;
+  cnum: any;
+  backbutton: any;
+  step:any;
+  isDataLoaded=false
   submit() {
-    this.router.navigate(['/entrydetails'])
+    this.router.navigate(['/entrydetails'],{ queryParams: { country: this.pcode } }) ;
   }
-
-
+  backClick(){
+    sessionStorage.setItem('backbutton','yes');
+    sessionStorage.setItem('step','step1');
+    this.location.back();
+  }
+  
   ngOnInit(): void {
-
-
+    
+    this.route.queryParams
+    .subscribe(params => {
+      console.log(params);
+  
+      this.pcode = params.country;
+      console.log("navigation component" + this.pcode);
+    })
 
     const servicesData = {
       "data": [
@@ -57,46 +75,27 @@ export class EmployeeinfoComponent implements OnInit {
     this.servicesData = servicesData.data[0];    
     this.warninginfo = false
     this.warninginfosnow=false
-    // Code to search Db2 for Jabber New
-    this.Db2Service.search_db2(this.cnum, 'jabber_new').subscribe(data => {
-      console.log(' db2 response', data);
-      console.log(' db2 response', data.message.length);
-
-      if (data.message.length > 0) {
-        this.warninginfo = true        
-        this.identifier = data.message[0].IDENTIFIER
-      }
-      else {
-        this.warninginfo = false        
-        this.servicenowservice.searchsnow(this.cnum, 'jabber_new', 'IN-NS-000RQU').subscribe(data => {
-          console.log(' snow response', data);
-          console.log(' snow response', data.message.length);
-          if (data.message.length > 0) {
-            console.log(' snow response1', data.message.length);
-            this.warninginfosnow=true           
-            this.identifier = data.message
-          }
-
-        });
-      }
-    });
-
-    //code to search snow for jabber new
-
-
-    this.bpservices.bpdetails(this.cnum).subscribe(data => {
-      console.log(' BP Details', data);
-      this.employeeInfo = {
-
-        employeeName: data.username.callupname,
-        jobResponsibility: data.username.jobresponsibilities,
-        businessUnit: data.username.workloc,
-        department: data.username.dept,
-        country: data.username.co,
-        email: data.username.preferredidentity
-      }
-
-    });}}
+    this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
+    this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
+    console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
+   if (this.sessionwarninginfo =='true1'){
+    this.warninginfo = true
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }
+   else if (this.sessionwarninginfosnow =='true1'){
+    this.warninginfosnow = true
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }
+  // this.warninginfosnow = true
+   this.isDataLoaded=true
+   //this.identifier=sessionStorage.getItem('identifier')
+    this.employeeInfo1=sessionStorage.getItem('employeeInfo')
+    this.employeeInfo=JSON.parse(this.employeeInfo1)
+    
+    
+}}
 
 
 
