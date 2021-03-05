@@ -22,8 +22,10 @@ export class ServicesComponent implements OnInit {
      
      this.ccode=this.cookie.getCookie('ccode').substring(6,9);
      this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-       console.log('Response received', data.countrydetails.name);
+      console.log('Response received', data.countrydetails.name);
        this.countryname=data.countrydetails;
+    // this.countryname=localStorage.getItem('countrydetails');
+     
       
   this.cloudantData  = {
     "code": this.ccode,
@@ -32,7 +34,9 @@ export class ServicesComponent implements OnInit {
     "isjabber": this.countryname.isjabber,
     "isfixedphone": this.countryname.isfixphone,
     "isfac": this.countryname.isfac,
-    "isspecial": this.countryname.isspecial
+    "isspecial": this.countryname.isspecial,
+    "isreval": true,
+"isapproval": true
   }
 });
   const servicesData = { 

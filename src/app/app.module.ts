@@ -27,8 +27,13 @@ import { JabberservicesComponent } from './components/jabberservices/jabberservi
 import { TopcountryframeComponent } from './components/topcountryframe/topcountryframe.component';
 import { cloudantservice } from '../app/_services/cloudant.service';
 import { MiddleframeComponent } from './components/middleframe/middleframe.component';
-import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component'
-import { DummyComponent } from './components/dummy/dummy.component'
+import { FilterPipe } from './filter.pipe';
+import { DropdownsearchPipe } from './dropdownsearch.pipe'
+import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
+import { DummyComponent } from './components/dummy/dummy.component';
+import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-update.component';
+import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component'
+
 
 
 
@@ -56,8 +61,13 @@ import { DummyComponent } from './components/dummy/dummy.component'
     JabberservicesComponent,
     TopcountryframeComponent,
     MiddleframeComponent,
+    FilterPipe,
+    DropdownsearchPipe,
     VoipInNewComponent,
     DummyComponent,
+    VoipInUpdateComponent,
+    VoipInDeleteComponent,
+
 
   ],
   imports: [
