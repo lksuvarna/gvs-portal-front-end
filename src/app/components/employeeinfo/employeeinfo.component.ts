@@ -36,9 +36,10 @@ export class EmployeeinfoComponent implements OnInit {
   cnum: any;
   backbutton: any;
   step:any;
+  service:any;
   isDataLoaded=false
   submit() {
-    this.router.navigate(['/entrydetails'],{ queryParams: { country: this.pcode } }) ;
+    this.router.navigate(['/entrydetails'],{ queryParams: { country: this.pcode,service:this.service } }) ;
   }
   backClick(){
     sessionStorage.setItem('backbutton','yes');
@@ -51,7 +52,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
-  
+      this.service=params.service;
       this.pcode = params.country;
       console.log("navigation component" + this.pcode);
     })

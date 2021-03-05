@@ -14,10 +14,7 @@ import { ActivatedRoute } from '@angular/router';
 export class VoipInNewComponent implements OnInit {
   
 
-  Locations:any = {
-    locc : ['Select Office Location~~Select One','Banglore~~MTP','Banglore~~SA',
-    'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech']
-    };
+ 
     campA: any = [];
     camp: any = [];
     buildA: any = [];
@@ -59,9 +56,15 @@ export class VoipInNewComponent implements OnInit {
     ccode='';
     cloudantData: any = []
     servicesData: any = []
-
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { 
-    
+    Locations:any ;
+    locationlist:any ;
+    pcode:any;
+    service:any;
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute) { 
+    this.Locations = {
+      locc : ['Select Office Location~~Select One','Banglore~~MTP','Banglore~~SA',
+      'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech']
+      };
     for(var i=0;i<this.Locations.locc.length;i++) {
       var n=this.Locations.locc[i].indexOf("~")
       this.campA[i] = this.Locations.locc[i].substr(0,n);
@@ -146,25 +149,21 @@ export class VoipInNewComponent implements OnInit {
   ngOnInit(): void {
      
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-    this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-      console.log('Response received', data.countrydetails.name);
-      this.countryname=data.countrydetails;
-    
-    this.cloudantData  = {
-      "code": this.ccode,
-      "name": this.countryname.name,
-      "isocode": this.countryname.isocode,
-      "isjabber": this.countryname.isjabber,
-      "isfixedphone": this.countryname.isfixphone,
-      "isfac": this.countryname.isfac,
-      "isspecial": this.countryname.isspecial
-    }
-    });
+    this.route.queryParams
+    .subscribe(params => {
+      console.log(params);
+      this.service=params.service;
+      this.pcode = params.country;
+      console.log("navigation component" + this.pcode);
+    })
+    this.locationlist=sessionStorage.getItem('locationdetails')
+    console.log(this.locationlist)
     const servicesData = { 
       "data": [
         {    
           "lhs": [
-            {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},            
+            {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false}, 
+            { "name": "Jabber", "routingname": "/services", "indented": true, "highlighted": true },           
             {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
