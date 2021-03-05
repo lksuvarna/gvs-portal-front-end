@@ -4,7 +4,7 @@ import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { servicenowservice } from '../../_services/servicenow.service';
 import {Router} from  '@angular/router';
 import {Jabber_New} from '../../../../config/payload';
-
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-reviewdetails',
@@ -14,6 +14,7 @@ import {Jabber_New} from '../../../../config/payload';
 export class ReviewdetailsComponent implements OnInit {
   countryname:any;
   ccode='';
+<<<<<<< HEAD
   cnum : any;
   cloudantData: any = [];
   servicesData: any = [];
@@ -23,6 +24,29 @@ export class ReviewdetailsComponent implements OnInit {
 
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice) { }
   payload : Jabber_New = new Jabber_New();
+=======
+  cloudantData: any = []
+  servicesData: any = []
+  countrydetails:any;
+  cnum:any
+  payload:any
+  isButtonVisible:any
+  isSpinnerVisible:any
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice,private location:Location) { }
+  backClick(){
+    sessionStorage.setItem('backbutton','yes');
+    sessionStorage.setItem('step','step1');
+   // this.location.back();
+   // this.router.navigate(['..']);
+  }
+  submit(){
+    this.servicenowservice.submit_new_jabber_request(this.payload).subscribe(data=> {
+    console.log('response', data);
+    if(data)
+    this.router.navigate(['/resultpage']) ;
+    });
+    }
+>>>>>>> 31f3c6390a2ec486b4c6efd34e59970269b899f5
 
   reviewDetailsIndia = {
 
@@ -39,7 +63,7 @@ export class ReviewdetailsComponent implements OnInit {
     accid_Disp: "",
     reqno:""
   }
-  submit(){
+  submit1(){
    this.isButtonVisible=false;
    this.isSpinnerVisible=true;
      this.payload.orinator_payload=this.ccode;

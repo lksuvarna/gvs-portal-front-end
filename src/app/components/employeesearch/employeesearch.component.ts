@@ -142,7 +142,12 @@ export class EmployeesearchComponent implements OnInit {
             this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode } }) ;
           }
          else{
-          this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode } }) ;
+          this.cloudantservice.getlocationdetails(this.pcode).subscribe(data => {
+            console.log('Response received navigation', data.locationdetails);            
+            sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));            
+            this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode,service:this.service } }) ;                  
+          });
+          
          }
         });
       }
