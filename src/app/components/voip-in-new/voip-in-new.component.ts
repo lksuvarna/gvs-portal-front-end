@@ -178,8 +178,7 @@ export class VoipInNewComponent implements OnInit {
       this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
       this.payload.Location_final =this.reviewDetailsIndia.campus;
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;
-     // this.payload.ReqNo=this.reviewDetailsIndia.reqno;
-      this.payload.ReqNo="IN-NS-"+this.orgi+"-1234"
+      this.payload.ReqNo=this.reviewDetailsIndia.reqno;
 
       // fields to be picked up from form -- ends
       this.payload.level1_japproval=this.countrydetails.level1_japproval;
