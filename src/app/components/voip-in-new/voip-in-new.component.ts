@@ -53,21 +53,16 @@ export class VoipInNewComponent implements OnInit {
 
     cloudantData: any = []
     servicesData: any = []
-<<<<<<< HEAD
     Locations:any ;
     locationlist:any ;
     pcode:any;
     service:any;
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute) { 
+    
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice) { 
     this.Locations = {
       locc : ['Select Office Location~~Select One','Banglore~~MTP','Banglore~~SA',
       'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech']
       };
-=======
-
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice) { 
-    
->>>>>>> 9300ff5cacb4bacc55ea3268057410a0dbb98e71
     for(var i=0;i<this.Locations.locc.length;i++) {
       var n=this.Locations.locc[i].indexOf("~")
       this.campA[i] = this.Locations.locc[i].substr(0,n);
@@ -222,7 +217,6 @@ export class VoipInNewComponent implements OnInit {
      // Submit to Snow Jabber new code added by Swarnava ends
      
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-<<<<<<< HEAD
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
@@ -230,24 +224,10 @@ export class VoipInNewComponent implements OnInit {
       this.pcode = params.country;
       console.log("navigation component" + this.pcode);
     })
-    this.locationlist=sessionStorage.getItem('locationdetails')
+    this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')
+    this.locationlist=this.locationlist?.replace('"','')
+   // this.locationlist=this.locationlist.split(',')
     console.log(this.locationlist)
-=======
-    // this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-    //   console.log('Response received', data.countrydetails.name);
-    //   this.countryname=data.countrydetails;
-    
-    // this.cloudantData  = {
-    //   "code": this.ccode,
-    //   "name": this.countryname.name,
-    //   "isocode": this.countryname.isocode,
-    //   "isjabber": this.countryname.isjabber,
-    //   "isfixedphone": this.countryname.isfixphone,
-    //   "isfac": this.countryname.isfac,
-    //   "isspecial": this.countryname.isspecial
-    // }
-    // });
->>>>>>> 9300ff5cacb4bacc55ea3268057410a0dbb98e71
     const servicesData = { 
       "data": [
         {    
