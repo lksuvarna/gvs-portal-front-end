@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { NgForm } from '@angular/forms';
-import { Router} from  '@angular/router';
+import {Router} from  '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-voip-in-new',
@@ -10,16 +12,19 @@ import { Router} from  '@angular/router';
   styleUrls: ['./voip-in-new.component.css']
 })
 export class VoipInNewComponent implements OnInit {
+  
 
   Locations:any = {
     locc : ['Select Office Location~~Select One','Banglore~~MTP','Banglore~~SA',
-    'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~MS','Hyderabad~~DTP']
+    'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech']
     };
     campA: any = [];
     camp: any = [];
     buildA: any = [];
     build: any = [];
     j = 0;
+
+    // Dummy:any = ['any','any1','any2'];
 
   isEntryForm = false;
   isReviewForm = true;
@@ -83,7 +88,8 @@ export class VoipInNewComponent implements OnInit {
       if(loc == this.campA[i]) {
       this.build[++k] = this.buildA[i];
       }
-      }
+      }  
+    // alert("HIIII"+this.build);
            
     } else {
       this.hideBuilding = true;
@@ -176,6 +182,8 @@ export class VoipInNewComponent implements OnInit {
           "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
         }
       ]
+
+   
     }
       
       this.servicesData = servicesData.data[0]
@@ -183,4 +191,3 @@ export class VoipInNewComponent implements OnInit {
   }
     
 }
-  

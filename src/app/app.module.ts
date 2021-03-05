@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,6 +34,7 @@ import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.compone
 import { DummyComponent } from './components/dummy/dummy.component';
 import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-update.component';
 import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component'
+import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-voip-delete/employeesearch-voip-delete.component';
 
 
 
@@ -67,6 +69,7 @@ import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delet
     DummyComponent,
     VoipInUpdateComponent,
     VoipInDeleteComponent,
+    EmployeesearchVoipDeleteComponent,
 
 
   ],
@@ -75,7 +78,9 @@ import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delet
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    appRoutingProviders
+    appRoutingProviders,
+    CommonModule
+   
     
     
   ],

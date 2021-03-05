@@ -1,7 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
-import {Router} from  '@angular/router';
+import { Router } from '@angular/router';
+import {Location} from '@angular/common';
+import { Db2Service } from '../../_services/db2.service'
+import { servicenowservice } from '../../_services/servicenow.service'
+import { bpservices } from '../../_services/bp.service'
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-employeeinfo',
@@ -11,72 +20,82 @@ import {Router} from  '@angular/router';
 export class EmployeeinfoComponent implements OnInit {
 
 
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
-  countryname:any;
-  ccode='';
+  constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private Db2Service: Db2Service, private servicenowservice: servicenowservice, private bpservices: bpservices,private location: Location,private route: ActivatedRoute) { }
+  countryname: any;
+  ccode = '';
+  pcode = '';
   cloudantData: any = []
   servicesData: any = []
-  submit(){
-    this.router.navigate(['/entrydetails']) }
-
-  
-
-  employeeInfo = {
-
-    employeeName: "Manisha, Kankanampati",
-    jobResponsibility: "ServiceNow developer",
-    businessUnit: "GBS",
-    department: "JDP",
-    country: "India",
-    email: "Kankanampati.Manisha@ibm.com"
+  employeeInfo: any
+  employeeInfo1: any
+  identifier: any;
+  warninginfo = true;
+  warninginfosnow = true;
+  sessionwarninginfo :any;
+  sessionwarninginfosnow :any;
+  cnum: any;
+  backbutton: any;
+  step:any;
+  isDataLoaded=false
+  submit() {
+    this.router.navigate(['/entrydetails'],{ queryParams: { country: this.pcode } }) ;
   }
+  backClick(){
+    sessionStorage.setItem('backbutton','yes');
+    sessionStorage.setItem('step','step1');
+    this.location.back();
+  }
+  
+  ngOnInit(): void {
+    
+    this.route.queryParams
+    .subscribe(params => {
+      console.log(params);
+  
+      this.pcode = params.country;
+      console.log("navigation component" + this.pcode);
+    })
 
- 
-    ngOnInit(): void {
-     
-      this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-      this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-        console.log('Response received', data.countrydetails.name);
-        this.countryname=data.countrydetails;
-      
-      this.cloudantData  = {
-        "code": this.ccode,
-        "name": this.countryname.name,
-        "isocode": this.countryname.isocode,
-        "isjabber": this.countryname.isjabber,
-        "isfixedphone": this.countryname.isfixphone,
-        "isfac": this.countryname.isfac,
-        "isspecial": this.countryname.isspecial
-      }
-    });
-      const servicesData = { 
+    const servicesData = {
       "data": [
-        {    
+        {
           "lhs": [
-            {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},            
-            {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-            {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-            {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
-            {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
+            { "name": "Services", "routingname": "/services", "indented": false, "highlighted": false },
+            { "name": "Jabber", "routingname": "/services", "indented": true, "highlighted": true },
+            { "name": "Approvals Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
+            { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
+            { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
+            { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
           ],
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-          "titles": [
-            "Terms of use",
-            "Useful Information",
-            "Please bear in mind the following points when making a request :"
-          ],
-          "usefulinfotexts": [
-            "To make a request the Employee must exist in BluePages (except for cancellation requests).",
-            "You must know the IBM serial Number of the person making the request.",
-            "Only one request per employee per request type is processed at a time."
-          ],
-          "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
+          "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
         }
       ]
     }
-      
-      this.servicesData = servicesData.data[0]
+    this.cnum = sessionStorage.getItem('cnum') 
+    this.servicesData = servicesData.data[0];    
+    this.warninginfo = false
+    this.warninginfosnow=false
+    this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
+    this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
+    console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
+   if (this.sessionwarninginfo =='true1'){
+    this.warninginfo = true
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }
+   else if (this.sessionwarninginfosnow =='true1'){
+    this.warninginfosnow = true
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }
+  // this.warninginfosnow = true
+   this.isDataLoaded=true
+   //this.identifier=sessionStorage.getItem('identifier')
+    this.employeeInfo1=sessionStorage.getItem('employeeInfo')
+    this.employeeInfo=JSON.parse(this.employeeInfo1)
     
-      }
-    }
     
+}}
+
+
+
