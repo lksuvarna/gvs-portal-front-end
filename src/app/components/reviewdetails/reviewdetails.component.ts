@@ -14,17 +14,6 @@ import {Location} from '@angular/common';
 export class ReviewdetailsComponent implements OnInit {
   countryname:any;
   ccode='';
-<<<<<<< HEAD
-  cnum : any;
-  cloudantData: any = [];
-  servicesData: any = [];
-  countrydetails : any;
-  isButtonVisible = true;
-  isSpinnerVisible= false;
-
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice) { }
-  payload : Jabber_New = new Jabber_New();
-=======
   cloudantData: any = []
   servicesData: any = []
   countrydetails:any;
@@ -46,7 +35,6 @@ export class ReviewdetailsComponent implements OnInit {
     this.router.navigate(['/resultpage']) ;
     });
     }
->>>>>>> 31f3c6390a2ec486b4c6efd34e59970269b899f5
 
   reviewDetailsIndia = {
 
