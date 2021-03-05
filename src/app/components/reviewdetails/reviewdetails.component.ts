@@ -3,6 +3,7 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { servicenowservice } from '../../_services/servicenow.service';
 import {Router} from  '@angular/router';
+import {Jabber_New} from '../../../../config/payload';
 import {Location} from '@angular/common';
 
 @Component({
@@ -13,6 +14,17 @@ import {Location} from '@angular/common';
 export class ReviewdetailsComponent implements OnInit {
   countryname:any;
   ccode='';
+<<<<<<< HEAD
+  cnum : any;
+  cloudantData: any = [];
+  servicesData: any = [];
+  countrydetails : any;
+  isButtonVisible = true;
+  isSpinnerVisible= false;
+
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice) { }
+  payload : Jabber_New = new Jabber_New();
+=======
   cloudantData: any = []
   servicesData: any = []
   countrydetails:any;
@@ -34,6 +46,7 @@ export class ReviewdetailsComponent implements OnInit {
     this.router.navigate(['/resultpage']) ;
     });
     }
+>>>>>>> 31f3c6390a2ec486b4c6efd34e59970269b899f5
 
   reviewDetailsIndia = {
 
