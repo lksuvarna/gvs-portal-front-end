@@ -118,7 +118,7 @@ export class EmployeesearchComponent implements OnInit {
 
         employeeName: data.username.callupname,
         jobResponsibility: data.username.jobresponsibilities,
-        businessUnit: data.username.workloc,
+        businessUnit: data.bu,
         department: data.username.dept,
         country: data.username.co,
         email: data.username.preferredidentity

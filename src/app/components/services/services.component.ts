@@ -20,9 +20,10 @@ export class ServicesComponent implements OnInit {
   ccode = '';
   countryroute: any
   pcode = '';
-  constructor(private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private router: Router) { }
+  constructor(private router: Router,private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
