@@ -103,7 +103,7 @@
             </tbody>
         </table>
 
-        <p class="ds-col-xs-12 ds-alert ds-warning" id="error" *ngIf=notvalid><font color="black">There is no record of an IBM employee with the serial number {{employeeSerial}} available from BluePages</font></p>
+        <p class="ds-col-xs-12 ds-alert ds-warning" id="error" *ngIf=notvalid><font color="black">There is no record of an IBM employee with the serial number {{employeeSerial.substr(0,6)}} available from BluePages</font></p>
         <div class="ds-hr-thick ds-mar-t-1_5"></div>
         <div class="ds-loader-container" *ngIf=showloader>
             <div class="ds-loader-header">Please wait data is loading !</div>

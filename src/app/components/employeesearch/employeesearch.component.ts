@@ -124,7 +124,7 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfo', 'true1')  
         this.identifier = data.message[0].IDENTIFIER
         sessionStorage.setItem('identifier', this.identifier)
-        this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode } }) ;
+        this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode,service:this.service }}) ;
       }
       else {
         this.warninginfo = false 

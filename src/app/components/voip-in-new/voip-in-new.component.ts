@@ -6,6 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { servicenowservice } from '../../_services/servicenow.service';
 import {Jabber_New} from '../../../../config/payload';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class VoipInNewComponent implements OnInit {
   ccode='';
   orgi:any;
   cnum : any;
+  reqno:any;
   countrydetails : any;
   isButtonVisible = true;
   isSpinnerVisible= false;
@@ -167,6 +169,8 @@ export class VoipInNewComponent implements OnInit {
 
    // Submit to Snow Jabber new code added by Swarnava
   submit_snow(){
+    this.reqno=this.countrydetails.isocode+"-NS-"+this.cnum.substr(0,6)+"-"+gettime();
+    sessionStorage.setItem('reqno',this.reqno)
     this.isButtonVisible=false;
     this.isSpinnerVisible=true;
       this.payload.orinator_payload=this.orgi;
@@ -182,7 +186,7 @@ export class VoipInNewComponent implements OnInit {
       this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
       this.payload.Location_final =this.reviewDetailsIndia.campus;
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;
-      this.payload.ReqNo=this.reviewDetailsIndia.reqno;
+      this.payload.ReqNo=this.reqno;
 
       // fields to be picked up from form -- ends
       this.payload.level1_japproval=this.countrydetails.level1_japproval;
@@ -201,7 +205,7 @@ export class VoipInNewComponent implements OnInit {
      this.servicenowservice.submit_new_jabber_request(this.payload).subscribe(data=> {
      console.log('response', data);
      if(data)
-     this.router.navigate(['/resultpage']) ;
+     this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;
      });
      }
  
@@ -240,17 +244,6 @@ export class VoipInNewComponent implements OnInit {
             {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
           ],
           "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-          "titles": [
-            "Terms of use",
-            "Useful Information",
-            "Please bear in mind the following points when making a request :"
-          ],
-          "usefulinfotexts": [
-            "To make a request the Employee must exist in BluePages (except for cancellation requests).",
-            "You must know the IBM serial Number of the person making the request.",
-            "Only one request per employee per request type is processed at a time."
-          ],
-          "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
         }
       ]
 
@@ -260,5 +253,18 @@ export class VoipInNewComponent implements OnInit {
       this.servicesData = servicesData.data[0]
   
   }
-    
+   
 }
+function gettime() {
+  var date=new Date();
+  var minutes1='';
+  var seconds1='';  
+  var seconds = date.getSeconds();
+  var minutes = date.getMinutes();  
+  if(minutes < 10) {minutes1='0'+minutes}
+  else{minutes1=''+minutes}
+  if(seconds < 10) {seconds1='0'+seconds}
+  else{seconds1=''+seconds}
+    console.log(minutes1+seconds1)
+  return minutes1+seconds1;
+} 
