@@ -55,7 +55,6 @@ export class VoipInNewComponent implements OnInit {
   employeeInfo1: any;	
   campus:any;	
   reqFor: any;
-  
     
       
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	
@@ -277,6 +276,12 @@ export class VoipInNewComponent implements OnInit {
     this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
     this.employeeInfo = JSON.parse(this.employeeInfo1);	
   }	
+
+  previousStep(event : any){
+    this.isEntryForm = false;	
+    this.isReviewForm = true;	
+    this.fixedPhoneIdentifier = false;	
+  }
       
 }	
 function gettime() {	
