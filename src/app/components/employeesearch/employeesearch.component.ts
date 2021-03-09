@@ -217,7 +217,7 @@ export class EmployeesearchComponent implements OnInit {
     }
 
   }
-  chvalid(){
+  hidedata(){
     this.notvalid=false;
   }
   onRequestForChangesession(){

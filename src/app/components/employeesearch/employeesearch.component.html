@@ -65,7 +65,7 @@
                         <td colspan="2">
                             <div *ngIf="hideDisTextBox" class=" row ds-pad-t-2">
                                 <div class="ds-col-4">
-                                    <input maxlength="6" name="employeeSerial" ngModel type="text" class="ds-input" ngModel={{empno}}>
+                                    <input maxlength="6" name="employeeSerial" ngModel type="text" class="ds-input" ngModel={{empno}} (click)="hidedata()">
                                 </div>
                                 <div class="ds-col-6">
                                     <span style="color:#808080">(eg 012789)</span>
