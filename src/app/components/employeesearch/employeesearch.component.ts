@@ -83,7 +83,7 @@ export class EmployeesearchComponent implements OnInit {
           {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
         ],
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        
+        "step" : 1,
       }
     ]
   }
