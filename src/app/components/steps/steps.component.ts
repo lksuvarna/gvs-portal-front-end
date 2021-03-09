@@ -16,6 +16,7 @@ export class StepsComponent implements OnInit {
   reqFor : any
   servicesData : any = []
   pcode = '';
+  service :any;
   isDisabled = false
   isWarning2 = false
   isWarning3 = false
@@ -28,6 +29,7 @@ export class StepsComponent implements OnInit {
       console.log(params);
 
       this.pcode = params.country;
+      this.service=params.service;
       console.log("navigation component" + this.pcode);
     })
     
