@@ -36,6 +36,7 @@ export class EmployeesearchComponent implements OnInit {
   employeeSerial=''
   radio:any;
   empno:any;
+  countrydetails:any;
   notvalid=false
   dataloading=false
   showloader=false
@@ -43,6 +44,8 @@ export class EmployeesearchComponent implements OnInit {
     this.showloader=false
     this.fullName=this.cookie.getCookie('user');
     this.ccode=this.cookie.getCookie('ccode');
+    this.countrydetails=sessionStorage.getItem('countrydetails')
+    
     this.route.queryParams
       .subscribe(params => {
         console.log(params);
@@ -53,7 +56,7 @@ export class EmployeesearchComponent implements OnInit {
       this.backbutton=sessionStorage.getItem('backbutton');
       this.step=sessionStorage.getItem('step');
       
-    this.radioAction = "mySelf"; 
+    //this.radioAction = "mySelf"; 
     if(sessionStorage.getItem('radioAction')=== null)
     {
       this.radioAction = "myself"; 
@@ -91,25 +94,34 @@ export class EmployeesearchComponent implements OnInit {
 
     onSubmit(formData:NgForm)
   {
-    this.showloader=true
-    sessionStorage.setItem('radioAction',this.radioAction.toLowerCase());
     
+    sessionStorage.setItem('radioAction',this.radioAction.toLowerCase());
+    console.log(this.pcode+this.ccode)
+    if(this.radioAction.toLowerCase() == "myself" && this.pcode!==this.ccode.substr(6,9)){
+      alert("Only "+JSON.parse(this.countrydetails).name +" Serial numbers are allowed to create a request for "+JSON.parse(this.countrydetails).name);
+      return;
+    }
     if(this.radioAction.toLowerCase() == "anotheremployee"){
     if(formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true){
     alert("Please enter serial number");
+    return;
     }
     else if(formData.value.employeeSerial.length < 6  && this.hideDisTextBox == true){
       alert("Employee Serial Number should be of 6 characters");
+      return;
     }
     else{
       sessionStorage.setItem('empserial',formData.value.employeeSerial)
       this.employeeSerial=formData.value.employeeSerial+this.pcode;
+      
     }
   }
   //for self
    else{
     this.employeeSerial=this.ccode
+    
    }
+   this.showloader=true
 //BP verification and getting data
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
       console.log(' BP Details', data.userdata);
@@ -204,6 +216,9 @@ export class EmployeesearchComponent implements OnInit {
 
     }
 
+  }
+  chvalid(){
+    this.notvalid=false;
   }
   onRequestForChangesession(){
     

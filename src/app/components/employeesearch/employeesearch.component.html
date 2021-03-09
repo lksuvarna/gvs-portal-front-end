@@ -92,7 +92,7 @@
                     <td colspan="2">
                         <div *ngIf="hideDisTextBox" class=" row ds-pad-t-2">
                             <div class="ds-col-4">
-                                <input maxlength="6" name="employeeSerial" ngModel type="text" class="ds-input" ngModel={{empno}}>
+                                <input maxlength="6" name="employeeSerial" ngModel type="text" class="ds-input" ngModel={{empno}} (ng-click)="chvalid()">
                             </div>
                             <div class="ds-col-6">
                                 <span style="color:#808080">(eg 012789)</span>
@@ -112,10 +112,10 @@
         
         <div class="ds-row ds-mar-t-b-3_5">
             <div class="ds-col-xs-12 ds-col-md-5 ds-col-lg-2 ds-offset-md-3 ds-offset-lg-6 ds-push-md-4 ds-push-lg-4">
-                <button *ngIf=!showloader type="submit"  class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%">NEXT</button>
+                <button  *ngIf=!showloader||notvalid type="submit"  class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%">NEXT</button>
             </div>
             <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3 ds-pull-md-5 ds-pull-lg-1">
-                <button *ngIf=!showloader type="button" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode}">EXIT REQUEST</button>
+                <button *ngIf=!showloader  type="button" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode}">EXIT REQUEST</button>
             </div>
         </div>
         
