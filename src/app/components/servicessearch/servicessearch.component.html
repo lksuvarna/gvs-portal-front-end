@@ -1,28 +1,30 @@
-<div class="ds-row ds-pad-t-1 ds-pad-b-1">
-    <div class="ds-col-sm-12 ds-col-md-2 ds-col-xl-3">
-        <div>
+<div class="ds-row ds-pad-t-1 ds-pad-b-10">
+    <div class="ds-pad-b-5">
+        <div class="ds-col-sm-12 ds-col-md-2 ds-col-xl-3">
+            <div>
+            </div>
         </div>
-    </div>
-    <div class="ds-col-sm-12 ds-col-md-10 ds-col-xl-9">
-        <div class="ds-row ds-pad-l-12 ds-pad-t-4">
-            <div class="ds-col-sm-12 ds-col-md-2 ds-col-xl-2">
-                <div>
-                    <b>GVS Search</b>
+        <div class="ds-col-sm-12 ds-col-md-10 ds-col-xl-7">
+            <div class="ds-row ds-pad-l-12 ds-pad-t-4">
+                <div class="ds-col-sm-12 ds-col-md-2 ds-col-xl-2 ds-pad-t-1">
+                    <div>
+                        <b>GVS Search</b>
+                    </div>
                 </div>
-            </div>
-            <div class="ds-col-sm-12 ds-col-md-10 ds-col-xl-10 ds-pad-b-2">
-                <div class="ds-col-sm-8 md-2 xl-5">
-                    <input type="text" class="ds-input" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Search service..." style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; ">
+                <div class="ds-col-sm-12 ds-col-md-10 ds-col-xl-10 ds-pad-b-2">
+                    <div class="ds-col-sm-8 md-2 xl-5">
+                        <input type="text" class="ds-input" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Search service..." style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; ">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | search: searchText; let i=index">
-                    <a [routerLink]="['/services']" [queryParams]="{country:searchResult.code}"><img class="ds-border-neutral-5" src={{searchResult.flag}} width="28;" height="20;"> {{searchResult.name}} </a>
-                    <hr>
+                <div class="row">
+                    <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | search: searchText; let i=index">
+                        <a [routerLink]="['/services']" [queryParams]="{country:searchResult.code}"><img class="ds-border-neutral-5" src={{searchResult.flag}} width="28;" height="20;"> {{searchResult.name}} </a>
+                        <hr>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </div>

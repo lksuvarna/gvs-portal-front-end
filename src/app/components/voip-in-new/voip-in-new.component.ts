@@ -54,6 +54,7 @@ export class VoipInNewComponent implements OnInit {
   employeeInfo: any;	
   employeeInfo1: any;	
   campus:any;	
+  reqFor: any;
   
     
       
@@ -261,14 +262,15 @@ export class VoipInNewComponent implements OnInit {
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},	
             {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}	
           ],	
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 	
+          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "step" : 3,	
           
         }	
       ]	
   
      
     }	
-        
+    this.reqFor = sessionStorage.getItem('reqFor')
     this.servicesData = servicesData.data[0];	
     //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
     //alert(this.reviewDetailsIndia.reqno);	

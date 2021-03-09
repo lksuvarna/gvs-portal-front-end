@@ -34,6 +34,7 @@ import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.compone
 import { DummyComponent } from './components/dummy/dummy.component';
 import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component';
 import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-voip-delete/employeesearch-voip-delete.component';
+import { StepsComponent } from './components/steps/steps.component';
 
 
 
@@ -68,6 +69,7 @@ import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-v
     DummyComponent,
     VoipInDeleteComponent,
     EmployeesearchVoipDeleteComponent,
+    StepsComponent,
 
 
   ],
