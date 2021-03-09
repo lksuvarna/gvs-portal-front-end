@@ -127,7 +127,7 @@
             </td>
           </tr>
 
-          <tr valign="top">
+          <tr valign="top" [hidden]='hideProjectId'>
             <td colspan="2" width="46%"><br><label for="Projectid" class="ds-text-capitalize ds-pad-t-1">Project id
                 (for GBS employee only)</label>
               <span class="ds-text-contextual-red-2">*</span></td>
@@ -159,7 +159,7 @@
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="Back">
+                value="Back" (click)="backClick()">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
@@ -251,7 +251,7 @@
             <td width="54%">{{reviewDetailsIndia.businessUnit}}</td>
           </tr>
 
-          <tr valign="top">
+          <tr valign="top" [hidden]='hideProjectId'>
             <td colspan="2" width="46%">
               <label for="Projectid">Project id (for GBS employee only)</label>
             </td>
