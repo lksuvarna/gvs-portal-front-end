@@ -1,7 +1,7 @@
 <app-topcountryframe></app-topcountryframe>
 
 
-<div class=" ds-panel ds-col-12" #overlay ></div>
+<div class=" ds-panel ds-col-12" #overlay></div>
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
@@ -11,29 +11,9 @@
         <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
         </div>
         <div class="ds-hr-thick ds-mar-b-1_5"></div>
-        <div class="ds-panel-row">
-            <div>
-                <span class="ds-tooltip ds-hover" id="tooltip-demo1">
-                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5 ds-pad-l-1" aria-label="help" tabindex="0">STEP 1</span>
-                <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">Employee Search</div>
-                </span>
-                <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
-                <span class="ds-tooltip ds-hover" id="tooltip-demo1">
-                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 2</span>
-                <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Information</div>
-                </span>
-                <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
-                <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
-                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 3</span>
-                <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Entry Details</div>
-                </span>
-                <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
-                <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
-                    <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 4</span>
-                <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Review Details</div>
-                </span>
-            </div>
-        </div>
+
+        <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+
         <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Jabber Request Details</h2>
 
         <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
@@ -98,18 +78,18 @@
                 <button class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" *ngIf="this.isButtonVisible" style="width: 100%" id="back">BACK</button>
             </div>
             <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3 ds-pull-md-5 ds-pull-lg-1">
-                <button (click)="submit()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">BACK</button>
+                <button (click)="submit_snow()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">Submit</button>
 
             </div>
         </div>
         <!-- spinnner element is  
     defined with id loading -->
-        
-  <!-- Dark Background -->
-  <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
-    <div class="ds-loader-header">Your request is being submitted.Do not refresh or go back.</div>
-    <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
-    </div>
+
+        <!-- Dark Background -->
+        <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+            <div class="ds-loader-header">Your request is being submitted.Do not refresh or go back.</div>
+            <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
+        </div>
 
     </div>
 </div>
