@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,7 +11,9 @@ export class StepsComponent implements OnInit {
  
   @Input ('step') step : any;
   @Input ('isSelf') isSelf : any;
-  @Input('hideSteps') isWarning : any;
+  @Input ('hideSteps') isWarning : any;
+
+  @Output() previousStep = new EventEmitter<string>()
 
   reqFor : any
   servicesData : any = []
@@ -20,6 +22,12 @@ export class StepsComponent implements OnInit {
   isDisabled = false
   isWarning2 = false
   isWarning3 = false
+  tooltip : any
+  noTooltip : any
+  changeClass1 = false
+  changeClass2 = false
+  changeClass3 = false
+  changeClass4 = false
 
   constructor(private route: ActivatedRoute) { }
 
@@ -49,6 +57,8 @@ export class StepsComponent implements OnInit {
   }
 
   this.servicesData = servicesData.data[0].steps
+  this.noTooltip = "ds-tooltip ds-hover ds-text-align-center"
+  this.tooltip = "ds-tooltip ds-hover ds-text-align-center ds-open"
 
   if (!(this.step === 1)){
     if(this.isSelf === 'myself'){
@@ -78,4 +88,9 @@ export class StepsComponent implements OnInit {
   }
 
   }
+
+  sendToEntryDetails () {
+    this.previousStep.emit('true')
+  }
+
 }
