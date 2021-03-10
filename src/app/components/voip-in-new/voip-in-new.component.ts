@@ -269,7 +269,7 @@ export class VoipInNewComponent implements OnInit {
   
      
     }	
-    this.reqFor = sessionStorage.getItem('reqFor')
+    this.reqFor = sessionStorage.getItem('radioAction')
     this.servicesData = servicesData.data[0];	
     //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
     //alert(this.reviewDetailsIndia.reqno);	
