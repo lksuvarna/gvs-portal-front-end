@@ -202,6 +202,11 @@
             </table>
 
             <div class="ds-hr-thick ds-mar-t-1_5"></div>
+            <!-- Dark Background -->
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+                <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
+            </div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
                 <div class="ds-tray-fit-content ds-mar-b-0">
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
@@ -214,11 +219,7 @@
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
-                        <!-- Dark Background -->
-                        <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
-                            <div class="ds-loader-header">Your request is being submitted.Do not refresh or go back.</div>
-                            <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
-                        </div>
+                        
 
 
                     </div>
