@@ -34,6 +34,9 @@ export class EmployeesearchComponent implements OnInit {
   warninginfosnow = true;
   employeeInfo: any
   employeeSerial=''
+  radio:any;
+  empno:any;
+  countrydetails:any;
   notvalid=false
   dataloading=false
   showloader=false
@@ -41,6 +44,8 @@ export class EmployeesearchComponent implements OnInit {
     this.showloader=false
     this.fullName=this.cookie.getCookie('user');
     this.ccode=this.cookie.getCookie('ccode');
+    this.countrydetails=sessionStorage.getItem('countrydetails')
+    
     this.route.queryParams
       .subscribe(params => {
         console.log(params);
@@ -50,10 +55,21 @@ export class EmployeesearchComponent implements OnInit {
       })
       this.backbutton=sessionStorage.getItem('backbutton');
       this.step=sessionStorage.getItem('step');
-      if(this.backbutton=='yes')
-      {}else{
-    this.radioAction = "mySelf"; }  
-
+      
+    //this.radioAction = "mySelf"; 
+    if(sessionStorage.getItem('radioAction')=== null)
+    {
+      this.radioAction = "myself"; 
+    }
+    else{
+      this.radio=sessionStorage.getItem('radioAction')
+      this.radioAction = this.radio
+      this.empno=sessionStorage.getItem('empserial')
+      
+      this.onRequestForChangesession();
+    }
+    
+    
     
     const servicesData = { 
     "data": [
@@ -67,7 +83,7 @@ export class EmployeesearchComponent implements OnInit {
           {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
         ],
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        
+        "step" : 1,
       }
     ]
   }
@@ -78,22 +94,34 @@ export class EmployeesearchComponent implements OnInit {
 
     onSubmit(formData:NgForm)
   {
-    this.showloader=true
+    
+    sessionStorage.setItem('radioAction',this.radioAction.toLowerCase());
+    console.log(this.pcode+this.ccode)
+    if(this.radioAction.toLowerCase() == "myself" && this.pcode!==this.ccode.substr(6,9)){
+      alert("Only "+JSON.parse(this.countrydetails).name +" Serial numbers are allowed to create a request for "+JSON.parse(this.countrydetails).name);
+      return;
+    }
     if(this.radioAction.toLowerCase() == "anotheremployee"){
     if(formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true){
     alert("Please enter serial number");
+    return;
     }
     else if(formData.value.employeeSerial.length < 6  && this.hideDisTextBox == true){
       alert("Employee Serial Number should be of 6 characters");
+      return;
     }
     else{
-      this.employeeSerial=formData.value.employeeSerial+this.pcode
+      sessionStorage.setItem('empserial',formData.value.employeeSerial)
+      this.employeeSerial=formData.value.employeeSerial+this.pcode;
+      
     }
   }
   //for self
    else{
     this.employeeSerial=this.ccode
+    
    }
+   this.showloader=true
 //BP verification and getting data
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
       console.log(' BP Details', data.userdata);
@@ -102,7 +130,7 @@ export class EmployeesearchComponent implements OnInit {
 
         employeeName: data.username.callupname,
         jobResponsibility: data.username.jobresponsibilities,
-        businessUnit: data.username.workloc,
+        businessUnit: data.bu,
         department: data.username.dept,
         country: data.username.co,
         email: data.username.preferredidentity
@@ -124,7 +152,7 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfo', 'true1')  
         this.identifier = data.message[0].IDENTIFIER
         sessionStorage.setItem('identifier', this.identifier)
-        this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode } }) ;
+        this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode,service:this.service }}) ;
       }
       else {
         this.warninginfo = false 
@@ -144,8 +172,13 @@ export class EmployeesearchComponent implements OnInit {
          else{
           this.cloudantservice.getlocationdetails(this.pcode).subscribe(data => {
             console.log('Response received navigation', data.locationdetails);            
-            sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));            
+            sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations)); 
+            if(this.radioAction.toLowerCase() == "anotheremployee"){           
             this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode,service:this.service } }) ;                  
+            }
+            else{
+              this.router.navigate(['/entrydetails'],{ queryParams: { country: this.pcode,service:this.service } }) ;                  
+            }
           });
           
          }
@@ -170,7 +203,25 @@ export class EmployeesearchComponent implements OnInit {
     
    
   onRequestForChange(){
+    this.empno='';
+    if(this.radioAction.toLowerCase() == "anotheremployee"){
+        this.hideDisTextBox = true;
+      this.hideDisserial = false;
 
+    }
+    else if(this.radioAction.toLowerCase() == "myself")
+    {
+      this.hideDisTextBox = false;
+      this.hideDisserial = true;
+
+    }
+
+  }
+  hidedata(){
+    this.notvalid=false;
+  }
+  onRequestForChangesession(){
+    
     if(this.radioAction.toLowerCase() == "anotheremployee"){
         this.hideDisTextBox = true;
       this.hideDisserial = false;
@@ -186,4 +237,3 @@ export class EmployeesearchComponent implements OnInit {
   }
 }
 
-   

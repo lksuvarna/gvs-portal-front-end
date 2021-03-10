@@ -12,8 +12,8 @@ export class UitoplinksComponent implements OnInit {
   searchText = '';
   ccode='';
   searchItems = [    
-    {"name" : "India","code":"744"},
-    {"name" : "France","code":"706"},
+    {"name" : "India","code":"744","path":"././assets/flags/744.png"},
+    {"name" : "France","code":"706","path":"././assets/flags/706.png"},
     
   ]
 

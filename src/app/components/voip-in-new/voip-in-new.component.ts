@@ -55,14 +55,15 @@ export class VoipInNewComponent implements OnInit {
   employeeInfo1: any;	
   campus:any;	
   hideProjectId = false;
+  reqFor: any;
   
     
       
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	
       
-   /* this.Locations = {	
-      locc : ['Select Office Location~~Select One','Banglore~~MTP','Banglore~~SA',	
-      'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech']	
+    /*this.Locations = {	
+      locc : ['Banglore~~MTP','Banglore~~SA',	
+      'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech','Hyderabad~~Hitech2']	
       };	
     for(var i=0;i<this.Locations.locc.length;i++) {	
       var n=this.Locations.locc[i].indexOf("~")	
@@ -108,15 +109,17 @@ export class VoipInNewComponent implements OnInit {
   selectedLocation(loc:String) {	
     this.build = [];	
     this.campus = '';	
-    if(loc.toUpperCase() != 'SELECT OFFICE LOCATION') {	
+    //alert("Location"+loc);
+    if(loc != '') {	
       this.hideBuilding = false;	
       var k =0;	
-      var f = 100;	
-      this.build[k] = this.buildA[0];	
+      //var f = 100;	
+      //this.build[k] = this.buildA[0];	
       for(var i=0;i<this.campA.length;i++) {	
       if(loc == this.campA[i]) {	
-        k = k+1;	
+        	
       this.build[k] = this.buildA[i];	
+      k = k+1;
       }	
       }  	
     // alert("HIIII"+this.build);	
@@ -249,7 +252,7 @@ export class VoipInNewComponent implements OnInit {
         this.camp[this.j] = this.campA[i];	
         this.j++;	
       }	
-    }	
+    }
     const servicesData = { 	
       "data": [	
         {    	
@@ -261,20 +264,21 @@ export class VoipInNewComponent implements OnInit {
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},	
             {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}	
           ],	
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 	
+          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "step" : 3,	
           
         }	
       ]	
   
      
     }	
-        
+    this.reqFor = sessionStorage.getItem('reqFor')
     this.servicesData = servicesData.data[0];	
     //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
     //alert(this.reviewDetailsIndia.reqno);	
     this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
     this.employeeInfo = JSON.parse(this.employeeInfo1);
-    if(this.employeeInfo.businessUnit.toUpperCase() != 'GBS' && this.employeeInfo.businessUnit == null){
+    if(this.employeeInfo.businessUnit.toUpperCase() != 'GBS' || this.employeeInfo.businessUnit == null){
       this.hideProjectId = true;
     }
   }	
