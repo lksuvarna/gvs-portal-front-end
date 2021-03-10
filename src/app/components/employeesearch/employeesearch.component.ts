@@ -35,7 +35,7 @@ export class EmployeesearchComponent implements OnInit {
   employeeInfo: any
   employeeSerial=''
   radio:any;
-  empno:any;
+  empno:any;  
   countrydetails:any;
   notvalid=false
   dataloading=false
@@ -68,8 +68,8 @@ export class EmployeesearchComponent implements OnInit {
       
       this.onRequestForChangesession();
     }
-    
-    
+    //for lhs
+   
     
     const servicesData = { 
     "data": [
