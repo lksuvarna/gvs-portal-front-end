@@ -96,7 +96,7 @@
                         </td>
                     </tr>
 
-                    <tr valign="top">
+                    <tr valign="top" [hidden]='hideProjectId'>
                         <td colspan="2" width="46%"><br><label for="Projectid" class="ds-text-capitalize ds-pad-t-1">Project id
                 (for GBS employee only)</label>
                             <span class="ds-text-contextual-red-2">*</span></td>
@@ -187,7 +187,7 @@
                         <td width="54%">{{reviewDetailsIndia.businessUnit}}</td>
                     </tr>
 
-                    <tr valign="top">
+                    <tr valign="top" [hidden]='hideProjectId'>
                         <td colspan="2" width="46%">
                             <label for="Projectid">Project id (for GBS employee only)</label>
                         </td>

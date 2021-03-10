@@ -55,6 +55,7 @@ export class VoipInNewComponent implements OnInit {
   employeeInfo1: any;	
   campus:any;	
   reqFor: any;
+  hideProjectId=false;
     
       
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	
@@ -149,10 +150,10 @@ export class VoipInNewComponent implements OnInit {
       alert('Please enter the Charge Department Code');	
       return;	
     }	
-    if(formData.value.Projectid == '') {	
-      alert('Please enter the Project Id');	
-      return;	
-    }	
+    if(formData.value.Projectid == '' && this.hideProjectId == false) {
+      alert('Please enter the Project Id');
+      return;
+      }
     if(formData.value.identifier_hp == '') {	
       this.fixedPhoneIdentifier = true;	
     }	
@@ -275,6 +276,9 @@ export class VoipInNewComponent implements OnInit {
     //alert(this.reviewDetailsIndia.reqno);	
     this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
     this.employeeInfo = JSON.parse(this.employeeInfo1);	
+    if(this.employeeInfo.businessUnit.toUpperCase() != 'GBS' && this.employeeInfo.businessUnit == null){
+      this.hideProjectId = true;
+      }
   }	
 
   previousStep(event : any){
