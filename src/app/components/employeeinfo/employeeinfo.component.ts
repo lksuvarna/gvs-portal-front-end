@@ -31,6 +31,7 @@ export class EmployeeinfoComponent implements OnInit {
   identifier: any;
   warninginfo = true;
   warninginfosnow = true;
+  selfinfo = false;
   sessionwarninginfo :any;
   sessionwarninginfosnow :any;
   cnum: any;
@@ -76,6 +77,8 @@ export class EmployeeinfoComponent implements OnInit {
       ]
     }
     this.reqFor = sessionStorage.getItem('radioAction')
+    if (sessionStorage.getItem('radioAction')=="myself"){
+    this.selfinfo=true;}
     this.cnum = sessionStorage.getItem('cnum') 
     this.servicesData = servicesData.data[0];    
     this.warninginfo = false
