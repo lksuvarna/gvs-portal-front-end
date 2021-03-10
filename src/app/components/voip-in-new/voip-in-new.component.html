@@ -31,7 +31,8 @@
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel>
-                  <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
+                                    <option value ="">Select Office Location</option>
+                                    <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
                     {{ fl_location }}</option>
                 </select>
                             </div>
@@ -44,7 +45,8 @@
                         <td width="54%">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="Buildings" rows="2" cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1" [(ngModel)]='campus'>
-                  <option *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
+                                    <option value ="">Select One</option>
+                                    <option *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
                 </select>
                             </div>
                         </td>

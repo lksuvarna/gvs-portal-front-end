@@ -111,12 +111,12 @@ export class VoipInNewComponent implements OnInit {
     if(loc.toUpperCase() != 'SELECT OFFICE LOCATION') {	
       this.hideBuilding = false;	
       var k =0;	
-      var f = 100;	
-      this.build[k] = this.buildA[0];	
+      //var f = 100;	
+      //this.build[k] = this.buildA[0];	
       for(var i=0;i<this.campA.length;i++) {	
-      if(loc == this.campA[i]) {	
-        k = k+1;	
-      this.build[k] = this.buildA[i];	
+      if(loc == this.campA[i]) {        	
+      this.build[k] = this.buildA[i];
+      k = k+1;	
       }	
       }  	
     // alert("HIIII"+this.build);	
