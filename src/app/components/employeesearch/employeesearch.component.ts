@@ -35,7 +35,8 @@ export class EmployeesearchComponent implements OnInit {
   employeeInfo: any
   employeeSerial=''
   radio:any;
-  empno:any;  
+  empno:any;
+  navpage:any;navpage1:any;
   countrydetails:any;
   notvalid=false
   dataloading=false
@@ -45,7 +46,7 @@ export class EmployeesearchComponent implements OnInit {
     this.fullName=this.cookie.getCookie('user');
     this.ccode=this.cookie.getCookie('ccode');
     this.countrydetails=sessionStorage.getItem('countrydetails')
-    
+    this.countrydetails =JSON.parse(this.countrydetails)
     this.route.queryParams
       .subscribe(params => {
         console.log(params);
@@ -121,6 +122,22 @@ export class EmployeesearchComponent implements OnInit {
     this.employeeSerial=this.ccode
     
    }
+   //to change the routing
+   
+   
+   if(this.service=="jabber_new"){
+    this.navpage='/entrydetails';this.navpage1='/employeeinfo';
+   }
+   else{    
+      if(this.radioAction.toLowerCase() == "myself"){
+       if(this.service=="requests"||this.service=="resources"||this.service=="approvalpending"||this.service=="revalidationpending"){
+       this.navpage='/'+this.service;this.navpage1='/'+this.service;}       
+       else{this.navpage='/entrydetails';this.navpage1='/entrydetails';}  
+        }
+      else{
+       this.navpage='/employeeinfo';this.navpage1='/employeeinfo';
+      }
+   }
    this.showloader=true
 //BP verification and getting data
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
@@ -152,32 +169,33 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfo', 'true1')  
         this.identifier = data.message[0].IDENTIFIER
         sessionStorage.setItem('identifier', this.identifier)
-        this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode,service:this.service }}) ;
+        this.router.navigate([this.navpage1],{ queryParams: { country: this.pcode,service:this.service }}) ;
       }
       else {
         this.warninginfo = false 
         sessionStorage.setItem('warninginfo', 'false1')  
-        //SNOW search for ongoin requests      
-        this.servicenowservice.searchsnow(this.employeeSerial, this.service, 'IN-NS-'+this.employeeSerial.substr(0,6)).subscribe(data => {
+        //SNOW search for ongoin requests  
+        console.log('SNOW search'+this.countrydetails.isocode)    
+        this.servicenowservice.searchsnow(this.employeeSerial, this.service, this.countrydetails.isocode+'-NS-'+this.employeeSerial.substr(0,6)).subscribe(data => {
           console.log(' snow response', data);
           console.log(' snow response', data.message.length);
           if (data.message.length > 0) {
             console.log(' snow response1', data.message.length);
             this.warninginfosnow=true  
             sessionStorage.setItem('warninginfosnow', 'true1')           
-            this.identifier = data.message
+            this.identifier = data.message            
             sessionStorage.setItem('identifier', this.identifier)
-            this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode } }) ;
+            this.router.navigate([this.navpage1],{ queryParams: { country: this.pcode,service:this.service } }) ;
           }
          else{
           this.cloudantservice.getlocationdetails(this.pcode).subscribe(data => {
             console.log('Response received navigation', data.locationdetails);            
             sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations)); 
             if(this.radioAction.toLowerCase() == "anotheremployee"){           
-            this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode,service:this.service } }) ;                  
+            this.router.navigate([this.navpage1],{ queryParams: { country: this.pcode,service:this.service } }) ;                  
             }
             else{
-              this.router.navigate(['/entrydetails'],{ queryParams: { country: this.pcode,service:this.service } }) ;                  
+              this.router.navigate([this.navpage],{ queryParams: { country: this.pcode,service:this.service } }) ;                  
             }
           });
           

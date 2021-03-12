@@ -22,8 +22,9 @@ export class RequestsComponent implements OnInit {
   
   servicesData: any = []
   countryname:any;
-  
-  data1:any
+  countrydetails:any;
+  data1:any;
+  snowdata:any;
   openNav(comments:any) {
     this.DisplayModel = 'block';
     this.allComments = comments;
@@ -33,17 +34,14 @@ export class RequestsComponent implements OnInit {
     this.DisplayModel = 'none';
   }
   ngOnInit(): void {   
-    
+    this.snowdata=sessionStorage.getItem('identifier');
+    console.log("from requests"+this.snowdata)
+    this.snowdata=JSON.stringify(this.snowdata);
+    console.log("from requests"+this.snowdata[0].number)
     const servicesData = { 
     "data": [
       {    
-        "lhs": [
-          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false},
-          {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": true}
-        ],
+        
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
       }
     ]
@@ -51,10 +49,7 @@ export class RequestsComponent implements OnInit {
     
     this.servicesData = servicesData.data[0];
 
-    //code to search snow for request status
-    this.servicenowservice.searchsnow('000RQU744','all','').subscribe(data=> {
-      console.log(' snow response', data);
-    });
+    
 
 }
 

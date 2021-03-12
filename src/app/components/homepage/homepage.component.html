@@ -9,6 +9,9 @@
 
     </div>
     <div><br><br></div>
+    <font class="ds-text-align-left">       
+        &nbsp; &nbsp; Built on CIO Hybrid Cloud Powered by Red Hat OpenShift       
+   </font>
 </div>
 
 <div class="ds-row "><br><br>
@@ -27,9 +30,9 @@
             <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | search: searchText; let i=index">
                 <a [routerLink]="['/jabberservices']" [queryParams]="{country:searchResult.code,service:'jabberservice'}" *ngIf="i<1"><img class="ds-border-neutral-5" src={{searchResult.flag}} width="28;" height="20;"> {{searchResult.name}} </a>
             </div>
-            <div class="ds-pad-t-0_5 ds-text-align-left">
+            <!--<div class="ds-pad-t-0_5 ds-text-align-left">
                 <a *ngIf="(searchItems | search: searchText).length >= 1" (click)="storeSearchTerm(searchText)" [routerLink]="['/searchresult']">Click here to see all results in GVS search</a>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>
