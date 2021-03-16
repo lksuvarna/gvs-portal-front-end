@@ -5,40 +5,46 @@ import { NgForm } from '@angular/forms';
 import {Router} from  '@angular/router';
 
 @Component({
-  selector: 'app-voip-in-delete',
-  templateUrl: './voip-in-delete.component.html',
-  styleUrls: ['./voip-in-delete.component.css']
+  selector: 'app-voip-in-update',
+  templateUrl: './voip-in-update.component.html',
+  styleUrls: ['./voip-in-update.component.css']
 })
-export class VoipInDeleteComponent implements OnInit {
-
+export class VoipInUpdateComponent implements OnInit {
   countryname:any;
   ccode='';
   cloudantData: any = [];
   servicesData: any = [];
-  Jabber = ['25432121','23415678'];
+  Jabber = ['22345678','23451678'];
   selected = true;
+  hideChargeDept = true;
   isReviewForm = true;
   isEntryForm = false;
   fixedPhoneIdentifier = false;	
-  selectedJabber:any;
+  jabberDisp:any;
+  chargeDisp:any;
   reqFor: any;
- 
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) {
-    if(this.Jabber[0]=='Select One'){
-      this.selected = true;
-    }
-   }
-  
 
-  entryDetails(formData: NgForm) {
-    if(formData.value.Jabber_1.toUpperCase() == 'SELECT JABBER NUMBER' || formData.value.Jabber_1 == '') {
-      alert('Please select the Jabber Number');
+  SelectedJabber(jabber:any) {
+    if(jabber != ""){
+      this.hideChargeDept = false;
+    } else {
+      this.hideChargeDept = true;
+    }
+  }
+ 
+  EntryDetails(formData: NgForm) {
+    if(formData.value.Jabber_1.toUpperCase() == 'SELECT ONE' || formData.value.Jabber_1 == '') {
+      alert('Please select the jabber number to update');
       return;
     }
-    this.selectedJabber = formData.value.Jabber_1;
+    if(formData.value.Charge_Dept.toUpperCase() == 'NA') {
+      alert('No value is changed, so Update request is not required');
+      return;
+    }
+    this.jabberDisp = formData.value.Jabber_1;
+    this.chargeDisp = formData.value.Charge_Dept;
     this.isReviewForm = false;
     this.isEntryForm = true;
-
   }
 
   BackButton() {
@@ -46,7 +52,9 @@ export class VoipInDeleteComponent implements OnInit {
     this.isEntryForm = false;
   }
 
-  
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) {
+
+   }
 
   ngOnInit(): void {
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
