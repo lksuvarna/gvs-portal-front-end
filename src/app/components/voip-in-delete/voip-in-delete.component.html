@@ -7,7 +7,7 @@
     <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
   </div>
   <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
-    <form [hidden]='EntryDetails' (submit)='entryDetails(formData)' #formData='ngForm'>
+    <form [hidden]='isEntryForm' (submit)='entryDetails(formData)' #formData='ngForm'>
 
       <b>Delete Jabber Request</b>
 
@@ -16,35 +16,7 @@
       </div>
       <div class=" ds-panel ds-col-12 "></div>
 
-      <div class="ds-col-12">
-        <div class="ds-row ">
-          <div class="ds-col-12">
-            <div class="ds-row">
-              <div>
-                <div class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b>STEP
-                      1</b></span> <span class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Search</span>
-                </div>
-                <div id="r21" class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 2</b></span><span
-                    class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Information</span>
-                </div>
-                <span id="r3" class=" ds-text-contextual-green-3 ds-pad-r-1 ds-pad-l-0_5"><b><span
-                      class="ds-pad-r-1">-----&gt;</span>
-                    <div class="tooltip">STEP 3
-                      <span style="font-weight:normal;" class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee
-                        Entry Details</span>
-                    </div>
-                  </b></span>
-                <div id="r21" class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 4</b></span><span
-                    class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Review Details</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
       <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
@@ -58,6 +30,7 @@
               <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                 <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"
                   style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" tabindex="1" ngModel>
+                  <option value ="">Select Jabber Number</option>
                   <option name="Jabber_1" *ngFor='let fl_itn of Jabber' [value]='fl_itn' selected>
                     {{ fl_itn }}</option>
                 </select>
@@ -87,7 +60,7 @@
 
 
 
-    <form [hidden]='reviewDetails'>
+    <form [hidden]='isReviewForm'>
 
       <b>Delete Jabber Request</b>
 
@@ -96,34 +69,7 @@
       </div>
       <div class=" ds-panel ds-col-12 "></div>
 
-      <div class="ds-col-12">
-        <div class="ds-row ">
-          <div class="ds-col-12">
-            <div class="ds-row">
-              <div>
-                <div class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b>STEP
-                      1</b></span> <span class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Search</span>
-                </div>
-                <div id="r21" class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 2</b></span><span
-                    class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Information</span>
-                </div>
-                <span id="r3" class="ds-text-contextual-blue-5 ds-pad-r-1 ds-pad-l-0_5"><b><span
-                      class="ds-pad-r-1">-----&gt;</span>
-                    <div class="tooltip">STEP 3
-                      <span style="font-weight:normal;" class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee
-                        Entry Details</span>
-                    </div>
-                  </b></span>
-                <div id="r21" class="tooltip"><span class="ds-text-contextual-green-3 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 4</b></span><span
-                    class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Review Details</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
 
 
       <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Review Details</h2>

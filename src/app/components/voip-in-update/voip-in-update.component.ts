@@ -14,16 +14,18 @@ export class VoipInUpdateComponent implements OnInit {
   ccode='';
   cloudantData: any = [];
   servicesData: any = [];
-  Jabber = ['Select One','22345678','23451678'];
+  Jabber = ['22345678','23451678'];
   selected = true;
   hideChargeDept = true;
-  reviewDetails = true;
-  entryDetails = false;
+  isReviewForm = true;
+  isEntryForm = false;
+  fixedPhoneIdentifier = false;	
   jabberDisp:any;
   chargeDisp:any;
+  reqFor: any;
 
   SelectedJabber(jabber:any) {
-    if(jabber.toUpperCase()!='SELECT ONE'){
+    if(jabber != ""){
       this.hideChargeDept = false;
     } else {
       this.hideChargeDept = true;
@@ -41,13 +43,13 @@ export class VoipInUpdateComponent implements OnInit {
     }
     this.jabberDisp = formData.value.Jabber_1;
     this.chargeDisp = formData.value.Charge_Dept;
-    this.reviewDetails = false;
-    this.entryDetails = true;
+    this.isReviewForm = false;
+    this.isEntryForm = true;
   }
 
   BackButton() {
-    this.reviewDetails = true;
-    this.entryDetails = false;
+    this.isReviewForm = true;
+    this.isEntryForm = false;
   }
 
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) {
@@ -70,33 +72,32 @@ export class VoipInUpdateComponent implements OnInit {
       "isspecial": this.countryname.isspecial
     }
   });
-    const servicesData = { 
-    "data": [
-      {    
-        "lhs": [
-          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},            
-          {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
-        ],
+  const servicesData = { 	
+    "data": [	
+      {    	
+        "lhs": [	
+          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false}, 	
+          { "name": "Jabber", "routingname": "/services", "indented": true, "highlighted": true },           	
+          {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
+          {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
+          {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},	
+          {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}	
+        ],	
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "titles": [
-          "Terms of use",
-          "Useful Information",
-          "Please bear in mind the following points when making a request :"
-        ],
-        "usefulinfotexts": [
-          "To make a request the Employee must exist in BluePages (except for cancellation requests).",
-          "You must know the IBM serial Number of the person making the request.",
-          "Only one request per employee per request type is processed at a time."
-        ],
-        "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
-      }
-    ]
-  }
+        "step" : 3,	
+        
+      }	
+    ]	
+
+   
+  }	
     
     this.servicesData = servicesData.data[0]
+  }
+  previousStep(event : any){
+    this.isEntryForm = false;	
+    this.isReviewForm = true;	
+    this.fixedPhoneIdentifier = false;	
   }
 
 }
