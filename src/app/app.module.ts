@@ -32,7 +32,8 @@ import { FilterPipe } from './filter.pipe';
 import { DropdownsearchPipe } from './dropdownsearch.pipe'
 import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
 import { DummyComponent } from './components/dummy/dummy.component';
-import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component';
+import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-update.component';
+import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component'
 import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-voip-delete/employeesearch-voip-delete.component';
 import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -71,6 +72,7 @@ export function rootLoaderFactory(http: HttpClient){
     DropdownsearchPipe,
     VoipInNewComponent,
     DummyComponent,
+    VoipInUpdateComponent,
     VoipInDeleteComponent,
     EmployeesearchVoipDeleteComponent,
     FooterComponent,
