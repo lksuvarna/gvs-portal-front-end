@@ -1,22 +1,33 @@
 <div class="ds-row ds-bg-dark ds-pad-t-2_4" style="background-image:  url(././assets/banner.png);background-position:center;background-size:cover;background-repeat:no-repeat;">
     <div class="ds-col-xs-10 ds-offset-xs-3 ds-mar-t-3 ds-col-lg-8 ds-offset-lg-2 ds-col-xl-6 ds-offset-xl-3 ds-text-align-center ds-shadow-text">
-        <h3 class="ds-heading-xs-2 ds-heading-lg-2 ds-shadow-text ">
-            Global Voice Services
+        <h3 class="ds-heading-xs-2 ds-heading-lg-2 ds-shadow-text " translate>
+            home.app-name
         </h3>
-        <font>
-            Single entry point for ordering voice services in your country
+        <font translate>
+            home.app-function
         </font>
 
     </div>
     <div><br><br></div>
+
+</div>
+
+
+<div class="ds-row">
+    <div class="ds-col-12">
+        <p class="ds-text-small ds-text-align-right ds-font-weight-light">
+ <b><span translate style="color: black">home.select-language</span></b><br>          
+<a (click)="changeLanguage('en')"  style="color: black" ><span class="ds-font-weight-light"> English </span></a><span>|</span>
+<a (click)="changeLanguage('fr_ca')"  style="color: black" ><span class="ds-font-weight-light"> Français </span></a>
+        </p>
+    </div>
 </div>
 
 <div class="ds-row "><br><br>
-    <h3 class=" ds-text-align-center ds-heading-2 ds-margin-bottom-0 "><span class="ds-col-xs-30" style="font-size:48px">Welcome, {{fullName}}</span></h3>
+    <h3 class=" ds-text-align-center ds-heading-2 ds-margin-bottom-0 "><span class="ds-col-xs-30" style="font-size:48px"><span translate>home.welcome</span> {{fullName}}</span></h3>
 </div><br>
 <div class="ds-row">
-    <h4 class="ds-heading-3 ds-text-align-center"><span style="font-size:30px">What service or country are you looking
-      for?</span></h4>
+    <h4 class="ds-heading-3 ds-text-align-center"><span style="font-size:30px" translate>home.question</span></h4>
 </div>
 <div class="ds-row"></div>
 <br>
@@ -28,7 +39,7 @@
                 <a [routerLink]="['/services']" [queryParams]="{country:searchResult.code}" *ngIf="i<1"><img class="ds-border-neutral-5" src={{searchResult.flag}} width="28;" height="20;"> {{searchResult.name}} </a>
             </div>
             <div class="ds-pad-t-0_5 ds-text-align-left">
-                <a *ngIf="(searchItems | search: searchText).length >= 1" (click)="storeSearchTerm(searchText)" [routerLink]="['/searchresult']">Click here to see all results in GVS search</a>
+                <a *ngIf="(searchItems | search: searchText).length >= 1" (click)="storeSearchTerm(searchText)" [routerLink]="['/searchresult']" traslate>home.search-text</a>
             </div>
         </div>
     </div>
@@ -38,34 +49,30 @@
 <br>
 <br>
 <div class="ds-row ds-text-align-center " style="background-color: #f3f3f3; ">
-    <div class="ds-col-sm-6 ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5 ">
-        <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode}" routerLinkActive="active " data="{cdetails:this.countryname}"><img class="ds-text-align-center ds-border-neutral-5 " [src]='countryname.flagname'></a>
-    </div>
-    <div class="ds-col-sm-6 ds-text-align-left ds-padding-top-1 "><br><span style="font-size:30px " class="ds-padding-left-3 ">My Country</span><br>
-        <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode}" data="{cdetails:this.countryname}">Click here</a> to view all available <br><span class="ds-padding-left-3 ">services for {{countryname.name}}</span>.<br>
+    <div class="ds-col-sm-6 ds-text-align-center ds-padding-top-1 "><br><span style="font-size:30px " class="ds-padding-left-3 " translate>home.my-country</span><br>
+        <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode}" data="{cdetails:this.countryname}" translate>home.click-here</a><div translate> home.available <br translate><span class="ds-padding-left-3"></span> <span translate>home.services</span> Canada.<br></div>
     </div>
 </div>
 <br>
 <br>
 <div class="ds-row ">
     <h4 class="ds-text-align-center ds-heading-4 ds-margin-bottom-0 ">
-        <span style="font-size:30px ">Most Viewed Services</span>
+        <span style="font-size:30px " translate>home.most-viewed-services</span>
     </h4><br>
-    <h5 class="ds-text-align-center ds-heading-5 ds-margin-bottom-0 ">Find the right services, check their availability, and then choose the way <br>you connect and work together.</h5>
+    <h5 class="ds-text-align-center ds-heading-5 ds-margin-bottom-0 " translate>home.find-right-service <br transalte> home.find-right-service2</h5>
 </div>
 <div class="ds-row ds-text-align-center ds-padding-left-1 ds-padding-right-1 ">
     <div class="ds-col-3 ds-padding-left-1 ">
         <div class="ds-panel ">
             <div class="ds-panel-container ">
                 <p><img src="././assets/JABBER.png " width="93px " height="93px "><br><br>Cisco Jabber</p>
-                <p class="ds-text-small ds-align-text-left ds-padding-bottom-2 ">Cisco Jabber is a multiple platform soft phone application to make and receive phone calls.<br>
+                <p class="ds-text-small ds-align-text-left ds-padding-bottom-2 " translate>home.jabber-description<br>
                 </p><br><br>
                 <span class="button-blue " id="button2 ">
-          <input type="button " name="next "
+          <button name="next "
             class="ds-button ds-secondary ds-margin-bottom-0 ds-padding-top-1 ds-padding-bottom-1 " tabindex="15 "
             [routerLink]="[ '/services'] " [queryParams]="{country:ccode}" data="{cdetails:this.countryname}"
-            value="Get Started ">
-
+            translate translate>home.button-value</button>
         </span>
             </div>
         </div>
@@ -73,6 +80,5 @@
 </div>
 
 <br>
-
 
 <input name="country_code " type="hidden" [value]="ccode ">

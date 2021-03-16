@@ -58,6 +58,7 @@ export class Jabber_New
     gvs_approval_link !: String;
     SLA_type !: String;
     country_code !:String;
+    call_permission !: String
 
 Jabber_New()
  {
