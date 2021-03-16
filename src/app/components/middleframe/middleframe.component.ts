@@ -24,10 +24,11 @@ export class MiddleframeComponent implements OnInit {
         console.log(params);
 
         this.pcode = params.country;
-        console.log("navigation component" + this.pcode);
+        console.log("navigation component middelframe" + this.pcode);
       })
     this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-    this.countryroute = sessionStorage.getItem('countryroute')
+    this.countryroute = sessionStorage.getItem('countryroute');
+    console.log("navigation component country route" + this.countryroute );
     if (this.pcode== this.countryroute) {
       this.pcountrydetails = sessionStorage.getItem('countrydetails')
       console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code)

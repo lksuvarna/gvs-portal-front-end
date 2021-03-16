@@ -96,8 +96,8 @@
                         </td>
                     </tr>
 
-          <tr valign="top" [hidden]='hideProjectId'>
-            <td colspan="2" width="46%"><br><label for="Projectid" class="ds-text-capitalize ds-pad-t-1">Project id
+                    <tr valign="top" [hidden]='hideProjectId'>
+                        <td colspan="2" width="46%"><br><label for="Projectid" class="ds-text-capitalize ds-pad-t-1">Project id
                 (for GBS employee only)</label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
@@ -142,36 +142,7 @@
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
-            <div class="ds-col-12 ds-pad-t-0_5">
-                <div class="ds-row ">
-                    <div class="ds-col-12">
-                        <div class="ds-row">
-                            <div>
-                                <div class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b>STEP
-                      1</b></span> <span class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Search</span>
-                                </div>
-                                <div id="r21" class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 2</b>
-                                    </span><span class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Information</span>
-                                </div>
-                                <div id="r21" class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 3</b>
-                                    </span><span class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Review Details</span>
-                                </div>
-                                <span id="r3" class=" ds-text-contextual-green-3 ds-pad-r-1 ds-pad-l-0_5"><b><span
-                      class="ds-pad-r-1">-----&gt;</span>
-                                <div class="tooltip">STEP 4
-                                    <span style="font-weight:normal;" class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee
-                        Entry Details</span>
-                                </div>
-                                </b>
-                                </span>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
 
 
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Jabber Request Details</h2>
@@ -216,12 +187,12 @@
                         <td width="54%">{{reviewDetailsIndia.businessUnit}}</td>
                     </tr>
 
-          <tr valign="top" [hidden]='hideProjectId'>
-            <td colspan="2" width="46%">
-              <label for="Projectid">Project id (for GBS employee only)</label>
-            </td>
-            <td width="54%">{{reviewDetailsIndia.projectId}}</td>
-          </tr>
+                    <tr valign="top" [hidden]='hideProjectId'>
+                        <td colspan="2" width="46%">
+                            <label for="Projectid">Project id (for GBS employee only)</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.projectId}}</td>
+                    </tr>
 
                     <tr valign="top" [hidden]='fixedPhoneIdentifier'>
                         <td colspan="2" width="46%">
@@ -233,6 +204,11 @@
             </table>
 
             <div class="ds-hr-thick ds-mar-t-1_5"></div>
+            <!-- Dark Background -->
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+                <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
+            </div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
                 <div class="ds-tray-fit-content ds-mar-b-0">
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
@@ -245,11 +221,7 @@
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
-                        <!-- Dark Background -->
-                        <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
-                            <div class="ds-loader-header">Your request is being submitted.Do not refresh or go back.</div>
-                            <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
-                        </div>
+                        
 
 
                     </div>

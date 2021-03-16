@@ -56,7 +56,6 @@ export class VoipInNewComponent implements OnInit {
   campus:any;	
   hideProjectId = false;
   reqFor: any;
-  
     
       
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	
@@ -116,10 +115,9 @@ export class VoipInNewComponent implements OnInit {
       //var f = 100;	
       //this.build[k] = this.buildA[0];	
       for(var i=0;i<this.campA.length;i++) {	
-      if(loc == this.campA[i]) {	
-        	
-      this.build[k] = this.buildA[i];	
-      k = k+1;
+      if(loc == this.campA[i]) {        	
+      this.build[k] = this.buildA[i];
+      k = k+1;	
       }	
       }  	
     // alert("HIIII"+this.build);	
@@ -152,10 +150,10 @@ export class VoipInNewComponent implements OnInit {
       alert('Please enter the Charge Department Code');	
       return;	
     }	
-    if(formData.value.Projectid == '' && this.hideProjectId == false) {	
-      alert('Please enter the Project Id');	
-      return;	
-    }	
+    if(formData.value.Projectid == '' && this.hideProjectId == false) {
+      alert('Please enter the Project Id');
+      return;
+      }
     if(formData.value.identifier_hp == '') {	
       this.fixedPhoneIdentifier = true;	
     }	
@@ -272,16 +270,22 @@ export class VoipInNewComponent implements OnInit {
   
      
     }	
-    this.reqFor = sessionStorage.getItem('reqFor')
+    this.reqFor = sessionStorage.getItem('radioAction')
     this.servicesData = servicesData.data[0];	
     //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
     //alert(this.reviewDetailsIndia.reqno);	
     this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
-    this.employeeInfo = JSON.parse(this.employeeInfo1);
-    if(this.employeeInfo.businessUnit.toUpperCase() != 'GBS' || this.employeeInfo.businessUnit == null){
+    this.employeeInfo = JSON.parse(this.employeeInfo1);	
+    if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
       this.hideProjectId = true;
-    }
+      }
   }	
+
+  previousStep(event : any){
+    this.isEntryForm = false;	
+    this.isReviewForm = true;	
+    this.fixedPhoneIdentifier = false;	
+  }
       
 }	
 function gettime() {	
