@@ -120,6 +120,7 @@ export class EmployeesearchComponent implements OnInit {
   //for self
    else{
     this.employeeSerial=this.ccode
+    sessionStorage.setItem('empserial',this.ccode)
     
    }
    //to change the routing
@@ -184,7 +185,7 @@ export class EmployeesearchComponent implements OnInit {
             this.warninginfosnow=true  
             sessionStorage.setItem('warninginfosnow', 'true1')           
             this.identifier = data.message            
-            sessionStorage.setItem('identifier', this.identifier)
+            sessionStorage.setItem('identifier', JSON.stringify(this.identifier))
             this.router.navigate([this.navpage1],{ queryParams: { country: this.pcode,service:this.service } }) ;
           }
          else{
