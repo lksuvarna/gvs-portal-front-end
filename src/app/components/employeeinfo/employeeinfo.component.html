@@ -7,18 +7,21 @@
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
+        
         <b>Request new Jabber service</b>
-        <div class="ds-padding-top-0_5 ">
-            <p>If the following information is correct, click Next. Any errors must be corrected in the employee's <a href="https://w3.ibm.com/bluepages/" target="_blank">BluePages record</a> before continuing.</p>
+
+            
+        <div class="ds-padding-top-0_5 " >
+            <p *ngIf="selfinfo==false">If the following information is correct, click Next. Any errors must be corrected in the employee's <a href="https://w3.ibm.com/bluepages/" target="_blank">BluePages record</a> before continuing.</p>
         </div>
         <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
         <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
 
-        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Information</h2>
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " *ngIf="selfinfo==false">Employee Information</h2>
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " *ngIf="selfinfo==true">Employee Entry Details</h2>
 
-
-        <table cellspacing="0" cellpadding="0" border="0">
+        <table cellspacing="0" cellpadding="0" border="0" *ngIf="selfinfo==false">
             <tbody>
                 <tr valign="top">
                     <td width="359">

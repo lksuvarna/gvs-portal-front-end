@@ -13,6 +13,7 @@ export class NavigationComponent implements OnInit {
   countryname: any;
   ccode = '';
   pcode = '';
+  service : any;
   cloudantData: any = []
   servicesData: any = []
   pcountrydetails:any
@@ -24,21 +25,25 @@ export class NavigationComponent implements OnInit {
   selectedItem: any
   onLoad = true
   dataNav: any = []
+  dataNav1: any = []
+  dataNav123: any
+  dataNavParent:any
   countryroute :any
-
-  @Input('dataNav') dataNavParent: any
+  serhl:any;jhl:any;fhl:any;fachl:any;reqhl:any;reshl:any;
+  serin:any;jin:any;fin:any;facin:any;reqin:any;resin:any;
+  @Input('dataNav') dataNavParent1: any
   @Input('cloudantData') cloudantData1: any
-
+   
   getNavClass(i: any) {
-    if (this.dataNav.lhs[i].indented && this.dataNav.lhs[i].highlighted) {
+    if (this.dataNav123.data[0].lhs[i].indented && this.dataNav123.data[0].lhs[i].highlighted) {
       if (this.onLoad) {
         return this.defaultNavClass + this.indentNavClass + this.activeNavClass
       } else {
         return this.defaultNavClass + this.indentNavClass
       }
-    } else if (this.dataNav.lhs[i].indented) {
+    } else if (this.dataNav123.data[0].lhs[i].indented) {
       return this.defaultNavClass + this.indentNavClass
-    } else if (this.dataNav.lhs[i].highlighted) {
+    } else if (this.dataNav123.data[0].lhs[i].highlighted) {
       if (this.onLoad) {
         return this.defaultNavClass + this.activeNavClass
       } else {
@@ -48,9 +53,8 @@ export class NavigationComponent implements OnInit {
       return this.defaultNavClass
     }
   }
-
   getNavActiveClass(i: any) {
-    if (this.dataNav.lhs[i].indented) {
+    if (this.dataNav123.data[0].lhs[i].indented) {
       return this.defaultNavClass + this.indentNavClass + this.activeNavClass
     } else {
       return this.defaultNavClass + this.activeNavClass
@@ -63,7 +67,7 @@ export class NavigationComponent implements OnInit {
   }
 
   removeService(service: string) {
-    this.dataNav.lhs = this.dataNavParent.lhs.filter((item: any) => item.name !== service)
+    this.dataNav123.data[0].lhs = this.dataNav123.data[0].lhs.filter((item: any) => item.name !== service)
   }
 
   removeServices() {
@@ -97,10 +101,65 @@ export class NavigationComponent implements OnInit {
     this.route.queryParams
       .subscribe(params => {
         console.log(params);
-
+        this.service = params.service;
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
       })
+      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;
+      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;
+      
+      if (this.service=="services")
+      {
+        this.serhl=true
+      }
+      if ((this.service).includes("jabber"))
+      {        
+        this.jin=true
+        this.jhl=true
+      }
+      
+      
+      if ((this.service).includes("requests"))
+      {        
+        this.reqhl=true
+        
+      }
+      if (this.service=="services"||this.service=="requests"||this.service=="resources")
+      {
+        this.dataNav123 = { 
+          "data": [
+            {    
+              "lhs": [
+                {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
+               // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
+                {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
+                {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
+                {"name" : "Resources","routingname":"/inprogress", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
+                {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
+              ],
+              "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+              "step" : 1,
+            }
+          ]
+        }}
+      else{
+      this.dataNav123 = { 
+        "data": [
+          {    
+            "lhs": [
+              {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
+              {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl,"param":"jabberservices"}, 
+              {"name" : "FAC Code","routingname":"/inprogress", "indented" : true, "highlighted": this.fhl,"param":"jabberservices"},             
+              {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
+              {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
+              {"name" : "Resources","routingname":"/inprogress", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
+              {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
+            ],
+            "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+            "step" : 1,
+          }
+        ]
+      }}
     this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
     this.countryroute=sessionStorage.getItem('countryroute')
     if (this.pcode== this.countryroute) {
@@ -121,8 +180,13 @@ export class NavigationComponent implements OnInit {
         "isjabberdelete":this.countryname.isjabberdelete,
         "isjabbermove":this.countryname.isjabbermove,
         "isjabberupdate":this.countryname.isjabberupdate
-      }   
-      this.dataNav = this.dataNavParent
+      } 
+      //for lhs
+      
+      this.dataNavParent=this.dataNav123
+      //end for lhs  
+      this.dataNav123 = this.dataNav123
+      this.dataNavParent=this.dataNav123
       this.removeServices()
     }
     else {
@@ -148,8 +212,12 @@ export class NavigationComponent implements OnInit {
         "isjabberupdate":this.countryname.isjabberupdate
         }        
       });
+      //for lhs
       
-      this.dataNav = this.dataNavParent
+      this.dataNavParent=this.dataNav123
+      //end for lhs
+      this.dataNav123 = this.dataNav123
+      this.dataNavParent=this.dataNav123
       this.removeServices()
     }
 

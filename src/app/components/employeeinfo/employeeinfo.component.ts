@@ -24,6 +24,7 @@ export class EmployeeinfoComponent implements OnInit {
   countryname: any;
   ccode = '';
   pcode = '';
+  service:any;
   cloudantData: any = []
   servicesData: any = []
   employeeInfo: any
@@ -31,17 +32,23 @@ export class EmployeeinfoComponent implements OnInit {
   identifier: any;
   warninginfo = true;
   warninginfosnow = true;
+  selfinfo = false;
   sessionwarninginfo :any;
   sessionwarninginfosnow :any;
   cnum: any;
   backbutton: any;
   step:any;
-  service:any;
   isDataLoaded=false
   reqFor : any
   hideSteps = false
+  navpage:any;
+  navpage1:any;
   submit() {
-    this.router.navigate(['/entrydetails'],{ queryParams: { country: this.pcode,service:this.service } }) ;
+    if(this.service=="requests"||this.service=="resources"||this.service=="approvalpending"||this.service=="revalidationpending"){
+      this.navpage='/'+this.service}       
+      else{this.navpage='/entrydetails';}  
+       
+    this.router.navigate([this.navpage],{ queryParams: { country: this.pcode,service:this.service } }) ;
   }
   backClick(){
     sessionStorage.setItem('backbutton','yes');
@@ -54,28 +61,22 @@ export class EmployeeinfoComponent implements OnInit {
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
-      this.service=params.service;
+      this.service = params.service;
       this.pcode = params.country;
       console.log("navigation component" + this.pcode);
     })
 
     const servicesData = {
       "data": [
-        {
-          "lhs": [
-            { "name": "Services", "routingname": "/services", "indented": false, "highlighted": false },
-            { "name": "Jabber", "routingname": "/services", "indented": true, "highlighted": true },
-            { "name": "Approvals Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
-            { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
-            { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
-            { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
-          ],
+        {          
           "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
           "step" : 2,
         }
       ]
     }
     this.reqFor = sessionStorage.getItem('radioAction')
+    if (sessionStorage.getItem('radioAction')=="myself"){
+    this.selfinfo=true;}
     this.cnum = sessionStorage.getItem('cnum') 
     this.servicesData = servicesData.data[0];    
     this.warninginfo = false
@@ -83,12 +84,12 @@ export class EmployeeinfoComponent implements OnInit {
     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
     this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
     console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
-   if (this.sessionwarninginfo =='true1'){
+   if (this.sessionwarninginfo =='true1'&& this.service=="jabber_new"){
     this.warninginfo = true
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
-   else if (this.sessionwarninginfosnow =='true1'){
+   else if (this.sessionwarninginfosnow =='true1' && this.service=="jabber_new"){
     this.warninginfosnow = true
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
