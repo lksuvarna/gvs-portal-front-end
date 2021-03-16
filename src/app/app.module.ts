@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient,HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DemoComponent } from './demo/demo.component';
@@ -35,10 +35,14 @@ import { DummyComponent } from './components/dummy/dummy.component';
 import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-update.component';
 import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component'
 import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-voip-delete/employeesearch-voip-delete.component';
+import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { FooterComponent } from './components/footer/footer.component';
 import { StepsComponent } from './components/steps/steps.component';
 
-
-
+export function rootLoaderFactory(http: HttpClient){
+  return new TranslateHttpLoader(http,'assets/i18n/','.json')
+  }
 
 
 @NgModule({
@@ -71,7 +75,8 @@ import { StepsComponent } from './components/steps/steps.component';
     VoipInUpdateComponent,
     VoipInDeleteComponent,
     EmployeesearchVoipDeleteComponent,
-    StepsComponent,
+    FooterComponent,
+    StepsComponent
 
 
   ],
@@ -81,7 +86,15 @@ import { StepsComponent } from './components/steps/steps.component';
     HttpClientModule,
     FormsModule,
     appRoutingProviders,
-    CommonModule
+    CommonModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide : TranslateLoader,
+        useFactory : rootLoaderFactory,
+        deps: [HttpClient]
+      }
+   
+       })
    
     
     

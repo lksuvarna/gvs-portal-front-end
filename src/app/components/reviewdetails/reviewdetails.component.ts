@@ -71,7 +71,7 @@ export class ReviewdetailsComponent implements OnInit {
      this.payload.country_code = this.countrydetails.code ;
      //console.log('Payload');
      //console.log(this.payload);
-    this.servicenowservice.submit_new_jabber_request(this.payload).subscribe(data=> {
+    this.servicenowservice.submit_request(this.payload).subscribe(data=> {
     console.log('response', data);
     if(data)
     this.router.navigate(['/resultpage']) ;
