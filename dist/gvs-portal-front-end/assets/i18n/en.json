@@ -1,0 +1,29 @@
+{
+
+    "home" : {
+        "select-language" : "Choose a language: ",
+        "app-name" : "Global Voice Services",
+        "app-function" : "What service or country are you looking for?",
+         "welcome" : "Welcome,",
+        "question" : "What service or country are you looking for?",
+        "search-placeholder" : "Search service...",
+        "search-text" : "Click here to see all results in GVS search",
+        "my-country" : "My Country",
+        "click-here" : "Click here",
+        "available" : "to view all available",
+        "services" : "services for",
+        "most-viewed-services" : "Most Viewed Services",
+        "find-right-service" : "Find the right services, check their availability,",
+        "find-right-service2" : "and then choose the way you connect and work together.",
+        "jabber-description" : "Cisco Jabber is a multiple platform soft phone application to make and receive phone calls.",
+        "button-value" : "Get Started"
+    },
+    
+    "footer" : {
+      "aditional-question" : "Have additional questions about ordering Global Voice Services ?",
+      "please consult" : "Please consult",
+      "consult" : "* This website supports Mozilla Firefox, Google Chrome, IE and Safari."
+
+
+    }
+}

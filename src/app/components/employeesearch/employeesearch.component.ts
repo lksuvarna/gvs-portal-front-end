@@ -201,7 +201,7 @@ export class EmployeesearchComponent implements OnInit {
           });
           
          }
-        });
+        })
       }
     });
     

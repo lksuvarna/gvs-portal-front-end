@@ -58,6 +58,7 @@ export class Jabber_New
     gvs_approval_link !: String;
     SLA_type !: String;
     country_code !:String;
+    default_call_permission !: String
 
 Jabber_New()
  {
@@ -83,6 +84,34 @@ Jabber_New()
     this.gvs_portal_link ="";
     this.gvs_approval_link ="";
     this.SLA_type ="";
+    this.country_code  ="";
+    this.default_call_permission="";
+ }
+
+}
+
+// class used to create the payload for snow delete jabber service
+
+export class Jabber_Delete
+{
+    orinator_payload !: String;
+    cNum_payload !: String;
+    ReqNo !: String;
+    countryname !: String;
+    Identifier_Disp !: String;
+    site_address !: String;
+    request_type !: String;
+    evolution_instance !: String;
+    country_code !:String;
+
+Jabber_Delete()
+ {
+    this.orinator_payload ="";
+    this.cNum_payload ="";
+    this.ReqNo ="";
+    this.countryname ="";
+    this.request_type ="";
+    this.evolution_instance ="";
     this.country_code  ="";
  }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import {Db2Service} from '../../_services/db2.service';
+import { servicenowservice } from '../../_services/servicenow.service'
 
 
 @Component({
@@ -11,7 +12,7 @@ import {Db2Service} from '../../_services/db2.service';
 })
 export class DummyComponent implements OnInit {
 
-  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private Db2Service: Db2Service) { }
+  constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private Db2Service: Db2Service, private servicenowservice: servicenowservice) { }
   countryname:any;
   ccode='';
   cloudantData: any = []
@@ -38,9 +39,14 @@ export class DummyComponent implements OnInit {
     
     this.servicesData = servicesData.data[0];
           // Code to search Db2 for resrouces
-          this.Db2Service.search_db2('06685M744','all').subscribe(data=> {
+          this.Db2Service.search_db2('06685M744','jabber_delete').subscribe(data=> {
             console.log(' db2 response', data);
           });
+
+          // Code to search Snow
+          this.servicenowservice.searchsnow('06685M744','jabber_delete','IN-DS-06685M').subscribe(data => {
+            console.log(' snow response', data);
+           });
       
   
     }
