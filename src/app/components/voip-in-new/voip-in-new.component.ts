@@ -54,15 +54,15 @@ export class VoipInNewComponent implements OnInit {
   employeeInfo: any;	
   employeeInfo1: any;	
   campus:any;	
+  hideProjectId = false;
   reqFor: any;
-  hideProjectId=false;
     
       
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	
       
-   /* this.Locations = {	
-      locc : ['Select Office Location~~Select One','Banglore~~MTP','Banglore~~SA',	
-      'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech']	
+    /*this.Locations = {	
+      locc : ['Banglore~~MTP','Banglore~~SA',	
+      'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech','Hyderabad~~Hitech2']	
       };	
     for(var i=0;i<this.Locations.locc.length;i++) {	
       var n=this.Locations.locc[i].indexOf("~")	
@@ -75,7 +75,6 @@ export class VoipInNewComponent implements OnInit {
       this.j++;	
       }	
       }	*/
-    
   }	
   // submit(){	
   //   this.router.navigate(['/reviewdetails']) 	
@@ -109,7 +108,8 @@ export class VoipInNewComponent implements OnInit {
   selectedLocation(loc:String) {	
     this.build = [];	
     this.campus = '';	
-    if(loc.toUpperCase() != 'SELECT OFFICE LOCATION') {	
+    //alert("Location"+loc);
+    if(loc != '') {	
       this.hideBuilding = false;	
       var k =0;	
       //var f = 100;	
@@ -252,7 +252,7 @@ export class VoipInNewComponent implements OnInit {
         this.camp[this.j] = this.campA[i];	
         this.j++;	
       }	
-    }	
+    }
     const servicesData = { 	
       "data": [	
         {    	
@@ -278,7 +278,7 @@ export class VoipInNewComponent implements OnInit {
     //alert(this.reviewDetailsIndia.reqno);	
     this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
     this.employeeInfo = JSON.parse(this.employeeInfo1);	
-    if(this.employeeInfo.businessUnit.toUpperCase() != 'GBS' && this.employeeInfo.businessUnit == null){
+    if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
       this.hideProjectId = true;
       }
   }	
