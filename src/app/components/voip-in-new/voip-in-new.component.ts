@@ -209,10 +209,10 @@ export class VoipInNewComponent implements OnInit {
       this.payload.qag =this.countrydetails.qag ;	
       this.payload.class_of_serice =this.countrydetails.class_of_serice ;	
       this.payload.country_code = this.countrydetails.code ;	
-      this.payload.call_permission=this.countrydetails.default_call_permission;
+      this.payload.default_call_permission=this.countrydetails.default_call_permission;
       
-      console.log('Payload');	
-      //console.log(this.payload);	
+     // console.log('Payload');	
+     // console.log(this.payload);	
      this.servicenowservice.submit_new_jabber_request(this.payload).subscribe(data=> {	
      console.log('response', data);	
      if(data)	
