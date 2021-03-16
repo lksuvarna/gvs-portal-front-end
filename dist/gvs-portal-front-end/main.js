@@ -855,7 +855,7 @@ class ReviewdetailsComponent {
         this.payload.country_code = this.countrydetails.code;
         //console.log('Payload');
         //console.log(this.payload);
-        this.servicenowservice.submit_new_jabber_request(this.payload).subscribe(data => {
+        this.servicenowservice.submit_request(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
                 this.router.navigate(['/resultpage']);
@@ -3028,7 +3028,7 @@ class VoipInNewComponent {
         this.payload.default_call_permission = this.countrydetails.default_call_permission;
         // console.log('Payload');	
         // console.log(this.payload);	
-        this.servicenowservice.submit_new_jabber_request(this.payload).subscribe(data => {
+        this.servicenowservice.submit_request(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
                 this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
@@ -5540,7 +5540,7 @@ class servicenowservice {
         this.searchUrl = '/api/search_snow';
         this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_3__["snowsearch"]();
     }
-    submit_new_jabber_request(Jabber_new_payload) {
+    submit_request(Jabber_new_payload) {
         console.log('calling snow');
         return this.http.post(this.submitUrl, Jabber_new_payload)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorhandler));

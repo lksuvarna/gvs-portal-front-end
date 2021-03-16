@@ -14,7 +14,7 @@ export class servicenowservice {
   private searchUrl ='/api/search_snow';
   payload: snowsearch = new snowsearch();
   constructor(private http: HttpClient) { }
-  submit_new_jabber_request(Jabber_new_payload : Jabber_New): Observable<any> {
+  submit_request(Jabber_new_payload : Jabber_New): Observable<any> {
     console.log('calling snow');
     return this.http.post(this.submitUrl,Jabber_new_payload)
       .pipe(catchError(this.errorhandler))
