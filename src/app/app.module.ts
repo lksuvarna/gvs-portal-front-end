@@ -37,6 +37,7 @@ import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-v
 import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FooterComponent } from './components/footer/footer.component';
+import { StepsComponent } from './components/steps/steps.component';
 
 export function rootLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http,'assets/i18n/','.json')
@@ -73,6 +74,7 @@ export function rootLoaderFactory(http: HttpClient){
     VoipInDeleteComponent,
     EmployeesearchVoipDeleteComponent,
     FooterComponent,
+    StepsComponent
 
 
   ],

@@ -54,7 +54,8 @@ export class VoipInNewComponent implements OnInit {
   employeeInfo: any;	
   employeeInfo1: any;	
   campus:any;	
-  
+  reqFor: any;
+  hideProjectId=false;
     
       
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	
@@ -111,12 +112,12 @@ export class VoipInNewComponent implements OnInit {
     if(loc.toUpperCase() != 'SELECT OFFICE LOCATION') {	
       this.hideBuilding = false;	
       var k =0;	
-      var f = 100;	
-      this.build[k] = this.buildA[0];	
+      //var f = 100;	
+      //this.build[k] = this.buildA[0];	
       for(var i=0;i<this.campA.length;i++) {	
-      if(loc == this.campA[i]) {	
-        k = k+1;	
-      this.build[k] = this.buildA[i];	
+      if(loc == this.campA[i]) {        	
+      this.build[k] = this.buildA[i];
+      k = k+1;	
       }	
       }  	
     // alert("HIIII"+this.build);	
@@ -149,10 +150,10 @@ export class VoipInNewComponent implements OnInit {
       alert('Please enter the Charge Department Code');	
       return;	
     }	
-    if(formData.value.Projectid == '') {	
-      alert('Please enter the Project Id');	
-      return;	
-    }	
+    if(formData.value.Projectid == '' && this.hideProjectId == false) {
+      alert('Please enter the Project Id');
+      return;
+      }
     if(formData.value.identifier_hp == '') {	
       this.fixedPhoneIdentifier = true;	
     }	
@@ -263,20 +264,30 @@ export class VoipInNewComponent implements OnInit {
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},	
             {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}	
           ],	
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 	
+          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "step" : 3,	
           
         }	
       ]	
   
      
     }	
-        
+    this.reqFor = sessionStorage.getItem('radioAction')
     this.servicesData = servicesData.data[0];	
     //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
     //alert(this.reviewDetailsIndia.reqno);	
     this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
     this.employeeInfo = JSON.parse(this.employeeInfo1);	
+    if(this.employeeInfo.businessUnit.toUpperCase() != 'GBS' && this.employeeInfo.businessUnit == null){
+      this.hideProjectId = true;
+      }
   }	
+
+  previousStep(event : any){
+    this.isEntryForm = false;	
+    this.isReviewForm = true;	
+    this.fixedPhoneIdentifier = false;	
+  }
       
 }	
 function gettime() {	

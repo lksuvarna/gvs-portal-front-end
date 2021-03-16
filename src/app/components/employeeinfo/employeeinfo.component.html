@@ -8,46 +8,17 @@
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <b>Request new Jabber service</b>
-        <div class="ds-padding-top-0_5 ">
-            <p>If the following information is correct, click Next. Any errors must be corrected in the employee's <a href="https://w3.ibm.com/bluepages/" target="_blank">BluePages record</a> before continuing.</p>
+        <div class="ds-padding-top-0_5 " >
+            <p *ngIf="selfinfo==false">If the following information is correct, click Next. Any errors must be corrected in the employee's <a href="https://w3.ibm.com/bluepages/" target="_blank">BluePages record</a> before continuing.</p>
         </div>
         <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
-        <div class="ds-col-12 ds-padding-top-0_5">
-            <div class="ds-row">
-                <div class="ds-col-12">
-                    <div class="ds-row">
-                        <div>
-                            <span class="ds-tooltip ds-hover" id="tooltip-demo1">
-                        <span class="ds-tooltip-trigger ds-text-contextual-blue-5 ds-pad-l-1" aria-label="help" tabindex="0">STEP 1</span>
-                            <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">Employee Search</div>
-                            </span>
-                            <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
-                            <span class="ds-tooltip ds-hover" id="tooltip-demo1">
-                        <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 2</span>
-                            <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Information</div>
-                            </span>
-                            <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
-                            <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
-                        <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 3</span>
-                            <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Entry Details</div>
-                            </span>
-                            <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
-                            <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
-                        <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP 4</span>
-                            <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Review Details</div>
-                            </span>
-                        </div>
+        <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
 
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " *ngIf="selfinfo==false">Employee Information</h2>
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " *ngIf="selfinfo==true">Employee Entry Details</h2>
 
-        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Information</h2>
-
-
-        <table cellspacing="0" cellpadding="0" border="0">
+        <table cellspacing="0" cellpadding="0" border="0" *ngIf="selfinfo==false">
             <tbody>
                 <tr valign="top">
                     <td width="359">
@@ -121,7 +92,7 @@
             <p>The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact <a style="color:blue" target="_blank"
                     href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
-        <div id="w1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfo >
+        <div id="w1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfo>
             <p><span style="font-size: 1rem;">The serial number that you have entered is not eligible to request more than one Jabber account.<br>The IBM Telephone Number (ITN) that exists for this users jabber account is {{identifier}}.<br>Help related to Jabber configuration can be found at  <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>. <br>              
         For any further assistance, please contact  ' <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a> '.<br></span></p>
         </div>
@@ -135,14 +106,14 @@
         <div class="ds-hr-thick"></div>
 
         <div class="ds-row ds-mar-t-b-3_5">
-            <div class="ds-col-xs-10 ds-col-md-5 ds-col-lg-2 ds-offset-md-3 ds-offset-lg-6 ds-push-md-4 ds-push-lg-4" >
+            <div class="ds-col-xs-10 ds-col-md-5 ds-col-lg-2 ds-offset-md-3 ds-offset-lg-6 ds-push-md-4 ds-push-lg-4">
                 <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="warninginfo==false&&warninginfosnow==false">NEXT</button>
             </div>
             <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3 ds-pull-md-5 ds-pull-lg-1">
                 <button (click)="backClick()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">BACK</button>
             </div>
         </div>
-        
+
 
     </div>
 </div>
