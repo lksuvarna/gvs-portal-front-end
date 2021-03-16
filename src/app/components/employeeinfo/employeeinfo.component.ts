@@ -24,6 +24,7 @@ export class EmployeeinfoComponent implements OnInit {
   countryname: any;
   ccode = '';
   pcode = '';
+  service:any;
   cloudantData: any = []
   servicesData: any = []
   employeeInfo: any
@@ -43,15 +44,11 @@ export class EmployeeinfoComponent implements OnInit {
   navpage:any;
   navpage1:any;
   submit() {
-<<<<<<< HEAD
-    this.router.navigate(['/entrydetails'],{ queryParams: { country: this.pcode } }) ;
-=======
     if(this.service=="requests"||this.service=="resources"||this.service=="approvalpending"||this.service=="revalidationpending"){
       this.navpage='/'+this.service}       
       else{this.navpage='/entrydetails';}  
        
     this.router.navigate([this.navpage],{ queryParams: { country: this.pcode,service:this.service } }) ;
->>>>>>> 5d8d42b2864a34f59a9693f42350d5488b79f46e
   }
   backClick(){
     sessionStorage.setItem('backbutton','yes');
@@ -64,7 +61,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
-  
+      this.service = params.service;
       this.pcode = params.country;
       console.log("navigation component" + this.pcode);
     })

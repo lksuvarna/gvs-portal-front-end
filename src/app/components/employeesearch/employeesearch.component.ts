@@ -99,7 +99,7 @@ export class EmployeesearchComponent implements OnInit {
     sessionStorage.setItem('radioAction',this.radioAction.toLowerCase());
     console.log(this.pcode+this.ccode)
     if(this.radioAction.toLowerCase() == "myself" && this.pcode!==this.ccode.substr(6,9)){
-      alert("Only "+JSON.parse(this.countrydetails).name +" Serial numbers are allowed to create a request for "+JSON.parse(this.countrydetails).name);
+      alert("Only "+this.countrydetails.name +" Serial numbers are allowed to create a request for "+this.countrydetails.name);
       return;
     }
     if(this.radioAction.toLowerCase() == "anotheremployee"){
