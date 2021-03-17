@@ -3549,7 +3549,7 @@ const appRoutingProviders = _angular_router__WEBPACK_IMPORTED_MODULE_0__["Router
 /*!***************************!*\
   !*** ./config/payload.ts ***!
   \***************************/
-/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete */
+/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Special_Request */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3558,6 +3558,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "snowsearch", function() { return snowsearch; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_New", function() { return Jabber_New; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_Delete", function() { return Jabber_Delete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_Move", function() { return Jabber_Move; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_Update", function() { return Jabber_Update; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Special_Request", function() { return Special_Request; });
 // Class used to create the payload for Db2 search service.
 class db2search {
     db2search() {
@@ -3614,6 +3617,66 @@ class Jabber_Delete {
         this.request_type = "";
         this.evolution_instance = "";
         this.country_code = "";
+    }
+}
+// class used to create the payload for snow move jabber service
+class Jabber_Move {
+    Jabber_Move() {
+        this.orinator_payload = "";
+        this.cNum_payload = "";
+        this.evolution_instance = "";
+        this.Voice_Type_Disp = "";
+        this.Projectid_Disp = "";
+        this.default_call_permission = "";
+        this.icano_Disp = "";
+        this.BusinessUnit_Disp = "";
+        this.Department_number_Disp = "";
+        this.accid_Disp = "";
+        this.level1_japproval = "";
+        this.level2_japproval = "";
+        this.Location_final = "";
+        this.ReqNo = "";
+        this.qag = "";
+        this.class_of_serice = "";
+        this.gvs_portal_link = "";
+        this.gvs_approval_link = "";
+        this.countryname = "";
+        this.correct_location = "";
+        this.Identifier_Disp = "";
+        this.request_type = "";
+    }
+}
+// class used to create the payload for snow update jabber service
+class Jabber_Update {
+    Jabber_Update() {
+        this.orinator_payload = "";
+        this.cNum_payload = "";
+        this.Projectid_Disp = "";
+        this.icano_Disp = "";
+        this.Department_number_Disp = "";
+        this.accid_Disp = "";
+        this.ReqNo = "";
+        this.countryname = "";
+        this.evolution_instance = "";
+        this.gvs_portal_link = "";
+        this.gvs_approval_link = "";
+        this.Identifier_Selected = "";
+        this.updated_for = "";
+        this.request_type = "";
+    }
+}
+// // class used to create the payload for snow special request service
+class Special_Request {
+    Special_Request() {
+        this.orinator_payload = "";
+        this.cNum_payload = "";
+        this.Identifier_Disp = "";
+        this.Location_Disp = "";
+        this.Comments = "";
+        this.ReqNo = "";
+        this.gvs_portal_link = "";
+        this.countryname = "";
+        this.request_type = "";
     }
 }
 
