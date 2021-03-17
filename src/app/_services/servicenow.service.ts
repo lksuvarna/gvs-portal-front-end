@@ -28,6 +28,16 @@ export class servicenowservice {
     return this.http.post(this.searchUrl,this.payload)
       .pipe(catchError(this.errorhandler));
   }
+  searchsnowcoments(cnum: string, type: string,reqno : string,number:string): Observable<any> {
+    console.log('calling snow swarch');
+    this.payload.cnum=cnum;
+    this.payload.request_type=type;
+    this.payload.reqno=reqno;
+    this.payload.number=number;
+    return this.http.post(this.searchUrl,this.payload)
+      .pipe(catchError(this.errorhandler))
+  }
+  
 
   errorhandler(error: HttpErrorResponse) {
     console.log(error.message)
