@@ -24,7 +24,7 @@ export class TopcountryframeComponent implements OnInit {
 
         this.pcode = params.country;
         console.log("topcountry component" + this.pcode);
-      })
+      
       this.countryroute=sessionStorage.getItem('countryroute')
     this.ccode = this.cookie.getCookie('ccode').substring(6, 9);    
     if (this.pcode== this.countryroute) {
@@ -41,6 +41,7 @@ export class TopcountryframeComponent implements OnInit {
       sessionStorage.setItem('countryroute', this.pcode);
      });
     }
+  })
   }
 
 }

@@ -19,16 +19,19 @@ export class MiddleframeComponent implements OnInit {
   ccode='';
   countryroute :any
     ngOnInit(): void {
+      
       this.route.queryParams
       .subscribe(params => {
         console.log(params);
 
         this.pcode = params.country;
-        console.log("navigation component middelframe" + this.pcode);
-      })
-    this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-    this.countryroute = sessionStorage.getItem('countryroute');
-    console.log("navigation component country route" + this.countryroute );
+        console.log("navigation component country route" + this.countryroute );
+        console.log("navigation component middelframe123" + this.pcode);
+      
+      this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+      this.countryroute = sessionStorage.getItem('countryroute');
+      console.log("navigation component country route" + this.countryroute );
+    
     if (this.pcode== this.countryroute) {
       this.pcountrydetails = sessionStorage.getItem('countrydetails')
       console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code)
@@ -102,7 +105,8 @@ export class MiddleframeComponent implements OnInit {
     }
       
       this.servicesData = servicesData.data[0]
-    
+    })
       }
+  
     }
-    
+
