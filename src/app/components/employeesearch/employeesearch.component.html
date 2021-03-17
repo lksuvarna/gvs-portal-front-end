@@ -8,8 +8,11 @@
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
-            <b>Request new Jabber service</b><br>
-            <div class="ds-pad-t-0_5 ds-pad-b-1">This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</div>
+            
+            <b>Request new Jabber service</b>
+
+            
+            <div class="ds-pad-b-1">This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="hideDisserial" [hideSteps]="notvalid"></app-steps>
@@ -57,17 +60,17 @@
                     </tr>
                     <tr>
                         <td>
-                            <div *ngIf="hideDisTextBox" class="ds-pad-t-0">
+                            <div *ngIf="hideDisTextBox" class="ds-pad-t-2">
                                 <label for="OriginatorNameId">Employee Serial Number</label>
                                 <span class="ds-text-contextual-red-2">*</span>
                             </div>
                         </td>
                         <td colspan="2">
-                            <div *ngIf="hideDisTextBox" class="row ds-pad-t-0">
+                            <div *ngIf="hideDisTextBox" class=" row ds-pad-t-2">
                                 <div class="ds-col-4">
                                     <input maxlength="6" name="employeeSerial" ngModel type="text" class="ds-input" ngModel={{empno}} (click)="hidedata()">
                                 </div>
-                                <div class="ds-col-6 ds-pad-t-0_5">
+                                <div class="ds-col-6">
                                     <span style="color:#808080">(eg 012789)</span>
                                 </div>
                             </div>
@@ -75,11 +78,10 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="ds-pad-t-1" >
-                <p class="ds-col-xs-12 ds-alert ds-warning" id="error" *ngIf=notvalid>
-                    <font color="black">There is no record of an IBM employee with the serial number {{employeeSerial.substr(0,6)}} available from BluePages</font>
-                </p>
-            </div>
+
+            <p class="ds-col-xs-12 ds-alert ds-warning" id="error" *ngIf=notvalid>
+                <font color="black">There is no record of an IBM employee with the serial number {{employeeSerial.substr(0,6)}} available from BluePages</font>
+            </p>
             <div class="ds-hr-thick ds-mar-t-1_5"></div>
             
             <div class="ds-loader-container" *ngIf=showloader>
@@ -87,12 +89,12 @@
                 <div class="ds-loader" role="alert" aria-busy="true" aria-label=""> </div>
             </div>
            
-            <div class="ds-row ds-grid ds-mar-t-b-3_5 ds-pad-r-1">
-                <div [ngClass]="showloader ? 'ds-col-lg-2 ds-push-lg-8':'ds-col-lg-2 ds-push-lg-10'">
-                    <button *ngIf="!showloader" type="button" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}">EXIT REQUEST</button>
-                </div>
-                <div class="ds-col-lg-2 ds-push-lg-8">
+            <div class="ds-row ds-mar-t-b-3_5">
+                <div class="ds-col-xs-12 ds-col-md-5 ds-col-lg-2 ds-offset-md-3 ds-offset-lg-6 ds-push-md-4 ds-push-lg-4">
                     <button *ngIf="!showloader && !notvalid" type="submit" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%">NEXT</button>
+                </div>
+                <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3 ds-pull-md-5 ds-pull-lg-1">
+                    <button *ngIf=!showloader type="button" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}">EXIT REQUEST</button>
                 </div>
             </div>
 
