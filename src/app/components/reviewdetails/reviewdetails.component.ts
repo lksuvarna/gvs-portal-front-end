@@ -107,5 +107,9 @@ export class ReviewdetailsComponent implements OnInit {
     this.reqFor = sessionStorage.getItem('reqFor')
   
     }
+<<<<<<< HEAD
+  }
+=======
   }
   
+>>>>>>> 1832b78d4874b26e5b1c2e17cbf71c77e06aa1ff

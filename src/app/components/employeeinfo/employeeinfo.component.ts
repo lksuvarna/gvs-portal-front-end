@@ -19,7 +19,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EmployeeinfoComponent implements OnInit {
 
-
+  
   constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private Db2Service: Db2Service, private servicenowservice: servicenowservice, private bpservices: bpservices,private location: Location,private route: ActivatedRoute) { }
   countryname: any;
   ccode = '';
