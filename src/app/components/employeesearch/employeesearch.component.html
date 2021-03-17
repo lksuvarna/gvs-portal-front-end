@@ -94,7 +94,7 @@
                     <button *ngIf="!showloader && !notvalid" type="submit" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%">NEXT</button>
                 </div>
                 <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3 ds-pull-md-5 ds-pull-lg-1">
-                    <button *ngIf=!showloader type="button" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode}">EXIT REQUEST</button>
+                    <button *ngIf=!showloader type="button" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}">EXIT REQUEST</button>
                 </div>
             </div>
 
