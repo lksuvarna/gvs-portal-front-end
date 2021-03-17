@@ -25,6 +25,16 @@ export class JabberservicesComponent implements OnInit {
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
       })
+      if(sessionStorage.getItem('radioAction')=== null)
+    {
+      
+    }
+    else{
+      sessionStorage.setItem('radioAction','myself')      
+      sessionStorage.setItem('empserial','')
+      
+      
+    }
       const servicesData = { 
       "data": [
         {    

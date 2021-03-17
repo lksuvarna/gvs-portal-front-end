@@ -3,12 +3,8 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { servicenowservice } from '../../_services/servicenow.service';
 import {Router} from  '@angular/router';
-<<<<<<< HEAD
 import {Jabber_New} from '../../../../config/payload';
-
-=======
 import {Location} from '@angular/common';
->>>>>>> 9e9f717e9d6b4e43d6269fff54c104e4ad9a4005
 
 @Component({
   selector: 'app-reviewdetails',
@@ -18,34 +14,16 @@ import {Location} from '@angular/common';
 export class ReviewdetailsComponent implements OnInit {
   countryname:any;
   ccode='';
-<<<<<<< HEAD
   cnum : any;
   cloudantData: any = [];
   servicesData: any = [];
   countrydetails : any;
   isButtonVisible = true;
   isSpinnerVisible= false;
+  reqFor: any;
 
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice) { }
   payload : Jabber_New = new Jabber_New();
-=======
-  cloudantData: any = []
-  servicesData: any = []
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice:servicenowservice,private location:Location) { }
-  backClick(){
-    sessionStorage.setItem('backbutton','yes');
-    sessionStorage.setItem('step','step1');
-    this.location.back();
-   // this.router.navigate(['..']);
-  }
-  submit(){
-    this.servicenowservice.submit_new_jabber_request().subscribe(data=> {
-    console.log('response', data);
-    if(data)
-    this.router.navigate(['/resultpage']) ;
-    });
-    }
->>>>>>> 9e9f717e9d6b4e43d6269fff54c104e4ad9a4005
 
   reviewDetailsIndia = {
 
@@ -62,7 +40,7 @@ export class ReviewdetailsComponent implements OnInit {
     accid_Disp: "",
     reqno:""
   }
-  submit(){
+  submit_snow(){
    this.isButtonVisible=false;
    this.isSpinnerVisible=true;
      this.payload.orinator_payload=this.ccode;
@@ -120,23 +98,13 @@ export class ReviewdetailsComponent implements OnInit {
           {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
         ],
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "titles": [
-          "Terms of use",
-          "Useful Information",
-          "Please bear in mind the following points when making a request :"
-        ],
-        "usefulinfotexts": [
-          "To make a request the Employee must exist in BluePages (except for cancellation requests).",
-          "You must know the IBM serial Number of the person making the request.",
-          "Only one request per employee per request type is processed at a time."
-        ],
-        "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
+        "step" : 4,
       }
     ]
   }
     
     this.servicesData = servicesData.data[0]
+    this.reqFor = sessionStorage.getItem('reqFor')
   
     }
   }
-  

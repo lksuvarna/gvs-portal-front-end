@@ -34,6 +34,10 @@ export class EmployeesearchComponent implements OnInit {
   warninginfosnow = true;
   employeeInfo: any
   employeeSerial=''
+  radio:any;
+  empno:any;
+  navpage:any;navpage1:any;
+  countrydetails:any;
   notvalid=false
   dataloading=false
   showloader=false
@@ -41,6 +45,8 @@ export class EmployeesearchComponent implements OnInit {
     this.showloader=false
     this.fullName=this.cookie.getCookie('user');
     this.ccode=this.cookie.getCookie('ccode');
+    this.countrydetails=sessionStorage.getItem('countrydetails')
+    this.countrydetails =JSON.parse(this.countrydetails)
     this.route.queryParams
       .subscribe(params => {
         console.log(params);
@@ -50,10 +56,21 @@ export class EmployeesearchComponent implements OnInit {
       })
       this.backbutton=sessionStorage.getItem('backbutton');
       this.step=sessionStorage.getItem('step');
-      if(this.backbutton=='yes')
-      {}else{
-    this.radioAction = "mySelf"; }  
-
+      
+    //this.radioAction = "mySelf"; 
+    if(sessionStorage.getItem('radioAction')=== null)
+    {
+      this.radioAction = "myself"; 
+    }
+    else{
+      this.radio=sessionStorage.getItem('radioAction')
+      this.radioAction = this.radio
+      this.empno=sessionStorage.getItem('empserial')
+      
+      this.onRequestForChangesession();
+    }
+    //for lhs
+   
     
     const servicesData = { 
     "data": [
@@ -67,7 +84,7 @@ export class EmployeesearchComponent implements OnInit {
           {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
         ],
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        
+        "step" : 1,
       }
     ]
   }
@@ -78,22 +95,50 @@ export class EmployeesearchComponent implements OnInit {
 
     onSubmit(formData:NgForm)
   {
-    this.showloader=true
+    
+    sessionStorage.setItem('radioAction',this.radioAction.toLowerCase());
+    console.log(this.pcode+this.ccode)
+    if(this.radioAction.toLowerCase() == "myself" && this.pcode!==this.ccode.substr(6,9)){
+      alert("Only "+JSON.parse(this.countrydetails).name +" Serial numbers are allowed to create a request for "+JSON.parse(this.countrydetails).name);
+      return;
+    }
     if(this.radioAction.toLowerCase() == "anotheremployee"){
     if(formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true){
-    alert("Please enter serial number");
+    alert("Please enter a serial number");
+    return;
     }
     else if(formData.value.employeeSerial.length < 6  && this.hideDisTextBox == true){
       alert("Employee Serial Number should be of 6 characters");
+      return;
     }
     else{
-      this.employeeSerial=formData.value.employeeSerial+this.pcode
+      sessionStorage.setItem('empserial',formData.value.employeeSerial)
+      this.employeeSerial=formData.value.employeeSerial+this.pcode;
+      
     }
   }
   //for self
    else{
     this.employeeSerial=this.ccode
+    
    }
+   //to change the routing
+   
+   
+   if(this.service=="jabber_new"){
+    this.navpage='/entrydetails';this.navpage1='/employeeinfo';
+   }
+   else{    
+      if(this.radioAction.toLowerCase() == "myself"){
+       if(this.service=="requests"||this.service=="resources"||this.service=="approvalpending"||this.service=="revalidationpending"){
+       this.navpage='/'+this.service;this.navpage1='/'+this.service;}       
+       else{this.navpage='/entrydetails';this.navpage1='/entrydetails';}  
+        }
+      else{
+       this.navpage='/employeeinfo';this.navpage1='/employeeinfo';
+      }
+   }
+   this.showloader=true
 //BP verification and getting data
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
       console.log(' BP Details', data.userdata);
@@ -102,7 +147,7 @@ export class EmployeesearchComponent implements OnInit {
 
         employeeName: data.username.callupname,
         jobResponsibility: data.username.jobresponsibilities,
-        businessUnit: data.username.workloc,
+        businessUnit: data.bu,
         department: data.username.dept,
         country: data.username.co,
         email: data.username.preferredidentity
@@ -124,25 +169,36 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfo', 'true1')  
         this.identifier = data.message[0].IDENTIFIER
         sessionStorage.setItem('identifier', this.identifier)
-        this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode } }) ;
+        this.router.navigate([this.navpage1],{ queryParams: { country: this.pcode,service:this.service }}) ;
       }
       else {
         this.warninginfo = false 
         sessionStorage.setItem('warninginfo', 'false1')  
-        //SNOW search for ongoin requests      
-        this.servicenowservice.searchsnow(this.employeeSerial, this.service, 'IN-NS-'+this.employeeSerial.substr(0,6)).subscribe(data => {
+        //SNOW search for ongoin requests  
+        console.log('SNOW search'+this.countrydetails.isocode)    
+        this.servicenowservice.searchsnow(this.employeeSerial, this.service, this.countrydetails.isocode+'-NS-'+this.employeeSerial.substr(0,6)).subscribe(data => {
           console.log(' snow response', data);
           console.log(' snow response', data.message.length);
           if (data.message.length > 0) {
             console.log(' snow response1', data.message.length);
             this.warninginfosnow=true  
             sessionStorage.setItem('warninginfosnow', 'true1')           
-            this.identifier = data.message
+            this.identifier = data.message            
             sessionStorage.setItem('identifier', this.identifier)
-            this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode } }) ;
+            this.router.navigate([this.navpage1],{ queryParams: { country: this.pcode,service:this.service } }) ;
           }
          else{
-          this.router.navigate(['/employeeinfo'],{ queryParams: { country: this.pcode } }) ;
+          this.cloudantservice.getlocationdetails(this.pcode).subscribe(data => {
+            console.log('Response received navigation', data.locationdetails);            
+            sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations)); 
+            if(this.radioAction.toLowerCase() == "anotheremployee"){           
+            this.router.navigate([this.navpage1],{ queryParams: { country: this.pcode,service:this.service } }) ;                  
+            }
+            else{
+              this.router.navigate([this.navpage],{ queryParams: { country: this.pcode,service:this.service } }) ;                  
+            }
+          });
+          
          }
         });
       }
@@ -165,7 +221,25 @@ export class EmployeesearchComponent implements OnInit {
     
    
   onRequestForChange(){
+    this.empno='';
+    if(this.radioAction.toLowerCase() == "anotheremployee"){
+        this.hideDisTextBox = true;
+      this.hideDisserial = false;
 
+    }
+    else if(this.radioAction.toLowerCase() == "myself")
+    {
+      this.hideDisTextBox = false;
+      this.hideDisserial = true;
+
+    }
+
+  }
+  hidedata(){
+    this.notvalid=false;
+  }
+  onRequestForChangesession(){
+    
     if(this.radioAction.toLowerCase() == "anotheremployee"){
         this.hideDisTextBox = true;
       this.hideDisserial = false;
