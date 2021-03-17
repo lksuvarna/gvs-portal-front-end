@@ -104,7 +104,7 @@ export class EmployeesearchComponent implements OnInit {
     }
     if(this.radioAction.toLowerCase() == "anotheremployee"){
     if(formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true){
-    alert("Please enter serial number");
+    alert("Please enter a serial number");
     return;
     }
     else if(formData.value.employeeSerial.length < 6  && this.hideDisTextBox == true){
