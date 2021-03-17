@@ -1370,34 +1370,34 @@ class ServicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
+            this.countryroute = sessionStorage.getItem('countryroute');
+            const servicesData = {
+                "data": [
+                    {
+                        "lhs": [
+                            { "name": "Services", "routingname": "/services", "indented": false, "highlighted": true },
+                            { "name": "Approvals Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
+                            { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
+                            { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
+                            { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
+                        ],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "titles": [
+                            "Terms of use",
+                            "Useful Information",
+                            "Please bear in mind the following points when making a request :"
+                        ],
+                        "usefulinfotexts": [
+                            "To make a request the Employee must exist in BluePages (except for cancellation requests).",
+                            "You must know the IBM serial Number of the person making the request.",
+                            "Only one request per employee per request type is processed at a time."
+                        ],
+                        "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
+                    }
+                ]
+            };
+            this.servicesData = servicesData.data[0];
         });
-        this.countryroute = sessionStorage.getItem('countryroute');
-        const servicesData = {
-            "data": [
-                {
-                    "lhs": [
-                        { "name": "Services", "routingname": "/services", "indented": false, "highlighted": true },
-                        { "name": "Approvals Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
-                        { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
-                        { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
-                        { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
-                    ],
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
-                    "titles": [
-                        "Terms of use",
-                        "Useful Information",
-                        "Please bear in mind the following points when making a request :"
-                    ],
-                    "usefulinfotexts": [
-                        "To make a request the Employee must exist in BluePages (except for cancellation requests).",
-                        "You must know the IBM serial Number of the person making the request.",
-                        "Only one request per employee per request type is processed at a time."
-                    ],
-                    "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
-                }
-            ]
-        };
-        this.servicesData = servicesData.data[0];
     }
 }
 ServicesComponent.ɵfac = function ServicesComponent_Factory(t) { return new (t || ServicesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_2__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_3__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"])); };
@@ -3246,23 +3246,23 @@ class TopcountryframeComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("topcountry component" + this.pcode);
+            this.countryroute = sessionStorage.getItem('countryroute');
+            this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+            if (this.pcode == this.countryroute) {
+                this.pcountrydetails = sessionStorage.getItem('countrydetails');
+                console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code);
+                this.countryname = JSON.parse(this.pcountrydetails);
+            }
+            else {
+                console.log("topcountrysession storageelse" + this.pcode);
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received', data.countrydetails.name);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    sessionStorage.setItem('countryroute', this.pcode);
+                });
+            }
         });
-        this.countryroute = sessionStorage.getItem('countryroute');
-        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-        if (this.pcode == this.countryroute) {
-            this.pcountrydetails = sessionStorage.getItem('countrydetails');
-            console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code);
-            this.countryname = JSON.parse(this.pcountrydetails);
-        }
-        else {
-            console.log("topcountrysession storageelse" + this.pcode);
-            this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
-                console.log('Response received', data.countrydetails.name);
-                this.countryname = data.countrydetails;
-                sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
-                sessionStorage.setItem('countryroute', this.pcode);
-            });
-        }
     }
 }
 TopcountryframeComponent.ɵfac = function TopcountryframeComponent_Factory(t) { return new (t || TopcountryframeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_1__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_2__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"])); };
@@ -4055,7 +4055,7 @@ const appRoutingProviders = _angular_router__WEBPACK_IMPORTED_MODULE_0__["Router
 /*!***************************!*\
   !*** ./config/payload.ts ***!
   \***************************/
-/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete */
+/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Special_Request */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4064,6 +4064,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "snowsearch", function() { return snowsearch; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_New", function() { return Jabber_New; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_Delete", function() { return Jabber_Delete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_Move", function() { return Jabber_Move; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_Update", function() { return Jabber_Update; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Special_Request", function() { return Special_Request; });
 // Class used to create the payload for Db2 search service.
 class db2search {
     db2search() {
@@ -4120,6 +4123,66 @@ class Jabber_Delete {
         this.request_type = "";
         this.evolution_instance = "";
         this.country_code = "";
+    }
+}
+// class used to create the payload for snow move jabber service
+class Jabber_Move {
+    Jabber_Move() {
+        this.orinator_payload = "";
+        this.cNum_payload = "";
+        this.evolution_instance = "";
+        this.Voice_Type_Disp = "";
+        this.Projectid_Disp = "";
+        this.default_call_permission = "";
+        this.icano_Disp = "";
+        this.BusinessUnit_Disp = "";
+        this.Department_number_Disp = "";
+        this.accid_Disp = "";
+        this.level1_japproval = "";
+        this.level2_japproval = "";
+        this.Location_final = "";
+        this.ReqNo = "";
+        this.qag = "";
+        this.class_of_serice = "";
+        this.gvs_portal_link = "";
+        this.gvs_approval_link = "";
+        this.countryname = "";
+        this.correct_location = "";
+        this.Identifier_Disp = "";
+        this.request_type = "";
+    }
+}
+// class used to create the payload for snow update jabber service
+class Jabber_Update {
+    Jabber_Update() {
+        this.orinator_payload = "";
+        this.cNum_payload = "";
+        this.Projectid_Disp = "";
+        this.icano_Disp = "";
+        this.Department_number_Disp = "";
+        this.accid_Disp = "";
+        this.ReqNo = "";
+        this.countryname = "";
+        this.evolution_instance = "";
+        this.gvs_portal_link = "";
+        this.gvs_approval_link = "";
+        this.Identifier_Selected = "";
+        this.updated_for = "";
+        this.request_type = "";
+    }
+}
+// // class used to create the payload for snow special request service
+class Special_Request {
+    Special_Request() {
+        this.orinator_payload = "";
+        this.cNum_payload = "";
+        this.Identifier_Disp = "";
+        this.Location_Disp = "";
+        this.Comments = "";
+        this.ReqNo = "";
+        this.gvs_portal_link = "";
+        this.countryname = "";
+        this.request_type = "";
     }
 }
 
@@ -5463,103 +5526,73 @@ class NavigationComponent {
             this.service = params.service;
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-        });
-        this.serhl = false;
-        this.jhl = false;
-        this.fhl = false;
-        this.fachl = false;
-        this.reqhl = false;
-        this.reshl = false;
-        this.serin = false;
-        this.jin = false;
-        this.fin = false;
-        this.facin = false;
-        this.reqin = false;
-        this.resin = false;
-        if (this.service == "services") {
-            this.serhl = true;
-        }
-        if ((this.service).includes("jabber")) {
-            this.jin = true;
-            this.jhl = true;
-        }
-        if ((this.service).includes("requests")) {
-            this.reqhl = true;
-        }
-        if (this.service == "services" || this.service == "requests" || this.service == "resources") {
-            this.dataNav123 = {
-                "data": [
-                    {
-                        "lhs": [
-                            { "name": "Services", "routingname": "/services", "indented": this.serin, "highlighted": this.serhl, "param": "services" },
-                            // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
-                            { "name": "Approvals Pending", "routingname": "/inprogress", "indented": false, "highlighted": false, "param": "services" },
-                            { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false, "param": "services" },
-                            { "name": "Resources", "routingname": "/inprogress", "indented": this.resin, "highlighted": this.reshl, "param": "resources" },
-                            { "name": "Requests", "routingname": "/employeesearch", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests" }
-                        ],
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
-                        "step": 1,
-                    }
-                ]
-            };
-        }
-        else {
-            this.dataNav123 = {
-                "data": [
-                    {
-                        "lhs": [
-                            { "name": "Services", "routingname": "/services", "indented": this.serin, "highlighted": this.serhl, "param": "services" },
-                            { "name": "Jabber", "routingname": "/services", "indented": this.jin, "highlighted": this.jhl, "param": "jabberservices" },
-                            { "name": "FAC Code", "routingname": "/inprogress", "indented": true, "highlighted": this.fhl, "param": "jabberservices" },
-                            { "name": "Approvals Pending", "routingname": "/inprogress", "indented": false, "highlighted": false, "param": "services" },
-                            { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false, "param": "services" },
-                            { "name": "Resources", "routingname": "/inprogress", "indented": this.resin, "highlighted": this.reshl, "param": "resources" },
-                            { "name": "Requests", "routingname": "/employeesearch", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests" }
-                        ],
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
-                        "step": 1,
-                    }
-                ]
-            };
-        }
-        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-        this.countryroute = sessionStorage.getItem('countryroute');
-        if (this.pcode == this.countryroute) {
-            this.pcountrydetails = sessionStorage.getItem('countrydetails');
-            console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
-            this.countryname = JSON.parse(this.pcountrydetails);
-            this.cloudantData = {
-                "code": this.ccode,
-                "name": this.countryname.name,
-                "isocode": this.countryname.isocode,
-                "isjabber": this.countryname.isjabber,
-                "isfixedphone": this.countryname.isfixphone,
-                "isfac": this.countryname.isfac,
-                "isspecial": this.countryname.isspecial,
-                "isreval": this.countryname.isreval,
-                "isapproval": this.countryname.isapproval,
-                "isjabbernew": this.countryname.isjabbernew,
-                "isjabberdelete": this.countryname.isjabberdelete,
-                "isjabbermove": this.countryname.isjabbermove,
-                "isjabberupdate": this.countryname.isjabberupdate
-            };
-            //for lhs
-            this.dataNavParent = this.dataNav123;
-            //end for lhs  
-            this.dataNav123 = this.dataNav123;
-            this.dataNavParent = this.dataNav123;
-            this.removeServices();
-        }
-        else {
-            console.log("navigation componentelse" + this.ccode);
-            this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
-                console.log('Response received navigation', data.countrydetails.isspecial);
-                this.countryname = data.countrydetails;
-                sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
-                sessionStorage.setItem('countryroute', this.pcode);
+            this.serhl = false;
+            this.jhl = false;
+            this.fhl = false;
+            this.fachl = false;
+            this.reqhl = false;
+            this.reshl = false;
+            this.serin = false;
+            this.jin = false;
+            this.fin = false;
+            this.facin = false;
+            this.reqin = false;
+            this.resin = false;
+            if (this.service == "services") {
+                this.serhl = true;
+            }
+            if ((this.service).includes("jabber")) {
+                this.jin = true;
+                this.jhl = true;
+            }
+            if ((this.service).includes("requests")) {
+                this.reqhl = true;
+            }
+            if (this.service == "services" || this.service == "requests" || this.service == "resources") {
+                this.dataNav123 = {
+                    "data": [
+                        {
+                            "lhs": [
+                                { "name": "Services", "routingname": "/services", "indented": this.serin, "highlighted": this.serhl, "param": "services" },
+                                // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
+                                { "name": "Approvals Pending", "routingname": "/inprogress", "indented": false, "highlighted": false, "param": "services" },
+                                { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false, "param": "services" },
+                                { "name": "Resources", "routingname": "/inprogress", "indented": this.resin, "highlighted": this.reshl, "param": "resources" },
+                                { "name": "Requests", "routingname": "/employeesearch", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests" }
+                            ],
+                            "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                            "step": 1,
+                        }
+                    ]
+                };
+            }
+            else {
+                this.dataNav123 = {
+                    "data": [
+                        {
+                            "lhs": [
+                                { "name": "Services", "routingname": "/services", "indented": this.serin, "highlighted": this.serhl, "param": "services" },
+                                { "name": "Jabber", "routingname": "/services", "indented": this.jin, "highlighted": this.jhl, "param": "jabberservices" },
+                                { "name": "FAC Code", "routingname": "/inprogress", "indented": true, "highlighted": this.fhl, "param": "jabberservices" },
+                                { "name": "Approvals Pending", "routingname": "/inprogress", "indented": false, "highlighted": false, "param": "services" },
+                                { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false, "param": "services" },
+                                { "name": "Resources", "routingname": "/inprogress", "indented": this.resin, "highlighted": this.reshl, "param": "resources" },
+                                { "name": "Requests", "routingname": "/employeesearch", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests" }
+                            ],
+                            "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                            "step": 1,
+                        }
+                    ]
+                };
+            }
+            this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+            this.countryroute = sessionStorage.getItem('countryroute');
+            if (this.pcode == this.countryroute) {
+                this.pcountrydetails = sessionStorage.getItem('countrydetails');
+                console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
+                this.countryname = JSON.parse(this.pcountrydetails);
                 this.cloudantData = {
-                    "code": this.pcode,
+                    "code": this.ccode,
                     "name": this.countryname.name,
                     "isocode": this.countryname.isocode,
                     "isjabber": this.countryname.isjabber,
@@ -5571,16 +5604,46 @@ class NavigationComponent {
                     "isjabbernew": this.countryname.isjabbernew,
                     "isjabberdelete": this.countryname.isjabberdelete,
                     "isjabbermove": this.countryname.isjabbermove,
-                    "isjabberupdate": this.countryname.isjabberupdate
+                    "isjabberupdate": this.countryname.isjabberupdate,
                 };
-            });
-            //for lhs
-            this.dataNavParent = this.dataNav123;
-            //end for lhs
-            this.dataNav123 = this.dataNav123;
-            this.dataNavParent = this.dataNav123;
-            this.removeServices();
-        }
+                //for lhs
+                this.dataNavParent = this.dataNav123;
+                //end for lhs  
+                this.dataNav123 = this.dataNav123;
+                this.dataNavParent = this.dataNav123;
+                this.removeServices();
+            }
+            else {
+                console.log("navigation componentelse" + this.ccode);
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received navigation', data.countrydetails.isspecial);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    sessionStorage.setItem('countryroute', this.pcode);
+                    this.cloudantData = {
+                        "code": this.pcode,
+                        "name": this.countryname.name,
+                        "isocode": this.countryname.isocode,
+                        "isjabber": this.countryname.isjabber,
+                        "isfixedphone": this.countryname.isfixphone,
+                        "isfac": this.countryname.isfac,
+                        "isspecial": this.countryname.isspecial,
+                        "isreval": this.countryname.isreval,
+                        "isapproval": this.countryname.isapproval,
+                        "isjabbernew": this.countryname.isjabbernew,
+                        "isjabberdelete": this.countryname.isjabberdelete,
+                        "isjabbermove": this.countryname.isjabbermove,
+                        "isjabberupdate": this.countryname.isjabberupdate
+                    };
+                    this.dataNavParent = this.dataNav123;
+                    //end for lhs
+                    this.dataNav123 = this.dataNav123;
+                    this.dataNavParent = this.dataNav123;
+                    this.removeServices();
+                });
+                //for lhs
+            }
+        });
     }
 }
 NavigationComponent.ɵfac = function NavigationComponent_Factory(t) { return new (t || NavigationComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"])); };
@@ -6554,40 +6617,17 @@ class MiddleframeComponent {
             .subscribe(params => {
             console.log(params);
             this.pcode = params.country;
-            console.log("navigation component middelframe" + this.pcode);
-        });
-        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-        this.countryroute = sessionStorage.getItem('countryroute');
-        console.log("navigation component country route" + this.countryroute);
-        if (this.pcode == this.countryroute) {
-            this.pcountrydetails = sessionStorage.getItem('countrydetails');
-            console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
-            this.countryname = JSON.parse(this.pcountrydetails);
-            this.cloudantData = {
-                "code": this.ccode,
-                "name": this.countryname.name,
-                "isocode": this.countryname.isocode,
-                "isjabber": this.countryname.isjabber,
-                "isfixedphone": this.countryname.isfixphone,
-                "isfac": this.countryname.isfac,
-                "isspecial": this.countryname.isspecial,
-                "isreval": this.countryname.isreval,
-                "isapproval": this.countryname.isapproval,
-                "isjabbernew": this.countryname.isjabbernew,
-                "isjabberdelete": this.countryname.isjabberdelete,
-                "isjabbermove": this.countryname.isjabbermove,
-                "isjabberupdate": this.countryname.isjabberupdate
-            };
-        }
-        else {
-            console.log("navigation componentelse" + this.ccode);
-            this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
-                console.log('Response received navigation', data.countrydetails.isspecial);
-                this.countryname = data.countrydetails;
-                sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
-                sessionStorage.setItem('countryroute', this.pcode);
+            console.log("navigation component country route" + this.countryroute);
+            console.log("navigation component middelframe123" + this.pcode);
+            this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+            this.countryroute = sessionStorage.getItem('countryroute');
+            console.log("navigation component country route" + this.countryroute);
+            if (this.pcode == this.countryroute) {
+                this.pcountrydetails = sessionStorage.getItem('countrydetails');
+                console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
+                this.countryname = JSON.parse(this.pcountrydetails);
                 this.cloudantData = {
-                    "code": this.pcode,
+                    "code": this.ccode,
                     "name": this.countryname.name,
                     "isocode": this.countryname.isocode,
                     "isjabber": this.countryname.isjabber,
@@ -6601,34 +6641,58 @@ class MiddleframeComponent {
                     "isjabbermove": this.countryname.isjabbermove,
                     "isjabberupdate": this.countryname.isjabberupdate
                 };
-            });
-        }
-        const servicesData = {
-            "data": [
-                {
-                    "lhs": [
-                        { "name": "Services", "routingname": "/services", "indented": false, "highlighted": true },
-                        { "name": "Approvals Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
-                        { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
-                        { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
-                        { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
-                    ],
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
-                    "titles": [
-                        "Terms of use",
-                        "Useful Information",
-                        "Please bear in mind the following points when making a request :"
-                    ],
-                    "usefulinfotexts": [
-                        "To make a request the Employee must exist in BluePages (except for cancellation requests).",
-                        "You must know the IBM serial Number of the person making the request.",
-                        "Only one request per employee per request type is processed at a time."
-                    ],
-                    "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
-                }
-            ]
-        };
-        this.servicesData = servicesData.data[0];
+            }
+            else {
+                console.log("navigation componentelse" + this.ccode);
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received navigation', data.countrydetails.isspecial);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    sessionStorage.setItem('countryroute', this.pcode);
+                    this.cloudantData = {
+                        "code": this.pcode,
+                        "name": this.countryname.name,
+                        "isocode": this.countryname.isocode,
+                        "isjabber": this.countryname.isjabber,
+                        "isfixedphone": this.countryname.isfixphone,
+                        "isfac": this.countryname.isfac,
+                        "isspecial": this.countryname.isspecial,
+                        "isreval": this.countryname.isreval,
+                        "isapproval": this.countryname.isapproval,
+                        "isjabbernew": this.countryname.isjabbernew,
+                        "isjabberdelete": this.countryname.isjabberdelete,
+                        "isjabbermove": this.countryname.isjabbermove,
+                        "isjabberupdate": this.countryname.isjabberupdate
+                    };
+                });
+            }
+            const servicesData = {
+                "data": [
+                    {
+                        "lhs": [
+                            { "name": "Services", "routingname": "/services", "indented": false, "highlighted": true },
+                            { "name": "Approvals Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
+                            { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
+                            { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
+                            { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
+                        ],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "titles": [
+                            "Terms of use",
+                            "Useful Information",
+                            "Please bear in mind the following points when making a request :"
+                        ],
+                        "usefulinfotexts": [
+                            "To make a request the Employee must exist in BluePages (except for cancellation requests).",
+                            "You must know the IBM serial Number of the person making the request.",
+                            "Only one request per employee per request type is processed at a time."
+                        ],
+                        "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
+                    }
+                ]
+            };
+            this.servicesData = servicesData.data[0];
+        });
     }
 }
 MiddleframeComponent.ɵfac = function MiddleframeComponent_Factory(t) { return new (t || MiddleframeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"])); };

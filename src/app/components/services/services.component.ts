@@ -30,7 +30,7 @@ export class ServicesComponent implements OnInit {
 
       this.pcode = params.country;
       console.log("navigation component" + this.pcode);
-    })
+    
     this.countryroute=sessionStorage.getItem('countryroute')
     
     const servicesData = {
@@ -61,7 +61,7 @@ export class ServicesComponent implements OnInit {
 
     this.servicesData = servicesData.data[0]
     
-
+  })
   }
 }
 
