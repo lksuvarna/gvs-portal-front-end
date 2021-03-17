@@ -99,7 +99,7 @@ export class EmployeesearchComponent implements OnInit {
     sessionStorage.setItem('radioAction',this.radioAction.toLowerCase());
     console.log(this.pcode+this.ccode)
     if(this.radioAction.toLowerCase() == "myself" && this.pcode!==this.ccode.substr(6,9)){
-      alert("Only "+JSON.parse(this.countrydetails).name +" Serial numbers are allowed to create a request for "+JSON.parse(this.countrydetails).name);
+      alert("Only "+this.countrydetails.name +" Serial numbers are allowed to create a request for "+this.countrydetails.name);
       return;
     }
     if(this.radioAction.toLowerCase() == "anotheremployee"){
@@ -120,6 +120,7 @@ export class EmployeesearchComponent implements OnInit {
   //for self
    else{
     this.employeeSerial=this.ccode
+    sessionStorage.setItem('empserial',this.ccode)
     
    }
    //to change the routing
@@ -184,7 +185,7 @@ export class EmployeesearchComponent implements OnInit {
             this.warninginfosnow=true  
             sessionStorage.setItem('warninginfosnow', 'true1')           
             this.identifier = data.message            
-            sessionStorage.setItem('identifier', this.identifier)
+            sessionStorage.setItem('identifier', JSON.stringify(this.identifier))
             this.router.navigate([this.navpage1],{ queryParams: { country: this.pcode,service:this.service } }) ;
           }
          else{
@@ -200,7 +201,7 @@ export class EmployeesearchComponent implements OnInit {
           });
           
          }
-        });
+        })
       }
     });
     
@@ -255,4 +256,3 @@ export class EmployeesearchComponent implements OnInit {
   }
 }
 
-   

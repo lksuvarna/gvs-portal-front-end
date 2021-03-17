@@ -24,6 +24,7 @@ export class EmployeeinfoComponent implements OnInit {
   countryname: any;
   ccode = '';
   pcode = '';
+  service:any;
   cloudantData: any = []
   servicesData: any = []
   employeeInfo: any
@@ -37,7 +38,6 @@ export class EmployeeinfoComponent implements OnInit {
   cnum: any;
   backbutton: any;
   step:any;
-  service:any;
   isDataLoaded=false
   reqFor : any
   hideSteps = false
@@ -61,7 +61,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
-      this.service=params.service;
+      this.service = params.service;
       this.pcode = params.country;
       console.log("navigation component" + this.pcode);
     })

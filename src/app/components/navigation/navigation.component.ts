@@ -104,7 +104,7 @@ export class NavigationComponent implements OnInit {
         this.service = params.service;
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
-      })
+     
       this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;
       this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;
       
@@ -117,6 +117,8 @@ export class NavigationComponent implements OnInit {
         this.jin=true
         this.jhl=true
       }
+      
+      
       if ((this.service).includes("requests"))
       {        
         this.reqhl=true
@@ -146,7 +148,8 @@ export class NavigationComponent implements OnInit {
           {    
             "lhs": [
               {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
-              {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl,"param":"jabberservices"},              
+              {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl,"param":"jabberservices"}, 
+              {"name" : "FAC Code","routingname":"/inprogress", "indented" : true, "highlighted": this.fhl,"param":"jabberservices"},             
               {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Resources","routingname":"/inprogress", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
@@ -176,15 +179,17 @@ export class NavigationComponent implements OnInit {
         "isjabbernew":this.countryname.isjabbernew,
         "isjabberdelete":this.countryname.isjabberdelete,
         "isjabbermove":this.countryname.isjabbermove,
-        "isjabberupdate":this.countryname.isjabberupdate
+        "isjabberupdate":this.countryname.isjabberupdate,
+
+       
       } 
       //for lhs
-      
       this.dataNavParent=this.dataNav123
       //end for lhs  
       this.dataNav123 = this.dataNav123
       this.dataNavParent=this.dataNav123
       this.removeServices()
+      
     }
     else {
       console.log("navigation componentelse" + this.ccode);
@@ -207,18 +212,19 @@ export class NavigationComponent implements OnInit {
         "isjabberdelete":this.countryname.isjabberdelete,
         "isjabbermove":this.countryname.isjabbermove,
         "isjabberupdate":this.countryname.isjabberupdate
-        }        
-      });
-      //for lhs
-      
-      this.dataNavParent=this.dataNav123
+        }   
+        this.dataNavParent=this.dataNav123
       //end for lhs
       this.dataNav123 = this.dataNav123
       this.dataNavParent=this.dataNav123
-      this.removeServices()
+      this.removeServices()     
+      });
+      //for lhs
+      
+      
     }
 
-
+  })
   }
 
 
