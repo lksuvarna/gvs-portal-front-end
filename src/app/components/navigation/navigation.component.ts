@@ -104,7 +104,7 @@ export class NavigationComponent implements OnInit {
         this.service = params.service;
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
-      })
+     
       this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;
       this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;
       
@@ -179,15 +179,17 @@ export class NavigationComponent implements OnInit {
         "isjabbernew":this.countryname.isjabbernew,
         "isjabberdelete":this.countryname.isjabberdelete,
         "isjabbermove":this.countryname.isjabbermove,
-        "isjabberupdate":this.countryname.isjabberupdate
+        "isjabberupdate":this.countryname.isjabberupdate,
+
+       
       } 
       //for lhs
-      
       this.dataNavParent=this.dataNav123
       //end for lhs  
       this.dataNav123 = this.dataNav123
       this.dataNavParent=this.dataNav123
       this.removeServices()
+      
     }
     else {
       console.log("navigation componentelse" + this.ccode);
@@ -210,18 +212,19 @@ export class NavigationComponent implements OnInit {
         "isjabberdelete":this.countryname.isjabberdelete,
         "isjabbermove":this.countryname.isjabbermove,
         "isjabberupdate":this.countryname.isjabberupdate
-        }        
-      });
-      //for lhs
-      
-      this.dataNavParent=this.dataNav123
+        }   
+        this.dataNavParent=this.dataNav123
       //end for lhs
       this.dataNav123 = this.dataNav123
       this.dataNavParent=this.dataNav123
-      this.removeServices()
+      this.removeServices()     
+      });
+      //for lhs
+      
+      
     }
 
-
+  })
   }
 
 
