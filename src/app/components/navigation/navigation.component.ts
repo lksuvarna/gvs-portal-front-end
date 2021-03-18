@@ -124,6 +124,11 @@ export class NavigationComponent implements OnInit {
         this.reqhl=true
         
       }
+      if ((this.service).includes("resources"))
+      {        
+        this.reshl=true
+        
+      }
       if (this.service=="services"||this.service=="requests"||this.service=="resources")
       {
         this.dataNav123 = { 
@@ -134,7 +139,7 @@ export class NavigationComponent implements OnInit {
                // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
                 {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
                 {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
-                {"name" : "Resources","routingname":"/inprogress", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
+                {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
                 {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
               ],
               "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
@@ -152,7 +157,7 @@ export class NavigationComponent implements OnInit {
               {"name" : "FAC Code","routingname":"/inprogress", "indented" : true, "highlighted": this.fhl,"param":"jabberservices"},             
               {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
-              {"name" : "Resources","routingname":"/inprogress", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
+              {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
               {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
             ],
             "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 

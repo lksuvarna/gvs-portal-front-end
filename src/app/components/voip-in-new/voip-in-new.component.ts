@@ -256,14 +256,7 @@ export class VoipInNewComponent implements OnInit {
     const servicesData = { 	
       "data": [	
         {    	
-          "lhs": [	
-            {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false}, 	
-            { "name": "Jabber", "routingname": "/services", "indented": true, "highlighted": true },           	
-            {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-            {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-            {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-            {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}	
-          ],	
+          	
           "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
           "step" : 3,	
           

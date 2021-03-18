@@ -13,6 +13,7 @@ import { ServicessearchComponent } from './components/servicessearch/servicessea
 
 import { ReviewdetailsComponent } from './components/reviewdetails/reviewdetails.component';
 import { RequestsComponent } from './components/requests/requests.component';
+import { ResourcesComponent } from './components/resources/resources.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
 import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-voip-delete/employeesearch-voip-delete.component';
@@ -43,6 +44,8 @@ const appRoutes: Routes = [
     { path: 'revalidationpending', component: RevalidationpendingComponent},
     { path: 'entrydetailsau', component: VoipAuNewComponent},    
     { path: 'entrydetailsla', component: VoipLaNewComponent},
+    { path: 'resources', component: ResourcesComponent},
+    
 
 ];
 
