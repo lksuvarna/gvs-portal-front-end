@@ -104,6 +104,12 @@
         
         For any further assistance, please contact  <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
         </div>
+        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowreq>
+            <p>No outstanding requests were found for the serial number.</p><p>
+        </p></div>
+        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowres>
+            <p>There are no resources for this serial number.</p><p>
+        </p></div>
         <div class="ds-hr-thick"></div>
 
         <div class="ds-row ds-grid ds-mar-t-b-3_5 ds-pad-r-1">
@@ -111,7 +117,7 @@
                 <button (click)="backClick()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">BACK</button>
             </div>
             <div class="ds-col-lg-2 ds-push-lg-8">
-                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="warninginfo==false&&warninginfosnow==false">NEXT</button>
+                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false">NEXT</button>
             </div>
         </div>
     </div>

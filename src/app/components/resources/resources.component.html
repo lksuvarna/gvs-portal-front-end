@@ -65,22 +65,22 @@
               <td colspan="5" width="862" bgcolor="#FFFFFF"><br><br></td>
             </tr>
           </thead>
-          <tbody *ngFor='let no of resources'>
+          <tbody *ngFor='let no of dbdata'>
   
             <tr valign="top">
               <td colspan="5" width="862" bgcolor="#FFFFFF"></td>
             </tr>
   
             <tr valign="top">
-              <td class="ds-pad-l-1" width="172" bgcolor="#FFFFFF">{{no.fl_resoucetype}}</td>
+              <td class="ds-pad-l-1" width="172" bgcolor="#FFFFFF">{{no.TYPE}}</td>
               <td width="172" bgcolor="#FFFFFF">
-                <font color="#808080"> </font>{{no.fl_supplier}}<font color="#808080"> </font>
+                <font color="#808080"> </font>{{no.SUPPLIER}}<font color="#808080"> </font>
               </td>
               <td width="172" bgcolor="#FFFFFF">
-                <font color="#808080"> </font>{{no.fl_phone_number}}
+                <font color="#808080"> </font>{{no.IDENTIFIER}}
               </td>
               <td colspan="2" width="345" bgcolor="#FFFFFF">
-                <font color="#808080"> </font>{{no.fl_additional_information}}
+                <font color="#808080"> </font>{{no.ATTRIBUTE6}}
               </td>
               <br><br>
             </tr>
