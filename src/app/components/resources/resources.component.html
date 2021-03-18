@@ -72,12 +72,12 @@
             </tr>
   
             <tr valign="top">
-              <td class="ds-pad-l-1" width="172" bgcolor="#FFFFFF">{{no.TYPE}}</td>
+              <td class="ds-pad-l-1" width="172" bgcolor="#FFFFFF">{{no.TYPE.includes("ip")?"Jabber":no.TYPE.includes("fac")?"FAC":no.TYPE}}</td>
               <td width="172" bgcolor="#FFFFFF">
                 <font color="#808080"> </font>{{no.SUPPLIER}}<font color="#808080"> </font>
               </td>
               <td width="172" bgcolor="#FFFFFF">
-                <font color="#808080"> </font>{{no.IDENTIFIER}}
+                <font color="#808080"> </font>{{no.TYPE.includes("fac")?"XXXXXXXX":no.IDENTIFIER}}
               </td>
               <td colspan="2" width="345" bgcolor="#FFFFFF">
                 <font color="#808080"> </font>{{no.ATTRIBUTE6}}

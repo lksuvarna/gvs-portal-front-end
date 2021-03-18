@@ -44,6 +44,7 @@ export class EmployeesearchComponent implements OnInit {
   notvalid = false
   dataloading = false
   showloader = false
+  title:any;
   ngOnInit(): void {
     this.showloader = false
     this.fullName = this.cookie.getCookie('user');
@@ -56,10 +57,11 @@ export class EmployeesearchComponent implements OnInit {
         this.pcode = params.country;
         this.service = params.service;
         console.log("navigation component" + this.pcode);
-      })
+      
     this.backbutton = sessionStorage.getItem('backbutton');
     this.step = sessionStorage.getItem('step');
-
+     //to get the titles
+     this.getTitle();
     //this.radioAction = "mySelf"; 
     if (sessionStorage.getItem('radioAction') === null) {
       this.radioAction = "myself";
@@ -73,7 +75,7 @@ export class EmployeesearchComponent implements OnInit {
     }
     //for lhs
 
-
+   
     const servicesData = {
       "data": [
         {          
@@ -84,7 +86,7 @@ export class EmployeesearchComponent implements OnInit {
     }
 
     this.servicesData = servicesData.data[0]
-
+  })
   }
 
   onSubmit(formData: NgForm) {
@@ -273,6 +275,23 @@ export class EmployeesearchComponent implements OnInit {
 
     }
 
+  }
+  getTitle(){
+//for title
+switch (this.service){
+  case "jabber_new":
+  this.title="Request new Jabber service";
+  break;
+  case "resources":
+    this.title="Resources";
+    break;
+    case "requests":
+      this.title="Requests";
+      break;
+      case "approvalpending":
+      this.title="Approvals";
+      break;
+  }
   }
   hidedata() {
     this.notvalid = false;
