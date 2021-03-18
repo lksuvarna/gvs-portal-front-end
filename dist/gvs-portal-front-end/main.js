@@ -4801,7 +4801,7 @@ function RequestsComponent_div_5_tr_26_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](5, 6, no_r3.sys_created_on, "MM/dd/yyyy"));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](no_r3.stage);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](no_r3.stage + "(" + ctx_r1.approver[i_r4] + ")");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](no_r3["variables.6b7d0e981b3f84d08476dc26bc4bcb75"]);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -4900,6 +4900,7 @@ class RequestsComponent {
         this.allComments = [];
         this.servicesData = [];
         this.requests = [];
+        this.approver = [];
         this.comments = [];
         this.snowdataarray = [];
         this.snowdataarray1 = [];
@@ -4925,26 +4926,37 @@ class RequestsComponent {
         this.snowdata = parsed;
         console.log(this.snowdata.length);
         for (this.i = 0; this.i < this.snowdata.length; this.i++) {
-            this.servicenowservice.searchsnowcoments(this.empserial, "snow_comments", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
-                console.log(' snow response', data);
-                console.log(' snow response', data.message.results.length);
-                //console.log(' snow response', data.message.results);  
-                console.log(' snow response ccccc');
-                var j, num, dis, cre, vari;
-                j = this.i;
-                //num=this.snowdata[this.i].number
-                if (data.message.results.length == 0) {
-                    this.snowdataarray.push("none");
-                    this.lastcomment.push("none");
-                    this.display = true;
-                }
-                else {
-                    this.snowdataarray.push(data.message.results);
-                    this.snowdataarray1 = data.message.results.split("Log Posted on: ");
-                    this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length - 1]);
-                    this.display = true;
-                }
-            });
+            this.stage = '';
+            this.stage = this.snowdata[this.i].stage.toLowerCase();
+            if ((this.stage === "waiting for approval" || this.stage === "rejected") && this.stage !== "closed incomplete") {
+                this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
+                    console.log(' snow response approver', data);
+                    console.log(' snow response approver', data);
+                    console.log(' snow response approver', data.message[0]);
+                    console.log(' snow response approver', data.message[0]['approver.name']);
+                    this.approver.push(data.message[0]['approver.name']);
+                });
+                this.servicenowservice.searchsnowcoments(this.empserial, "snow_comments", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
+                    console.log(' snow response', data);
+                    console.log(' snow response', data.message.results.length);
+                    //console.log(' snow response', data.message.results);  
+                    console.log(' snow response ccccc');
+                    var j, num, dis, cre, vari;
+                    j = this.i;
+                    //num=this.snowdata[this.i].number
+                    if (data.message.results.length == 0) {
+                        this.snowdataarray.push("none");
+                        this.lastcomment.push("none");
+                        this.display = true;
+                    }
+                    else {
+                        this.snowdataarray.push(data.message.results);
+                        this.snowdataarray1 = data.message.results.split("Log Posted on: ");
+                        this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length - 1]);
+                        this.display = true;
+                    }
+                });
+            }
         }
         const servicesData = {
             "data": [

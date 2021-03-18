@@ -28,6 +28,7 @@ export class RequestsComponent implements OnInit {
   data1: any;
   snowdata: any;
   display: any;
+  approver: any = [];
   i: any;
   empserial: any;
   comments: any = [];
@@ -35,6 +36,7 @@ export class RequestsComponent implements OnInit {
   snowdataarray1: any = [];
   commentsresult: any = [];
   lastcomment:any = [];
+  stage:any;
   openNav(comments: any) {
     this.DisplayModel = 'block';
     console.log("popup"+comments)    
@@ -56,31 +58,39 @@ export class RequestsComponent implements OnInit {
 
     console.log(this.snowdata.length)
     for (this.i = 0; this.i < this.snowdata.length; this.i++) {
-
-     if( this.snowdata[this.i].number){
-       
-     }
-      this.servicenowservice.searchsnowcoments(this.empserial, "snow_comments", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
-        console.log(' snow response', data);
-        console.log(' snow response', data.message.results.length);
-        //console.log(' snow response', data.message.results);  
-        console.log(' snow response ccccc');
-        var j, num, dis, cre, vari
-        j = this.i;
-        //num=this.snowdata[this.i].number
-        if (data.message.results.length == 0) {
-          this.snowdataarray.push("none")
-          this.lastcomment.push("none")
-          this.display = true
-        }
-        else {
-          this.snowdataarray.push(data.message.results)
-          this.snowdataarray1=data.message.results.split("Log Posted on: ")          
-          this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length-1])
-          this.display = true
-        }
-      })
-    }
+     this.stage='';
+     this.stage=this.snowdata[this.i].stage.toLowerCase();
+     
+      if ((this.stage==="waiting for approval" || this.stage==="rejected") && this.stage!=="closed incomplete") {
+        this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
+          console.log(' snow response approver', data);
+          console.log(' snow response approver', data);
+          console.log(' snow response approver', data.message[0]);         
+          console.log(' snow response approver', data.message[0]['approver.name']);
+          this.approver.push(data.message[0]['approver.name']);
+        })
+        this.servicenowservice.searchsnowcoments(this.empserial, "snow_comments", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
+          console.log(' snow response', data);
+          console.log(' snow response', data.message.results.length);
+          //console.log(' snow response', data.message.results);  
+          console.log(' snow response ccccc');
+          var j, num, dis, cre, vari
+          j = this.i;
+          //num=this.snowdata[this.i].number
+          if (data.message.results.length == 0) {
+            this.snowdataarray.push("none")
+            this.lastcomment.push("none")
+            this.display = true
+          }
+          else {
+            this.snowdataarray.push(data.message.results)
+            this.snowdataarray1=data.message.results.split("Log Posted on: ")          
+            this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length-1])
+            this.display = true
+          }
+        })
+      
+    }}
 
     const servicesData = {
       "data": [
