@@ -15,6 +15,7 @@ export class UitoplinksComponent implements OnInit {
   searchItems = [    
     {"name" : "India","code":"744","path":"././assets/flags/744.png"},
     {"name" : "France","code":"706","path":"././assets/flags/706.png"},
+    {"name" : "Canada/Caribbean","code":"649","path":""},
     
   ]
 

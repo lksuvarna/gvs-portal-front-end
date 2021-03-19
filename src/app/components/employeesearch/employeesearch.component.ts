@@ -22,9 +22,11 @@ export class EmployeesearchComponent implements OnInit {
   constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private bpservices: bpservices, private Db2Service: Db2Service, private servicenowservice: servicenowservice) { }
   cloudantData: any = []
   servicesData: any = []
+  subCountries: any = []
   countryname: any;
   ccode = '';
   pcode = '';
+  routingname:any;
   fullName = '';
   service = '';
   backbutton: any;
@@ -44,6 +46,9 @@ export class EmployeesearchComponent implements OnInit {
   notvalid = false
   dataloading = false
   showloader = false
+  title:any;
+  showCountryCode = false	
+	countryCA = ''
   ngOnInit(): void {
     this.showloader = false
     this.fullName = this.cookie.getCookie('user');
@@ -56,10 +61,11 @@ export class EmployeesearchComponent implements OnInit {
         this.pcode = params.country;
         this.service = params.service;
         console.log("navigation component" + this.pcode);
-      })
+      
     this.backbutton = sessionStorage.getItem('backbutton');
     this.step = sessionStorage.getItem('step');
-
+     //to get the titles
+     this.getTitle();
     //this.radioAction = "mySelf"; 
     if (sessionStorage.getItem('radioAction') === null) {
       this.radioAction = "myself";
@@ -71,9 +77,14 @@ export class EmployeesearchComponent implements OnInit {
 
       this.onRequestForChangesession();
     }
+
+    if(this.countrydetails.scountries)  {	
+      this.showCountryCode = true	
+      this.subCountries = this.countrydetails.scountries	
+    }
     //for lhs
 
-
+   
     const servicesData = {
       "data": [
         {          
@@ -84,7 +95,7 @@ export class EmployeesearchComponent implements OnInit {
     }
 
     this.servicesData = servicesData.data[0]
-
+  })
   }
 
   onSubmit(formData: NgForm) {
@@ -103,11 +114,17 @@ export class EmployeesearchComponent implements OnInit {
       else if (formData.value.employeeSerial.length < 6 && this.hideDisTextBox == true) {
         alert("Employee Serial Number should be of 6 characters");
         return;
+      } else if (this.showCountryCode && this.hideDisTextBox && formData.value.selectedCountry === '') {
+        alert("Please select the Country Code");
+        return;
       }
       else {
         sessionStorage.setItem('empserial', formData.value.employeeSerial)
-        this.employeeSerial = formData.value.employeeSerial + this.pcode;
-
+        if(this.showCountryCode){
+          this.employeeSerial=formData.value.employeeSerial+(formData.value.selectedCountry).substr(formData.value.selectedCountry.length - 3);
+        } else {
+          this.employeeSerial = formData.value.employeeSerial + this.pcode;
+        }
       }
     }
     //for self
@@ -162,7 +179,7 @@ export class EmployeesearchComponent implements OnInit {
         this.getSNOWdata() ;
              
      }
-     if (this.service == "resources") {      
+     if (this.service == "resources" || this.service == "jabber_delete") {      
       this.getDBdata() ;
           
    }
@@ -273,6 +290,27 @@ export class EmployeesearchComponent implements OnInit {
 
     }
 
+  }
+  getRoutingname()
+  {
+    
+  }
+  getTitle(){
+//for title
+switch (this.service){
+  case "jabber_new":
+  this.title="Request new Jabber service";
+  break;
+  case "resources":
+    this.title="Resources";
+    break;
+    case "requests":
+      this.title="Requests";
+      break;
+      case "approvalpending":
+      this.title="Approvals";
+      break;
+  }
   }
   hidedata() {
     this.notvalid = false;

@@ -22,18 +22,26 @@ export class ResourcesComponent implements OnInit {
   cloudantData: any = []
   servicesData: any = []
   countryname:any;
+  sessionwarninginfo:any;
+  warninginfosnowres=false;
   ccode='';
   dbdata:any;
   dbdata1:any;
+  reqFor:any
   ngOnInit(): void {
     this.dbdata1=sessionStorage.getItem('identifier');
+    this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
+    if (this.sessionwarninginfo =='false1'){
+      this.warninginfosnowres = true  
+     
+     }
     console.log(this.dbdata1);
     console.log(this.dbdata1.identifier);
     console.log(JSON.parse(this.dbdata1).identifier);    
     var parsed = JSON.parse(JSON.stringify(JSON.parse(this.dbdata1)));
     this.dbdata = parsed;    
    console.log(this.dbdata[0].IDENTIFIER);
-    
+   this.reqFor = sessionStorage.getItem('radioAction')
   }
 
   
