@@ -3,63 +3,6 @@
 
 <div class=" ds-panel ds-col-12"></div>
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
-<<<<<<< HEAD
-<div class="ds-col-md-4 ds-col-xl-4">
-<app-navigation [dataNav]="servicesData" ></app-navigation>
-</div>
-<div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
-  
-      <span class='ds-pad-l-0_5'><b>Resources</b></span>
-
-      
-      <div class="ds-col-12 ds-pad-t-0_5" >
-        <div class="ds-col-12 ds-pad-t-0_5">
-          <div class="ds-row ">
-            <div class="ds-col-12">
-              <div class="ds-row">
-                <div>
-                  <div class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b>STEP
-                        1</b></span> <span class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Search</span>
-                  </div>
-                  <div id="r21" class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                          class="ds-pad-r-1">-----&gt;</span>STEP 2</b></span><span
-                      class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Information</span>
-                  </div>
-                  
-                  <span id="r3" class=" ds-text-contextual-green-3 ds-pad-r-1 ds-pad-l-0_5"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>
-                      <div class="tooltip">STEP 3
-                        <span style="font-weight:normal;" class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee
-                          Resource Details</span>
-                      </div>
-                    </b></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Resources Details</h2>
-  
-        <span class="ds-pad-t-1"></span><br>
-        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowres>
-        
-          <p>There are no resources for this serial number.</p><p>
-      </p></div>
-        <table id="t1" cellspacing="0" cellpad="0" border="0" *ngIf="warninginfosnowres==false">
-          <thead>
-            <tr valign="top">
-              <td width="172" bgcolor="#F1F0EE">
-                <div class="ds-set-height-group-1 ds-col-xs-12  ds-pad-1 ds-bg-neutral-warm-2 ds-text-neutral-7	">
-                  <b>Resource Type</b></div>
-              </td>
-              <td width="172" bgcolor="#F1F0EE">
-                <div class="ds-set-height-group-1   ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Supplier</b>
-                </div>
-              </td>
-              <td width="172" bgcolor="#F1F0EE">
-                <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Phone/Dial
-=======
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData"></app-navigation>
     </div>
@@ -73,8 +16,11 @@
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Resources Details</h2>
 
             <span class="ds-pad-t-1"></span><br>
-
-            <table id="t1" cellspacing="0" cellpad="0" border="0">
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowres>
+        
+              <p>There are no resources for this serial number.</p><p>
+          </p></div>
+            <table id="t1" cellspacing="0" cellpad="0" border="0" *ngIf="warninginfosnowres==false">
                 <thead>
                     <tr valign="top">
                         <td width="172" bgcolor="#F1F0EE">
@@ -87,7 +33,6 @@
                         </td>
                         <td width="172" bgcolor="#F1F0EE">
                             <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Phone/Dial
->>>>>>> f3d539fd28188a7ee3f618c9da6f1218c7cd52f7
                     <br>
                     In number</b></div>
                         </td>

@@ -6,43 +6,8 @@
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData"></app-navigation>
     </div>
-    <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5" *ngIf=display>
+    <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5" *ngIf=display>    
 
-        <p><b>Requests</b></p>
-        <div class=" ds-pad-b-1"></div>
-        <div class=" ds-panel ds-col-12 "></div>
-        <app-steps [step]="3" [isSelf]="reqFor" [hideSteps]=""></app-steps>
-        <!--All Requests code starts-->
-        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Requests Details</h2>
-        <div class="ds-panel ds-col-12"></div><br>
-        <table style="width:100%; border-collapse: collapse; padding:2px">
-            <tbody>
-            </tbody>
-            <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">
-                <tr>
-                    <td style="padding:5px 15px 5px 25px; padding-left:15px ">Resource Type</td>
-                    <td style="padding:5px 55px 5px 25px; padding-left:15px">Created Date</td>
-                    <td style="padding:5px 65px 9px 50px; padding-left:15px ">Status</td>
-                    <td style="padding:5px 55px 5px 50px ;padding-left:15px">Tracking Number</td>
-                    <td style="padding:5px 15px 5px 10px; padding-left:15px ">Additional Comments</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor='let no of snowdata; let i=index'>
-                    <td style="padding-top:13px; padding-left:15px">{{ no.cat_item.display_value }}</td>
-                    <td style="padding-top:13px; padding-left:15px">{{ no.sys_created_on|date:'MM/dd/yyyy' }}</td>
-                    <td style="padding-top:13px; padding-left:15px">{{ no.stage + '('+ approver[i] +')' }}</td>
-                    <td style="width:30%; padding-top:13px; padding-left:15px">{{ no['variables.6b7d0e981b3f84d08476dc26bc4bcb75']}}</td>
-                    <td><span *ngIf="!snowdataarray[i].includes('none' || '')"><a (click)='openNav(snowdataarray[i])' style="color:blue">{{lastcomment[i] }}</a></span>
-                        <span *ngIf="snowdataarray[i].includes('none' || '')">{{lastcomment[i]}}</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="ds-panel ds-col-12"></div><br>
-        <!--All Requests code Ends-->
-
-<<<<<<< HEAD
     <p><b>Requests</b></p>
     <div class=" ds-pad-b-1"></div>
     <div class=" ds-panel ds-col-12 "></div>
@@ -89,19 +54,6 @@
             <div class="ds-pad-l-5 ds-pad-b-3 ds-pad-r-1">
               <div id="inval" style="padding-left: 1rem;" *ngFor='let cmts of allComments'>{{ cmts }}
               </div><br>
-=======
-        <!--Model code Starts-->
-        <div id="myNav" class="overlay ds-pad-t-5" [style.display]="DisplayModel">
-            <div class="overlay-content">
-                <div class="ds-row ds-bg-neutral-1">
-                    <div class='ds-mar-r-1'><a class="ds-float-right" (click)="closeNav()">×</a><br><br>
-                        <div class="ds-pad-l-5 ds-pad-b-3 ds-pad-r-1">
-                            <div id="inval" style="padding-left: 1rem;" *ngFor='let cmts of allComments'>{{ cmts }}
-                            </div><br>
-                        </div>
-                    </div>
-                </div>
->>>>>>> f3d539fd28188a7ee3f618c9da6f1218c7cd52f7
             </div>
         </div>
         <!--Model code Ends-->
