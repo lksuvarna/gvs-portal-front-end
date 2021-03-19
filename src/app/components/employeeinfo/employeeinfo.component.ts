@@ -110,7 +110,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.employeeInfo1=sessionStorage.getItem('employeeInfo')
     this.employeeInfo=JSON.parse(this.employeeInfo1)
 
-    if(this.warninginfo || this.warninginfosnow){
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq){
       this.hideSteps = true
     } else {
       this.hideSteps = false
