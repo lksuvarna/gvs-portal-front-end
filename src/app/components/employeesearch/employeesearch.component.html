@@ -8,10 +8,10 @@
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
-            
+
             <br><b>{{title}}</b>
 
-            
+
             <div class="ds-pad-b-1">This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
@@ -32,7 +32,7 @@
                                         <label for="radio4">Myself</label>
                                     </div>
                                     <div class="ds-input-radio">
-                                        <input type="radio" name="radio-group2" id="radio5" class="ds-input" value="anotheremployee" [(ngModel)]="radioAction" (change)="onRequestForChange()"(click)="hidedata()">
+                                        <input type="radio" name="radio-group2" id="radio5" class="ds-input" value="anotheremployee" [(ngModel)]="radioAction" (change)="onRequestForChange()" (click)="hidedata()">
                                         <div class="ds-input-control"></div>
                                         <label for="radio5">Another Employee</label>
                                     </div>
@@ -76,6 +76,26 @@
                             </div>
                         </td>
                     </tr>
+                    <tr *ngIf="hideDisTextBox && showCountryCode">
+                        <td>
+                            <div class="ds-pad-t-2">
+                                <label for="OriginatorNameId">Country Code</label>
+                                <span class="ds-text-contextual-red-2">*</span>
+                            </div>
+                        </td>
+                        <td colspan="2">
+                            <div class=" row ds-pad-t-2">
+                                <div class="ds-col-4">
+                                    <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                                        <select name="selectedCountry" rows="2" cols="40" id="sub-Countries" class="ds-title ds-align-text-left" (click)="hidedata()" style="width:230px !important; text-transform: uppercase;" title="CountryCode" tabindex="1" ngModel>	
+                                            <option value ="">Select One</option>	
+                                            <option *ngFor="let subCountry of subCountries" [value]='subCountry'>{{ subCountry }}</option>	
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -83,12 +103,12 @@
                 <font color="black">There is no record of an IBM employee with the serial number {{employeeSerial.substr(0,6)}} available from BluePages</font>
             </p>
             <div class="ds-hr-thick ds-mar-t-1_5"></div>
-            
+
             <div class="ds-loader-container" *ngIf=showloader>
                 <div class="ds-loader-header"></div>
                 <div class="ds-loader" role="alert" aria-busy="true" aria-label=""> </div>
             </div>
-           
+
             <div class="ds-row ds-mar-t-b-3_5">
                 <div class="ds-col-xs-12 ds-col-md-5 ds-col-lg-2 ds-offset-md-3 ds-offset-lg-6 ds-push-md-4 ds-push-lg-4">
                     <button *ngIf="!showloader && !notvalid" type="submit" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%">NEXT</button>
