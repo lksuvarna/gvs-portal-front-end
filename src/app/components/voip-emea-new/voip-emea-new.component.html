@@ -1,0 +1,98 @@
+<app-topcountryframe></app-topcountryframe>
+
+
+<div class=" ds-panel ds-col-12"></div>
+
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+    <div class="ds-col-md-4 ds-col-xl-4">
+        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
+    </div>
+    <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
+        <form (submit)='entryDetailsEMEA(formData)' #formData='ngForm'>
+
+            <b>Request new Jabber service</b>
+
+            <div class="ds-padding-top-1 ds-padding-bottom-0_5">
+            Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.
+            </div><br>
+            <!-- <div class="ds-hr-thick ds-mar-b-1_5"></div> -->
+            <div class="ds-panel ds-col-12"></div>
+
+            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+
+            <!-- <div class="ds-panel-row">
+                <div>
+                    <span class="ds-tooltip ds-hover" id="tooltip-demo1">
+                            <span class="ds-tooltip-trigger ds-text-contextual-blue-5 ds-pad-l-1" aria-label="help" tabindex="0">STEP
+                                1</span>
+                    <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">
+                        Employee Search</div>
+                    </span>
+                    <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                    <span class="ds-tooltip ds-hover" id="tooltip-demo1">
+                            <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP
+                                2</span>
+                    <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Information
+                    </div>
+                    </span>
+                    <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                    <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
+                            <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP
+                                3</span>
+                    <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Employee Entry Details
+                    </div>
+                    </span>
+                    <span class="ds-pad-l-r-1 ds-text-contextual-blue-5">-----&gt;</span>
+                    <span class="ds-tooltip ds-hover ds-text-align-center" id="tooltip-demo1">
+                            <span class="ds-tooltip-trigger ds-text-contextual-blue-5" aria-label="help" tabindex="0">STEP
+                                4</span>
+                    <div class="ds-tooltip-content" id="tooltip-demo1-content" role="tooltip">Review Details</div>
+                    </span>
+                </div>
+            </div> -->
+
+
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Employee Entry Details</h2>
+            <br>
+
+            <table id="tabsubform" width="100%">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="47%">
+                            <label for="LocationId">Jabber Location</label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="53%">
+                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                            <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left"
+                                style="width:300px !important;" title="Location" ngModel>
+                                <option name="Location" *ngFor='let fl_location of officeLocation' [value]='fl_location'>
+                                {{ fl_location }}</option>
+                            </select>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+                <!-- <tr valign="top"><td colspan="3" width="100%" height="10"><p id="war11" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
+            </p></td></tr> -->
+
+            <tr valign="top"><td width="5%"><br><br></td><td width="41%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td><td width="53%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td></tr>
+            </tbody></table>
+            <br><div class=" ds-panel ds-col-12 "></div>
+
+            <div class="ds-row ds-grid ds-mar-b-5 ds-pad-r-1">
+                <div class="ds-col-lg-2 ds-push-lg-8">
+                    <button type="button" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">BACK</button>
+                </div>
+                <div class="ds-col-lg-2 ds-push-lg-8">
+                    <button type="submit" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%">NEXT</button>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>
