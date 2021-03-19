@@ -22,6 +22,7 @@ export class EmployeesearchComponent implements OnInit {
   constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private bpservices: bpservices, private Db2Service: Db2Service, private servicenowservice: servicenowservice) { }
   cloudantData: any = []
   servicesData: any = []
+  subCountries: any = []
   countryname: any;
   ccode = '';
   pcode = '';
@@ -45,6 +46,8 @@ export class EmployeesearchComponent implements OnInit {
   dataloading = false
   showloader = false
   title:any;
+  showCountryCode = false	
+	countryCA = ''
   ngOnInit(): void {
     this.showloader = false
     this.fullName = this.cookie.getCookie('user');
@@ -72,6 +75,11 @@ export class EmployeesearchComponent implements OnInit {
       this.empno = sessionStorage.getItem('empserial')
 
       this.onRequestForChangesession();
+    }
+
+    if(this.countrydetails.scountries)  {	
+      this.showCountryCode = true	
+      this.subCountries = this.countrydetails.scountries	
     }
     //for lhs
 
@@ -105,11 +113,17 @@ export class EmployeesearchComponent implements OnInit {
       else if (formData.value.employeeSerial.length < 6 && this.hideDisTextBox == true) {
         alert("Employee Serial Number should be of 6 characters");
         return;
+      } else if (this.showCountryCode && this.hideDisTextBox && formData.value.selectedCountry === '') {
+        alert("Please select the Country Code");
+        return;
       }
       else {
         sessionStorage.setItem('empserial', formData.value.employeeSerial)
-        this.employeeSerial = formData.value.employeeSerial + this.pcode;
-
+        if(this.showCountryCode){
+          this.employeeSerial=formData.value.employeeSerial+(formData.value.selectedCountry).substr(formData.value.selectedCountry.length - 3);
+        } else {
+          this.employeeSerial = formData.value.employeeSerial + this.pcode;
+        }
       }
     }
     //for self
