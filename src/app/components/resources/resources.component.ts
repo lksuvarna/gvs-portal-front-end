@@ -27,6 +27,7 @@ export class ResourcesComponent implements OnInit {
   ccode='';
   dbdata:any;
   dbdata1:any;
+  reqFor:any
   ngOnInit(): void {
     this.dbdata1=sessionStorage.getItem('identifier');
     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
@@ -40,7 +41,7 @@ export class ResourcesComponent implements OnInit {
     var parsed = JSON.parse(JSON.stringify(JSON.parse(this.dbdata1)));
     this.dbdata = parsed;    
    console.log(this.dbdata[0].IDENTIFIER);
-    
+   this.reqFor = sessionStorage.getItem('radioAction')
   }
 
   

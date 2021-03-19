@@ -3,6 +3,7 @@
 
 <div class=" ds-panel ds-col-12"></div>
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+<<<<<<< HEAD
 <div class="ds-col-md-4 ds-col-xl-4">
 <app-navigation [dataNav]="servicesData" ></app-navigation>
 </div>
@@ -58,47 +59,76 @@
               </td>
               <td width="172" bgcolor="#F1F0EE">
                 <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Phone/Dial
+=======
+    <div class="ds-col-md-4 ds-col-xl-4">
+        <app-navigation [dataNav]="servicesData"></app-navigation>
+    </div>
+    <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
+
+        <span class='ds-pad-l-0_5'><b>Resources</b></span>
+        <div class="ds-col-12 ds-pad-t-0_5">
+
+            <app-steps [step]="3" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Resources Details</h2>
+
+            <span class="ds-pad-t-1"></span><br>
+
+            <table id="t1" cellspacing="0" cellpad="0" border="0">
+                <thead>
+                    <tr valign="top">
+                        <td width="172" bgcolor="#F1F0EE">
+                            <div class="ds-set-height-group-1 ds-col-xs-12  ds-pad-1 ds-bg-neutral-warm-2 ds-text-neutral-7	">
+                                <b>Resource Type</b></div>
+                        </td>
+                        <td width="172" bgcolor="#F1F0EE">
+                            <div class="ds-set-height-group-1   ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Supplier</b>
+                            </div>
+                        </td>
+                        <td width="172" bgcolor="#F1F0EE">
+                            <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Phone/Dial
+>>>>>>> f3d539fd28188a7ee3f618c9da6f1218c7cd52f7
                     <br>
                     In number</b></div>
-              </td>
-              <td colspan="2" width="345" bgcolor="#F1F0EE">
-                <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Additional
+                        </td>
+                        <td colspan="2" width="345" bgcolor="#F1F0EE">
+                            <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Additional
                     Information</b></div>
-              </td>
-            </tr>
-            <tr valign="top">
-              <td colspan="5" width="862" bgcolor="#FFFFFF"><br><br></td>
-            </tr>
-          </thead>
-          <tbody *ngFor='let no of dbdata'>
-  
-            <tr valign="top">
-              <td colspan="5" width="862" bgcolor="#FFFFFF"></td>
-            </tr>
-  
-            <tr valign="top">
-              <td class="ds-pad-l-1" width="172" bgcolor="#FFFFFF">{{no.TYPE.includes("ip")?"Jabber":no.TYPE.includes("fac")?"FAC":no.TYPE}}</td>
-              <td width="172" bgcolor="#FFFFFF">
-                <font color="#808080"> </font>{{no.SUPPLIER}}<font color="#808080"> </font>
-              </td>
-              <td width="172" bgcolor="#FFFFFF">
-                <font color="#808080"> </font>{{no.TYPE.includes("fac")?"XXXXXXXX":no.IDENTIFIER}}
-              </td>
-              <td colspan="2" width="345" bgcolor="#FFFFFF">
-                <font color="#808080"> </font>{{no.ATTRIBUTE6}}
-              </td>
-              <br><br>
-            </tr>
-  
-            <tr valign="top">
-              <td colspan="5" width="862" bgcolor="#FFFFFF">
-                <div class="ds-panel ds-col-12"></div>
-              </td>
-            </tr>
-  
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="5" width="862" bgcolor="#FFFFFF"><br><br></td>
+                    </tr>
+                </thead>
+                <tbody *ngFor='let no of dbdata'>
 
+                    <tr valign="top">
+                        <td colspan="5" width="862" bgcolor="#FFFFFF"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td class="ds-pad-l-1" width="172" bgcolor="#FFFFFF">{{no.TYPE.includes("ip")?"Jabber":no.TYPE.includes("fac")?"FAC":no.TYPE}}</td>
+                        <td width="172" bgcolor="#FFFFFF">
+                            <font color="#808080"> </font>{{no.SUPPLIER}}
+                            <font color="#808080"> </font>
+                        </td>
+                        <td width="172" bgcolor="#FFFFFF">
+                            <font color="#808080"> </font>{{no.TYPE.includes("fac")?"XXXXXXXX":no.IDENTIFIER}}
+                        </td>
+                        <td colspan="2" width="345" bgcolor="#FFFFFF">
+                            <font color="#808080"> </font>{{no.ATTRIBUTE6}}
+                        </td>
+                        <br><br>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="5" width="862" bgcolor="#FFFFFF">
+                            <div class="ds-panel ds-col-12"></div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
