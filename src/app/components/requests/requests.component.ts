@@ -37,6 +37,8 @@ export class RequestsComponent implements OnInit {
   commentsresult: any = [];
   lastcomment:any = [];
   stage:any;
+  reqFor : any
+  hideSteps = true
   openNav(comments: any) {
     this.DisplayModel = 'block';
     console.log("popup"+comments)    
@@ -54,8 +56,8 @@ export class RequestsComponent implements OnInit {
     console.log(this.snowdata.length)
     var parsed = JSON.parse(JSON.stringify(JSON.parse(this.snowdata)));
     this.snowdata = parsed;
-
-
+    this.reqFor = sessionStorage.getItem('radioAction')
+    
     console.log(this.snowdata.length)
     for (this.i = 0; this.i < this.snowdata.length; this.i++) {
      this.stage='';
@@ -94,13 +96,12 @@ export class RequestsComponent implements OnInit {
 
     const servicesData = {
       "data": [
-        {
-
+        {          
           "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+          "step" : 3,
         }
       ]
     }
-
     this.servicesData = servicesData.data[0];
 
 
