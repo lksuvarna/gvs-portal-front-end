@@ -29,6 +29,7 @@ export class EmployeeinfoComponent implements OnInit {
   servicesData: any = []
   employeeInfo: any
   employeeInfo1: any
+  title:any;
   identifier: any;
   warninginfo = true;
   warninginfosnow = true;
@@ -66,8 +67,9 @@ export class EmployeeinfoComponent implements OnInit {
       this.service = params.service;
       this.pcode = params.country;
       console.log("navigation component" + this.pcode);
+      this.getTitle();
     })
-
+    
     const servicesData = {
       "data": [
         {          
@@ -76,6 +78,7 @@ export class EmployeeinfoComponent implements OnInit {
         }
       ]
     }
+    
     this.reqFor = sessionStorage.getItem('radioAction')
     if (sessionStorage.getItem('radioAction')=="myself"){
     this.selfinfo=true;}
@@ -117,7 +120,25 @@ export class EmployeeinfoComponent implements OnInit {
     }
 
     
-}}
+}
+getTitle(){
+  //for title
+  switch (this.service){
+    case "jabber_new":
+    this.title="Request new Jabber service";
+    break;
+    case "resources":
+      this.title="Resources";
+      break;
+      case "requests":
+        this.title="Requests";
+        break;
+        case "approvalpending":
+        this.title="Approvals";
+        break;
+    }
+    }
+}
 
 
 
