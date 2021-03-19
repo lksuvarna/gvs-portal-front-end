@@ -15,7 +15,10 @@
     <!--All Requests code starts-->
     <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Requests Details</h2>
     <div class="ds-panel ds-col-12"></div><br>
-    <table style="width:100%; border-collapse: collapse; padding:2px">
+    <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowreq>
+      <p>No outstanding requests were found for the serial number.</p><p>
+  </p></div>
+    <table style="width:100%; border-collapse: collapse; padding:2px" *ngIf="warninginfosnowreq==false">
       <tbody>
       </tbody>
       <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">

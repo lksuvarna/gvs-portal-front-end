@@ -26,6 +26,7 @@ export class EmployeesearchComponent implements OnInit {
   countryname: any;
   ccode = '';
   pcode = '';
+  routingname:any;
   fullName = '';
   service = '';
   backbutton: any;
@@ -178,7 +179,7 @@ export class EmployeesearchComponent implements OnInit {
         this.getSNOWdata() ;
              
      }
-     if (this.service == "resources") {      
+     if (this.service == "resources" || this.service == "jabber_delete") {      
       this.getDBdata() ;
           
    }
@@ -289,6 +290,10 @@ export class EmployeesearchComponent implements OnInit {
 
     }
 
+  }
+  getRoutingname()
+  {
+    
   }
   getTitle(){
 //for title

@@ -9,7 +9,9 @@
 <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
   
       <span class='ds-pad-l-0_5'><b>Resources</b></span>
-      <div class="ds-col-12 ds-pad-t-0_5">
+
+      
+      <div class="ds-col-12 ds-pad-t-0_5" >
         <div class="ds-col-12 ds-pad-t-0_5">
           <div class="ds-row ">
             <div class="ds-col-12">
@@ -39,8 +41,11 @@
         <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Resources Details</h2>
   
         <span class="ds-pad-t-1"></span><br>
-  
-        <table id="t1" cellspacing="0" cellpad="0" border="0">
+        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowres>
+        
+          <p>There are no resources for this serial number.</p><p>
+      </p></div>
+        <table id="t1" cellspacing="0" cellpad="0" border="0" *ngIf="warninginfosnowres==false">
           <thead>
             <tr valign="top">
               <td width="172" bgcolor="#F1F0EE">

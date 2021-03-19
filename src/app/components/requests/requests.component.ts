@@ -38,6 +38,9 @@ export class RequestsComponent implements OnInit {
   lastcomment:any = [];
   stage:any;
   reqFor : any
+  sessionwarninginfosnow:any;
+  warninginfosnowreq=false
+
   hideSteps = true
   openNav(comments: any) {
     this.DisplayModel = 'block';
@@ -52,7 +55,13 @@ export class RequestsComponent implements OnInit {
   ngOnInit(): void {
     this.display = false
     this.snowdata = sessionStorage.getItem('identifier');
-    this.empserial = sessionStorage.getItem('empserial')
+    this.empserial = sessionStorage.getItem('empserial');
+    this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
+    if (this.sessionwarninginfosnow =='false1' ){
+      this.warninginfosnowreq = true    
+      this.display = true
+     }
+     else{
     console.log(this.snowdata.length)
     var parsed = JSON.parse(JSON.stringify(JSON.parse(this.snowdata)));
     this.snowdata = parsed;
@@ -65,10 +74,7 @@ export class RequestsComponent implements OnInit {
      
       if ((this.stage==="waiting for approval" || this.stage==="rejected") && this.stage!=="closed incomplete") {
         this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
-          console.log(' snow response approver', data);
-          console.log(' snow response approver', data);
-          console.log(' snow response approver', data.message[0]);         
-          console.log(' snow response approver', data.message[0]['approver.name']);
+         
           this.approver.push(data.message[0]['approver.name']);
         })
         this.servicenowservice.searchsnowcoments(this.empserial, "snow_comments", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
@@ -86,13 +92,13 @@ export class RequestsComponent implements OnInit {
           }
           else {
             this.snowdataarray.push(data.message.results)
-            this.snowdataarray1=data.message.results.split("Log Posted on: ")          
+            this.snowdataarray1=data.message.results.split("UTC")          
             this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length-1])
             this.display = true
           }
         })
       
-    }}
+    }}}
 
     const servicesData = {
       "data": [

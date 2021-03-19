@@ -16,6 +16,7 @@ import { RequestsComponent } from './components/requests/requests.component';
 import { ResourcesComponent } from './components/resources/resources.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
+import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component';
 import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-voip-delete/employeesearch-voip-delete.component';
 import { RevalidationpendingComponent } from './components/revalidationpending/revalidationpending.component';
 import { VoipAuNewComponent } from './components/voip-au-new/voip-au-new.component';
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     { path: 'topcountryframe', component: TopcountryframeComponent },
     { path: 'searchresult', component: ServicessearchComponent },  
     { path: 'inprogress', component: DummyComponent },
-    { path: 'entrydetails', component: VoipInNewComponent },  
+    { path: 'entrydetails/country=744&service=jabber_delete', component: VoipInDeleteComponent },
+   // { path: 'entrydetails', component: VoipInNewComponent },      
     { path: 'reviewdetails', component: ReviewdetailsComponent },  
     { path: 'resultpage', component: ResultpageComponent },
     { path: 'employeesearchdelete', component: EmployeesearchVoipDeleteComponent},
