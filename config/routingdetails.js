@@ -1,4 +1,4 @@
-getTitle(){
+export function getTitle(){
     //for title
     switch (this.service){
       case "jabber_new":

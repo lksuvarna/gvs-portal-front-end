@@ -22,7 +22,8 @@ export class VoipInDeleteComponent implements OnInit {
   fixedPhoneIdentifier = false;	
   selectedJabber:any;
   reqFor: any;
- 
+  sessionwarninginfo:any
+  warninginfo=false;
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) {
     if(this.Jabber[0]=='Select One'){
       this.selected = true;
@@ -50,31 +51,14 @@ export class VoipInDeleteComponent implements OnInit {
 
   ngOnInit(): void {
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-    this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-      console.log('Response received', data.countrydetails.name);
-      this.countryname=data.countrydetails;
-    
-    this.cloudantData  = {
-      "code": this.ccode,
-      "name": this.countryname.name,
-      "isocode": this.countryname.isocode,
-      "isjabber": this.countryname.isjabber,
-      "isfixedphone": this.countryname.isfixphone,
-      "isfac": this.countryname.isfac,
-      "isspecial": this.countryname.isspecial
+    this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
+    if (this.sessionwarninginfo =='true1'){
+      this.warninginfo = true
     }
-  });
   const servicesData = { 	
     "data": [	
       {    	
-        "lhs": [	
-          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false}, 	
-          { "name": "Jabber", "routingname": "/services", "indented": true, "highlighted": true },           	
-          {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-          {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-          {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-          {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}	
-        ],	
+        
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
         "step" : 3,	
         

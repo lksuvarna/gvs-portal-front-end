@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-employeeinfo',
   templateUrl: './employeeinfo.component.html',
@@ -49,7 +50,7 @@ export class EmployeeinfoComponent implements OnInit {
   submit() {
     if(this.service=="requests"||this.service=="resources"||this.service=="approvalpending"||this.service=="revalidationpending"){
       this.navpage='/'+this.service}       
-      else{this.navpage='/entrydetails';}  
+      else{this.navpage=this.navpage;}  
        
     this.router.navigate([this.navpage],{ queryParams: { country: this.pcode,service:this.service } }) ;
   }
@@ -67,7 +68,8 @@ export class EmployeeinfoComponent implements OnInit {
       this.service = params.service;
       this.pcode = params.country;
       console.log("navigation component" + this.pcode);
-      this.getTitle();
+      this.title=sessionStorage.getItem('title')
+      this.navpage=sessionStorage.getItem('navpage')
     })
     
     const servicesData = {
@@ -121,23 +123,7 @@ export class EmployeeinfoComponent implements OnInit {
 
     
 }
-getTitle(){
-  //for title
-  switch (this.service){
-    case "jabber_new":
-    this.title="Request new Jabber service";
-    break;
-    case "resources":
-      this.title="Resources";
-      break;
-      case "requests":
-        this.title="Requests";
-        break;
-        case "approvalpending":
-        this.title="Approvals";
-        break;
-    }
-    }
+
 }
 
 
