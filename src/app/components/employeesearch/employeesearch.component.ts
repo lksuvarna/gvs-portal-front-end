@@ -301,6 +301,7 @@ export class EmployeesearchComponent implements OnInit {
     switch (this.service){
       case "jabber_new":
       this.title="Request new Jabber service";
+      this.routingname="/entrydetails"
       break;
       case "jabber_delete":
       this.title="Delete Jabber Request";
