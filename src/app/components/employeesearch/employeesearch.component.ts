@@ -46,6 +46,7 @@ export class EmployeesearchComponent implements OnInit {
   notvalid = false
   dataloading = false
   showloader = false
+  reqname:any
   title:any;
   showCountryCode = false	
 	countryCA = ''
@@ -200,7 +201,7 @@ export class EmployeesearchComponent implements OnInit {
   }
 
   getSNOWdata():any {
-    this.servicenowservice.searchsnow(this.employeeSerial, this.service, this.countrydetails.isocode + '-NS-' + this.employeeSerial.substr(0, 6)).subscribe(data => {
+    this.servicenowservice.searchsnow(this.employeeSerial, this.service, this.countrydetails.isocode + this.reqname + this.employeeSerial.substr(0, 6)).subscribe(data => {
       console.log(' snow response', data);
       console.log(' snow response', data.message.length);
       if (data.message.length > 0) {
@@ -245,6 +246,7 @@ export class EmployeesearchComponent implements OnInit {
         }
         else { sessionStorage.setItem('identifier', this.identifier) ;this.datadb= "yes";}
         this.datadb= "yes";
+        
         this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
         
       }
@@ -301,11 +303,13 @@ export class EmployeesearchComponent implements OnInit {
     switch (this.service){
       case "jabber_new":
       this.title="Request new Jabber service";
-      this.routingname="/entrydetails"
+      this.routingname="/entrydetails";
+      this.reqname="-NS-";
       break;
       case "jabber_delete":
       this.title="Delete Jabber Request";
       this.routingname="/entrydetailsjd";
+      this.reqname="-DS-";
       break;
       case "resources":
         this.title="Resources";

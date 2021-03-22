@@ -17,14 +17,12 @@ export class ResultpageComponent implements OnInit {
   pcode = '';
   fullName='';
   service='';
+  page:any;
+  requestResult:any;
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice, private route: ActivatedRoute) { }
 
 
-  requestResult:any =
-  {
-    serviceName:"new Jabber",
-    serviceNumber:sessionStorage.getItem('reqno')
-  }
+  
   ngOnInit(): void {
      
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
@@ -35,6 +33,11 @@ export class ResultpageComponent implements OnInit {
         this.service = params.service;
         console.log("navigation component" + this.pcode);
       })
+      this.requestResult =
+  {
+    serviceName:this.page,
+    serviceNumber:sessionStorage.getItem('reqno')
+  }
     const servicesData = { 
     "data": [
       {    
@@ -54,6 +57,14 @@ export class ResultpageComponent implements OnInit {
     
     this.servicesData = servicesData.data[0]
   
+    }
+    getPage(){
+if(this.service=='jabber_new'){
+  this.page='new Jabber'
+}
+if(this.service=='jabber_delete'){
+  this.page='delete Jabber'
+}
     }
   }
   

@@ -36,6 +36,7 @@ export class EmployeeinfoComponent implements OnInit {
   warninginfosnow = true;
   warninginfosnowreq = false;
   warninginfosnowres=false;
+  warninginfoothers = false;
   selfinfo = false;
   sessionwarninginfo :any;
   sessionwarninginfosnow :any;
@@ -107,6 +108,10 @@ export class EmployeeinfoComponent implements OnInit {
    }
    else if (this.sessionwarninginfo =='false1' && this.service=="resources"){
     this.warninginfosnowres = true    
+    this.isDataLoaded=true
+   }
+   else if (this.sessionwarninginfo =='false1' && this.service=="jabber_delete"){
+    this.warninginfoothers = true;   
     this.isDataLoaded=true
    }
   // this.warninginfosnow = true
