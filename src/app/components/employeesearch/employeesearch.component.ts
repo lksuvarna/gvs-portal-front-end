@@ -142,7 +142,7 @@ export class EmployeesearchComponent implements OnInit {
         if (this.service == "requests" || this.service == "resources" || this.service == "approvalpending" || this.service == "revalidationpending") {
           this.navpage = '/' + this.service; this.navpage1 = '/' + this.service;
         }
-        else { this.navpage = '/entrydetails'; this.navpage1 = '/entrydetails'; }
+        else { this.navpage = this.routingname; this.navpage1 = this.routingname; }
       }
       else {
         this.navpage = '/employeeinfo'; this.navpage1 = '/employeeinfo';
@@ -190,7 +190,8 @@ export class EmployeesearchComponent implements OnInit {
         this.notvalid = true
 
       }
-
+       sessionStorage.setItem('title',this.title)
+       sessionStorage.setItem('navpage',this.routingname)
 
 
       //this.isDataLoaded=true
@@ -296,22 +297,27 @@ export class EmployeesearchComponent implements OnInit {
     
   }
   getTitle(){
-//for title
-switch (this.service){
-  case "jabber_new":
-  this.title="Request new Jabber service";
-  break;
-  case "resources":
-    this.title="Resources";
-    break;
-    case "requests":
-      this.title="Requests";
+    //for title
+    switch (this.service){
+      case "jabber_new":
+      this.title="Request new Jabber service";
+      this.routingname="/entrydetails"
       break;
-      case "approvalpending":
-      this.title="Approvals";
+      case "jabber_delete":
+      this.title="Delete Jabber Request";
+      this.routingname="/entrydetailsjd";
       break;
-  }
-  }
+      case "resources":
+        this.title="Resources";
+        break;
+        case "requests":
+          this.title="Requests";
+          break;
+          case "approvalpending":
+          this.title="Approvals";
+          break;
+      }
+      }
   hidedata() {
     this.notvalid = false;
   }
