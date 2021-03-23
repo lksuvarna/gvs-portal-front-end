@@ -2338,7 +2338,7 @@ class VoipInDeleteComponent {
         if (this.sessionwarninginfo == 'false1') {
             this.warninginfo = true;
         }
-        else if (this.sessionwarninginfo == 'true1') {
+        else if (this.sessionwarninginfosnow == 'true1') {
             this.warninginfosnow = true;
             this.identifier = sessionStorage.getItem('identifier');
         }
