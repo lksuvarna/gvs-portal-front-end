@@ -46,11 +46,13 @@ export class EmployeesearchComponent implements OnInit {
   notvalid = false
   dataloading = false
   showloader = false
+  errorinfo=false
   title:any;
   showCountryCode = false	
 	countryCA = ''
   ngOnInit(): void {
     this.showloader = false
+    this.errorinfo = false
     this.fullName = this.cookie.getCookie('user');
     this.ccode = this.cookie.getCookie('ccode');
     this.countrydetails = sessionStorage.getItem('countrydetails')
@@ -227,7 +229,13 @@ export class EmployeesearchComponent implements OnInit {
           this.router.navigate([this.navpage], { queryParams: { country: this.pcode, service: this.service } });
         }}
       }
-    })
+    },
+    (error) => {                              //Error callback
+      console.error('error caught in component'+error);
+      this.errorinfo=true;
+      this.showloader =false;
+    }
+    )
     return this.datasnow;
   }
   getDBdata() {
@@ -262,6 +270,11 @@ export class EmployeesearchComponent implements OnInit {
           this.router.navigate([this.navpage], { queryParams: { country: this.pcode, service: this.service } });
         }}
       }
+    },
+    (error) => {                              //Error callback
+      console.error('error caught in component'+error);
+      this.errorinfo=true;
+      this.showloader =false;
     })
     return this.datadb
   }
@@ -320,6 +333,8 @@ export class EmployeesearchComponent implements OnInit {
       }
   hidedata() {
     this.notvalid = false;
+    this.errorinfo=false;
+    
   }
   onRequestForChangesession() {
 
