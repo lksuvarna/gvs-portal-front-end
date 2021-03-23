@@ -65,7 +65,11 @@ export class StepsComponent implements OnInit {
           {"name" : "STEP 2","tooltip" : "Employee Entry Details"},
           {"name" : "STEP 3","tooltip" : "Employee Entry Details"},
           {"name" : "STEP 3","tooltip" : "Review Details"},
-          {"name" : "STEP 4","tooltip" : "Review Details"}
+          {"name" : "STEP 4","tooltip" : "Review Details"},
+          {"name" : "STEP 2","tooltip" : "Employee Resources Details"},
+          {"name" : "STEP 3","tooltip" : "Employee Resources Details"},
+          {"name" : "STEP 2","tooltip" : "Employee Requests Details"},
+          {"name" : "STEP 3","tooltip" : "Employee Requests Details"},
         ]  
       }
     ]
@@ -107,4 +111,4 @@ export class StepsComponent implements OnInit {
     this.previousStep.emit('true')
   }
 
-}
+} 

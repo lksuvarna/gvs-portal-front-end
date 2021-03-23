@@ -12,6 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 
 
 
+
+
 @Component({
   selector: 'app-employeeinfo',
   templateUrl: './employeeinfo.component.html',
@@ -29,9 +31,15 @@ export class EmployeeinfoComponent implements OnInit {
   servicesData: any = []
   employeeInfo: any
   employeeInfo1: any
+  title:any;
   identifier: any;
+  identifier1: any;
   warninginfo = true;
   warninginfosnow = true;
+  warninginfosnowreq = false;
+  warninginfosnowres=false;
+  warninginfoothers = false;
+  warninginfosnowothers = false;
   selfinfo = false;
   sessionwarninginfo :any;
   sessionwarninginfosnow :any;
@@ -46,7 +54,7 @@ export class EmployeeinfoComponent implements OnInit {
   submit() {
     if(this.service=="requests"||this.service=="resources"||this.service=="approvalpending"||this.service=="revalidationpending"){
       this.navpage='/'+this.service}       
-      else{this.navpage='/entrydetails';}  
+      else{this.navpage=this.navpage;}  
        
     this.router.navigate([this.navpage],{ queryParams: { country: this.pcode,service:this.service } }) ;
   }
@@ -64,8 +72,10 @@ export class EmployeeinfoComponent implements OnInit {
       this.service = params.service;
       this.pcode = params.country;
       console.log("navigation component" + this.pcode);
-    })
-
+      this.title=sessionStorage.getItem('title')
+      this.navpage=sessionStorage.getItem('navpage')
+   
+    
     const servicesData = {
       "data": [
         {          
@@ -74,6 +84,7 @@ export class EmployeeinfoComponent implements OnInit {
         }
       ]
     }
+    
     this.reqFor = sessionStorage.getItem('radioAction')
     if (sessionStorage.getItem('radioAction')=="myself"){
     this.selfinfo=true;}
@@ -94,20 +105,45 @@ export class EmployeeinfoComponent implements OnInit {
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
+   else if (this.sessionwarninginfosnow =='false1' && this.service=="requests"){
+    this.warninginfosnowreq = true    
+    this.isDataLoaded=true
+   }
+   else if (this.sessionwarninginfo =='false1' && this.service=="resources"){
+    this.warninginfosnowres = true    
+    this.isDataLoaded=true
+   }
+   else if ( this.service=="jabber_delete"){
+     console.log("deletes"+this.warninginfosnowothers)
+     console.log("deletes"+sessionStorage.getItem('warninginfosnow'))
+     console.log("deletes"+sessionStorage.getItem('warninginfo'))
+     if (this.sessionwarninginfosnow=='true1'){
+       this.identifier1=sessionStorage.getItem('identifier1')
+      this.warninginfosnowothers = true;   
+      this.isDataLoaded=true
+     }
+     else if(this.sessionwarninginfo =='false1'){
+    this.warninginfoothers = true;   
+    this.isDataLoaded=true}
+    
+   }
+   
   // this.warninginfosnow = true
    this.isDataLoaded=true
    //this.identifier=sessionStorage.getItem('identifier')
     this.employeeInfo1=sessionStorage.getItem('employeeInfo')
     this.employeeInfo=JSON.parse(this.employeeInfo1)
 
-    if(this.warninginfo || this.warninginfosnow){
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq){
       this.hideSteps = true
     } else {
       this.hideSteps = false
     }
 
-    
-}}
+  })  
+} 
+
+}
 
 
 

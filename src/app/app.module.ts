@@ -41,6 +41,7 @@ import { TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FooterComponent } from './components/footer/footer.component';
 import { StepsComponent } from './components/steps/steps.component';
+import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.component';
 
 export function rootLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http,'assets/i18n/','.json')
@@ -80,7 +81,8 @@ export function rootLoaderFactory(http: HttpClient){
     FooterComponent,
     StepsComponent,
     VoipAuNewComponent,
-    VoipLaNewComponent
+    VoipLaNewComponent,
+    VoipEmeaNewComponent
 
 
   ],

@@ -22,33 +22,26 @@ export class ResourcesComponent implements OnInit {
   cloudantData: any = []
   servicesData: any = []
   countryname:any;
+  sessionwarninginfo:any;
+  warninginfosnowres=false;
   ccode='';
-
+  dbdata:any;
+  dbdata1:any;
+  reqFor:any
   ngOnInit(): void {
-    
-    const servicesData = { 
-    "data": [
-      {    
-        "lhs": [
-          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false},
-          {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": true}
-        ],
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        
-      }]
-  }
-    
-    this.servicesData = servicesData.data[0];
-    
-      // Code to search Db2 for resrouces
-      this.Db2Service.search_db2('06685M744','all').subscribe(data=> {
-        console.log(' db2 response', data);
-      });
-  
-    
+    this.dbdata1=sessionStorage.getItem('identifier');
+    this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
+    this.reqFor = sessionStorage.getItem('radioAction')
+    if (this.sessionwarninginfo =='false1'){
+      this.warninginfosnowres = true  
+     
+     }
+    console.log(this.dbdata1);
+    console.log(this.dbdata1.identifier);
+    console.log(JSON.parse(this.dbdata1).identifier);    
+    var parsed = JSON.parse(JSON.stringify(JSON.parse(this.dbdata1)));
+    this.dbdata = parsed;    
+   console.log(this.dbdata[0].IDENTIFIER);
   }
 
   
