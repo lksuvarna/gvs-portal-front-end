@@ -52,7 +52,7 @@ export class EmployeesearchComponent implements OnInit {
 	countryCA = ''
   ngOnInit(): void {
     this.showloader = false
-    this.fullName = this.cookie.getCookie('user');
+    this.fullName = this.cookie.getCookie('username');
     this.ccode = this.cookie.getCookie('ccode');
     this.countrydetails = sessionStorage.getItem('countrydetails')
     this.countrydetails = JSON.parse(this.countrydetails)
