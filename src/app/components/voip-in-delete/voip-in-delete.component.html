@@ -94,6 +94,9 @@
         </tbody>
       </table>
       <br>
+      <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
+        <p>Opps! Some thing went worng.Please try again latter.</p><p>
+    </p></div>
       <div class=" ds-panel ds-col-12 "></div>
       <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
         <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
@@ -105,11 +108,12 @@
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="BACK" (click)='BackButton()' *ngIf="this.isButtonVisible">
+                value="BACK" (click)='BackButton()' *ngIf="this.isButtonVisible  && !errorinfo">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2" *ngIf="warninginfo==false">
-              <input type="submit" name="next"  (click)="submit_snow()" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="SUBMIT" *ngIf="this.isButtonVisible" >
+              <input type="submit" name="next"  (click)="submit_snow()" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="SUBMIT" *ngIf="this.isButtonVisible  && !errorinfo" >
             </span>
+            <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
           </div>
         </div>
       </div>
