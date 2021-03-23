@@ -57,6 +57,7 @@ export class RequestsComponent implements OnInit {
     this.snowdata = sessionStorage.getItem('identifier');
     this.empserial = sessionStorage.getItem('empserial');
     this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
+    this.reqFor = sessionStorage.getItem('radioAction')
     if (this.sessionwarninginfosnow =='false1' ){
       this.warninginfosnowreq = true    
       this.display = true
@@ -65,7 +66,6 @@ export class RequestsComponent implements OnInit {
     console.log(this.snowdata.length)
     var parsed = JSON.parse(JSON.stringify(JSON.parse(this.snowdata)));
     this.snowdata = parsed;
-    this.reqFor = sessionStorage.getItem('radioAction')
     
     console.log(this.snowdata.length)
     for (this.i = 0; this.i < this.snowdata.length; this.i++) {
