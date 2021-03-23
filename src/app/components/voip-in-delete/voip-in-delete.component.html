@@ -22,7 +22,14 @@
       <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
         <p>There is no Jabber for this serial number. </p>
       </div>
-      <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false">
+      <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
+        <p><span style="font-size: 1rem;">The serial number that you have entered has already one delete Jabber request is in progress and request number is {{identifier}}.<br>
+    
+    You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.<br>              
+    
+    For any further assistance, please contact  <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+    </div>
+      <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false ">
         <tbody>
           <tr valign="top">
             <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber Number </label>
@@ -53,7 +60,7 @@
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="NEXT" *ngIf="warninginfo==false">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="NEXT" *ngIf="warninginfo==false && warninginfosnow==false">
             </span>
           </div>
         </div>

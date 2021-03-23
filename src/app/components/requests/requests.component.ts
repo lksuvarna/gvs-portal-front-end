@@ -75,8 +75,11 @@ export class RequestsComponent implements OnInit {
       if ((this.stage==="waiting for approval" || this.stage==="rejected") && this.stage!=="closed incomplete") {
         this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
          
-          this.approver.push(data.message[0]['approver.name']);
-        })
+          this.approver.push("("+data.message[0]['approver.name']+")");
+        })}
+        else{
+          this.approver.push([]);
+        }
         this.servicenowservice.searchsnowcoments(this.empserial, "snow_comments", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
           console.log(' snow response', data);
           console.log(' snow response', data.message.results.length);
@@ -98,7 +101,7 @@ export class RequestsComponent implements OnInit {
           }
         })
       
-    }}}
+    }}
 
     const servicesData = {
       "data": [

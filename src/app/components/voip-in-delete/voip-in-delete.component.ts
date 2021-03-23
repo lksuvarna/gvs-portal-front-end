@@ -34,9 +34,11 @@ export class VoipInDeleteComponent implements OnInit {
   service:any;
   pcode:any
   sessionwarninginfo:any
+  sessionwarninginfosnow:any
   isButtonVisible = true;	
   isSpinnerVisible= false; 
   warninginfo=false;
+  warninginfosnow=false;
   constructor(private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice) {
     if(this.Jabber[0]=='Select One'){
       this.selected = true;
@@ -114,8 +116,13 @@ export class VoipInDeleteComponent implements OnInit {
         
      this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
+    this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
     if (this.sessionwarninginfo =='false1'){
       this.warninginfo = true
+    }
+    else if(this.sessionwarninginfo =='true1') {
+this.warninginfosnow=true
+this.identifier=sessionStorage.getItem('identifier')
     }
     else{
       this.identifier=sessionStorage.getItem('identifier')
