@@ -19,10 +19,17 @@
       <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
       <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
-      <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==false">
+      <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
         <p>There is no Jabber for this serial number. </p>
       </div>
-      <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==true">
+      <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
+        <p><span style="font-size: 1rem;">The serial number that you have entered has already one delete Jabber request is in progress and request number is {{identifier}}.<br>
+    
+    You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.<br>              
+    
+    For any further assistance, please contact  <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+    </div>
+      <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false ">
         <tbody>
           <tr valign="top">
             <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber Number </label>
@@ -49,11 +56,11 @@
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="BACK">
+                value="BACK" (click)="backClick()">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="NEXT">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="NEXT" *ngIf="warninginfo==false && warninginfosnow==false">
             </span>
           </div>
         </div>
@@ -88,17 +95,20 @@
       </table>
       <br>
       <div class=" ds-panel ds-col-12 "></div>
+      <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+        <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+        <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
+    </div>
       <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
         <div class="ds-tray-fit-content ds-mar-b-0">
           <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="BACK" (click)='BackButton()'>
+                value="BACK" (click)='BackButton()' *ngIf="this.isButtonVisible">
             </span>
-            <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
-              <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="SUBMIT" *ngIf="warninginfo==true">
+            <span class="ds-pad-l-1 ds-pad-r-1" id="button2" *ngIf="warninginfo==false">
+              <input type="submit" name="next"  (click)="submit_snow()" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="SUBMIT" *ngIf="this.isButtonVisible" >
             </span>
           </div>
         </div>

@@ -47,13 +47,13 @@ export class EmployeesearchComponent implements OnInit {
   dataloading = false
   showloader = false
   errorinfo=false
+  reqname:any
   title:any;
   showCountryCode = false	
 	countryCA = ''
   ngOnInit(): void {
     this.showloader = false
-    this.errorinfo = false
-    this.fullName = this.cookie.getCookie('user');
+    this.fullName = this.cookie.getCookie('username');
     this.ccode = this.cookie.getCookie('ccode');
     this.countrydetails = sessionStorage.getItem('countrydetails')
     this.countrydetails = JSON.parse(this.countrydetails)
@@ -177,11 +177,11 @@ export class EmployeesearchComponent implements OnInit {
      if (this.service == "jabber_new") {
       this.getDBdata()
      }
-     if (this.service == "requests") {      
+     if (this.service == "requests"  ) {      
         this.getSNOWdata() ;
              
      }
-     if (this.service == "resources" || this.service == "jabber_delete") {      
+     if (this.service == "resources"  || this.service == "jabber_delete") {      
       this.getDBdata() ;
           
    }
@@ -202,7 +202,7 @@ export class EmployeesearchComponent implements OnInit {
   }
 
   getSNOWdata():any {
-    this.servicenowservice.searchsnow(this.employeeSerial, this.service, this.countrydetails.isocode + '-NS-' + this.employeeSerial.substr(0, 6)).subscribe(data => {
+    this.servicenowservice.searchsnow(this.employeeSerial, this.service, this.countrydetails.isocode + this.reqname + this.employeeSerial.substr(0, 6)).subscribe(data => {
       console.log(' snow response', data);
       console.log(' snow response', data.message.length);
       if (data.message.length > 0) {
@@ -210,8 +210,12 @@ export class EmployeesearchComponent implements OnInit {
         this.warninginfosnow = true
         sessionStorage.setItem('warninginfosnow', 'true1')
         this.identifier = data.message
+        
         sessionStorage.setItem('identifier', JSON.stringify(this.identifier))
+        sessionStorage.setItem('identifier1', JSON.stringify(this.identifier))
+       
         this.datasnow="yes"
+        
         this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
         
       }
@@ -221,6 +225,7 @@ export class EmployeesearchComponent implements OnInit {
         if(this.service=="jabber_new"){
           this.getLocationdata()
         }
+        
         else{
         if (this.radioAction.toLowerCase() == "anotheremployee") {
           this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
@@ -244,6 +249,7 @@ export class EmployeesearchComponent implements OnInit {
       console.log(' db2 response', data.message.length);
 
       if (data.message.length > 0) {
+        
         this.warninginfo = true
         sessionStorage.setItem('warninginfo', 'true1')
         this.identifier = data.message[0].IDENTIFIER
@@ -251,10 +257,18 @@ export class EmployeesearchComponent implements OnInit {
           sessionStorage.setItem('identifier', JSON.stringify(data.message))
           this.datadb= "yes";
         }
-        else { sessionStorage.setItem('identifier', this.identifier) ;this.datadb= "yes";}
-        this.datadb= "yes";
-        this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+        else { sessionStorage.setItem('identifier', this.identifier) ;
         
+        this.datadb= "yes";}
+        if(this.service=="jabber_delete"){
+          console.log("insidesnowdelete")
+          this.getSNOWdata();
+          this.datadb= "yes";
+        }
+        else{
+        
+        this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+        }
       }
       else {
         console.log("nodb2data");
@@ -314,11 +328,13 @@ export class EmployeesearchComponent implements OnInit {
     switch (this.service){
       case "jabber_new":
       this.title="Request new Jabber service";
-      this.routingname="/entrydetails"
+      this.routingname="/entrydetails";
+      this.reqname="-NS-";
       break;
       case "jabber_delete":
       this.title="Delete Jabber Request";
       this.routingname="/entrydetailsjd";
+      this.reqname="-DS-";
       break;
       case "resources":
         this.title="Resources";

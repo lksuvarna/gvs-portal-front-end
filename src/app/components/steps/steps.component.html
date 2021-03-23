@@ -1,4 +1,5 @@
 <div class="ds-panel-row">
+    <!--Step 1-->
     <span *ngIf="true">
         <span [ngClass]="changeClass1 ? 'ds-tooltip ds-hover ds-text-align-center ds-open' : 'ds-tooltip ds-hover ds-text-align-center' " id="tooltip-demo1">
             <span (mouseenter)="changeClass1=true" (mouseout)="changeClass1=false">
@@ -7,7 +8,7 @@
     <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">{{servicesData[0].tooltip}}</div>
     </span>
     </span>
-
+    <!--Step 2-->
     <span *ngIf="!isSelf && !isWarning1">
         <span [ngClass]="step===2 ? 'ds-pad-l-r-1 ds-text-contextual-green-3' : 'ds-pad-l-r-1 ds-text-contextual-blue-5'"><b>-----&gt;</b></span>
     <span [ngClass]="changeClass2 ? 'ds-tooltip ds-hover ds-text-align-center ds-open' : 'ds-tooltip ds-hover ds-text-align-center' " id="tooltip-demo1">
@@ -47,7 +48,7 @@
     <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">{{servicesData[8].tooltip}}</div>
     </span>
     </span>
-
+    <!--Step 3-->
     <span *ngIf="service !== 'resources' && service !== 'requests' && !isSelf && !isWarning2">
             <span [ngClass]="step===3 ? 'ds-pad-l-r-1 ds-text-contextual-green-3' : 'ds-pad-l-r-1 ds-text-contextual-blue-5'"><b>-----&gt;</b></span>
     <span [ngClass]="changeClass3 ? 'ds-tooltip ds-hover ds-text-align-center ds-open' : 'ds-tooltip ds-hover ds-text-align-center' " id="tooltip-demo1">
@@ -88,7 +89,7 @@
     <div class="ds-tooltip-content ds-text-neutral-7" id="tooltip-demo1-content" role="tooltip">{{servicesData[9].tooltip}}</div>
     </span>
     </span>
-
+    <!--Step 4-->
     <span *ngIf="service !== 'resources' && service !== 'requests' && !isSelf && !isWarning3">
     <span [ngClass]="step===4 ? 'ds-pad-l-r-1 ds-text-contextual-green-3' : 'ds-pad-l-r-1 ds-text-contextual-blue-5'"><b>-----&gt;</b></span>
 
