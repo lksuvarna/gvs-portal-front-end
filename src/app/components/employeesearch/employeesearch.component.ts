@@ -179,7 +179,7 @@ export class EmployeesearchComponent implements OnInit {
         this.getSNOWdata() ;
              
      }
-     if (this.service == "resources" || this.service == "jabber_delete") {      
+     if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update") {      
       this.getDBdata() ;
           
    }
@@ -306,6 +306,10 @@ export class EmployeesearchComponent implements OnInit {
       case "jabber_delete":
       this.title="Delete Jabber Request";
       this.routingname="/entrydetailsjd";
+      break;
+      case "jabber_update":
+      this.title="Update Jabber Request";
+      this.routingname="/entrydetailsiju";
       break;
       case "resources":
         this.title="Resources";

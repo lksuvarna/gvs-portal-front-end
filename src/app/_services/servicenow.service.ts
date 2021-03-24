@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { createOfflineCompileUrlResolver } from '@angular/compiler';
-import { Jabber_New, snowsearch } from '../../../config/payload';
+import { Jabber_New, Jabber_Update, snowsearch } from '../../../config/payload';
 
 
 @Injectable({ providedIn: 'root' })
@@ -20,6 +20,12 @@ export class servicenowservice {
       .pipe(catchError(this.errorhandler))
   }
   
+  submit_request_update(Jabber_update_payload : Jabber_Update): Observable<any> {
+    console.log('calling snow');
+    return this.http.post(this.submitUrl,Jabber_update_payload)
+      .pipe(catchError(this.errorhandler))
+  }
+
   searchsnow(cnum: string, type: string,reqno : string): Observable<any> {
     console.log('calling snow swarch');
     this.payload.cnum=cnum;

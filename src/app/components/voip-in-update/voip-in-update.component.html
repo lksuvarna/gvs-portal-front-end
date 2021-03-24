@@ -60,7 +60,7 @@
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="Back">
+                value="Back" (click)="backClick()">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next"
@@ -110,17 +110,24 @@
       </table>
       <br>
       <div class=" ds-panel ds-col-12 "></div>
+      <!-- Dark Background -->
+      <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+        <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the
+          page.</div>
+        <div class="ds-loader" role="alert" aria-busy="true"
+          aria-label="Your request is being submitted. Do not refresh or go back."></div>
+      </div>
       <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
         <div class="ds-tray-fit-content ds-mar-b-0">
           <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="Back" (click)='BackButton()'>
+                value="Back" (click)='BackButton()' *ngIf="this.isButtonVisible">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Next">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Next" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
           </div>
         </div>
