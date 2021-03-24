@@ -316,7 +316,11 @@ export class EmployeesearchComponent implements OnInit {
     switch (this.service){
       case "jabber_new":
       this.title="Request new Jabber service";
+      if(this.countrydetails.jnavpage=='AP'){
       this.routingname="/entrydetails";
+    }else if(this.countrydetails.jnavpage=='EMEA'){
+      this.routingname="/entrydetailsemea";
+    }
       this.reqname="-NS-";
       break;
       case "jabber_delete":
