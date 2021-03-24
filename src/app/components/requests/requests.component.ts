@@ -78,7 +78,7 @@ export class RequestsComponent implements OnInit {
           this.approver.push("("+data.message[0]['approver.name']+")");
         })}
         else{
-          this.approver.push([]);
+          //this.approver.push([])
         }
         this.servicenowservice.searchsnowcoments(this.empserial, "snow_comments", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
           console.log(' snow response', data);
