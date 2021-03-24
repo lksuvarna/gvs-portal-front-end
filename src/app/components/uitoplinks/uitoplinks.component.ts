@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-uitoplinks',
@@ -19,12 +20,13 @@ export class UitoplinksComponent implements OnInit {
     
   ]
 
-  constructor(private _eref: ElementRef,private cookie: CookieHandlerService) {
+  constructor(private _eref: ElementRef,private cookie: CookieHandlerService,private route: ActivatedRoute) {
    }
 
   ngOnInit(): void {
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-
+    this.route.queryParams	
+    .subscribe(params => {
 
     this.routerPath = window.location.pathname
 
@@ -36,7 +38,7 @@ export class UitoplinksComponent implements OnInit {
       this.toggleHighlight('services-nav')
     }
     
-
+  })
   }
   
 

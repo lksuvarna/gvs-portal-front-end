@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 
 
 
+
 @Component({
   selector: 'app-employeeinfo',
   templateUrl: './employeeinfo.component.html',
@@ -32,10 +33,13 @@ export class EmployeeinfoComponent implements OnInit {
   employeeInfo1: any
   title:any;
   identifier: any;
+  identifier1: any;
   warninginfo = true;
   warninginfosnow = true;
   warninginfosnowreq = false;
   warninginfosnowres=false;
+  warninginfoothers = false;
+  warninginfosnowothers = false;
   selfinfo = false;
   sessionwarninginfo :any;
   sessionwarninginfosnow :any;
@@ -70,7 +74,7 @@ export class EmployeeinfoComponent implements OnInit {
       console.log("navigation component" + this.pcode);
       this.title=sessionStorage.getItem('title')
       this.navpage=sessionStorage.getItem('navpage')
-    })
+   
     
     const servicesData = {
       "data": [
@@ -109,6 +113,21 @@ export class EmployeeinfoComponent implements OnInit {
     this.warninginfosnowres = true    
     this.isDataLoaded=true
    }
+   else if ( this.service=="jabber_delete"){
+     console.log("deletes"+this.warninginfosnowothers)
+     console.log("deletes"+sessionStorage.getItem('warninginfosnow'))
+     console.log("deletes"+sessionStorage.getItem('warninginfo'))
+     if (this.sessionwarninginfosnow=='true1'){
+       this.identifier1=sessionStorage.getItem('identifier1')
+      this.warninginfosnowothers = true;   
+      this.isDataLoaded=true
+     }
+     else if(this.sessionwarninginfo =='false1'){
+    this.warninginfoothers = true;   
+    this.isDataLoaded=true}
+    
+   }
+   
   // this.warninginfosnow = true
    this.isDataLoaded=true
    //this.identifier=sessionStorage.getItem('identifier')
@@ -121,8 +140,8 @@ export class EmployeeinfoComponent implements OnInit {
       this.hideSteps = false
     }
 
-    
-}
+  })  
+} 
 
 }
 

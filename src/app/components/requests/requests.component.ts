@@ -57,6 +57,7 @@ export class RequestsComponent implements OnInit {
     this.snowdata = sessionStorage.getItem('identifier');
     this.empserial = sessionStorage.getItem('empserial');
     this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
+    this.reqFor = sessionStorage.getItem('radioAction')
     if (this.sessionwarninginfosnow =='false1' ){
       this.warninginfosnowreq = true    
       this.display = true
@@ -65,7 +66,6 @@ export class RequestsComponent implements OnInit {
     console.log(this.snowdata.length)
     var parsed = JSON.parse(JSON.stringify(JSON.parse(this.snowdata)));
     this.snowdata = parsed;
-    this.reqFor = sessionStorage.getItem('radioAction')
     
     console.log(this.snowdata.length)
     for (this.i = 0; this.i < this.snowdata.length; this.i++) {
@@ -75,8 +75,11 @@ export class RequestsComponent implements OnInit {
       if ((this.stage==="waiting for approval" || this.stage==="rejected") && this.stage!=="closed incomplete") {
         this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
          
-          this.approver.push(data.message[0]['approver.name']);
-        })
+          this.approver.push("("+data.message[0]['approver.name']+")");
+        })}
+        else{
+          //this.approver.push([])
+        }
         this.servicenowservice.searchsnowcoments(this.empserial, "snow_comments", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
           console.log(' snow response', data);
           console.log(' snow response', data.message.results.length);
@@ -98,7 +101,7 @@ export class RequestsComponent implements OnInit {
           }
         })
       
-    }}}
+    }}
 
     const servicesData = {
       "data": [
