@@ -1,30 +1,41 @@
 {
 
-    "home" : {
-        "select-language" : "Choisissez une langue: ",
-        "app-name" : "Services téléphoniques mondiaux",
-        "app-function" : "Point d'entrée unique pour commander des services vocaux dans votre pays",
-        "welcome" : "Bienvenue,",
-        "question" : "Quel service ou quel pays rechercherez-vous?",
-        "search-placeholder" : "Service de recherche ...",
-        "search-text" : "Cliquez ici pour voir tous les résultats de la recherche GVS",
-        "my-country" : "Mon pays",
-        "click-here" : "Cliquez ici",
-        "available" : "pour afficher tous les",
-        "services" : "services pour",
-        "most-viewed-services" : "Services les plus consultés",
-        "find-right-service" : "Trouvez les bons services, vérifiez leur disponibilité,",
-        "find-right-service2" : "puis choisissez la façon dont vous vous connectez et travaillez ensemble.",
-        "jabber-description" : "Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.",
-        "button-value" : "Premiers pas"
+    "home": {
+        "select-language": "Choisissez une langue: ",
+        "app-name": "Services téléphoniques mondiaux",
+        "app-function": "Point d'entrée unique pour commander des services vocaux dans votre pays",
+        "welcome": "Bienvenue,",
+        "question": "Quel service ou quel pays rechercherez-vous?",
+        "search-placeholder": "Service de recherche ...",
+        "search-text": "Cliquez ici pour voir tous les résultats de la recherche GVS",
+        "my-country": "Mon pays",
+        "click-here": "Cliquez ici",
+        "available": "pour afficher tous les",
+        "services": "services pour",
+        "most-viewed-services": "Services les plus consultés",
+        "find-right-service": "Trouvez les bons services, vérifiez leur disponibilité,",
+        "find-right-service2": "puis choisissez la façon dont vous vous connectez et travaillez ensemble.",
+        "jabber-description": "Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.",
+        "button-value": "Premiers pas"
     },
 
-    "footer" : {
+    "footer": {
         "aditional-question": "Vous avez des questions supplémentaires sur la commande de  Services téléphoniques mondiaux ?",
-        "please consult" : "Veuillez consulter",
-        "consult" : "* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE et Safari."
-  
-  
-      }
-    
+        "please consult": "Veuillez consulter",
+        "consult": "* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE et Safari."
+
+
+    },
+
+    "lhs": {
+        "Services": "Prestations de service",
+        "Jabber": "Jacasser",
+        "FAC Code": "Code FAC",
+        "Fixed Phone": "Téléphone fixe",
+        "Special Request": "Demande spéciale",
+        "Approvals Pending": "Approbations en attente",
+        "Revalidation Pending": "Revalidation en attente",
+        "Resources": "Ressources",
+        "Requests": "Demandes"
+    }
 }
