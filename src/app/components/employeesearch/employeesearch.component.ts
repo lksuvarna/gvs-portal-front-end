@@ -46,6 +46,7 @@ export class EmployeesearchComponent implements OnInit {
   notvalid = false
   dataloading = false
   showloader = false
+  errorinfo=false
   reqname:any
   title:any;
   showCountryCode = false	
@@ -233,7 +234,13 @@ export class EmployeesearchComponent implements OnInit {
           this.router.navigate([this.navpage], { queryParams: { country: this.pcode, service: this.service } });
         }}
       }
-    })
+    },
+    (error) => {                              //Error callback
+      console.error('error caught in component'+error);
+      this.errorinfo=true;
+      this.showloader =false;
+    }
+    )
     return this.datasnow;
   }
   getDBdata() {
@@ -277,6 +284,11 @@ export class EmployeesearchComponent implements OnInit {
           this.router.navigate([this.navpage], { queryParams: { country: this.pcode, service: this.service } });
         }}
       }
+    },
+    (error) => {                              //Error callback
+      console.error('error caught in component'+error);
+      this.errorinfo=true;
+      this.showloader =false;
     })
     return this.datadb
   }
@@ -341,6 +353,8 @@ export class EmployeesearchComponent implements OnInit {
       }
   hidedata() {
     this.notvalid = false;
+    this.errorinfo=false;
+    
   }
   onRequestForChangesession() {
 
