@@ -31,34 +31,84 @@ export class VoipEmeaNewComponent implements OnInit {
     reqno:""	
   }
   
-  officeLocation = ["Select Location","Denmark", "Belgium"]
+  // officeLocation = ["Select Location","Denmark", "Belgium"];
+  ccode='';
+  officeLocation = ""
+  selectedLocationEmea = "";
   cloudantData: any = [];
   servicesData: any = [];
   reqno:any;
   cnum : any;
   countrydetails : any;	
+  locationlist : any;
   isButtonVisible = true;	
   isSpinnerVisible= false; 	
   pcode: any;	
   service: any;	
   orgi:any;	
   reqFor: any;
+  errorinfo=false;
+  isEntryFormEmea = false;
+  isReviewFormEmea = true;
+  employeeInfo: any;	
+  employeeInfo1: any;	
+  hideProjectId = false;
+  campA: any = [];	
+    camp: any = [];	
+    buildA: any = [];	
+    build: any = [];	
+    j = 0;
+    hideBuilding = true;	
+    campus : any;
 
-  entryDetailsEMEA(formData: NgForm) {	
+
+  entryDetailsEMEA(formData: NgForm) {	    
       
     if(formData.value.Location.toUpperCase() == 'SELECT LOCATION' || formData.value.Location == '') {	
       alert('Please select the Location');	
       return;	
-    }	
+    }
+    
+    this.selectedLocationEmea = formData.value.Location;
+    this.isEntryFormEmea = true;
+    this.isReviewFormEmea = false;
 
   }
 
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
+  BackButton(){
+    this.isEntryFormEmea = false;
+    this.isReviewFormEmea = true;
+  }
+
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,public location:Location) { }
 
   backClick(){	
     sessionStorage.setItem('backbutton','yes');	
     sessionStorage.setItem('step','step1');	
     this.location.back();	
+  }
+
+  selectedLocation(loc:String) {	
+    this.build = [];	
+    this.campus = '';	
+    //alert("Location"+loc);
+    if(loc != '') {	
+      // this.hideBuilding = false;	
+      var k =0;	
+      //var f = 100;	
+      //this.build[k] = this.buildA[0];	
+      for(var i=0;i<this.campA.length;i++) {	
+      if(loc == this.campA[i]) {        	
+      this.build[k] = this.buildA[i];
+      k = k+1;	
+      }	
+      }  	
+    // alert("HIIII"+this.build);	
+             
+    } else {	
+      this.hideBuilding = true;	
+      this.build = [];	
+    }	
   }
 
   submit_snow(){	
@@ -101,34 +151,72 @@ export class VoipEmeaNewComponent implements OnInit {
      console.log('response', data);	
      if(data)	
      this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
-     });	
+     },
+     (error) => {                              //Error callback
+      console.error('error caught in component'+error);
+      this.isSpinnerVisible= false; 	
+      this.errorinfo=true;
+      this.isButtonVisible=true;
+    });	
      }
 
 
   ngOnInit(): void {
 
+    this.orgi=this.cookie.getCookie('ccode');	
+    this.cnum = sessionStorage.getItem('cnum') ;	
+    this.countrydetails = sessionStorage.getItem('countrydetails');	
+    this.countrydetails = JSON.parse(this.countrydetails);	
+     // Submit to Snow Jabber new code added by Swarnava ends	
+       
+    this.ccode=this.cookie.getCookie('ccode').substring(6,9);	
+    this.route.queryParams	
+    .subscribe(params => {	
+      console.log(params);	
+      this.service=params.service;	
+      this.pcode = params.country;	
+      console.log("navigation component" + this.pcode);	
+    })	
+    this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
+    this.locationlist=this.locationlist?.replace('"','').split(',');	
+  
+    for (var i = 0; i < this.locationlist.length; i++) {	
+      var n = this.locationlist[i].indexOf("~")	
+      this.campA[i] = this.locationlist[i].substr(1, n - 1);	
+      this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);	
+    }	
+    for (var i = 0; i < this.campA.length; i++) {	
+      if (this.campA[i] != this.campA[i + 1]) {	
+        this.camp[this.j] = this.campA[i];	
+        this.j++;	
+      }	
+    }
     const servicesData = { 	
       "data": [	
         {    	
-          "lhs": [	
-            {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false}, 	
-            { "name": "Jabber", "routingname": "/services", "indented": true, "highlighted": true },           	
-            {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-            {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-            {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-            {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}	
-          ],	
+          	
           "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
           "step" : 3,	
           
         }	
       ]	
-    }
-    
+  
+     
+    }	
+    this.reqFor = sessionStorage.getItem('radioAction')
     this.servicesData = servicesData.data[0];	
     //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
     //alert(this.reviewDetailsIndia.reqno);	
-    
+    this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
+    this.employeeInfo = JSON.parse(this.employeeInfo1);	
+    if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
+      this.hideProjectId = true;
+      }
+  }
+
+  previousStep(event : any){
+    this.isEntryFormEmea = false;	
+    this.isReviewFormEmea = true;	
   }
 
   
