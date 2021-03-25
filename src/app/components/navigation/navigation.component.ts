@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateConfigService } from 'src/app/_services/translate-config.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class NavigationComponent implements OnInit {
   cloudantData: any = []
   servicesData: any = []
   pcountrydetails:any
-  constructor(private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute) { }
+  constructor(private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private translateconfigservice : TranslateConfigService) { }
 
   defaultNavClass = 'ds-panel-segment ds-text-uppercase'
   indentNavClass = ' ds-pad-l-2'

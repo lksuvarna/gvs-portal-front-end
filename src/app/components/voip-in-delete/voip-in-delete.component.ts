@@ -33,6 +33,7 @@ export class VoipInDeleteComponent implements OnInit {
   reqno:any;
   service:any;
   pcode:any
+  hideSteps = false
   sessionwarninginfo:any
   sessionwarninginfosnow:any
   isButtonVisible = true;	
@@ -140,7 +141,7 @@ this.identifier=sessionStorage.getItem('identifier')
       {    	
         
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "step" : 3,	
+        "step" : 2,	
         
       }	
     ]	
@@ -149,6 +150,13 @@ this.identifier=sessionStorage.getItem('identifier')
   }	
     
     this.servicesData = servicesData.data[0]
+    this.reqFor = sessionStorage.getItem('radioAction')
+
+    if(this.warninginfo || this.warninginfosnow){
+      this.hideSteps = true
+    } else {
+      this.hideSteps = false
+    }
   }
   previousStep(event : any){
     this.isEntryForm = false;	

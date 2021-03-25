@@ -96,6 +96,12 @@ export class StepsComponent implements OnInit {
     this.isWarning1 = false
    }
 
+   if(this.service === 'jabber_delete' && this.step === 3 && this.isWarning === true){
+    this.isWarning2 = true
+    this.isWarning3 = true
+    this.isWarning1 = false
+   }
+
   if (this.step === 3 && this.isSelf === true){
     this.step = 2
   }
