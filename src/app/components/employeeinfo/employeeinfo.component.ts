@@ -51,6 +51,8 @@ export class EmployeeinfoComponent implements OnInit {
   hideSteps = false
   navpage:any;
   navpage1:any;
+  page:any;
+
   submit() {
     if(this.service=="requests"||this.service=="resources"||this.service=="approvalpending"||this.service=="revalidationpending"){
       this.navpage='/'+this.service}       
@@ -113,14 +115,19 @@ export class EmployeeinfoComponent implements OnInit {
     this.warninginfosnowres = true    
     this.isDataLoaded=true
    }
-   else if ( this.service=="jabber_delete"){
+   else if ( this.service=="jabber_delete" || this.service=="jabber_update"){
      console.log("deletes"+this.warninginfosnowothers)
      console.log("deletes"+sessionStorage.getItem('warninginfosnow'))
      console.log("deletes"+sessionStorage.getItem('warninginfo'))
+     if(this.service == "jabber_delete") {
+       this.page = 'delete Jabber';
+     } else {
+       this.page = 'update Jabber';
+     }
      if (this.sessionwarninginfosnow=='true1'){
        this.identifier1=sessionStorage.getItem('identifier1')
       this.warninginfosnowothers = true;   
-      this.isDataLoaded=true
+      this.isDataLoaded=true;
      }
      else if(this.sessionwarninginfo =='false1'){
     this.warninginfoothers = true;   
@@ -134,7 +141,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.employeeInfo1=sessionStorage.getItem('employeeInfo')
     this.employeeInfo=JSON.parse(this.employeeInfo1)
 
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq){
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers){
       this.hideSteps = true
     } else {
       this.hideSteps = false

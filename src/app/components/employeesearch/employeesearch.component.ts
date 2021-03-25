@@ -260,7 +260,7 @@ export class EmployeesearchComponent implements OnInit {
         else { sessionStorage.setItem('identifier', this.identifier) ;
         
         this.datadb= "yes";}
-        if(this.service=="jabber_delete"){
+        if(this.service=="jabber_delete" || this.service=='jabber_update'){
           console.log("insidesnowdelete")
           this.getSNOWdata();
           this.datadb= "yes";
@@ -339,6 +339,7 @@ export class EmployeesearchComponent implements OnInit {
       case "jabber_update":
       this.title="Update Jabber Request";
       this.routingname="/entrydetailsiju";
+      this.reqname="-US-";
       break;
       case "resources":
         this.title="Resources";

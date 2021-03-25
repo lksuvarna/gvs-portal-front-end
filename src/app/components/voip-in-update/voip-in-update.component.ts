@@ -38,6 +38,11 @@ export class VoipInUpdateComponent implements OnInit {
   isButtonVisible = true;	
   isSpinnerVisible= false;
   pcode: any;
+  sessionwarninginfo:any;
+  sessionwarninginfosnow:any;
+  warninginfo=false;
+  warninginfosnow=false;
+  identifier:any;
 
   payload : Jabber_Update = new Jabber_Update();
 
@@ -129,6 +134,19 @@ export class VoipInUpdateComponent implements OnInit {
     });
 
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
+    this.sessionwarninginfo = sessionStorage.getItem('warninginfo')
+    this.sessionwarninginfosnow = sessionStorage.getItem('warninginfosnow')
+    if (this.sessionwarninginfo == 'false1') {
+      this.warninginfo = true
+    }
+    else if (this.sessionwarninginfosnow == 'true1') {
+      this.warninginfosnow = true
+      this.identifier = sessionStorage.getItem('identifier')
+    }
+    else {
+      this.identifier = sessionStorage.getItem('identifier')
+      this.Jabber.push(this.identifier)
+    }
     this.route.queryParams	
     .subscribe(params => {	
       console.log(params);	
@@ -152,15 +170,7 @@ export class VoipInUpdateComponent implements OnInit {
   });
   const servicesData = { 	
     "data": [	
-      {    	
-        "lhs": [	
-          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false}, 	
-          { "name": "Jabber", "routingname": "/services", "indented": true, "highlighted": true },           	
-          {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-          {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-          {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-          {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}	
-        ],	
+      {    		
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
         "step" : 3,	
         
@@ -170,7 +180,7 @@ export class VoipInUpdateComponent implements OnInit {
    
   }	
   
-    
+  this.reqFor = sessionStorage.getItem('radioAction');
     this.servicesData = servicesData.data[0]
   }
   previousStep(event : any){
