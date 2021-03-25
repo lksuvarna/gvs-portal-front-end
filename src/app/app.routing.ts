@@ -21,6 +21,7 @@ import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-v
 import { RevalidationpendingComponent } from './components/revalidationpending/revalidationpending.component';
 import { VoipAuNewComponent } from './components/voip-au-new/voip-au-new.component';
 import { VoipLaNewComponent } from './components/voip-la-new/voip-la-new.component';
+import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-update.component';
 import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.component';
 
 
@@ -39,8 +40,9 @@ const appRoutes: Routes = [
     { path: 'topcountryframe', component: TopcountryframeComponent },
     { path: 'searchresult', component: ServicessearchComponent },  
     { path: 'inprogress', component: DummyComponent },
-    { path: 'entrydetailsjd', component: VoipInDeleteComponent },    
-    { path: 'entrydetails', component: VoipInNewComponent },      
+    { path: 'entrydetailsjd', component: VoipInDeleteComponent },
+    { path: 'entrydetails', component: VoipInNewComponent },
+    { path: 'entrydetailsiju', component: VoipInUpdateComponent },      
     { path: 'reviewdetails', component: ReviewdetailsComponent },  
     { path: 'resultpage', component: ResultpageComponent },
     { path: 'employeesearchdelete', component: EmployeesearchVoipDeleteComponent},

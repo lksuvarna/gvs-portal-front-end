@@ -35,7 +35,7 @@ export class ResultpageComponent implements OnInit {
       })
       this.requestResult =
   {
-    serviceName:this.page,
+    serviceName:this.getPage(),
     serviceNumber:sessionStorage.getItem('reqno')
   }
     const servicesData = { 
@@ -60,17 +60,16 @@ export class ResultpageComponent implements OnInit {
     }
     getPage(){
 if(this.service=='jabber_new'){
-  this.page='new Jabber'
+  this.page='new Jabber';
+  return this.page
 }
 if(this.service=='jabber_delete'){
-  this.page='delete Jabber'
+  this.page='delete Jabber';
+  return this.page;
+}
+if(this.service=='jabber_update'){
+  this.page='update Jabber';
+  return this.page;
 }
     }
   }
-  
-
-
-
-
-
-

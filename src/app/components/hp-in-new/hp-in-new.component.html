@@ -1,0 +1,426 @@
+<app-topcountryframe></app-topcountryframe>
+
+
+<div class=" ds-panel ds-col-12"></div>
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+    <div class="ds-col-md-4 ds-col-xl-4">
+        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
+    </div>
+    <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
+        <form [hidden]="isEntryForm" (submit)='entryDetails(formData)' #formData='ngForm'>
+
+            <b>Fixed Phone - New Request</b>
+
+            <div class="ds-pad-t-0_5 ds-pad-b-1">
+                Fields marked with an asterick (<span class="ds-text-contextual-red-2">*</span>) are required.
+            </div>
+            <div class=" ds-panel ds-col-12 "></div>
+
+            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+
+
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
+
+            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Office
+                Location</label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="54%" height="10">
+                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel>
+                                    <option value ="">Select Office Location</option>
+                                    <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
+                    {{ fl_location }}</option>
+                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr valign="top" [hidden]='hideBuilding'>
+                        <td colspan="2" width="46%"><label for="builId" class="ds-text-capitalize"> Campus</label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="54%">
+                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                                <select name="Buildings" rows="2" cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1" [(ngModel)]='campus'>
+                                    <option value ="">Select One</option>
+                                    <option *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
+                </select>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize ds-padding-top-2">Funded</label>
+                        </td>
+                        <td width="54%">
+                            <div class="ds-mar-b-1">
+                                <div class="ds-input-radio-group">
+                                    <label for="radio1" class="ds-input-radio ds-pad-r-1" style="display:inline">
+                    <input type="radio" [(ngModel)]="Voice_Type" name="Voice_Type" id="radio1" class="ds-input"
+                      value="Yes" (click)='showChargeDepartmentCode()'>
+                    <div class="ds-input-control"></div><span class="ds-pad-l-0_5">Yes</span>
+                  </label><label for="radio2" class="ds-input-radio ds-pad-r-1" style="display:inline">
+                    <input type="radio" [(ngModel)]="Voice_Type" checked name="Voice_Type" id="radio2" class="ds-input"
+                      value="No" (click)='hideChargeDepartmentCode()'>
+                    <div class="ds-input-control"></div><span class="ds-pad-l-0_5">No</span>
+                  </label>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top" [hidden]='hideDeptCode'>
+                        <td colspan="2" width="46%">
+                            <div id="d1"><label for="addId" class="ds-text-capitalize ds-pad-t-1">Charge Department
+                  Code </label> <span class="ds-text-contextual-red-2">*</span></div>
+                        </td>
+                        <td width="54%">
+                            <div id="d21" class="ds-input-container ">
+                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" autocomplete="off" ngModel>
+                                <div id="Mentor1Div"></div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize " style="display: inline-block;padding-bottom: 1rem;">Business Unit</label>
+                        </td>
+                        <td width="54%"><label name='BusinessUnit' style="display: inline-block;padding-bottom: 1rem;" ngModel> GBS </label>
+                        </td>
+                    </tr>
+
+                    <tr valign="top" [hidden]='hideProjectId'>
+                        <td colspan="2" width="46%"><br><label for="Projectid" class="ds-text-capitalize ds-pad-t-1">Project id
+                (for GBS employee only) </label>
+                            <span class="ds-text-contextual-red-2">*</span></td>
+                        <td width="54%">
+                            <div class="ds-input-container ds-pad-t-1">
+                                <input name="Projectid" value="" tabindex="2" rows="2" cols="40" id="Projectid" class="ds-input" style="width:300px !important;" title="Project id" maxlength="11" ngModel> </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%"><br><label for="Accountid" class="ds-text-capitalize ds-pad-t-1">Account id </label>
+                            <span class="ds-text-contextual-red-2">*</span></td>
+                        <td width="54%">
+                            <div class="ds-input-container ds-pad-t-1">
+                                <input name="Accountid" value="" tabindex="2" rows="2" cols="40" id="Accountid" class="ds-input" style="width:300px !important;" title="Account id" maxlength="8" ngModel> </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%"><br><label for="ICAcode" class="ds-text-capitalize ds-pad-t-1">ICA Code</label>
+                            <span class="ds-text-contextual-red-2">*</span></td>
+                        <td width="54%">
+                            <div class="ds-input-container ds-pad-t-1">
+                                <input name="ICAcode" value="" tabindex="2" rows="2" cols="40" id="ICAcode" class="ds-input" style="width:300px !important;" title="ICA Code" maxlength="100" ngModel> </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize">Type of Device </label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="54%" height="10">
+                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Device Type" tabindex="1" #device (change)='selectedDevice(device.value)' ngModel [(ngModel)]='selected_device'>
+                                    <option value ="">Select Device</option>
+                                    <option name="Device_Type" *ngFor='let device of devices' [value]='device' >
+                    {{ device }}</option>
+                </select>
+                            </div>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+
+
+            
+           <table id="t3" width="100%" cellspacing="0" cellpadding="0" border="0" [hidden]='hideDeviceSection'>
+                <tbody>
+                    <tr valign="top" [hidden]='showforAnyDevice'>
+                        <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize">Type of Model </label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="54%" height="10">
+                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Model" tabindex="1" ngModel>
+                                    <option value ="">Select Model</option>
+                                    <option name="Model_Type" *ngFor='let model of models' [value]='model'>
+                    {{ model }}</option>
+                </select>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top" [hidden]='showforFixedPhone'>
+                        <td colspan="2" width="46%" height="10"><label for="EmployeeID" class="ds-text-capitalize">Employee ID </label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                            
+                        </td>
+                        <td width="54%" height="10">
+                            <label style="display: ruby-base-container;">
+                                <input name="StepMentor" value="" class="ds-input" style="width:250px !important;display: inline-block;" title="Employee ID" ngModel>
+                                <button class="ds-button ds-small ds-width-auto" style="padding-right: 1rem;padding-left: 1rem; margin-left: 2px;">Go</button>
+                            </label>
+                        </td>
+                    </tr>
+
+                    <tr class='ds-mar-t-1_5' valign="top" [hidden]='showforFixedPhone'>
+                      <td colspan="2" width="46%" height="10"><label for="Voicemail"
+                          class="ds-text-capitalize ds-mar-t-1" style="display: inline-block;">Voicemail Required</label>
+                      </td>
+                      <td width="54%" height="10">
+                        <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                          <select rows="2" name="Voicemail" cols="40" id="VoicemailId"
+                            class="ds-title ds-align-text-left ds-mar-t-1"
+                            style="width:300px !important; text-transform: uppercase;" title="Voicemail" tabindex="1" [(ngModel)]="voicemail"
+                            ngModel>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                          </select>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <tr valign="top" [hidden]='showforFixedPhone'>
+                        <td colspan="2" width="46%" height="10"><label for="cos"
+                            class="ds-text-capitalize">Select Class of Service (COS)</label>
+                        </td>
+                        <td width="54%" height="10">
+                          <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                            <select rows="2" name="cos" cols="40" id="COSId"
+                              class="ds-title ds-align-text-left"
+                              style="width:300px !important; text-transform: uppercase;" title="Class of Service" tabindex="1" [(ngModel)]='COS' #cos (change)='classofservice(cos.value)'
+                              ngModel>
+                              <option value="national">National</option>
+                              <option value="international">International</option>
+                            </select>
+                          </div>
+                        </td>
+                      </tr>
+
+                      <tr valign="top" [hidden]='showBusinessNeed'>
+                        <td colspan="2" width="46%"><br><label for="Justification" class="ds-text-capitalize ds-pad-t-1">Business Need (Why is international required?) </label>
+                            <span class="ds-text-contextual-red-2">*</span></td>
+                        <td width="54%">
+                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" ngModel></textarea>
+                        </td>
+                    </tr>
+
+                      <tr valign="top" [hidden]='showforAnyDevice'>
+                        <td colspan="2" width="46%"><br><label for="Description" class="ds-text-capitalize ds-pad-t-1">Description of the Device </label>
+                            <span class="ds-text-contextual-red-2">*</span></td>
+                        <td width="54%">
+                            <div class="ds-input-container ds-pad-t-1">
+                                <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" style="width:300px !important;" title="Description" maxlength="30" ngModel>
+                                <label *ngIf="selected_device == 'Extension Mobility Station'">e.g. IBMC Lv21 EM desk </label>
+                                <label *ngIf="selected_device == 'Conference / Meeting Room Phone'">e.g. IBMC Lv21 conference room 3 </label>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top" [hidden]='showforAnyDevice'>
+                        <td colspan="2" width="46%"><br><label for="MACAddress" class="ds-text-capitalize">MAC Address of the Device </label>
+                            <span class="ds-text-contextual-red-2">*</span></td>
+                        <td width="54%">
+                            <div class="ds-input-container">
+                                <input name="MACAddress" value="" tabindex="2" rows="2" cols="40" id="MACAddressId" class="ds-input" style="width:300px !important;" title="MAC Address" maxlength="12" ngModel>
+                                <label>Note:Combination of (0 to 9 , A to F) and Length:12</label>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+
+            <br>
+            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
+              <input type="button" name="back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
+                value="Back" (click)="backClick()">
+            </span>
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+              <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                tabindex="32767" value="Next">
+            </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form [hidden]="isReviewForm">
+            
+            <b>Fixed Phone - New Request</b>
+
+            
+            <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+            </div>
+            <div class="ds-hr-thick ds-mar-b-1_5"></div>
+
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+
+
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2>
+
+            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="46%" height="10">
+                            <label for="addId1">Office Location</label>
+                        </td>
+                        <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">Campus</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.campus}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">Funded</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.funded}}</td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label [hidden]="hideDeptCode" for="addId1">Charge Department Code</label>
+                        </td>
+                        <td [hidden]="hideDeptCode" width="54%">{{reviewDetailsIndia.chargeDepartmentCode}}</td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">Business Unit</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.businessUnit}}</td>
+                    </tr>
+
+                    <tr valign="top" [hidden]='hideProjectId'>
+                        <td colspan="2" width="46%">
+                            <label for="Projectid">Project id (for GBS employee only)</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.projectId}}</td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="icano">Account Id</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.accountId}}</td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="icano">ICA Code</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.icaCode}}</td>
+                    </tr>
+                    
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="device">Type of Device</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.device}}</td>
+                    </tr>
+                    
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="model">Type of Model</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.model}}</td>
+                    </tr>
+                    
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="employeeId">Employee ID</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.employeeId}}</td>
+                    </tr>
+                    
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="voiemail">Voicemail Required</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.voicemail}}</td>
+                    </tr>
+                    
+                    <tr valign="top" [hidden]='showforFixedPhone'>
+                        <td colspan="2" width="46%">
+                            <label for="cos">Class of Service</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.cos}}</td>
+                    </tr>
+                    
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="justification">Business Justification</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.justification}}</td>
+                    </tr>
+                    
+                    <tr valign="top" [hidden]='showBusinessNeed'>
+                        <td colspan="2" width="46%">
+                            <label for="description">Description of Device</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.description}}</td>
+                    </tr>
+                    
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="mac">MAC Address of the Device</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.mac}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="ds-hr-thick ds-mar-t-1_5"></div>
+            <!-- Dark Background -->
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+                <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
+            </div>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
+              <input type="button" name="back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                (click)='BackButton()' *ngIf="this.isButtonVisible">
+            </span>
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+              <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+            </span>
+                        
+
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+</div>
