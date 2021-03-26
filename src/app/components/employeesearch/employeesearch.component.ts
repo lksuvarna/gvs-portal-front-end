@@ -181,7 +181,7 @@ export class EmployeesearchComponent implements OnInit {
         this.getSNOWdata() ;
              
      }
-     if (this.service == "resources"  || this.service == "jabber_delete") {      
+     if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update") {      
       this.getDBdata() ;
           
    }
@@ -260,7 +260,7 @@ export class EmployeesearchComponent implements OnInit {
         else { sessionStorage.setItem('identifier', this.identifier) ;
         
         this.datadb= "yes";}
-        if(this.service=="jabber_delete"){
+        if(this.service=="jabber_delete" || this.service=='jabber_update'){
           console.log("insidesnowdelete")
           this.getSNOWdata();
           this.datadb= "yes";
@@ -339,6 +339,16 @@ export class EmployeesearchComponent implements OnInit {
       this.title="Delete Jabber Request";
       this.routingname="/entrydetailsjd";
       this.reqname="-DS-";
+      break;
+      case "jabber_update":
+      this.title="Update Jabber Request";
+      this.routingname="/entrydetailsiju";
+      this.reqname="-US-";
+      break;
+      case "jabber_move":
+      this.title="Move Jabber Request";
+      this.routingname="/entrydetailsijm";
+      this.reqname="-MS-";
       break;
       case "resources":
         this.title="Resources";

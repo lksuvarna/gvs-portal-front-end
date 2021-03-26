@@ -35,20 +35,13 @@ export class ResultpageComponent implements OnInit {
       })
       this.requestResult =
   {
-    serviceName:this.page,
+    serviceName:this.getPage(),
     serviceNumber:sessionStorage.getItem('reqno')
   }
     const servicesData = { 
     "data": [
       {    
-        "lhs": [
-          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false}, 
-          {"name" : "Jabber","routingname":"/services", "indented" : true, "highlighted": true},            
-          {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
-        ],
+        
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
         
       }
@@ -60,17 +53,16 @@ export class ResultpageComponent implements OnInit {
     }
     getPage(){
 if(this.service=='jabber_new'){
-  this.page='new Jabber'
+  this.page='new Jabber';
+  return this.page
 }
 if(this.service=='jabber_delete'){
-  this.page='delete Jabber'
+  this.page='delete Jabber';
+  return this.page;
+}
+if(this.service=='jabber_update'){
+  this.page='update Jabber';
+  return this.page;
 }
     }
   }
-  
-
-
-
-
-
-

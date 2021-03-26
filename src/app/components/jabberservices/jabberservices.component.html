@@ -6,7 +6,7 @@
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <p class="lead-in">Please click on a request type below to initiate a Jabber service request. </p>
-        <div class="ds-col-12">
+        <div class="ds-col-12" *ngIf="linkv.includes('new')">
             <div class="ds-panel" >
                 <div class="ds-panel-container">
                     <a [routerLink]="['/employeesearch']" [queryParams]="{country:pcode,service:'jabber_new'}" style="text-decoration: none;">
@@ -20,10 +20,10 @@
                         </table>
                     </a>
                 </div>
-            </div><br>
-            <div class="ds-panel">
+            </div><br *ngIf="linkv.includes('new')">
+            <div class="ds-panel" *ngIf="linkv.includes('update')">
                 <div class="ds-panel-container">
-                    <a [routerLink]="['/inprogress']" [queryParams]="{country:pcode}" style="text-decoration: none;">
+                    <a [routerLink]="['/employeesearch']" [queryParams]="{country:pcode,service:'jabber_update'}" style="text-decoration: none;">
                         <table>
                             <tbody>
                                 <tr>
@@ -34,8 +34,8 @@
                         </table>
                     </a>
                 </div>
-            </div><br>
-            <div class="ds-panel">
+            </div><br *ngIf="linkv.includes('update')">
+            <div class="ds-panel" *ngIf="linkv.includes('move')">
                 <div class="ds-panel-container">
                     <a [routerLink]="['/inprogress']" [queryParams]="{country:pcode}" style="text-decoration: none;">
                         <table>
@@ -48,8 +48,8 @@
                         </table>
                     </a>
                 </div>
-            </div><br>
-            <div class="ds-panel">
+            </div><br *ngIf="linkv.includes('move')">
+            <div class="ds-panel" *ngIf="linkv.includes('delete')">
                 <div class="ds-panel-container">
                     <a [routerLink]="['/employeesearch']" [queryParams]="{country:pcode,service:'jabber_delete'}" style="text-decoration: none;">
                         <table>
@@ -62,7 +62,7 @@
                         </table>
                     </a>
                 </div>
-            </div><br>
+            </div><br *ngIf="linkv.includes('delete')">
         </div>
     </div>
 </div>
