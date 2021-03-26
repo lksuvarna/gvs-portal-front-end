@@ -16,7 +16,7 @@
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
-            <app-steps [step]="servicesData.step+2" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
+            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
             <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
@@ -62,63 +62,66 @@
                 class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="NEXT" *ngIf="warninginfo==false && warninginfosnow==false">
             </span>
 
-          </div>
-        </div>
-      </div>
-    </form>
+                    </div>
+                </div>
+            </div>
+        </form>
 
 
 
-    <form [hidden]='isReviewForm'>
+        <form [hidden]='isReviewForm'>
 
-      <b>Delete Jabber Request</b>
+            <b>Delete Jabber Request</b>
 
-      <div class="ds-pad-t-0_5 ds-pad-b-1">
-        By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
-      </div>
-      <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-pad-t-0_5 ds-pad-b-1">
+                By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+            </div>
+            <div class=" ds-panel ds-col-12 "></div>
 
-      <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
 
 
-      <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Review Details</h2>
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Review Details</h2>
 
-      <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
-        <tbody>
-          <tr valign="top">
-            <td colspan="2" width="43%">Jabber Number</td>
-            <td width="57%">
-              <div class="ds-margin-bottom-2">{{selectedJabber}}</div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <br>
-      <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
-        <p>Opps! Some thing went worng.Please try again latter.</p><p>
-    </p></div>
-      <div class=" ds-panel ds-col-12 "></div>
-      <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
-        <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
-        <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
-    </div>
-      <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
-        <div class="ds-tray-fit-content ds-mar-b-0">
-          <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
-            <span class="ds-pad-l-4" id="button1">
+            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="43%">Jabber Number</td>
+                        <td width="57%">
+                            <div class="ds-margin-bottom-2">{{selectedJabber}}</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
+                <p></p>
+                <p>Opps! Some thing went worng.Please try again latter.</p>
+                <p>
+                </p>
+            </div>
+            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+                <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
+            </div>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
 
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
                 value="BACK" (click)='BackButton()' *ngIf="this.isButtonVisible  && !errorinfo">
             </span>
 
-            <span class="ds-pad-l-1 ds-pad-r-1" id="button2" *ngIf="warninginfo==false">
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2" *ngIf="warninginfo==false">
               <input type="submit" name="next"  (click)="submit_snow()" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="SUBMIT" *ngIf="this.isButtonVisible  && !errorinfo" >
             </span>
-            <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
-          </div>
-        </div>
-      </div>
+                        <input type="button" name="exit" *ngIf="errorinfo" type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
+                    </div>
+                </div>
+            </div>
 
 
         </form>
