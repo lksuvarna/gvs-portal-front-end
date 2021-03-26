@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
-import { Jabber_New } from '../../../../config/payload';
+import { Jabber_Move } from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { Location } from '@angular/common';
 
@@ -21,6 +21,7 @@ export class VoipInMoveComponent implements OnInit {
   displayDiv = false;
   isReviewFormMove = true;
   isEntryFormMove = false;
+  errorinfo:any;
   campA: any = [];
   camp: any = [];
   buildA: any = [];
@@ -46,7 +47,7 @@ export class VoipInMoveComponent implements OnInit {
   reqFor: any;
   hideProjectId = false;
 
-  payload: Jabber_New = new Jabber_New();
+  payload: Jabber_Move = new Jabber_Move();
   reviewDetailsIndia = {
     jabberNumbertoMove: "",
     officeLocation: "",
@@ -165,19 +166,19 @@ export class VoipInMoveComponent implements OnInit {
 
   // Submit to Snow Jabber new code added by Swarnava	
   submit_snow() {
-    //this.reqno=this.countrydetails.isocode+"-NS-"+this.cnum.substr(0,6)+"-"+gettime();	
+    this.reqno=this.countrydetails.isocode+"-MS-"+this.cnum.substr(0,6)+"-"+gettime();		
     sessionStorage.setItem('reqno', this.reqno)
     this.isButtonVisible = false;
     this.isSpinnerVisible = true;
     this.payload.orinator_payload = this.orgi;
     this.payload.cNum_payload = this.cnum;
     // fields picked up from form -- begins	
-    this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
+    //this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
     // by default set to true. below line can be removed if needed.	
     //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
     this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;
     // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
-    this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;
+   // this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;
     this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
     this.payload.Location_final = this.reviewDetailsIndia.campus;
@@ -187,23 +188,30 @@ export class VoipInMoveComponent implements OnInit {
     // fields to be picked up from form -- ends	
     this.payload.level1_japproval = this.countrydetails.level1_japproval;
     this.payload.level2_japproval = this.countrydetails.level2_japproval;
-    this.payload.SLA_type = this.countrydetails.SLA_type;
+    //this.payload.SLA_type = this.countrydetails.SLA_type;
     this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
     this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
     this.payload.countryname = this.countrydetails.name;
-    this.payload.request_type = 'jabber_new';
+    this.payload.request_type = 'jabber_move';
     this.payload.evolution_instance = this.countrydetails.evolution_instance;
     this.payload.qag = this.countrydetails.qag;
     this.payload.class_of_serice = this.countrydetails.class_of_serice;
-    this.payload.country_code = this.countrydetails.code;
+    //this.payload.country_code = this.countrydetails.code;
     console.log('Payload');
     //console.log(this.payload);	
-    /* this.servicenowservice.submit_new_jabber_request(this.payload).subscribe(data=> {	
-     console.log('response', data);	
-     if(data)	
-     this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
-     });	*/
-  }
+    this.servicenowservice.submit_request_move(this.payload).subscribe(data=> {	
+      console.log('response', data);	
+      if(data)	
+      this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
+      },
+      (error) => {                              //Error callback
+       console.error('error caught in component'+error);
+       this.isSpinnerVisible= false; 	
+       this.errorinfo=true;
+       this.isButtonVisible=true;
+     }
+      );	
+      }		
 
   showChargeDepartmentCode() {
     this.hideDeptCode = false;
@@ -247,14 +255,7 @@ export class VoipInMoveComponent implements OnInit {
      const servicesData = { 	
        "data": [	
          {    	
-           "lhs": [	
-             {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": false}, 	
-             { "name": "Jabber", "routingname": "/services", "indented": true, "highlighted": true },           	
-             {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-             {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},	
-             {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}	
-           ],	
+           
            "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
            "step" : 3,	
            
