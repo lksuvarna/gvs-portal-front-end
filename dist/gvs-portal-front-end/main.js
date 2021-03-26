@@ -73,8 +73,7 @@ function JabberservicesComponent_div_8_div_14_Template(rf, ctx) { if (rf & 1) {
 function JabberservicesComponent_div_8_br_15_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
-const _c2 = function () { return ["/inprogress"]; };
-const _c3 = function (a0) { return { country: a0 }; };
+const _c2 = function (a0) { return { country: a0, service: "jabber_move" }; };
 function JabberservicesComponent_div_8_div_16_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 9);
@@ -101,12 +100,12 @@ function JabberservicesComponent_div_8_div_16_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](2, _c2))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](3, _c3, ctx_r4.pcode));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](2, _c0))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](3, _c2, ctx_r4.pcode));
 } }
 function JabberservicesComponent_div_8_br_17_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
-const _c4 = function (a0) { return { country: a0, service: "jabber_delete" }; };
+const _c3 = function (a0) { return { country: a0, service: "jabber_delete" }; };
 function JabberservicesComponent_div_8_div_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 9);
@@ -133,12 +132,12 @@ function JabberservicesComponent_div_8_div_18_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](2, _c0))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](3, _c4, ctx_r6.pcode));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](2, _c0))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](3, _c3, ctx_r6.pcode));
 } }
 function JabberservicesComponent_div_8_br_19_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
-const _c5 = function (a0) { return { country: a0, service: "jabber_new" }; };
+const _c4 = function (a0) { return { country: a0, service: "jabber_new" }; };
 function JabberservicesComponent_div_8_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 8);
@@ -174,7 +173,7 @@ function JabberservicesComponent_div_8_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](9, _c0))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](10, _c5, ctx_r0.pcode));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](9, _c0))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](10, _c4, ctx_r0.pcode));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.linkv.includes("new"));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -8771,7 +8770,7 @@ class EmployeesearchComponent {
                 if (this.service == "requests") {
                     this.getSNOWdata();
                 }
-                if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update") {
+                if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service == 'jabber_move') {
                     this.getDBdata();
                 }
                 //end data and routing
@@ -8801,7 +8800,7 @@ class EmployeesearchComponent {
             }
             else {
                 this.datasnow = "nodata";
-                if (this.service == "jabber_new") {
+                if (this.service == "jabber_new" || this.service == "jabber_move") {
                     this.getLocationdata();
                 }
                 else {
@@ -8836,7 +8835,7 @@ class EmployeesearchComponent {
                     sessionStorage.setItem('identifier', this.identifier);
                     this.datadb = "yes";
                 }
-                if (this.service == "jabber_delete" || this.service == 'jabber_update') {
+                if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move') {
                     console.log("insidesnowdelete");
                     this.getSNOWdata();
                     this.datadb = "yes";

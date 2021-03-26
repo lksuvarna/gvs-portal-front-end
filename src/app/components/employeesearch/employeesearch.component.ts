@@ -181,7 +181,7 @@ export class EmployeesearchComponent implements OnInit {
         this.getSNOWdata() ;
              
      }
-     if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update") {      
+     if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service=='jabber_move') {      
       this.getDBdata() ;
           
    }
@@ -222,7 +222,7 @@ export class EmployeesearchComponent implements OnInit {
 
       else {
         this.datasnow= "nodata";
-        if(this.service=="jabber_new"){
+        if(this.service=="jabber_new"||this.service=="jabber_move"){
           this.getLocationdata()
         }
         
@@ -260,7 +260,7 @@ export class EmployeesearchComponent implements OnInit {
         else { sessionStorage.setItem('identifier', this.identifier) ;
         
         this.datadb= "yes";}
-        if(this.service=="jabber_delete" || this.service=='jabber_update'){
+        if(this.service=="jabber_delete" || this.service=='jabber_update' || this.service=='jabber_move'){
           console.log("insidesnowdelete")
           this.getSNOWdata();
           this.datadb= "yes";
