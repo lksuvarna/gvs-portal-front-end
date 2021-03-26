@@ -37,7 +37,7 @@
             </div><br *ngIf="linkv.includes('update')">
             <div class="ds-panel" *ngIf="linkv.includes('move')">
                 <div class="ds-panel-container">
-                    <a [routerLink]="['/inprogress']" [queryParams]="{country:pcode}" style="text-decoration: none;">
+                    <a [routerLink]="['/employeesearch']" [queryParams]="{country:pcode,service:'jabber_move'}" style="text-decoration: none;">
                         <table>
                             <tbody>
                                 <tr>
