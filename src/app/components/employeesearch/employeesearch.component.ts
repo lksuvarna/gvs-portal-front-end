@@ -345,6 +345,11 @@ export class EmployeesearchComponent implements OnInit {
       this.routingname="/entrydetailsiju";
       this.reqname="-US-";
       break;
+      case "jabber_move":
+      this.title="Move Jabber Request";
+      this.routingname="/entrydetailsijm";
+      this.reqname="-MS-";
+      break;
       case "resources":
         this.title="Resources";
         break;

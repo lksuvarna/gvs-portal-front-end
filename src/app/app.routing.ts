@@ -23,6 +23,7 @@ import { VoipAuNewComponent } from './components/voip-au-new/voip-au-new.compone
 import { VoipLaNewComponent } from './components/voip-la-new/voip-la-new.component';
 import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-update.component';
 import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.component';
+import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.component';
 
 
 
@@ -42,7 +43,8 @@ const appRoutes: Routes = [
     { path: 'inprogress', component: DummyComponent },
     { path: 'entrydetailsjd', component: VoipInDeleteComponent },
     { path: 'entrydetails', component: VoipInNewComponent },
-    { path: 'entrydetailsiju', component: VoipInUpdateComponent },      
+    { path: 'entrydetailsiju', component: VoipInUpdateComponent },  
+    { path: 'entrydetailsijm', component: VoipInMoveComponent },      
     { path: 'reviewdetails', component: ReviewdetailsComponent },  
     { path: 'resultpage', component: ResultpageComponent },
     { path: 'employeesearchdelete', component: EmployeesearchVoipDeleteComponent},
