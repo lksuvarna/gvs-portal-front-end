@@ -12,7 +12,7 @@
             <br><b>{{title}}</b>
 
 
-            <div class="ds-pad-b-1">This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</div>
+            <div class="ds-pad-t-0_5 ds-pad-b-1">This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="hideDisserial" [hideSteps]="notvalid"></app-steps>
@@ -22,7 +22,7 @@
             <table width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td>Who is this request for</td>
+                        <td width ="41%">Who is this request for</td>
                         <td>
                             <div class="ds-input-container">
                                 <div class="ds-input-radio-group ds-flex" role="group" aria-labelledby="horizontal-radio-buttons-example">
@@ -41,7 +41,7 @@
                         </td>
                     </tr>
                     <tr *ngIf="hideDisserial">
-                        <td>
+                        <td width ="41%">
                             <label for="OriginatorNameId">Name</label>
                         </td>
                         <td colspan="2">
@@ -49,28 +49,28 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <div *ngIf="hideDisserial" class="ds-pad-t-2">
+                        <td width ="41%">
+                            <div *ngIf="hideDisserial" class="ds-pad-t-1">
                                 <label for="OriginatorNameId">Serial Number</label>
                             </div>
                         </td>
                         <td colspan="2">
-                            <div *ngIf="hideDisserial" class="ds-pad-t-2">{{this.ccode}}</div>
+                            <div *ngIf="hideDisserial" class="ds-pad-t-1">{{this.ccode}}</div>
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            <div *ngIf="hideDisTextBox" class="ds-pad-t-2">
+                        <td width ="41%">
+                            <div *ngIf="hideDisTextBox">
                                 <label for="OriginatorNameId">Employee Serial Number</label>
                                 <span class="ds-text-contextual-red-2">*</span>
                             </div>
                         </td>
                         <td colspan="2">
-                            <div *ngIf="hideDisTextBox" class=" row ds-pad-t-2">
+                            <div *ngIf="hideDisTextBox">
                                 <div class="ds-col-4">
                                     <input maxlength="6" name="employeeSerial" ngModel type="text" class="ds-input" ngModel={{empno}} (click)="hidedata()">
                                 </div>
-                                <div class="ds-col-6">
+                                <div class="ds-col-6 ds-pad-t-0_5 ds-pad-l-0_3">
                                     <span style="color:#808080">(eg 012789)</span>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                 </tbody>
             </table>
 
-            <p class="ds-col-xs-12 ds-alert ds-warning" id="error" *ngIf=notvalid>
+            <p class="ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning" id="error" *ngIf=notvalid>
                 <font color="black">There is no record of an IBM employee with the serial number {{employeeSerial.substr(0,6)}} available from BluePages</font>
             </p>
 
@@ -108,25 +108,44 @@
             </p></div>
 
 
-            <div class="ds-hr-thick ds-mar-t-1_5"></div>
-
+            <br><div class=" ds-panel ds-col-12 "></div>
             <div class="ds-loader-container" *ngIf=showloader>
                 <div class="ds-loader-header"></div>
                 <div class="ds-loader" role="alert" aria-busy="true" aria-label=""> </div>
             </div>
 
-           
-
-            <div class="ds-row ds-mar-t-b-3_5">
-                <div class="ds-col-xs-12 ds-col-md-5 ds-col-lg-2 ds-offset-md-3 ds-offset-lg-6 ds-push-md-4 ds-push-lg-4">
-                    <button *ngIf="!showloader && !notvalid && !errorinfo" type="submit" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%">NEXT</button>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1 ds-float-lg-right">
+                        <span class="ds-pad-l-4" id="button1">
+                            <input *ngIf="!showloader" type="button" name="EXIT REQUEST" class="ds-button ds-secondary 
+                            ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" 
+                            [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}"
+                            value="EXIT REQUEST">
+                        </span>
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                            <input *ngIf="!showloader && !notvalid && !errorinfo" type="submit" 
+                            name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 
+                            ds-pad-r-3" value="Next">
+                        </span>
+                    </div>
                 </div>
-                <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3 ds-pull-md-5 ds-pull-lg-1">
-                    <button *ngIf="!showloader"type="button" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}">EXIT REQUEST</button>
+            </div>        
+
+            <!-- <div class="ds-row ds-grid ds-mar-t-b-3_5 ds-pad-r-1">
+                <div [ngClass] = "!showloader && !notvalid ?'ds-col-lg-2 ds-push-lg-8':'ds-col-lg-2 ds-push-lg-10'">
+                    <button *ngIf="!showloader" type="button" class="ds-button ds-secondary 
+                    ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" 
+                    [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}">
+                    EXIT REQUEST</button>
+                </div>
+                <div class="ds-col-lg-2 ds-push-lg-8">
+                    <button *ngIf="!showloader && !notvalid && !errorinfo" type="submit" 
+                    class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" 
+                    style="width: 100%">NEXT</button>
                 </div>
             </div>
-
-        
+         -->
 
 
         </form>
