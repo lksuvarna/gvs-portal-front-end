@@ -141,7 +141,7 @@ this.identifier=sessionStorage.getItem('identifier')
       {    	
         
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "step" : 2,	
+        "step" : 3,	
         
       }	
     ]	
