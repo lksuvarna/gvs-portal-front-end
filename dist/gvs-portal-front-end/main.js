@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -7835,7 +7835,7 @@ const appRoutingProviders = _angular_router__WEBPACK_IMPORTED_MODULE_0__["Router
 /*!***************************!*\
   !*** ./config/payload.ts ***!
   \***************************/
-/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Special_Request */
+/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Special_Request, fixedphone_new */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -7847,6 +7847,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_Move", function() { return Jabber_Move; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_Update", function() { return Jabber_Update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Special_Request", function() { return Special_Request; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fixedphone_new", function() { return fixedphone_new; });
 // Class used to create the payload for Db2 search service.
 class db2search {
     db2search() {
@@ -7963,6 +7964,40 @@ class Special_Request {
         this.gvs_portal_link = "";
         this.countryname = "";
         this.request_type = "";
+    }
+}
+// // class used to create the payload for snow fixed phone new service
+class fixedphone_new {
+    fixedphone_new() {
+        this.orinator_payload = "";
+        this.cNum_payload = "";
+        this.Buildings_Disp = "";
+        this.Voice_Type_Disp = "";
+        this.Projectid_Disp = "";
+        this.icano_Disp = "";
+        this.identifier_hp_Disp = "";
+        this.BusinessUnit_Disp = "";
+        this.Department_number_Disp = "";
+        this.Location_final = "";
+        this.accid_Disp = "";
+        this.ReqNo = "";
+        this.Device_Type_Disp = "";
+        this.Model_Disp = "";
+        this.MAC_Disp = "";
+        this.Voicemail_Disp = "";
+        this.Desc_Disp = "";
+        this.LocationCorrect = "";
+        this.COS_Disp = "";
+        this.Justification_Disp = "";
+        this.level2_japproval = "";
+        this.countryname = "";
+        this.request_type = "";
+        this.evolution_instance = "";
+        this.level1_japproval = "";
+        this.gvs_portal_link = "";
+        this.gvs_approval_link = "";
+        this.SLA_type = "";
+        this.country_code = "";
     }
 }
 
@@ -10193,9 +10228,15 @@ class servicenowservice {
         return this.http.post(this.submitUrl, Jabber_update_payload)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorhandler));
     }
+<<<<<<< HEAD
     submit_request_move(Jabber_move_payload) {
         console.log('calling snow');
         return this.http.post(this.submitUrl, Jabber_move_payload)
+=======
+    submit_request_fixed_new(fixedphone_new_payload) {
+        console.log('calling snow');
+        return this.http.post(this.submitUrl, fixedphone_new_payload)
+>>>>>>> b73d3b20a1b9d08a561a2d18dc503254064f7d0e
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorhandler));
     }
     searchsnow(cnum, type, reqno) {
