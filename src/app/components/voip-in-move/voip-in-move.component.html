@@ -1,11 +1,11 @@
-<app-topcountryframe></app-topcountryframe> 
+<app-topcountryframe></app-topcountryframe>
 
 
 <div class=" ds-panel ds-col-12"></div>
 
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
   <div class="ds-col-md-4 ds-col-xl-4">
-    <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation> 
+    <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
   </div>
   <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
     <form [hidden]="isEntryFormMove" (submit)='entryDetailsMove(formData)' #formData='ngForm'>
@@ -21,8 +21,20 @@
 
 
       <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
+      <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfo>
+        <p>There is no Jabber for this serial number. </p>
+      </div>
+      <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
+        <p><span style="font-size: 1rem;">The serial number that you have entered has already one move Jabber request
+            is in progress and request number is {{identifier}}.<br>
 
-      <table width="100%" cellspacing="0" cellpadding="0" border="0">
+            You can view the status of the on-going request by clicking on the Requests link on the left side navigation
+            menu.<br>
+
+            For any further assistance, please contact <a style="color:blue" target="_blank"
+              href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+      </div>
+      <table width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false ">
         <tbody>
           <tr valign="top">
             <td colspan="2" width="46%">
@@ -70,7 +82,8 @@
               <td width="54%">
                 <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                   <select name="Buildings" rows="2" cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left"
-                    style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1" [(ngModel)]='campus'>
+                    style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1"
+                    [(ngModel)]='campus'>
                     <option value="">Select One</option>
                     <option *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
                   </select>
@@ -167,11 +180,12 @@
           <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back" (click)="backClick()">
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                (click)="backClick()">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="Next"><br>
+                value="Next" *ngIf="warninginfo==false && warninginfosnow==false "><br>
             </span>
           </div>
         </div>
@@ -187,11 +201,12 @@
         to process the Personal Information (PI) that you have provided as part of the provisioning process.
       </div>
       <div class="ds-hr-thick ds-mar-b-1_5"></div>
-      
-      <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+
+      <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)">
+      </app-steps>
       <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Jabber Request Details</h2>
 
-      
+
 
       <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
         <tbody>
@@ -281,7 +296,7 @@
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
-            
+
           </div>
         </div>
       </div>

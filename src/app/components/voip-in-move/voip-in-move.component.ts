@@ -22,6 +22,7 @@ export class VoipInMoveComponent implements OnInit {
   isReviewFormMove = true;
   isEntryFormMove = false;
   errorinfo:any;
+  identifier:any = [];
   campA: any = [];
   camp: any = [];
   buildA: any = [];
@@ -38,6 +39,10 @@ export class VoipInMoveComponent implements OnInit {
   reqno: any;
   cloudantData: any = [];
   servicesData: any = [];	
+  sessionwarninginfo:any
+  sessionwarninginfosnow:any
+  warninginfo=false;
+  warninginfosnow=false;
   Locations: any;	
   pcode: any;	
   service: any;	
@@ -164,7 +169,7 @@ export class VoipInMoveComponent implements OnInit {
     this.isReviewFormMove = true;
   }
 
-  // Submit to Snow Jabber new code added by Swarnava	
+   // Submit to Snow Jabber move code 
   submit_snow() {
     this.reqno=this.countrydetails.isocode+"-MS-"+this.cnum.substr(0,6)+"-"+gettime();		
     sessionStorage.setItem('reqno', this.reqno)
@@ -223,14 +228,25 @@ export class VoipInMoveComponent implements OnInit {
 
 
   ngOnInit(): void {
-     // Submit to Snow Jabber new code added by Swarnava	
+    
      this.orgi=this.cookie.getCookie('ccode');	
      this.cnum = sessionStorage.getItem('cnum') ;	
      this.countrydetails = sessionStorage.getItem('countrydetails');	
-     this.countrydetails = JSON.parse(this.countrydetails);	
-      // Submit to Snow Jabber new code added by Swarnava ends	
+     this.countrydetails = JSON.parse(this.countrydetails);	      
         
-     this.ccode=this.cookie.getCookie('ccode').substring(6,9);	
+     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
+     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
+    this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
+    if (this.sessionwarninginfo =='false1'){
+      this.warninginfo = true
+    }
+    else if(this.sessionwarninginfosnow =='true1') {
+this.warninginfosnow=true
+this.identifier=sessionStorage.getItem('identifier')
+    }
+    else{
+      this.identifier=sessionStorage.getItem('identifier')      
+    }	
      this.route.queryParams	
      .subscribe(params => {	
        console.log(params);	

@@ -67,19 +67,24 @@ export class EmployeesearchComponent implements OnInit {
     this.backbutton = sessionStorage.getItem('backbutton');
     this.step = sessionStorage.getItem('step');
      //to get the titles
-     this.getTitle();
+     
     //this.radioAction = "mySelf"; 
-    if (sessionStorage.getItem('radioAction') === null) {
+    if (sessionStorage.getItem('radioAction') === null ||sessionStorage.getItem('radioAction') === '') {
+     
+    //if ("radioAction" in localStorage) {
       this.radioAction = "myself";
+      
     }
     else {
       this.radio = sessionStorage.getItem('radioAction')
+      console.log("radiabutton"+this.radio)
       this.radioAction = this.radio
       this.empno = sessionStorage.getItem('empserial')
 
       this.onRequestForChangesession();
+      
     }
-
+    this.getTitle();
     if(this.countrydetails.scountries)  {	
       this.showCountryCode = true	
       this.subCountries = this.countrydetails.scountries	

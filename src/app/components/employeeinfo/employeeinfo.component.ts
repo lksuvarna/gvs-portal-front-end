@@ -115,15 +115,17 @@ export class EmployeeinfoComponent implements OnInit {
     this.warninginfosnowres = true    
     this.isDataLoaded=true
    }
-   else if ( this.service=="jabber_delete" || this.service=="jabber_update"){
+   else if ( this.service=="jabber_delete" || this.service=="jabber_update"|| this.service=="jabber_move"){
      console.log("deletes"+this.warninginfosnowothers)
      console.log("deletes"+sessionStorage.getItem('warninginfosnow'))
      console.log("deletes"+sessionStorage.getItem('warninginfo'))
      if(this.service == "jabber_delete") {
        this.page = 'delete Jabber';
-     } else {
+     } else if(this.service == "jabber_update"){
        this.page = 'update Jabber';
-     }
+     }else if(this.service == "jabber_move"){
+      this.page = 'move Jabber';
+    }
      if (this.sessionwarninginfosnow=='true1'){
        this.identifier1=sessionStorage.getItem('identifier1')
       this.warninginfosnowothers = true;   

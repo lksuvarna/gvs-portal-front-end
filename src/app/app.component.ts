@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router,NavigationEnd  } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -6,6 +8,24 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'gvs-portal-front-end';
-}
+  display:any;
+  curl:any;
+  service:any;
+  
+  constructor(private router: Router,private route: ActivatedRoute) { }
+  ngOnInit(): void {    
+    this.route.queryParams
+      .subscribe(params => {
+        this.service = params.service;
+        this.display=true;
+        
+  //alert(window.location.href)
+ this.curl=window.location.href
+  if(this.curl.includes('pagenotfound')){
+    this.display=false;
+  }
+  
+})
+}}
