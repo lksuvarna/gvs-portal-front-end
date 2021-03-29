@@ -241,3 +241,72 @@ Special_Request()
  }
 
 }
+
+
+// // class used to create the payload for snow fixed phone new service
+export class fixedphone_new
+{
+orinator_payload !: String;
+cNum_payload !: String;
+Buildings_Disp !: String;
+Voice_Type_Disp !: String;
+Projectid_Disp !: String;
+icano_Disp !: String;
+identifier_hp_Disp !: String;
+BusinessUnit_Disp !: String;
+Department_number_Disp !: String;
+Location_final !: String;
+accid_Disp !: String;
+ReqNo !: String;
+Device_Type_Disp!: String;
+Model_Disp!: String;
+MAC_Disp!: String;
+Voicemail_Disp!: String;
+Desc_Disp!: String;
+LocationCorrect!: String;
+COS_Disp!: String;
+Justification_Disp!: String;
+level2_japproval!: String;
+countryname!: String;
+request_type!: String;
+evolution_instance!: String;
+level1_japproval!: String;
+gvs_portal_link!: String;
+gvs_approval_link!: String;
+SLA_type!: String;
+country_code!: String;
+
+fixedphone_new()
+{
+    this.orinator_payload="";
+    this.cNum_payload="";
+this.Buildings_Disp="";
+this.Voice_Type_Disp="";
+this.Projectid_Disp="";
+this.icano_Disp="";
+this.identifier_hp_Disp="";
+this.BusinessUnit_Disp="";
+this.Department_number_Disp="";
+this.Location_final="";
+this.accid_Disp="";
+this.ReqNo="";
+this.Device_Type_Disp="";
+this.Model_Disp="";
+this.MAC_Disp="";
+this.Voicemail_Disp="";
+this.Desc_Disp="";
+this.LocationCorrect="";
+this.COS_Disp="";
+this.Justification_Disp="";
+this.level2_japproval="";
+this.countryname="";
+this.request_type="";
+this.evolution_instance="";
+this.level1_japproval="";
+this.gvs_portal_link="";
+this.gvs_approval_link="";
+this.SLA_type="";
+this.country_code="";
+}
+
+}
