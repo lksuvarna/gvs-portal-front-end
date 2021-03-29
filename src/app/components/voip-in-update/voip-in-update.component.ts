@@ -35,6 +35,7 @@ export class VoipInUpdateComponent implements OnInit {
   countrydetails : any;
   orgi:any;	
   reqno:any;
+  hideSteps = false
   isButtonVisible = true;	
   isSpinnerVisible= false;
   pcode: any;
@@ -182,12 +183,19 @@ export class VoipInUpdateComponent implements OnInit {
   
   this.reqFor = sessionStorage.getItem('radioAction');
     this.servicesData = servicesData.data[0]
+
+    if(this.warninginfo || this.warninginfosnow){
+      this.hideSteps = true
+    } else {
+      this.hideSteps = false
+    }
   }
   previousStep(event : any){
     this.isEntryForm = false;	
     this.isReviewForm = true;	
     this.fixedPhoneIdentifier = false;	
   }
+  
 
 }
 function gettime() {	

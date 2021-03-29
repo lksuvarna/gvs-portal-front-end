@@ -19,8 +19,8 @@ export class VoipInMoveComponent implements OnInit {
   Voice_Type = "No";
   hideBuilding = true;
   displayDiv = false;
-  isReviewForm = true;
-  isEntryForm = false;
+  isReviewFormMove = true;
+  isEntryFormMove = false;
   campA: any = [];
   camp: any = [];
   buildA: any = [];
@@ -144,8 +144,8 @@ export class VoipInMoveComponent implements OnInit {
       alert('Please enter the ICA Code');
       return;
     }
-    this.isEntryForm = true;
-    this.isReviewForm = false;
+    this.isEntryFormMove = true;
+    this.isReviewFormMove = false;
     this.reviewDetailsIndia.jabberNumbertoMove = formData.value.Identifier_Selected;
     this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
     this.reviewDetailsIndia.campus = formData.value.Buildings;
@@ -159,8 +159,8 @@ export class VoipInMoveComponent implements OnInit {
   }
 
   BackButton() {
-    this.isEntryForm = false;
-    this.isReviewForm = true;
+    this.isEntryFormMove = false;
+    this.isReviewFormMove = true;
   }
 
   // Submit to Snow Jabber new code added by Swarnava	
@@ -270,6 +270,11 @@ export class VoipInMoveComponent implements OnInit {
      if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
        this.hideProjectId = true;
        }
+  }
+  previousStep(event : any){
+    this.isEntryFormMove = false;	
+    this.isReviewFormMove = true;	
+    	
   }
 }
 function gettime() {	

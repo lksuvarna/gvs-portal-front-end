@@ -8,7 +8,7 @@
     <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation> 
   </div>
   <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
-    <form [hidden]="isEntryForm" (submit)='entryDetailsMove(formData)' #formData='ngForm'>
+    <form [hidden]="isEntryFormMove" (submit)='entryDetailsMove(formData)' #formData='ngForm'>
 
       <b>Request Move Jabber service</b>
 
@@ -17,32 +17,7 @@
       </div>
       <div class=" ds-panel ds-col-12 "></div>
 
-      <div class="ds-col-12 ds-pad-t-0_5">
-        <div class="ds-row ">
-          <div class="ds-col-12">
-            <div class="ds-row">
-              <div>
-                <div class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b>STEP
-                      1</b></span> <span class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Search</span>
-                </div>
-                <div class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 2</b></span><span
-                    class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Information</span>
-                </div>
-                <div class="tooltip"><span class="ds-text-contextual-green-3 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 3</b></span><span
-                    class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Entry Details</span>
-                </div>
-                <div class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 4</b></span><span
-                    class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Review Details</span>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
 
       <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
@@ -206,46 +181,17 @@
     </form>
 
 
-    <form [hidden]="isReviewForm">
+    <form [hidden]="isReviewFormMove">
       <b>Request Move Jabber service</b>
       <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM
         to process the Personal Information (PI) that you have provided as part of the provisioning process.
       </div>
       <div class="ds-hr-thick ds-mar-b-1_5"></div>
-
-      <div class="ds-col-12 ds-pad-t-0_5">
-        <div class="ds-row ">
-          <div class="ds-col-12">
-            <div class="ds-row">
-              <div>
-                <div class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b>STEP
-                      1</b></span> <span class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Search</span>
-                </div>
-                <div id="r21" class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 2</b></span><span
-                    class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Information</span>
-                </div>
-                <div id="r21" class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 3</b></span><span
-                    class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Review Details</span>
-                </div>
-                <span id="r3" class=" ds-text-contextual-green-3 ds-pad-r-1 ds-pad-l-0_5"><b><span
-                      class="ds-pad-r-1">-----&gt;</span>
-                    <div class="tooltip">STEP 4
-                      <span style="font-weight:normal;" class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee
-                        Entry Details</span>
-                    </div>
-                  </b>
-                </span>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
+      
+      <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
       <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Jabber Request Details</h2>
+
+      
 
       <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
         <tbody>

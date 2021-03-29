@@ -15,8 +15,10 @@ export class JabberservicesComponent implements OnInit {
   
   servicesData: any = []
   countryname:any;
+  countrydetails:any;
   ccode='';
   pcode = '';
+  linkv:any;
     ngOnInit(): void {
       this.route.queryParams
       .subscribe(params => {
@@ -24,17 +26,12 @@ export class JabberservicesComponent implements OnInit {
 
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
-      })
-      if(sessionStorage.getItem('radioAction')=== null)
-    {
+        this.countrydetails = sessionStorage.getItem('countrydetails');	
+        this.countrydetails = JSON.parse(this.countrydetails);
+     this.linkv=this.countrydetails.jservices
       
-    }
-    else{
-      sessionStorage.setItem('radioAction','myself')      
-      sessionStorage.setItem('empserial','')
-      
-      
-    }
+   
+    console.log(this.countrydetails.jservices)
       const servicesData = { 
       "data": [
         {    
@@ -53,7 +50,18 @@ export class JabberservicesComponent implements OnInit {
     }
       
       this.servicesData = servicesData.data[0]
-    
-      }
+      if(sessionStorage.getItem('radioAction')=== null)
+    {
+      
     }
+    else{
+      sessionStorage.setItem('radioAction','myself')      
+      sessionStorage.setItem('empserial','')
+      
+      
+    }
+    })
+      } 
+    }
+    
     
