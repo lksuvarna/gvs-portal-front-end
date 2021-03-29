@@ -5976,7 +5976,7 @@ class TopcountryframeComponent {
         this.route = route;
         this.ccode = '';
         this.pcode = '';
-        this.routingservices = ['services', 'jabberservices', 'fixedphoneservices', 'facservices', 'jabber_new', 'jabber_delete', 'jabber_update', 'jabber_move'];
+        this.routingservices = ['services', 'jabberservices', 'fixedphoneservices', 'facservices', 'jabber_new', 'jabber_delete', 'jabber_update', 'jabber_move', 'requests', 'resources'];
     }
     ngOnInit() {
         this.route.queryParams

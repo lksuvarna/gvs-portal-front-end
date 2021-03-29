@@ -18,7 +18,7 @@ export class TopcountryframeComponent implements OnInit {
   pcountrydetails:any
   countryroute:any
   service:any;
-  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move']
+  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','requests','resources']
   ngOnInit(): void {
    
     this.route.queryParams
