@@ -27,10 +27,11 @@ export class TopcountryframeComponent implements OnInit {
         this.service=params.service;
         this.pcode = params.country;
         console.log("topcountry component" + this.pcode);
+        console.log("topcountry component" + this.route.component);
       
       this.countryroute=sessionStorage.getItem('countryroute')
     this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-    if(!this.routingservices.includes(this.service) && this.service!==undefined)
+    if(!this.routingservices.includes(this.service) )
       {
         this.router.navigate(['/pagenotfound'], {
           queryParams: {}
