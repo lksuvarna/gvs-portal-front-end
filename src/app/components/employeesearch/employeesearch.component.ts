@@ -71,24 +71,21 @@ export class EmployeesearchComponent implements OnInit {
     //this.radioAction = "mySelf"; 
     if (sessionStorage.getItem('radioAction') === null ||sessionStorage.getItem('radioAction') === '') {
      
-    //if ("radioAction" in localStorage) {
-      this.radioAction = "myself";
-      
-    }
-    else {
-      this.radio = sessionStorage.getItem('radioAction')
-      console.log("radiabutton"+this.radio)
-      this.radioAction = this.radio
-      this.empno = sessionStorage.getItem('empserial')
-
-      this.onRequestForChangesession();
-      
-    }
-    this.getTitle();
-    if(this.countrydetails.scountries)  {	
-      this.showCountryCode = true	
-      this.subCountries = this.countrydetails.scountries	
-    }
+      //if ("radioAction" in localStorage) {
+        this.radioAction = "myself";
+        
+      }
+      else {
+        this.radio = sessionStorage.getItem('radioAction')
+        console.log("radiabutton"+this.radio)
+        this.radioAction = this.radio
+        this.empno = sessionStorage.getItem('empserial')
+  
+        this.onRequestForChangesession();
+        
+      }
+    
+   
     //for lhs
 
    
@@ -102,6 +99,12 @@ export class EmployeesearchComponent implements OnInit {
     }
 
     this.servicesData = servicesData.data[0]
+    
+      this.getTitle();
+      if(this.countrydetails.scountries)  {	
+        this.showCountryCode = true	
+        this.subCountries = this.countrydetails.scountries	
+      }
   })
   }
 
