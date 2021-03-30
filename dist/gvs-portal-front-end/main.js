@@ -5985,9 +5985,10 @@ class TopcountryframeComponent {
             this.service = params.service;
             this.pcode = params.country;
             console.log("topcountry component" + this.pcode);
+            console.log("topcountry component" + this.route.component);
             this.countryroute = sessionStorage.getItem('countryroute');
             this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-            if (!this.routingservices.includes(this.service) && this.service !== undefined) {
+            if (!this.routingservices.includes(this.service)) {
                 this.router.navigate(['/pagenotfound'], {
                     queryParams: {}
                 });
@@ -8841,11 +8842,6 @@ class EmployeesearchComponent {
                 this.empno = sessionStorage.getItem('empserial');
                 this.onRequestForChangesession();
             }
-            this.getTitle();
-            if (this.countrydetails.scountries) {
-                this.showCountryCode = true;
-                this.subCountries = this.countrydetails.scountries;
-            }
             //for lhs
             const servicesData = {
                 "data": [
@@ -8856,6 +8852,11 @@ class EmployeesearchComponent {
                 ]
             };
             this.servicesData = servicesData.data[0];
+            this.getTitle();
+            if (this.countrydetails.scountries) {
+                this.showCountryCode = true;
+                this.subCountries = this.countrydetails.scountries;
+            }
         });
     }
     onSubmit(formData) {
