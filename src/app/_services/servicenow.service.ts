@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { createOfflineCompileUrlResolver } from '@angular/compiler';
 
-import { Jabber_New,Jabber_Delete,Jabber_Update,Jabber_Move, snowsearch, fixedphone_new  } from '../../../config/payload';
+import { Jabber_New,Jabber_Delete,Jabber_Update,Jabber_Move, snowsearch, fixedphone_new, fixedphone_delete, fixedphone_update  } from '../../../config/payload';
 
 
 @Injectable({ providedIn: 'root' })
@@ -47,6 +47,20 @@ export class servicenowservice {
     return this.http.post(this.submitUrl,fixedphone_new_payload)
       .pipe(catchError(this.errorhandler))
   }
+
+  submit_request_fixed_delete(fixedphone_delete_payload : fixedphone_delete): Observable<any> {
+    console.log('calling snow');
+    return this.http.post(this.submitUrl,fixedphone_delete_payload)
+      .pipe(catchError(this.errorhandler))
+  }
+
+
+  submit_request_fixed_update(fixedphone_update_payload : fixedphone_update): Observable<any> {
+    console.log('calling snow');
+    return this.http.post(this.submitUrl,fixedphone_update_payload)
+      .pipe(catchError(this.errorhandler))
+  }
+
 
   
 
