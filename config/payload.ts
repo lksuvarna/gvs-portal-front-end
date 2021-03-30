@@ -278,8 +278,8 @@ country_code!: String;
 
 fixedphone_new()
 {
-    this.orinator_payload="";
-    this.cNum_payload="";
+this.orinator_payload="";
+this.cNum_payload="";
 this.Buildings_Disp="";
 this.Voice_Type_Disp="";
 this.Projectid_Disp="";
@@ -307,6 +307,93 @@ this.gvs_portal_link="";
 this.gvs_approval_link="";
 this.SLA_type="";
 this.country_code="";
+}
+
+}
+
+
+// // class used to create the payload for snow fixed phone delete service
+export class fixedphone_delete
+{
+    request_type!: String;
+    orinator_payload!: String;
+    cNum_payload!: String;
+    Identifier!: String;
+    ReqNo!: String;
+    mac!: String;
+    olddesc!: String;
+    ccmail!: String;
+    countryname!: String;
+    evolution_instance!: String;
+    gvs_portal_link!: String;
+
+    fixedphone_delete(){
+     this.request_type="";
+     this.orinator_payload="";
+     this.cNum_payload="";
+     this.Identifier="";
+     this.ReqNo="";
+     this.mac="";
+     this.olddesc="";
+     this.ccmail="";
+     this.countryname="";
+     this.evolution_instance="";
+     this.gvs_portal_link="";
+
+    }
+
+}
+
+
+// // class used to create the payload for snow fixed phone update service
+export class fixedphone_update
+{
+
+request_type!: String;
+orinator_payload!: String;
+cNum_payload!: String;
+Comments_Disp!: String;
+Newdesc_Disp!: String;
+NewModel_Disp!: String;
+MAC_Disp!: String;
+updatereq_Disp!: String;
+currmodel!: String;
+olddesc!: String;
+Identifier!: String;
+MAC!: String;
+Location_fina!: String;
+LocationCorrectnew!: String;
+ReqNo!: String;
+countryname!: String;
+Location_Disp!: String;
+evolution_instance!: String;
+gvs_portal_link!: String;
+gvs_approval_link!: String;
+
+fixedphone_update(){
+    this.request_type="";
+    this.orinator_payload="";
+    this.cNum_payload="";
+    this.Comments_Disp="";
+    this.Newdesc_Disp="";
+    this.NewModel_Disp="";
+    this.MAC_Disp="";
+    this.updatereq_Disp="";
+    this.currmodel="";
+    this.olddesc="";
+    this.Identifier="";
+    this.MAC="";
+    this.Location_fina="";
+    this.LocationCorrectnew="";
+    this.ReqNo="";
+    this.countryname="";
+    this.Location_Disp="";
+    this.evolution_instance="";
+    this.gvs_portal_link="";
+    this.gvs_approval_link="";
+    
+    
+
 }
 
 }
