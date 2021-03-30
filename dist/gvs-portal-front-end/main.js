@@ -8008,7 +8008,7 @@ PagenotfoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
 /*!***************************!*\
   !*** ./config/payload.ts ***!
   \***************************/
-/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Special_Request, fixedphone_new */
+/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Special_Request, fixedphone_new, fixedphone_delete, fixedphone_update */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8021,6 +8021,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_Update", function() { return Jabber_Update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Special_Request", function() { return Special_Request; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fixedphone_new", function() { return fixedphone_new; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fixedphone_delete", function() { return fixedphone_delete; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fixedphone_update", function() { return fixedphone_update; });
 // Class used to create the payload for Db2 search service.
 class db2search {
     db2search() {
@@ -8171,6 +8173,47 @@ class fixedphone_new {
         this.gvs_approval_link = "";
         this.SLA_type = "";
         this.country_code = "";
+    }
+}
+// // class used to create the payload for snow fixed phone delete service
+class fixedphone_delete {
+    fixedphone_delete() {
+        this.request_type = "";
+        this.orinator_payload = "";
+        this.cNum_payload = "";
+        this.Identifier = "";
+        this.ReqNo = "";
+        this.mac = "";
+        this.olddesc = "";
+        this.ccmail = "";
+        this.countryname = "";
+        this.evolution_instance = "";
+        this.gvs_portal_link = "";
+    }
+}
+// // class used to create the payload for snow fixed phone update service
+class fixedphone_update {
+    fixedphone_update() {
+        this.request_type = "";
+        this.orinator_payload = "";
+        this.cNum_payload = "";
+        this.Comments_Disp = "";
+        this.Newdesc_Disp = "";
+        this.NewModel_Disp = "";
+        this.MAC_Disp = "";
+        this.updatereq_Disp = "";
+        this.currmodel = "";
+        this.olddesc = "";
+        this.Identifier = "";
+        this.MAC = "";
+        this.Location_fina = "";
+        this.LocationCorrectnew = "";
+        this.ReqNo = "";
+        this.countryname = "";
+        this.Location_Disp = "";
+        this.evolution_instance = "";
+        this.gvs_portal_link = "";
+        this.gvs_approval_link = "";
     }
 }
 
@@ -10411,6 +10454,16 @@ class servicenowservice {
     submit_request_fixed_new(fixedphone_new_payload) {
         console.log('calling snow');
         return this.http.post(this.submitUrl, fixedphone_new_payload)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorhandler));
+    }
+    submit_request_fixed_delete(fixedphone_delete_payload) {
+        console.log('calling snow');
+        return this.http.post(this.submitUrl, fixedphone_delete_payload)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorhandler));
+    }
+    submit_request_fixed_update(fixedphone_update_payload) {
+        console.log('calling snow');
+        return this.http.post(this.submitUrl, fixedphone_update_payload)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorhandler));
     }
     searchsnow(cnum, type, reqno) {
