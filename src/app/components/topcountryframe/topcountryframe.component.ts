@@ -18,6 +18,7 @@ export class TopcountryframeComponent implements OnInit {
   pcountrydetails:any
   countryroute:any
   service:any;
+  pagedisplay:any;
   routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','requests','resources']
   ngOnInit(): void {
    
@@ -33,8 +34,9 @@ export class TopcountryframeComponent implements OnInit {
     this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
     if(!this.routingservices.includes(this.service) )
       {
-        this.router.navigate(['/pagenotfound'], {
-          queryParams: {}
+        sessionStorage.setItem('pagedisplay','pagenotfound')
+        this.router.navigate(['**'], {
+        //  queryParams: {}
        });
        
       }    
@@ -49,8 +51,9 @@ export class TopcountryframeComponent implements OnInit {
      
       if(data.countrydetails=='no data')
       {
-        this.router.navigate(['/pagenotfound'], {
-          queryParams: {}
+        sessionStorage.setItem('pagedisplay','pagenotfound')
+        this.router.navigate(['**'], {
+       //   queryParams: {}
        });
        
       }
