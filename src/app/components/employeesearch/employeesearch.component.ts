@@ -50,7 +50,8 @@ export class EmployeesearchComponent implements OnInit {
   reqname:any
   title:any;
   showCountryCode = false	
-	countryCA = ''
+	countryCA = '';
+  itns:any = [];
   ngOnInit(): void {
     this.showloader = false
     this.fullName = this.cookie.getCookie('username');
@@ -259,13 +260,16 @@ export class EmployeesearchComponent implements OnInit {
       if (data.message.length > 0) {
         
         this.warninginfo = true
-        sessionStorage.setItem('warninginfo', 'true1')
-        this.identifier = data.message[0].IDENTIFIER
+        sessionStorage.setItem('warninginfo', 'true1');
+        for (var i = 0; i < data.message.length; i++) {
+          this.itns[i] = data.message[i].IDENTIFIER.trim();
+        }
+       // this.identifier = data.message[0].IDENTIFIER
         if (this.service == "resources") {
           sessionStorage.setItem('identifier', JSON.stringify(data.message))
           this.datadb= "yes";
         }
-        else { sessionStorage.setItem('identifier', this.identifier) ;
+        else { sessionStorage.setItem('identifier', this.itns) ;
         
         this.datadb= "yes";}
         if(this.service=="jabber_delete" || this.service=='jabber_update' || this.service=='jabber_move'){
