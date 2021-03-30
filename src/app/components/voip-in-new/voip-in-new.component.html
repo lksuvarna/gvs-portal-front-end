@@ -12,7 +12,7 @@
             <b>Request new Jabber service</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
-                Fields marked with an asterick (<span class="ds-text-contextual-red-2">*</span>) are required.
+                Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
@@ -83,7 +83,7 @@
                         </td>
                         <td width="54%">
                             <div id="d21" class="ds-input-container ">
-                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" autocomplete="off" ngModel>
+                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" maxlength='6' autocomplete="off" ngModel>
                                 <div id="Mentor1Div"></div>
                             </div>
                         </td>
@@ -108,11 +108,11 @@
 
                     <tr valign="top">
                         <td colspan="2" width="46%"><label for="icano" class="ds-text-capitalize ds-pad-t-1">If you already have
-                Fix Phone , please provide the identifier </label>
+                Fixed Phone , please provide the identifier </label>
                         </td>
                         <td width="54%">
                             <div class="ds-input-container ">
-                                <input name="identifier_hp" value="" tabindex="7" class="ds-input" style="width:300px !important;" title="Fix Phone Identifier" maxlength="8" ngModel></div>
+                                <input name="identifier_hp" value="" tabindex="7" class="ds-input" style="width:300px !important;" title="Fixed Phone Identifier" maxlength="8" ngModel></div>
                         </td>
                     </tr>
                 </tbody>
@@ -199,7 +199,7 @@
 
                     <tr valign="top" [hidden]='fixedPhoneIdentifier'>
                         <td colspan="2" width="46%">
-                            <label for="icano"> Fix Phone Identifier</label>
+                            <label for="icano"> Fixed Phone Identifier</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.fixPhoneIdentifier}}</td>
                     </tr>
