@@ -20,6 +20,7 @@ export class ServicesComponent implements OnInit {
   ccode = '';
   countryroute: any
   pcode = '';
+  pagedisplay:any;
   
   constructor(private router: Router,private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute) { }
 
@@ -28,7 +29,7 @@ export class ServicesComponent implements OnInit {
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
-
+     
       this.pcode = params.country;
       console.log("navigation component" + this.pcode);
     

@@ -33,7 +33,8 @@ const appRoutes: Routes = [
     { path: 'unauthorized', component: HomepageComponent },
     { path: '', component: HomepageComponent },
     { path: 'feedback', component: FeedbackComponent },
-    { path: 'services' ,  component: ServicesComponent },    
+    { path: 'services' ,  component: ServicesComponent },
+  // { path: 'services' , loadChildren: () => import('./components/navigation/navigation.component').then(m => m.ServicesComponent)}  
     { path: 'jabberservices', component: JabberservicesComponent },   
     { path: 'employeesearch', component: EmployeesearchComponent },    
     { path: 'employeeinfo', component: EmployeeinfoComponent },
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
     { path: 'resources', component: ResourcesComponent},
     { path: 'pagenotfound', component: PagenotfoundComponent},
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
-    {path: '**', redirectTo:'/pagenotfound?error'}
+   // {path: '**', redirectTo:'/pagenotfound?error'}
+   {path: '**', component: PagenotfoundComponent}
     
     
 ];
