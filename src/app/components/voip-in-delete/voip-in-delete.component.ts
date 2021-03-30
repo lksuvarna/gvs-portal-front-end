@@ -133,8 +133,10 @@ this.warninginfosnow=true
 this.identifier=sessionStorage.getItem('identifier')
     }
     else{
-      this.identifier=sessionStorage.getItem('identifier')
-      this.Jabber.push(this.identifier)
+      this.identifier=sessionStorage.getItem('identifier');
+      this.identifier = this.identifier.split(',');
+      this.Jabber = [...this.identifier];
+      //this.Jabber.push(this.identifier)
     }
   const servicesData = { 	
     "data": [	

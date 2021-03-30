@@ -11,10 +11,10 @@
 
             <b>Update Jabber Request</b>
 
-            <div class="ds-pad-t-0_5 ds-pad-b-1">
-                Fields marked with an asterick (<span class="ds-text-contextual-red-2">*</span>) are required.
-            </div>
-            <div class=" ds-panel ds-col-12 "></div>
+      <div class="ds-pad-t-0_5 ds-pad-b-1">
+        <label *ngIf="warninginfo==false">Fields marked with an asterick (<span class="ds-text-contextual-red-2">*</span>) are required.</label>
+      </div>
+      <div class=" ds-panel ds-col-12 "></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
 

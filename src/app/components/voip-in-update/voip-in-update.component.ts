@@ -20,6 +20,7 @@ export class VoipInUpdateComponent implements OnInit {
   cloudantData: any = [];
   servicesData: any = [];
   Jabber:any = [];
+  itns:any = [];
   Jabber_Identifier:any;
   selected = true;
   hideChargeDept = true;
@@ -117,22 +118,11 @@ export class VoipInUpdateComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
     // Submit to Snow Jabber Update code
-    this.orgi = this.cookie.getCookie('ccode');
     this.cnum = sessionStorage.getItem('cnum');
+    this.orgi = this.cookie.getCookie('ccode');
     this.countrydetails = sessionStorage.getItem('countrydetails');
     this.countrydetails = JSON.parse(this.countrydetails);
-
-    this.Db2Service.search_db2(this.cnum, 'jabber_update').subscribe(data => {
-      console.log(' db2 response for update', data.message);
-      this.Jabber_Identifier = JSON.stringify(data.message);
-      console.log('Json Format', this.Jabber_Identifier);
-      for (var i = 0; i < data.message.length; i++) {
-        this.Jabber[i] = data.message[i].IDENTIFIER.trim();
-        console.log(data.message[i].IDENTIFIER.trim() + "i=" + i);
-      }
-    });
 
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.sessionwarninginfo = sessionStorage.getItem('warninginfo')
@@ -146,7 +136,8 @@ export class VoipInUpdateComponent implements OnInit {
     }
     else {
       this.identifier = sessionStorage.getItem('identifier')
-      this.Jabber.push(this.identifier)
+      this.identifier = this.identifier.split(',');
+      this.Jabber = [...this.identifier];
     }
     this.route.queryParams	
     .subscribe(params => {	
