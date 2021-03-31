@@ -5213,7 +5213,6 @@ class VoipInMoveComponent {
         this.hideDeptCode = true;
     }
     ngOnInit() {
-        var _a, _b;
         this.orgi = this.cookie.getCookie('ccode');
         this.cnum = sessionStorage.getItem('cnum');
         this.countrydetails = sessionStorage.getItem('countrydetails');
@@ -5233,45 +5232,46 @@ class VoipInMoveComponent {
         }
         this.route.queryParams
             .subscribe(params => {
+            var _a, _b;
             console.log(params);
             this.service = params.service;
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-        });
-        this.locationlist = (_a = sessionStorage.getItem('locationdetails')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
-        this.locationlist = (_b = this.locationlist) === null || _b === void 0 ? void 0 : _b.replace('"', '').split(',');
-        for (var i = 0; i < this.locationlist.length; i++) {
-            var n = this.locationlist[i].indexOf("~");
-            this.campA[i] = this.locationlist[i].substr(1, n - 1);
-            this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);
-        }
-        for (var i = 0; i < this.campA.length; i++) {
-            if (this.campA[i] != this.campA[i + 1]) {
-                this.camp[this.j] = this.campA[i];
-                this.j++;
+            this.locationlist = (_a = sessionStorage.getItem('locationdetails')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
+            this.locationlist = (_b = this.locationlist) === null || _b === void 0 ? void 0 : _b.replace('"', '').split(',');
+            for (var i = 0; i < this.locationlist.length; i++) {
+                var n = this.locationlist[i].indexOf("~");
+                this.campA[i] = this.locationlist[i].substr(1, n - 1);
+                this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);
             }
-        }
-        const servicesData = {
-            "data": [
-                {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
-                    "step": 3,
+            for (var i = 0; i < this.campA.length; i++) {
+                if (this.campA[i] != this.campA[i + 1]) {
+                    this.camp[this.j] = this.campA[i];
+                    this.j++;
                 }
-            ]
-        };
-        if (this.warninginfo || this.warninginfosnow) {
-            this.hideSteps = true;
-        }
-        else {
-            this.hideSteps = false;
-        }
-        this.reqFor = sessionStorage.getItem('radioAction');
-        this.servicesData = servicesData.data[0];
-        this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
-        this.employeeInfo = JSON.parse(this.employeeInfo1);
-        if (this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null) {
-            this.hideProjectId = true;
-        }
+            }
+            const servicesData = {
+                "data": [
+                    {
+                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "step": 3,
+                    }
+                ]
+            };
+            this.servicesData = servicesData.data[0];
+            if (this.warninginfo || this.warninginfosnow) {
+                this.hideSteps = true;
+            }
+            else {
+                this.hideSteps = false;
+            }
+            this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
+            this.employeeInfo = JSON.parse(this.employeeInfo1);
+            if (this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null) {
+                this.hideProjectId = true;
+            }
+            this.reqFor = sessionStorage.getItem('radioAction');
+        });
     }
     previousStep(event) {
         this.isEntryFormMove = false;
@@ -10663,6 +10663,8 @@ class UitoplinksComponent {
             { "name": "India", "code": "744", "path": "././assets/flags/744.png" },
             { "name": "France", "code": "706", "path": "././assets/flags/706.png" },
             { "name": "Canada/Caribbean", "code": "649", "path": "" },
+            { "name": "Latin America", "code": "631", "path": "././assets/flags/631.png" },
+            { "name": "USA", "code": "897", "path": "././assets/flags/897.png" },
         ];
     }
     ngOnInit() {

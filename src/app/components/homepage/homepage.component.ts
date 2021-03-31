@@ -25,6 +25,7 @@ export class HomepageComponent implements OnInit {
   uname='';
   countryname:any;
   ccode='';
+  
 
   generate(cnum : string): void{
     console.log(cnum);
