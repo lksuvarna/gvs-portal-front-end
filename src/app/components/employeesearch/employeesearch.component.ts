@@ -173,7 +173,8 @@ export class EmployeesearchComponent implements OnInit {
           businessUnit: data.bu,
           department: data.username.dept,
           country: data.username.co,
-          email: data.username.preferredidentity
+          email: data.username.preferredidentity,
+          sno: data.username.uid
         }
         sessionStorage.setItem('employeeInfo', JSON.stringify(this.employeeInfo))
         sessionStorage.setItem('cnum', this.employeeSerial)

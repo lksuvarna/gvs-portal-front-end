@@ -56,6 +56,7 @@ export class HomepageComponent implements OnInit {
       let countrydetails=data.countrydetails;
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.ccode);
+      sessionStorage.setItem('pagedisplay','homepage')
      });
 
     

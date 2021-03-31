@@ -51,6 +51,7 @@ export class VoipInMoveComponent implements OnInit {
   campus: any;
   reqFor: any;
   hideProjectId = false;
+  hideSteps = false
 
   payload: Jabber_Move = new Jabber_Move();
   reviewDetailsIndia = {
@@ -279,7 +280,12 @@ this.identifier=sessionStorage.getItem('identifier')
        ]	
    
       
-     }	
+     }
+     if(this.warninginfo || this.warninginfosnow){
+      this.hideSteps = true
+    } else {
+      this.hideSteps = false
+    }	
      this.reqFor = sessionStorage.getItem('radioAction')
      this.servicesData = servicesData.data[0];		
      this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
