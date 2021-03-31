@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   curl:any;
   service:any;
   pagedisplay:any;
+  count:any;
   constructor(private router: Router,private route: ActivatedRoute) { }
   ngOnInit(): void {    
     this.route.queryParams
@@ -23,10 +24,16 @@ export class AppComponent implements OnInit {
         this.pagedisplay= sessionStorage.getItem('pagedisplay')
   //alert(window.location.href)
  //this.curl=window.location.href
+
  this.curl=sessionStorage.getItem('pagedisplay')
+ //sessionStorage.setItem('count','0')
   if(this.curl.includes('pagenotfound')){
-    this.display=false;
-  }
+    this.display=false; }
+    else{this.display=true; }
+    if (sessionStorage.getItem('count')!=='1' || (this.curl.includes('homepage')&& sessionStorage.getItem('count')!=='1'))  {
+    sessionStorage.setItem('count','1')  
+    window.location.reload()}
+ 
   
 })
 }}
