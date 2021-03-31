@@ -5979,6 +5979,42 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
 
 /***/ }),
 
+/***/ "ZSIN":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/voip-usa-new/voip-usa-new.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: VoipUsaNewComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VoipUsaNewComponent", function() { return VoipUsaNewComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+class VoipUsaNewComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+VoipUsaNewComponent.ɵfac = function VoipUsaNewComponent_Factory(t) { return new (t || VoipUsaNewComponent)(); };
+VoipUsaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipUsaNewComponent, selectors: [["app-voip-usa-new"]], decls: 2, vars: 0, template: function VoipUsaNewComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "voip-usa-new works!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ2b2lwLXVzYS1uZXcuY29tcG9uZW50LmNzcyJ9 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](VoipUsaNewComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-voip-usa-new',
+                templateUrl: './voip-usa-new.component.html',
+                styleUrls: ['./voip-usa-new.component.css']
+            }]
+    }], function () { return []; }, null); })();
+
+
+/***/ }),
+
 /***/ "aDsg":
 /*!*************************************************************************!*\
   !*** ./src/app/components/topcountryframe/topcountryframe.component.ts ***!
@@ -7923,8 +7959,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_voip_la_new_voip_la_new_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/voip-la-new/voip-la-new.component */ "Hq2D");
 /* harmony import */ var _components_voip_in_update_voip_in_update_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/voip-in-update/voip-in-update.component */ "8sw4");
 /* harmony import */ var _components_voip_emea_new_voip_emea_new_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/voip-emea-new/voip-emea-new.component */ "R5fI");
-/* harmony import */ var _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/voip-in-move/voip-in-move.component */ "Uo6X");
-/* harmony import */ var _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/pagenotfound/pagenotfound.component */ "cw5x");
+/* harmony import */ var _components_voip_usa_new_voip_usa_new_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/voip-usa-new/voip-usa-new.component */ "ZSIN");
+/* harmony import */ var _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/voip-in-move/voip-in-move.component */ "Uo6X");
+/* harmony import */ var _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/pagenotfound/pagenotfound.component */ "cw5x");
+
 
 
 
@@ -7966,7 +8004,7 @@ const appRoutes = [
     { path: 'entrydetailsjd', component: _components_voip_in_delete_voip_in_delete_component__WEBPACK_IMPORTED_MODULE_15__["VoipInDeleteComponent"] },
     { path: 'entrydetails', component: _components_voip_in_new_voip_in_new_component__WEBPACK_IMPORTED_MODULE_14__["VoipInNewComponent"] },
     { path: 'entrydetailsiju', component: _components_voip_in_update_voip_in_update_component__WEBPACK_IMPORTED_MODULE_20__["VoipInUpdateComponent"] },
-    { path: 'entrydetailsijm', component: _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_22__["VoipInMoveComponent"] },
+    { path: 'entrydetailsijm', component: _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_23__["VoipInMoveComponent"] },
     { path: 'reviewdetails', component: _components_reviewdetails_reviewdetails_component__WEBPACK_IMPORTED_MODULE_10__["ReviewdetailsComponent"] },
     { path: 'resultpage', component: _components_resultpage_resultpage_component__WEBPACK_IMPORTED_MODULE_6__["ResultpageComponent"] },
     { path: 'employeesearchdelete', component: _components_employeesearch_voip_delete_employeesearch_voip_delete_component__WEBPACK_IMPORTED_MODULE_16__["EmployeesearchVoipDeleteComponent"] },
@@ -7974,11 +8012,12 @@ const appRoutes = [
     { path: 'entrydetailsau', component: _components_voip_au_new_voip_au_new_component__WEBPACK_IMPORTED_MODULE_18__["VoipAuNewComponent"] },
     { path: 'entrydetailsla', component: _components_voip_la_new_voip_la_new_component__WEBPACK_IMPORTED_MODULE_19__["VoipLaNewComponent"] },
     { path: 'entrydetailsemea', component: _components_voip_emea_new_voip_emea_new_component__WEBPACK_IMPORTED_MODULE_21__["VoipEmeaNewComponent"] },
+    { path: 'entrydetailsus', component: _components_voip_usa_new_voip_usa_new_component__WEBPACK_IMPORTED_MODULE_22__["VoipUsaNewComponent"] },
     { path: 'resources', component: _components_resources_resources_component__WEBPACK_IMPORTED_MODULE_12__["ResourcesComponent"] },
-    { path: 'pagenotfound', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_23__["PagenotfoundComponent"] },
-    { path: 'pagenotfound?error', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_23__["PagenotfoundComponent"] },
+    { path: 'pagenotfound', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__["PagenotfoundComponent"] },
+    { path: 'pagenotfound?error', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__["PagenotfoundComponent"] },
     // {path: '**', redirectTo:'/pagenotfound?error'}
-    { path: '**', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_23__["PagenotfoundComponent"] }
+    { path: '**', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__["PagenotfoundComponent"] }
 ];
 const appRoutingProviders = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes, { onSameUrlNavigation: 'reload' });
 
@@ -8910,6 +8949,17 @@ class EmployeesearchComponent {
                 this.empno = sessionStorage.getItem('empserial');
                 this.onRequestForChangesession();
             }
+            if (this.service != sessionStorage.getItem('serviceName')) {
+                this.radioAction = 'myself';
+                this.hideDisTextBox = false;
+                this.hideDisserial = true;
+                sessionStorage.setItem('serviceName', this.service);
+                if (this.notvalid == true) {
+                    this.notvalid = false;
+                    this.showloader = false;
+                    this.errorinfo = false;
+                }
+            }
             //for lhs
             const servicesData = {
                 "data": [
@@ -9145,6 +9195,9 @@ class EmployeesearchComponent {
                 }
                 else if (this.countrydetails.jnavpage == 'EMEA') {
                     this.routingname = "/entrydetailsemea";
+                }
+                else if (this.countrydetails.jnavpage == 'US') {
+                    this.routingname = "/entrydetailsus";
                 }
                 this.reqname = "-NS-";
                 break;
