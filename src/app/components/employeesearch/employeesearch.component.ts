@@ -364,6 +364,9 @@ export class EmployeesearchComponent implements OnInit {
     else if(this.countrydetails.jnavpage=='US'){
       this.routingname="/entrydetailsus";
     }
+    else if(this.countrydetails.jnavpage=='LA'){
+      this.routingname="/entrydetailsla";
+    }
       this.reqname="-NS-";
       break;
       case "jabber_delete":

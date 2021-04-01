@@ -31,6 +31,7 @@ import { MiddleframeComponent } from './components/middleframe/middleframe.compo
 import { FilterPipe } from './filter.pipe';
 import { DropdownsearchPipe } from './dropdownsearch.pipe'
 import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
+import { VoipUsaNewComponent } from './components/voip-usa-new/voip-usa-new.component';
 import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.component';
 import { VoipLaNewComponent } from './components/voip-la-new/voip-la-new.component';
 import { VoipAuNewComponent } from './components/voip-au-new/voip-au-new.component';
@@ -90,7 +91,8 @@ export function rootLoaderFactory(http: HttpClient){
     VoipAuMoveComponent,
     HpInNewComponent,
     VoipInMoveComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    VoipUsaNewComponent
 
 
   ],
