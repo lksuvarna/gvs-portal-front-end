@@ -101,11 +101,7 @@ handleError(error: Error){
     HpInNewComponent,
     VoipInMoveComponent,
     PagenotfoundComponent,
-<<<<<<< HEAD
     VoipUsaNewComponent
-=======
-  
->>>>>>> 0bc16af882b479ac2b495cd0b592f04870293178
 
 
   ],
