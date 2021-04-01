@@ -26,6 +26,7 @@ export class VoipAuMoveComponent implements OnInit {
   cnum : any;	
   reqno:any;	
   orgi:any;
+  errorinfo=false;
   countrydetails : any;
   pcode: any;	
   service: any;
@@ -100,7 +101,14 @@ export class VoipAuMoveComponent implements OnInit {
      console.log('response', data);	
      if(data)	
      this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
-     });	
+     },
+     (error) => {                              //Error callback
+      console.error('error caught in component'+error);
+      this.isSpinnerVisible= false; 	
+      this.errorinfo=true;
+      this.isButtonVisible=true;
+    }
+     );	
      }	
 
   ngOnInit(): void {

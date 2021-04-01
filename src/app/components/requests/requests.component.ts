@@ -31,6 +31,7 @@ export class RequestsComponent implements OnInit {
   approver: any = [];
   i: any;
   empserial: any;
+  errorinfo=false;
   comments: any = [];
   snowdataarray: any = [];
   snowdataarray1: any = [];
@@ -76,7 +77,11 @@ export class RequestsComponent implements OnInit {
         this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
          
           this.approver.push("("+data.message[0]['approver.name']+")");
-        })}
+        },
+        (error) => {                              //Error callback
+         console.error('error caught in component'+error);
+         this.errorinfo=true;
+       })}
         else{
           //this.approver.push([])
         }
@@ -99,7 +104,11 @@ export class RequestsComponent implements OnInit {
             this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length-1])
             this.display = true
           }
-        })
+        },
+        (error) => {                              //Error callback
+         console.error('error caught in component'+error);
+         this.errorinfo=true;
+       })
       
     }}
 

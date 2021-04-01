@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -48,10 +48,19 @@ import { VoipAuMoveComponent } from './components/voip-au-move/voip-au-move.comp
 import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
+
 export function rootLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http,'assets/i18n/','.json')
   }
 
+export class GlobalErrorHandler implements ErrorHandler{
+handleError(error: Error){
+  if(error){
+    console.log(error.message);
+  }
+}
+
+}
 
 @NgModule({
   declarations: [
@@ -92,7 +101,11 @@ export function rootLoaderFactory(http: HttpClient){
     HpInNewComponent,
     VoipInMoveComponent,
     PagenotfoundComponent,
+<<<<<<< HEAD
     VoipUsaNewComponent
+=======
+  
+>>>>>>> 0bc16af882b479ac2b495cd0b592f04870293178
 
 
   ],
@@ -115,7 +128,7 @@ export function rootLoaderFactory(http: HttpClient){
     
     
   ],
-  providers: [cloudantservice],
+  providers: [cloudantservice, {provide: ErrorHandler, useClass: GlobalErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
