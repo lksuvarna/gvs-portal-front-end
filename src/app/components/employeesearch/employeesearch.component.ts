@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { bpservices } from '../../_services/bp.service';
 import { Db2Service } from '../../_services/db2.service';
 import { servicenowservice } from '../../_services/servicenow.service';
+
 @Component({
   selector: 'app-employeesearch',
   templateUrl: './employeesearch.component.html',
@@ -52,6 +53,7 @@ export class EmployeesearchComponent implements OnInit {
   showCountryCode = false	
 	countryCA = '';
   itns:any = [];
+  serviceName:any;
   ngOnInit(): void {
     this.showloader = false
     this.fullName = this.cookie.getCookie('username');
@@ -85,6 +87,18 @@ export class EmployeesearchComponent implements OnInit {
         this.onRequestForChangesession();
         
       }
+     
+    if(this.service!= sessionStorage.getItem('serviceName')) {
+      this.radioAction = 'myself';
+      this.hideDisTextBox = false;
+      this.hideDisserial = true;
+      sessionStorage.setItem('serviceName',this.service);
+      if(this.notvalid == true) {
+        this.notvalid = false;
+        this.showloader = false;
+        this.errorinfo = false;
+      }  
+    } 
     
    
     //for lhs
@@ -107,6 +121,7 @@ export class EmployeesearchComponent implements OnInit {
         this.subCountries = this.countrydetails.scountries	
       }
   })
+
   }
 
   onSubmit(formData: NgForm) {
@@ -173,7 +188,8 @@ export class EmployeesearchComponent implements OnInit {
           businessUnit: data.bu,
           department: data.username.dept,
           country: data.username.co,
-          email: data.username.preferredidentity
+          email: data.username.preferredidentity,
+          sno: data.username.uid
         }
         sessionStorage.setItem('employeeInfo', JSON.stringify(this.employeeInfo))
         sessionStorage.setItem('cnum', this.employeeSerial)
@@ -344,6 +360,9 @@ export class EmployeesearchComponent implements OnInit {
       this.routingname="/entrydetails";
     }else if(this.countrydetails.jnavpage=='EMEA'){
       this.routingname="/entrydetailsemea";
+    }
+    else if(this.countrydetails.jnavpage=='US'){
+      this.routingname="/entrydetailsus";
     }
       this.reqname="-NS-";
       break;

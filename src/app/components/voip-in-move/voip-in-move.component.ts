@@ -51,6 +51,7 @@ export class VoipInMoveComponent implements OnInit {
   campus: any;
   reqFor: any;
   hideProjectId = false;
+  hideSteps = false
 
   payload: Jabber_Move = new Jabber_Move();
   reviewDetailsIndia = {
@@ -253,7 +254,7 @@ this.identifier=sessionStorage.getItem('identifier')
        this.service=params.service;	
        this.pcode = params.country;	
        console.log("navigation component" + this.pcode);	
-     });
+     
      this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','');
      this.locationlist=this.locationlist?.replace('"','').split(',');	
    
@@ -279,19 +280,27 @@ this.identifier=sessionStorage.getItem('identifier')
        ]	
    
       
-     }	
-     this.reqFor = sessionStorage.getItem('radioAction')
-     this.servicesData = servicesData.data[0];		
+     }
+     
+     
+     this.servicesData = servicesData.data[0];
+     if(this.warninginfo || this.warninginfosnow){
+      this.hideSteps = true
+    } else {
+      this.hideSteps = false
+    }		
      this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
      this.employeeInfo = JSON.parse(this.employeeInfo1);	
      if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
        this.hideProjectId = true;
        }
-  }
+       this.reqFor = sessionStorage.getItem('radioAction')
+      });   	
+  } 
   previousStep(event : any){
     this.isEntryFormMove = false;	
     this.isReviewFormMove = true;	
-    	
+ 	
   }
 }
 function gettime() {	
