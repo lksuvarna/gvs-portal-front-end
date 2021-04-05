@@ -54,9 +54,11 @@ export class EmployeesearchComponent implements OnInit {
 	countryCA = '';
   itns:any = [];
   serviceName:any;
+  returnValue:any;
   ngOnInit(): void {
     this.showloader = false
     this.fullName = this.cookie.getCookie('username');
+    this.fullName = this.fullName.replace(/[&\/\\#,+()$~%.'":*?<>{}0-9]/g, ' ');
     this.ccode = this.cookie.getCookie('ccode');
     this.countrydetails = sessionStorage.getItem('countrydetails')
     this.countrydetails = JSON.parse(this.countrydetails)
@@ -121,7 +123,14 @@ export class EmployeesearchComponent implements OnInit {
         this.subCountries = this.countrydetails.scountries	
       }
   })
-
+  setTimeout(()=>{
+    if(sessionStorage.getItem('serviceName') == 'jabber_move'&&this.step == null || sessionStorage.getItem('serviceName') == 'jabber_move'&&sessionStorage.getItem('empserial') == '') {
+      this.returnValue = confirm('Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit');
+      if(this.returnValue == false) {
+        this.router.navigate(['/jabberservices'],{ queryParams: { country: this.pcode, service: this.service } });
+      }
+    }
+  },500);
   }
 
   onSubmit(formData: NgForm) {

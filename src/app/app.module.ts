@@ -46,6 +46,7 @@ import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.c
 import { VoipAuMoveComponent } from './components/voip-au-move/voip-au-move.component';
 import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
 
 export function rootLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http,'assets/i18n/','.json')
@@ -90,7 +91,8 @@ export function rootLoaderFactory(http: HttpClient){
     VoipAuMoveComponent,
     HpInNewComponent,
     VoipInMoveComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    FixedphoneservicesComponent
 
 
   ],

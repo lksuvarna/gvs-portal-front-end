@@ -15,7 +15,7 @@ import { Location } from '@angular/common';
 })
 export class VoipInMoveComponent implements OnInit {
   hideDeptCode: boolean = true;
-  jabberNumber = [78979812, 79870945];
+  jabberNumber:any = [];
   Voice_Type = "No";
   hideBuilding = true;
   displayDiv = false;
@@ -51,7 +51,7 @@ export class VoipInMoveComponent implements OnInit {
   campus: any;
   reqFor: any;
   hideProjectId = false;
-  hideSteps = false
+  hideSteps = false;
 
   payload: Jabber_Move = new Jabber_Move();
   reviewDetailsIndia = {
@@ -97,10 +97,10 @@ export class VoipInMoveComponent implements OnInit {
     if (jabberNumberVal != '') {
       this.displayDiv = true;
     }
-    else
+    else {
       this.displayDiv = false;
+      this.hideBuilding = true;}
 
-    //alert(this.displayDiv + this.jabberNumberVal)
   }
 
   selectedLocation(loc: String) {
@@ -246,7 +246,9 @@ this.warninginfosnow=true
 this.identifier=sessionStorage.getItem('identifier')
     }
     else{
-      this.identifier=sessionStorage.getItem('identifier')      
+      this.identifier=sessionStorage.getItem('identifier');
+      this.identifier = this.identifier.split(',');
+      this.jabberNumber = [...this.identifier];      
     }	
      this.route.queryParams	
      .subscribe(params => {	
