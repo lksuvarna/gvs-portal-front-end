@@ -18,7 +18,11 @@
     <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowreq>
       <p>No outstanding requests were found for the serial number.</p><p>
   </p></div>
-    <table style="width:100%; border-collapse: collapse; padding:2px" *ngIf="warninginfosnowreq==false">
+  <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
+    <p>Opps! Some thing went worng.Please try again latter.</p><p>
+</p></div>
+
+    <table style="width:100%; border-collapse: collapse; padding:2px" *ngIf="warninginfosnowreq==false && !errorinfo">
       <tbody>
       </tbody>
       <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">
