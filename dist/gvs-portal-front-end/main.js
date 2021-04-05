@@ -6785,7 +6785,7 @@ class TopcountryframeComponent {
             this.service = params.service;
             this.pcode = params.country;
             console.log("topcountry component" + this.pcode);
-            console.log("topcountry component" + this.route.component);
+            // console.log("topcountry component" + this.route.component);
             this.countryroute = sessionStorage.getItem('countryroute');
             this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
             if (!this.routingservices.includes(this.service)) {
@@ -9919,6 +9919,25 @@ class EmployeesearchComponent {
     getLocationdata() {
         this.cloudantservice.getlocationdetails(this.pcode).subscribe(data => {
             console.log('Response received navigation', data.locationdetails);
+            if (this.service.includes('jabber')) {
+                if (this.pcode == '631') {
+                    var loc = this.employeeSerial.substr(6, 9) + "jlocations";
+                    console.log(loc);
+                    this.lookuploc = JSON.stringify(eval(data.locationdetails.loc));
+                }
+                else {
+                    this.lookuploc = JSON.stringify(data.locationdetails.jlocations);
+                }
+            }
+            else if (this.service.includes('fixed')) {
+                this.lookuploc = JSON.stringify(data.locationdetails.flocations);
+            }
+            else if (this.service.includes('fac')) {
+                this.lookuploc = JSON.stringify(data.locationdetails.faclocations);
+            }
+            else if (this.service.includes('special')) {
+                this.lookuploc = JSON.stringify(data.locationdetails.slocations);
+            }
             sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
             if (this.radioAction.toLowerCase() == "anotheremployee") {
                 this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
