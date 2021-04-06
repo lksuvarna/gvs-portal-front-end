@@ -25,6 +25,7 @@ import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-updat
 import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.component';
 import { VoipUsaNewComponent } from './components/voip-usa-new/voip-usa-new.component';
 import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.component';
+import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     { path: 'services' ,  component: ServicesComponent },
   // { path: 'services' , loadChildren: () => import('./components/navigation/navigation.component').then(m => m.ServicesComponent)}  
     { path: 'jabberservices', component: JabberservicesComponent },   
+    { path: 'fixedphoneservices', component: FixedphoneservicesComponent }, 
     { path: 'employeesearch', component: EmployeesearchComponent },    
     { path: 'employeeinfo', component: EmployeeinfoComponent },
     { path: 'resultpage', component: ResultpageComponent },

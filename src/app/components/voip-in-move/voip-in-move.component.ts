@@ -15,7 +15,7 @@ import { Location } from '@angular/common';
 })
 export class VoipInMoveComponent implements OnInit {
   hideDeptCode: boolean = true;
-  jabberNumber = [78979812, 79870945];
+  jabberNumber:any = [];
   Voice_Type = "No";
   hideBuilding = true;
   displayDiv = false;
@@ -51,7 +51,7 @@ export class VoipInMoveComponent implements OnInit {
   campus: any;
   reqFor: any;
   hideProjectId = false;
-  hideSteps = false
+  hideSteps = false;
 
   payload: Jabber_Move = new Jabber_Move();
   reviewDetailsIndia = {
@@ -97,10 +97,10 @@ export class VoipInMoveComponent implements OnInit {
     if (jabberNumberVal != '') {
       this.displayDiv = true;
     }
-    else
+    else {
       this.displayDiv = false;
+      this.hideBuilding = true;}
 
-    //alert(this.displayDiv + this.jabberNumberVal)
   }
 
   selectedLocation(loc: String) {
@@ -243,10 +243,12 @@ export class VoipInMoveComponent implements OnInit {
     }
     else if(this.sessionwarninginfosnow =='true1') {
 this.warninginfosnow=true
-this.identifier=sessionStorage.getItem('identifier')
+this.identifier=sessionStorage.getItem('identifier')?.replace(" ","");
     }
     else{
-      this.identifier=sessionStorage.getItem('identifier')      
+      this.identifier=sessionStorage.getItem('identifier');
+      this.identifier = this.identifier.split(',');
+      this.jabberNumber = [...this.identifier];      
     }	
      this.route.queryParams	
      .subscribe(params => {	
@@ -254,10 +256,33 @@ this.identifier=sessionStorage.getItem('identifier')
        this.service=params.service;	
        this.pcode = params.country;	
        console.log("navigation component" + this.pcode);	
+     });
+    
+     this.reqFor = sessionStorage.getItem('radioAction'); 
+     if(this.warninginfo || this.warninginfosnow){
+      this.hideSteps = true
+    } else {
+      this.hideSteps = false
+    }
+    
+    const servicesData = { 	
+      "data": [	
+        {    	
+          
+          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "step" : 3,	
+          
+        }	
+      ]	
+  
      
+    }
+    this.servicesData = servicesData.data[0];
      this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','');
      this.locationlist=this.locationlist?.replace('"','').split(',');	
-   
+
+     
+    
      for (var i = 0; i < this.locationlist.length; i++) {	
        var n = this.locationlist[i].indexOf("~")	
        this.campA[i] = this.locationlist[i].substr(1, n - 1);	
@@ -269,33 +294,13 @@ this.identifier=sessionStorage.getItem('identifier')
          this.j++;	
        }	
      }
-     const servicesData = { 	
-       "data": [	
-         {    	
-           
-           "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-           "step" : 3,	
-           
-         }	
-       ]	
-   
-      
-     }
-     
-     
-     this.servicesData = servicesData.data[0];
-     if(this.warninginfo || this.warninginfosnow){
-      this.hideSteps = true
-    } else {
-      this.hideSteps = false
-    }		
+  
+
      this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
      this.employeeInfo = JSON.parse(this.employeeInfo1);	
      if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
        this.hideProjectId = true;
-       }
-       this.reqFor = sessionStorage.getItem('radioAction')
-      });   	
+       } 	
   } 
   previousStep(event : any){
     this.isEntryFormMove = false;	

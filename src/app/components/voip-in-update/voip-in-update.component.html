@@ -54,12 +54,12 @@
                     </tr>
                     <tr valign="top" [hidden]='hideChargeDept'>
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Charge Department
-              Code</label>
+              Code </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <input name="Charge_Dept" value="NA" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager for Charge Department Code" ngModel="NA"></div>
+                                <input name="Charge_Dept" value="NA" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager for Charge Department Code" maxlength='6' ngModel="NA"></div>
                         </td>
                     </tr>
                 </tbody>
@@ -138,7 +138,7 @@
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Next" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
                     </div>
                 </div>
