@@ -33,6 +33,7 @@ export class EmployeesearchComponent implements OnInit {
   service = '';
   backbutton: any;
   step: any;
+  s:any;
   sno:any;
   identifier: any;
   warninginfo = true;
@@ -58,10 +59,15 @@ export class EmployeesearchComponent implements OnInit {
   serviceName:any;
   ngOnInit(): void {
     this.showloader = false
-    this.fullName = this.cookie.getCookie('username');
-    this.ccode = this.cookie.getCookie('ccode');
+    this.fullName = this.cookie.getCookie('username');   
+    
     this.countrydetails = sessionStorage.getItem('countrydetails')
     this.countrydetails = JSON.parse(this.countrydetails)
+    if(this.countrydetails.testuser)
+      {
+        this.ccode=this.countrydetails.testuser
+      }
+      else{this.ccode = this.cookie.getCookie('ccode');}
     this.route.queryParams
       .subscribe(params => {
         console.log(params);
@@ -130,10 +136,18 @@ export class EmployeesearchComponent implements OnInit {
 
     sessionStorage.setItem('radioAction', this.radioAction.toLowerCase());
     console.log(this.pcode + this.ccode)
-    if (this.radioAction.toLowerCase() == "myself" && this.pcode !== this.ccode.substr(6, 9)) {
-      alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
-      return;
-    }
+    if (this.radioAction.toLowerCase() == "myself" ) {
+      if(this.countrydetails.scountries){
+        
+        if(this.countrydetails.scountries.some((s: string | string[]) => s.includes(this.ccode.substr(6, 9)))){        }
+        else{alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
+        return;}
+      }
+      else if (this.pcode !== this.ccode.substr(6, 9)){                
+            alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
+            return;        
+      }
+     }
     if (this.radioAction.toLowerCase() == "anotheremployee") {
       if (formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true) {
         alert("Please enter a serial number");
@@ -158,12 +172,15 @@ export class EmployeesearchComponent implements OnInit {
     //for self
     else {
       this.employeeSerial = this.ccode
+      
       sessionStorage.setItem('empserial', this.ccode)
 
     }
     //to change the routing
+  
     if (this.service == "jabber_new") {
-      this.navpage = '/entrydetails'; this.navpage1 = '/employeeinfo';
+      this.getTitle();
+      this.navpage = this.routingname; this.navpage1 = '/employeeinfo';
     }
     else {
       if (this.radioAction.toLowerCase() == "myself") {
