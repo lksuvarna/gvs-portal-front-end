@@ -140,7 +140,7 @@ export class VoipInUpdateComponent implements OnInit {
     }
     else if (this.sessionwarninginfosnow == 'true1') {
       this.warninginfosnow = true
-      this.identifier = sessionStorage.getItem('identifier')
+      this.identifier = sessionStorage.getItem('identifier')?.replace(" ","");
     }
     else {
       this.identifier = sessionStorage.getItem('identifier')

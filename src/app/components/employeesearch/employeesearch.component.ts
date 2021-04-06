@@ -132,7 +132,7 @@ export class EmployeesearchComponent implements OnInit {
         this.router.navigate(['/jabberservices'],{ queryParams: { country: this.pcode, service: this.service } });
       }
     }
-  },500);
+  },200);
   }
 
   onSubmit(formData: NgForm) {
