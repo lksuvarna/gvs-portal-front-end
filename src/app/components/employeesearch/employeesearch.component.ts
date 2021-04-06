@@ -194,6 +194,7 @@ export class EmployeesearchComponent implements OnInit {
       this.navpage = this.routingname; this.navpage1 = '/employeeinfo';
     }
     else {
+      this.getTitle();
       if (this.radioAction.toLowerCase() == "myself") {
         if (this.service == "requests" || this.service == "resources" || this.service == "approvalpending" || this.service == "revalidationpending") {
           this.navpage = '/' + this.service; this.navpage1 = '/' + this.service;
@@ -236,6 +237,10 @@ export class EmployeesearchComponent implements OnInit {
         this.getSNOWdata() ;
              
      }
+     if (this.service.includes("fixedphone")  ) {      
+      this.getLocationdata();
+           
+   }
      if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service=='jabber_move') {      
       this.getDBdata() ;
           
@@ -432,6 +437,11 @@ export class EmployeesearchComponent implements OnInit {
       this.title="Move Jabber Request";
       this.routingname="/entrydetailsijm";
       this.reqname="-MS-";
+      break;
+      case "fixedphone_new":
+      this.title="New Fixed Phone Request";
+      this.routingname="/entrydetailsfn";
+      this.reqname="-NS-";
       break;
       case "resources":
         this.title="Resources";
