@@ -329,7 +329,7 @@ export class EmployeesearchComponent implements OnInit {
         if(this.pcode=='631'){
           var loc=this.employeeSerial.substr(6, 9)+"jlocations"
           console.log(loc)
-          this.lookuploc=JSON.stringify(eval(data.locationdetails.loc))
+          this.lookuploc=JSON.stringify((data.locationdetails[loc]))
         }
         else{
        this.lookuploc=JSON.stringify(data.locationdetails.jlocations)}
@@ -343,7 +343,8 @@ export class EmployeesearchComponent implements OnInit {
       else if(this.service.includes('special')){
         this.lookuploc=JSON.stringify(data.locationdetails.slocations)
       }
-      sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
+     // sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
+     sessionStorage.setItem('locationdetails',this.lookuploc)
       if (this.radioAction.toLowerCase() == "anotheremployee") {
         this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
       }

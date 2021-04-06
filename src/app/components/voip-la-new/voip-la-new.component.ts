@@ -134,38 +134,38 @@ hideChargeDepartmentCode() {
   this.hideDeptCode = true;	
 }	
 
-entryDetails(formData: NgForm) {	
+entryDetailsLA(formData: NgForm) {	
     
-  if(formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {	
+  if(formData.value.Location.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location == '') {	
     alert('Please select the Office Location');	
     return;	
   }	
-  if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
-    alert('Please select the Campus');	
-    return;	
-  }	
-  if(formData.value.Department_number.toUpperCase() == '' && this.hideDeptCode == false) {	
-    alert('Please enter the Charge Department Code');	
-    return;	
-  }	
-  if(formData.value.Projectid == '' && this.hideProjectId == false) {
-    alert('Please enter the Project Id');
-    return;
-    }
-  if(formData.value.identifier_hp == '') {	
-    this.fixedPhoneIdentifier = true;	
-  }	
+  // if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
+  //   alert('Please select the Campus');	
+  //   return;	
+  // }	
+  // if(formData.value.Department_number.toUpperCase() == '' && this.hideDeptCode == false) {	
+  //   alert('Please enter the Charge Department Code');	
+  //   return;	
+  // }	
+  // if(formData.value.Projectid == '' && this.hideProjectId == false) {
+  //   alert('Please enter the Project Id');
+  //   return;
+  //   }
+  // if(formData.value.identifier_hp == '') {	
+  //   this.fixedPhoneIdentifier = true;	
+  // }	
   this.isEntryForm = true;	
   this.isReviewForm = false;	
 
-  this.reviewDetailsIndia.officeLocation = formData.value.Location_1;	
-  this.reviewDetailsIndia.campus = formData.value.Buildings;	
-  this.reviewDetailsIndia.funded = this.Voice_Type;	
-  this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;	
-  this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
-  this.reviewDetailsIndia.projectId = formData.value.Projectid;	
-  this.reviewDetailsIndia.fixPhoneIdentifier = formData.value.identifier_hp;	
-
+  this.reviewDetailsIndia.officeLocation = formData.value.Location;	
+  // this.reviewDetailsIndia.campus = formData.value.Buildings;	
+  // this.reviewDetailsIndia.funded = this.Voice_Type;	
+  // this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;	
+  // this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
+  // this.reviewDetailsIndia.projectId = formData.value.Projectid;	
+  // this.reviewDetailsIndia.fixPhoneIdentifier = formData.value.identifier_hp;	
+// alert("control here");
 }	
 
 BackButton() {	
