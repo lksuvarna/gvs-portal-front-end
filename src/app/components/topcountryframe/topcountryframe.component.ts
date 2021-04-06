@@ -28,7 +28,7 @@ export class TopcountryframeComponent implements OnInit {
         this.service=params.service;
         this.pcode = params.country;
         console.log("topcountry component" + this.pcode);
-        console.log("topcountry component" + this.route.component);
+       // console.log("topcountry component" + this.route.component);
       
       this.countryroute=sessionStorage.getItem('countryroute')
     this.ccode = this.cookie.getCookie('ccode').substring(6, 9);

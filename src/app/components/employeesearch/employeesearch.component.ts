@@ -25,6 +25,7 @@ export class EmployeesearchComponent implements OnInit {
   servicesData: any = []
   subCountries: any = []
   countryname: any;
+  lookuploc:any
   ccode = '';
   pcode = '';
   routingname:any;
@@ -32,6 +33,7 @@ export class EmployeesearchComponent implements OnInit {
   service = '';
   backbutton: any;
   step: any;
+  sno:any;
   identifier: any;
   warninginfo = true;
   warninginfosnow = true;
@@ -323,7 +325,26 @@ export class EmployeesearchComponent implements OnInit {
   getLocationdata() {
     this.cloudantservice.getlocationdetails(this.pcode).subscribe(data => {
       console.log('Response received navigation', data.locationdetails);
-      sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
+      if (this.service.includes('jabber')){
+        if(this.pcode=='631'){
+          var loc=this.employeeSerial.substr(6, 9)+"jlocations"
+          console.log(loc)
+          this.lookuploc=JSON.stringify((data.locationdetails[loc]))
+        }
+        else{
+       this.lookuploc=JSON.stringify(data.locationdetails.jlocations)}
+      }
+      else if(this.service.includes('fixed')){
+        this.lookuploc=JSON.stringify(data.locationdetails.flocations)
+      }
+      else if(this.service.includes('fac')){
+        this.lookuploc=JSON.stringify(data.locationdetails.faclocations)
+      }
+      else if(this.service.includes('special')){
+        this.lookuploc=JSON.stringify(data.locationdetails.slocations)
+      }
+     // sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
+     sessionStorage.setItem('locationdetails',this.lookuploc)
       if (this.radioAction.toLowerCase() == "anotheremployee") {
         this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
       }
