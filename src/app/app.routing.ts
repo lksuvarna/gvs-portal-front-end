@@ -26,6 +26,7 @@ import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.c
 import { VoipUsaNewComponent } from './components/voip-usa-new/voip-usa-new.component';
 import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
 
 
 
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
     { path: 'resources', component: ResourcesComponent},
     { path: 'pagenotfound', component: PagenotfoundComponent},
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
+    { path: 'entrydetailsfacin', component: FacInNewComponent},
    // {path: '**', redirectTo:'/pagenotfound?error'}
    {path: '**', component: PagenotfoundComponent}
     
