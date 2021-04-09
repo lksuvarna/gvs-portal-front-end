@@ -25,7 +25,11 @@ export class EmployeesearchComponent implements OnInit {
   servicesData: any = []
   subCountries: any = []
   countryname: any;
-  lookuploc:any
+  lookuploc:any;
+  flocations:any;
+  emmodels:any;
+  cmmodels:any;
+  fpmodels:any;
   ccode = '';
   pcode = '';
   routingname:any;
@@ -369,6 +373,10 @@ export class EmployeesearchComponent implements OnInit {
       }
       else if(this.service.includes('fixed')){
         this.lookuploc=JSON.stringify(data.locationdetails.flocations)
+        sessionStorage.setItem('fdevices',JSON.stringify(data.locationdetails.fdevices))
+        sessionStorage.setItem('emmodels',JSON.stringify(data.locationdetails.emmodels))
+        sessionStorage.setItem('cmmodels',JSON.stringify(data.locationdetails.cmmodels))
+        sessionStorage.setItem('fpmodels',JSON.stringify(data.locationdetails.fpmodels))
       }
       else if(this.service.includes('fac')){
         this.lookuploc=JSON.stringify(data.locationdetails.faclocations)
