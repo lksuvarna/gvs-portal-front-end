@@ -4,6 +4,7 @@ import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { NgForm } from '@angular/forms';	
 import {Router} from  '@angular/router';	
 import { ActivatedRoute } from '@angular/router';	
+import { bpservices } from '../../_services/bp.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Jabber_New} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
@@ -47,7 +48,10 @@ employeeInfo1: any;
 campus:any;	
 hideProjectId = false;
 reqFor: any;
-models:any = ['7941','7942','8811','8812']
+models:any = [];
+emModels:any = ['7941','7942','8811','8812'];
+fpModels:any = ['7941','7942','8811',];
+cModels:any = ['7941','7942',];
 hideDeviceSection = true;
 showforAnyDevice = true;
 showforFixedPhone = true;
@@ -55,10 +59,25 @@ showBusinessNeed = true;
 voicemail = 'no';
 COS = 'national';
 selected_device:any = '';
-
+modelValue:any;
+empID:any='';
+employeeID:any;
+email:any;
+go = false;
+goClick = true;
+goResults:any;
+countryCode:any;
+emailClick = false;
+empIDEmail:any = '';
+empIDValue:any = '';
+changed:any;
+gggg:any;
+emailResult:any = false;
+hideEmpID:any;
+hideVoicemail:any
   
     
-constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	
+constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private bpservices:bpservices) { 	
  /* this.Locations = {	
     locc : ['Banglore~~MTP','Banglore~~SA',	
     'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech','Hyderabad~~Hitech2']	
@@ -141,6 +160,8 @@ hideChargeDepartmentCode() {
 }	
 
 selectedDevice(device:string) {
+  this.models = [];
+  this.modelValue = '';
   if(device != ''){
     this.hideDeviceSection = false;
   }
@@ -150,12 +171,79 @@ selectedDevice(device:string) {
   if(device.toUpperCase() == 'FIXED PHONE USER') {
     this.showforAnyDevice = false;
     this.showforFixedPhone = false;
+    this.models = [...this.fpModels];
+    this.hideEmpID = false;
+    this.hideVoicemail = false;
+    if(this.COS == 'international') {
+      this.showBusinessNeed = false;
+    }
   }
-  if(device.toUpperCase() == 'EXTENSION MOBILITY STATION' || device.toUpperCase() == 'CONFERENCE / MEETING ROOM PHONE') {
+  if(device.toUpperCase() == 'EXTENSION MOBILITY STATION') {
     this.showforAnyDevice = false;
     this.showforFixedPhone = true;
+    this.models = [...this.emModels];
+    this.hideEmpID = true;
+    this.hideVoicemail = true;
+    this.showBusinessNeed = true;
+  }
+  if(device.toUpperCase() == 'CONFERENCE / MEETING ROOM PHONE') {
+    this.showforAnyDevice = false;
+    this.showforFixedPhone = true;
+    this.models = [...this.cModels];
+    this.hideEmpID = true;
+    this.hideVoicemail = true;
+    this.showBusinessNeed = true;
   }
 
+}
+onEmpIDChange() {
+  this.go = false;
+  this.empIDChanged(this.empID);
+}
+empIDChanged(id:any) {
+  if(this.empIDValue != id) {
+    this.empIDValue = id;
+    this.changed = true;
+    this.gggg = false;
+  } else {
+    this.changed = false;
+    this.gggg = true;
+  }
+}
+fetchEmployee() {
+  if(this.empID == '') {
+    alert('Please enter the Employee ID');
+    return false;
+  } else if(this.empID.length != 6) {
+    alert('Please enter 6 digit Employee ID');
+    return false;
+  }
+  else {
+  this.countryCode = sessionStorage.getItem('countryroute');
+  this.employeeID = this.empID.concat(this.countryCode);
+  this.bpservices.bpdetails(this.employeeID).subscribe(data => {
+    this.goClick = false;
+    this.gggg = true;
+    console.log(' BP Details', data.userdata);
+    if (data.userdata) {
+        this.email =  data.username.preferredidentity;
+        this.go = true;
+        this.goResults = true;
+        this.emailClick = false;
+    } else {
+        this.go = false;
+        this.goResults = false;
+    }
+  });
+ return false;
+}
+}
+
+onEmailClick() {
+  this.empIDEmail = this.employeeID+"--"+this.email;
+  this.empID = this.empIDEmail;
+  this.emailClick = true;
+  this.emailResult = true;
 }
 
 classofservice(cos:string) {
@@ -168,14 +256,14 @@ classofservice(cos:string) {
 
 entryDetails(formData: NgForm) {	
     
- /* if(formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {	
+  if(formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {	
     alert('Please select the Office Location');	
     return;	
   }	
   if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
     alert('Please select the Campus');	
     return;	
-  }	*/
+  }	
   if(formData.value.Department_number.toUpperCase() == '' && this.hideDeptCode == false) {	
     alert('Please enter the Charge Department Code');	
     return;	
@@ -200,8 +288,25 @@ entryDetails(formData: NgForm) {
       alert('Please select a type of model');
       return;
     }
+    if(this.goResults == false && formData.value.StepMentor != '' && this.gggg == true) {
+      alert('No match was found for the employee ID. Please provide the correct employee ID');
+      this.empID = '';
+      return;
+    }
     if(formData.value.StepMentor == '' && this.showforFixedPhone == false) {
       alert('Please enter the employee ID');
+      return;
+    }
+    if(formData.value.StepMentor.length != 6 && this.empIDEmail == '' && this.goClick == true) {
+      alert('Please enter 6 digit Employee ID');
+      return;
+    }
+    if(this.go == false && this.changed == true) {
+      alert('Please click Go to fetch employee details');
+      return;
+    }
+    if(this.emailClick == false) {
+      alert('Please click search result to fetch Employee details');
       return;
     }
     if(formData.value.Justification == '' && this.showBusinessNeed == false) {
@@ -212,9 +317,14 @@ entryDetails(formData: NgForm) {
       alert('Please Enter a description and it should not be more than 30 characters');
       return;
     }
-    if(formData.value.MACAddress == '') {
+    if(formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
       alert('Please enter 12 characters MAC address');
       return;
+    }
+    var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
+    if(pat1.test(formData.value.MACAddress)) {
+      alert('MAC field value to be in combination of 0 to 9 and A to F');
+      return
     }
 
   this.isEntryForm = true;	
@@ -224,7 +334,7 @@ entryDetails(formData: NgForm) {
   this.reviewDetailsIndia.campus = formData.value.Buildings;	
   this.reviewDetailsIndia.funded = this.Voice_Type;	
   this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;	
- // this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
+  this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
   this.reviewDetailsIndia.projectId = formData.value.Projectid;	
   this.reviewDetailsIndia.accountId = formData.value.Accountid;
   this.reviewDetailsIndia.icaCode = formData.value.ICAcode;
