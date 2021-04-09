@@ -3,28 +3,42 @@
     "home": {
         "select-language": "Choose a language: ",
         "app-name": "Global Voice Services",
-        "app-function": "What service or country are you looking for?",
-        "welcome": "Welcome,",
+        "app-function": "Single entry point for ordering voice services in your country",
+        "sponsor":"Built on CIO Hybrid Cloud Powered by Red Hat OpenShift",
+        "welcomemessage": "Welcome,",
         "question": "What service or country are you looking for?",
         "search-placeholder": "Search service...",
         "search-text": "Click here to see all results in GVS search",
         "my-country": "My Country",
         "click-here": "Click here",
         "available": "to view all available",
-        "services": "services for",
+        "servicesonlyokay": "services for",
         "most-viewed-services": "Most Viewed Services",
         "find-right-service": "Find the right services, check their availability,",
         "find-right-service2": "and then choose the way you connect and work together.",
         "jabber-description": "Cisco Jabber is a multiple platform soft phone application to make and receive phone calls.",
-        "button-value": "Get Started"
+        "button-value": "Get Started",
+        "Searchservice": "Search service..."
     },
 
     "footer": {
         "aditional-question": "Have additional questions about ordering Global Voice Services ?",
         "please consult": "Please consult",
         "consult": "* This website supports Mozilla Firefox, Google Chrome, IE, Edge and Safari."
+    },
 
-
+    "footnote":{
+        "Jabber":"Jabber",
+        "Fixed Phone":"Fixed Phone",
+        "FAC Code":"FAC Code",
+        "Special Request":"Special Request",
+        "Terms of use":"Terms of use",
+        "Useful Information":"Useful Information",
+        "Please bear in mind the following points when making a request :":"Please bear in mind the following points when making a request :",
+        "To make a request the Employee must exist in BluePages (except for cancellation requests).":"To make a request the Employee must exist in BluePages (except for cancellation requests).",
+        "You must know the IBM serial Number of the person making the request.":"You must know the IBM serial Number of the person making the request.",
+        "Only one request per employee per request type is processed at a time.":"Only one request per employee per request type is processed at a time."
+        
     },
 
     "lhs": {
@@ -38,4 +52,5 @@
         "Resources": "Resources",
         "Requests": "Requests"
     }
+    
 }

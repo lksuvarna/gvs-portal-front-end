@@ -4,27 +4,42 @@
         "select-language": "Choisissez une langue: ",
         "app-name": "Services téléphoniques mondiaux",
         "app-function": "Point d'entrée unique pour commander des services vocaux dans votre pays",
-        "welcome": "Bienvenue,",
+        "sponsor":"Basé sur le cloud hybride CIO optimisé par Red Hat OpenShift",
+        "welcomemessage": "Bienvenue,",
         "question": "Quel service ou quel pays rechercherez-vous?",
         "search-placeholder": "Service de recherche ...",
         "search-text": "Cliquez ici pour voir tous les résultats de la recherche GVS",
         "my-country": "Mon pays",
         "click-here": "Cliquez ici",
         "available": "pour afficher tous les",
-        "services": "services pour",
+        "servicesonlyokay": "services pour",
         "most-viewed-services": "Services les plus consultés",
         "find-right-service": "Trouvez les bons services, vérifiez leur disponibilité,",
         "find-right-service2": "puis choisissez la façon dont vous vous connectez et travaillez ensemble.",
         "jabber-description": "Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.",
-        "button-value": "Premiers pas"
+        "button-value": "Premiers pas",
+        "Searchservice": "Service de recherche..."
     },
 
     "footer": {
         "aditional-question": "Vous avez des questions supplémentaires sur la commande de  Services téléphoniques mondiaux ?",
         "please consult": "Veuillez consulter",
-        "consult": "* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE et Safari."
+        "consult": "* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE, Edge et Safari."
 
 
+    },
+    "footnote":{
+        "Jabber":"Jacasser",
+        "Fixed Phone":"Téléphone fixe",
+        "FAC Code":"Code FAC",
+        "Special Request":"Demande spéciale",
+        "Terms of use":"Conditions d'utilisation",
+        "Useful Information":"Informations utiles",
+        "Please bear in mind the following points when making a request :":"Veuillez garder à l'esprit les points suivants lorsque vous faites une demande:",
+        "To make a request the Employee must exist in BluePages (except for cancellation requests).":"Pour faire une demande, l'Employé doit exister dans BluePages (sauf pour les demandes d'annulation).",
+        "You must know the IBM serial Number of the person making the request.":"Vous devez connaître le numéro de série IBM de la personne qui fait la demande.",
+        "Only one request per employee per request type is processed at a time.":"Une seule demande par employé et par type de demande est traitée à la fois."
+        
     },
 
     "lhs": {
@@ -37,5 +52,8 @@
         "Revalidation Pending": "Revalidation en attente",
         "Resources": "Ressources",
         "Requests": "Demandes"
+    },
+    "Servicesdisplay":{
+        
     }
 }
