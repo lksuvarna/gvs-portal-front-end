@@ -1,1 +1,141 @@
-<p>voip-usa-new works!</p>
+<app-topcountryframe></app-topcountryframe>
+<div class=" ds-panel ds-col-12"></div>
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+
+   
+
+        <div class="ds-col-md-4 ds-col-xl-4">
+            <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
+        </div>
+
+        <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
+           
+                <form [hidden]="isEntryForm" (submit)='entryDetailsUSA(formData)' #formData='ngForm'>
+                <b>Request new Jabber service</b>
+
+                <div class="ds-pad-t-0_5 ds-pad-b-1">
+                    By submitting this provisioning request, you are providing express written consent for IBM to process the Personal 
+                    Information (PI) that you have provided as part of the provisioning process.
+                </div>
+                <div class=" ds-panel ds-col-12 "></div> 
+
+                <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+
+                
+                <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Employee Entry Details</h2><br>
+
+                <span id="t1">
+                    <table width="100%" height="10" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                        
+                            <tr valign="top">
+                                <td colspan="2" width="47%" height="10">
+                                    <label for="LocationId" class="ds-text-capitalize">Jabber Location</label>
+                                    <span class="ds-text-contextual-red-2">*</span>
+                                </td>
+                                <td width="53%" height="10">
+                                    <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
+                                    <input name="_Location" type="hidden" value="1">
+                                    <select name="Location" rows="2" [(ngModel)]="locationselected"(ngModelChange)="onLocationSelect()" cols="40" id="LocationId"  
+                                    class="ds-title ds-align-text-left" style="width:300px !important;" title="Location">
+                                    <option value ="">Select Office Location</option>
+                                        <option name="Location" *ngFor="let fl_location of locationlist" [value]="fl_location">
+                                            {{ fl_location }}</option>
+                                    </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </span><br>
+
+                <div id="msgdis">
+                    <p>Clicking submit will result in your service being assigned a phone number in the 720 area code. 
+                        If you wish to have a local number, or retain your existing phone number at an IBM site, then please wait for your site 
+                        to be migrated to Cisco Jabber. The US Site Migration schedule can be found 
+                        <a href="https://pdydalhcsad01.sl.bluecloud.ibm.com/reports/home.htm" target="_blank">here</a>.
+                    </p>
+                </div>
+
+                <br><div class=" ds-panel ds-col-12 "></div> 
+                
+                
+
+                <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                    <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
+                        <input type="button" name="back"
+                            class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back" (click)="backClick()">
+                        </span>
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                        <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                            value="Next"><br>
+                        </span>
+                    </div>
+                    </div>
+                </div>
+            </form>
+            <form [hidden]="isReviewForm">
+            <b>Request new Jabber service</b>
+
+            
+            <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+            </div>
+            <div class="ds-hr-thick ds-mar-b-1_5"></div>
+
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+
+
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Jabber Request Details</h2>
+
+            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="46%" height="10">
+                            <label for="addId1">Jabber Location</label>
+                        </td>
+                        <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
+                <p>Opps! Some thing went worng.Please try again latter.</p><p>
+            </p></div>
+
+            <div class="ds-hr-thick ds-mar-t-1_5"></div>
+
+            <!-- Dark Background -->
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+                <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
+            </div>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
+              <input type="button" name="back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                (click)='BackButton()' *ngIf="this.isButtonVisible && !errorinfo">
+            </span>
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+              <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
+            </span>
+                <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
+        
+           
+                        
+
+
+                    </div>
+                </div>
+            </div>
+           
+
+        </form>
+        </div>
+</div>
+

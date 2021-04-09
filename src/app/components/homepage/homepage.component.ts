@@ -25,6 +25,7 @@ export class HomepageComponent implements OnInit {
   uname='';
   countryname:any;
   ccode='';
+  
 
   generate(cnum : string): void{
     console.log(cnum);
@@ -56,6 +57,7 @@ export class HomepageComponent implements OnInit {
       let countrydetails=data.countrydetails;
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.ccode);
+      sessionStorage.setItem('pagedisplay','homepage')
      });
 
     

@@ -23,7 +23,10 @@ import { VoipAuNewComponent } from './components/voip-au-new/voip-au-new.compone
 import { VoipLaNewComponent } from './components/voip-la-new/voip-la-new.component';
 import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-update.component';
 import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.component';
+import { VoipUsaNewComponent } from './components/voip-usa-new/voip-usa-new.component';
 import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.component';
+import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
+import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 
@@ -36,6 +39,7 @@ const appRoutes: Routes = [
     { path: 'services' ,  component: ServicesComponent },
   // { path: 'services' , loadChildren: () => import('./components/navigation/navigation.component').then(m => m.ServicesComponent)}  
     { path: 'jabberservices', component: JabberservicesComponent },   
+    { path: 'fixedphoneservices', component: FixedphoneservicesComponent }, 
     { path: 'employeesearch', component: EmployeesearchComponent },    
     { path: 'employeeinfo', component: EmployeeinfoComponent },
     { path: 'resultpage', component: ResultpageComponent },
@@ -53,8 +57,11 @@ const appRoutes: Routes = [
     { path: 'revalidationpending', component: RevalidationpendingComponent},
     { path: 'entrydetailsau', component: VoipAuNewComponent},    
     { path: 'entrydetailsla', component: VoipLaNewComponent},
-    { path: 'entrydetailsemea', component: VoipEmeaNewComponent},    
+    { path: 'entrydetailsemea', component: VoipEmeaNewComponent},
+    { path: 'entrydetailsus', component: VoipUsaNewComponent},        
     { path: 'resources', component: ResourcesComponent},
+    { path: 'entrydetailsfn', component: HpInNewComponent},
+    
     { path: 'pagenotfound', component: PagenotfoundComponent},
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
    // {path: '**', redirectTo:'/pagenotfound?error'}

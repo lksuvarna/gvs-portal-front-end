@@ -19,7 +19,7 @@ export class TopcountryframeComponent implements OnInit {
   countryroute:any
   service:any;
   pagedisplay:any;
-  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','requests','resources']
+  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','requests','resources']
   ngOnInit(): void {
    
     this.route.queryParams
@@ -28,7 +28,7 @@ export class TopcountryframeComponent implements OnInit {
         this.service=params.service;
         this.pcode = params.country;
         console.log("topcountry component" + this.pcode);
-        console.log("topcountry component" + this.route.component);
+       // console.log("topcountry component" + this.route.component);
       
       this.countryroute=sessionStorage.getItem('countryroute')
     this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
@@ -39,7 +39,10 @@ export class TopcountryframeComponent implements OnInit {
         //  queryParams: {}
        });
        
-      }    
+      } 
+      else{
+        sessionStorage.setItem('pagedisplay','page')
+      }   
     if (this.pcode== this.countryroute) {
       this.pcountrydetails=sessionStorage.getItem('countrydetails')
             console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code)
@@ -58,6 +61,7 @@ export class TopcountryframeComponent implements OnInit {
        
       }
       else{
+        sessionStorage.setItem('pagedisplay','page')
       console.log('Response received', data.countrydetails.name);
       this.countryname=data.countrydetails;
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));

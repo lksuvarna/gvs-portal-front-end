@@ -52,6 +52,7 @@ export class EmployeeinfoComponent implements OnInit {
   navpage:any;
   navpage1:any;
   page:any;
+  warn = false;
 
   submit() {
     if(this.service=="requests"||this.service=="resources"||this.service=="approvalpending"||this.service=="revalidationpending"){
@@ -127,7 +128,7 @@ export class EmployeeinfoComponent implements OnInit {
       this.page = 'move Jabber';
     }
      if (this.sessionwarninginfosnow=='true1'){
-       this.identifier1=sessionStorage.getItem('identifier1')
+       this.identifier1=sessionStorage.getItem('identifier1')?.replace(" ","");
       this.warninginfosnowothers = true;   
       this.isDataLoaded=true;
      }
@@ -144,7 +145,8 @@ export class EmployeeinfoComponent implements OnInit {
     this.employeeInfo=JSON.parse(this.employeeInfo1)
 
     if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers){
-      this.hideSteps = true
+      this.hideSteps = true;
+      this.warn = true;
     } else {
       this.hideSteps = false
     }

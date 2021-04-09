@@ -1,133 +1,80 @@
-<div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
-    <form (submit)='entryDetailsLA(formData)' #formData='ngForm'>
+<app-topcountryframe></app-topcountryframe>
 
-        <b>Request new Jabber service</b>
+<div class=" ds-panel ds-col-12"></div>
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+    <div class="ds-col-md-4 ds-col-xl-4">
+        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
+    </div>
+    <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
+        <form [hidden]="isEntryForm" (submit)='entryDetailsLA(formData)' #formData='ngForm'>
 
-        <div class="ds-padding-top-0_5 ds-padding-bottom-1">
-        Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required
-        </div>
-        <div class=" ds-panel ds-col-12 "></div> 
+            <b>Request new Jabber service</b>
 
-        <div class="ds-col-12 ds-pad-t-0_5">
-            <div class="ds-row ">
-            <div class="ds-col-12">
-                <div class="ds-row">
-                <div>
-                    <div class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b>STEP
-                        1</b></span> <span class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Search</span>
-                    </div>
-                    <div  class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                            class="ds-pad-r-1">-----&gt;</span>STEP 2</b></span><span
-                        class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Information</span>
-                    </div>
-                    <div  class="tooltip"><span class="ds-text-contextual-green-3 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                    class="ds-pad-r-1">-----&gt;</span>STEP 3</b></span><span
-                    class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Entry Details</span>
-                    </div>
-                    <div  class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
-                        class="ds-pad-r-1">-----&gt;</span>STEP 4</b></span><span
-                    class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Review Details</span>
-                </div>
-
-                </div>
-                </div>
+            <div class="ds-pad-t-0_5 ds-pad-b-1">
+            Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required
             </div>
-            </div>
-        </div>
+            <div class=" ds-panel ds-col-12 "></div> 
 
+            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
-        <!-- <div class="ds-col-12 ds-padding-top-0_5">
-<div class="ds-row ">
-    <div class="ds-col-12">
-      <div class="ds-row">
-<div>
-<div class="tooltip"><span class="ds-text-contextual-blue-5 ds-padding-right-0_5 ds-padding-left-1"><b><input type="image" onclick="
-        document.forms[0].Back_1.value = 'Yes';document.forms[0].backstep.value = '1';
-        form.submit();" src="/tools/voice/SPOEProdUI.nsf/step1.png/"></b></span>  <span class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Search</span>
-</div>
-<div class="tooltip"><span id="st21" class="ds-text-contextual-blue-5 ds-padding-right-0_5 ds-padding-left-1"><b><span class="ds-padding-right-1">-----&gt;</span><input type="image" onclick="
-        document.forms[0].Back_1.value = 'Yes';document.forms[0].backstep.value = '2';
-        form.submit();" src="/tools/voice/SPOEProdUI.nsf/step2.png/"></b></span><span class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Information</span>
-</div>
-
-<span id="st1" class=" ds-text-contextual-green-3 ds-padding-right-1 ds-padding-left-0_5" style="display: none;"><b><span class="ds-padding-right-1">-----&gt;</span><div class="tooltip">STEP 2
-<span style="font-weight:normal;" class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Entry Details</span>
-</div></b></span>
-
-<span id="st31" class=" ds-text-contextual-green-3 ds-padding-right-1 ds-padding-left-0_5"><b><span class="ds-padding-right-1">-----&gt;</span><div class="tooltip">STEP 3
-<span style="font-weight:normal;" class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Entry Details</span>
-</div></b></span>
-
-<span id="st32" class=" ds-text-contextual-blue-5 ds-padding-right-1 ds-padding-left-0_5" style="display: none;"><b><span class="ds-padding-right-1">-----&gt;</span><div class="tooltip">STEP 3
-<span style="font-weight:normal;" class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Review Details</span>
-</div></b></span>
-
-<span id="st4" class=" ds-text-contextual-blue-5 ds-padding-right-1 ds-padding-left-0_5"><b><span class="ds-padding-right-1">-----&gt;</span><div class="tooltip">STEP 4
-<span style="font-weight:normal;" class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Review Details</span>
-</div></b></span>
-</div>
-        </div>
-</div>
-</div>
-</div> -->
-
-        <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Employee Entry Details</h2>
-
-        <p>
-        <table id="t1" cellspacing="0" cellpadding="0" border="0">
-            <tbody>
-                <tr valign="top">
-                    <td colspan="3" width="540">
-                        <p id="p9"></p>
-                    </td>
-                </tr>
-                <!-- <tr valign="top">
-                    <td colspan="3" width="540">
-                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td>
-                </tr> -->
-                <tr valign="top">
-                    <!-- <td width="12">
-                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td>  -->
-                     <td width="349"><br>
-                        <label for="LocationId" class="ds-text-capitalize">Jabber Location</label>
-                        <span class="ds-text-contextual-red-2">*</span>
-                    </td>
-                    <td width="160">
-                        <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                            <input name="%%Surrogate_Location" type="hidden" value="1">
-                            <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important;" title="Location" ngModel>
-                                <!-- <option>Select Location</option> -->
-                                <option name="Location" *ngFor='let fl_location of location' [value]='fl_location'>
-                                    {{ fl_location }}</option>
-                            </select>
+            <!-- <div class="ds-col-12 ds-pad-t-0_5">
+                <div class="ds-row ">
+                <div class="ds-col-12">
+                    <div class="ds-row">
+                    <div>
+                        <div class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b>STEP
+                            1</b></span> <span class="tooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Search</span>
                         </div>
-                    </td>
-                </tr>
-                <!-- <tr valign="top"><td width="12">
-                    <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                </td>
-                <td width="349">
-                    <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                </td>
-                <td width="160">
-                    <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                </td>
-                </tr> -->
+                        <div  class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
+                                class="ds-pad-r-1">-----&gt;</span>STEP 2</b></span><span
+                            class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Information</span>
+                        </div>
+                        <div  class="tooltip"><span class="ds-text-contextual-green-3 ds-pad-r-0_5 ds-pad-l-1"><b><span
+                        class="ds-pad-r-1">-----&gt;</span>STEP 3</b></span><span
+                        class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Employee Entry Details</span>
+                        </div>
+                        <div  class="tooltip"><span class="ds-text-contextual-blue-5 ds-pad-r-0_5 ds-pad-l-1"><b><span
+                            class="ds-pad-r-1">-----&gt;</span>STEP 4</b></span><span
+                        class="newtooltiptext ds-bg-blue-2 ds-text-neutral-7">Review Details</span>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div> -->
 
-                <tr valign="top">
-                    <!-- <td width="12">
-                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td> -->
-                    <td width="349"><br>
-                        <span class="ds-text-capitalize">Voicemail</span>
-                    </td><td width="160"><br>Yes
-                    </td>
-                </tr>
 
-                <!-- <tr valign="top">
-                    <td width="12">
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Employee Entry Details</h2>
+
+            <p>
+            <table id="t1" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    
+                    <!-- <tr valign="top">
+                        <td colspan="3" width="540">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td>
+                    </tr> -->
+                    <tr valign="top">
+                        <!-- <td width="12">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td>  -->
+                        <td width="46%"><br>
+                            <label for="LocationId" class="ds-text-capitalize">Jabber Location</label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="160">
+                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
+                                <input name="%%Surrogate_Location" type="hidden" value="1">
+                                <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important;" title="Location" ngModel>
+                                    <option value ="">Select Jabber Location</option>
+                                    <option name="Location" *ngFor='let fl_location of locationlist' [value]='fl_location'>
+                                        {{ fl_location }}</option>
+                                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- <tr valign="top"><td width="12">
                         <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
                     </td>
                     <td width="349">
@@ -136,90 +83,167 @@
                     <td width="160">
                         <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
                     </td>
-                </tr> -->
+                    </tr> -->
 
-                <tr valign="top">
-                    <!-- <td width="12">
-                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td> -->
-                    <td width="349"><br>
+                    <tr valign="top">
+                        <!-- <td width="12">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td> -->
+                        <td width="46%"><br>
+                            <span class="ds-text-capitalize">Voicemail</span>
+                        </td><td width="160"><br>Yes
+                        </td>
+                    </tr>
+
+                    <!-- <tr valign="top">
+                        <td width="12">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td>
+                        <td width="349">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td>
+                        <td width="160">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td>
+                    </tr> -->
+
+                    <tr valign="top">
+                        <!-- <td width="12">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td> -->
+                        <td width="46%"><br>
+                            <label for="COSId">Class of Service</label><br>
+                        </td>
+                        <td width="160"><br>National
+                        </td>
+                    </tr>
+
+                    <!-- <tr valign="top">
+                        <td colspan="3" width="540">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td>
+                    </tr> -->
+
+                    <!-- <tr valign="top">
+                        <td width="12">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td>
+                        <td width="349">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td>
+                        <td width="160">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td>
+                    </tr> -->
+
+                    <!-- <tr valign="top">
+                        <td colspan="3" width="540"><font color="#FF0000"></font>
+                        </td>
+                    </tr> -->
+
+                    <!-- <tr valign="top">
+                        <td colspan="3" width="540">
+                            <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+
+            <br><div class=" ds-panel ds-col-12 "></div> 
+
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
+                            <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 
+                            ds-pad-r-3" value="Back" (click)="backClick()">
+                        </span>
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                            <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                             value="Next">
+                        </span>
+                    </div>
+                </div>
+            </div>
+          
+        </form>
+
+
+        <form [hidden]="isReviewForm">
+            <b>Request new Jabber service</b>
+
+            
+            <div class="ds-pad-t-0_5 ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to 
+                process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service.
+            </div>
+            <div class="ds-hr-thick ds-mar-b-1_5"></div>
+
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+
+
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2>
+
+            <table id="t2" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td width="61%">
+                            <label for="addId1">Jabber Location</label>
+                        </td>
+                        <td width="160">{{reviewDetailsIndia.officeLocation}}</td>
+                    </tr>
+                    <tr valign="top">
+                        
+                        <td width="61%"><br>
+                            <span class="ds-text-capitalize">Voicemail</span>
+                        </td>
+                        <td width="160"><br>Yes
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        
+                       <td width="61%"><br>
                         <label for="COSId">Class of Service</label><br>
-                    </td>
-                    <td width="160"><br>National
-                    </td>
-                </tr>
+                       </td>
+                       <td width="160"><br>National<br>
+                       </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
 
-                <!-- <tr valign="top">
-                    <td colspan="3" width="540">
-                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td>
-                </tr> -->
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
+                <p>Opps! Some thing went worng.Please try again latter.</p><p>
+            </p></div>
 
-                <!-- <tr valign="top">
-                    <td width="12">
-                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td>
-                    <td width="349">
-                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td>
-                    <td width="160">
-                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td>
-                </tr> -->
+            <div class="ds-hr-thick ds-mar-t-1_5"></div>
 
-                <!-- <tr valign="top">
-                    <td colspan="3" width="540"><font color="#FF0000"></font>
-                    </td>
-                </tr> -->
-
-                <!-- <tr valign="top">
-                    <td colspan="3" width="540">
-                        <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
-                    </td>
-                </tr> -->
-            </tbody>
-        </table>
-
-        <br><div class=" ds-panel ds-col-12 "></div> 
-        <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
-            <div class="ds-tray-fit-content ds-mar-b-0">
-            <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
-                <span class="ds-pad-l-4" id="button1">
-                <input type="button" name="back"
-                    class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back">
-                </span>
-                <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
-                <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                    value="Next"><br>
-                </span>
+            <!-- Dark Background -->
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+                <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
             </div>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
+                            <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 
+                            ds-pad-r-3" value="Back" (click)='BackButton()' *ngIf="this.isButtonVisible && !errorinfo">
+                        </span> 
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                            <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" 
+                            value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
+                        </span>
+                        <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary 
+                        ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" 
+                        [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">      
+           
+                        
+                    </div>
+                </div>
             </div>
-        </div>
-        <!-- <div class="ds-col-19 ds-padding-top-0_8 ds-no-gutter ds-float-lg-right">
-<div class="ds-tray-fit-content ds-margin-bottom-0">
-<div class="button-bar ds-tray-fit-content ds-padding-top-1   ds-float-lg-right ">
-<span class="ds-padding-left-4" id="button1">
-    <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-margin-bottom-0 ds-padding-left-3 ds-padding-right-3" tabindex="32765" onclick="
-        document.forms[0].Back.value = 'Yes';
-        document.forms[0].Back_1.value = 'No';
-        form.submit()
-    " value="Back">
-</span>
-<span class="ds-padding-left-1 ds-padding-right-1" id="button2">
-    <input type="button" name="next" class="ds-button ds-width-auto ds-margin-bottom-0 ds-padding-left-3 ds-padding-right-3" tabindex="32767" onclick="
-        document.forms[0].Back.value = 'No';
-        document.forms[0].Back_1.value = 'No';
-        if(validateFields()== false)
-                                            {
-            return false;
-        }else{
-        form.submit()
-}
-    " value="Next">
-</span>
-</div>
-</div>
-</div> -->
-    </form>
+           
 
+        </form>
+
+    </div>
 </div>

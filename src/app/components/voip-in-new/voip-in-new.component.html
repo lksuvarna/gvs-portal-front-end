@@ -1,10 +1,10 @@
-<app-topcountryframe></app-topcountryframe>
+<app-topcountryframe [ngClass]="{'disabled':isSpinnerVisible==true}"></app-topcountryframe>
 
 
 <div class=" ds-panel ds-col-12"></div>
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
-        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
+        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData" [ngClass]="{'disabled':isSpinnerVisible==true}"></app-navigation>
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <form [hidden]="isEntryForm" (submit)='entryDetails(formData)' #formData='ngForm'>
@@ -145,7 +145,7 @@
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
-            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)" [ngClass]="{'disabled':isSpinnerVisible==true}"></app-steps>
 
 
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Jabber Request Details</h2>

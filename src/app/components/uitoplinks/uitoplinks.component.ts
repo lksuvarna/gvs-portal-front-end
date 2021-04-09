@@ -17,6 +17,8 @@ export class UitoplinksComponent implements OnInit {
     {"name" : "India","code":"744","path":"././assets/flags/744.png"},
     {"name" : "France","code":"706","path":"././assets/flags/706.png"},
     {"name" : "Canada/Caribbean","code":"649","path":""},
+    {"name" : "Latin America","code":"631","path":"././assets/flags/631.png"},
+    {"name" : "USA","code":"897","path":"././assets/flags/897.png"},
     
   ]
 

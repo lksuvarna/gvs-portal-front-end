@@ -93,8 +93,18 @@
                 </tbody>
             </table>
 
-            <br><br><div class=" ds-panel ds-col-12 "></div>
-    
+            <br><br>
+            
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
+                <p>Opps! Some thing went worng.Please try again latter.</p><p>
+            </p></div>
+            
+            <div class=" ds-panel ds-col-12 "></div>
+              <!-- Dark Background -->
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+                <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
+            </div>
                 <!-- <div class="ds-row ds-grid ds-mar-b-5 ds-pad-r-1">
                     <div class="ds-col-lg-2 ds-push-lg-8">
                         <button type="button" class="ds-button ds-secondary ds-no-expand 

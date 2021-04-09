@@ -25,6 +25,11 @@ export class EmployeesearchComponent implements OnInit {
   servicesData: any = []
   subCountries: any = []
   countryname: any;
+  lookuploc:any;
+  flocations:any;
+  emmodels:any;
+  cmmodels:any;
+  fpmodels:any;
   ccode = '';
   pcode = '';
   routingname:any;
@@ -32,6 +37,8 @@ export class EmployeesearchComponent implements OnInit {
   service = '';
   backbutton: any;
   step: any;
+  s:any;
+  sno:any;
   identifier: any;
   warninginfo = true;
   warninginfosnow = true;
@@ -54,12 +61,21 @@ export class EmployeesearchComponent implements OnInit {
 	countryCA = '';
   itns:any = [];
   serviceName:any;
+  returnValue:any;
   ngOnInit(): void {
     this.showloader = false
+
     this.fullName = this.cookie.getCookie('username');
+    this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
     this.ccode = this.cookie.getCookie('ccode');
+
     this.countrydetails = sessionStorage.getItem('countrydetails')
     this.countrydetails = JSON.parse(this.countrydetails)
+    if(this.countrydetails.testuser)
+      {
+        this.ccode=this.countrydetails.testuser
+      }
+      else{this.ccode = this.cookie.getCookie('ccode');}
     this.route.queryParams
       .subscribe(params => {
         console.log(params);
@@ -121,17 +137,32 @@ export class EmployeesearchComponent implements OnInit {
         this.subCountries = this.countrydetails.scountries	
       }
   })
-
+  setTimeout(()=>{
+    if(sessionStorage.getItem('serviceName') == 'jabber_move'&&this.step == null || sessionStorage.getItem('serviceName') == 'jabber_move'&&sessionStorage.getItem('empserial') == '') {
+      this.returnValue = confirm('Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit');
+      if(this.returnValue == false) {
+        this.router.navigate(['/jabberservices'],{ queryParams: { country: this.pcode, service: this.service } });
+      }
+    }
+  },200);
   }
 
   onSubmit(formData: NgForm) {
 
     sessionStorage.setItem('radioAction', this.radioAction.toLowerCase());
     console.log(this.pcode + this.ccode)
-    if (this.radioAction.toLowerCase() == "myself" && this.pcode !== this.ccode.substr(6, 9)) {
-      alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
-      return;
-    }
+    if (this.radioAction.toLowerCase() == "myself" ) {
+      if(this.countrydetails.scountries){
+        
+        if(this.countrydetails.scountries.some((s: string | string[]) => s.includes(this.ccode.substr(6, 9)))){        }
+        else{alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
+        return;}
+      }
+      else if (this.pcode !== this.ccode.substr(6, 9)){                
+            alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
+            return;        
+      }
+     }
     if (this.radioAction.toLowerCase() == "anotheremployee") {
       if (formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true) {
         alert("Please enter a serial number");
@@ -156,14 +187,18 @@ export class EmployeesearchComponent implements OnInit {
     //for self
     else {
       this.employeeSerial = this.ccode
+      
       sessionStorage.setItem('empserial', this.ccode)
 
     }
     //to change the routing
+  
     if (this.service == "jabber_new") {
-      this.navpage = '/entrydetails'; this.navpage1 = '/employeeinfo';
+      this.getTitle();
+      this.navpage = this.routingname; this.navpage1 = '/employeeinfo';
     }
     else {
+      this.getTitle();
       if (this.radioAction.toLowerCase() == "myself") {
         if (this.service == "requests" || this.service == "resources" || this.service == "approvalpending" || this.service == "revalidationpending") {
           this.navpage = '/' + this.service; this.navpage1 = '/' + this.service;
@@ -188,7 +223,8 @@ export class EmployeesearchComponent implements OnInit {
           businessUnit: data.bu,
           department: data.username.dept,
           country: data.username.co,
-          email: data.username.preferredidentity
+          email: data.username.preferredidentity,
+          sno: data.username.uid
         }
         sessionStorage.setItem('employeeInfo', JSON.stringify(this.employeeInfo))
         sessionStorage.setItem('cnum', this.employeeSerial)
@@ -205,6 +241,10 @@ export class EmployeesearchComponent implements OnInit {
         this.getSNOWdata() ;
              
      }
+     if (this.service.includes("fixedphone")  ) {      
+      this.getLocationdata();
+           
+   }
      if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service=='jabber_move') {      
       this.getDBdata() ;
           
@@ -322,7 +362,30 @@ export class EmployeesearchComponent implements OnInit {
   getLocationdata() {
     this.cloudantservice.getlocationdetails(this.pcode).subscribe(data => {
       console.log('Response received navigation', data.locationdetails);
-      sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
+      if (this.service.includes('jabber')){
+        if(this.pcode=='631'){
+          var loc=this.employeeSerial.substr(6, 9)+"jlocations"
+          console.log(loc)
+          this.lookuploc=JSON.stringify((data.locationdetails[loc]))
+        }
+        else{
+       this.lookuploc=JSON.stringify(data.locationdetails.jlocations)}
+      }
+      else if(this.service.includes('fixed')){
+        this.lookuploc=JSON.stringify(data.locationdetails.flocations)
+        sessionStorage.setItem('fdevices',JSON.stringify(data.locationdetails.fdevices))
+        sessionStorage.setItem('emmodels',JSON.stringify(data.locationdetails.emmodels))
+        sessionStorage.setItem('cmmodels',JSON.stringify(data.locationdetails.cmmodels))
+        sessionStorage.setItem('fpmodels',JSON.stringify(data.locationdetails.fpmodels))
+      }
+      else if(this.service.includes('fac')){
+        this.lookuploc=JSON.stringify(data.locationdetails.faclocations)
+      }
+      else if(this.service.includes('special')){
+        this.lookuploc=JSON.stringify(data.locationdetails.slocations)
+      }
+     // sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
+     sessionStorage.setItem('locationdetails',this.lookuploc)
       if (this.radioAction.toLowerCase() == "anotheremployee") {
         this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
       }
@@ -360,6 +423,12 @@ export class EmployeesearchComponent implements OnInit {
     }else if(this.countrydetails.jnavpage=='EMEA'){
       this.routingname="/entrydetailsemea";
     }
+    else if(this.countrydetails.jnavpage=='US'){
+      this.routingname="/entrydetailsus";
+    }
+    else if(this.countrydetails.jnavpage=='LA'){
+      this.routingname="/entrydetailsla";
+    }
       this.reqname="-NS-";
       break;
       case "jabber_delete":
@@ -376,6 +445,11 @@ export class EmployeesearchComponent implements OnInit {
       this.title="Move Jabber Request";
       this.routingname="/entrydetailsijm";
       this.reqname="-MS-";
+      break;
+      case "fixedphone_new":
+      this.title="New Fixed Phone Request";
+      this.routingname="/entrydetailsfn";
+      this.reqname="-NS-";
       break;
       case "resources":
         this.title="Resources";

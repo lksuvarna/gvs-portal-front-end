@@ -27,6 +27,12 @@
                     </td>
                     <td width="359">{{employeeInfo.employeeName}}</td>
                 </tr>
+                <tr valign="top">
+                    <td width="359">
+                        <label for="NameID">Serial Number:</label><br><br>
+                    </td>
+                    <td width="359">{{employeeInfo.sno}}</td>
+                </tr>
 
                 <tr valign="top">
                     <td width="359">
@@ -123,7 +129,7 @@
         <div class="ds-hr-thick"></div>
 
         <div class="ds-row ds-grid ds-mar-t-b-3_5 ds-pad-r-1">
-            <div [ngClass]="warninginfo==false&&warninginfosnow==false? 'ds-col-lg-2 ds-push-lg-8': 'ds-col-lg-2 ds-push-lg-10'">
+            <div [ngClass]="warninginfo==false&&warninginfosnow==false&&warn==false? 'ds-col-lg-2 ds-push-lg-8': 'ds-col-lg-2 ds-push-lg-10'">
                 <button (click)="backClick()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">BACK</button>
             </div>
             <div class="ds-col-lg-2 ds-push-lg-8">

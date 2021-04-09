@@ -7,3 +7,7 @@ a.disabled {
     pointer-events: none;
     cursor: not-allowed;
 }
+
+.text-style {
+    font-size: 19px;
+}

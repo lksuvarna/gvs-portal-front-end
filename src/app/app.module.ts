@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -31,6 +31,7 @@ import { MiddleframeComponent } from './components/middleframe/middleframe.compo
 import { FilterPipe } from './filter.pipe';
 import { DropdownsearchPipe } from './dropdownsearch.pipe'
 import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.component';
+import { VoipUsaNewComponent } from './components/voip-usa-new/voip-usa-new.component';
 import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.component';
 import { VoipLaNewComponent } from './components/voip-la-new/voip-la-new.component';
 import { VoipAuNewComponent } from './components/voip-au-new/voip-au-new.component';
@@ -46,11 +47,21 @@ import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.c
 import { VoipAuMoveComponent } from './components/voip-au-move/voip-au-move.component';
 import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
+
 
 export function rootLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http,'assets/i18n/','.json')
   }
 
+export class GlobalErrorHandler implements ErrorHandler{
+handleError(error: Error){
+  if(error){
+    console.log(error.message);
+  }
+}
+
+}
 
 @NgModule({
   declarations: [
@@ -90,7 +101,9 @@ export function rootLoaderFactory(http: HttpClient){
     VoipAuMoveComponent,
     HpInNewComponent,
     VoipInMoveComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    FixedphoneservicesComponent,
+    VoipUsaNewComponent
 
 
   ],
@@ -113,7 +126,7 @@ export function rootLoaderFactory(http: HttpClient){
     
     
   ],
-  providers: [cloudantservice],
+  providers: [cloudantservice, {provide: ErrorHandler, useClass: GlobalErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

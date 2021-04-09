@@ -17,7 +17,7 @@
       </div>
       <div class=" ds-panel ds-col-12 "></div>
 
-      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
 
 
       <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
@@ -117,7 +117,7 @@
               </td>
               <td width="54%">
                 <div id="d21" class="ds-input-container ">
-                  <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input"
+                  <input name="Department_number" value="" maxlength='6' tabindex="4" id="d2" class="ds-input"
                     style="width: 300px !important;"
                     title="Contact FirstLine Manager\Project Manager for Charge Department Code" autocomplete="off"
                     ngModel>
@@ -140,7 +140,7 @@
               </td>
               <td width="54%">
                 <div class="ds-input-container">
-                  <input ngModel name="Projectid" value="" rows="2" cols="40" id="Projectid" class="ds-input"
+                  <input ngModel name="Projectid" value="" rows="2" maxlength='6' cols="40" id="Projectid" class="ds-input"
                     style="width:300px !important;" title="Project id">
                 </div>
               </td>
@@ -152,7 +152,7 @@
               </td>
               <td width="54%">
                 <div class="ds-input-container ">
-                  <input ngModel name="accid" value="" id="accid" class="ds-input" style="width:300px !important;"
+                  <input ngModel name="accid" value="" maxlength='6' id="accid" class="ds-input" style="width:300px !important;"
                     title="Account Id">
                 </div>
               </td>
@@ -164,7 +164,7 @@
               </td>
               <td width="54%">
                 <div class="ds-input-container ">
-                  <input ngModel name="icano" value="" id="icano" class="ds-input" style="width:300px !important;"
+                  <input ngModel name="icano" value="" id="icano" maxlength='6' class="ds-input" style="width:300px !important;"
                     title="ICA Code">
                 </div>
               </td>
@@ -277,6 +277,10 @@
         </tbody>
       </table>
 
+      <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
+        <p>Opps! Some thing went worng.Please try again latter.</p><p>
+    </p></div>
+
       <div class="ds-hr-thick ds-mar-t-1_5"></div>
       <!-- Dark Background -->
       <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
@@ -290,13 +294,14 @@
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
-                (click)='BackButton()' *ngIf="this.isButtonVisible">
+                (click)='BackButton()' *ngIf="this.isButtonVisible && !errorinfo">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+                value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
             </span>
-
+            <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
+        
           </div>
         </div>
       </div>
