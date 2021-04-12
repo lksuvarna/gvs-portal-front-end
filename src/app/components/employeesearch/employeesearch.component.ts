@@ -218,7 +218,7 @@ export class EmployeesearchComponent implements OnInit {
       if (data.userdata) {
         this.employeeInfo = {
 
-          employeeName: data.username.callupname,
+          employeeName: data.username.lastname+", "+data.username.firstname,
           jobResponsibility: data.username.jobresponsibilities,
           businessUnit: data.bu,
           department: data.username.dept,

@@ -106,15 +106,9 @@ handleError(error: Error){
     HpInNewComponent,
     VoipInMoveComponent,
     PagenotfoundComponent,
-
     FixedphoneservicesComponent,
-    VoipUsaNewComponent
-
     VoipUsaNewComponent,
     FacInNewComponent
-
-
-
   ],
   imports: [
     BrowserModule,

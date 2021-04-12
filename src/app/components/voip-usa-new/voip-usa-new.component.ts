@@ -69,8 +69,6 @@ reqFor: any;
     this.isReviewForm = true;	
     this.fixedPhoneIdentifier = false;	
   }	
-  
-   // Submit to Snow Jabber new code added by Swarnava	
   submit_snow(){	
     this.reqno=this.countrydetails.isocode+"-NS-"+this.cnum.substr(0,6)+"-"+gettime();	
     sessionStorage.setItem('reqno',this.reqno)	
@@ -120,6 +118,7 @@ reqFor: any;
     }
      );	
      }	
+  
   previousStep(event : any){
     this.isEntryForm = false;	
     this.isReviewForm = true;	
