@@ -68,5 +68,9 @@ if(this.service=='jabber_move'){
   this.page='move Jabber';
   return this.page;
 }
+if(this.service=='fixedphone_new'){
+  this.page='new Fixed Phone';
+  return this.page;
+}
     }
   }

@@ -67,6 +67,7 @@ export class EmployeesearchComponent implements OnInit {
 
     this.fullName = this.cookie.getCookie('username');
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
+    this.fullName = this.fullName.replace(",",", ");
     this.ccode = this.cookie.getCookie('ccode');
 
     this.countrydetails = sessionStorage.getItem('countrydetails')

@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import { bpservices } from '../../_services/bp.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {Jabber_New} from '../../../../config/payload';	
+import {fixedphone_new} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
 
 @Component({
@@ -49,9 +49,9 @@ campus:any;
 hideProjectId = false;
 reqFor: any;
 models:any = [];
-emModels:any = ['7941','7942','8811','8812'];
-fpModels:any = ['7941','7942','8811',];
-cModels:any = ['7941','7942',];
+emModels:any;
+fpModels:any;
+cModels:any;
 hideDeviceSection = true;
 showforAnyDevice = true;
 showforFixedPhone = true;
@@ -74,7 +74,8 @@ changed:any;
 gggg:any;
 emailResult:any = false;
 hideEmpID:any;
-hideVoicemail:any
+hideVoicemail:any;
+errorinfo=false;
   
     
 constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private bpservices:bpservices) { 	
@@ -98,9 +99,9 @@ constructor(private router:Router,private cookie: CookieHandlerService,private c
 //   this.router.navigate(['/reviewdetails']) 	
 // }	
 
-// Submit to Snow Jabber new code added by Swarnava	
+// Submit to Fixed Phone New to Snow
 
-payload : Jabber_New = new Jabber_New();	
+payload : fixedphone_new = new fixedphone_new();	
 
 reviewDetailsIndia = {	
 
@@ -288,24 +289,24 @@ entryDetails(formData: NgForm) {
       alert('Please select a type of model');
       return;
     }
-    if(this.goResults == false && formData.value.StepMentor != '' && this.gggg == true) {
+    if(this.goResults == false && formData.value.StepMentor != '' && this.gggg == true && this.showforFixedPhone == false) {
       alert('No match was found for the employee ID. Please provide the correct employee ID');
       this.empID = '';
       return;
     }
-    if(formData.value.StepMentor == '' && this.showforFixedPhone == false) {
+    if(formData.value.StepMentor == '' && this.showforFixedPhone == false && this.showforFixedPhone == false) {
       alert('Please enter the employee ID');
       return;
     }
-    if(formData.value.StepMentor.length != 6 && this.empIDEmail == '' && this.goClick == true) {
+    if(formData.value.StepMentor.length != 6 && this.empIDEmail == '' && this.goClick == true &&this.showforFixedPhone == false) {
       alert('Please enter 6 digit Employee ID');
       return;
     }
-    if(this.go == false && this.changed == true) {
+    if(this.go == false && this.changed == true && this.showforFixedPhone == false) {
       alert('Please click Go to fetch employee details');
       return;
     }
-    if(this.emailClick == false) {
+    if(this.emailClick == false && this.showforFixedPhone == false) {
       alert('Please click search result to fetch Employee details');
       return;
     }
@@ -367,12 +368,20 @@ submit_snow(){
     // by default set to true. below line can be removed if needed.	
     //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
     this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
-   // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+    this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
     this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
-    this.payload.Location_final =this.reviewDetailsIndia.campus;	
-    //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
-    this.payload.ReqNo=this.reqno;	
+    this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;	
+    this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
+    this.payload.ReqNo=this.reqno;
+    this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
+    this.payload.Model_Disp =  this.reviewDetailsIndia.model;
+    this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
+    this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
+    this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+    this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    this.payload.COS_Disp = this.reviewDetailsIndia.cos;
+    this.payload.Justification_Disp = this.reviewDetailsIndia.justification;	
 
     // fields to be picked up from form -- ends	
     this.payload.level1_japproval=this.countrydetails.level1_japproval;	
@@ -381,20 +390,24 @@ submit_snow(){
     this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
     this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
     this.payload.countryname=this.countrydetails.name;	
-    this.payload.request_type='jabber_new';	
-    this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
-    this.payload.qag =this.countrydetails.qag ;	
-    this.payload.class_of_serice =this.countrydetails.class_of_serice ;	
-    this.payload.country_code = this.countrydetails.code ;	
-    this.payload.default_call_permission=this.countrydetails.default_call_permission;
+    this.payload.request_type='fixedphone_new';	
+    this.payload.evolution_instance=this.countrydetails.evolution_instance ;
+    this.payload.country_code = this.countrydetails.code;
     
    // console.log('Payload');	
    // console.log(this.payload);	
-   this.servicenowservice.submit_request(this.payload).subscribe(data=> {	
+   this.servicenowservice.submit_request_fixed_new(this.payload).subscribe(data=> {	
    console.log('response', data);	
    if(data)	
    this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
-   });	
+   },
+   (error) => {                              //Error callback
+    console.error('error caught in component'+error);
+    this.isSpinnerVisible= false; 	
+    this.errorinfo=true;
+    this.isButtonVisible=true;
+  }
+   );	
    }	
  
 // Submit to Snow Jabber new code added by Swarnava ends	
@@ -416,6 +429,12 @@ ngOnInit(): void {
     this.pcode = params.country;	
     console.log("navigation component" + this.pcode);	
   })	
+  this.emModels = sessionStorage.getItem('emmodels')?.replace('"','');
+  this.emModels = this.emModels.replace('"','').split(',');
+  this.fpModels = sessionStorage.getItem('fpmodels')?.replace('"','');
+  this.fpModels = this.fpModels.split(',');
+  this.cModels = sessionStorage.getItem('cmmodels')?.replace('"','');
+  this.cModels = this.cModels.split(',');
   this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
   this.locationlist=this.locationlist?.replace('"','').split(',');	
 
