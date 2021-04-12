@@ -23,6 +23,7 @@ export class VoipUsaNewComponent implements OnInit {
   build: any = [];	
   j = 0;	
   countryname:any;	
+  fl_location:any;
 ccode='';	
 orgi:any;	
 cnum : any;	
@@ -34,15 +35,14 @@ errorinfo=false;
 isEntryForm = false;	
 isReviewForm = true;	
 Voice_Type = "No";	
- 
-  
- 
+ countrycodes:any; 
     
 hideDeptCode = true;	
 hideBuilding = true;	
 fixedPhoneIdentifier = false;	
 cloudantData: any = []	
 servicesData: any = []	
+countrycodesarray: any = []	
 Locations: any;	
 locationlist: any;	
 pcode: any;	
@@ -54,7 +54,7 @@ employeeInfo1: any;
 campus:any;	
 hideProjectId = false;
 reqFor: any;
-  locations:any[] = ["Select Office Location","Home and Mobile","AZ-Phoenix","AZ-Tucson","CA-Costa Mesa-Anton Blvd"];
+  //locations:any[] = ["Select Office Location","Home and Mobile","AZ-Phoenix","AZ-Tucson","CA-Costa Mesa-Anton Blvd"];
 
   hideSteps = false;
  
@@ -134,18 +134,31 @@ reqFor: any;
     this.reviewDetailsIndia.officeLocation = formData.value.Location;	
   }
 
-  onLocationSelect(){
-
-    // alert(this.locationselected);
-
-    if(this.locationselected != "Home and Mobile") {	
-      alert('The serial number that you have entered does not belong to the selected location. Please choose your correct location or choose Home and Mobile location.');	
+  onLocationSelect(e:any){
+    let index:number = e.target["selectedIndex"] ;
+    
+    if(this.countrycodes[index] !== this.employeeInfo.workloc && e.target.value !== "Home and Mobile") {	
       
+      alert('The serial number that you have entered does not belong to the selected location. Please choose your correct location or choose Home and Mobile location.');	
+      e.target.value = "Home and Mobile";
+      this.locationselected="Home and Mobile";
+      
+    }  
+    else{
+      e.target.value =  "Home and Mobile";
+      this.locationselected= "Home and Mobile";
     }
-    
-    
-    this.locationselected = "Home and Mobile";
 
+ }
+ onLocSelect(){
+   alert(this.countrycodes.length)
+   alert(this.employeeInfo.workloc)
+   alert(this.countrycodes.indexOf(this.employeeInfo.workloc))
+   let n:number=this.countrycodes.indexOf(this.employeeInfo.workloc)
+   alert(this.locationlist[n] )
+   
+     this.locationselected=this.locationlist[n]
+   
  }
 
  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	}
@@ -172,9 +185,12 @@ reqFor: any;
   
  this.orgi=this.cookie.getCookie('ccode');	
  this.cnum = sessionStorage.getItem('cnum') ;	
- this.countrydetails = sessionStorage.getItem('countrydetails');	
+ this.countrydetails = sessionStorage.getItem('countrydetails');
+ this.countrycodes	=sessionStorage.getItem('ccodes');
  this.countrydetails = JSON.parse(this.countrydetails);	
-  // Submit to Snow Jabber new code added by Swarnava ends	
+ this.countrycodes=this.countrycodes?.split(',');	
+ this.employeeInfo1=sessionStorage.getItem('employeeInfo')
+ this.employeeInfo=JSON.parse(this.employeeInfo1)	
     
  this.ccode=this.cookie.getCookie('ccode').substring(6,9);	
  this.route.queryParams	
@@ -182,11 +198,12 @@ reqFor: any;
    console.log(params);	
    this.service=params.service;	
    this.pcode = params.country;	
-   console.log("navigation component" + this.pcode);	
- })	
+   console.log("navigation component" + this.pcode);
+   
+
  this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
  this.locationlist=this.locationlist?.replace('"','').split(',');	
-
+ this.onLocSelect()	;
  for (var i = 0; i < this.locationlist.length; i++) {	
    var n = this.locationlist[i].indexOf("~")	
    this.campA[i] = this.locationlist[i].substr(1, n - 1);	
@@ -198,6 +215,7 @@ reqFor: any;
      this.j++;	
    }	
  }
+ 
  const servicesData = { 	
    "data": [	
      {    	
@@ -219,6 +237,7 @@ reqFor: any;
  if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
    this.hideProjectId = true;
    }
+  })	
 }	
 
 

@@ -6669,18 +6669,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function VoipUsaNewComponent_option_32_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 46);
+function VoipUsaNewComponent_option_30_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 45);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const fl_location_r7 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_location_r7);
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_location_r7)("selected", ctx_r1.locationselected);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_location_r7, "");
 } }
-function VoipUsaNewComponent_div_67_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 47);
+function VoipUsaNewComponent_div_65_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 46);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Opps! Some thing went worng.Please try again latter.");
@@ -6688,30 +6689,30 @@ function VoipUsaNewComponent_div_67_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function VoipUsaNewComponent_div_69_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 48);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 49);
+function VoipUsaNewComponent_div_67_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Your request submission is in progress.Do not Go back or Refresh the page.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function VoipUsaNewComponent_input_72_Template(rf, ctx) { if (rf & 1) {
+    const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function VoipUsaNewComponent_input_72_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r8.BackButton(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function VoipUsaNewComponent_input_74_Template(rf, ctx) { if (rf & 1) {
-    const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function VoipUsaNewComponent_input_74_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r8.BackButton(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} }
-function VoipUsaNewComponent_input_76_Template(rf, ctx) { if (rf & 1) {
     const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 51);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function VoipUsaNewComponent_input_76_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r11); const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r10.submit_snow(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function VoipUsaNewComponent_input_74_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r11); const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r10.submit_snow(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 const _c0 = function () { return ["/jabberservices"]; };
 const _c1 = function (a0, a1) { return { country: a0, service: a1 }; };
-function VoipUsaNewComponent_input_77_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 52);
+function VoipUsaNewComponent_input_75_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 51);
 } if (rf & 2) {
     const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](2, _c0))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](3, _c1, ctx_r6.pcode, ctx_r6.service));
@@ -6741,8 +6742,9 @@ class VoipUsaNewComponent {
         this.fixedPhoneIdentifier = false;
         this.cloudantData = [];
         this.servicesData = [];
+        this.countrycodesarray = [];
         this.hideProjectId = false;
-        this.locations = ["Select Office Location", "Home and Mobile", "AZ-Phoenix", "AZ-Tucson", "CA-Costa Mesa-Anton Blvd"];
+        //locations:any[] = ["Select Office Location","Home and Mobile","AZ-Phoenix","AZ-Tucson","CA-Costa Mesa-Anton Blvd"];
         this.hideSteps = false;
         this.locationselected = "Home and Mobile";
         this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["Jabber_New"]();
@@ -6827,62 +6829,80 @@ class VoipUsaNewComponent {
         this.isReviewForm = false;
         this.reviewDetailsIndia.officeLocation = formData.value.Location;
     }
-    onLocationSelect() {
-        // alert(this.locationselected);
-        if (this.locationselected != "Home and Mobile") {
+    onLocationSelect(e) {
+        let index = e.target["selectedIndex"];
+        if (this.countrycodes[index] !== this.employeeInfo.workloc && e.target.value !== "Home and Mobile") {
             alert('The serial number that you have entered does not belong to the selected location. Please choose your correct location or choose Home and Mobile location.');
+            e.target.value = "Home and Mobile";
+            this.locationselected = "Home and Mobile";
         }
-        this.locationselected = "Home and Mobile";
+        else {
+            e.target.value = "Home and Mobile";
+            this.locationselected = "Home and Mobile";
+        }
+    }
+    onLocSelect() {
+        alert(this.countrycodes.length);
+        alert(this.employeeInfo.workloc);
+        alert(this.countrycodes.indexOf(this.employeeInfo.workloc));
+        let n = this.countrycodes.indexOf(this.employeeInfo.workloc);
+        alert(this.locationlist[n]);
+        this.locationselected = this.locationlist[n];
     }
     ngOnInit() {
-        var _a, _b;
+        var _a;
         this.orgi = this.cookie.getCookie('ccode');
         this.cnum = sessionStorage.getItem('cnum');
         this.countrydetails = sessionStorage.getItem('countrydetails');
+        this.countrycodes = sessionStorage.getItem('ccodes');
         this.countrydetails = JSON.parse(this.countrydetails);
-        // Submit to Snow Jabber new code added by Swarnava ends	
+        this.countrycodes = (_a = this.countrycodes) === null || _a === void 0 ? void 0 : _a.split(',');
+        this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
+        this.employeeInfo = JSON.parse(this.employeeInfo1);
         this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
         this.route.queryParams
             .subscribe(params => {
+            var _a, _b;
             console.log(params);
             this.service = params.service;
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-        });
-        this.locationlist = (_a = sessionStorage.getItem('locationdetails')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
-        this.locationlist = (_b = this.locationlist) === null || _b === void 0 ? void 0 : _b.replace('"', '').split(',');
-        for (var i = 0; i < this.locationlist.length; i++) {
-            var n = this.locationlist[i].indexOf("~");
-            this.campA[i] = this.locationlist[i].substr(1, n - 1);
-            this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);
-        }
-        for (var i = 0; i < this.campA.length; i++) {
-            if (this.campA[i] != this.campA[i + 1]) {
-                this.camp[this.j] = this.campA[i];
-                this.j++;
+            this.locationlist = (_a = sessionStorage.getItem('locationdetails')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
+            this.locationlist = (_b = this.locationlist) === null || _b === void 0 ? void 0 : _b.replace('"', '').split(',');
+            this.onLocSelect();
+            for (var i = 0; i < this.locationlist.length; i++) {
+                var n = this.locationlist[i].indexOf("~");
+                this.campA[i] = this.locationlist[i].substr(1, n - 1);
+                this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);
             }
-        }
-        const servicesData = {
-            "data": [
-                {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
-                    "step": 3,
+            for (var i = 0; i < this.campA.length; i++) {
+                if (this.campA[i] != this.campA[i + 1]) {
+                    this.camp[this.j] = this.campA[i];
+                    this.j++;
                 }
-            ]
-        };
-        this.reqFor = sessionStorage.getItem('radioAction');
-        this.servicesData = servicesData.data[0];
-        //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
-        //alert(this.reviewDetailsIndia.reqno);	
-        this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
-        this.employeeInfo = JSON.parse(this.employeeInfo1);
-        if (this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null) {
-            this.hideProjectId = true;
-        }
+            }
+            const servicesData = {
+                "data": [
+                    {
+                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "step": 3,
+                    }
+                ]
+            };
+            this.reqFor = sessionStorage.getItem('radioAction');
+            this.servicesData = servicesData.data[0];
+            //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
+            //alert(this.reviewDetailsIndia.reqno);	
+            this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
+            this.employeeInfo = JSON.parse(this.employeeInfo1);
+            if (this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null) {
+                this.hideProjectId = true;
+            }
+        });
     }
 }
 VoipUsaNewComponent.ɵfac = function VoipUsaNewComponent_Factory(t) { return new (t || VoipUsaNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"])); };
-VoipUsaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipUsaNewComponent, selectors: [["app-voip-usa-new"]], decls: 78, vars: 16, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-sm-2", "ds-col-md-7", "ds-padding-left-1_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t1"], ["width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "47%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], [1, "ds-text-contextual-red-2"], ["width", "53%", "height", "10"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "_Location", "type", "hidden", "value", "1"], ["name", "Location", "rows", "2", "cols", "40", "id", "LocationId", "title", "Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["value", ""], ["name", "Location", 3, "value", 4, "ngFor", "ngForOf"], ["id", "msgdis"], ["href", "https://pdydalhcsad01.sl.bluecloud.ibm.com/reports/home.htm", "target", "_blank"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1"], ["width", "54%", "height", "10"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Back", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Submit", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["name", "Location", 3, "value"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipUsaNewComponent_Template(rf, ctx) { if (rf & 1) {
+VoipUsaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipUsaNewComponent, selectors: [["app-voip-usa-new"]], decls: 76, vars: 16, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-sm-2", "ds-col-md-7", "ds-padding-left-1_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t1"], ["width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "47%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], [1, "ds-text-contextual-red-2"], ["width", "53%", "height", "10"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "_Location", "type", "hidden", "value", "1"], ["name", "Location", "rows", "2", "cols", "40", "id", "LocationId", "title", "Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", 3, "ngModel", "ngModelChange", "change"], ["name", "Location", 3, "value", "selected", 4, "ngFor", "ngForOf"], ["id", "msgdis"], ["href", "https://pdydalhcsad01.sl.bluecloud.ibm.com/reports/home.htm", "target", "_blank"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1"], ["width", "54%", "height", "10"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Back", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Submit", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["name", "Location", 3, "value", "selected"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipUsaNewComponent_Template(rf, ctx) { if (rf & 1) {
         const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -6921,11 +6941,8 @@ VoipUsaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 17);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](28, "input", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "select", 19);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function VoipUsaNewComponent_Template_select_ngModelChange_29_listener($event) { return ctx.locationselected = $event; })("ngModelChange", function VoipUsaNewComponent_Template_select_ngModelChange_29_listener() { return ctx.onLocationSelect(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "option", 20);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "Select Office Location");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](32, VoipUsaNewComponent_option_32_Template, 2, 2, "option", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function VoipUsaNewComponent_Template_select_ngModelChange_29_listener($event) { return ctx.locationselected = $event; })("change", function VoipUsaNewComponent_Template_select_change_29_listener($event) { return ctx.onLocationSelect($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](30, VoipUsaNewComponent_option_30_Template, 2, 3, "option", 20);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -6933,75 +6950,75 @@ VoipUsaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](33, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "div", 22);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "Clicking submit will result in your service being assigned a phone number in the 720 area code. If you wish to have a local number, or retain your existing phone number at an IBM site, then please wait for your site to be migrated to Cisco Jabber. The US Site Migration schedule can be found ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "a", 23);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38, "here");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](31, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "Clicking submit will result in your service being assigned a phone number in the 720 area code. If you wish to have a local number, or retain your existing phone number at an IBM site, then please wait for your site to be migrated to Cisco Jabber. The US Site Migration schedule can be found ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "a", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "here");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39, ". ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](40, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](41, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "div", 24);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "div", 25);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "div", 26);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "span", 27);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "input", 28);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function VoipUsaNewComponent_Template_input_click_46_listener() { return ctx.backClick(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, ". ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "span", 29);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](48, "input", 30);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](49, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](38, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "div", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "span", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "input", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function VoipUsaNewComponent_Template_input_click_44_listener() { return ctx.backClick(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "form", 31);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "b");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](52, "Request new Jabber service");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "div", 32);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54, "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](55, "div", 33);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "app-steps", 34);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function VoipUsaNewComponent_Template_app_steps_previousStep_56_listener($event) { return ctx.previousStep($event); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "h2", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](58, "Jabber Request Details");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "table", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "tbody");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "tr", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "td", 37);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "label", 38);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](64, "Jabber Location");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "td", 39);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](66);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "span", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](46, "input", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](47, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](67, VoipUsaNewComponent_div_67_Template, 5, 0, "div", 40);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](68, "div", 41);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](69, VoipUsaNewComponent_div_69_Template, 4, 0, "div", 42);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "div", 24);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "div", 25);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "div", 26);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "span", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "form", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](50, "Request new Jabber service");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "div", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](52, "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](53, "div", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "app-steps", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function VoipUsaNewComponent_Template_app_steps_previousStep_54_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "h2", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, "Jabber Request Details");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "table", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "label", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](62, "Jabber Location");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "td", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](64);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](65, VoipUsaNewComponent_div_65_Template, 5, 0, "div", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](66, "div", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](67, VoipUsaNewComponent_div_67_Template, 4, 0, "div", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "div", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "span", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](72, VoipUsaNewComponent_input_72_Template, 1, 0, "input", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "span", 28);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](74, VoipUsaNewComponent_input_74_Template, 1, 0, "input", 43);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "span", 29);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](76, VoipUsaNewComponent_input_76_Template, 1, 0, "input", 44);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](77, VoipUsaNewComponent_input_77_Template, 1, 6, "input", 45);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](75, VoipUsaNewComponent_input_75_Template, 1, 6, "input", 44);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -7017,7 +7034,7 @@ VoipUsaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step)("isSelf", ctx.reqFor);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](16);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.locationselected);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.locationlist);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isReviewForm);
@@ -7035,7 +7052,7 @@ VoipUsaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible && !ctx.errorinfo);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.errorinfo);
-    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_7__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_8__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgForm"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_10__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ2b2lwLXVzYS1uZXcuY29tcG9uZW50LmNzcyJ9 */"] });
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_7__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_8__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgForm"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_10__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ɵangular_packages_forms_forms_x"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ2b2lwLXVzYS1uZXcuY29tcG9uZW50LmNzcyJ9 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](VoipUsaNewComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -10157,7 +10174,8 @@ class EmployeesearchComponent {
                     department: data.username.dept,
                     country: data.username.co,
                     email: data.username.preferredidentity,
-                    sno: data.username.uid
+                    sno: data.username.uid,
+                    workloc: data.username.workloc,
                 };
                 sessionStorage.setItem('employeeInfo', JSON.stringify(this.employeeInfo));
                 sessionStorage.setItem('cnum', this.employeeSerial);
@@ -10285,6 +10303,9 @@ class EmployeesearchComponent {
                     this.lookuploc = JSON.stringify((data.locationdetails[loc]));
                 }
                 else {
+                    if (data.locationdetails.ccodes) {
+                        sessionStorage.setItem('ccodes', JSON.stringify(data.locationdetails.ccodes));
+                    }
                     this.lookuploc = JSON.stringify(data.locationdetails.jlocations);
                 }
             }
