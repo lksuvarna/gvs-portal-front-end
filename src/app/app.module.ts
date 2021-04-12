@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { CommonModule } from "@angular/common";
+import { CommonModule, DatePipe } from "@angular/common";
 import { FormsModule } from '@angular/forms';
 import { FormControl, FormGroup } from '@angular/forms';
 import { HttpClient,HttpClientModule } from '@angular/common/http';
@@ -47,7 +47,11 @@ import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.c
 import { VoipAuMoveComponent } from './components/voip-au-move/voip-au-move.component';
 import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+
 import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
+
+import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+
 
 
 export function rootLoaderFactory(http: HttpClient){
@@ -102,8 +106,13 @@ handleError(error: Error){
     HpInNewComponent,
     VoipInMoveComponent,
     PagenotfoundComponent,
+
     FixedphoneservicesComponent,
     VoipUsaNewComponent
+
+    VoipUsaNewComponent,
+    FacInNewComponent
+
 
 
   ],
@@ -126,7 +135,7 @@ handleError(error: Error){
     
     
   ],
-  providers: [cloudantservice, {provide: ErrorHandler, useClass: GlobalErrorHandler}],
+  providers: [cloudantservice, {provide: ErrorHandler, useClass: GlobalErrorHandler}, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
