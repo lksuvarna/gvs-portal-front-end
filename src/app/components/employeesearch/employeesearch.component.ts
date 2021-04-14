@@ -33,6 +33,7 @@ export class EmployeesearchComponent implements OnInit {
   ccode = '';
   pcode = '';
   exitrouting:any;
+  exitservice:any;
   routingname:any;
   fullName = '';
   service = '';
@@ -220,7 +221,7 @@ export class EmployeesearchComponent implements OnInit {
       if (data.userdata) {
         this.employeeInfo = {
 
-          employeeName: data.username.callupname,
+          employeeName: data.username.preferredlastname+", "+data.username.preferredfirstname,
           jobResponsibility: data.username.jobresponsibilities,
           businessUnit: data.bu,
           department: data.username.dept,
@@ -425,6 +426,7 @@ export class EmployeesearchComponent implements OnInit {
       case "jabber_new":
       this.title="Request new Jabber service";
       this.exitrouting='jabberservices';
+      
       if(this.countrydetails.jnavpage=='AP'){
       this.routingname="/entrydetails";
     }else if(this.countrydetails.jnavpage=='EMEA'){

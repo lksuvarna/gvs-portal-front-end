@@ -120,7 +120,7 @@
                         <span class="ds-pad-l-4" id="button1">
                             <input *ngIf="!showloader" type="button" name="EXIT REQUEST" class="ds-button ds-secondary 
                             ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" 
-                            [routerLink]="['/'+this.exitrouting]" [queryParams]="{country:pcode,service:service}"
+                            [routerLink]="['/'+this.exitrouting]" [queryParams]="{country:pcode,service:exitrouting}"
                             value="EXIT REQUEST">
                         </span>
                         <span *ngIf="!showloader && !notvalid && !errorinfo" class="ds-pad-l-1 ds-pad-r-1" id="button2">

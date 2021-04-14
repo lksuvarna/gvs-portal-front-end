@@ -8024,6 +8024,14 @@ class TopcountryframeComponent {
             }
             else {
                 sessionStorage.setItem('pagedisplay', 'page');
+                if (this.router.url.includes('employeeinfo') || this.router.url.includes('entrydetails') || this.router.url.includes('requests?') || this.router.url.includes('resources?')) {
+                    if (!sessionStorage.getItem('employeeInfo')) {
+                        sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                        this.router.navigate(['**'], {
+                        //  queryParams: {}
+                        });
+                    }
+                }
             }
             if (this.pcode == this.countryroute) {
                 this.pcountrydetails = sessionStorage.getItem('countrydetails');
@@ -11053,7 +11061,7 @@ function EmployeesearchComponent_input_59_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 56);
 } if (rf & 2) {
     const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, "/" + ctx_r10.exitrouting))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](4, _c1, ctx_r10.pcode, ctx_r10.service));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, "/" + ctx_r10.exitrouting))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](4, _c1, ctx_r10.pcode, ctx_r10.exitrouting));
 } }
 function EmployeesearchComponent_span_60_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 57);
@@ -11235,7 +11243,7 @@ class EmployeesearchComponent {
             console.log(' BP Details', data.userdata);
             if (data.userdata) {
                 this.employeeInfo = {
-                    employeeName: data.username.callupname,
+                    employeeName: data.username.preferredlastname + ", " + data.username.preferredfirstname,
                     jobResponsibility: data.username.jobresponsibilities,
                     businessUnit: data.bu,
                     department: data.username.dept,
