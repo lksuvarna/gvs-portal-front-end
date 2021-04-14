@@ -145,7 +145,11 @@ reqFor: any;
       this.msgdis=true
     }  
     else {
-     
+      alert(this.locationlist[index])
+      e.target.value = "Home and Mobile";
+      this.locationselected="Home and Mobile";
+      e.target.value = this.locationlist[index];
+      this.locationselected=this.locationlist[index];
       //this.onLocSelect()
       
      
