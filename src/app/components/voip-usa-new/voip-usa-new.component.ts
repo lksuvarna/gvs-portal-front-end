@@ -22,7 +22,9 @@ export class VoipUsaNewComponent implements OnInit {
   buildA: any = [];	
   build: any = [];	
   j = 0;	
+  msgdis=true;
   countryname:any;	
+  fl_location:any;
 ccode='';	
 orgi:any;	
 cnum : any;	
@@ -34,15 +36,14 @@ errorinfo=false;
 isEntryForm = false;	
 isReviewForm = true;	
 Voice_Type = "No";	
- 
-  
- 
+ countrycodes:any; 
     
 hideDeptCode = true;	
 hideBuilding = true;	
 fixedPhoneIdentifier = false;	
 cloudantData: any = []	
 servicesData: any = []	
+countrycodesarray: any = []	
 Locations: any;	
 locationlist: any;	
 pcode: any;	
@@ -54,7 +55,8 @@ employeeInfo1: any;
 campus:any;	
 hideProjectId = false;
 reqFor: any;
-  locations:any[] = ["Select Office Location","Home and Mobile","AZ-Phoenix","AZ-Tucson","CA-Costa Mesa-Anton Blvd"];
+belongsTo:any;
+  //locations:any[] = ["Select Office Location","Home and Mobile","AZ-Phoenix","AZ-Tucson","CA-Costa Mesa-Anton Blvd"];
 
   hideSteps = false;
  
@@ -69,8 +71,6 @@ reqFor: any;
     this.isReviewForm = true;	
     this.fixedPhoneIdentifier = false;	
   }	
-  
-   // Submit to Snow Jabber new code added by Swarnava	
   submit_snow(){	
     this.reqno=this.countrydetails.isocode+"-NS-"+this.cnum.substr(0,6)+"-"+gettime();	
     sessionStorage.setItem('reqno',this.reqno)	
@@ -120,6 +120,7 @@ reqFor: any;
     }
      );	
      }	
+  
   previousStep(event : any){
     this.isEntryForm = false;	
     this.isReviewForm = true;	
@@ -131,21 +132,39 @@ reqFor: any;
     this.isEntryForm = true;	
     this.isReviewForm = false;	
   
-    this.reviewDetailsIndia.officeLocation = formData.value.Location;	
+    this.reviewDetailsIndia.officeLocation = this.locationselected;	
   }
 
-  onLocationSelect(){
-
-    // alert(this.locationselected);
-
-    if(this.locationselected != "Home and Mobile") {	
-      alert('The serial number that you have entered does not belong to the selected location. Please choose your correct location or choose Home and Mobile location.');	
+  onLocationSelect(e:any){
+    let index:number = e.target["selectedIndex"] ;
+    
+    if(this.countrycodes[index] !== this.employeeInfo.workloc && e.target.value !== "Home and Mobile") {	
       
+      alert('The serial number that you have entered does not belong to the selected location. Please choose your correct location or choose Home and Mobile location.');	
+      e.target.value = "Home and Mobile";
+      this.locationselected="Home and Mobile";
+      this.msgdis=true
+    }  else {
+      this.belongsTo = this.locationselected;
     }
+   
     
-    
-    this.locationselected = "Home and Mobile";
+ }
+ onLocSelect(){
+  
+   let n:number=this.countrycodes.indexOf(this.employeeInfo.workloc)
+  
+   if (n==-1){
+    this.msgdis=true
+this.locationselected= "Home and Mobile";
+this.msgdis=true
 
+   }
+   else{
+     
+     this.locationselected=this.locationlist[n]}
+     this.msgdis=false
+     
  }
 
  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	}
@@ -172,9 +191,12 @@ reqFor: any;
   
  this.orgi=this.cookie.getCookie('ccode');	
  this.cnum = sessionStorage.getItem('cnum') ;	
- this.countrydetails = sessionStorage.getItem('countrydetails');	
+ this.countrydetails = sessionStorage.getItem('countrydetails');
+ this.countrycodes	=sessionStorage.getItem('ccodes');
  this.countrydetails = JSON.parse(this.countrydetails);	
-  // Submit to Snow Jabber new code added by Swarnava ends	
+ this.countrycodes=this.countrycodes?.split(',');	
+ this.employeeInfo1=sessionStorage.getItem('employeeInfo')
+ this.employeeInfo=JSON.parse(this.employeeInfo1)	
     
  this.ccode=this.cookie.getCookie('ccode').substring(6,9);	
  this.route.queryParams	
@@ -182,11 +204,13 @@ reqFor: any;
    console.log(params);	
    this.service=params.service;	
    this.pcode = params.country;	
-   console.log("navigation component" + this.pcode);	
- })	
+   console.log("navigation component" + this.pcode);
+   
+
  this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
  this.locationlist=this.locationlist?.replace('"','').split(',');	
-
+ this.msgdis=true;
+ this.onLocSelect()	;
  for (var i = 0; i < this.locationlist.length; i++) {	
    var n = this.locationlist[i].indexOf("~")	
    this.campA[i] = this.locationlist[i].substr(1, n - 1);	
@@ -198,6 +222,7 @@ reqFor: any;
      this.j++;	
    }	
  }
+ 
  const servicesData = { 	
    "data": [	
      {    	
@@ -219,6 +244,7 @@ reqFor: any;
  if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
    this.hideProjectId = true;
    }
+  })	
 }	
 
 

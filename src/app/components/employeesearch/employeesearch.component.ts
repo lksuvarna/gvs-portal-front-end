@@ -26,9 +26,15 @@ export class EmployeesearchComponent implements OnInit {
   servicesData: any = []
   subCountries: any = []
   countryname: any;
-  lookuploc:any
+  lookuploc:any;
+  flocations:any;
+  emmodels:any;
+  cmmodels:any;
+  fpmodels:any;
   ccode = '';
   pcode = '';
+  exitrouting:any;
+  exitservice:any;
   routingname:any;
   fullName = '';
   service = '';
@@ -66,6 +72,7 @@ export class EmployeesearchComponent implements OnInit {
 
     this.fullName = this.cookie.getCookie('username');
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
+    this.fullName = this.fullName.replace(",",", ");
     this.ccode = this.cookie.getCookie('ccode');
 
     this.countrydetails = sessionStorage.getItem('countrydetails')
@@ -163,7 +170,7 @@ export class EmployeesearchComponent implements OnInit {
       }
      }
     if (this.radioAction.toLowerCase() == "anotheremployee") {
-      if (formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true) {
+      if (formData.value.employeeSerial.trim().length == 0 && this.hideDisTextBox == true) {
         alert("Please enter a serial number");
         return;
       }
@@ -217,13 +224,14 @@ export class EmployeesearchComponent implements OnInit {
       if (data.userdata) {
         this.employeeInfo = {
 
-          employeeName: data.username.callupname,
+          employeeName: data.username.preferredlastname+", "+data.username.preferredfirstname,
           jobResponsibility: data.username.jobresponsibilities,
           businessUnit: data.bu,
           department: data.username.dept,
           country: data.username.co,
           email: data.username.preferredidentity,
-          sno: data.username.uid
+          sno: data.username.uid,
+          workloc: data.username.workloc,
         }
         sessionStorage.setItem('employeeInfo', JSON.stringify(this.employeeInfo))
         sessionStorage.setItem('cnum', this.employeeSerial)
@@ -371,11 +379,18 @@ export class EmployeesearchComponent implements OnInit {
           console.log(loc)
           this.lookuploc=JSON.stringify((data.locationdetails[loc]))
         }
-        else{
+        else {
+          if(data.locationdetails.ccodes){
+            sessionStorage.setItem('ccodes',JSON.stringify(data.locationdetails.ccodes)) 
+          }
        this.lookuploc=JSON.stringify(data.locationdetails.jlocations)}
       }
       else if(this.service.includes('fixed')){
         this.lookuploc=JSON.stringify(data.locationdetails.flocations)
+        sessionStorage.setItem('fdevices',JSON.stringify(data.locationdetails.fdevices))
+        sessionStorage.setItem('emmodels',JSON.stringify(data.locationdetails.emmodels))
+        sessionStorage.setItem('cmmodels',JSON.stringify(data.locationdetails.cmmodels))
+        sessionStorage.setItem('fpmodels',JSON.stringify(data.locationdetails.fpmodels))
       }
       else if(this.service.includes('fac')){
         this.lookuploc=JSON.stringify(data.locationdetails.faclocations)
@@ -417,6 +432,8 @@ export class EmployeesearchComponent implements OnInit {
     switch (this.service){
       case "jabber_new":
       this.title="Request new Jabber service";
+      this.exitrouting='jabberservices';
+      
       if(this.countrydetails.jnavpage=='AP'){
       this.routingname="/entrydetails";
     }else if(this.countrydetails.jnavpage=='EMEA'){
@@ -433,10 +450,12 @@ export class EmployeesearchComponent implements OnInit {
       case "jabber_delete":
       this.title="Delete Jabber Request";
       this.routingname="/entrydetailsjd";
+      this.exitrouting='jabberservices';
       this.reqname="-DS-";
       break;
       case "jabber_update":
       this.title="Update Jabber Request";
+      this.exitrouting='jabberservices';
       this.reqname="-US-";
       if(this.countrydetails.jnavpage=='LA')
       this.routingname="/entrydetails_update_la";
@@ -445,22 +464,28 @@ export class EmployeesearchComponent implements OnInit {
       break;
       case "jabber_move":
       this.title="Move Jabber Request";
+      this.exitrouting='jabberservices';
       this.routingname="/entrydetailsijm";
       this.reqname="-MS-";
       break;
       case "fixedphone_new":
       this.title="New Fixed Phone Request";
       this.routingname="/entrydetailsfn";
+      this.exitrouting='fixedphoneservices';
       this.reqname="-NS-";
       break;
       case "resources":
         this.title="Resources";
+        this.exitrouting='services';
+        this.exitrouting='services';
         break;
         case "requests":
           this.title="Requests";
+          this.exitrouting='services';
           break;
           case "approvalpending":
           this.title="Approvals";
+          this.exitrouting='services';
           break;
       }
       }
