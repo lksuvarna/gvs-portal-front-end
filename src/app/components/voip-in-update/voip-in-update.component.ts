@@ -113,6 +113,7 @@ export class VoipInUpdateComponent implements OnInit {
       this.payload.countryname=this.countrydetails.name;	
       this.payload.request_type='jabber_update';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
+      this.payload.prov_type=this.countrydetails.provision_type;
       	
      this.servicenowservice.submit_request_update(this.payload).subscribe(data=> {	
      console.log('response', data);	

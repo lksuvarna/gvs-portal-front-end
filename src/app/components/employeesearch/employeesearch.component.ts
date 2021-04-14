@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { bpservices } from '../../_services/bp.service';
 import { Db2Service } from '../../_services/db2.service';
 import { servicenowservice } from '../../_services/servicenow.service';
+import { WebElementPromise } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-employeesearch',
@@ -56,6 +57,8 @@ export class EmployeesearchComponent implements OnInit {
   showCountryCode = false	
 	countryCA = '';
   itns:any = [];
+  voice_mail:any =[];
+  cos : any =[];
   serviceName:any;
   returnValue:any;
   ngOnInit(): void {
@@ -314,14 +317,18 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfo', 'true1');
         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
+          this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
+          this.cos[i] =  data.message[i].ATTRIBUTE5.trim();
         }
        // this.identifier = data.message[0].IDENTIFIER
         if (this.service == "resources") {
           sessionStorage.setItem('identifier', JSON.stringify(data.message))
           this.datadb= "yes";
         }
-        else { sessionStorage.setItem('identifier', this.itns) ;
-        
+        else { 
+          sessionStorage.setItem('identifier', this.itns) ;
+          sessionStorage.setItem('voice_mail', this.voice_mail) ;
+          sessionStorage.setItem('cos', this.cos) ;     
         this.datadb= "yes";}
         if(this.service=="jabber_delete" || this.service=='jabber_update' || this.service=='jabber_move'){
           console.log("insidesnowdelete")
@@ -430,8 +437,11 @@ export class EmployeesearchComponent implements OnInit {
       break;
       case "jabber_update":
       this.title="Update Jabber Request";
-      this.routingname="/entrydetailsiju";
       this.reqname="-US-";
+      if(this.countrydetails.jnavpage=='LA')
+      this.routingname="/entrydetails_update_la";
+      else
+      this.routingname="/entrydetailsiju";
       break;
       case "jabber_move":
       this.title="Move Jabber Request";

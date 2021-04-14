@@ -48,6 +48,7 @@ import { VoipAuMoveComponent } from './components/voip-au-move/voip-au-move.comp
 import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
+import { VoipLaUpdateComponent } from './components/voip-la-update/voip-la-update.component'
 
 
 export function rootLoaderFactory(http: HttpClient){
@@ -103,7 +104,8 @@ handleError(error: Error){
     VoipInMoveComponent,
     PagenotfoundComponent,
     FixedphoneservicesComponent,
-    VoipUsaNewComponent
+    VoipUsaNewComponent,
+    VoipLaUpdateComponent
 
 
   ],

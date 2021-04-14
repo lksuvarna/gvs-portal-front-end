@@ -28,6 +28,7 @@ import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.comp
 import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import {VoipLaUpdateComponent} from './components/voip-la-update/voip-la-update.component';
 
 
 
@@ -61,7 +62,7 @@ const appRoutes: Routes = [
     { path: 'entrydetailsus', component: VoipUsaNewComponent},        
     { path: 'resources', component: ResourcesComponent},
     { path: 'entrydetailsfn', component: HpInNewComponent},
-    
+    { path: 'entrydetails_update_la', component: VoipLaUpdateComponent},    
     { path: 'pagenotfound', component: PagenotfoundComponent},
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
    // {path: '**', redirectTo:'/pagenotfound?error'}
