@@ -22,6 +22,7 @@ export class VoipUsaNewComponent implements OnInit {
   buildA: any = [];	
   build: any = [];	
   j = 0;	
+  msgdis=true;
   countryname:any;	
   fl_location:any;
 ccode='';	
@@ -130,7 +131,7 @@ reqFor: any;
     this.isEntryForm = true;	
     this.isReviewForm = false;	
   
-    this.reviewDetailsIndia.officeLocation = formData.value.Location;	
+    this.reviewDetailsIndia.officeLocation = this.locationselected;	
   }
 
   onLocationSelect(e:any){
@@ -141,23 +142,26 @@ reqFor: any;
       alert('The serial number that you have entered does not belong to the selected location. Please choose your correct location or choose Home and Mobile location.');	
       e.target.value = "Home and Mobile";
       this.locationselected="Home and Mobile";
-      
+      this.msgdis=true
     }  
-    else{
-      e.target.value =  "Home and Mobile";
-      this.locationselected= "Home and Mobile";
-    }
-
+   
+    
  }
  onLocSelect(){
-   alert(this.countrycodes.length)
-   alert(this.employeeInfo.workloc)
-   alert(this.countrycodes.indexOf(this.employeeInfo.workloc))
+  
    let n:number=this.countrycodes.indexOf(this.employeeInfo.workloc)
-   alert(this.locationlist[n] )
-   
-     this.locationselected=this.locationlist[n]
-   
+  
+   if (n==-1){
+    this.msgdis=true
+this.locationselected= "Home and Mobile";
+this.msgdis=true
+
+   }
+   else{
+     
+     this.locationselected=this.locationlist[n]}
+     this.msgdis=false
+     
  }
 
  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	}
@@ -202,6 +206,7 @@ reqFor: any;
 
  this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
  this.locationlist=this.locationlist?.replace('"','').split(',');	
+ this.msgdis=true;
  this.onLocSelect()	;
  for (var i = 0; i < this.locationlist.length; i++) {	
    var n = this.locationlist[i].indexOf("~")	

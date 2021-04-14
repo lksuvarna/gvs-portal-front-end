@@ -32,6 +32,8 @@ export class EmployeesearchComponent implements OnInit {
   fpmodels:any;
   ccode = '';
   pcode = '';
+  exitrouting:any;
+  exitservice:any;
   routingname:any;
   fullName = '';
   service = '';
@@ -219,7 +221,7 @@ export class EmployeesearchComponent implements OnInit {
       if (data.userdata) {
         this.employeeInfo = {
 
-          employeeName: data.username.lastname+", "+data.username.firstname,
+          employeeName: data.username.preferredlastname+", "+data.username.preferredfirstname,
           jobResponsibility: data.username.jobresponsibilities,
           businessUnit: data.bu,
           department: data.username.dept,
@@ -423,6 +425,8 @@ export class EmployeesearchComponent implements OnInit {
     switch (this.service){
       case "jabber_new":
       this.title="Request new Jabber service";
+      this.exitrouting='jabberservices';
+      
       if(this.countrydetails.jnavpage=='AP'){
       this.routingname="/entrydetails";
     }else if(this.countrydetails.jnavpage=='EMEA'){
@@ -439,31 +443,39 @@ export class EmployeesearchComponent implements OnInit {
       case "jabber_delete":
       this.title="Delete Jabber Request";
       this.routingname="/entrydetailsjd";
+      this.exitrouting='jabberservices';
       this.reqname="-DS-";
       break;
       case "jabber_update":
       this.title="Update Jabber Request";
+      this.exitrouting='jabberservices';
       this.routingname="/entrydetailsiju";
       this.reqname="-US-";
       break;
       case "jabber_move":
       this.title="Move Jabber Request";
+      this.exitrouting='jabberservices';
       this.routingname="/entrydetailsijm";
       this.reqname="-MS-";
       break;
       case "fixedphone_new":
       this.title="New Fixed Phone Request";
       this.routingname="/entrydetailsfn";
+      this.exitrouting='fixedphoneservices';
       this.reqname="-NS-";
       break;
       case "resources":
         this.title="Resources";
+        this.exitrouting='services';
+        this.exitrouting='services';
         break;
         case "requests":
           this.title="Requests";
+          this.exitrouting='services';
           break;
           case "approvalpending":
           this.title="Approvals";
+          this.exitrouting='services';
           break;
       }
       }
