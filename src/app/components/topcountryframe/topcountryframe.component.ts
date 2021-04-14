@@ -42,6 +42,7 @@ export class TopcountryframeComponent implements OnInit {
       } 
       else{
         sessionStorage.setItem('pagedisplay','page')
+        
       }   
     if (this.pcode== this.countryroute) {
       this.pcountrydetails=sessionStorage.getItem('countrydetails')

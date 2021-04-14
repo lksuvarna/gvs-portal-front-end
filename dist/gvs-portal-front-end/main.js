@@ -11047,13 +11047,13 @@ function EmployeesearchComponent_div_54_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "div", 55);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-const _c0 = function () { return ["/jabberservices"]; };
+const _c0 = function (a0) { return [a0]; };
 const _c1 = function (a0, a1) { return { country: a0, service: a1 }; };
 function EmployeesearchComponent_input_59_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 56);
 } if (rf & 2) {
     const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](2, _c0))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](3, _c1, ctx_r10.pcode, ctx_r10.service));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](2, _c0, "/" + ctx_r10.exitrouting))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](4, _c1, ctx_r10.pcode, ctx_r10.service));
 } }
 function EmployeesearchComponent_span_60_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 57);
@@ -11235,7 +11235,7 @@ class EmployeesearchComponent {
             console.log(' BP Details', data.userdata);
             if (data.userdata) {
                 this.employeeInfo = {
-                    employeeName: data.username.lastname + ", " + data.username.firstname,
+                    employeeName: data.username.callupname,
                     jobResponsibility: data.username.jobresponsibilities,
                     businessUnit: data.bu,
                     department: data.username.dept,
@@ -11417,6 +11417,7 @@ class EmployeesearchComponent {
         switch (this.service) {
             case "jabber_new":
                 this.title = "Request new Jabber service";
+                this.exitrouting = 'jabberservices';
                 if (this.countrydetails.jnavpage == 'AP') {
                     this.routingname = "/entrydetails";
                 }
@@ -11434,31 +11435,39 @@ class EmployeesearchComponent {
             case "jabber_delete":
                 this.title = "Delete Jabber Request";
                 this.routingname = "/entrydetailsjd";
+                this.exitrouting = 'jabberservices';
                 this.reqname = "-DS-";
                 break;
             case "jabber_update":
                 this.title = "Update Jabber Request";
+                this.exitrouting = 'jabberservices';
                 this.routingname = "/entrydetailsiju";
                 this.reqname = "-US-";
                 break;
             case "jabber_move":
                 this.title = "Move Jabber Request";
+                this.exitrouting = 'jabberservices';
                 this.routingname = "/entrydetailsijm";
                 this.reqname = "-MS-";
                 break;
             case "fixedphone_new":
                 this.title = "New Fixed Phone Request";
                 this.routingname = "/entrydetailsfn";
+                this.exitrouting = 'fixedphoneservices';
                 this.reqname = "-NS-";
                 break;
             case "resources":
                 this.title = "Resources";
+                this.exitrouting = 'services';
+                this.exitrouting = 'services';
                 break;
             case "requests":
                 this.title = "Requests";
+                this.exitrouting = 'services';
                 break;
             case "approvalpending":
                 this.title = "Approvals";
+                this.exitrouting = 'services';
                 break;
         }
     }
@@ -11565,7 +11574,7 @@ EmployeesearchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "div", 32);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "div", 33);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "span", 34);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](59, EmployeesearchComponent_input_59_Template, 1, 6, "input", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](59, EmployeesearchComponent_input_59_Template, 1, 7, "input", 35);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](60, EmployeesearchComponent_span_60_Template, 2, 0, "span", 36);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
