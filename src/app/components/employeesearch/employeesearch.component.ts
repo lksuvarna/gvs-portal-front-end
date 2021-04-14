@@ -185,13 +185,14 @@ export class EmployeesearchComponent implements OnInit {
       if (data.userdata) {
         this.employeeInfo = {
 
-          employeeName: data.username.callupname,
+          employeeName: data.username.lastname+", "+data.username.firstname,
           jobResponsibility: data.username.jobresponsibilities,
           businessUnit: data.bu,
           department: data.username.dept,
           country: data.username.co,
           email: data.username.preferredidentity,
-          sno: data.username.uid
+          sno: data.username.uid,
+          workloc: data.username.workloc,
         }
         sessionStorage.setItem('employeeInfo', JSON.stringify(this.employeeInfo))
         sessionStorage.setItem('cnum', this.employeeSerial)
@@ -331,7 +332,10 @@ export class EmployeesearchComponent implements OnInit {
           console.log(loc)
           this.lookuploc=JSON.stringify((data.locationdetails[loc]))
         }
-        else{
+        else {
+          if(data.locationdetails.ccodes){
+            sessionStorage.setItem('ccodes',JSON.stringify(data.locationdetails.ccodes)) 
+          }
        this.lookuploc=JSON.stringify(data.locationdetails.jlocations)}
       }
       else if(this.service.includes('fixed')){

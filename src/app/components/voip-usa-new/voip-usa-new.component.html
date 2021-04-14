@@ -10,7 +10,7 @@
 
         <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
            
-                <form [hidden]="isEntryForm" (submit)='entryDetailsUSA(formData)' #formData='ngForm'>
+                <form [hidden]="isEntryForm" (submit)='entryDetailsUSA(formData)' #formData='ngForm' >
                 <b>Request new Jabber service</b>
 
                 <div class="ds-pad-t-0_5 ds-pad-b-1">
@@ -36,10 +36,10 @@
                                 <td width="53%" height="10">
                                     <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                     <input name="_Location" type="hidden" value="1">
-                                    <select name="Location" rows="2" [(ngModel)]="locationselected"(ngModelChange)="onLocationSelect()" cols="40" id="LocationId"  
-                                    class="ds-title ds-align-text-left" style="width:300px !important;" title="Location">
-                                    <option value ="">Select Office Location</option>
-                                        <option name="Location" *ngFor="let fl_location of locationlist" [value]="fl_location">
+                                    <select name="Location" rows="2" [(ngModel)]="locationselected" (change)="onLocationSelect($event)" cols="40" id="LocationId"  
+                                    class="ds-title ds-align-text-left" style="width:300px !important;" title="Location" >
+                                    
+                                        <option name="Location" *ngFor="let fl_location of locationlist" [value]="fl_location" [selected]="locationselected">
                                             {{ fl_location }}</option>
                                     </select>
                                     </div>
@@ -49,7 +49,7 @@
                     </table>
                 </span><br>
 
-                <div id="msgdis">
+                <div id="msgdis" *ngIf="locationselected=='Home and Mobile'">
                     <p>Clicking submit will result in your service being assigned a phone number in the 720 area code. 
                         If you wish to have a local number, or retain your existing phone number at an IBM site, then please wait for your site 
                         to be migrated to Cisco Jabber. The US Site Migration schedule can be found 
