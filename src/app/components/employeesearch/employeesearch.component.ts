@@ -167,7 +167,7 @@ export class EmployeesearchComponent implements OnInit {
       }
      }
     if (this.radioAction.toLowerCase() == "anotheremployee") {
-      if (formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true) {
+      if (formData.value.employeeSerial.trim().length == 0 && this.hideDisTextBox == true) {
         alert("Please enter a serial number");
         return;
       }
