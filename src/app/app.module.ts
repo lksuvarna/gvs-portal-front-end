@@ -51,6 +51,8 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
 
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
+import { HpInUpdateComponent } from './components/hp-in-update/hp-in-update.component';
 
 
 
@@ -108,7 +110,9 @@ handleError(error: Error){
     PagenotfoundComponent,
     FixedphoneservicesComponent,
     VoipUsaNewComponent,
-    FacInNewComponent
+    FacInNewComponent,
+    VoipUsaUpdateComponent,
+    HpInUpdateComponent
   ],
   imports: [
     BrowserModule,

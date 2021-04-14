@@ -27,6 +27,7 @@ import { VoipUsaNewComponent } from './components/voip-usa-new/voip-usa-new.comp
 import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
 
 
 
@@ -62,7 +63,8 @@ const appRoutes: Routes = [
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
     { path: 'entrydetailsfacin', component: FacInNewComponent},
    // {path: '**', redirectTo:'/pagenotfound?error'}
-   {path: '**', component: PagenotfoundComponent}
+   {path: '**', component: PagenotfoundComponent},
+   {path: 'entrydetailsjusaup', component: VoipUsaUpdateComponent}
     
     
 ];
