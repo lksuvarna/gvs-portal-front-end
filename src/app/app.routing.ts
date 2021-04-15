@@ -26,8 +26,10 @@ import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.c
 import { VoipUsaNewComponent } from './components/voip-usa-new/voip-usa-new.component';
 import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+import {VoipLaUpdateComponent} from './components/voip-la-update/voip-la-update.component';
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
+import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 
 
 
@@ -59,6 +61,9 @@ const appRoutes: Routes = [
     { path: 'entrydetailsemea', component: VoipEmeaNewComponent},
     { path: 'entrydetailsus', component: VoipUsaNewComponent},        
     { path: 'resources', component: ResourcesComponent},
+    { path: 'entrydetailsfn', component: HpInNewComponent},
+    { path: 'entrydetails_update_la', component: VoipLaUpdateComponent},
+    { path: 'entrydetails_update_us', component: VoipUsaUpdateComponent} , 
     { path: 'pagenotfound', component: PagenotfoundComponent},
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
     { path: 'entrydetailsfacin', component: FacInNewComponent},

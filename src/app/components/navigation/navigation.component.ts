@@ -118,6 +118,13 @@ export class NavigationComponent implements OnInit {
         this.jin=true
         this.jhl=true
       }
+      if ((this.service).includes("fixedphone"))
+      {        
+        this.fin=true
+        this.fhl=true
+        this.jin=true
+        this.facin=true
+      }
       
       
       if ((this.service).includes("requests"))
@@ -155,7 +162,8 @@ export class NavigationComponent implements OnInit {
             "lhs": [
               {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
               {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl,"param":"jabberservices"}, 
-              {"name" : "FAC Code","routingname":"/inprogress", "indented" : true, "highlighted": this.fhl,"param":"jabberservices"},             
+              {"name" : "FAC Code","routingname":"/inprogress", "indented" : true, "highlighted": this.fachl,"param":"jabberservices"}, 
+              {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : this.fin, "highlighted": this.fhl,"param":"fixedphoneservices"},            
               {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},

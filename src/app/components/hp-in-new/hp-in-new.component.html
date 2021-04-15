@@ -92,7 +92,7 @@
                     <tr valign="top">
                         <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize " style="display: inline-block;padding-bottom: 1rem;">Business Unit</label>
                         </td>
-                        <td width="54%"><label name='BusinessUnit' style="display: inline-block;padding-bottom: 1rem;" ngModel> GBS </label>
+                        <td width="54%"><label name='BusinessUnit' style="display: inline-block;padding-bottom: 1rem;" ngModel> {{ employeeInfo.businessUnit}} </label>
                         </td>
                     </tr>
 
@@ -152,7 +152,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Model" tabindex="1" ngModel>
+                                <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Model" tabindex="1" [(ngModel)]='modelValue'>
                                     <option value ="">Select Model</option>
                                     <option name="Model_Type" *ngFor='let model of models' [value]='model'>
                     {{ model }}</option>
@@ -168,9 +168,20 @@
                         </td>
                         <td width="54%" height="10">
                             <label style="display: ruby-base-container;">
-                                <input name="StepMentor" value="" class="ds-input" style="width:250px !important;display: inline-block;" title="Employee ID" ngModel>
-                                <button class="ds-button ds-small ds-width-auto" style="padding-right: 1rem;padding-left: 1rem; margin-left: 2px;">Go</button>
+                                <input name="StepMentor" class="ds-input" style="width:250px !important;display: inline-block;" title="Employee ID" [(ngModel)]='empID' (change)='onEmpIDChange()'>
+                                <button class="ds-button ds-small ds-width-auto" style="padding-right: 1rem;padding-left: 1rem; margin-left: 2px;margin-bottom: 0px" (click)='fetchEmployee()'>Go</button>
                             </label>
+                                <div [hidden]='goClick'>
+                                <div [hidden]='emailResult' id="StepMentorDiv" *ngIf="goResults; else elseBlock" style="font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;">
+                                    Search result: <br>
+                                    <a (click)='onEmailClick()'>{{ this.email }}</a><br>
+                                </div>
+                                <ng-template #elseBlock>
+                                <div style="font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;">
+                                    No match, please try again<br>
+                                </div>
+                            </ng-template>
+                        </div>
                         </td>
                     </tr>
 
@@ -350,14 +361,14 @@
                         <td width="54%">{{reviewDetailsIndia.model}}</td>
                     </tr>
                     
-                    <tr valign="top">
+                    <tr valign="top" [hidden]='hideEmpID'>
                         <td colspan="2" width="46%">
                             <label for="employeeId">Employee ID</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.employeeId}}</td>
                     </tr>
                     
-                    <tr valign="top">
+                    <tr valign="top" [hidden]='hideVoicemail'>
                         <td colspan="2" width="46%">
                             <label for="voiemail">Voicemail Required</label>
                         </td>
@@ -371,14 +382,14 @@
                         <td width="54%">{{reviewDetailsIndia.cos}}</td>
                     </tr>
                     
-                    <tr valign="top">
+                    <tr valign="top" [hidden]='showBusinessNeed'>
                         <td colspan="2" width="46%">
                             <label for="justification">Business Justification</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.justification}}</td>
                     </tr>
                     
-                    <tr valign="top" [hidden]='showBusinessNeed'>
+                    <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="description">Description of Device</label>
                         </td>

@@ -1,16 +1,15 @@
 <app-topcountryframe></app-topcountryframe>
+
+
 <div class=" ds-panel ds-col-12"></div>
-
-
- <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
-        
         <form [hidden]='isEntryForm' (submit)='EntryDetails(formData)' #formData='ngForm'>
 
-            <b>Update an existing service</b>
+            <b>Update Jabber Request</b>
 
       <div class="ds-pad-t-0_5 ds-pad-b-1">
         <label *ngIf="warninginfo==false">Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</label>
@@ -22,7 +21,7 @@
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
-            <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo">
+            <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
                 <p>There is no Jabber for this serial number. </p>
             </div>
             <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
@@ -39,40 +38,44 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Jabber Number </label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Select Jabber Number </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" 
-                                style="width:300px !important; text-transform: uppercase;" title="Jabber number-VoiceMail-Call Permission" 
-                                #number ngModel>
-                  <option value="">Select Jabber Number</option>
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" (change)='SelectedJabber(number.value)' tabindex="1"
+                                    #number ngModel>
+                  <option value="">Select One</option>
                   <option name="Jabber_1" *ngFor='let fl_itn of Jabber' [value]='fl_itn' selected>
                     {{ fl_itn }}</option>
                 </select>
                             </div>
                         </td>
                     </tr>
-                    <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Enter account ID
-              Code </label>
+                    
+                    <tr valign="top" [hidden]='hideChargeDept'>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> 	
+                        Enter account ID</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <input name="accountId" value="" tabindex="3" id="ch" class="ds-input" 
-                                style="width:300px !important;" title="Account ID" maxlength='8' ngModel></div>
+                                <input name="account_id" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Enter Account ID" maxlength='8' ngModel=""></div>
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="3" width="604">
-                            <p>Standard internal billing for a Jabber account uses the Employee's Department as the Account Id.<br>
-                            If you wish to modify internal billing to utilize a different Account ID, please provide the Account Id and click Next.</p>
-                           </td>
+
+                    <tr valign="top" [hidden]='hideChargeDept'>
+                        <td width="604" colspan="2">
+                            
+                        </td>
                     </tr>
+
+
                 </tbody>
             </table>
+            <br>
+            <p>Standard internal billing for a Jabber account uses the Employee's Department as the Account Id.<br>
+                If you wish to modify internal billing to utilize a different Account ID, please provide the Account Id and click Next.</p>
             <br>
             <div class=" ds-panel ds-col-12 "></div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
@@ -80,12 +83,12 @@
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back" 
-                (click)="backClick()">
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
+                value="Back" (click)="backClick()">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2" *ngIf="warninginfo==false && warninginfosnow==false">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Next">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Next">
             </span>
                     </div>
                 </div>
@@ -98,7 +101,7 @@
 
         <form [hidden]='isReviewForm' #formData='ngForm'>
 
-            <b>Update an existing service</b>
+            <b>Update Jabber Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
                 By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. </div>
@@ -120,11 +123,10 @@
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10">
-                            <label for="LocationId" class="ds-text-capitalize">Account ID</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Account ID</label>
                         </td>
                         <td width="54%" height="10">
-                            <label>{{accountIdDisp}}</label>
+                            <label>{{accountid_Disp}}</label>
                         </td>
                     </tr>
                 </tbody>
@@ -132,7 +134,7 @@
             <br>
             <div class=" ds-panel ds-col-12 "></div>
             <!-- Dark Background -->
-             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
                 <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.
                 </div>
                 <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
@@ -142,12 +144,12 @@
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" 
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
                 value="Back" (click)='BackButton()' *ngIf="this.isButtonVisible">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
                     </div>
                 </div>

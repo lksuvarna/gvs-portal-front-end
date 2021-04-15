@@ -55,6 +55,7 @@ employeeInfo1: any;
 campus:any;	
 hideProjectId = false;
 reqFor: any;
+belongsTo:any;
   //locations:any[] = ["Select Office Location","Home and Mobile","AZ-Phoenix","AZ-Tucson","CA-Costa Mesa-Anton Blvd"];
 
   hideSteps = false;
@@ -143,13 +144,10 @@ reqFor: any;
       e.target.value = "Home and Mobile";
       this.locationselected="Home and Mobile";
       this.msgdis=true
-    }  
-    else {
-     
-      //this.onLocSelect()
-      
-     
+    }  else {
+      this.belongsTo = this.locationselected;
     }
+   
     
  }
  onLocSelect(){
@@ -163,6 +161,7 @@ this.msgdis=true
 
    }
    else{
+     
      this.locationselected=this.locationlist[n]}
      this.msgdis=false
      
