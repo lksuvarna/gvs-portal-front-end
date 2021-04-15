@@ -8,31 +8,22 @@ import {Location} from '@angular/common';
 import { Db2Service } from '../../_services/db2.service';
 import {Jabber_Update} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
-import { AnonymousSubject } from 'rxjs/internal/Subject';
-
 
 @Component({
-  selector: 'app-voip-la-update',
-  templateUrl: './voip-la-update.component.html',
-  styleUrls: ['./voip-la-update.component.css']
+  selector: 'app-voip-usa-update',
+  templateUrl: './voip-usa-update.component.html',
+  styleUrls: ['./voip-usa-update.component.css']
 })
-export class VoipLaUpdateComponent implements OnInit {
+export class VoipUsaUpdateComponent implements OnInit {
   countryname:any;
   ccode='';
   cloudantData: any = [];
   servicesData: any = [];
   Jabber:any = [];
-  voice_mail : any =[];
-  cos : any =[];
   itns:any = [];
-  vm :any;
-  css :any;
   Jabber_Identifier:any;
   selected = true;
   hideChargeDept = true;
-  currentcos=true;
-  currentVoiceMail = true;
-  updaterequested=true;
   isReviewForm = true;
   isEntryForm = false;
   fixedPhoneIdentifier = false;	
@@ -54,72 +45,17 @@ export class VoipLaUpdateComponent implements OnInit {
   warninginfo=false;
   warninginfosnow=false;
   identifier:any;
-  index:any;
-  toup_disp : any;
-  toup_disp2 : any;
-  cos_disp : any;
-  vm_disp : any;
-  bj_disp : any;
-  classOfService : any =[];
-  checked : any=false;
-  checked2 : any=false;
-  newvoicemail = true;
-  newcos = true;
-  businessJust= true;
-  new_cos_disp : any;
-  new_vm_disp :any;
-  Voice_Mail : any="";
+  accountid_Disp : any;
 
   payload : Jabber_Update = new Jabber_Update();
 
-  toggle_options(){
-    if (this.checked){
-    this.newvoicemail=false;
-    this.toup_disp="Voice Mail";
-    }
-    else{
-    this.newvoicemail=true;
-    this.toup_disp='';
-    }
-
-    if (this.checked2){
-    this.newcos=false;
-    this.toup_disp2="Class of Service (COS)";
-     }
-    else{
-      this.newcos=true;
-      this.businessJust=true;
-      this.toup_disp2='';
-    }
-  }
-
-  hidebusinessjust(select : any){
-
-   if((select != "") && (select.toUpperCase() =="INTERNATIONAL"))
-   this.businessJust= false;
-   else
-   this.businessJust= true;
-
-  }
- SelectedJabber(jabber:any) {
-   if((jabber != "")){
-     this.hideChargeDept = false;
-     this.currentVoiceMail=false;
-     this.currentcos=false;
-     this.updaterequested=false;
-     this.index = this.Jabber.indexOf(jabber);
-     console.log("Selected ITN index: "+this.index);
-     this.cos_disp=this.cos[this.index];
-     this.vm_disp=this.voice_mail[this.index];
-
+  SelectedJabber(jabber:any) {
+    if(jabber != ""){
+      this.hideChargeDept = false;
     } else {
-      this.currentcos=true;
       this.hideChargeDept = true;
-      this.currentVoiceMail=true;
-      this.updaterequested=true;
-   }
+    }
   }
-
  
   EntryDetails(formData: NgForm) {
     if(formData.value.Jabber_1.toUpperCase() == 'SELECT ONE' || formData.value.Jabber_1 == '') {
@@ -127,34 +63,22 @@ export class VoipLaUpdateComponent implements OnInit {
       return;
     }
     
-    if((this.checked==false)&&(this.checked2==false)) {
-      alert('Please select update requrired for');
+    if(formData.value.account_id.includes(" ")) {
+      alert('Please enter the correct Account ID');
       return;
     }
-      
-    if(this.checked) {
-      if(formData.value.Voice_Mail =='') {
-        alert('Please select New Voice Mail');
-        return;
-      }
+    if(formData.value.account_id.toUpperCase() == '') {
+      alert('Please enter Account ID');
+      return;
     }
 
-    if(this.checked2) {
-      if(formData.value.select_cos.toUpperCase() == 'SELECT CLASS OF SERVICE' || formData.value.select_cos == '') {
-        alert('Please select New Class of Service');
-        return;
-      }
-    }
-    if((this.checked2)&&(formData.value.select_cos.toUpperCase() == 'INTERNATIONAL') ) {
-      if(formData.value.businessjustification == ''){
-      alert('Please enter Business Justification');
+    if(formData.value.account_id.length<4) {
+      alert('Account ID can not be less than 4 characters');
       return;
-      }
     }
+
     this.jabberDisp = formData.value.Jabber_1;
-    this.new_cos_disp=formData.value.select_cos;
-    this.new_vm_disp=formData.value.Voice_Mail;
-    this.bj_disp=formData.value.businessjustification;
+    this.accountid_Disp = formData.value.account_id;
     this.isReviewForm = false;
     this.isEntryForm = true;
   }
@@ -179,17 +103,13 @@ export class VoipLaUpdateComponent implements OnInit {
       this.payload.cNum_payload=this.cnum;	
       // fields picked up from form -- begins	
       this.payload.Projectid_Disp = '';
-     // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
-      this.payload.Department_number_Disp = '';
-      this.payload.accid_Disp = '';
+      this.payload.icano_Disp = '' ;	
+      //this.payload.Department_number_Disp = this.chargeDisp;
+      this.payload.accid_Disp = this.accountid_Disp;
       this.payload.Identifier_Selected = this.jabberDisp;
       this.payload.updated_for = '';
-      this.payload.ReqNo=this.reqno;
-      this.payload.Current_COS=this.cos_disp;
-      this.payload.Current_VM=this.vm_disp;
-      this.payload.Justification=this.bj_disp;
-      this.payload.New_Voice=this.new_vm_disp;
-      this.payload.New_COS=this.new_cos_disp
+      this.payload.ReqNo=this.reqno;	
+  
       // fields to be picked up from form -- ends	
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
@@ -197,7 +117,11 @@ export class VoipLaUpdateComponent implements OnInit {
       this.payload.request_type='jabber_update';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
       this.payload.prov_type=this.countrydetails.provision_type;
-      this.payload.updated_for=this.toup_disp+','+this.toup_disp2;
+      this.payload.Current_COS='';
+      this.payload.Current_VM='';
+      this.payload.Justification='';
+      this.payload.New_Voice='';
+      this.payload.New_COS='';
       	
      this.servicenowservice.submit_request_update(this.payload).subscribe(data=> {	
      console.log('response', data);	
@@ -231,16 +155,6 @@ export class VoipLaUpdateComponent implements OnInit {
       this.identifier = sessionStorage.getItem('identifier')
       this.identifier = this.identifier.split(',');
       this.Jabber = [...this.identifier];
-      this.css=sessionStorage.getItem('cos');
-      this.css=this.css.split(',');
-      this.cos=[... this.css];
-      this.vm=sessionStorage.getItem('voice_mail');
-      this.vm=this.vm.split(',');
-      this.voice_mail=[... this.vm];
-      this.classOfService=this.countrydetails.cos_type;
-     
-      console.log("COS " +this.cos);
-      console.log("Voice Mail "+ this.voice_mail);
     }
     this.route.queryParams	
     .subscribe(params => {	
