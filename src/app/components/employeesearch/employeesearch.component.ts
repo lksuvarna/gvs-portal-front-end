@@ -174,7 +174,7 @@ export class EmployeesearchComponent implements OnInit {
         alert("Please enter a serial number");
         return;
       }
-      else if (formData.value.employeeSerial.length < 6 && this.hideDisTextBox == true) {
+      else if ((formData.value.employeeSerial.trim().length < 6 || formData.value.employeeSerial.includes(' ')) && this.hideDisTextBox == true){
         alert("Employee Serial Number should be of 6 characters");
         return;
       } else if (this.showCountryCode && this.hideDisTextBox && formData.value.selectedCountry === '') {
