@@ -48,8 +48,10 @@ import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
+import { VoipLaUpdateComponent } from './components/voip-la-update/voip-la-update.component';
 
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
 
 
 
@@ -106,7 +108,9 @@ handleError(error: Error){
     PagenotfoundComponent,
     FixedphoneservicesComponent,
     VoipUsaNewComponent,
-    FacInNewComponent
+    VoipLaUpdateComponent,
+    FacInNewComponent,
+    VoipUsaUpdateComponent
   ],
   imports: [
     BrowserModule,
