@@ -9,7 +9,7 @@
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <form [hidden]="isEntryForm" (submit)='entryDetails(formData)' #formData='ngForm'>
 
-            <b>Fixed Phone - New Request</b>
+            <b>Request new Fixed Phone service</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
                 Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.
@@ -24,29 +24,29 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Office
-                Location</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Select
+                State</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel>
-                                    <option value ="">Select Office Location</option>
+                                    <option value ="">Select State</option>
                                     <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
                     {{ fl_location }}</option>
                 </select>
                             </div>
                         </td>
                     </tr>
-                    <tr valign="top" [hidden]='hideBuilding'>
-                        <td colspan="2" width="46%"><label for="builId" class="ds-text-capitalize"> Campus</label>
+                    <tr valign="top" >
+                        <td colspan="2" width="46%"><label for="builId" class="ds-text-capitalize">Select Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select name="Buildings" rows="2" cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1" [(ngModel)]='campus'>
-                                    <option value ="">Select One</option>
-                                    <option *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
+                                <select name="Buildings" rows="2" [(ngModel)]='campus' cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1">
+                                    <option name="Buildings" value ="">Select Location</option>
+                                    <option name="Buildings" *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
                 </select>
                             </div>
                         </td>
@@ -56,74 +56,6 @@
 
             <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
-                    <tr valign="top">
-                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize ds-padding-top-2">Funded</label>
-                        </td>
-                        <td width="54%">
-                            <div class="ds-mar-b-1">
-                                <div class="ds-input-radio-group">
-                                    <label for="radio1" class="ds-input-radio ds-pad-r-1" style="display:inline">
-                    <input type="radio" [(ngModel)]="Voice_Type" name="Voice_Type" id="radio1" class="ds-input"
-                      value="Yes" (click)='showChargeDepartmentCode()'>
-                    <div class="ds-input-control"></div><span class="ds-pad-l-0_5">Yes</span>
-                  </label><label for="radio2" class="ds-input-radio ds-pad-r-1" style="display:inline">
-                    <input type="radio" [(ngModel)]="Voice_Type" checked name="Voice_Type" id="radio2" class="ds-input"
-                      value="No" (click)='hideChargeDepartmentCode()'>
-                    <div class="ds-input-control"></div><span class="ds-pad-l-0_5">No</span>
-                  </label>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr valign="top" [hidden]='hideDeptCode'>
-                        <td colspan="2" width="46%">
-                            <div id="d1"><label for="addId" class="ds-text-capitalize ds-pad-t-1">Charge Department
-                  Code </label> <span class="ds-text-contextual-red-2">*</span></div>
-                        </td>
-                        <td width="54%">
-                            <div id="d21" class="ds-input-container ">
-                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" autocomplete="off" ngModel>
-                                <div id="Mentor1Div"></div>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize " style="display: inline-block;padding-bottom: 1rem;">Business Unit</label>
-                        </td>
-                        <td width="54%"><label name='BusinessUnit' style="display: inline-block;padding-bottom: 1rem;" ngModel> {{ employeeInfo.businessUnit}} </label>
-                        </td>
-                    </tr>
-
-                    <tr valign="top" [hidden]='hideProjectId'>
-                        <td colspan="2" width="46%"><br><label for="Projectid" class="ds-text-capitalize ds-pad-t-1">Project id
-                (for GBS employee only) </label>
-                            <span class="ds-text-contextual-red-2">*</span></td>
-                        <td width="54%">
-                            <div class="ds-input-container ds-pad-t-1">
-                                <input name="Projectid" value="" tabindex="2" rows="2" cols="40" id="Projectid" class="ds-input" style="width:300px !important;" title="Project id" maxlength="11" ngModel> </div>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td colspan="2" width="46%"><br><label for="Accountid" class="ds-text-capitalize ds-pad-t-1">Account id </label>
-                            <span class="ds-text-contextual-red-2">*</span></td>
-                        <td width="54%">
-                            <div class="ds-input-container ds-pad-t-1">
-                                <input name="Accountid" value="" tabindex="2" rows="2" cols="40" id="Accountid" class="ds-input" style="width:300px !important;" title="Account id" maxlength="8" ngModel> </div>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td colspan="2" width="46%"><br><label for="ICAcode" class="ds-text-capitalize ds-pad-t-1">ICA Code</label>
-                            <span class="ds-text-contextual-red-2">*</span></td>
-                        <td width="54%">
-                            <div class="ds-input-container ds-pad-t-1">
-                                <input name="ICAcode" value="" tabindex="2" rows="2" cols="40" id="ICAcode" class="ds-input" style="width:300px !important;" title="ICA Code" maxlength="100" ngModel> </div>
-                        </td>
-                    </tr>
-
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize">Type of Device </label>
                             <span class="ds-text-contextual-red-2">*</span>
@@ -300,18 +232,18 @@
                         </td>
                         <td width="54%">{{reviewDetailsIndia.campus}}</td>
                     </tr>
-                    <tr valign="top">
+                   <!--<tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="addId1">Funded</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.funded}}</td>
                     </tr>
 
-                    <tr valign="top" [hidden]="hideDeptCode">
+                    <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Charge Department Code</label>
+                            <label [hidden]="hideDeptCode" for="addId1">Charge Department Code</label>
                         </td>
-                        <td width="54%">{{reviewDetailsIndia.chargeDepartmentCode}}</td>
+                        <td [hidden]="hideDeptCode" width="54%">{{reviewDetailsIndia.chargeDepartmentCode}}</td>
                     </tr>
 
                     <tr valign="top">
@@ -340,7 +272,7 @@
                             <label for="icano">ICA Code</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.icaCode}}</td>
-                    </tr>
+                    </tr>-->
                     
                     <tr valign="top">
                         <td colspan="2" width="46%">

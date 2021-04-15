@@ -10,17 +10,17 @@ import {fixedphone_new} from '../../../../config/payload';
 import {Location} from '@angular/common';	
 
 @Component({
-  selector: 'app-hp-in-new',
-  templateUrl: './hp-in-new.component.html',
-  styleUrls: ['./hp-in-new.component.css']
+  selector: 'app-hp-au-new',
+  templateUrl: './hp-au-new.component.html',
+  styleUrls: ['./hp-au-new.component.css']
 })
-export class HpInNewComponent implements OnInit {
+export class HpAuNewComponent implements OnInit {
 
   campA: any = [];	
   camp: any = [];	
   buildA: any = [];	
   build: any = [];	
-  devices:any = [];
+  devices:any = ['Extension Mobility Station','Conference / Meeting Room Phone','Fixed Phone User'];
   j = 0;	
   countryname:any;	
 ccode='';	
@@ -45,8 +45,8 @@ pcode: any;
 service: any;	
 employeeInfo: any;	
 employeeInfo1: any;	
-campus:any;	
-hideProjectId = false;
+campus:any = 'Select Location';	
+// hideProjectId = false;
 reqFor: any;
 models:any = [];
 emModels:any;
@@ -257,30 +257,30 @@ classofservice(cos:string) {
 
 entryDetails(formData: NgForm) {	
     
-  if(formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {	
-    alert('Please select the Office Location');	
+  if(formData.value.Location_1.toUpperCase() == 'SELECT STATE' || formData.value.Location_1 == '') {	
+    alert('Please select the State');	
     return;	
   }	
-  if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
-    alert('Please select the Campus');	
+  if(formData.value.Buildings.toUpperCase() == 'SELECT LOCATION' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT STATE' && formData.value.Buildings == '') {	
+    alert('Please select the Location');	
     return;	
   }	
-  if(formData.value.Department_number.toUpperCase() == '' && this.hideDeptCode == false) {	
-    alert('Please enter the Charge Department Code');	
-    return;	
-  }	
-  if(formData.value.Projectid == '' && this.hideProjectId == false) {
-    alert('Please enter the Project ID');
-    return;
-    }
-    if(formData.value.Accountid == '') {
-      alert('Please provide account ID');
-      return;
-    }
-    if(formData.value.ICAcode == '') {
-      alert('Please provide ICA code');
-      return;
-    }
+  // if(formData.value.Department_number.toUpperCase() == '' && this.hideDeptCode == false) {	
+  //   alert('Please enter the Charge Department Code');	
+  //   return;	
+  // }	
+  // if(formData.value.Projectid == '' && this.hideProjectId == false) {
+  //   alert('Please enter the Project Id');
+  //   return;
+  //   }
+  //   if(formData.value.Accountid == '') {
+  //     alert('Please provide account ID');
+  //     return;
+  //   }
+  //   if(formData.value.ICAcode == '') {
+  //     alert('Please provide ICA code');
+  //     return;
+  //   }
     if(formData.value.Device_Type == '') {
       alert('Please select a device type');
       return;
@@ -334,14 +334,14 @@ entryDetails(formData: NgForm) {
   this.reviewDetailsIndia.officeLocation = formData.value.Location_1;	
   this.reviewDetailsIndia.campus = formData.value.Buildings;	
   this.reviewDetailsIndia.funded = this.Voice_Type;	
-  this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;	
+  //this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;	
   this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
-  this.reviewDetailsIndia.projectId = formData.value.Projectid;	
-  this.reviewDetailsIndia.accountId = formData.value.Accountid;
-  this.reviewDetailsIndia.icaCode = formData.value.ICAcode;
+  //this.reviewDetailsIndia.projectId = formData.value.Projectid;	
+  //this.reviewDetailsIndia.accountId = formData.value.Accountid;
+  //this.reviewDetailsIndia.icaCode = formData.value.ICAcode;
   this.reviewDetailsIndia.device = formData.value.Device_Type;
   this.reviewDetailsIndia.model = formData.value.Model_Type;
-  this.reviewDetailsIndia.employeeId = this.employeeID;
+  this.reviewDetailsIndia.employeeId = formData.value.StepMentor;
   this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
   this.reviewDetailsIndia.cos = formData.value.cos;
   this.reviewDetailsIndia.justification = formData.value.Justification;
@@ -367,7 +367,7 @@ submit_snow(){
     this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
     // by default set to true. below line can be removed if needed.	
     //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
-    this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
+    //this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
     this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
     this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
@@ -429,8 +429,6 @@ ngOnInit(): void {
     this.pcode = params.country;	
     console.log("navigation component" + this.pcode);	
   })	
-  this.devices = sessionStorage.getItem('fdevices')?.replace('"','');
-  this.devices = this.devices.replace('"','').split(',');
   this.emModels = sessionStorage.getItem('emmodels')?.replace('"','');
   this.emModels = this.emModels.replace('"','').split(',');
   this.fpModels = sessionStorage.getItem('fpmodels')?.replace('"','');
@@ -467,11 +465,11 @@ ngOnInit(): void {
   this.servicesData = servicesData.data[0];	
   //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
   //alert(this.reviewDetailsIndia.reqno);	
-  this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
-  this.employeeInfo = JSON.parse(this.employeeInfo1);	
-  if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
-    this.hideProjectId = true;
-    }
+  // this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
+  // this.employeeInfo = JSON.parse(this.employeeInfo1);	
+  // if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
+  //   this.hideProjectId = true;
+  //   }
 }	
 
 previousStep(event : any){
