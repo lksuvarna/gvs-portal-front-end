@@ -1,13 +1,16 @@
+
 // Class used to create the payload for Db2 search service.
 export class db2search
 {
     cnum!: String;
     request_type!: String;
+    fixedphone !: String;
 
 db2search()
  {
   this.cnum="";
   this.request_type="";
+  this.fixedphone="";
  }
 
 }

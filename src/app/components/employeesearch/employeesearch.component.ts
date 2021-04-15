@@ -326,6 +326,9 @@ export class EmployeesearchComponent implements OnInit {
         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
           this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
+          if(data.message[i].ATTRIBUTE5==null)
+          this.cos[i] = 'NA';
+          else
           this.cos[i] =  data.message[i].ATTRIBUTE5.trim();
         }
        // this.identifier = data.message[0].IDENTIFIER
@@ -459,6 +462,8 @@ export class EmployeesearchComponent implements OnInit {
       this.reqname="-US-";
       if(this.countrydetails.jnavpage=='LA')
       this.routingname="/entrydetails_update_la";
+      else if (this.countrydetails.jnavpage=='US')
+      this.routingname="/entrydetails_update_us";
       else
       this.routingname="/entrydetailsiju";
       break;

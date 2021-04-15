@@ -10,11 +10,11 @@ import {Jabber_Update} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 
 @Component({
-  selector: 'app-voip-in-update',
-  templateUrl: './voip-in-update.component.html',
-  styleUrls: ['./voip-in-update.component.css']
+  selector: 'app-voip-usa-update',
+  templateUrl: './voip-usa-update.component.html',
+  styleUrls: ['./voip-usa-update.component.css']
 })
-export class VoipInUpdateComponent implements OnInit {
+export class VoipUsaUpdateComponent implements OnInit {
   countryname:any;
   ccode='';
   cloudantData: any = [];
@@ -45,6 +45,7 @@ export class VoipInUpdateComponent implements OnInit {
   warninginfo=false;
   warninginfosnow=false;
   identifier:any;
+  accountid_Disp : any;
 
   payload : Jabber_Update = new Jabber_Update();
 
@@ -61,20 +62,23 @@ export class VoipInUpdateComponent implements OnInit {
       alert('Please select the jabber number to update');
       return;
     }
-    if(formData.value.Charge_Dept.toUpperCase() == 'NA') {
-      alert('No value is changed, so Update request is not required');
+    
+    if(formData.value.account_id.includes(" ")) {
+      alert('Please enter the correct Account ID');
       return;
     }
-    if(formData.value.Charge_Dept.includes(" ")) {
-      alert('Please enter the correct Charge department code');
+    if(formData.value.account_id.toUpperCase() == '') {
+      alert('Please enter Account ID');
       return;
     }
-    if(formData.value.Charge_Dept.toUpperCase() == '') {
-      alert('Please enter the Charge Department code');
+
+    if(formData.value.account_id.length<4) {
+      alert('Account ID can not be less than 4 characters');
       return;
     }
+
     this.jabberDisp = formData.value.Jabber_1;
-    this.chargeDisp = formData.value.Charge_Dept;
+    this.accountid_Disp = formData.value.account_id;
     this.isReviewForm = false;
     this.isEntryForm = true;
   }
@@ -99,12 +103,11 @@ export class VoipInUpdateComponent implements OnInit {
       this.payload.cNum_payload=this.cnum;	
       // fields picked up from form -- begins	
       this.payload.Projectid_Disp = '';
-     // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
-      this.payload.Department_number_Disp = this.chargeDisp;
-      this.payload.accid_Disp = '';
+      this.payload.icano_Disp = '' ;	
+      //this.payload.Department_number_Disp = this.chargeDisp;
+      this.payload.accid_Disp = this.accountid_Disp;
       this.payload.Identifier_Selected = this.jabberDisp;
       this.payload.updated_for = '';
-
       this.payload.ReqNo=this.reqno;	
   
       // fields to be picked up from form -- ends	
