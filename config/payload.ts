@@ -190,6 +190,12 @@ export class Jabber_Update
     Identifier_Selected !: String;
     updated_for !: String;
     request_type !: String;
+    prov_type !: String;
+    Current_VM !: String;
+    Current_COS !: String;
+    Justification !: String;
+    New_Voice !: String;
+    New_COS !: String;
 
 Jabber_Update()
  {
@@ -208,6 +214,12 @@ Jabber_Update()
     this.Identifier_Selected  ="";
     this.updated_for  ="";
     this.request_type="";
+    this.prov_type="";
+    this.Current_VM="";
+    this.Current_COS="";
+    this.Justification="";
+    this.New_Voice="";
+    this.New_COS="";
  }
 
 }

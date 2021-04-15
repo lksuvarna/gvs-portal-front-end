@@ -2,7 +2,7 @@
 <!-- <br><br><br><br>Page under construction !!!!
 <br><br><br><br> -->
 
-<div class = "ds-row">
+<div *ngIf ="displayFeedbackSuccessMsg" class = "ds-row">
 
     <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
     <div class="ds-row ds-pad-t-4">
@@ -149,4 +149,8 @@
     </form>
     </div>
     
-    
+    <div *ngIf = "!displayFeedbackSuccessMsg" class="ds-text-align-center ds-pad-b-5 ds-pad-t-5">
+      <div class="ds-text-align-center ds-set-height-group-1 ds-col-xs-12 ds-col-md-4 ds-padding-1 ds-bg-contextual-yellow-2" style="height: 151px;">
+          <p class="ds-heading-4 ds-pad-b-2 ds-pad-t-4">Thank you for your valuable feedback!</p>
+      </div>
+      </div>

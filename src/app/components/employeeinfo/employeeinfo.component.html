@@ -10,7 +10,7 @@
         
         <b>{{this.title}}</b>
         <div class="ds-pad-t-0_5 ds-pad-b-0_4" >
-            <p *ngIf="warninginfo==false&&warninginfosnow==false">If the following information is correct, click Next. Any errors must be corrected in the employee's <a href="https://w3.ibm.com/bluepages/" target="_blank">BluePages record</a> before continuing.</p>
+            <p *ngIf="!warninginfoothers && warninginfo==false&&warninginfosnow==false">If the following information is correct, click Next. Any errors must be corrected in the employee's <a href="https://w3.ibm.com/bluepages/" target="_blank">BluePages record</a> before continuing.</p>
         </div>
         <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
@@ -123,7 +123,7 @@
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowres>
             <p>There are no resources for this serial number.</p><p>
         </p></div>
-        <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfoothers>
+        <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf= 'warninginfoothers || warninginfosnow'>
             <p>There is no Jabber for this serial number. </p>
           </div>
         <div class="ds-hr-thick"></div>
