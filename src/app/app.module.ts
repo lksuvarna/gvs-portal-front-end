@@ -51,6 +51,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
 
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+import { FacservicesComponent } from './components/facservices/facservices.component';
 
 
 
@@ -108,7 +109,8 @@ handleError(error: Error){
     PagenotfoundComponent,
     FixedphoneservicesComponent,
     VoipUsaNewComponent,
-    FacInNewComponent
+    FacInNewComponent,
+    FacservicesComponent
   ],
   imports: [
     BrowserModule,

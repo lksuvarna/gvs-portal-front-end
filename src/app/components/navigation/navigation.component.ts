@@ -119,6 +119,11 @@ export class NavigationComponent implements OnInit {
         this.jhl=true
       }
       
+      if (this.service.includes("fac"))
+      {        
+        this.facin=true
+        this.fachl=true
+      }
       
       if ((this.service).includes("requests"))
       {        
@@ -154,8 +159,8 @@ export class NavigationComponent implements OnInit {
           {    
             "lhs": [
               {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
-              {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl,"param":"jabberservices"}, 
-              {"name" : "FAC Code","routingname":"/inprogress", "indented" : true, "highlighted": this.fhl,"param":"jabberservices"},             
+              {"name" : "Jabber","routingname":"/jabberservices", "indented" : true, "highlighted": this.jhl,"param":"jabberservices"}, 
+              {"name" : "FAC Code","routingname":"/facservices", "indented" : true, "highlighted": this.fachl,"param":"facservices"},             
               {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},

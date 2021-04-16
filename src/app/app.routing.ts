@@ -29,6 +29,7 @@ import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+import { FacservicesComponent } from './components/facservices/facservices.component';
 
 
 
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
   // { path: 'services' , loadChildren: () => import('./components/navigation/navigation.component').then(m => m.ServicesComponent)}  
     { path: 'jabberservices', component: JabberservicesComponent },   
     { path: 'fixedphoneservices', component: FixedphoneservicesComponent }, 
+    { path: 'facservices', component: FacservicesComponent },   
     { path: 'employeesearch', component: EmployeesearchComponent },    
     { path: 'employeeinfo', component: EmployeeinfoComponent },
     { path: 'resultpage', component: ResultpageComponent },
@@ -62,6 +64,7 @@ const appRoutes: Routes = [
     { path: 'entrydetailsus', component: VoipUsaNewComponent},        
     { path: 'resources', component: ResourcesComponent},
     { path: 'entrydetailsfn', component: HpInNewComponent},
+    { path: 'entrydetailsfac', component: FacInNewComponent},
     
     { path: 'pagenotfound', component: PagenotfoundComponent},
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
