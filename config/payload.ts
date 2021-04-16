@@ -5,12 +5,16 @@ export class db2search
     cnum!: String;
     request_type!: String;
     fixedphone !: String;
+    identifier !: String;
+    country !: String;
 
 db2search()
  {
   this.cnum="";
   this.request_type="";
   this.fixedphone="";
+  this.country="";
+  this.identifier="";
  }
 
 }
