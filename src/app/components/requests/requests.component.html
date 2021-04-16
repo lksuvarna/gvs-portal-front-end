@@ -8,18 +8,18 @@
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5" *ngIf=display>    
 
-    <p><b>Requests</b></p>
+    <p><b translate>requesttrans.Requests</b></p>
     <div class=" ds-pad-b-1"></div>
     <div class=" ds-panel ds-col-12 "></div>
     <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
     <!--All Requests code starts-->
-    <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Requests Details</h2>
+    <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>requesttrans.EmployeeRequestsDetails</h2>
     <div class="ds-panel ds-col-12"></div><br>
     <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowreq>
-      <p>No outstanding requests were found for the serial number.</p><p>
+      <p translate>employeeinfotrans.nooutstandingreq</p><p>
   </p></div>
   <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
-    <p>Opps! Some thing went worng.Please try again latter.</p><p>
+    <p translate>Jabbernewtrans.opps</p><p>
 </p></div>
 
     <table style="width:100%; border-collapse: collapse; padding:2px" *ngIf="warninginfosnowreq==false && !errorinfo">
@@ -27,11 +27,11 @@
       </tbody>
       <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">
         <tr>
-          <td style="padding:5px 15px 5px 25px; padding-left:15px ">Resource Type</td>
-          <td style="padding:5px 55px 5px 25px; padding-left:15px">Created Date</td>
-          <td style="padding:5px 65px 9px 50px; padding-left:15px ">Status</td>
-          <td style="padding:5px 55px 5px 50px ;padding-left:15px">Tracking Number</td>
-          <td style="padding:5px 15px 5px 10px; padding-left:15px ">Additional Comments</td>
+          <td style="padding:5px 15px 5px 25px; padding-left:15px " translate>requesttrans.ResourceType</td>
+          <td style="padding:5px 55px 5px 25px; padding-left:15px" translate>requesttrans.CreatedDate</td>
+          <td style="padding:5px 65px 9px 50px; padding-left:15px " translate>requesttrans.Status</td>
+          <td style="padding:5px 55px 5px 50px ;padding-left:15px" translate>requesttrans.TrackingNumber</td>
+          <td style="padding:5px 15px 5px 10px; padding-left:15px " translate>requesttrans.AdditionalComments</td>
         </tr>
       </thead>
       <tbody>

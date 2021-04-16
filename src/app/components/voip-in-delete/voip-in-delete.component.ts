@@ -7,6 +7,7 @@ import {Location} from '@angular/common';
 import {Jabber_Delete} from '../../../../config/payload';	
 import { servicenowservice } from '../../_services/servicenow.service';
 import { ActivatedRoute } from '@angular/router';	
+import { TranslateConfigService} from '../../_services/translate-config.service';
 
 @Component({
   selector: 'app-voip-in-delete',
@@ -41,10 +42,11 @@ export class VoipInDeleteComponent implements OnInit {
   isSpinnerVisible= false; 
   warninginfo=false;
   warninginfosnow=false;
-  constructor(private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice) {
+  constructor(private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice,private servicesd : TranslateConfigService) {
     if(this.Jabber[0]=='Select One'){
       this.selected = true;
     }}
+    mainConfiguration :any;
     backClick(){	
       sessionStorage.setItem('backbutton','yes');	
       sessionStorage.setItem('step','step1');	
@@ -60,7 +62,7 @@ export class VoipInDeleteComponent implements OnInit {
 
   entryDetails(formData: NgForm) {
     if(formData.value.Jabber_1.toUpperCase() == 'SELECT JABBER NUMBER' || formData.value.Jabber_1 == '') {
-      alert('Please select the Jabber Number');
+      alert(this.mainConfiguration.alerttranslation.selectlocation);
       return;
     }
     this.selectedJabber = formData.value.Jabber_1;
@@ -107,7 +109,7 @@ export class VoipInDeleteComponent implements OnInit {
   
 
   ngOnInit(): void {
-
+    this.mainConfiguration = this.servicesd.readConfigFile();
     this.route.queryParams	
     .subscribe(params => {	
       console.log(params);	

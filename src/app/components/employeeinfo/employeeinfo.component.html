@@ -8,63 +8,63 @@
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         
-        <b>{{this.title}}</b>
+        <b translate>servicestitle.{{this.title}}</b>
         <div class="ds-pad-t-0_5 ds-pad-b-0_4" >
-            <p *ngIf="warninginfo==false&&warninginfosnow==false">If the following information is correct, click Next. Any errors must be corrected in the employee's <a href="https://w3.ibm.com/bluepages/" target="_blank">BluePages record</a> before continuing.</p>
+            <p *ngIf="warninginfo==false&&warninginfosnow==false" translate>employeeinfotrans.ifinfoiscorrect <a translate href="https://w3.ibm.com/bluepages/" target="_blank">employeeinfotrans.BluePagesrecord </a> <span translate>employeeinfotrans.beforecontinuing </span></p>
         </div>
         <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
         <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
 
-        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " *ngIf="selfinfo==false">Employee Information</h2>
-        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " *ngIf="selfinfo==true">Employee Entry Details</h2>
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " *ngIf="selfinfo==false" translate>employeeinfotrans.EmployeeInformation</h2>
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " *ngIf="selfinfo==true" translate>employeeinfotrans.EmployeeEntryDetails</h2>
 
         <table cellspacing="0" cellpadding="0" border="0" *ngIf="selfinfo==false">
             <tbody>
                 <tr valign="top">
                     <td width="359">
-                        <label for="NameID">Name:</label><br><br>
+                        <label for="NameID" translate>employeeinfotrans.Name</label><br><br>
                     </td>
                     <td width="359">{{employeeInfo.employeeName}}</td>
                 </tr>
                 <tr valign="top">
                     <td width="359">
-                        <label for="NameID">Serial Number:</label><br><br>
+                        <label for="NameID" translate>employeeinfotrans.SerialNumber</label><br><br>
                     </td>
                     <td width="359">{{employeeInfo.sno}}</td>
                 </tr>
 
                 <tr valign="top">
                     <td width="359">
-                        <label for="JobID">Job Responsibility:</label><br><br>
+                        <label for="JobID" translate>employeeinfotrans.JobResponsibility</label><br><br>
                     </td>
                     <td width="359">{{employeeInfo.jobResponsibility}}</td>
                 </tr>
 
                 <tr valign="top">
                     <td width="359">
-                        <label for="BUID">Business Unit:</label><br><br>
+                        <label for="BUID" translate>employeeinfotrans.BusinessUnit</label><br><br>
                     </td>
                     <td width="359">{{employeeInfo.businessUnit}}</td>
                 </tr>
 
                 <tr valign="top">
                     <td width="359">
-                        <label for="DeptID">Department:</label><br><br>
+                        <label for="DeptID" translate>employeeinfotrans.Department</label><br><br>
                     </td>
                     <td width="359">{{employeeInfo.department}}</td>
                 </tr>
 
                 <tr valign="top">
                     <td width="359">
-                        <label for="EmpCountryID">Country:<br><br></label>
+                        <label for="EmpCountryID" translate>employeeinfotrans.Country<br><br></label>
                     </td>
                     <td width="359">{{employeeInfo.country}}</td>
                 </tr>
 
                 <tr valign="top">
                     <td width="359">
-                        <label for="EmailID">E-mail:</label><br><br>
+                        <label for="EmailID" translate>employeeinfotrans.E-mail</label><br><br>
                     </td>
                     <td width="359">{{employeeInfo.email}}</td>
                 </tr>
@@ -76,64 +76,64 @@
         <p id="war11" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;"></p>
         <div id="war2" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
             <p>
-                <span style="font-size: 1rem;">The serial number that you have entered is not eligible to request Jabber account.<br>
-                The IBM Telephone Number (ITN) that exists for this user is .<br>
+                <span style="font-size: 1rem;" translate>employeeInfo.noteligiblejabber<br>
+                <span translate>employeeInfo.itnexistsforuser </span><br>
                 </span>
             </p>
         </div>
         <div id="war3" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
-            <p>There is no Jabber for this serial number.</p>
+            <p translate>employeeinfotrans.nojabber</p>
         </div>
         <div id="war4" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
             <p>
-                <span style="font-size: 1rem;">The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN <a style="color:blue" target="_blank" href="https://105.w3-969.ibm.com/tools/voice/SPOEProd.nsf/EntryPage?OpenForm&amp;EMEA_Voice">Global Voice Infrastructure.</a> Once you have received the ITN you can then request Jabber.  Thank you.
+                <span style="font-size: 1rem;" translate>employeeinfotrans.nojabberusethislink<a translate style="color:blue" target="_blank" href="https://105.w3-969.ibm.com/tools/voice/SPOEProd.nsf/EntryPage?OpenForm&amp;EMEA_Voice">employeeinfotrans.GlobalVoiceInfrastructure</a> <span translate> employeeinfotrans.receiveITN</span>
                     <br><br>
                 </span>
             </p>
         </div>
         <div id="err-dept1" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
-            <p>The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact <a style="color:blue" target="_blank"
+            <p translate>employeeinfotrans.notauthorizedtoaccessjabber <a style="color:blue" target="_blank"
                     href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
         <div id="err-dept2" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
-            <p>The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact <a style="color:blue" target="_blank"
+            <p translate>employeeinfotrans.notauthorizedtoaccessip <a style="color:blue" target="_blank"
                     href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
         <div id="w1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfo>
-            <p><span style="font-size: 1rem;">The serial number that you have entered is not eligible to request more than one Jabber account.<br>The IBM Telephone Number (ITN) that exists for this users jabber account is {{identifier}}.<br>Help related to Jabber configuration can be found at  <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>. <br>              
-        For any further assistance, please contact  ' <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a> '.<br></span></p>
+            <p><span style="font-size: 1rem;" translate>employeeinfotrans.noteligibletorequestmorethanonejabber<br> <span translate>employeeinfotrans.ITNexistsforthisuser</span> {{identifier}}.<br> <span translate> employeeinfotrans.jabberconfiguration </span> <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>. <br>              
+        <span translate> employeeinfotrans.furtherassistance </span> ' <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a> '.<br></span></p>
         </div>
         <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
-            <p><span style="font-size: 1rem;">The serial number that you have entered has already one new Jabber request is in progress and request number is {{identifier}}.<br>
+            <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}.<br>
         
-        You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.<br>              
+        <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>              
         
-        For any further assistance, please contact  <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+        <span translate> employeeinfotrans.furtherassistance </span> <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
         </div>
         <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowothers>
-            <p><span style="font-size: 1rem;">The serial number that you have entered has already one {{page}} request is in progress and request number is {{identifier1}}.<br>
+            <p><span style="font-size: 1rem;"> <span translate> employeeinfotrans.alreadyone </span> {{page}} <span translate> employeeinfotrans.inprogess </span> {{identifier1}}.<br>
         
-        You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.<br>              
+        <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>              
         
-        For any further assistance, please contact  <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+        <span translate> employeeinfotrans.furtherassistance </span> <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
         </div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowreq>
-            <p>No outstanding requests were found for the serial number.</p><p>
+            <p translate>employeeinfotrans.nooutstandingreq</p><p>
         </p></div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowres>
-            <p>There are no resources for this serial number.</p><p>
+            <p translate>employeeinfotrans.noresources</p><p>
         </p></div>
         <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfoothers>
-            <p>There is no Jabber for this serial number. </p>
+            <p translate>employeeinfotrans.nojabberforthisserial </p>
           </div>
         <div class="ds-hr-thick"></div>
 
         <div class="ds-row ds-grid ds-mar-t-b-3_5 ds-pad-r-1">
             <div [ngClass]="warninginfo==false&&warninginfosnow==false&&warn==false? 'ds-col-lg-2 ds-push-lg-8': 'ds-col-lg-2 ds-push-lg-10'">
-                <button (click)="backClick()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%">BACK</button>
+                <button (click)="backClick()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" translate>employeeinfotrans.BACK</button>
             </div>
             <div class="ds-col-lg-2 ds-push-lg-8">
-                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false">NEXT</button>
+                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false" translate>employeeinfotrans.NEXT</button>
             </div>
         </div>
     </div>
