@@ -34,7 +34,6 @@ import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.compone
 import { VoipUsaNewComponent } from './components/voip-usa-new/voip-usa-new.component';
 import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.component';
 import { VoipLaNewComponent } from './components/voip-la-new/voip-la-new.component';
-import { VoipAuNewComponent } from './components/voip-au-new/voip-au-new.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-update.component';
 import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component'
@@ -100,8 +99,7 @@ handleError(error: Error){
     VoipInDeleteComponent,
     EmployeesearchVoipDeleteComponent,
     FooterComponent,
-    StepsComponent,
-    VoipAuNewComponent,
+    StepsComponent,    
     VoipLaNewComponent,
     VoipEmeaNewComponent,
     VoipAuMoveComponent,

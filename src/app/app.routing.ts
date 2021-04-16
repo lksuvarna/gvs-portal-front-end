@@ -19,7 +19,7 @@ import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.compone
 import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component';
 import { EmployeesearchVoipDeleteComponent } from './components/employeesearch-voip-delete/employeesearch-voip-delete.component';
 import { RevalidationpendingComponent } from './components/revalidationpending/revalidationpending.component';
-import { VoipAuNewComponent } from './components/voip-au-new/voip-au-new.component';
+
 import { VoipLaNewComponent } from './components/voip-la-new/voip-la-new.component';
 import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-update.component';
 import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.component';
@@ -59,7 +59,7 @@ const appRoutes: Routes = [
     { path: 'resultpage', component: ResultpageComponent },
     { path: 'employeesearchdelete', component: EmployeesearchVoipDeleteComponent},
     { path: 'revalidationpending', component: RevalidationpendingComponent},
-    { path: 'entrydetailsau', component: VoipAuNewComponent},    
+      
     { path: 'entrydetailsla', component: VoipLaNewComponent},
     { path: 'entrydetailsemea', component: VoipEmeaNewComponent},
     { path: 'entrydetailsus', component: VoipUsaNewComponent},        
