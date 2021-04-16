@@ -512,7 +512,7 @@ FacInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -12018,7 +12018,10 @@ class EmployeesearchComponent {
                 for (var i = 0; i < data.message.length; i++) {
                     this.itns[i] = data.message[i].IDENTIFIER.trim();
                     if (this.service == 'jabber_update') {
-                        this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
+                        if (data.message[i].VOICEMAIL == null)
+                            this.voice_mail[i] = 'NA';
+                        else
+                            this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
                         if (data.message[i].ATTRIBUTE5 == null)
                             this.cos[i] = 'NA';
                         else
