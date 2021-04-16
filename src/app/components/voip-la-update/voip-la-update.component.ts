@@ -167,6 +167,7 @@ export class VoipLaUpdateComponent implements OnInit {
     sessionStorage.setItem('backbutton', 'yes');
     sessionStorage.setItem('step', 'step1');
     this.location.back();
+    
   }
 
   BackButton() {
