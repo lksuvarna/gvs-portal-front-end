@@ -81,7 +81,7 @@
                         </td>
                         <td width="54%">
                             <div id="d21" class="ds-input-container ">
-                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" maxlength='6' autocomplete="off" ngModel>
+                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" maxlength='6' autocomplete="off" ngModel [(ngModel)]='chargeDeptValue'>
                                 <div id="Mentor1Div"></div>
                             </div>
                         </td>
@@ -95,14 +95,13 @@
                     </tr>
 
                     <tr valign="top" [hidden]='hideProjectId'>
-                        <td colspan="2" width="46%"><br><label for="Projectid" class=" ds-pad-t-1"  translate>Jabberentrydetails.Projectid</label>
+                        
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container ds-pad-t-1">
-                                <input name="Projectid" value="" tabindex="2" rows="2" cols="40" id="Projectid" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager\Project Manager for Project id" maxlength="11" ngModel> </div>
+                                <input name="Projectid" value="" tabindex="2" rows="2" cols="40" id="Projectid" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager\Project Manager for Project ID" maxlength="11" ngModel [(ngModel)]='projectIdValue'> </div>
                         </td>
                     </tr>
-
                     <tr valign="top">
                         <td colspan="2" width="46%"><label for="icano" class=" ds-pad-t-1" translate>Jabberentrydetails.alreadyhaveFixedPhone </label>
                         </td>
@@ -188,7 +187,7 @@
 
                     <tr valign="top" [hidden]='hideProjectId'>
                         <td colspan="2" width="46%">
-                            <label for="Projectid" translate>Jabberentrydetails.Projectid</label>
+                            
                         </td>
                         <td width="54%">{{reviewDetailsIndia.projectId}}</td>
                     </tr>

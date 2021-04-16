@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VoipAuNewComponent } from './voip-au-new.component';
+import { FacInNewComponent } from './fac-in-new.component';
 
-describe('VoipAuNewComponent', () => {
-  let component: VoipAuNewComponent;
-  let fixture: ComponentFixture<VoipAuNewComponent>;
+describe('FacInNewComponent', () => {
+  let component: FacInNewComponent;
+  let fixture: ComponentFixture<FacInNewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VoipAuNewComponent ]
+      declarations: [ FacInNewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VoipAuNewComponent);
+    fixture = TestBed.createComponent(FacInNewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

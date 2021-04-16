@@ -42,6 +42,14 @@ export class TopcountryframeComponent implements OnInit {
       } 
       else{
         sessionStorage.setItem('pagedisplay','page')
+       if( this.router.url.includes('employeeinfo') || this.router.url.includes('entrydetails') || this.router.url.includes('requests?')|| this.router.url.includes('resources?')){
+         if(!sessionStorage.getItem('employeeInfo')){
+          sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+          //  queryParams: {}
+         });
+         }
+       }
       }   
     if (this.pcode== this.countryroute) {
       this.pcountrydetails=sessionStorage.getItem('countrydetails')
