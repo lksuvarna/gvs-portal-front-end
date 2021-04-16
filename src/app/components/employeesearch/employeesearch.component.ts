@@ -325,7 +325,7 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfo', 'true1');
         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
-          this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
+          //this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
           if(data.message[i].ATTRIBUTE5==null)
           this.cos[i] = 'NA';
           else

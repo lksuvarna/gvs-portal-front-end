@@ -135,7 +135,7 @@
             </tr>
             <tr valign="top" [hidden]='hideProjectId'>
               <td colspan="2" width="46%">
-                <label for="Projectid" class="ds-text-capitalize ds-pad-t-1">Project Id</label>
+                <label for="Projectid" class="ds-text-capitalize ds-pad-t-1">Project ID</label>
                 <span class="ds-text-contextual-red-2"> *</span>
               </td>
               <td width="54%">
@@ -145,30 +145,8 @@
                 </div>
               </td>
             </tr>
-            <tr valign="top">
-              <td colspan="2" width="46%">
-                <label for="accid" class="ds-text-capitalize ds-pad-b-1">Account Id</label>
-                <span class="ds-text-contextual-red-2">*</span>
-              </td>
-              <td width="54%">
-                <div class="ds-input-container ">
-                  <input ngModel name="accid" value="" maxlength='6' id="accid" class="ds-input" style="width:300px !important;"
-                    title="Account Id">
-                </div>
-              </td>
-            </tr>
-            <tr valign="top">
-              <td colspan="2" width="46%">
-                <label for="icano" class="ds-text-capitalize">ICA Code</label>
-                <span class="ds-text-contextual-red-2">*</span>
-              </td>
-              <td width="54%">
-                <div class="ds-input-container ">
-                  <input ngModel name="icano" value="" id="icano" maxlength='6' class="ds-input" style="width:300px !important;"
-                    title="ICA Code">
-                </div>
-              </td>
-            </tr>
+            
+           
           </tbody>
         </table>
       </div>
@@ -256,24 +234,13 @@
 
           <tr valign="top" [hidden]='hideProjectId'>
             <td colspan="2" width="46%">
-              <label for="Projectid">Project Id</label>
+              <label for="Projectid">Project ID</label>
             </td>
             <td width="54%">{{reviewDetailsIndia.projectId}}</td>
           </tr>
 
-          <tr valign="top">
-            <td colspan="2" width="46%">
-              <label for="Projectid">Account Id</label>
-            </td>
-            <td width="54%">{{reviewDetailsIndia.accid_Disp}}</td>
-          </tr>
-
-          <tr valign="top">
-            <td colspan="2" width="46%">
-              <label for="icano">ICA Code</label>
-            </td>
-            <td width="54%">{{reviewDetailsIndia.icano_Disp}}</td>
-          </tr>
+          
+          
         </tbody>
       </table>
 
