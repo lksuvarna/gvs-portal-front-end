@@ -116,6 +116,9 @@ export class VoipLaUpdateComponent implements OnInit {
     } else {
       this.currentcos=true;
       this.hideChargeDept = true;
+      this.newvoicemail= true;
+      this.newcos= true;
+      this.businessJust=true;
       this.currentVoiceMail=true;
       this.updaterequested=true;
    }
