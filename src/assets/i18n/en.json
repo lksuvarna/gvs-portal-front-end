@@ -150,7 +150,7 @@
         "Funded" : "Funded",
         "ChargeDepartmentCode": "Charge Department Code",
         "BusinessUnit" : "Business Unit",
-        "Projectid" : "Project id (for GBS employee only)",
+        "Projectid" : "Project ID (for GBS employee only)",
         "alreadyhaveFixedPhone":"If you already have Fixed Phone , please provide the identifier",
         "toprocessPI":"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.",
         "JabberRequestDetails":"Jabber Request Details",
