@@ -326,6 +326,9 @@ export class EmployeesearchComponent implements OnInit {
         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
           if(this.service=='jabber_update'){
+          if(data.message[i].VOICEMAIL==null)
+          this.voice_mail[i]='NA'
+          else
           this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
           if(data.message[i].ATTRIBUTE5==null)
           this.cos[i] = 'NA';
