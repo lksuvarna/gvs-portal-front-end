@@ -9,36 +9,34 @@
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <form [hidden]='isEntryForm' (submit)='EntryDetails(formData)' #formData='ngForm'>
 
-            <b>Update Jabber Request</b>
+            <b translate>servicestitle.Update Jabber Request</b>
 
       <div class="ds-pad-t-0_5 ds-pad-b-1">
-        <label *ngIf="warninginfo==false">Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</label>
+        <label *ngIf="warninginfo==false" translate>Jabberentrydetails.Fieldsasterisk (<span class="ds-text-contextual-red-2">*</span>) <span translate> Jabberentrydetails.arerequired </span></label>
       </div>
       <div class=" ds-panel ds-col-12 "></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
 
 
-            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>Jabberentrydetails.EmployeeEntryDetails</h2>
 
             <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
-                <p>There is no Jabber for this serial number. </p>
+                <p translate>employeeinfotrans.nojabber </p>
             </div>
             <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
-                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Update Jabber request
-            is in progress and request number is {{identifier}}.<br>
+                <p><span style="font-size: 1rem;"><Span translate>employeeinfotrans.alreadyoneupdaterequestinprogress</Span> {{identifier}}.<br>
 
-            You can view the status of the on-going request by clicking on the Requests link on the left side navigation
-            menu.<br>
+            <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>
 
-            For any further assistance, please contact <a style="color:blue" target="_blank"
+            <span translate> employeeinfotrans.furtherassistance</span><a style="color:blue" target="_blank"
               href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
             </div>
 
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Select Jabber Number </label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate> Jabberupdate.SelectJabberNumber </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
@@ -53,8 +51,7 @@
                         </td>
                     </tr>
                     <tr valign="top" [hidden]='hideChargeDept'>
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Charge Department
-              Code </label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate> Jabberentrydetails.ChargeDepartmentCode </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
@@ -89,21 +86,21 @@
 
         <form [hidden]='isReviewForm' #formData='ngForm'>
 
-            <b>Update Jabber Request</b>
+            <b translate>servicestitle.Update Jabber Request</b>
 
-            <div class="ds-pad-t-0_5 ds-pad-b-1">
-                By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. </div>
+            <div class="ds-pad-t-0_5 ds-pad-b-1" translate>
+                Jabberentrydetails.toprocessPI </div>
             <div class=" ds-panel ds-col-12 "></div>
 
             <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
 
 
-            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Review Details</h2>
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>Jabberupdate.ReviewDetails</h2>
 
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber Number </label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate> Jabberupdate.JabberNumber </label>
 
                         </td>
                         <td width="54%" height="10">
@@ -111,8 +108,7 @@
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Charge Department
-              Code</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>Jabberentrydetails.ChargeDepartmentCode</label>
                         </td>
                         <td width="54%" height="10">
                             <label>{{chargeDisp}}</label>
@@ -121,10 +117,13 @@
                 </tbody>
             </table>
             <br>
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
+                <p>Opps! Some thing went worng.Please try again latter.</p><p>
+            </p></div>
             <div class=" ds-panel ds-col-12 "></div>
             <!-- Dark Background -->
             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
-                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.
+                <div class="ds-loader-header" translate>Jabberentrydetails.Submissioninprogress
                 </div>
                 <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
             </div>

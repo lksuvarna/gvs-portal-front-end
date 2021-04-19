@@ -126,8 +126,8 @@
                                 </td>
                                 <td width="54%" height="10">
                                     <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                        <select rows="2" name="select_cos" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" (change)='hidebusinessjust(selectcos.value)' tabindex="1"
-                                        #selectcos ngModel>
+                                        <select rows="2" name="select_cos" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" (change)='hidebusinessjust($event)' tabindex="1"
+                                        [(ngModel)]="selectcos">
                           <option value="">Select Class of Service</option>
                           <option name="select_cos" *ngFor='let cos of classOfService' [value]='cos' selected>
                             {{ cos }}</option>
@@ -135,6 +135,7 @@
                                     </div>
                                 </td>
                             </tr>
+                         
                          
                         
 
@@ -144,7 +145,7 @@
                                 </td>
                                 <td width="54%" height="10">
                                     <div class="ds-input-container">
-                                        <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager for Charge Department Code" rows="2" cols="40" ngModel=""></textarea></div>
+                                        <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager for Charge Department Code" rows="2" cols="40" [(ngModel)]="businessjustification"></textarea></div>
                                 </td>
                             </tr>
 
@@ -239,6 +240,10 @@
                 </tbody>
             </table>
             <br>
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
+                <p>Opps! Some thing went worng.Please try again latter.</p><p>
+            </p></div>
+
             <div class=" ds-panel ds-col-12 "></div>
             <!-- Dark Background -->
             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
