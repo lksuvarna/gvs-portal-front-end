@@ -29,6 +29,7 @@ export class VoipUsaUpdateComponent implements OnInit {
   fixedPhoneIdentifier = false;	
   jabberDisp:any;
   chargeDisp:any;
+  errorinfo=false;
   reqFor: any;
   employeeSerial = '';
   service = '';
@@ -127,7 +128,13 @@ export class VoipUsaUpdateComponent implements OnInit {
      console.log('response', data);	
      if(data)	
      this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
-     });	
+     },
+     (error) => {                              //Error callback
+      console.error('error caught in component'+error);
+      this.isSpinnerVisible= false; 	
+      this.errorinfo=true;
+      this.isButtonVisible=true;
+    });	
      }	
    
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute) {

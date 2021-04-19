@@ -43,7 +43,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" (change)='SelectedJabber(number.value)' tabindex="1"
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" tabindex="1"
                                     #number ngModel>
                   <option value="">Select One</option>
                   <option name="Jabber_1" *ngFor='let fl_itn of Jabber' [value]='fl_itn' selected>
@@ -53,7 +53,7 @@
                         </td>
                     </tr>
                     
-                    <tr valign="top" [hidden]='hideChargeDept'>
+                    <tr valign="top" >
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> 	
                         Enter account ID</label>
                             <span class="ds-text-contextual-red-2">*</span>
@@ -132,6 +132,9 @@
                 </tbody>
             </table>
             <br>
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
+                <p>Opps! Some thing went worng.Please try again latter.</p><p>
+            </p></div>
             <div class=" ds-panel ds-col-12 "></div>
             <!-- Dark Background -->
             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">

@@ -8,37 +8,36 @@
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
 
-        <span class='ds-pad-l-0_5'><b>Resources</b></span>
+        <span class='ds-pad-l-0_5'><b translate>servicestitle.Resources</b></span>
         <div class="ds-col-12 ds-pad-t-0_5">
 
             <app-steps [step]="3" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
-            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Resources Details</h2>
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>resourcespagetranslation.EmployeeResourcesDetails</h2>
 
             <span class="ds-pad-t-1"></span><br>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowres>
         
-              <p>There are no resources for this serial number.</p><p>
+              <p translate>employeeinfotrans.noresources</p><p>
           </p></div>
             <table id="t1" cellspacing="0" cellpad="0" border="0" *ngIf="warninginfosnowres==false">
                 <thead>
                     <tr valign="top">
                         <td width="172" bgcolor="#F1F0EE">
                             <div class="ds-set-height-group-1 ds-col-xs-12  ds-pad-1 ds-bg-neutral-warm-2 ds-text-neutral-7	">
-                                <b>Resource Type</b></div>
+                                <b translate>requesttrans.ResourceType</b></div>
                         </td>
                         <td width="172" bgcolor="#F1F0EE">
-                            <div class="ds-set-height-group-1   ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Supplier</b>
+                            <div class="ds-set-height-group-1   ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b translate>resourcespagetranslation.Supplier</b>
                             </div>
                         </td>
                         <td width="172" bgcolor="#F1F0EE">
-                            <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Phone/Dial
+                            <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b> <span translate>resourcespagetranslation.Phone/Dial </span>
                     <br>
-                    In number</b></div>
+                     <span translate> resourcespagetranslation.Innumber </span></b></div>
                         </td>
                         <td colspan="2" width="345" bgcolor="#F1F0EE">
-                            <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b>Additional
-                    Information</b></div>
+                            <div class="ds-set-height-group-1 ds-pad-t-1 ds-bg-neutral-warm-2 ds-text-neutral-7"><b> <span translate>resourcespagetranslation.AdditionalInformation </span></b></div>
                         </td>
                     </tr>
                     <tr valign="top">

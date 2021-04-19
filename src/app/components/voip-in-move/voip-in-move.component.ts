@@ -135,19 +135,19 @@ export class VoipInMoveComponent implements OnInit {
       alert('Please select the Campus');
       return;
     }
-    if (formData.value.Department_number.toUpperCase() == '' && this.hideDeptCode == false) {
+    if (formData.value.Department_number.toUpperCase().trim == '' && this.hideDeptCode == false) {
       alert('Please enter the Charge Department Code');
       return;
     }
-    if(formData.value.Projectid == '' && this.hideProjectId == false) {
-      alert('Please enter the Project Id');
+    if(formData.value.Projectid.trim == '' && this.hideProjectId == false) {
+      alert('Please enter the Project ID');
       return;
       }
-    if (formData.value.accid == '') {
-      alert('Please enter the Account Id');
+    if (formData.value.accid.trim == '') {
+      alert('Please enter the Account ID');
       return;
     }
-    if (formData.value.icano == '') {
+    if (formData.value.icano.trim == '') {
       alert('Please enter the ICA Code');
       return;
     }

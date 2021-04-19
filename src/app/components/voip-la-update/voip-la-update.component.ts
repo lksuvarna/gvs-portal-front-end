@@ -69,6 +69,12 @@ export class VoipLaUpdateComponent implements OnInit {
   new_cos_disp : any;
   new_vm_disp :any;
   Voice_Mail : any="";
+  errorinfo=false;
+  selectcos="";
+  
+ 
+  businessjustification : any="";
+
 
   payload : Jabber_Update = new Jabber_Update();
 
@@ -93,9 +99,9 @@ export class VoipLaUpdateComponent implements OnInit {
     }
   }
 
-  hidebusinessjust(select : any){
-
-   if((select != "") && (select.toUpperCase() =="INTERNATIONAL"))
+  hidebusinessjust(e : any){
+    this.businessjustification='';
+   if((e.target.value != "") && (e.target.value.toUpperCase() =="INTERNATIONAL"))
    this.businessJust= false;
    else
    this.businessJust= true;
@@ -115,8 +121,17 @@ export class VoipLaUpdateComponent implements OnInit {
     } else {
       this.currentcos=true;
       this.hideChargeDept = true;
+      this.newvoicemail= true;
+      this.newcos= true;
+      this.businessJust=true;
       this.currentVoiceMail=true;
       this.updaterequested=true;
+      this.checked=false;
+      this.checked2=false;
+      this.Voice_Mail='';
+      this.selectcos="";
+      this.businessjustification='';
+
    }
   }
 
@@ -163,6 +178,7 @@ export class VoipLaUpdateComponent implements OnInit {
     sessionStorage.setItem('backbutton', 'yes');
     sessionStorage.setItem('step', 'step1');
     this.location.back();
+    
   }
 
   BackButton() {
@@ -203,7 +219,13 @@ export class VoipLaUpdateComponent implements OnInit {
      console.log('response', data);	
      if(data)	
      this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
-     });	
+     },
+     (error) => {                              //Error callback
+      console.error('error caught in component'+error);
+      this.isSpinnerVisible= false; 	
+      this.errorinfo=true;
+      this.isButtonVisible=true;
+    });	
      }	
    
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute) {

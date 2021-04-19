@@ -21,7 +21,7 @@
             </a>
         </div>
         <div *ngIf="cloudantData.isfac" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
-            <a [routerLink]="['/inprogress']" [queryParams]="{country:pcode}">
+            <a [routerLink]="['/facservices']" [queryParams]="{country:pcode,service:'facservices'}">
                 <div class="ds-panel">
                     <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
                         <img src="././assets/fixedphone.png">
@@ -42,10 +42,10 @@
         </div>
     </div>
 
-    <a href={{servicesData.termsurl}} class="ds-text-contextual-blue-5 ds-link-unstyled" target="_blank">{{servicesData.titles[0]}}</a>
-    <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">{{servicesData.titles[1]}}</h2>
-    <p>{{servicesData.titles[2]}}</p>
+    <a translate href={{servicesData.termsurl}} class="ds-text-contextual-blue-5 ds-link-unstyled" target="_blank" >footnote.{{servicesData.titles[0]}}</a>
+    <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 "translate>footnote.{{servicesData.titles[1]}}</h2>
+    <p translate>footnote.{{servicesData.titles[2]}}</p>
     <ul>
-        <li *ngFor="let usefulinfotext of servicesData.usefulinfotexts">{{usefulinfotext}}</li>
+        <li *ngFor="let usefulinfotext of servicesData.usefulinfotexts" translate>footnote.{{usefulinfotext}}</li>
     </ul>
 </div>

@@ -79,7 +79,7 @@ belongsTo:any;
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
       // fields picked up from form -- begins	
-      this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
+      this.payload.Buildings_Disp=this.reviewDetailsIndia.officeLocation;	
       // by default set to true. below line can be removed if needed.	
       //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
       this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
@@ -87,7 +87,7 @@ belongsTo:any;
       this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;	
       this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
       this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
-      this.payload.Location_final =this.reviewDetailsIndia.campus;	
+      this.payload.Location_final =this.reviewDetailsIndia.officeLocation;	
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
       this.payload.ReqNo=this.reqno;	
   

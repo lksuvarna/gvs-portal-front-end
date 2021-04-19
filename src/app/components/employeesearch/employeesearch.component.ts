@@ -8,6 +8,9 @@ import { CommonModule } from '@angular/common';
 import { bpservices } from '../../_services/bp.service';
 import { Db2Service } from '../../_services/db2.service';
 import { servicenowservice } from '../../_services/servicenow.service';
+import { TranslateConfigService} from '../../_services/translate-config.service';
+
+
 import { WebElementPromise } from 'selenium-webdriver';
 
 @Component({
@@ -15,13 +18,14 @@ import { WebElementPromise } from 'selenium-webdriver';
   templateUrl: './employeesearch.component.html',
   styleUrls: ['./employeesearch.component.css']
 })
+
 export class EmployeesearchComponent implements OnInit {
 
   radioAction: string = "";
   hideDisTextBox: boolean = false;
   hideDisserial: boolean = true;
 
-  constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private bpservices: bpservices, private Db2Service: Db2Service, private servicenowservice: servicenowservice) { }
+  constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private bpservices: bpservices, private Db2Service: Db2Service, private servicenowservice: servicenowservice,private servicesd : TranslateConfigService) { }
   cloudantData: any = []
   servicesData: any = []
   subCountries: any = []
@@ -61,7 +65,14 @@ export class EmployeesearchComponent implements OnInit {
   voice_mail:any =[];
   cos : any =[];
   serviceName:any;
+  returnValue:any;
+  mainConfiguration :any;
+  
   ngOnInit(): void {
+    this.mainConfiguration = this.servicesd.readConfigFile();
+    //alert (this.mainConfiguration);
+    
+   
     this.showloader = false
     this.fullName = this.cookie.getCookie('username');
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
@@ -130,27 +141,43 @@ export class EmployeesearchComponent implements OnInit {
         this.subCountries = this.countrydetails.scountries	
       }
   })
-
+  setTimeout(()=>{
+    if(sessionStorage.getItem('serviceName') == 'jabber_move'&&this.step == null || sessionStorage.getItem('serviceName') == 'jabber_move'&&sessionStorage.getItem('empserial') == '') {
+      this.returnValue = confirm(this.mainConfiguration.alerttranslation.moverequest);
+      if(this.returnValue == false) {
+        this.router.navigate(['/jabberservices'],{ queryParams: { country: this.pcode, service: this.service } });
+      }
+    }
+  },200);
   }
 
   onSubmit(formData: NgForm) {
 
     sessionStorage.setItem('radioAction', this.radioAction.toLowerCase());
     console.log(this.pcode + this.ccode)
-    if (this.radioAction.toLowerCase() == "myself" && this.pcode !== this.ccode.substr(6, 9)) {
-      alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
-      return;
-    }
+    if (this.radioAction.toLowerCase() == "myself" ) {
+      if(this.countrydetails.scountries){
+        
+        if(this.countrydetails.scountries.some((s: string | string[]) => s.includes(this.ccode.substr(6, 9)))){        }
+        else{alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name + " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" " + this.countrydetails.name);
+        return;}
+      }
+      else if (this.pcode !== this.ccode.substr(6, 9)){                
+            alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name + " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" "  + this.countrydetails.name);
+            return;        
+      }
+     }
     if (this.radioAction.toLowerCase() == "anotheremployee") {
+      
       if (formData.value.employeeSerial.trim().length == 0 && this.hideDisTextBox == true) {
-        alert("Please enter a serial number");
+        alert(this.mainConfiguration.alerttranslation.enterserialnumber);
         return;
       }
-      else if (formData.value.employeeSerial.length < 6 && this.hideDisTextBox == true) {
-        alert("Employee Serial Number should be of 6 characters");
+      else if ((formData.value.employeeSerial.trim().length < 6 || formData.value.employeeSerial.includes(' ')) && this.hideDisTextBox == true){
+        alert(this.mainConfiguration.alerttranslation.digitserialnumber);
         return;
       } else if (this.showCountryCode && this.hideDisTextBox && formData.value.selectedCountry === '') {
-        alert("Please select the Country Code");
+        alert(this.mainConfiguration.alerttranslation.selectcountrycode);
         return;
       }
       else {
@@ -169,8 +196,10 @@ export class EmployeesearchComponent implements OnInit {
 
     }
     //to change the routing
-    if (this.service == "jabber_new") {
-      this.navpage = '/entrydetails'; this.navpage1 = '/employeeinfo';
+  
+    if (this.service == "jabber_new" || this.service == "fac_new") {
+      this.getTitle();
+      this.navpage = this.routingname; this.navpage1 = '/employeeinfo';
     }
     else {
       if (this.radioAction.toLowerCase() == "myself") {
@@ -209,14 +238,24 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfosnow', 'false1')
         sessionStorage.setItem('identifier', '')
      //Data and routing 
-     if (this.service == "jabber_new") {
+     if (this.service == "jabber_new" || this.service == "fac_new" ) {
       this.getDBdata()
      }
      if (this.service == "requests"  ) {      
         this.getSNOWdata() ;
              
      }
-     if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service=='jabber_move') {      
+     if (this.service.includes("fixedphone")  ) {      
+      this.getLocationdata();
+           
+   }
+
+   if (this.service.includes("fac")  ) {      
+    this.getLocationdata();
+         
+ }
+   
+     if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service=='jabber_move' || this.service=='fac_update' || this.service=='fac_reset' || this.service=='fac_deactivate') {      
       this.getDBdata() ;
           
    }
@@ -289,21 +328,32 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfo', 'true1');
         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
+          if(this.service=='jabber_update'){
+            
+          if(data.message[i].VOICEMAIL==null)
+          this.voice_mail[i]='NA'
+          else
           this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
           if(data.message[i].ATTRIBUTE5==null)
           this.cos[i] = 'NA';
           else
           this.cos[i] =  data.message[i].ATTRIBUTE5.trim();
         }
+      }
        // this.identifier = data.message[0].IDENTIFIER
         if (this.service == "resources") {
           sessionStorage.setItem('identifier', JSON.stringify(data.message))
           this.datadb= "yes";
-        }
+
+        } else if (this.service == "fac_new") {
+          sessionStorage.setItem('identifier', 'xxxxxxxx') ;
+          this.datadb= "yes";
+        } 
         else { 
           sessionStorage.setItem('identifier', this.itns) ;
           sessionStorage.setItem('voice_mail', this.voice_mail) ;
           sessionStorage.setItem('cos', this.cos) ;     
+
         this.datadb= "yes";}
         if(this.service=="jabber_delete" || this.service=='jabber_update' || this.service=='jabber_move'){
           console.log("insidesnowdelete")
@@ -318,7 +368,7 @@ export class EmployeesearchComponent implements OnInit {
       else {
         console.log("nodb2data");
         this.datadb= "nodata";
-        if(this.service=="jabber_new"){
+        if(this.service=="jabber_new" || this.service=="fac_new"){
           this.getSNOWdata()
         }
         else{
@@ -437,6 +487,11 @@ export class EmployeesearchComponent implements OnInit {
       this.title="New Fixed Phone Request";
       this.routingname="/entrydetailsfn";
       this.exitrouting='fixedphoneservices';
+      this.reqname="-NS-";
+      break;
+      case "fac_new":
+      this.title="FAC Code New Request";
+      this.routingname="/entrydetailsfac";
       this.reqname="-NS-";
       break;
       case "resources":

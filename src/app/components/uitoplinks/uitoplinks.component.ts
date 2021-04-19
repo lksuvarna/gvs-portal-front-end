@@ -19,6 +19,7 @@ export class UitoplinksComponent implements OnInit {
     {"name" : "Canada/Caribbean","code":"649","path":""},
     {"name" : "Latin America","code":"631","path":"././assets/flags/631.png"},
     {"name" : "USA","code":"897","path":"././assets/flags/897.png"},
+    {"name" : "Australia","code":"616","path":"././assets/flags/616.png"},
     
   ]
 
