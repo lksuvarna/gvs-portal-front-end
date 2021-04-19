@@ -199,7 +199,7 @@ export class EmployeesearchComponent implements OnInit {
     }
     //to change the routing
   
-    if (this.service == "jabber_new") {
+    if (this.service == "jabber_new" || this.service == "fac_new") {
       this.getTitle();
       this.navpage = this.routingname; this.navpage1 = '/employeeinfo';
     }
@@ -241,7 +241,7 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfosnow', 'false1')
         sessionStorage.setItem('identifier', '')
      //Data and routing 
-     if (this.service == "jabber_new") {
+     if (this.service == "jabber_new" || this.service == "fac_new" ) {
       this.getDBdata()
      }
      if (this.service == "requests"  ) {      
@@ -252,7 +252,13 @@ export class EmployeesearchComponent implements OnInit {
       this.getLocationdata();
            
    }
-     if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service=='jabber_move') {      
+
+   if (this.service.includes("fac")  ) {      
+    this.getLocationdata();
+         
+ }
+   
+     if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service=='jabber_move' || this.service=='fac_update' || this.service=='fac_reset' || this.service=='fac_deactivate') {      
       this.getDBdata() ;
           
    }
@@ -326,6 +332,7 @@ export class EmployeesearchComponent implements OnInit {
         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
           if(this.service=='jabber_update'){
+            
           if(data.message[i].VOICEMAIL==null)
           this.voice_mail[i]='NA'
           else
@@ -340,11 +347,19 @@ export class EmployeesearchComponent implements OnInit {
         if (this.service == "resources") {
           sessionStorage.setItem('identifier', JSON.stringify(data.message))
           this.datadb= "yes";
+
+        } else if (this.service == "fac_new") {
+          sessionStorage.setItem('identifier', 'xxxxxxxx') ;
+          this.datadb= "yes";
+        } else { sessionStorage.setItem('identifier', this.itns) ;
+        
+
         }
         else { 
           sessionStorage.setItem('identifier', this.itns) ;
           sessionStorage.setItem('voice_mail', this.voice_mail) ;
           sessionStorage.setItem('cos', this.cos) ;     
+
         this.datadb= "yes";}
         if(this.service=="jabber_delete" || this.service=='jabber_update' || this.service=='jabber_move'){
           console.log("insidesnowdelete")
@@ -359,7 +374,7 @@ export class EmployeesearchComponent implements OnInit {
       else {
         console.log("nodb2data");
         this.datadb= "nodata";
-        if(this.service=="jabber_new"){
+        if(this.service=="jabber_new" || this.service=="fac_new"){
           this.getSNOWdata()
         }
         else{
@@ -482,6 +497,11 @@ export class EmployeesearchComponent implements OnInit {
       this.title="New Fixed Phone Request";
       this.routingname="/entrydetailsfn";
       this.exitrouting='fixedphoneservices';
+      this.reqname="-NS-";
+      break;
+      case "fac_new":
+      this.title="FAC Code New Request";
+      this.routingname="/entrydetailsfac";
       this.reqname="-NS-";
       break;
       case "resources":

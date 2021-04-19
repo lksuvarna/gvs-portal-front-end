@@ -30,7 +30,11 @@ import { FixedphoneservicesComponent } from './components/fixedphoneservices/fix
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {VoipLaUpdateComponent} from './components/voip-la-update/voip-la-update.component';
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+
+import { FacservicesComponent } from './components/facservices/facservices.component';
+
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
+
 
 
 
@@ -44,6 +48,7 @@ const appRoutes: Routes = [
   // { path: 'services' , loadChildren: () => import('./components/navigation/navigation.component').then(m => m.ServicesComponent)}  
     { path: 'jabberservices', component: JabberservicesComponent },   
     { path: 'fixedphoneservices', component: FixedphoneservicesComponent }, 
+    { path: 'facservices', component: FacservicesComponent },   
     { path: 'employeesearch', component: EmployeesearchComponent },    
     { path: 'employeeinfo', component: EmployeeinfoComponent },
     { path: 'resultpage', component: ResultpageComponent },
@@ -65,8 +70,12 @@ const appRoutes: Routes = [
     { path: 'entrydetailsus', component: VoipUsaNewComponent},        
     { path: 'resources', component: ResourcesComponent},
     { path: 'entrydetailsfn', component: HpInNewComponent},
+
+    { path: 'entrydetailsfac', component: FacInNewComponent},
+
     { path: 'entrydetails_update_la', component: VoipLaUpdateComponent},
     { path: 'entrydetails_update_us', component: VoipUsaUpdateComponent} , 
+
     { path: 'pagenotfound', component: PagenotfoundComponent},
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
     { path: 'entrydetailsfacin', component: FacInNewComponent},
