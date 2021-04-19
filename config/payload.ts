@@ -1,13 +1,20 @@
+
 // Class used to create the payload for Db2 search service.
 export class db2search
 {
     cnum!: String;
     request_type!: String;
+    fixedphone !: String;
+    identifier !: String;
+    country !: String;
 
 db2search()
  {
   this.cnum="";
   this.request_type="";
+  this.fixedphone="";
+  this.country="";
+  this.identifier="";
  }
 
 }
@@ -190,6 +197,12 @@ export class Jabber_Update
     Identifier_Selected !: String;
     updated_for !: String;
     request_type !: String;
+    prov_type !: String;
+    Current_VM !: String;
+    Current_COS !: String;
+    Justification !: String;
+    New_Voice !: String;
+    New_COS !: String;
 
 Jabber_Update()
  {
@@ -208,6 +221,13 @@ Jabber_Update()
     this.Identifier_Selected  ="";
     this.updated_for  ="";
     this.request_type="";
+    this.prov_type="";
+    this.Current_VM="";
+    this.Current_COS="";
+    this.Justification="";
+    this.New_Voice="";
+    this.New_COS="";
+    
  }
 
 }

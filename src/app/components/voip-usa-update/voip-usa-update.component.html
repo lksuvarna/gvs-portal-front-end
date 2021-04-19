@@ -52,18 +52,30 @@
                             </div>
                         </td>
                     </tr>
+                    
                     <tr valign="top" [hidden]='hideChargeDept'>
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Charge Department
-              Code </label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> 	
+                        Enter account ID</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <input name="Charge_Dept" value="NA" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager for Charge Department Code" maxlength='6' ngModel="NA"></div>
+                                <input name="account_id" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Enter Account ID" maxlength='8' ngModel=""></div>
                         </td>
                     </tr>
+
+                    <tr valign="top" [hidden]='hideChargeDept'>
+                        <td width="604" colspan="2">
+                            
+                        </td>
+                    </tr>
+
+
                 </tbody>
             </table>
+            <br>
+            <p>Standard internal billing for a Jabber account uses the Employee's Department as the Account Id.<br>
+                If you wish to modify internal billing to utilize a different Account ID, please provide the Account Id and click Next.</p>
             <br>
             <div class=" ds-panel ds-col-12 "></div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
@@ -111,11 +123,10 @@
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Charge Department
-              Code</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Account ID</label>
                         </td>
                         <td width="54%" height="10">
-                            <label>{{chargeDisp}}</label>
+                            <label>{{accountid_Disp}}</label>
                         </td>
                     </tr>
                 </tbody>

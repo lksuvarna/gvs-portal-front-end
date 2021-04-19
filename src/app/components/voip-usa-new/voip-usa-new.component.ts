@@ -22,6 +22,7 @@ export class VoipUsaNewComponent implements OnInit {
   buildA: any = [];	
   build: any = [];	
   j = 0;	
+  msgdis=true;
   countryname:any;	
   fl_location:any;
 ccode='';	
@@ -54,6 +55,7 @@ employeeInfo1: any;
 campus:any;	
 hideProjectId = false;
 reqFor: any;
+belongsTo:any;
   //locations:any[] = ["Select Office Location","Home and Mobile","AZ-Phoenix","AZ-Tucson","CA-Costa Mesa-Anton Blvd"];
 
   hideSteps = false;
@@ -77,7 +79,7 @@ reqFor: any;
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
       // fields picked up from form -- begins	
-      this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
+      this.payload.Buildings_Disp=this.reviewDetailsIndia.officeLocation;	
       // by default set to true. below line can be removed if needed.	
       //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
       this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
@@ -85,7 +87,7 @@ reqFor: any;
       this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;	
       this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
       this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
-      this.payload.Location_final =this.reviewDetailsIndia.campus;	
+      this.payload.Location_final =this.reviewDetailsIndia.officeLocation;	
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
       this.payload.ReqNo=this.reqno;	
   
@@ -130,7 +132,7 @@ reqFor: any;
     this.isEntryForm = true;	
     this.isReviewForm = false;	
   
-    this.reviewDetailsIndia.officeLocation = formData.value.Location;	
+    this.reviewDetailsIndia.officeLocation = this.locationselected;	
   }
 
   onLocationSelect(e:any){
@@ -141,23 +143,28 @@ reqFor: any;
       alert('The serial number that you have entered does not belong to the selected location. Please choose your correct location or choose Home and Mobile location.');	
       e.target.value = "Home and Mobile";
       this.locationselected="Home and Mobile";
-      
-    }  
-    else{
-      e.target.value =  "Home and Mobile";
-      this.locationselected= "Home and Mobile";
+      this.msgdis=true
+    }  else {
+      this.belongsTo = this.locationselected;
     }
-
+   
+    
  }
  onLocSelect(){
-   alert(this.countrycodes.length)
-   alert(this.employeeInfo.workloc)
-   alert(this.countrycodes.indexOf(this.employeeInfo.workloc))
+  
    let n:number=this.countrycodes.indexOf(this.employeeInfo.workloc)
-   alert(this.locationlist[n] )
-   
-     this.locationselected=this.locationlist[n]
-   
+  
+   if (n==-1){
+    this.msgdis=true
+this.locationselected= "Home and Mobile";
+this.msgdis=true
+
+   }
+   else{
+     
+     this.locationselected=this.locationlist[n]}
+     this.msgdis=false
+     
  }
 
  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	}
@@ -202,6 +209,7 @@ reqFor: any;
 
  this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
  this.locationlist=this.locationlist?.replace('"','').split(',');	
+ this.msgdis=true;
  this.onLocSelect()	;
  for (var i = 0; i < this.locationlist.length; i++) {	
    var n = this.locationlist[i].indexOf("~")	

@@ -56,6 +56,8 @@ export class VoipInNewComponent implements OnInit {
   campus:any;	
   hideProjectId = false;
   reqFor: any;
+  chargeDeptValue:any = '';
+  projectIdValue:any = '';
     
       
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	
@@ -150,13 +152,29 @@ export class VoipInNewComponent implements OnInit {
       alert('Please enter the Charge Department Code');	
       return;	
     }	
-    if(formData.value.Projectid == '' && this.hideProjectId == false) {
-      alert('Please enter the Project Id');
-      return;
-      }
-    if(formData.value.identifier_hp == '') {	
-      this.fixedPhoneIdentifier = true;	
+    if((formData.value.Department_number.trim() == '' || formData.value.Department_number.includes(' ')) && this.hideDeptCode == false) {	
+      alert('Please enter the correct Charge department code');	
+      this.chargeDeptValue = ''
+      return;	
     }	
+    if(formData.value.Projectid == '' && this.hideProjectId == false) {
+      alert('Please enter the Project ID');
+      return;
+    }
+    if((formData.value.Projectid.trim() == '' || formData.value.Projectid.includes(' ')) && this.hideProjectId == false) {	
+      alert('Please enter the correct Project ID');	
+      this.projectIdValue = '';
+      return;	
+    }	
+    if(formData.value.identifier_hp.trim() == '') {
+      this.fixedPhoneIdentifier = true;	
+    } else {
+    var pat = /[&\/\\#+()$~%.'":;*? !~`@<>{}a-zA-Z]/g;
+    if(pat.test(formData.value.identifier_hp) || formData.value.identifier_hp.trim().length != '8') {
+      alert('Please enter the correct Identifier for Fixed Phone');
+      return;
+    }
+  }
     this.isEntryForm = true;	
     this.isReviewForm = false;	
   

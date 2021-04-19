@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { bpservices } from '../../_services/bp.service';
 import { Db2Service } from '../../_services/db2.service';
 import { servicenowservice } from '../../_services/servicenow.service';
+import { WebElementPromise } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-employeesearch',
@@ -32,6 +33,8 @@ export class EmployeesearchComponent implements OnInit {
   fpmodels:any;
   ccode = '';
   pcode = '';
+  exitrouting:any;
+  exitservice:any;
   routingname:any;
   fullName = '';
   service = '';
@@ -60,6 +63,8 @@ export class EmployeesearchComponent implements OnInit {
   showCountryCode = false	
 	countryCA = '';
   itns:any = [];
+  voice_mail:any =[];
+  cos : any =[];
   serviceName:any;
   returnValue:any;
   ngOnInit(): void {
@@ -67,6 +72,7 @@ export class EmployeesearchComponent implements OnInit {
 
     this.fullName = this.cookie.getCookie('username');
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
+    this.fullName = this.fullName.replace(",",", ");
     this.ccode = this.cookie.getCookie('ccode');
 
     this.countrydetails = sessionStorage.getItem('countrydetails')
@@ -164,11 +170,11 @@ export class EmployeesearchComponent implements OnInit {
       }
      }
     if (this.radioAction.toLowerCase() == "anotheremployee") {
-      if (formData.value.employeeSerial.length == 0 && this.hideDisTextBox == true) {
+      if (formData.value.employeeSerial.trim().length == 0 && this.hideDisTextBox == true) {
         alert("Please enter a serial number");
         return;
       }
-      else if (formData.value.employeeSerial.length < 6 && this.hideDisTextBox == true) {
+      else if ((formData.value.employeeSerial.trim().length < 6 || formData.value.employeeSerial.includes(' ')) && this.hideDisTextBox == true){
         alert("Employee Serial Number should be of 6 characters");
         return;
       } else if (this.showCountryCode && this.hideDisTextBox && formData.value.selectedCountry === '') {
@@ -218,7 +224,7 @@ export class EmployeesearchComponent implements OnInit {
       if (data.userdata) {
         this.employeeInfo = {
 
-          employeeName: data.username.lastname+", "+data.username.firstname,
+          employeeName: data.username.preferredlastname+", "+data.username.preferredfirstname,
           jobResponsibility: data.username.jobresponsibilities,
           businessUnit: data.bu,
           department: data.username.dept,
@@ -325,16 +331,35 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfo', 'true1');
         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
+          if(this.service=='jabber_update'){
+            
+          if(data.message[i].VOICEMAIL==null)
+          this.voice_mail[i]='NA'
+          else
+          this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
+          if(data.message[i].ATTRIBUTE5==null)
+          this.cos[i] = 'NA';
+          else
+          this.cos[i] =  data.message[i].ATTRIBUTE5.trim();
         }
+      }
        // this.identifier = data.message[0].IDENTIFIER
         if (this.service == "resources") {
           sessionStorage.setItem('identifier', JSON.stringify(data.message))
           this.datadb= "yes";
+
         } else if (this.service == "fac_new") {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";
         } else { sessionStorage.setItem('identifier', this.itns) ;
         
+
+        }
+        else { 
+          sessionStorage.setItem('identifier', this.itns) ;
+          sessionStorage.setItem('voice_mail', this.voice_mail) ;
+          sessionStorage.setItem('cos', this.cos) ;     
+
         this.datadb= "yes";}
         if(this.service=="jabber_delete" || this.service=='jabber_update' || this.service=='jabber_move'){
           console.log("insidesnowdelete")
@@ -430,6 +455,8 @@ export class EmployeesearchComponent implements OnInit {
     switch (this.service){
       case "jabber_new":
       this.title="Request new Jabber service";
+      this.exitrouting='jabberservices';
+      
       if(this.countrydetails.jnavpage=='AP'){
       this.routingname="/entrydetails";
     }else if(this.countrydetails.jnavpage=='EMEA'){
@@ -446,21 +473,30 @@ export class EmployeesearchComponent implements OnInit {
       case "jabber_delete":
       this.title="Delete Jabber Request";
       this.routingname="/entrydetailsjd";
+      this.exitrouting='jabberservices';
       this.reqname="-DS-";
       break;
       case "jabber_update":
       this.title="Update Jabber Request";
-      this.routingname="/entrydetailsiju";
+      this.exitrouting='jabberservices';
       this.reqname="-US-";
+      if(this.countrydetails.jnavpage=='LA')
+      this.routingname="/entrydetails_update_la";
+      else if (this.countrydetails.jnavpage=='US')
+      this.routingname="/entrydetails_update_us";
+      else
+      this.routingname="/entrydetailsiju";
       break;
       case "jabber_move":
       this.title="Move Jabber Request";
+      this.exitrouting='jabberservices';
       this.routingname="/entrydetailsijm";
       this.reqname="-MS-";
       break;
       case "fixedphone_new":
       this.title="New Fixed Phone Request";
       this.routingname="/entrydetailsfn";
+      this.exitrouting='fixedphoneservices';
       this.reqname="-NS-";
       break;
       case "fac_new":
@@ -470,12 +506,16 @@ export class EmployeesearchComponent implements OnInit {
       break;
       case "resources":
         this.title="Resources";
+        this.exitrouting='services';
+        this.exitrouting='services';
         break;
         case "requests":
           this.title="Requests";
+          this.exitrouting='services';
           break;
           case "approvalpending":
           this.title="Approvals";
+          this.exitrouting='services';
           break;
       }
       }

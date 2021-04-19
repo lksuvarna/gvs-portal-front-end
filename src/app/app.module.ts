@@ -34,7 +34,6 @@ import { VoipInNewComponent } from './components/voip-in-new/voip-in-new.compone
 import { VoipUsaNewComponent } from './components/voip-usa-new/voip-usa-new.component';
 import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.component';
 import { VoipLaNewComponent } from './components/voip-la-new/voip-la-new.component';
-import { VoipAuNewComponent } from './components/voip-au-new/voip-au-new.component';
 import { DummyComponent } from './components/dummy/dummy.component';
 import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-update.component';
 import { VoipInDeleteComponent } from './components/voip-in-delete/voip-in-delete.component'
@@ -49,9 +48,14 @@ import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
+import { VoipLaUpdateComponent } from './components/voip-la-update/voip-la-update.component';
 
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+
 import { FacservicesComponent } from './components/facservices/facservices.component';
+
+import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
+
 
 
 
@@ -99,8 +103,7 @@ handleError(error: Error){
     VoipInDeleteComponent,
     EmployeesearchVoipDeleteComponent,
     FooterComponent,
-    StepsComponent,
-    VoipAuNewComponent,
+    StepsComponent,    
     VoipLaNewComponent,
     VoipEmeaNewComponent,
     VoipAuMoveComponent,
@@ -109,8 +112,14 @@ handleError(error: Error){
     PagenotfoundComponent,
     FixedphoneservicesComponent,
     VoipUsaNewComponent,
+
     FacInNewComponent,
     FacservicesComponent
+
+    VoipLaUpdateComponent,
+    FacInNewComponent,
+    VoipUsaUpdateComponent
+
   ],
   imports: [
     BrowserModule,
