@@ -351,10 +351,7 @@ export class EmployeesearchComponent implements OnInit {
         } else if (this.service == "fac_new") {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";
-        } else { sessionStorage.setItem('identifier', this.itns) ;
-        
-
-        }
+        } 
         else { 
           sessionStorage.setItem('identifier', this.itns) ;
           sessionStorage.setItem('voice_mail', this.voice_mail) ;

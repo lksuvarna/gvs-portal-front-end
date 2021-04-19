@@ -114,7 +114,7 @@ handleError(error: Error){
     VoipUsaNewComponent,
 
     FacInNewComponent,
-    FacservicesComponent
+    FacservicesComponent,
 
     VoipLaUpdateComponent,
     FacInNewComponent,
