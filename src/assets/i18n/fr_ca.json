@@ -44,10 +44,10 @@
 
     "lhs": {
         "Services": "Prestations de service",
-        "Jabber": "Jacasser",
-        "FAC Code": "Code FAC",
-        "Fixed Phone": "Téléphone fixe",
-        "Special Request": "Demande spéciale",
+        "Jabber": "Jabber",
+        "FAC Code": "FAC Code",
+        "Fixed Phone": "Fixed Phone",
+        "Special Request": "Special Request",
         "Approvals Pending": "Approbations en attente",
         "Revalidation Pending": "Revalidation en attente",
         "Resources": "Ressources",
@@ -95,6 +95,8 @@
         "Delete Jabber Request" : "Supprimer la demande Jabber",
         "Move Jabber Request" : "Déplacer la demande Jabber",
         "Fixed Phone - New Request" : "Téléphone fixe - Nouvelle demande",
+        "servicestitle.Resources" : "Ressources",
+        "servicestitle.Requests" : "Demandes",
         "New Fixed Phone Request" : "Nouvelle demande de téléphone fixe"
 
     },
