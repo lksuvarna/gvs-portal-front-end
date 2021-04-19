@@ -70,6 +70,11 @@ export class VoipLaUpdateComponent implements OnInit {
   new_vm_disp :any;
   Voice_Mail : any="";
   errorinfo=false;
+  selectcos="";
+  
+ 
+  businessjustification : any="";
+
 
   payload : Jabber_Update = new Jabber_Update();
 
@@ -94,9 +99,9 @@ export class VoipLaUpdateComponent implements OnInit {
     }
   }
 
-  hidebusinessjust(select : any){
-
-   if((select != "") && (select.toUpperCase() =="INTERNATIONAL"))
+  hidebusinessjust(e : any){
+    this.businessjustification='';
+   if((e.target.value != "") && (e.target.value.toUpperCase() =="INTERNATIONAL"))
    this.businessJust= false;
    else
    this.businessJust= true;
@@ -121,6 +126,12 @@ export class VoipLaUpdateComponent implements OnInit {
       this.businessJust=true;
       this.currentVoiceMail=true;
       this.updaterequested=true;
+      this.checked=false;
+      this.checked2=false;
+      this.Voice_Mail='';
+      this.selectcos="";
+      this.businessjustification='';
+
    }
   }
 
