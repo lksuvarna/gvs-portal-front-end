@@ -158,11 +158,11 @@ export class VoipInNewComponent implements OnInit {
       return;	
     }	
     if(formData.value.Projectid == '' && this.hideProjectId == false) {
-      alert('Please enter the Project Id');
+      alert('Please enter the Project ID');
       return;
     }
     if((formData.value.Projectid.trim() == '' || formData.value.Projectid.includes(' ')) && this.hideProjectId == false) {	
-      alert('Please enter the correct Project Id');	
+      alert('Please enter the correct Project ID');	
       this.projectIdValue = '';
       return;	
     }	
@@ -171,7 +171,7 @@ export class VoipInNewComponent implements OnInit {
     } else {
     var pat = /[&\/\\#+()$~%.'":;*? !~`@<>{}a-zA-Z]/g;
     if(pat.test(formData.value.identifier_hp) || formData.value.identifier_hp.trim().length != '8') {
-      alert('Please enter the correct Identifier for Fix Phone');
+      alert('Please enter the correct Identifier for Fixed Phone');
       return;
     }
   }

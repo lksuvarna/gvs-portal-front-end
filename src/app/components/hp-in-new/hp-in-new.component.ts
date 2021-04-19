@@ -231,6 +231,7 @@ fetchEmployee() {
         this.go = true;
         this.goResults = true;
         this.emailClick = false;
+        this.emailResult = false;
     } else {
         this.go = false;
         this.goResults = false;
@@ -258,26 +259,26 @@ classofservice(cos:string) {
 entryDetails(formData: NgForm) {	
     
   if(formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {	
-    alert('Please select the Office Location');	
+    alert('Please select a location');	
     return;	
   }	
   if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
     alert('Please select the Campus');	
     return;	
   }	
-  if(formData.value.Department_number.toUpperCase() == '' && this.hideDeptCode == false) {	
+  if((formData.value.Department_number.toUpperCase() == '' || formData.value.Department_number.trim() == '') && this.hideDeptCode == false) {	
     alert('Please enter the Charge Department Code');	
     return;	
   }	
-  if(formData.value.Projectid == '' && this.hideProjectId == false) {
+  if(formData.value.Projectid.trim() == '' && this.hideProjectId == false) {
     alert('Please enter the Project ID');
     return;
     }
-    if(formData.value.Accountid == '') {
-      alert('Please provide account ID');
+    if(formData.value.Accountid.trim() == '') {
+      alert('Please provide Account ID');
       return;
     }
-    if(formData.value.ICAcode == '') {
+    if(formData.value.ICAcode.trim() == '') {
       alert('Please provide ICA code');
       return;
     }
@@ -310,11 +311,11 @@ entryDetails(formData: NgForm) {
       alert('Please click search result to fetch Employee details');
       return;
     }
-    if(formData.value.Justification == '' && this.showBusinessNeed == false) {
+    if(formData.value.Justification.trim() == '' && this.showBusinessNeed == false) {
       alert('Please enter the business need for Class of Service.');
       return;
     }
-    if(formData.value.Description == '') {
+    if(formData.value.Description.trim() == '') {
       alert('Please Enter a description and it should not be more than 30 characters');
       return;
     }

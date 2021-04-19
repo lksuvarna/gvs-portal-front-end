@@ -474,9 +474,11 @@ export class EmployeesearchComponent implements OnInit {
       this.reqname="-MS-";
       break;
       case "fixedphone_new":
-      this.title="New Fixed Phone Request";
-      this.routingname="/entrydetailsfn";
+      this.title="Fixed Phone - New Request";
       this.exitrouting='fixedphoneservices';
+      if(this.countrydetails.jnavpage=='AP'){
+        this.routingname="/entrydetailsfn";
+      }
       this.reqname="-NS-";
       break;
       case "resources":

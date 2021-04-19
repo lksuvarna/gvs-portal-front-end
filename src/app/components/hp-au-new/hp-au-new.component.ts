@@ -135,7 +135,7 @@ this.location.back();
 }	
 selectedLocation(loc:String) {	
   this.build = [];	
-  this.campus = '';	
+  this.campus = 'Select Location';	
   if(loc != '') {	
     this.hideBuilding = false;	
     var k =0;	
@@ -265,22 +265,6 @@ entryDetails(formData: NgForm) {
     alert('Please select the Location');	
     return;	
   }	
-  // if(formData.value.Department_number.toUpperCase() == '' && this.hideDeptCode == false) {	
-  //   alert('Please enter the Charge Department Code');	
-  //   return;	
-  // }	
-  // if(formData.value.Projectid == '' && this.hideProjectId == false) {
-  //   alert('Please enter the Project Id');
-  //   return;
-  //   }
-  //   if(formData.value.Accountid == '') {
-  //     alert('Please provide account ID');
-  //     return;
-  //   }
-  //   if(formData.value.ICAcode == '') {
-  //     alert('Please provide ICA code');
-  //     return;
-  //   }
     if(formData.value.Device_Type == '') {
       alert('Please select a device type');
       return;
@@ -310,11 +294,11 @@ entryDetails(formData: NgForm) {
       alert('Please click search result to fetch Employee details');
       return;
     }
-    if(formData.value.Justification == '' && this.showBusinessNeed == false) {
+    if(formData.value.Justification.trim() == '' && this.showBusinessNeed == false) {
       alert('Please enter the business need for Class of Service.');
       return;
     }
-    if(formData.value.Description == '') {
+    if(formData.value.Description.trim() == '') {
       alert('Please Enter a description and it should not be more than 30 characters');
       return;
     }
@@ -332,16 +316,10 @@ entryDetails(formData: NgForm) {
   this.isReviewForm = false;	
 
   this.reviewDetailsIndia.officeLocation = formData.value.Location_1;	
-  this.reviewDetailsIndia.campus = formData.value.Buildings;	
-  this.reviewDetailsIndia.funded = this.Voice_Type;	
-  //this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;	
-  this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
-  //this.reviewDetailsIndia.projectId = formData.value.Projectid;	
-  //this.reviewDetailsIndia.accountId = formData.value.Accountid;
-  //this.reviewDetailsIndia.icaCode = formData.value.ICAcode;
+  this.reviewDetailsIndia.campus = formData.value.Buildings;
   this.reviewDetailsIndia.device = formData.value.Device_Type;
   this.reviewDetailsIndia.model = formData.value.Model_Type;
-  this.reviewDetailsIndia.employeeId = formData.value.StepMentor;
+  this.reviewDetailsIndia.employeeId = this.employeeID;
   this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
   this.reviewDetailsIndia.cos = formData.value.cos;
   this.reviewDetailsIndia.justification = formData.value.Justification;
@@ -432,9 +410,9 @@ ngOnInit(): void {
   this.emModels = sessionStorage.getItem('emmodels')?.replace('"','');
   this.emModels = this.emModels.replace('"','').split(',');
   this.fpModels = sessionStorage.getItem('fpmodels')?.replace('"','');
-  this.fpModels = this.fpModels.split(',');
+  this.fpModels = this.fpModels.replace('"','').split(',');
   this.cModels = sessionStorage.getItem('cmmodels')?.replace('"','');
-  this.cModels = this.cModels.split(',');
+  this.cModels = this.cModels.replace('"','').split(',');
   this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
   this.locationlist=this.locationlist?.replace('"','').split(',');	
 

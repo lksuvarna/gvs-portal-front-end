@@ -45,7 +45,7 @@
                         <td width="54%">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="Buildings" rows="2" [(ngModel)]='campus' cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1">
-                                    <option name="Buildings" value ="">Select Location</option>
+                                    <option name="Buildings" value ="Select Location">Select Location</option>
                                     <option name="Buildings" *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
                 </select>
                             </div>
@@ -232,47 +232,6 @@
                         </td>
                         <td width="54%">{{reviewDetailsIndia.campus}}</td>
                     </tr>
-                   <!--<tr valign="top">
-                        <td colspan="2" width="46%">
-                            <label for="addId1">Funded</label>
-                        </td>
-                        <td width="54%">{{reviewDetailsIndia.funded}}</td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td colspan="2" width="46%">
-                            <label [hidden]="hideDeptCode" for="addId1">Charge Department Code</label>
-                        </td>
-                        <td [hidden]="hideDeptCode" width="54%">{{reviewDetailsIndia.chargeDepartmentCode}}</td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td colspan="2" width="46%">
-                            <label for="addId1">Business Unit</label>
-                        </td>
-                        <td width="54%">{{reviewDetailsIndia.businessUnit}}</td>
-                    </tr>
-
-                    <tr valign="top" [hidden]='hideProjectId'>
-                        <td colspan="2" width="46%">
-                            <label for="Projectid">Project id (for GBS employee only)</label>
-                        </td>
-                        <td width="54%">{{reviewDetailsIndia.projectId}}</td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td colspan="2" width="46%">
-                            <label for="icano">Account Id</label>
-                        </td>
-                        <td width="54%">{{reviewDetailsIndia.accountId}}</td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td colspan="2" width="46%">
-                            <label for="icano">ICA Code</label>
-                        </td>
-                        <td width="54%">{{reviewDetailsIndia.icaCode}}</td>
-                    </tr>-->
                     
                     <tr valign="top">
                         <td colspan="2" width="46%">
