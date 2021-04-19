@@ -145,7 +145,7 @@ export class NavigationComponent implements OnInit {
               "lhs": [
                 {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
                // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
-                {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
+                {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : false, "highlighted": false,"param":"services"},
                 {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
                 {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
                 {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
