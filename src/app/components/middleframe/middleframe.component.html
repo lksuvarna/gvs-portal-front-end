@@ -42,10 +42,10 @@
         </div>
     </div>
 
-    <a href={{servicesData.termsurl}} class="ds-text-contextual-blue-5 ds-link-unstyled" target="_blank">{{servicesData.titles[0]}}</a>
-    <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">{{servicesData.titles[1]}}</h2>
-    <p>{{servicesData.titles[2]}}</p>
+    <a translate href={{servicesData.termsurl}} class="ds-text-contextual-blue-5 ds-link-unstyled" target="_blank" >footnote.{{servicesData.titles[0]}}</a>
+    <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 "translate>footnote.{{servicesData.titles[1]}}</h2>
+    <p translate>footnote.{{servicesData.titles[2]}}</p>
     <ul>
-        <li *ngFor="let usefulinfotext of servicesData.usefulinfotexts">{{usefulinfotext}}</li>
+        <li *ngFor="let usefulinfotext of servicesData.usefulinfotexts" translate>footnote.{{usefulinfotext}}</li>
     </ul>
 </div>
