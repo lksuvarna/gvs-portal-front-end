@@ -7,9 +7,9 @@
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
-        
+
         <b>{{this.title}}</b>
-        <div class="ds-pad-t-0_5 ds-pad-b-0_4" >
+        <div class="ds-pad-t-0_5 ds-pad-b-0_4">
             <p *ngIf="warninginfo==false&&warninginfosnow==false">If the following information is correct, click Next. Any errors must be corrected in the employee's <a href="https://w3.ibm.com/bluepages/" target="_blank">BluePages record</a> before continuing.</p>
         </div>
         <div class="ds-hr-thick ds-mar-b-1_5"></div>
@@ -103,6 +103,10 @@
             <p><span style="font-size: 1rem;">The serial number that you have entered is not eligible to request more than one Jabber account.<br>The IBM Telephone Number (ITN) that exists for this users jabber account is {{identifier}}.<br>Help related to Jabber configuration can be found at  <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>. <br>              
         For any further assistance, please contact  ' <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a> '.<br></span></p>
         </div>
+
+        <div id="fac_new" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofac">
+            <p><span style="font-size: 1rem;">The serial number that you have entered is not eligible to request more than one FAC code.</span></p>
+        </div>
         <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
             <p><span style="font-size: 1rem;">The serial number that you have entered has already one new Jabber request is in progress and request number is {{identifier}}.<br>
         
@@ -118,14 +122,18 @@
         For any further assistance, please contact  <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
         </div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowreq>
-            <p>No outstanding requests were found for the serial number.</p><p>
-        </p></div>
+            <p>No outstanding requests were found for the serial number.</p>
+            <p>
+            </p>
+        </div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowres>
-            <p>There are no resources for this serial number.</p><p>
-        </p></div>
+            <p>There are no resources for this serial number.</p>
+            <p>
+            </p>
+        </div>
         <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfoothers>
             <p>There is no Jabber for this serial number. </p>
-          </div>
+        </div>
         <div class="ds-hr-thick"></div>
 
         <div class="ds-row ds-grid ds-mar-t-b-3_5 ds-pad-r-1">

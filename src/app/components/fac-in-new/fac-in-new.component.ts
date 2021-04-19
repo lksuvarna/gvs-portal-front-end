@@ -33,6 +33,7 @@ export class FacInNewComponent implements OnInit {
   pcode: any;
   service: any;	
   Voice_Type = "No";
+  hideValidity = true
 
   employeeInfo: any;
   employeeInfo1: any;
@@ -56,12 +57,11 @@ export class FacInNewComponent implements OnInit {
     funded:	"",	
     chargeDepartmentCode:	"",	
     businessUnit:	"",	
-    projectId: "",	
-    fixPhoneIdentifier: " ",	
-    Voice_Type_Disp : true,	
-    icano_Disp : "",	
-    Location_final :"",	
-    accid_Disp: "",	
+    Department_number: "",	
+    authLevel:"",
+    Fac_Type:"",
+    validity:"",
+    Comments:"",
     reqno:""	
   }	
 
@@ -94,6 +94,14 @@ export class FacInNewComponent implements OnInit {
     }	
   }	
 
+  FacCodeType(type : string){
+    if (type === 'Temporary') {
+      this.hideValidity = false;	
+    } else {
+      this.hideValidity = true;	
+    }
+  }
+
   showChargeDepartmentCode() {	
     this.hideDeptCode = false;	
   }	
@@ -112,26 +120,44 @@ export class FacInNewComponent implements OnInit {
       alert('Please select the Campus');	
       return;	
     }	
-    if(formData.value.Department_number.toUpperCase() == '' && this.hideDeptCode == false) {	
+    if(formData.value.chargeDepartmentCode.trim() === '' && this.hideDeptCode == false) {	
       alert('Please enter the Charge Department Code');	
       return;	
     }	
-    // if(formData.value.Projectid == '' && this.hideProjectId == false) {
-    //   alert('Please enter the Project Id');
-    //   return;
-    //   }
+
+    if(formData.value.authLevel.toLowerCase() === 'select authorization level' || formData.value.authLevel === '') {	
+      alert('Please select an authorization level');	
+      return;	
+    }	
+
+    if(formData.value.Fac_Type.toLowerCase() === 'select fac code type' || formData.value.Fac_Type === '') {	
+      alert('Please select a FAC code type');	
+      return;	
+    }	
+
+    if((formData.value.validity.toLowerCase() === 'select validity' || formData.value.validity === '' ) && this.hideValidity === false) {	
+      alert('Please select a validity');	
+      return;	
+    }	
+
+    if( formData.value.Comments.trim() === '') {	
+      alert('Please provide business justification');	
+      return;	
+    }	
   
     this.isEntryForm = true;	
     this.isReviewForm = false;	
   
-    // this.reviewDetailsIndia.officeLocation = formData.value.Location_1;	
-    // this.reviewDetailsIndia.campus = formData.value.Buildings;	
-    this.reviewDetailsIndia.funded = this.Voice_Type;	
-    // this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;	
-    this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
-    // this.reviewDetailsIndia.projectId = formData.value.Projectid;	
-    // this.reviewDetailsIndia.fixPhoneIdentifier = formData.value.identifier_hp;	
-  
+    this.reviewDetailsIndia.officeLocation = formData.value.Location_1;	
+    this.reviewDetailsIndia.campus = formData.value.Buildings;	
+    this.reviewDetailsIndia.funded = formData.value.Voice_Type;		
+    this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;
+    this.reviewDetailsIndia.Department_number = this.employeeInfo.department;
+    this.reviewDetailsIndia.chargeDepartmentCode = formData.value.chargeDepartmentCode;	
+    this.reviewDetailsIndia.authLevel = formData.value.authLevel;	
+    this.reviewDetailsIndia.Fac_Type = formData.value.Fac_Type;	
+    this.reviewDetailsIndia.validity = formData.value.validity;	
+    this.reviewDetailsIndia.Comments = formData.value.Comments;	
   }	
 
   BackButton() {	
@@ -207,15 +233,11 @@ export class FacInNewComponent implements OnInit {
 
     const servicesData = { 	
       "data": [	
-        {    	
-          	
+        {    	       	
           "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-          "step" : 3,	
-          
+          "step" : 3,	 
         }	
       ]	
-  
-     
     }
     
     this.reqFor = sessionStorage.getItem('radioAction')
