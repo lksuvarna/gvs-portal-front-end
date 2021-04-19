@@ -11963,21 +11963,16 @@ class EmployeesearchComponent {
                 sessionStorage.setItem('warninginfo', 'true1');
                 for (var i = 0; i < data.message.length; i++) {
                     this.itns[i] = data.message[i].IDENTIFIER.trim();
-<<<<<<< HEAD
-                    //this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
-                    if (data.message[i].ATTRIBUTE5 == null)
-                        this.cos[i] = 'NA';
-                    else
-                        this.cos[i] = data.message[i].ATTRIBUTE5.trim();
-=======
                     if (this.service == 'jabber_update') {
-                        this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
+                        if (data.message[i].VOICEMAIL == null)
+                            this.voice_mail[i] = 'NA';
+                        else
+                            this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
                         if (data.message[i].ATTRIBUTE5 == null)
                             this.cos[i] = 'NA';
                         else
                             this.cos[i] = data.message[i].ATTRIBUTE5.trim();
                     }
->>>>>>> 5a18c8a13b63e731da26d889d007321de910ea1e
                 }
                 // this.identifier = data.message[0].IDENTIFIER
                 if (this.service == "resources") {

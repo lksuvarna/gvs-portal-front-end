@@ -325,15 +325,11 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfo', 'true1');
         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
-<<<<<<< HEAD
-          //this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
-=======
           if(this.service=='jabber_update'){
           if(data.message[i].VOICEMAIL==null)
           this.voice_mail[i]='NA'
           else
           this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
->>>>>>> 5a18c8a13b63e731da26d889d007321de910ea1e
           if(data.message[i].ATTRIBUTE5==null)
           this.cos[i] = 'NA';
           else
