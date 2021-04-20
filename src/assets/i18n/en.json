@@ -95,7 +95,9 @@
         "Delete Jabber Request" : "Delete Jabber Request",
         "Move Jabber Request" : "Move Jabber Request",
         "Fixed Phone - New Request" : "Fixed Phone - New Request",
-        "New Fixed Phone Request" : "New Fixed Phone Request"
+        "New Fixed Phone Request" : "New Fixed Phone Request",
+        "Fixed Phone - Update Request" : "Fixed Phone - Update Request",      
+        "Fixed Phone - Delete Request"  : "Fixed Phone - Delete Request"
         
 
 

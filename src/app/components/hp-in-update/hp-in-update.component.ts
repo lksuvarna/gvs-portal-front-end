@@ -5,7 +5,8 @@ import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Location} from '@angular/common';	
-import { Jabber_New } from 'config/payload';
+import { fixedphone_update} from 'config/payload';
+import {Db2Service} from '../../_services/db2.service'
 
 @Component({
   selector: 'app-hp-in-update',
@@ -35,10 +36,10 @@ export class HpInUpdateComponent implements OnInit {
   pcode: any;	
   service: any;
 
-  currentMac: string = '20BBC0DD14DB';
-  currentPhone: Number = 3413073;
-  currentdesc: any = 'testing 123';
-  currentmodel: Number= 6961;
+  currentMac: string = "";
+  currentPhone: any ;
+  currentdesc: any ;
+  currentmodel: any;
 
   showformodel: boolean = false;
   showformacadd: boolean = false;
@@ -52,13 +53,20 @@ export class HpInUpdateComponent implements OnInit {
   isButtonVisible = true;
   isSpinnerVisible= false; 	
   
+  reqno:any;
 
   isEntryForm = false;	
   isReviewForm = true;
 
   hideBuilding = false;	
+  warninginfo=false;
+  warninginfosnow=false;
+  hideSteps = false;
+  errorinfo=false;
 
-  payload : Jabber_New = new Jabber_New();
+
+
+  payload : fixedphone_update = new fixedphone_update();
   
   reviewDetailsIndia = {	
 
@@ -83,15 +91,41 @@ export class HpInUpdateComponent implements OnInit {
     justification:"",
     description:"",
     mac:"",
+    phoneNunmer:"",
+    newModel: "",
+    newMac:"",
+    Currentdescription :"",
   }
   
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
+  constructor(private db2:Db2Service, private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
 
   OnSearchClick(){
     
     if(this.currentMacOrPhone != ''){
 
-      this.showSearch =true;
+      this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
+        if(data != null)
+        {
+          
+          this.currentMac = data.message[0].ATTRIBUTE1;
+          this.currentPhone = data.message[0].IDENTIFIER;
+          this.currentdesc = data.message[0].ATTRIBUTE4;
+          this.currentmodel = data.message[0].ATTRIBUTE2;
+          // console.log(data.message[0].COUNTRY);
+          // console.log(data.message[0].ATTRIBUTE1);
+          // console.log(data.message[0].IDENTIFIER);
+          // console.log( data.message[0].ATTRIBUTE2);
+          // console.log(data.message[0].ATTRIBUTE4);
+          this.showSearch =true;
+
+        }
+        else
+        {
+          alert("something went wrong");
+
+        }
+        
+      });
 
     }
     else{
@@ -172,37 +206,53 @@ backClick(){
 
   entryDetails(formData: NgForm){
     
-    if(formData.value.UpdateReq == '') {	
+    if(this.currentMacOrPhone == '')
+    {
+      // alert("Please give some ");
+    }
+   else if(formData.value.UpdateReq == '') {	
       alert('Please select update required for');	
     }	
 
-    if(formData.value.MAC1 == '') {	
-      alert('Please enter 12 characters MAC address');	
+    else if(formData.value.MAC1 == '') {	
+      alert('Please enter 12 characters MAC address');
     }
 
-    if(formData.value.Comments == '') {	
+   else if(formData.value.Comments == '') {	
       alert('Please provide the reason for updation.');	
-      	
     }
 
-    if(formData.value.Newdesc == '') {	
+    else if(formData.value.Newdesc == '') {	
       alert('Please provide the New Description. ');	
       	
     }
 
-    if(formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION') {	
+    else if(formData.value.Location_1 == '' && this.showLocation == true) {	
       alert('Please select a location');	
-      	
     }
 
-    if(formData.value.Buildings.toUpperCase() == 'SELECT ONE') {	
+    else if(formData.value.Buildings == '' && this.showLocation == true) {	
       alert('Please select a campus');	
-      return;	
     }
     
 
-    this.isEntryForm = true;	
-    this.isReviewForm = false;	
+    else
+    {
+      this.isEntryForm = true;	
+      this.isReviewForm = false;	
+
+      this.reviewDetailsIndia.mac = this.currentMac;
+      this.reviewDetailsIndia.phoneNunmer = this.currentPhone;
+      this.reviewDetailsIndia.Currentdescription = this.currentdesc;
+      this.reviewDetailsIndia.model = this.currentmodel;
+      this.reviewDetailsIndia.device = this.selected_device;
+      this.reviewDetailsIndia.newModel = formData.value.NewModel;
+      this.reviewDetailsIndia.newMac = formData.value.MAC1;
+      this.reviewDetailsIndia.justification = formData.value.Comments;
+      this.reviewDetailsIndia.description = formData.value.Newdesc;
+      this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
+      this.reviewDetailsIndia.campus = this.campus;
+    }
  
 
   }
@@ -215,9 +265,47 @@ backClick(){
 
   // Submit to Snow Jabber new code added by Swarnava	
   submit_snow(){
-
-    this.isButtonVisible=false;
+    this.reqno=this.countrydetails.isocode+"-US-"+this.cnum.substr(0,6)+"-"+gettime();	
+    sessionStorage.setItem('reqno',this.reqno)	
+    this.isButtonVisible=false;	
     this.isSpinnerVisible=true;	
+      this.payload.orinator_payload=this.orgi;	
+      this.payload.cNum_payload=this.cnum;	
+
+      this.payload.Comments_Disp = this.reviewDetailsIndia.justification;
+      this.payload.Newdesc_Disp = this.reviewDetailsIndia.description;
+      this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
+      this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
+      this.payload.updatereq_Disp = this.reviewDetailsIndia.device;
+      this.payload.currmodel = this.reviewDetailsIndia.model;
+      this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
+      this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
+      this.payload.MAC = this.reviewDetailsIndia.newMac;
+      this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.LocationCorrectnew = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.ReqNo=this.reqno;
+      this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+
+
+      this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+      this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
+      this.payload.countryname=this.countrydetails.name;	
+      this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
+      this.payload.request_type='fixedphone_update';	
+
+	
+
+    this.servicenowservice.submit_request_fixed_update(this.payload).subscribe(data=> {	
+      console.log('response', data);	
+      if(data)	
+      this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
+      },
+      (error) => {                              //Error callback
+       console.error('error caught in component'+error);
+       this.isSpinnerVisible= false; 	
+       this.errorinfo=true;
+       this.isButtonVisible=true;
+     });	
 
   }
 
@@ -276,6 +364,14 @@ backClick(){
     
     // this.models = sessionStorage.getItem('fpumodels')
     // this.servicesData = servicesData.data[0];
+    this.reqFor = sessionStorage.getItem('radioAction');
+    this.servicesData = servicesData.data[0]
+
+    if(this.warninginfo || this.warninginfosnow){
+      this.hideSteps = true
+    } else {
+      this.hideSteps = false
+    }
     
   }
   previousStep(event : any){

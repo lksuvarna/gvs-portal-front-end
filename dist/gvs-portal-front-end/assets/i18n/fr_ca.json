@@ -95,7 +95,10 @@
         "Delete Jabber Request" : "Supprimer la demande Jabber",
         "Move Jabber Request" : "Déplacer la demande Jabber",
         "Fixed Phone - New Request" : "Téléphone fixe - Nouvelle demande",
-        "New Fixed Phone Request" : "Nouvelle demande de téléphone fixe"
+        "New Fixed Phone Request" : "Nouvelle demande de téléphone fixe",
+        "Fixed Phone - Update Request" : "Téléphone fixe - Demande de mise à jour",
+        "Fixed Phone - Delete Request"  : "Téléphone fixe - Demande de suppression"
+
 
     },
     "employeeinfotrans":{

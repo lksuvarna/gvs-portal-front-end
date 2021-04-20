@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
+import { servicenowservice } from '../../_services/servicenow.service';
 
 
 @Component({
@@ -11,82 +12,107 @@ import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 })
 export class ApprovalpendingComponent implements OnInit {
 
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice) { }
+  empserial:any;
+  countrydetails:any;
 
-  pendingRequest:any[] = [
-    {empid : "06685M744", name : "Pavan Kumar B", requesting:"GVS Jabber - Move", reqNumber:"IN-MS-06685M-0128", checked :"false"},
-    {empid : "06685M744", name : "Pavan Kumar B", requesting:"GVS Jabber - Move", reqNumber:"IN-MS-06685M-0128", checked :"false"},
-    {empid : "06685M744", name : "Pavan Kumar B", requesting:"GVS Jabber - Move", reqNumber:"IN-MS-06685M-0128" , checked :"false"},
-    {empid : "06685M744", name : "Pavan Kumar B", requesting:"GVS Jabber - Move", reqNumber:"IN-MS-06685M-0128", checked :"false"},
-    {empid : "06685M744", name : "Pavan Kumar B", requesting:"GVS Jabber - Move", reqNumber:"IN-MS-06685M-0128",checked :"false"},
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private servicenowservice: servicenowservice) { }
 
-  ]
-  cloudantData: any = []
-  servicesData: any = []
+  pendingRequest:any=[]; 
+  cloudantData: any = [];
+  servicesData: any = [];
   countryname:any;
   ccode='';
+  checked: any=[];
+  checkedList:any;
+  errorinfo=true;
+  search: any = '';
+
   submit(){
     this.router.navigate(['/employeeinfo']) 
   }
 
   ngOnInit(): void {
-    this.ccode=this.cookie.getCookie('ccode').substring(6,9);
-    this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-      console.log('Response received', data.countrydetails.name);
-      this.countryname=data.countrydetails;
 
-    this.cloudantData  = {
-      "code": this.ccode,
-      "name": this.countryname.name,
-      "isocode": this.countryname.isocode,
-      "isjabber": this.countryname.isjabber,
-      "isfixedphone": this.countryname.isfixphone,
-      "isfac": this.countryname.isfac,
-      "isspecial": this.countryname.isspecial
-    }
-  });
-    const servicesData = { 
+    this.countrydetails = sessionStorage.getItem('countrydetails')
+    this.countrydetails = JSON.parse(this.countrydetails)
+
+    console.log(this.countrydetails);
+
+    if(this.countrydetails.testuser)
+      {
+        this.ccode=this.countrydetails.testuser;
+      }
+      else{this.ccode = this.cookie.getCookie('ccode');}
+ 
+    this.empserial = this.ccode; 
+    this.ccode=this.ccode.substring(6,9);
+   
+    
+      this.servicenowservice.searchsnowcoments(this.empserial, "snow_approve","","").subscribe(data => {
+        console.log(' snow response', data.message);
+        console.log(' snow response', data.message.length);
+        
+        if(data.message.length==0)
+        this.errorinfo=false;
+        else
+        this.pendingRequest=data.message;
+
+      });
+      console.log(' snow response', this.pendingRequest);
+  const servicesData = {
     "data": [
-      {    
-        "lhs": [
-          {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},            
-          {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
-          {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
-        ],
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "titles": [
-          "Terms of use",
-          "Useful Information",
-          "Please bear in mind the following points when making a request :"
-        ],
-        "usefulinfotexts": [
-          "To make a request the Employee must exist in BluePages (except for cancellation requests).",
-          "You must know the IBM serial Number of the person making the request.",
-          "Only one request per employee per request type is processed at a time."
-        ],
-        "termsurl": "https://w3.ibm.com/w3/info_terms_of_use.html"
+      {          
+        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+        "step" : 3,
       }
     ]
   }
-
     this.servicesData = servicesData.data[0]
   }
 
 
   selectAllcheck()
   {
-    this.pendingRequest.forEach(val => {
-      val.checked = true;
-    });
+    for (var i = 0; i < this.pendingRequest.length; i++) {
+     this.checked[i]= true ;
+    }
+    this.getCheckedItemList();
+    console.log(this.checkedList);
+  }
+
+  process()
+  {
+    this.getCheckedItemList();
+    console.log(this.checkedList);
+   
+  }
+
+  getCheckedItemList(){
+    this.checkedList = [];
+    for (var i = 0; i < this.pendingRequest.length; i++) {
+      if(this.checked[i]==true)
+      this.checkedList.push(this.pendingRequest[i]);
+   }
+    this.checkedList = JSON.stringify(this.checkedList);
   }
 
   unSelectAllcheck()
   {
-    this.pendingRequest.forEach(val => {
-      val.checked = false;
-    });
-  }
+    for (var i = 0; i < this.pendingRequest.length; i++) {
+      this.checked[i]  = false ;
+     }
 
+}
+
+onClickSearch(){
+  if (this.search == ''){
+    alert('Please enter a serial number or request number to search');
+  }
+ 
+  
+}
+
+reset(){
+ this.search = "";
+}
 }

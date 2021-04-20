@@ -34,6 +34,8 @@ import { FacservicesComponent } from './components/facservices/facservices.compo
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
 import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
+import { HpInUpdateComponent } from './components/hp-in-update/hp-in-update.component';
+import { HpInDeleteComponent } from './components/hp-in-delete/hp-in-delete.component';
 
 
 
@@ -69,6 +71,8 @@ const appRoutes: Routes = [
     { path: 'entrydetailsus', component: VoipUsaNewComponent},        
     { path: 'resources', component: ResourcesComponent},
     { path: 'entrydetailsfn', component: HpInNewComponent},
+    { path: 'entrydetailsfup', component: HpInUpdateComponent},
+    { path: 'entrydetailsfde', component: HpInDeleteComponent},
 
     { path: 'entrydetailsfac', component: FacInNewComponent},
 

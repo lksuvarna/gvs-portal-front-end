@@ -1,0 +1,148 @@
+<app-topcountryframe></app-topcountryframe>
+
+
+<div class=" ds-panel ds-col-12"></div>
+
+
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+    <div class="ds-col-md-4 ds-col-xl-4">
+        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
+    </div>
+    <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
+        <form [hidden]='isEntryForm' (submit)='entryDetails(formData)' #formData='ngForm'>
+            <b>Fixed Phone - Delete Request</b>
+
+            <div class="ds-pad-t-0_5 ds-pad-b-1">
+            </div>
+
+            <div class="ds-pad-t-0_5 ds-pad-b-1">
+            Fields marked with an asterick (<span class="ds-text-contextual-red-2">*</span>) are required.
+            </div>
+            <div class=" ds-panel ds-col-12 "></div> 
+
+
+            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
+            
+        
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
+
+
+            <table width="100%" height="10" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td width="50%">
+                            <label for="Sear class=">Enter Current MAC Address or Phone Number</label>
+                            <span class="ds-text-contextual-red-2"> *</span>
+                        </td>
+                        <td width="50%">
+                            <div class="ds-col-12">
+                                <div class="ds-row">
+                                    <div class="ds-col-12">
+                                        <div class="ds-row">
+                                            <div class="ds-col-7">
+                                                <input name="IdNum1" [(ngModel)]="currentMacOrPhone" value="" maxlength="15;" class="ds-input" style="width:180px !important;">
+                                            </div>
+                                            <div class="ds-col-5 ds-pad-l-1">
+                                                <div>
+                                                    <input type="button" class="ds-button ds-secondary ds-width-auto 
+                                                    ds-margin-bottom-0 ds-pad-l-1 ds-pad-r-1"  
+                                                    (click)='OnSearchClick()' name="back" value="Search">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+
+            <div class=" ds-panel ds-col-12 "></div>
+                <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                    <div class="ds-tray-fit-content ds-mar-b-0">
+                        <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                            <span class="ds-pad-l-4" id="button1">
+                                <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 
+                                ds-pad-l-3 ds-pad-r-3" value="BACK" (click)="backClick()">
+                            </span>
+                            <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                                <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 
+                                ds-pad-r-3" tabindex="32767" value="NEXT" 
+                                *ngIf="warninginfo==false && warninginfosnow==false">
+                            </span>
+
+                        </div>
+                    </div>
+                </div> 
+        </form>   
+        
+        <form [hidden]='isReviewForm'>
+
+            <b>Fixed Phone - Delete Request</b>
+
+            <div class="ds-pad-t-0_5 ds-pad-b-1">
+                By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+                </div>
+            <div class=" ds-panel ds-col-12 "></div>
+
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+
+
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">ReviewDetails</h2>
+
+            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">MAC Address</label>
+                        </td>
+                        <td width="54%">{{currentMac}}</td>
+                    </tr>
+                    <br>
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">Current Phone Number </label>
+                        </td>
+                        <td width="54%">{{currentPhone}}</td>
+                    </tr>
+                    <br>
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">Current Description</label>
+                        </td>
+                        <td width="54%">{{currentdesc}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            
+            <div class="ds-hr-thick ds-mar-t-1_5"></div>
+            <!-- Dark Background -->
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+                <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
+            </div>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                    <span class="ds-pad-l-4" id="button1">
+                    <input type="button" name="back"
+                    class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                    (click)='BackButton()' *ngIf="this.isButtonVisible">
+                    </span>
+                    <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                    <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                        value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+                    </span>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        </form>
+        
+    </div>
+</div>
