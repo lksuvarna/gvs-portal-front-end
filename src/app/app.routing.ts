@@ -80,6 +80,7 @@ const appRoutes: Routes = [
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
     { path: 'entrydetailsfacin', component: FacInNewComponent},
     
+    
    // {path: '**', redirectTo:'/pagenotfound?error'}
    {path: '**', component: PagenotfoundComponent}
     

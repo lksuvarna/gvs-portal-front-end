@@ -60,6 +60,7 @@ import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-up
 
 
 
+
 export function rootLoaderFactory(http: HttpClient){
   return new TranslateHttpLoader(http,'assets/i18n/','.json')
   }
