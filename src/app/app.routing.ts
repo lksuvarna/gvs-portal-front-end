@@ -34,6 +34,7 @@ import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component'
 import { FacservicesComponent } from './components/facservices/facservices.component';
 
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
+import { FacInDeactivateComponent } from './components/fac-in-deactivate/fac-in-deactivate.component';
 
 
 
@@ -79,6 +80,7 @@ const appRoutes: Routes = [
     { path: 'pagenotfound', component: PagenotfoundComponent},
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
     { path: 'entrydetailsfacin', component: FacInNewComponent},
+    { path: 'entrydetailsfacdeactive', component: FacInDeactivateComponent},
     
    // {path: '**', redirectTo:'/pagenotfound?error'}
    {path: '**', component: PagenotfoundComponent}

@@ -24,6 +24,8 @@ export class HomepageComponent implements OnInit {
   userDetails:any;
   uname='';
   countryname:any;
+  translatecountryname :any;
+  translatecountryname1 :boolean =false;
   ccode='';
   
 
@@ -58,9 +60,19 @@ export class HomepageComponent implements OnInit {
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.ccode);
       sessionStorage.setItem('pagedisplay','homepage')
+      
+      this.translatecountryname = this.countryname.name;
+      if (this.translatecountryname == 'Canada/Caribbean'){
+          this.translatecountryname1 = true;
+          
+      }
+      
+      
      });
 
-    
-  }
+
+      
+  } 
+  
 
 }

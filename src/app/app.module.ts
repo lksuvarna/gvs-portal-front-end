@@ -55,6 +55,7 @@ import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component'
 import { FacservicesComponent } from './components/facservices/facservices.component';
 
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
+import { FacInDeactivateComponent } from './components/fac-in-deactivate/fac-in-deactivate.component';
 
 
 
@@ -118,7 +119,8 @@ handleError(error: Error){
 
     VoipLaUpdateComponent,
     FacInNewComponent,
-    VoipUsaUpdateComponent
+    VoipUsaUpdateComponent,
+    FacInDeactivateComponent
 
   ],
   imports: [
