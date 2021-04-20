@@ -97,7 +97,13 @@
         "Fixed Phone - New Request" : "Téléphone fixe - Nouvelle demande",
         "New Fixed Phone Request" : "Nouvelle demande de téléphone fixe",
         "Deactivate an existing FAC Code" :"Désactiver un code FAC existant",
-        "FAC Code Deactivate Request" : "Demande de désactivation du code FAC"
+        "FAC Code Deactivate Request" : "Demande de désactivation du code FAC",
+        "Request a new FAC Code" : "Demander un nouveau code FAC",
+        "Fac Code New Request" : "Nouvelle demande de code FAC",
+        "Update an existing FAC code" : "Mettre à jour un code FAC existant",
+        "FAC Code Update Request":"Demande de mise à jour du code FAC",
+        "Reset an existing FAC code" : "Réinitialiser un code FAC existant",
+        "FAC Code Reset Request": "Demande de mise à jour du code FAC"
 
     },
     "employeeinfotrans":{

@@ -98,7 +98,13 @@
         "FAC Code Deactivate Request" : "FAC Code Deactivate Request",
         "Move Jabber Request" : "Move Jabber Request",
         "Fixed Phone - New Request" : "Fixed Phone - New Request",
-        "New Fixed Phone Request" : "New Fixed Phone Request" 
+        "New Fixed Phone Request" : "New Fixed Phone Request",
+        "Request a new FAC Code" : "Request a new FAC Code",
+        "FAC Code New Request" : "FAC Code New Request",
+        "Update an existing FAC code" : "Update an existing FAC code",
+        "FAC Code Update Request":"FAC Code Update Request",
+        "Reset an existing FAC code" : "Reset an existing FAC code",
+        "FAC Code Reset Request": "FAC Code Update Request"
         
         
         
