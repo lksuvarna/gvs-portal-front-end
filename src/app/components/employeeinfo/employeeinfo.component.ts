@@ -40,6 +40,7 @@ export class EmployeeinfoComponent implements OnInit {
   warninginfosnowres=false;
   warninginfoothers = false;
   warninginfosnowothers = false;
+  warninginfofac = false;
   selfinfo = false;
   sessionwarninginfo :any;
   sessionwarninginfosnow :any;
@@ -108,6 +109,11 @@ export class EmployeeinfoComponent implements OnInit {
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
+   if (this.sessionwarninginfo =='true1'&& this.service=="fac_new"){
+    this.warninginfofac = true
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }
    else if (this.sessionwarninginfosnow =='false1' && this.service=="requests"){
     this.warninginfosnowreq = true    
     this.isDataLoaded=true
@@ -144,7 +150,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.employeeInfo1=sessionStorage.getItem('employeeInfo')
     this.employeeInfo=JSON.parse(this.employeeInfo1)
 
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers){
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac){
       this.hideSteps = true;
       this.warn = true;
     } else {

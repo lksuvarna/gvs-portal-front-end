@@ -51,7 +51,11 @@ import { FixedphoneservicesComponent } from './components/fixedphoneservices/fix
 import { VoipLaUpdateComponent } from './components/voip-la-update/voip-la-update.component';
 
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+
+import { FacservicesComponent } from './components/facservices/facservices.component';
+
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
+
 
 
 
@@ -108,9 +112,14 @@ handleError(error: Error){
     PagenotfoundComponent,
     FixedphoneservicesComponent,
     VoipUsaNewComponent,
+
+    FacInNewComponent,
+    FacservicesComponent,
+
     VoipLaUpdateComponent,
     FacInNewComponent,
     VoipUsaUpdateComponent
+
   ],
   imports: [
     BrowserModule,
