@@ -13,6 +13,7 @@ import { DatePipe } from '@angular/common';
 })
 export class FeedbackComponent implements OnInit {
 
+  displayFeedbackSuccessMsg:boolean = true;
   textAreaDisplay: boolean = false;
   hiddenOn9n10: boolean = false;
   displayOn9n10: boolean = false;
@@ -69,10 +70,18 @@ export class FeedbackComponent implements OnInit {
         // this.feedbackParams.country = "India";
 
         console.log(this.feedbackParams);
-
-
         this.feedbackservice.savefeedbackResponse(this.feedbackParams).subscribe(data => {
           console.log("saving Data");
+
+          if(data.status == "200")
+          {
+            console.log("Data saved");
+            this.displayFeedbackSuccessMsg = false;
+          }
+          else{
+            console.log("Data Not saved");
+            alert("Something Went Wrong please try after sometime!!");
+          }
         });
       }
     }
