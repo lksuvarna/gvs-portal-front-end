@@ -6,6 +6,7 @@ import { servicenowservice } from '../../_services/servicenow.service';
 import {Location} from '@angular/common';	
 import { Jabber_New } from 'config/payload';
 import { NgForm } from '@angular/forms';
+import { TranslateConfigService} from '../../_services/translate-config.service';
 
 @Component({
   selector: 'app-voip-emea-new',
@@ -28,7 +29,8 @@ export class VoipEmeaNewComponent implements OnInit {
     icano_Disp : "",	
     Location_final :"",	
     accid_Disp: "",	
-    reqno:""	
+    reqno:""
+    
   }
   
   // officeLocation = ["Select Location","Denmark", "Belgium"];
@@ -65,7 +67,7 @@ export class VoipEmeaNewComponent implements OnInit {
   entryDetailsEMEA(formData: NgForm) {	    
       
     if(formData.value.Location.toUpperCase() == 'SELECT LOCATION' || formData.value.Location == '') {	
-      alert('Please select the Location');	
+      alert(this.mainConfiguration.alerttranslation.selectlocation);	
       return;	
     }
     
@@ -80,7 +82,8 @@ export class VoipEmeaNewComponent implements OnInit {
     this.isReviewFormEmea = true;
   }
 
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,public location:Location) { }
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,public location:Location,private servicesd : TranslateConfigService) {}
+  mainConfiguration :any;
 
   backClick(){	
     sessionStorage.setItem('backbutton','yes');	
@@ -162,7 +165,7 @@ export class VoipEmeaNewComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.mainConfiguration = this.servicesd.readConfigFile();
     this.orgi=this.cookie.getCookie('ccode');	
     this.cnum = sessionStorage.getItem('cnum') ;	
     this.countrydetails = sessionStorage.getItem('countrydetails');	

@@ -4,38 +4,232 @@
         "select-language": "Choisissez une langue: ",
         "app-name": "Services téléphoniques mondiaux",
         "app-function": "Point d'entrée unique pour commander des services vocaux dans votre pays",
-        "welcome": "Bienvenue,",
+        "sponsor":"Basé sur le cloud hybride CIO optimisé par Red Hat OpenShift",
+        "welcomemessage": "Bienvenue,",
         "question": "Quel service ou quel pays rechercherez-vous?",
         "search-placeholder": "Service de recherche ...",
         "search-text": "Cliquez ici pour voir tous les résultats de la recherche GVS",
         "my-country": "Mon pays",
         "click-here": "Cliquez ici",
         "available": "pour afficher tous les",
-        "services": "services pour",
+        "servicesonlyokay": "services pour",
         "most-viewed-services": "Services les plus consultés",
         "find-right-service": "Trouvez les bons services, vérifiez leur disponibilité,",
         "find-right-service2": "puis choisissez la façon dont vous vous connectez et travaillez ensemble.",
         "jabber-description": "Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.",
-        "button-value": "Premiers pas"
+        "button-value": "Premiers pas",
+        "Searchservice": "Service de recherche..."
     },
 
     "footer": {
         "aditional-question": "Vous avez des questions supplémentaires sur la commande de  Services téléphoniques mondiaux ?",
         "please consult": "Veuillez consulter",
-        "consult": "* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE et Safari."
+        "consult": "* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE, Edge et Safari."
 
 
+    },
+    "footnote":{
+        "Jabber":"Jabber",
+        "Fixed Phone":"Fixed Phone",
+        "FAC Code":"FAC Code",
+        "Special Request":"Special Request",
+        "Terms of use":"Conditions d'utilisation",
+        "Useful Information":"Informations utiles",
+        "Please bear in mind the following points when making a request :":"Veuillez garder à l'esprit les points suivants lorsque vous faites une demande:",
+        "To make a request the Employee must exist in BluePages (except for cancellation requests).":"Pour faire une demande, l'Employé doit exister dans BluePages (sauf pour les demandes d'annulation).",
+        "You must know the IBM serial Number of the person making the request.":"Vous devez connaître le numéro de série IBM de la personne qui fait la demande.",
+        "Only one request per employee per request type is processed at a time.":"Une seule demande par employé et par type de demande est traitée à la fois."
+        
     },
 
     "lhs": {
         "Services": "Prestations de service",
-        "Jabber": "Jacasser",
-        "FAC Code": "Code FAC",
-        "Fixed Phone": "Téléphone fixe",
-        "Special Request": "Demande spéciale",
+        "Jabber": "Jabber",
+        "FAC Code": "FAC Code",
+        "Fixed Phone": "Fixed Phone",
+        "Special Request": "Special Request",
         "Approvals Pending": "Approbations en attente",
         "Revalidation Pending": "Revalidation en attente",
         "Resources": "Ressources",
         "Requests": "Demandes"
-    }
+    },
+    "Jabberservices": {
+        "initiateJabber":"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service Jabber.",
+        "jnew":"Demander un nouveau service",
+        "jupdate":"Mettre à jour un service existant",
+        "jmove":"Déplacer un service existant",
+        "jdelete":"Supprimer un service existant"
+    },
+    "Jabbernewtrans" :{
+        "Reqnewservice":"Cette demande peut être soumise pour vous-même ou au nom d'un autre employé. Champs marqués d'un astérisque",
+        "arerequired":"sont requis.",
+        "EmployeeSearch":"Recherche d'employés",
+        "requestfor":"À qui s'adresse cette demande",
+        "Myself":"Moi-même",
+        "AnotherEmployee":"Un autre employé",
+        "Name":"Nom",
+        "SerialNumber":"Numéro de série",
+        "EmployeeSerialNumber":"Numéro de série de l'employé",
+        "forexample":"(par exemple 012789)",
+        "CountryCode":"Code postal",
+        "SelectOne":"Sélectionnez-en un",
+        "norecord":"Il n'y a pas d'enregistrement d'un employé IBM avec le numéro de série " ,
+        "availablefromBluePages" :"disponible auprès de BluePages",
+        "opps":"Opps! Quelque chose s'est usé Veuillez réessayer plus tard.",
+        "JabberLocation" : "Emplacement de Jabber",
+        "Voicemail" : "Messagerie vocale",
+        "ClassofService" : "Classe de service",
+        "pleasesubmittostart":"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning."
+
+    },
+
+    "servicestitle":{
+        "Request new Jabber service" :"Demander un nouveau service Jabber",
+        "Delete an existing service" : "Delete an existing service",
+        "Request a new service" :"Request a new service",
+        "Update an existing service" : "Update an existing service",
+        "Request Move Jabber service" :"Demander le service Move Jabber",
+        "Requests" : "Demandes",
+        "Resources" : "Ressources",
+        "Update Jabber Request" : "Mettre à jour la demande Jabber",
+        "Delete Jabber Request" : "Supprimer la demande Jabber",
+        "Move Jabber Request" : "Déplacer la demande Jabber",
+        "Fixed Phone - New Request" : "Téléphone fixe - Nouvelle demande",
+        "servicestitle.Resources" : "Ressources",
+        "servicestitle.Requests" : "Demandes",
+        "New Fixed Phone Request" : "Nouvelle demande de téléphone fixe"
+
+    },
+    "employeeinfotrans":{
+        "ifinfoiscorrect":"Si les informations suivantes sont correctes, cliquez sur Suivant. Toute erreur doit être corrigée dans le",
+        "BluePagesrecord":"enregistrer BluePages",
+        "beforecontinuing":"avant de continuer.",
+        "EmployeeInformation":"Information sur les employés",
+        "EmployeeEntryDetails":"Détails de l'entrée des employés",
+        "Name":"Nom:",
+        "SerialNumber":"Numéro de série:",
+        "JobResponsibility":"Responsabilité du travail:",
+        "BusinessUnit":"Unité commerciale:",
+        "Department":"département:",
+        "Country":"Pays:",
+        "E-mail":"E-mail:",
+        "noteligiblejabber":"Le numéro de série que vous avez entré n'est pas éligible pour demander un compte Jabber.",
+        "itnexistsforuser":"Le numéro de téléphone IBM (ITN) qui existe pour cet utilisateur est .",
+        "nojabber":"Il n'y a pas de Jabber pour ce numéro de série.",
+        "nojabberusethislink":"Le numéro de série que vous avez entré ne possède pas de numéro de téléphone IP (ITN) et n'est donc pas éligible pour Jabber. Veuillez utiliser ce lien pour faire une demande d'ITN ",
+        "GlobalVoiceInfrastructure":"Infrastructure vocale mondiale.",
+        "receiveITN":"vous avez reçu l'ITN, vous pouvez alors demander Jabber. Merci.",
+        "notauthorizedtoaccessjabber": "Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter",
+        "notauthorizedtoaccessip":"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter",
+        "noteligibletorequestmorethanonejabber":"Le numéro de série que vous avez entré n'est pas éligible pour demander plus d'un compte Jabber.",
+        "ITNexistsforthisuser":"Le numéro de téléphone IBM (ITN) qui existe pour ce compte jabber d'utilisateurs est",
+        "jabberconfiguration":"lié à la configuration de Jabber peut être trouvé à",
+        "furtherassistance":"Pour toute assistance supplémentaire, veuillez contacter",
+        "alreadyone":"le numéro de série que vous avez entré en a déjà un",
+        "inprogess":"est en cours et le numéro de la demande est",
+        "ongoingrequestsbyclickonrequestpage":"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.",
+        "nooutstandingreq":"Aucune demande en suspens n'a été trouvée pour le numéro de série.",
+        "noresources":"Il n'y a pas de ressources pour ce numéro de série.",
+        "nojabberforthisserial":"Il n'y a pas de Jabber pour ce numéro de série.",
+        "BACK":"DOS",
+        "NEXT":"SUIVANTE",
+        "SUBMIT1" : "NOUS FAIRE PARVENIR",
+        "alreadyonerequestinprogress":"Le numéro de série que vous avez entré a déjà une nouvelle demande Jabber est en cours et le numéro de demande est",
+        "alreadyoneupdaterequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de mise à jour Jabber est en cours et le numéro de demande est",
+        "alreadyonemoverequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de déplacement Jabber est en cours et le numéro de demande est",
+        "alreadyonedeleterequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est"
+    },
+    "Jabberentrydetails":{
+        "Fieldsasterisk":"Champs marqués d'un astérisque",
+         "arerequired":"sont requis.",
+         "EmployeeEntryDetails":"Détails de l'entrée des employés",
+         "OfficeLocation" : "Emplacement du bureau",
+         "Campus" : "Campus",
+         "Funded" : "Financé",
+         "ChargeDepartmentCode": "Code du département de facturation",
+         "BusinessUnit" : "Unité commerciale",
+         "Projectid" : "ID du projet (pour les employés de GBS uniquement)",
+         "alreadyhaveFixedPhone":"Si vous avez déjà un téléphone fixe, veuillez fournir l'identifiant",
+         "toprocessPI":"En soumettant cette demande de provisioning, vous consentez expressément par écrit à IBM pour traiter les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.",
+         "JabberRequestDetails":"Détails de la demande Jabber",
+         "FixedPhoneIdentifier":"Identifiant de téléphone fixe",
+         "Submissioninprogress":"La soumission de votre demande est en cours.Ne revenez pas en arrière ou n'actualisez pas la page.",
+        "Submissionbeinginprogress":"Votre demande est en cours d'envoi. Ne pas actualiser ni revenir en arrière.",
+         "Back" : "Dos",
+         "SelectLocation" : "Sélectionnez l'emplacement"
+     },
+     "Jabberupdate":{
+        "SelectJabberNumber":"Sélectionnez le numéro Jabber",
+        "ReviewDetails" : "revoir les détails",
+        "JabberNumber" : "Numéro Jabber"
+    },
+
+    "Jabbermove":{
+        "JabbertoMove":"Numéro Jabber à déplacer",
+        "ProjectIId" : "Id du projet",
+        "AccountId" : "Identifiant de compte",
+        "ICA Code" : "Code ICA",
+        "NewOfficeLocation" :"Nouveau bureau",
+        "Building" : "Imeuble"
+        },
+
+    "requesttrans" : {
+        "Requests" : "Demandes",
+        "beingsubmitted":"Votre demande est en cours d'envoi.Ne pas actualiser ni revenir en arrière.",
+        "EmployeeRequestsDetails":"Détails des demandes des employés",
+        "ResourceType" : "Type de ressource",
+        "CreatedDate" : "Date de création",
+        "Status" : "Statut",
+        "TrackingNumber" : "Numéro de suivi",
+        "AdditionalComments" :"Commentaires supplémentaires"
+    },
+    "resultpagetrans" : {
+        "Yourrequestfor" : "Votre demande de",
+        "hasbeensubmitted" :"a été soumis",
+        "Trackingrequest":"Le numéro de suivi de la demande est :",
+        "receiveemailnotification":"Vous recevrez une notification par e-mail, lorsque votre demande aura été traitée."
+     },
+     "resourcespagetranslation" :{
+        "EmployeeResourcesDetails":"Détails des ressources des employés",
+        "Supplier":"Fournisseuse",
+        "Phone/Dial" : "Téléphone / Numérotation",
+        "Innumber" : "En nombre",
+        "AdditionalInformation" : "Informations Complémentaires"
+    },
+    "alerttranslation" : {
+        "EXITREQUEST" : "DEMANDE DE SORTIE",
+        "digitserialnumber":"Le numéro de série de l'employé doit être composé de 6 caractères",
+        "enterserialnumber" : "Veuillez saisir un numéro de série",
+        "moverequest":"La demande de déplacement supprimera l'ITN actuel et un nouvel ITN sera attribué. Cliquez sur OK pour continuer ou sur Annuler pour quitter",
+        "selectcountrycode":"Veuillez sélectionner le code du pays",
+        "Only" : "Seule",
+        "serialnumbersareallowed":"Les numéros de série sont autorisés à créer une demande de",
+        "selectlocation":"Veuillez sélectionner l'emplacement",
+        "selectjabbernumber":"Veuillez sélectionner le numéro Jabber"
+
+
+    },
+    "topui" :{
+        "HOME" :"DOMICILE",
+        "SERVICES" : "PRESTATIONS DE SERVICE",
+        "DATAPRIVACY" : "CONFIDENTIALITÉ DES DONNÉES",
+        "HELP" : "AIDER",
+        "FEEDBACK" : "RÉTROACTION",
+        "CHANGECOUNTRY" :"CHANGER DE PAYS"
+       },
+
+    "steps": {
+        "Employee Search" :"Recherche d'employés",
+        "Employee Information" : "Information sur les employés",
+        "Employee Entry Details" : "Détails de l'entrée des employés",
+        "Review Details" : "Détails de l'examen",
+        "Employee Resources Details" : "Détails des ressources des employés",
+        "Employee Requests Details":"Détails des demandes des employés",
+        "STEP 1" : "MARCHER 1",
+        "STEP 2" : "MARCHER 2",
+        "STEP 3" : "MARCHER 3",
+        "STEP 4" :  "MARCHER 4"
+       }
+    
+ 
 }

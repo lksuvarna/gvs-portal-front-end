@@ -8,6 +8,9 @@ import { CommonModule } from '@angular/common';
 import { bpservices } from '../../_services/bp.service';
 import { Db2Service } from '../../_services/db2.service';
 import { servicenowservice } from '../../_services/servicenow.service';
+import { TranslateConfigService} from '../../_services/translate-config.service';
+
+
 import { WebElementPromise } from 'selenium-webdriver';
 
 @Component({
@@ -15,13 +18,14 @@ import { WebElementPromise } from 'selenium-webdriver';
   templateUrl: './employeesearch.component.html',
   styleUrls: ['./employeesearch.component.css']
 })
+
 export class EmployeesearchComponent implements OnInit {
 
   radioAction: string = "";
   hideDisTextBox: boolean = false;
   hideDisserial: boolean = true;
 
-  constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private bpservices: bpservices, private Db2Service: Db2Service, private servicenowservice: servicenowservice) { }
+  constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private bpservices: bpservices, private Db2Service: Db2Service, private servicenowservice: servicenowservice,private servicesd : TranslateConfigService) { }
   cloudantData: any = []
   servicesData: any = []
   subCountries: any = []
@@ -67,7 +71,13 @@ export class EmployeesearchComponent implements OnInit {
   cos : any =[];
   serviceName:any;
   returnValue:any;
+  mainConfiguration :any;
+  
   ngOnInit(): void {
+    this.mainConfiguration = this.servicesd.readConfigFile();
+    //alert (this.mainConfiguration);
+    
+   
     this.showloader = false
 
     this.fullName = this.cookie.getCookie('username');
@@ -145,7 +155,7 @@ export class EmployeesearchComponent implements OnInit {
   })
   setTimeout(()=>{
     if(sessionStorage.getItem('serviceName') == 'jabber_move'&&this.step == null || sessionStorage.getItem('serviceName') == 'jabber_move'&&sessionStorage.getItem('empserial') == '') {
-      this.returnValue = confirm('Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit');
+      this.returnValue = confirm(this.mainConfiguration.alerttranslation.moverequest);
       if(this.returnValue == false) {
         this.router.navigate(['/jabberservices'],{ queryParams: { country: this.pcode, service: this.service } });
       }
@@ -161,24 +171,25 @@ export class EmployeesearchComponent implements OnInit {
       if(this.countrydetails.scountries){
         
         if(this.countrydetails.scountries.some((s: string | string[]) => s.includes(this.ccode.substr(6, 9)))){        }
-        else{alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
+        else{alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name + " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" " + this.countrydetails.name);
         return;}
       }
       else if (this.pcode !== this.ccode.substr(6, 9)){                
-            alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
+            alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name + " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" "  + this.countrydetails.name);
             return;        
       }
      }
     if (this.radioAction.toLowerCase() == "anotheremployee") {
+      
       if (formData.value.employeeSerial.trim().length == 0 && this.hideDisTextBox == true) {
-        alert("Please enter a serial number");
+        alert(this.mainConfiguration.alerttranslation.enterserialnumber);
         return;
       }
       else if ((formData.value.employeeSerial.trim().length < 6 || formData.value.employeeSerial.includes(' ')) && this.hideDisTextBox == true){
-        alert("Employee Serial Number should be of 6 characters");
+        alert(this.mainConfiguration.alerttranslation.digitserialnumber);
         return;
       } else if (this.showCountryCode && this.hideDisTextBox && formData.value.selectedCountry === '') {
-        alert("Please select the Country Code");
+        alert(this.mainConfiguration.alerttranslation.selectcountrycode);
         return;
       }
       else {

@@ -8,10 +8,10 @@
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <form [hidden]="isEntryForm" (submit)='entryDetailsLA(formData)' #formData='ngForm'>
 
-            <b>Request new Jabber service</b>
+            <b translate>servicestitle.Request new Jabber service</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
-            Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required
+                <span translate>Jabberentrydetails.Fieldsasterisk </span> (<span class="ds-text-contextual-red-2">*</span>) <span translate>Jabberentrydetails.arerequired</span>
             </div>
             <div class=" ds-panel ds-col-12 "></div> 
 
@@ -44,7 +44,7 @@
             </div> -->
 
 
-            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Employee Entry Details</h2>
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 " translate>Jabberentrydetails.EmployeeEntryDetails</h2>
 
             <p>
             <table id="t1" cellspacing="0" cellpadding="0" border="0">
@@ -60,7 +60,7 @@
                             <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
                         </td>  -->
                         <td width="46%"><br>
-                            <label for="LocationId" class="ds-text-capitalize">Jabber Location</label>
+                            <label for="LocationId" class="ds-text-capitalize" translate>Jabbernewtrans.JabberLocation</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="160">
@@ -90,7 +90,7 @@
                             <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
                         </td> -->
                         <td width="46%"><br>
-                            <span class="ds-text-capitalize">Voicemail</span>
+                            <span class="ds-text-capitalize" translate>Jabbernewtrans.Voicemail</span>
                         </td><td width="160"><br>Yes
                         </td>
                     </tr>
@@ -112,7 +112,7 @@
                             <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
                         </td> -->
                         <td width="46%"><br>
-                            <label for="COSId">Class of Service</label><br>
+                            <label for="COSId" translate>Jabbernewtrans.ClassofService</label><br>
                         </td>
                         <td width="160"><br>National
                         </td>
@@ -156,11 +156,11 @@
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                         <span class="ds-pad-l-4" id="button1">
                             <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 
-                            ds-pad-r-3" value="Back" (click)="backClick()">
+                            ds-pad-r-3" value="{{ 'employeeinfotrans.BACK'|translate}}" (click)="backClick()">
                         </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
                             <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                             value="Next">
+                             value="{{ 'employeeinfotrans.NEXT'|translate}}">
                         </span>
                     </div>
                 </div>
@@ -170,31 +170,30 @@
 
 
         <form [hidden]="isReviewForm">
-            <b>Request new Jabber service</b>
+            <b translate>servicestitle.Request new Jabber service</b>
 
             
-            <div class="ds-pad-t-0_5 ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to 
-                process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service.
+            <div class="ds-pad-t-0_5 ds-pad-b-1" translate>Jabbernewtrans.pleasesubmittostart
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
             <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
 
 
-            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2>
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 " translate>Jabberupdate.ReviewDetails</h2>
 
             <table id="t2" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
                         <td width="61%">
-                            <label for="addId1">Jabber Location</label>
+                            <label for="addId1" translate>Jabbernewtrans.JabberLocation</label>
                         </td>
                         <td width="160">{{reviewDetailsIndia.officeLocation}}</td>
                     </tr>
                     <tr valign="top">
                         
                         <td width="61%"><br>
-                            <span class="ds-text-capitalize">Voicemail</span>
+                            <span class="ds-text-capitalize" translate>Jabbernewtrans.Voicemail</span>
                         </td>
                         <td width="160"><br>Yes
                         </td>
@@ -202,7 +201,7 @@
                     <tr valign="top">
                         
                        <td width="61%"><br>
-                        <label for="COSId">Class of Service</label><br>
+                        <label for="COSId" translate>Jabbernewtrans.ClassofService</label><br>
                        </td>
                        <td width="160"><br>National<br>
                        </td>
@@ -212,14 +211,14 @@
             </table>
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
-                <p>Opps! Some thing went worng.Please try again latter.</p><p>
+                <p translate>Jabbernewtrans.opps</p><p>
             </p></div>
 
             <div class="ds-hr-thick ds-mar-t-1_5"></div>
 
             <!-- Dark Background -->
             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
-                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+                <div class="ds-loader-header" translate>Jabberentrydetails.Submissioninprogress</div>
                 <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
             </div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
@@ -227,15 +226,15 @@
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                         <span class="ds-pad-l-4" id="button1">
                             <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 
-                            ds-pad-r-3" value="Back" (click)='BackButton()' *ngIf="this.isButtonVisible && !errorinfo">
+                            ds-pad-r-3" value="{{ 'employeeinfotrans.BACK'|translate}}" (click)='BackButton()' *ngIf="this.isButtonVisible && !errorinfo">
                         </span> 
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
                             <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" 
-                            value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
+                            value="{{ 'employeeinfotrans.SUBMIT1'|translate}}" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
                         </span>
                         <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary 
                         ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" 
-                        [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">      
+                        [queryParams]="{country:pcode,service:service}" value="{{ 'alerttranslation.EXITREQUEST'|translate}}">      
            
                         
                     </div>
