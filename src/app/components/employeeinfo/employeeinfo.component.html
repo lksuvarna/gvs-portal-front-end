@@ -8,9 +8,9 @@
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
 
-        
+
         <b translate>servicestitle.{{this.title}}</b>
-        <div class="ds-pad-t-0_5 ds-pad-b-0_4" >
+        <div class="ds-pad-t-0_5 ds-pad-b-0_4">
             <p *ngIf="!warninginfoothers && warninginfo==false&&warninginfosnow==false" translate>employeeinfotrans.ifinfoiscorrect <a translate href="https://w3.ibm.com/bluepages/" target="_blank">employeeinfotrans.BluePagesrecord </a> <span translate>employeeinfotrans.beforecontinuing </span></p>
 
         </div>
@@ -89,48 +89,58 @@
         <div id="war4" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
             <p>
                 <span style="font-size: 1rem;" translate>employeeinfotrans.nojabberusethislink<a translate style="color:blue" target="_blank" href="https://105.w3-969.ibm.com/tools/voice/SPOEProd.nsf/EntryPage?OpenForm&amp;EMEA_Voice">employeeinfotrans.GlobalVoiceInfrastructure</a> <span translate> employeeinfotrans.receiveITN</span>
-                    <br><br>
+                <br><br>
                 </span>
             </p>
         </div>
         <div id="err-dept1" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
-            <p translate>employeeinfotrans.notauthorizedtoaccessjabber <a style="color:blue" target="_blank"
-                    href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
+            <p translate>employeeinfotrans.notauthorizedtoaccessjabber <a style="color:blue" target="_blank" href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
         <div id="err-dept2" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
-            <p translate>employeeinfotrans.notauthorizedtoaccessip <a style="color:blue" target="_blank"
-                    href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
+            <p translate>employeeinfotrans.notauthorizedtoaccessip <a style="color:blue" target="_blank" href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
         <div id="w1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfo>
-            <p><span style="font-size: 1rem;" translate>employeeinfotrans.noteligibletorequestmorethanonejabber<br> <span translate>employeeinfotrans.ITNexistsforthisuser</span> {{identifier}}.<br> <span translate> employeeinfotrans.jabberconfiguration </span> <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>. <br>              
-        <span translate> employeeinfotrans.furtherassistance </span> ' <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a> '.<br></span></p>
+            <p><span style="font-size: 1rem;" translate>employeeinfotrans.noteligibletorequestmorethanonejabber<br> <span translate>employeeinfotrans.ITNexistsforthisuser</span> {{identifier}}.<br> <span translate> employeeinfotrans.jabberconfiguration </span>                <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>. <br>
+                <span translate> employeeinfotrans.furtherassistance </span> ' <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a> '.<br></span>
+            </p>
         </div>
 
         <div id="fac_new" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofac">
             <p><span style="font-size: 1rem;">The serial number that you have entered is not eligible to request more than one FAC code.</span></p>
         </div>
+
+        <div id="fac_update" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacu">
+            <p><span style="font-size: 1rem;">There is no FAC code for this serial number.</span></p>
+        </div>
+
+        <div id="fac_reset" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacr">
+            <p><span style="font-size: 1rem;">There is no FAC code for this serial number.</span></p>
+        </div>
+
         <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}.<br>
-        
-        <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>              
-        
-        <span translate> employeeinfotrans.furtherassistance </span> <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+
+                <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>
+
+                <span translate> employeeinfotrans.furtherassistance </span> <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span>
+            </p>
         </div>
         <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowothers>
             <p><span style="font-size: 1rem;"> <span translate> employeeinfotrans.alreadyone </span> {{page}} <span translate> employeeinfotrans.inprogess </span> {{identifier1}}.<br>
-        
-        <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>              
-        
-        <span translate> employeeinfotrans.furtherassistance </span> <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+
+                <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>
+
+                <span translate> employeeinfotrans.furtherassistance </span> <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span>
+            </p>
         </div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowreq>
 
-             <p translate>employeeinfotrans.nooutstandingreq</p>
-            
+            <p translate>employeeinfotrans.nooutstandingreq</p>
+
         </div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowres>
-               <p translate>employeeinfotrans.noresources</p>
-          
+            <p translate>employeeinfotrans.noresources</p>
+
         </div>
         <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfoothers>
             <p translate>employeeinfotrans.nojabberforthisserial </p>
@@ -143,7 +153,8 @@
                 <button (click)="backClick()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" translate>employeeinfotrans.BACK</button>
             </div>
             <div class="ds-col-lg-2 ds-push-lg-8">
-                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false" translate>employeeinfotrans.NEXT</button>
+                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfofacr== false  && warninginfofacu== false"
+                    translate>employeeinfotrans.NEXT</button>
             </div>
         </div>
     </div>

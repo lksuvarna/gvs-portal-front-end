@@ -61,8 +61,13 @@ import { HpInDeleteComponent } from './components/hp-in-delete/hp-in-delete.comp
 import { HpUsaNewComponent } from './components/hp-usa-new/hp-usa-new.component';
 import { HpEmeaNewComponent } from './components/hp-emea-new/hp-emea-new.component';
 import { HpIndonesiaNewComponent } from './components/hp-indonesia-new/hp-indonesia-new.component';
+
+import { FacInUpdateComponent } from './components/fac-in-update/fac-in-update.component';
+import { FacInResetComponent } from './components/fac-in-reset/fac-in-reset.component';
+
 import { ApprovalResultPageComponent } from './components/approval-result-page/approval-result-page.component';
 import { ApprovalSinglePageComponent } from './components/approval-single-page/approval-single-page.component';
+
 
 
 
@@ -132,8 +137,13 @@ handleError(error: Error){
     HpUsaNewComponent,
     HpEmeaNewComponent,
     HpIndonesiaNewComponent,
+
+    FacInUpdateComponent,
+    FacInResetComponent,
+
     ApprovalResultPageComponent,
     ApprovalSinglePageComponent
+
 
   ],
   imports: [
