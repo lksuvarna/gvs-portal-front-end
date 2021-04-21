@@ -136,8 +136,8 @@ hideChargeDepartmentCode() {
 
 entryDetailsLA(formData: NgForm) {	
     
-  if(formData.value.Location.toUpperCase() == 'SELECT JABBER LOCATION' || formData.value.Location == '') {	
-    alert('Please select the Jabber Location');	
+  if(formData.value.Location.toUpperCase() == 'SELECT JABBER / PHONE NUMBER LOCATION' || formData.value.Location == '') {	
+    alert('Please select the Jabber / Phone Number Location');	
     return;	
   }	
   // if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
