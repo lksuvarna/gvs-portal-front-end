@@ -36,6 +36,9 @@ import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
 import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
 import { HpInUpdateComponent } from './components/hp-in-update/hp-in-update.component';
 import { HpInDeleteComponent } from './components/hp-in-delete/hp-in-delete.component';
+import { HpUsaNewComponent } from './components/hp-usa-new/hp-usa-new.component';
+import { HpEmeaNewComponent } from './components/hp-emea-new/hp-emea-new.component';
+import { HpIndonesiaNewComponent } from './components/hp-indonesia-new/hp-indonesia-new.component';
 
 
 
@@ -73,6 +76,9 @@ const appRoutes: Routes = [
     { path: 'entrydetailsfn', component: HpInNewComponent},
     { path: 'entrydetailsfup', component: HpInUpdateComponent},
     { path: 'entrydetailsfde', component: HpInDeleteComponent},
+    { path: 'entrydetailsfusanew', component: HpUsaNewComponent},
+    { path: 'entrydetailsfemeanew', component: HpEmeaNewComponent},
+    { path: 'entrydetailsindo', component: HpIndonesiaNewComponent},
 
     { path: 'entrydetailsfac', component: FacInNewComponent},
 

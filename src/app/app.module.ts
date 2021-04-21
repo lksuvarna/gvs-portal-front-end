@@ -57,6 +57,9 @@ import { FacservicesComponent } from './components/facservices/facservices.compo
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
 import { HpInUpdateComponent } from './components/hp-in-update/hp-in-update.component';
 import { HpInDeleteComponent } from './components/hp-in-delete/hp-in-delete.component';
+import { HpUsaNewComponent } from './components/hp-usa-new/hp-usa-new.component';
+import { HpEmeaNewComponent } from './components/hp-emea-new/hp-emea-new.component';
+import { HpIndonesiaNewComponent } from './components/hp-indonesia-new/hp-indonesia-new.component';
 
 
 
@@ -122,7 +125,10 @@ handleError(error: Error){
     VoipLaUpdateComponent,
     FacInNewComponent,
     VoipUsaUpdateComponent,
-    HpInDeleteComponent
+    HpInDeleteComponent,
+    HpUsaNewComponent,
+    HpEmeaNewComponent,
+    HpIndonesiaNewComponent
 
   ],
   imports: [
