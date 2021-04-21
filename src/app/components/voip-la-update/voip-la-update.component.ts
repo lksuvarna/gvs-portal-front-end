@@ -96,6 +96,7 @@ export class VoipLaUpdateComponent implements OnInit {
       this.newcos=true;
       this.businessJust=true;
       this.toup_disp2='';
+      this.selectcos="";
     }
   }
 

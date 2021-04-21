@@ -13,6 +13,7 @@ export class servicenowservice {
 
   private submitUrl = '/api/submit_snow';
   private searchUrl ='/api/search_snow';
+  private approveUrl='/api/approve_snow';
   payload: snowsearch = new snowsearch();
   constructor(private http: HttpClient) { }
   submit_request(Jabber_new_payload : Jabber_New): Observable<any> {
@@ -102,6 +103,15 @@ export class servicenowservice {
       // })
   }
   
+ approvesnow(sysid : string, status: string, comments: string): Observable<any> {
+    console.log('calling snow swarch');
+    this.payload.request_type='snow_approve_requests';
+    this.payload.sysid=sysid;
+    this.payload.status=status;
+    this.payload.comments=comments;
+    return this.http.post(this.approveUrl,this.payload)
+      .pipe(catchError(this.errorhandler));
+  }
 
   errorhandler(error: HttpErrorResponse) {
     console.log('error is intercept');

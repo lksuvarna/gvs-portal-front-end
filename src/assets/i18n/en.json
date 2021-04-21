@@ -54,6 +54,7 @@
 
     },
     "Jabberservices": {
+
         "initiateJabber": " Please click on a request type below to initiate a Jabber service request.",
         "jnew": "Request a new service",
         "jupdate": "Update an existing service",
@@ -225,6 +226,7 @@
         "HELP": "HELP",
         "FEEDBACK": "FEEDBACK",
         "CHANGECOUNTRY": "CHANGE COUNTRY"
+=
     },
 
     "steps": {
