@@ -333,13 +333,13 @@ emailClick = false;
     console.log("navigation component" + this.pcode);	
   })
 
-  this.devices = sessionStorage.getItem('fdevicesindo')?.replace('"','');
+  this.devices = sessionStorage.getItem('fdevices')?.replace('"','');
   this.devices = this.devices.replace('"','').split(',');
-  this.emModels = sessionStorage.getItem('emmodelindo')?.replace('"','');
+  this.emModels = sessionStorage.getItem('emmodels')?.replace('"','');
   this.emModels = this.emModels.replace('"','').split(',');
-  this.fpModels = sessionStorage.getItem('fmodelindo')?.replace('"','');
+  this.fpModels = sessionStorage.getItem('fpmodels')?.replace('"','');
   this.fpModels = this.fpModels.split(',');
-  this.cModels = sessionStorage.getItem('confmodelindo')?.replace('"','');
+  this.cModels = sessionStorage.getItem('cmmodels')?.replace('"','');
   this.cModels = this.cModels.split(',');
   this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
   this.locationlist=this.locationlist?.replace('"','').split(',');

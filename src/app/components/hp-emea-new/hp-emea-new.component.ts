@@ -265,13 +265,13 @@ classofservice(cos:string) {
     console.log("navigation component" + this.pcode);	
   })
 
-  this.devices = sessionStorage.getItem('fdevicesemea')?.replace('"','');
+  this.devices = sessionStorage.getItem('fdevices')?.replace('"','');
   this.devices = this.devices.replace('"','').split(',');
-  this.emModels = sessionStorage.getItem('emmodelemea')?.replace('"','');
+  this.emModels = sessionStorage.getItem('emmodels')?.replace('"','');
   this.emModels = this.emModels.replace('"','').split(',');
-  this.fpModels = sessionStorage.getItem('fmodelemea')?.replace('"','');
+  this.fpModels = sessionStorage.getItem('fpmodels')?.replace('"','');
   this.fpModels = this.fpModels.split(',');
-  this.cModels = sessionStorage.getItem('confmodelemea')?.replace('"','');
+  this.cModels = sessionStorage.getItem('cmmodels')?.replace('"','');
   this.cModels = this.cModels.split(',');
   this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
   this.locationlist=this.locationlist?.replace('"','').split(',');

@@ -498,8 +498,17 @@ export class EmployeesearchComponent implements OnInit {
       case "fixedphone_new":
       this.title="Fixed Phone - New Request";
       this.exitrouting='fixedphoneservices';
-      if(this.countrydetails.jnavpage=='AP'){
-        this.routingname="/entrydetailsfn";
+      if(this.countrydetails.jnavpage=='ID'){
+        this.routingname="/entrydetailsindo";
+      }
+      else if (this.countrydetails.jnavpage=='EMEA'){
+        this.routingname='/entrydetailsfemeanew';
+      }
+      else if (this.countrydetails.jnavpage=='US'){
+        this.routingname='/entrydetailsfusanew';
+      }
+      else{
+        this.routingname='/entrydetailsfn';
       }
       this.reqname="-NS-";
       break;
