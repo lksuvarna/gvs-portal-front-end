@@ -18,7 +18,7 @@ db2search()
 
 }
 
-// Class used to create the payload for snow search service.
+// Class used to create the payload for snow search service AND snow Approve/Request request.
 export class snowsearch
 {
     cnum!: String;
@@ -26,6 +26,8 @@ export class snowsearch
     reqno !: String;
     sysid !: String;
     number !: String;
+    status !: String;
+    comments !: String;
 
 snowsearch()
  {
@@ -34,6 +36,7 @@ snowsearch()
   this.reqno="";
   this.sysid="";
   this.number="";
+  this.comments="";
  }
 
 }
@@ -229,6 +232,69 @@ Jabber_Update()
  }
 
 }
+
+// Class used to create the payload for snow new jabber service.
+export class Fac_New
+{
+    orinator_payload !: String;
+    cNum_payload !: String;
+    Buildings_Disp !: String;
+    Voice_Type_Disp !: String;
+    Projectid_Disp !: String;
+    icano_Disp !: String;
+    identifier_hp_Disp !: String;
+    BusinessUnit_Disp !: String;
+    Department_number_Disp !: String;
+    Location_final !: String;
+    accid_Disp !: String;
+    ReqNo !: String;
+    level2_japproval !: String;
+    countryname !: String;
+    request_type !: String;
+    evolution_instance !: String;
+    level1_japproval!: String;
+    qag !: String;
+    class_of_serice !: String;
+    gvs_portal_link !: String;
+    gvs_approval_link !: String;
+    SLA_type !: String;
+    country_code !:String;
+    default_call_permission !: String
+    Dept_IN !: String;
+    authLevel_final !: String;
+    Fac_Type_disp !: String;
+    validity_disp !: String;
+    comments !: String;
+    authLevel_disp !:String;
+    authValue !: String;
+
+Fac_New()
+ {
+    this.orinator_payload ="";
+    this.cNum_payload ="";
+    this.Location_final ="";
+    this.Buildings_Disp  ="";
+    this.Voice_Type_Disp  ="";
+    this.Projectid_Disp  ="";
+    this.Department_number_Disp ="";
+    this.BusinessUnit_Disp  ="";
+    this.Dept_IN  ="";
+    this.authLevel_final  ="";
+    this.Fac_Type_disp  ="";
+    this.validity_disp  ="";
+    this.comments  ="";
+    this.ReqNo ="";
+    this.gvs_portal_link ="";
+    this.gvs_approval_link ="";
+    this.countryname  ="";
+    this.SLA_type ="";
+    this.authLevel_disp ="";
+    this.authValue = ""
+
+ }
+
+}
+
 
 // // class used to create the payload for snow special request service
 

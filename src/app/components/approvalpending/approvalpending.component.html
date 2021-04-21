@@ -20,7 +20,7 @@
                 <td width="783"> 
                 <div>Enter Serial Number or Request Number</div></td>
                 <td width="217"><div class="ds-pad-l-1">
-            <input  class="ds-input" [(ngModel)]="search" style="width:220px !important;" maxlength="17"></div></td><td width="169">
+            <input  class="ds-input" style="width:220px !important;" maxlength="17"></div></td><td width="169">
                 <div class="ds-float-lg-right">
             <div class="ds-tray-fit-content ds-margin-bottom-0">
             <div class="button-bar ds-tray-fit-content ds-float-lg-right ">
@@ -43,7 +43,7 @@
                                     <input  name="req.sys_id" id="req.sys_id" type="checkbox" [(ngModel)]="checked[i]">
                                 </font>
                             </td>
-                            <td width="175"><a href="vv">{{req['sysapproval.variables.requested_by.user_name']}}</a></td>
+                            <td width="175"><a (click)='openpage(req)'>{{req['sysapproval.variables.requested_by.user_name'].replace('-','')}}</a></td>
                             <td width="194">{{req['sysapproval.variables.requested_by.name']}}<font color="#808080"> </font></td>
                             <td width="213">{{req['sysapproval.short_description']}}</td>
                             <td width="213">{{req['sysapproval.variables.id']}}</td>
@@ -52,40 +52,31 @@
                 </table>
                 </div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo"><p></p>
-            <p>No pending approvals for entered serial number or request number.</p><p>
+            <p>No pending approvals for entered serial number.</p><p>
         </p></div>
 
         <div class="ds-panel ds-col-12" ></div> 
-        <!-- <div class="ds-row ds-pad-t-2" style="margin-right:12px" *ngIf="errorinfo">
-            <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-2 ds-offset-lg-5">
-                <button class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0 " (click)="selectAllcheck()">SELECT ALL</button>
-            </div>
-            <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-2 ">
-                <button class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0 " (click)="unSelectAllcheck()">DESELECT ALL</button>
-            </div>
-            <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3">
-                <button class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" (click)="process()">APPROVE SELECTED ONE</button>
-            </div>
-        </div> -->
-        <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+        <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+            <div class="ds-loader-header">Your request is being processed. Do not refresh or go back.</div>
+            <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being processed. Do not refresh or go back."></div>
+        </div>
+        <div class="ds-row ds-pad-t-2" style="margin-right:12px" *ngIf="this.isButtonVisible && errorinfo">
             <div class="ds-tray-fit-content ds-mar-b-0">
                 <div class="button-bar ds-tray-fit-content ds-pad-t-1 ds-float-lg-right">
-                    <span class="ds-pad-l-4" id="button1">
-                        <input type="button" (click)="selectAllcheck()" class="ds-button ds-secondary 
-                        ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="SELECT ALL">
-                    </span>
-                    <span class="ds-pad-l-1" id="button2">
-                        <input type="button" (click)="unSelectAllcheck()" class="ds-button ds-secondary 
-                        ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="DESELECT ALL">
-                    </span>
-                    <span class="ds-pad-l-1 ds-pad-r-1" id="button3">
-                        <input type="button" name="NEXT" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" (click)="process()" value="APPROVE SELECTED ONE">
-                    </span>
-                </div>
-            </div>
-            
-        </div>   
+                <span class="ds-pad-l-4" id="button1">
+                <input type="button" (click)="selectAllcheck()" class="ds-button ds-secondary
+                ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="SELECT ALL">
+                </span>
+                <span class="ds-pad-l-1" id="button2">
+                <input type="button" (click)="unSelectAllcheck()" class="ds-button ds-secondary
+                ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="DESELECT ALL">
+                </span>
+                <span class="ds-pad-l-1 ds-pad-r-1" id="button3">
+                <input type="button" name="NEXT" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" (click)="process()" value="APPROVE SELECTED ONE">
+                </span>
+        </div>
 
+    
           
 
     </div>

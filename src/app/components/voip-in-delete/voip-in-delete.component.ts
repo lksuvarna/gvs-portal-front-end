@@ -61,8 +61,8 @@ export class VoipInDeleteComponent implements OnInit {
   
 
   entryDetails(formData: NgForm) {
-    if(formData.value.Jabber_1.toUpperCase() == 'SELECT JABBER NUMBER' || formData.value.Jabber_1 == '') {
-      alert(this.mainConfiguration.alerttranslation.selectlocation);
+    if(formData.value.Jabber_1.toUpperCase() == 'SELECT ONE' || formData.value.Jabber_1 == '') {
+      alert(this.mainConfiguration.alerttranslation.selectjabbernumber);
       return;
     }
     this.selectedJabber = formData.value.Jabber_1;

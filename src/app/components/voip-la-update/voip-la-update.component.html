@@ -45,7 +45,7 @@
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" (change)='SelectedJabber(number.value)' tabindex="1"
                                     #number ngModel>
-                  <option value="">Select One</option>
+                  <option value="">SELECT ONE</option>
                   <option name="Jabber_1" *ngFor='let fl_itn of Jabber; let i = index' [value]='fl_itn' selected>
                     {{ fl_itn }}</option>
                 </select>
@@ -263,6 +263,7 @@
               <input type="submit" name="next"
                 class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
+            <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
                     </div>
                 </div>
             </div>

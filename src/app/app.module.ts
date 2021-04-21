@@ -51,6 +51,7 @@ import { FixedphoneservicesComponent } from './components/fixedphoneservices/fix
 import { VoipLaUpdateComponent } from './components/voip-la-update/voip-la-update.component';
 
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+import { HpAuNewComponent } from './components/hp-au-new/hp-au-new.component';
 
 import { FacservicesComponent } from './components/facservices/facservices.component';
 
@@ -60,6 +61,9 @@ import { HpInDeleteComponent } from './components/hp-in-delete/hp-in-delete.comp
 import { HpUsaNewComponent } from './components/hp-usa-new/hp-usa-new.component';
 import { HpEmeaNewComponent } from './components/hp-emea-new/hp-emea-new.component';
 import { HpIndonesiaNewComponent } from './components/hp-indonesia-new/hp-indonesia-new.component';
+import { ApprovalResultPageComponent } from './components/approval-result-page/approval-result-page.component';
+import { ApprovalSinglePageComponent } from './components/approval-single-page/approval-single-page.component';
+
 
 
 
@@ -118,17 +122,18 @@ handleError(error: Error){
     PagenotfoundComponent,
     FixedphoneservicesComponent,
     VoipUsaNewComponent,
-
+    HpAuNewComponent,
     FacInNewComponent,
     FacservicesComponent,
-
     VoipLaUpdateComponent,
     FacInNewComponent,
     VoipUsaUpdateComponent,
     HpInDeleteComponent,
     HpUsaNewComponent,
     HpEmeaNewComponent,
-    HpIndonesiaNewComponent
+    HpIndonesiaNewComponent,
+    ApprovalResultPageComponent,
+    ApprovalSinglePageComponent
 
   ],
   imports: [

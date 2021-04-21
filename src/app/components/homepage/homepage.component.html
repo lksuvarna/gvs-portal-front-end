@@ -15,12 +15,14 @@
    </font>
   
 </div>
-<div class="ds-row">
+<div class="ds-row" *ngIf = translatecountryname1>
     <div class="ds-col-12">
         <p class="ds-text-small ds-text-align-right ds-font-weight-light">
+            
  <b><span translate style="color: black">home.select-language</span></b><br>          
 <a (click)="changeLanguage('en')"  style="color: black" ><span class="ds-font-weight-light"> English </span></a><span>|</span>
 <a (click)="changeLanguage('fr_ca')"  style="color: black" ><span class="ds-font-weight-light"> Français </span></a>
+            
         </p>
     </div>
 </div>

@@ -44,10 +44,10 @@
 
     "lhs": {
         "Services": "Prestations de service",
-        "Jabber": "Jacasser",
-        "FAC Code": "Code FAC",
-        "Fixed Phone": "Téléphone fixe",
-        "Special Request": "Demande spéciale",
+        "Jabber": "Jabber",
+        "FAC Code": "FAC Code",
+        "Fixed Phone": "Fixed Phone",
+        "Special Request": "Special Request",
         "Approvals Pending": "Approbations en attente",
         "Revalidation Pending": "Revalidation en attente",
         "Resources": "Ressources",
@@ -76,7 +76,7 @@
         "norecord":"Il n'y a pas d'enregistrement d'un employé IBM avec le numéro de série " ,
         "availablefromBluePages" :"disponible auprès de BluePages",
         "opps":"Opps! Quelque chose s'est usé Veuillez réessayer plus tard.",
-        "JabberLocation" : "Emplacement de Jabber",
+        "JabberLocation" : "Emplacement de Jabber / Emplacement du numéro de téléphone",
         "Voicemail" : "Messagerie vocale",
         "ClassofService" : "Classe de service",
         "pleasesubmittostart":"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning."
@@ -97,8 +97,16 @@
         "Fixed Phone - New Request" : "Téléphone fixe - Nouvelle demande",
         "New Fixed Phone Request" : "Nouvelle demande de téléphone fixe",
         "Fixed Phone - Update Request" : "Téléphone fixe - Demande de mise à jour",
-        "Fixed Phone - Delete Request"  : "Téléphone fixe - Demande de suppression"
+        "Fixed Phone - Delete Request"  : "Téléphone fixe - Demande de suppression",
 
+        "Deactivate an existing FAC Code" :"Désactiver un code FAC existant",
+        "FAC Code Deactivate Request" : "Demande de désactivation du code FAC",
+        "Request a new FAC Code" : "Demander un nouveau code FAC",
+        "Fac Code New Request" : "Nouvelle demande de code FAC",
+        "Update an existing FAC code" : "Mettre à jour un code FAC existant",
+        "FAC Code Update Request":"Demande de mise à jour du code FAC",
+        "Reset an existing FAC code" : "Réinitialiser un code FAC existant",
+        "FAC Code Reset Request": "Demande de mise à jour du code FAC"
 
     },
     "employeeinfotrans":{
@@ -138,7 +146,8 @@
         "alreadyonerequestinprogress":"Le numéro de série que vous avez entré a déjà une nouvelle demande Jabber est en cours et le numéro de demande est",
         "alreadyoneupdaterequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de mise à jour Jabber est en cours et le numéro de demande est",
         "alreadyonemoverequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de déplacement Jabber est en cours et le numéro de demande est",
-        "alreadyonedeleterequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est"
+        "alreadyonedeleterequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est",
+        "alreadyonefacdeleterequestinprogress" :"Le numéro de série que vous avez entré a déjà une demande de suppression FAC est en cours et le numéro de demande est"
     },
     "Jabberentrydetails":{
         "Fieldsasterisk":"Champs marqués d'un astérisque",
@@ -160,9 +169,11 @@
          "SelectLocation" : "Sélectionnez l'emplacement"
      },
      "Jabberupdate":{
-        "SelectJabberNumber":"Sélectionnez le numéro Jabber",
+        "SELECTONE":"CHOISISSEZ UNE",
         "ReviewDetails" : "revoir les détails",
-        "JabberNumber" : "Numéro Jabber"
+        "JabberNumber" : "Numéro Jabber",
+        "SelectJabberNumber" : "Sélectionnez le numéro Jabber",
+        "Jabber/PhoneNumberLocation" :"Sélectionnez Emplacement du numéro de téléphone / Jabber"
     },
 
     "Jabbermove":{
