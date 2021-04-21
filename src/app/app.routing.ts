@@ -30,14 +30,13 @@ import { FixedphoneservicesComponent } from './components/fixedphoneservices/fix
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {VoipLaUpdateComponent} from './components/voip-la-update/voip-la-update.component';
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+import { FacInUpdateComponent } from './components/fac-in-update/fac-in-update.component';
+import { FacInResetComponent } from './components/fac-in-reset/fac-in-reset.component';
 
 import { FacservicesComponent } from './components/facservices/facservices.component';
 
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
 import { HpAuNewComponent } from './components/hp-au-new/hp-au-new.component';
-
-
-
 
 
 
@@ -73,6 +72,8 @@ const appRoutes: Routes = [
     { path: 'entrydetailsfn', component: HpInNewComponent},
     { path: 'entrydetailsaufn', component: HpAuNewComponent},
     { path: 'entrydetailsfac', component: FacInNewComponent},
+    { path: 'entrydetailsfacu', component: FacInUpdateComponent},
+    { path: 'entrydetailsfacr', component: FacInResetComponent},
     { path: 'entrydetails_update_la', component: VoipLaUpdateComponent},
     { path: 'entrydetails_update_us', component: VoipUsaUpdateComponent} , 
     
