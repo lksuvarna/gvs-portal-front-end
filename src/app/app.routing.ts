@@ -30,9 +30,9 @@ import { FixedphoneservicesComponent } from './components/fixedphoneservices/fix
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {VoipLaUpdateComponent} from './components/voip-la-update/voip-la-update.component';
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
-
+import { ApprovalResultPageComponent } from './components/approval-result-page/approval-result-page.component';
 import { FacservicesComponent } from './components/facservices/facservices.component';
-
+import {ApprovalSinglePageComponent} from './components/approval-single-page/approval-single-page.component';
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
 import { HpAuNewComponent } from './components/hp-au-new/hp-au-new.component';
 
@@ -63,6 +63,8 @@ const appRoutes: Routes = [
     { path: 'entrydetailsijm', component: VoipInMoveComponent },      
     { path: 'reviewdetails', component: ReviewdetailsComponent },  
     { path: 'resultpage', component: ResultpageComponent },
+    {path: 'approvalresult', component: ApprovalResultPageComponent},
+    {path: 'approvalsingle', component:ApprovalSinglePageComponent},
     { path: 'employeesearchdelete', component: EmployeesearchVoipDeleteComponent},
     { path: 'revalidationpending', component: RevalidationpendingComponent},
     { path: 'approvalpending', component: ApprovalpendingComponent},

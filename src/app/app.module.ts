@@ -56,6 +56,8 @@ import { HpAuNewComponent } from './components/hp-au-new/hp-au-new.component';
 import { FacservicesComponent } from './components/facservices/facservices.component';
 
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
+import { ApprovalResultPageComponent } from './components/approval-result-page/approval-result-page.component';
+import { ApprovalSinglePageComponent } from './components/approval-single-page/approval-single-page.component';
 
 
 
@@ -119,7 +121,9 @@ handleError(error: Error){
     FacservicesComponent,
     VoipLaUpdateComponent,
     FacInNewComponent,
-    VoipUsaUpdateComponent
+    VoipUsaUpdateComponent,
+    ApprovalResultPageComponent,
+    ApprovalSinglePageComponent
 
   ],
   imports: [

@@ -19,7 +19,7 @@ db2search()
 
 }
 
-// Class used to create the payload for snow search service.
+// Class used to create the payload for snow search service AND snow Approve/Request request.
 export class snowsearch
 {
     cnum!: String;
@@ -27,6 +27,8 @@ export class snowsearch
     reqno !: String;
     sysid !: String;
     number !: String;
+    status !: String;
+    comments !: String;
 
 snowsearch()
  {
@@ -35,6 +37,7 @@ snowsearch()
   this.reqno="";
   this.sysid="";
   this.number="";
+  this.comments="";
  }
 
 }

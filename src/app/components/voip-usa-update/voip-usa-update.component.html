@@ -154,6 +154,7 @@
               <input type="submit" name="next"
                 class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
+            <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
                     </div>
                 </div>
             </div>
