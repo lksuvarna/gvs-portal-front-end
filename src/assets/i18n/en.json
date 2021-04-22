@@ -169,8 +169,8 @@
         "FixedPhoneIdentifier":"Fixed Phone Identifier",
         "Submissioninprogress":"Your request submission is in progress.Do not Go back or Refresh the page.",
         "Submissionbeinginprogress":"Your request is being submitted. Do not refresh or go back.",
-        "Back" : "Back",
-        "Next" : "Next",
+        "Back" : "BACK",
+        "Next" : "NEXT",
         "Select Location" : "Select Location"
         
     },
