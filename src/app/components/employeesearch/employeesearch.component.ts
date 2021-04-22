@@ -503,17 +503,19 @@ export class EmployeesearchComponent implements OnInit {
       case "fixedphone_new":
       this.title="Fixed Phone - New Request";
       this.exitrouting='fixedphoneservices';
-      if(this.countrydetails.jnavpage=='ID'){
-        this.routingname="/entrydetailsindo";
-      }
-      else if (this.countrydetails.jnavpage=='EMEA'){
-        this.routingname='/entrydetailsfemeanew';
-      }
-      else if (this.countrydetails.jnavpage=='US'){
-        this.routingname='/entrydetailsfusanew';
-      }
-      else{
-        this.routingname='/entrydetailsfn';
+      if(this.countrydetails.fnavpage=='AP'){
+      this.routingname="/entrydetailsfn";
+      } else if(this.countrydetails.fnavpage=='AU') {
+      this.routingname='/entrydetailsaufn';
+      } else if(this.countrydetails.fnavpage=='EMEA') {
+      this.routingname='/entrydetailsfemeanew';
+      //Add routingname here for EMEA
+      } else if(this.countrydetails.fnavpage=='NA') {
+      //Add routingname here for NA
+      }else if (this.countrydetails.fnavpage=='US'){
+      this.routingname='/entrydetailsfusanew';
+      }else if(this.countrydetails.fnavpage=='ID'){
+      this.routingname="/entrydetailsindo";
       }
       this.reqname="-NS-";
       break;

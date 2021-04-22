@@ -54,84 +54,6 @@
 
     },
     "Jabberservices": {
-        "initiateJabber":" Please click on a request type below to initiate a Jabber service request.",
-        "jnew":"Request a new service",
-        "jupdate":"Update an existing service",
-        "jmove":"Move an existing service",
-        "jdelete":"Delete an existing service"
-    
-    },
-    "Jabbernewtrans" :{
-        "Reqnewservice":"This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk",
-        "arerequired":"are required.",
-        "EmployeeSearch":"Employee Search",
-        "requestfor":"Who is this request for",
-        "Myself":"Myself",
-        "AnotherEmployee":"Another Employee",
-        "Name":"Name",
-        "SerialNumber":"Serial Number",
-        "EmployeeSerialNumber":"Employee Serial Number",
-        "forexample":"(eg 012789)",
-        "CountryCode":"Country Code",
-        "SelectOne":"Select One",
-        "norecord":"There is no record of an IBM employee with the serial number " ,
-        "availablefromBluePages" :"available from BluePages",
-        "opps":"Opps! Some thing went worng.Please try again latter.",
-        "JabberLocation" : "Jabber / Phone Number location",
-        "Voicemail" : "Voicemail",
-        "ClassofService" : "Class of Service",
-        "pleasesubmittostart":"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service."
-
-    },
-
-    "servicestitle":{
-        "Request new Jabber service" :"Request new Jabber service",
-        "Delete an existing service" : "Delete an existing service",
-        "Request a new service" :"Request a new service",
-        "Update an existing service" : "Update an existing service",
-        "Request Move Jabber service" :"Request Move Jabber service",
-        "Requests" : "Requests",
-        "Resources" : "Resources",
-        "Update Jabber Request" : "Update Jabber Request",
-        "Delete Jabber Request" : "Delete Jabber Request",
-        "Deactivate an existing FAC Code" :"Deactivate an existing FAC Code",
-        "FAC Code Deactivate Request" : "FAC Code Deactivate Request",
-        "Move Jabber Request" : "Move Jabber Request",
-        "Fixed Phone - New Request" : "Fixed Phone - New Request",
-        "New Fixed Phone Request" : "New Fixed Phone Request",
-        "Fixed Phone - Update Request" : "Fixed Phone - Update Request",      
-        "Fixed Phone - Delete Request"  : "Fixed Phone - Delete Request",
-        "Request a new FAC Code" : "Request a new FAC Code",
-        "FAC Code New Request" : "FAC Code New Request",
-        "Update an existing FAC code" : "Update an existing FAC code",
-        "FAC Code Update Request":"FAC Code Update Request",
-        "Reset an existing FAC code" : "Reset an existing FAC code",
-        "FAC Code Reset Request": "FAC Code Update Request"
-        
-        
-        
-
-
-    },
-    "employeeinfotrans":{
-        "ifinfoiscorrect":"If the following information is correct, click Next. Any errors must be corrected in the employee's",
-        "BluePagesrecord":"BluePages record",
-        "beforecontinuing":"before continuing.",
-        "EmployeeInformation":"Employee Information",
-        "EmployeeEntryDetails":"Employee Entry Details",
-        "Name":"Name:",
-        "SerialNumber":"Serial Number:",
-        "JobResponsibility":"Job Responsibility:",
-        "BusinessUnit":"Business Unit:",
-        "Department":"Department:",
-        "Country":"Country:",
-        "E-mail":"E-mail:",
-        "noteligiblejabber":"The serial number that you have entered is not eligible to request Jabber account.",
-        "itnexistsforuser":"The IBM Telephone Number (ITN) that exists for this user is .",
-        "nojabber":"There is no Jabber for this serial number.",
-        "nojabberusethislink":"The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN ",
-        "GlobalVoiceInfrastructure":"Global Voice Infrastructure.",
-        "receiveITN":"you have received the ITN you can then request Jabber.  Thank you.",
 
         "initiateJabber": " Please click on a request type below to initiate a Jabber service request.",
         "jnew": "Request a new service",
@@ -243,8 +165,8 @@
         "FixedPhoneIdentifier": "Fixed Phone Identifier",
         "Submissioninprogress": "Your request submission is in progress.Do not Go back or Refresh the page.",
         "Submissionbeinginprogress": "Your request is being submitted. Do not refresh or go back.",
-        "Back": "Back",
-        "Next": "Next",
+        "Back": "BACK",
+        "Next": "NEXT",
         "Select Location": "Select Location"
 
     },
@@ -304,7 +226,7 @@
         "HELP": "HELP",
         "FEEDBACK": "FEEDBACK",
         "CHANGECOUNTRY": "CHANGE COUNTRY"
-=
+
     },
 
     "steps": {
