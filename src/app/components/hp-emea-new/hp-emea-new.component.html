@@ -9,7 +9,7 @@
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <form [hidden]="isEntryForm" (submit)='entryDetails(formData)' #formData='ngForm'>
 
-            <b>Request new Fixed Phone service</b>
+            <b>Fixed Phone - New Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
                 Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.
@@ -24,49 +24,41 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Select
-                State</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
-                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel>
-                                    <option value ="">Select State</option>
-                                    <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
-                    {{ fl_location }}</option>
-                </select>
+                            <div class="ds-dropdown ds-secondary"role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  
+                                style="width:300px !important; text-transform: uppercase;" title="Office Location" 
+                                #location  ngModel>
+                                    <option value ="">Select Location</option>
+                                    <option name="Location_1" *ngFor='let fl_location of locationlist' [value]='fl_location' >
+                                        {{ fl_location }}</option>
+                                </select>
                             </div>
                         </td>
                     </tr>
-                    <tr valign="top" >
-                        <td colspan="2" width="46%"><label for="builId" class="ds-text-capitalize">Select Location</label>
-                            <span class="ds-text-contextual-red-2">*</span>
-                        </td>
-                        <td width="54%">
-                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select name="Buildings" rows="2" [(ngModel)]='campus' cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1">
-                                    <option name="Buildings" value ="Select Location">Select Location</option>
-                                    <option name="Buildings" *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
-                </select>
-                            </div>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
 
             <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
+                    
+
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize">Type of Device </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
-                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Device Type" tabindex="1" #device (change)='selectedDevice(device.value)' ngModel [(ngModel)]='selected_device'>
+                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left"  
+                                style="width:300px !important; text-transform: uppercase;" title="Device Type" 
+                                #device (change)='selectedDevice(device.value)' ngModel [(ngModel)]='selected_device'>
                                     <option value ="">Select Device</option>
-                                    <option name="Device_Type" *ngFor='let device of devices' [value]='device' >
-                    {{ device }}</option>
-                </select>
+                                    <option name="Device_Type" *ngFor='let device of devices' [value]='device' >{{ device }}</option>
+                                </select>
                             </div>
                         </td>
                     </tr>
@@ -83,41 +75,18 @@
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
-                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Model" tabindex="1" [(ngModel)]='modelValue'>
+                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left"  
+                                style="width:300px !important; text-transform: uppercase;" title="Model" [(ngModel)]='modelValue'>
                                     <option value ="">Select Model</option>
-                                    <option name="Model_Type" *ngFor='let model of models' [value]='model'>
-                    {{ model }}</option>
-                </select>
+                                    <option name="Model_Type" *ngFor='let model of models' [value]='model'>{{ model }}</option>
+                                </select>
                             </div>
                         </td>
                     </tr>
 
-                    <tr valign="top" [hidden]='showforFixedPhone'>
-                        <td colspan="2" width="46%" height="10"><label for="EmployeeID" class="ds-text-capitalize">Employee ID </label>
-                            <span class="ds-text-contextual-red-2">*</span>
-                            
-                        </td>
-                        <td width="54%" height="10">
-                            <label style="display: inline-flex;">
-                                <input name="StepMentor" class="ds-input" style="width:250px !important;display: inline-block;" title="Employee ID" [(ngModel)]='empID' (change)='onEmpIDChange()'>
-                                <button class="ds-button ds-small ds-width-auto" style="padding-right: 1rem;padding-left: 1rem;margin: 4px;" (click)='fetchEmployee()'>Go</button>
-                            </label>
-                                <div [hidden]='goClick'>
-                                <div [hidden]='emailResult' id="StepMentorDiv" *ngIf="goResults; else elseBlock" style="font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;">
-                                    Search result: <br>
-                                    <a (click)='onEmailClick()'>{{ this.email }}</a><br>
-                                </div>
-                                <ng-template #elseBlock>
-                                <div style="font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;">
-                                    No match, please try again<br>
-                                </div>
-                            </ng-template>
-                        </div>
-                        </td>
-                    </tr>
-
-                    <tr class='ds-mar-t-1_5' valign="top" [hidden]='showforFixedPhone'>
+                  
+                    <!-- <tr class='ds-mar-t-1_5' valign="top" [hidden]='showforFixedPhone'>
                       <td colspan="2" width="46%" height="10"><label for="Voicemail"
                           class="ds-text-capitalize ds-mar-t-1" style="display: inline-block;">Voicemail Required</label>
                       </td>
@@ -125,14 +94,14 @@
                         <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                           <select rows="2" name="Voicemail" cols="40" id="VoicemailId"
                             class="ds-title ds-align-text-left ds-mar-t-1"
-                            style="width:300px !important; text-transform: uppercase;" title="Voicemail" tabindex="1" [(ngModel)]="voicemail"
+                            style="width:300px !important; text-transform: uppercase;" title="Voicemail"  [(ngModel)]="voicemail"
                             ngModel>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
                           </select>
                         </div>
                       </td>
-                    </tr>
+                    </tr> -->
 
                     <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%" height="10"><label for="cos"
@@ -142,10 +111,10 @@
                           <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                             <select rows="2" name="cos" cols="40" id="COSId"
                               class="ds-title ds-align-text-left"
-                              style="width:300px !important; text-transform: uppercase;" title="Class of Service" tabindex="1" [(ngModel)]='COS' #cos (change)='classofservice(cos.value)'
+                              style="width:300px !important; text-transform: uppercase;" title="Class of Service" [(ngModel)]='COS' #cos (change)='classofservice(cos.value)'
                               ngModel>
-                              <option value="National">National</option>
-                              <option value="International">International</option>
+                              <option value="national">National</option>
+                              <option value="international">International</option>
                             </select>
                           </div>
                         </td>
@@ -189,15 +158,15 @@
             <div class=" ds-panel ds-col-12 "></div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
                 <div class="ds-tray-fit-content ds-mar-b-0">
-                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1 ds-float-lg-right ">
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="BACK" (click)="backClick()">
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" 
+                value="Back" (click)="backClick()">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                tabindex="32767" value="NEXT">
+               value="Next">
             </span>
                     </div>
                 </div>
@@ -218,7 +187,7 @@
 
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2>
 
-            <table id="t2" width="100%" cellspacing="8" cellpadding="0" border="0">
+            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10">
@@ -226,13 +195,13 @@
                         </td>
                         <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
                     </tr>
-                    <tr valign="top">
-                        <td colspan="2" width="46%">
-                            <label for="addId1">Campus</label>
-                        </td>
-                        <td width="54%">{{reviewDetailsIndia.campus}}</td>
-                    </tr>
                     
+                </tbody>
+            </table>
+
+            <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                                        
                     <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="device">Type of Device</label>
@@ -247,19 +216,13 @@
                         <td width="54%">{{reviewDetailsIndia.model}}</td>
                     </tr>
                     
-                    <tr valign="top" [hidden]='hideEmpID'>
-                        <td colspan="2" width="46%">
-                            <label for="employeeId">Employee ID</label>
-                        </td>
-                        <td width="54%">{{reviewDetailsIndia.employeeId}}</td>
-                    </tr>
-                    
-                    <tr valign="top" [hidden]='hideVoicemail'>
+                                      
+                    <!-- <tr valign="top" [hidden]='hideVoicemail'>
                         <td colspan="2" width="46%">
                             <label for="voiemail">Voicemail Required</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.voicemail}}</td>
-                    </tr>
+                    </tr> -->
                     
                     <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%">
@@ -272,7 +235,7 @@
                         <td colspan="2" width="46%">
                             <label for="justification">Business Justification</label>
                         </td>
-                        <td width="54%" style='word-wrap: break-word;'>{{reviewDetailsIndia.justification}}</td>
+                        <td width="54%">{{reviewDetailsIndia.justification}}</td>
                     </tr>
                     
                     <tr valign="top">
@@ -302,12 +265,12 @@
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
                 (click)='BackButton()' *ngIf="this.isButtonVisible">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="SUBMIT" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+                value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
                         
 

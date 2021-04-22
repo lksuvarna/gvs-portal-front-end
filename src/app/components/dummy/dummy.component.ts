@@ -39,7 +39,7 @@ export class DummyComponent implements OnInit {
     
     this.servicesData = servicesData.data[0];
           // Code to search Db2 for resrouces
-          this.Db2Service.search_db2('06685M744','jabber_delete').subscribe(data=> {
+          this.Db2Service.search_db2('06685M744','fixedphone_delete','SEP006789TR7832','35301234','India').subscribe(data=> {
             console.log(' db2 response', data);
           });
 

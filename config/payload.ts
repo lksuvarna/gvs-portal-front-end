@@ -1,4 +1,3 @@
-
 // Class used to create the payload for Db2 search service.
 export class db2search
 {
@@ -230,7 +229,6 @@ Jabber_Update()
     this.Justification="";
     this.New_Voice="";
     this.New_COS="";
-    
  }
 
 }
@@ -538,9 +536,9 @@ export class fixedphone_delete
 export class fixedphone_update
 {
 
-request_type!: String;
-orinator_payload!: String;
-cNum_payload!: String;
+request_type!: String; 
+orinator_payload!: String; 
+cNum_payload!: String; 
 Comments_Disp!: String;
 Newdesc_Disp!: String;
 NewModel_Disp!: String;
@@ -550,7 +548,7 @@ currmodel!: String;
 olddesc!: String;
 Identifier!: String;
 MAC!: String;
-Location_fina!: String;
+Location_final!: String;
 LocationCorrectnew!: String;
 ReqNo!: String;
 countryname!: String;
@@ -572,7 +570,7 @@ fixedphone_update(){
     this.olddesc="";
     this.Identifier="";
     this.MAC="";
-    this.Location_fina="";
+    this.Location_final="";
     this.LocationCorrectnew="";
     this.ReqNo="";
     this.countryname="";

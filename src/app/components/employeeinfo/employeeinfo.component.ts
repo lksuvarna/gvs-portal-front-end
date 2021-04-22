@@ -67,7 +67,8 @@ export class EmployeeinfoComponent implements OnInit {
   backClick(){
     sessionStorage.setItem('backbutton','yes');
     sessionStorage.setItem('step','step1');
-    this.location.back();
+   // this.location.back();
+    this.router.navigate(['/employeesearch'],{ queryParams: { country: this.pcode, service: this.service } });
   }
   
   ngOnInit(): void {
@@ -146,7 +147,7 @@ export class EmployeeinfoComponent implements OnInit {
       this.page = 'move Jabber';
     }
      if (this.sessionwarninginfosnow=='true1'){
-       this.identifier1=sessionStorage.getItem('identifier1')?.replace(" ","");
+       this.identifier1=sessionStorage.getItem('identifier1')
       this.warninginfosnowothers = true;   
       this.isDataLoaded=true;
      }
