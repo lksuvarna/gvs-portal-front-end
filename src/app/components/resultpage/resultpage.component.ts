@@ -72,5 +72,14 @@ if(this.service=='fixedphone_new'){
   this.page='new Fixed Phone';
   return this.page;
 }
+if(this.service=='fixedphone_update'){
+  this.page='update Fixed Phone';
+  return this.page;
+}
+if(this.service=='fixedphone_delete'){
+  this.page='delete Fixed Phone';
+  return this.page;
+}
+
     }
   }
