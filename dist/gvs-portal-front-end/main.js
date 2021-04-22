@@ -848,7 +848,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -16441,7 +16441,7 @@ class ApprovalpendingComponent {
         }
         for (var i = 0; i < this.pendingRequest_original.length; i++) {
             console.log(this.pendingRequest_original[i]['sysapproval.variables.requested_by.user_name'].replace('-', ''));
-            if ((this.search == this.pendingRequest_original[i]['sysapproval.variables.requested_by.user_name'].replace('-', '')) || (this.search.toUpperCase() === this.pendingRequest_original[i]['sysapproval.variables.id'].toUpperCase()))
+            if ((this.search.toUpperCase() === this.pendingRequest_original[i]['sysapproval.variables.requested_by.user_name'].replace('-', '').toUpperCase()) || (this.search.toUpperCase() === this.pendingRequest_original[i]['sysapproval.variables.id'].toUpperCase()))
                 List.push(this.pendingRequest_original[i]);
         }
         this.pendingRequest = List;
