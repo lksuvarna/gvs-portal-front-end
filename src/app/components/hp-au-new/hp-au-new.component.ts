@@ -20,7 +20,7 @@ export class HpAuNewComponent implements OnInit {
   camp: any = [];	
   buildA: any = [];	
   build: any = [];	
-  devices:any = ['Extension Mobility Station','Conference / Meeting Room Phone','Fixed Phone User'];
+  devices:any = [];
   j = 0;	
   countryname:any;	
 ccode='';	
@@ -33,7 +33,7 @@ isSpinnerVisible= false;
 
 isEntryForm = false;	
 isReviewForm = true;	
-Voice_Type = "No";	
+Voice_Type = "no";	
 hideDeptCode = true;	
 hideBuilding = true;	
 //fixedPhoneIdentifier = false;	
@@ -57,7 +57,7 @@ showforAnyDevice = true;
 showforFixedPhone = true;
 showBusinessNeed = true;
 voicemail = 'no';
-COS = 'national';
+COS = 'National';
 selected_device:any = '';
 modelValue:any;
 empID:any='';
@@ -78,26 +78,7 @@ hideVoicemail:any;
 errorinfo=false;
   
     
-constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private bpservices:bpservices) { 	
- /* this.Locations = {	
-    locc : ['Banglore~~MTP','Banglore~~SA',	
-    'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech','Hyderabad~~Hitech2']	
-    };	
-  for(var i=0;i<this.Locations.locc.length;i++) {	
-    var n=this.Locations.locc[i].indexOf("~")	
-    this.campA[i] = this.Locations.locc[i].substr(0,n);	
-    this.buildA[i] = this.Locations.locc[i].substr(n+2,this.Locations.locc[i].length);	
-    }	
-    for (var i=0;i<this.campA.length;i++) {	
-    if(this.campA[i] !=this.campA[i+1]) {	
-    this.camp[this.j] = this.campA[i];	
-    this.j++;	
-    }	
-    }	*/
-}	
-// submit(){	
-//   this.router.navigate(['/reviewdetails']) 	
-// }	
+constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private bpservices:bpservices) {}	
 
 // Submit to Fixed Phone New to Snow
 
@@ -107,8 +88,8 @@ reviewDetailsIndia = {
 
   officeLocation:	"",	
   campus:	"",	
-  funded:	"",	
-  chargeDepartmentCode:	"",	
+  funded:	"No",	
+  chargeDepartmentCode:	"NA",	
   businessUnit:	"",	
   projectId: "",	
   accountId: " ",	
@@ -123,7 +104,7 @@ reviewDetailsIndia = {
   employeeId:"",
   voicemail:"",
   cos:"",
-  justification:"",
+  justification:"NA",
   description:"",
   mac:"",
 }	
@@ -175,7 +156,7 @@ selectedDevice(device:string) {
     this.models = [...this.fpModels];
     this.hideEmpID = false;
     this.hideVoicemail = false;
-    if(this.COS == 'international') {
+    if(this.COS == 'International') {
       this.showBusinessNeed = false;
     }
   }
@@ -231,6 +212,7 @@ fetchEmployee() {
         this.go = true;
         this.goResults = true;
         this.emailClick = false;
+        this.emailResult = false;
     } else {
         this.go = false;
         this.goResults = false;
@@ -248,7 +230,7 @@ onEmailClick() {
 }
 
 classofservice(cos:string) {
-  if(cos == 'international') {
+  if(cos == 'International') {
     this.showBusinessNeed = false;
   } else {
     this.showBusinessNeed = true;
@@ -346,11 +328,11 @@ submit_snow(){
     // by default set to true. below line can be removed if needed.	
     //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
     //this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
-    this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+    //this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
     this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
     this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;	
-    this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
+    //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
     this.payload.ReqNo=this.reqno;
     this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
     this.payload.Model_Disp =  this.reviewDetailsIndia.model;
@@ -406,20 +388,23 @@ ngOnInit(): void {
     this.service=params.service;	
     this.pcode = params.country;	
     console.log("navigation component" + this.pcode);	
-  })	
+  });
+  this.devices = sessionStorage.getItem('fdevices')?.replace('"','');	
+  this.devices = this.devices.replace('"','').split(',');	
   this.emModels = sessionStorage.getItem('emmodels')?.replace('"','');
   this.emModels = this.emModels.replace('"','').split(',');
   this.fpModels = sessionStorage.getItem('fpmodels')?.replace('"','');
   this.fpModels = this.fpModels.replace('"','').split(',');
   this.cModels = sessionStorage.getItem('cmmodels')?.replace('"','');
   this.cModels = this.cModels.replace('"','').split(',');
-  this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
-  this.locationlist=this.locationlist?.replace('"','').split(',');	
+  this.locationlist=sessionStorage.getItem('locationdetails')
+  this.locationlist=this.locationlist?.replaceAll('"','').split(',');
+  console.log("lllll"+this.locationlist);
 
   for (var i = 0; i < this.locationlist.length; i++) {	
-    var n = this.locationlist[i].indexOf("~")	
-    this.campA[i] = this.locationlist[i].substr(1, n - 1);	
-    this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);	
+    var n = this.locationlist[i].indexOf("-")	
+    this.campA[i] = this.locationlist[i].substr(0, n);	
+    this.buildA[i] = this.locationlist[i].substring(n + 1, this.locationlist[i].length);	
   }	
   for (var i = 0; i < this.campA.length; i++) {	
     if (this.campA[i] != this.campA[i + 1]) {	
@@ -441,13 +426,6 @@ ngOnInit(): void {
   }	
   this.reqFor = sessionStorage.getItem('radioAction')
   this.servicesData = servicesData.data[0];	
-  //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
-  //alert(this.reviewDetailsIndia.reqno);	
-  // this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
-  // this.employeeInfo = JSON.parse(this.employeeInfo1);	
-  // if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
-  //   this.hideProjectId = true;
-  //   }
 }	
 
 previousStep(event : any){

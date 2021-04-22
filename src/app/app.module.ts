@@ -56,6 +56,7 @@ import { HpAuNewComponent } from './components/hp-au-new/hp-au-new.component';
 import { FacservicesComponent } from './components/facservices/facservices.component';
 
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
+import { HpAuUpdateComponent } from './components/hp-au-update/hp-au-update.component';
 
 
 
@@ -118,7 +119,8 @@ handleError(error: Error){
     FacservicesComponent,
     VoipLaUpdateComponent,
     FacInNewComponent,
-    VoipUsaUpdateComponent
+    VoipUsaUpdateComponent,
+    HpAuUpdateComponent
 
   ],
   imports: [

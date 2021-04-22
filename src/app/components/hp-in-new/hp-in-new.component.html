@@ -64,11 +64,11 @@
                                 <div class="ds-input-radio-group">
                                     <label for="radio1" class="ds-input-radio ds-pad-r-1" style="display:inline">
                     <input type="radio" [(ngModel)]="Voice_Type" name="Voice_Type" id="radio1" class="ds-input"
-                      value="Yes" (click)='showChargeDepartmentCode()'>
+                      value="yes" (click)='showChargeDepartmentCode()'>
                     <div class="ds-input-control"></div><span class="ds-pad-l-0_5">Yes</span>
                   </label><label for="radio2" class="ds-input-radio ds-pad-r-1" style="display:inline">
                     <input type="radio" [(ngModel)]="Voice_Type" checked name="Voice_Type" id="radio2" class="ds-input"
-                      value="No" (click)='hideChargeDepartmentCode()'>
+                      value="no" (click)='hideChargeDepartmentCode()'>
                     <div class="ds-input-control"></div><span class="ds-pad-l-0_5">No</span>
                   </label>
                                 </div>
@@ -83,7 +83,7 @@
                         </td>
                         <td width="54%">
                             <div id="d21" class="ds-input-container ">
-                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" autocomplete="off" ngModel>
+                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" maxlength='6' autocomplete="off" ngModel>
                                 <div id="Mentor1Div"></div>
                             </div>
                         </td>
@@ -167,9 +167,9 @@
                             
                         </td>
                         <td width="54%" height="10">
-                            <label style="display: ruby-base-container;">
+                            <label style="display: inline-flex;">
                                 <input name="StepMentor" class="ds-input" style="width:250px !important;display: inline-block;" title="Employee ID" [(ngModel)]='empID' (change)='onEmpIDChange()'>
-                                <button class="ds-button ds-small ds-width-auto" style="padding-right: 1rem;padding-left: 1rem; margin-left: 2px;margin-bottom: 0px" (click)='fetchEmployee()'>Go</button>
+                                <button class="ds-button ds-small ds-width-auto" style="padding-right: 1rem;padding-left: 1rem;margin: 4px;" (click)='fetchEmployee()'>Go</button>
                             </label>
                                 <div [hidden]='goClick'>
                                 <div [hidden]='emailResult' id="StepMentorDiv" *ngIf="goResults; else elseBlock" style="font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;">
@@ -212,8 +212,8 @@
                               class="ds-title ds-align-text-left"
                               style="width:300px !important; text-transform: uppercase;" title="Class of Service" tabindex="1" [(ngModel)]='COS' #cos (change)='classofservice(cos.value)'
                               ngModel>
-                              <option value="national">National</option>
-                              <option value="international">International</option>
+                              <option value="National">National</option>
+                              <option value="International">International</option>
                             </select>
                           </div>
                         </td>
@@ -261,11 +261,11 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="Back" (click)="backClick()">
+                value="BACK" (click)="backClick()">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                tabindex="32767" value="Next">
+                tabindex="32767" value="NEXT">
             </span>
                     </div>
                 </div>
@@ -381,7 +381,7 @@
                         <td colspan="2" width="46%">
                             <label for="justification">Business Justification</label>
                         </td>
-                        <td width="54%">{{reviewDetailsIndia.justification}}</td>
+                        <td width="54%" style='word-wrap: anywhere;'>{{reviewDetailsIndia.justification}}</td>
                     </tr>
                     
                     <tr valign="top">
@@ -411,12 +411,12 @@
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                 (click)='BackButton()' *ngIf="this.isButtonVisible">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+                value="SUBMIT" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
                         
 

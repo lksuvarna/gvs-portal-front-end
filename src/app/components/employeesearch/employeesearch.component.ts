@@ -504,8 +504,14 @@ export class EmployeesearchComponent implements OnInit {
       case "fixedphone_new":
       this.title="Fixed Phone - New Request";
       this.exitrouting='fixedphoneservices';
-      if(this.countrydetails.jnavpage=='AP'){
+      if(this.countrydetails.fnavpage=='AP'){
         this.routingname="/entrydetailsfn";
+      } else if(this.countrydetails.fnavpage=='AU') {
+        this.routingname='/entrydetailsaufn';
+      } else if(this.countrydetails.fnavpage=='EMEA') {
+        //Add routingname here for EMEA
+      } else if(this.countrydetails.fnavpage=='NA') {
+        //Add routingname here for EMEA
       }
       this.reqname="-NS-";
       break;
