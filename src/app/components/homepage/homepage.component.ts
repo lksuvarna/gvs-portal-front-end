@@ -24,6 +24,8 @@ export class HomepageComponent implements OnInit {
   userDetails:any;
   uname='';
   countryname:any;
+  translatecountryname :any;
+  translatecountryname1 :boolean =false;
   ccode='';
   
 
@@ -49,7 +51,13 @@ export class HomepageComponent implements OnInit {
     //this.userDetails = (this.cookie.getCookie('user'));
 
 
-    this.fullName=this.cookie.getCookie('user');
+   
+    this.fullName = this.cookie.getCookie('usernamehome');
+    if(this.fullName==undefined){
+      this.fullName=this.cookie.getCookie('user');
+    }
+    this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
+    this.fullName = this.fullName.replace(","," ");
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);
@@ -58,9 +66,19 @@ export class HomepageComponent implements OnInit {
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.ccode);
       sessionStorage.setItem('pagedisplay','homepage')
+      
+      this.translatecountryname = this.countryname.name;
+      if (this.translatecountryname == 'Canada/Caribbean'){
+          this.translatecountryname1 = true;
+          
+      }
+      
+      
      });
 
-    
-  }
+
+      
+  } 
+  
 
 }

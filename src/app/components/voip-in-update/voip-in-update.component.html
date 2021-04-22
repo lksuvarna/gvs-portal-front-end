@@ -12,7 +12,7 @@
             <b translate>servicestitle.Update Jabber Request</b>
 
       <div class="ds-pad-t-0_5 ds-pad-b-1">
-        <label *ngIf="warninginfo==false" translate>Jabberentrydetails.Fieldsasterisk (<span class="ds-text-contextual-red-2">*</span>) <span translate> Jabberentrydetails.arerequired </span></label>
+        <label *ngIf="warninginfo==false" translate>Jabberentrydetails.Fieldsasterisk<span class="ds-text-contextual-red-2">*</span>) <span translate> Jabberentrydetails.arerequired </span></label>
       </div>
       <div class=" ds-panel ds-col-12 "></div>
 
@@ -69,11 +69,11 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="Back" (click)="backClick()">
+                value="{{'employeeinfotrans.BACK' | translate}}" (click)="backClick()">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2" *ngIf="warninginfo==false && warninginfosnow==false">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Next">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="{{'employeeinfotrans.NEXT'|translate}}">
             </span>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
             </table>
             <br>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
-                <p>Opps! Some thing went worng.Please try again latter.</p><p>
+                <p translate>Jabbernewtrans.opps</p><p>
             </p></div>
             <div class=" ds-panel ds-col-12 "></div>
             <!-- Dark Background -->
@@ -133,11 +133,11 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="Back" (click)='BackButton()' *ngIf="this.isButtonVisible">
+                value="{{'employeeinfotrans.BACK' | translate}}" (click)='BackButton()' *ngIf="this.isButtonVisible">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="{{'employeeinfotrans.SUBMIT1' | translate}}" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
                     </div>
                 </div>

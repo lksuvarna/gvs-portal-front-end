@@ -6,37 +6,41 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
 import { Db2Service } from '../../_services/db2.service';
-import {Jabber_Update} from '../../../../config/payload';
+import {Fac_Update} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 
-
 @Component({
-  selector: 'app-voip-la-update',
-  templateUrl: './voip-la-update.component.html',
-  styleUrls: ['./voip-la-update.component.css']
+  selector: 'app-fac-in-update',
+  templateUrl: './fac-in-update.component.html',
+  styleUrls: ['./fac-in-update.component.css']
 })
-export class VoipLaUpdateComponent implements OnInit {
+export class FacInUpdateComponent implements OnInit {
+  
+  build: any = [];
+  campus:any;
+  hideBuilding = true;
   countryname:any;
   ccode='';
   cloudantData: any = [];
   servicesData: any = [];
   Jabber:any = [];
-  voice_mail : any =[];
-  cos : any =[];
-  itns:any = [];
-  vm :any;
-  css :any;
-  Jabber_Identifier:any;
-  selected = true;
+  Voice_Mail : any="No";
+  //cos : any =[];
+  //itns:any = [];
+  //vm :any;
+  //css :any;
+  //Jabber_Identifier:any;
+  //selected = true;
   hideChargeDept = true;
   currentcos=true;
   currentVoiceMail = true;
+  hideDeptCode = true;
   updaterequested=true;
   isReviewForm = true;
   isEntryForm = false;
   fixedPhoneIdentifier = false;	
-  jabberDisp:any;
+  //jabberDisp:any;
   chargeDisp:any;
   reqFor: any;
   employeeSerial = '';
@@ -54,122 +58,139 @@ export class VoipLaUpdateComponent implements OnInit {
   warninginfo=false;
   warninginfosnow=false;
   identifier:any;
-  index:any;
+  // index:any;
   toup_disp : any;
   toup_disp2 : any;
-  cos_disp : any;
-  vm_disp : any;
+  toup_disp3 : any;
   bj_disp : any;
   classOfService : any =[];
   checked : any=false;
   checked2 : any=false;
-  newvoicemail = true;
-  newcos = true;
+  checked3 : any=false;
+  newLocation = true
+  newFunded = true;
+  // newcos = true;
+  newAuthorizationLevel = true
   businessJust= true;
-  new_cos_disp : any;
-  new_vm_disp :any;
-  Voice_Mail : any="";
   errorinfo=false;
-  selectcos="";
-  
- 
-  businessjustification : any="";
 
+  currLocation = ''
+  currChargeDeptCode = ''
+  currAuthorizationLevel = ''
+  currFACCodeType = ''
+  currvalidity = ''
+  newvoicemail = ''
+  Location_1 = ''
+  Buildings = ''
+  Funded = ''
+  chargeDepartmentCode = ''
+  authLevel = ''
+  camp: any = [];	
+  campA: any = [];
+  buildA: any =[];
+  locationlist: any;
+  radioFunded: string = "";
+  j=0;
 
-  payload : Jabber_Update = new Jabber_Update();
+  payload : Fac_Update = new Fac_Update();
+  db2data: any
 
   toggle_options(){
     if (this.checked){
-    this.newvoicemail=false;
-    this.toup_disp="Voice Mail";
+    this.newLocation=false;
+    this.toup_disp="Location";
     }
     else{
-    this.newvoicemail=true;
+    this.newLocation=true;
     this.toup_disp='';
     }
 
     if (this.checked2){
-    this.newcos=false;
-    this.toup_disp2="Class of Service (COS)";
+    this.newFunded=false;
+    this.toup_disp2="Funded";
      }
     else{
-      this.newcos=true;
-      this.businessJust=true;
+      this.newFunded=true;
       this.toup_disp2='';
-      this.selectcos="";
     }
+
+    if (this.checked3){
+      this.newAuthorizationLevel=false;
+      this.toup_disp3="Authorization Level";
+       }
+      else{
+        this.newAuthorizationLevel=true;
+        this.toup_disp3='';
+      }
   }
 
-  hidebusinessjust(e : any){
-    this.businessjustification='';
-   if((e.target.value != "") && (e.target.value.toUpperCase() =="INTERNATIONAL"))
+  hidebusinessjust(select : any){
+
+   if((select != "") && (select.toUpperCase() =="INTERNATIONAL"))
    this.businessJust= false;
    else
    this.businessJust= true;
 
   }
- SelectedJabber(jabber:any) {
-   if((jabber != "")){
-     this.hideChargeDept = false;
-     this.currentVoiceMail=false;
-     this.currentcos=false;
-     this.updaterequested=false;
-     this.index = this.Jabber.indexOf(jabber);
-     console.log("Selected ITN index: "+this.index);
-     this.cos_disp=this.cos[this.index];
-     this.vm_disp=this.voice_mail[this.index];
-
-    } else {
-      this.currentcos=true;
-      this.hideChargeDept = true;
-      this.newvoicemail= true;
-      this.newcos= true;
-      this.businessJust=true;
-      this.currentVoiceMail=true;
-      this.updaterequested=true;
-      this.checked=false;
-      this.checked2=false;
-      this.Voice_Mail='';
-      this.selectcos="";
-      this.businessjustification='';
-
-   }
-  }
-
  
   EntryDetails(formData: NgForm) {
-    if(formData.value.Jabber_1.toUpperCase() == 'SELECT ONE' || formData.value.Jabber_1 == '') {
-      alert('Please select the jabber number to update');
-      return;
-    }
-    
-    if((this.checked==false)&&(this.checked2==false)) {
-      alert('Please select update requrired for');
+    if((this.checked===false)&&(this.checked2===false)&&(this.checked3===false)) {
+      alert('Please select update required for');
       return;
     }
       
     if(this.checked) {
-      if(formData.value.Voice_Mail =='') {
-        alert('Please select New Voice Mail');
+      if(formData.value.Location_1 ==='' || formData.value.Location_1.toLowerCase() ==='select office location' ) {
+        alert('Please select office location');
+        return;
+      }
+
+      if(formData.value.Buildings ==='' || formData.value.Buildings.toLowerCase() ==='select one' ) {
+        alert('Please select a campus');
+        return;
+      }
+
+      if(formData.value.Location_1 + '~~' + formData.value.Buildings === this.currLocation ) {
+        alert('Please provide a new campus');
         return;
       }
     }
 
-    if(this.checked2) {
-      if(formData.value.select_cos.toUpperCase() == 'SELECT CLASS OF SERVICE' || formData.value.select_cos == '') {
-        alert('Please select New Class of Service');
+    if(this.checked2 && formData.value.Voice_Mail ==='Yes') {
+      if(formData.value.chargeDepartmentCode === '') {
+        alert('Please enter the charge department code');
+        return;
+      }
+      if(formData.value.chargeDepartmentCode === this.currChargeDeptCode) {
+        alert('Please enter a new charge department code');
         return;
       }
     }
-    if((this.checked2)&&(formData.value.select_cos.toUpperCase() == 'INTERNATIONAL') ) {
-      if(formData.value.businessjustification == ''){
-      alert('Please enter Business Justification');
-      return;
+
+    if(this.checked3) {
+      if(formData.value.authLevel ==='' || formData.value.authLevel.toLowerCase() ==='select authorization level' ) {
+        alert('Please select an authorization level');
+        return;
+      }
+      if(formData.value.authLevel === this.currAuthorizationLevel  ) {
+        alert('Please provide a new authorization level');
+        return;
       }
     }
-    this.jabberDisp = formData.value.Jabber_1;
-    this.new_cos_disp=formData.value.select_cos;
-    this.new_vm_disp=formData.value.Voice_Mail;
+
+    if(formData.value.businessjustification == ''){
+      alert('Please enter Business Justification');
+      return;
+    }
+  
+  //  this.jabberDisp = formData.value.Jabber_1;
+    // this.new_cos_disp=formData.value.select_cos;
+    // this.new_vm_disp=formData.value.Voice_Mail;
+    this.Location_1 = formData.value.Location_1
+    this.Buildings = formData.value.Buildings
+    this.Funded = formData.value.Voice_Mail
+    this.chargeDepartmentCode = formData.value.chargeDepartmentCode
+    this.authLevel = formData.value.authLevel
     this.bj_disp=formData.value.businessjustification;
     this.isReviewForm = false;
     this.isEntryForm = true;
@@ -180,6 +201,14 @@ export class VoipLaUpdateComponent implements OnInit {
     sessionStorage.setItem('step', 'step1');
     this.location.back();
     
+  }
+
+  isFunded() {
+    if(this.Voice_Mail ==='Yes'){
+      this.hideDeptCode = false
+    } else {
+      this.hideDeptCode = true
+    }
   }
 
   BackButton() {
@@ -199,14 +228,14 @@ export class VoipLaUpdateComponent implements OnInit {
      // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
       this.payload.Department_number_Disp = '';
       this.payload.accid_Disp = '';
-      this.payload.Identifier_Selected = this.jabberDisp;
+      //this.payload.Identifier_Selected = this.jabberDisp;
       this.payload.updated_for = '';
       this.payload.ReqNo=this.reqno;
-      this.payload.Current_COS=this.cos_disp;
-      this.payload.Current_VM=this.vm_disp;
-      this.payload.Justification=this.bj_disp;
-      this.payload.New_Voice=this.new_vm_disp;
-      this.payload.New_COS=this.new_cos_disp
+      // this.payload.Current_COS=this.cos_disp;
+      // this.payload.Current_VM=this.vm_disp;
+      // this.payload.Justification=this.bj_disp;
+      // this.payload.New_Voice=this.new_vm_disp;
+      // this.payload.New_COS=this.new_cos_disp
       // fields to be picked up from form -- ends	
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
@@ -216,7 +245,7 @@ export class VoipLaUpdateComponent implements OnInit {
       this.payload.prov_type=this.countrydetails.provision_type;
       this.payload.updated_for=this.toup_disp+','+this.toup_disp2;
       	
-     this.servicenowservice.submit_request_update(this.payload).subscribe(data=> {	
+     this.servicenowservice.submit_request_fac_update(this.payload).subscribe(data=> {	
      console.log('response', data);	
      if(data)	
      this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
@@ -254,17 +283,29 @@ export class VoipLaUpdateComponent implements OnInit {
       this.identifier = sessionStorage.getItem('identifier')
       this.identifier = this.identifier.split(',');
       this.Jabber = [...this.identifier];
-      this.css=sessionStorage.getItem('cos');
-      this.css=this.css.split(',');
-      this.cos=[... this.css];
-      this.vm=sessionStorage.getItem('voice_mail');
-      this.vm=this.vm.split(',');
-      this.voice_mail=[... this.vm];
-      this.classOfService=this.countrydetails.cos_type;
-     
-      console.log("COS " +this.cos);
-      console.log("Voice Mail "+ this.voice_mail);
+      this.db2data = sessionStorage.getItem('db2data')
+      this.db2data = JSON.parse(this.db2data)
+      this.currLocation = this.db2data[0].ATTRIBUTE3
+      this.currChargeDeptCode = this.db2data[0].ATTRIBUTE7
+      this.currAuthorizationLevel = this.db2data[0].ATTRIBUTE4
+      this.currFACCodeType = this.db2data[0].ATTRIBUTE5
+      this.currvalidity = this.db2data[0].ATTRIBUTE6
     }
+    this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
+    this.locationlist=this.locationlist?.replace('"','').split(',');	
+  
+    for (var i = 0; i < this.locationlist.length; i++) {	
+      var n = this.locationlist[i].indexOf("~")	
+      this.campA[i] = this.locationlist[i].substr(1, n - 1);	
+      this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);	
+    }	
+    for (var i = 0; i < this.campA.length; i++) {	
+      if (this.campA[i] != this.campA[i + 1]) {	
+        this.camp[this.j] = this.campA[i];	
+        this.j++;	
+      }	
+    }
+    
     this.route.queryParams	
     .subscribe(params => {	
       console.log(params);	
@@ -312,6 +353,27 @@ export class VoipLaUpdateComponent implements OnInit {
     this.isReviewForm = true;	
     this.fixedPhoneIdentifier = false;	
   }
+
+  
+  selectedLocation(loc:String) {	
+    this.build = [];	
+    this.campus = '';	
+    //alert("Location"+loc);
+    if(loc != '') {	
+      this.hideBuilding = false;	
+      var k =0;	
+      for(var i=0;i<this.campA.length;i++) {	
+      if(loc == this.campA[i]) {        	
+      this.build[k] = this.buildA[i];
+      k = k+1;	
+      }	
+      }  	
+             
+    } else {	
+      this.hideBuilding = true;	
+      this.build = [];	
+    }	
+  }	
   
 
 }

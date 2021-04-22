@@ -19,7 +19,7 @@ db2search()
 
 }
 
-// Class used to create the payload for snow search service.
+// Class used to create the payload for snow search service AND snow Approve/Request request.
 export class snowsearch
 {
     cnum!: String;
@@ -27,6 +27,8 @@ export class snowsearch
     reqno !: String;
     sysid !: String;
     number !: String;
+    status !: String;
+    comments !: String;
 
 snowsearch()
  {
@@ -35,6 +37,7 @@ snowsearch()
   this.reqno="";
   this.sysid="";
   this.number="";
+  this.comments="";
  }
 
 }
@@ -205,6 +208,172 @@ export class Jabber_Update
     New_COS !: String;
 
 Jabber_Update()
+ {
+    
+    this.orinator_payload ="";
+    this.cNum_payload  ="";
+    this.Projectid_Disp  ="";
+    this.icano_Disp ="";
+    this.Department_number_Disp  ="";
+    this.accid_Disp  ="";
+    this.ReqNo  ="";
+    this.countryname  ="";
+    this.evolution_instance  ="";
+    this.gvs_portal_link ="";
+    this.gvs_approval_link  ="";
+    this.Identifier_Selected  ="";
+    this.updated_for  ="";
+    this.request_type="";
+    this.prov_type="";
+    this.Current_VM="";
+    this.Current_COS="";
+    this.Justification="";
+    this.New_Voice="";
+    this.New_COS="";
+    
+ }
+
+}
+
+// Class used to create the payload for snow new Fac service.
+export class Fac_New
+{
+    orinator_payload !: String;
+    cNum_payload !: String;
+    Buildings_Disp !: String;
+    Voice_Type_Disp !: String;
+    Projectid_Disp !: String;
+    icano_Disp !: String;
+    identifier_hp_Disp !: String;
+    BusinessUnit_Disp !: String;
+    Department_number_Disp !: String;
+    Location_final !: String;
+    accid_Disp !: String;
+    ReqNo !: String;
+    level2_japproval !: String;
+    countryname !: String;
+    request_type !: String;
+    evolution_instance !: String;
+    level1_japproval!: String;
+    qag !: String;
+    class_of_serice !: String;
+    gvs_portal_link !: String;
+    gvs_approval_link !: String;
+    SLA_type !: String;
+    country_code !:String;
+    default_call_permission !: String
+    Dept_IN !: String;
+    authLevel_final !: String;
+    Fac_Type_disp !: String;
+    validity_disp !: String;
+    comments !: String;
+    authLevel_disp !:String;
+    authValue !: String;
+
+Fac_New()
+ {
+    this.orinator_payload ="";
+    this.cNum_payload ="";
+    this.Location_final ="";
+    this.Buildings_Disp  ="";
+    this.Voice_Type_Disp  ="";
+    this.Projectid_Disp  ="";
+    this.Department_number_Disp ="";
+    this.BusinessUnit_Disp  ="";
+    this.Dept_IN  ="";
+    this.authLevel_final  ="";
+    this.Fac_Type_disp  ="";
+    this.validity_disp  ="";
+    this.comments  ="";
+    this.ReqNo ="";
+    this.gvs_portal_link ="";
+    this.gvs_approval_link ="";
+    this.countryname  ="";
+    this.SLA_type ="";
+    this.authLevel_disp ="";
+    this.authValue = ""
+
+ }
+
+}
+
+// Class used to create the payload for snow update Fac service.
+export class Fac_Update
+{
+    orinator_payload !: String;
+    cNum_payload !: String;
+    Projectid_Disp !: String;
+    icano_Disp !: String;
+    Department_number_Disp !: String;
+    accid_Disp !: String;
+    ReqNo !: String;
+    countryname !: String;
+    evolution_instance !: String;
+    gvs_portal_link !: String;
+    gvs_approval_link !: String;
+    Identifier_Selected !: String;
+    updated_for !: String;
+    request_type !: String;
+    prov_type !: String;
+    Current_VM !: String;
+    Current_COS !: String;
+    Justification !: String;
+    New_Voice !: String;
+    New_COS !: String;
+
+Fac_Update()
+ {
+    
+    this.orinator_payload ="";
+    this.cNum_payload  ="";
+    this.Projectid_Disp  ="";
+    this.icano_Disp ="";
+    this.Department_number_Disp  ="";
+    this.accid_Disp  ="";
+    this.ReqNo  ="";
+    this.countryname  ="";
+    this.evolution_instance  ="";
+    this.gvs_portal_link ="";
+    this.gvs_approval_link  ="";
+    this.Identifier_Selected  ="";
+    this.updated_for  ="";
+    this.request_type="";
+    this.prov_type="";
+    this.Current_VM="";
+    this.Current_COS="";
+    this.Justification="";
+    this.New_Voice="";
+    this.New_COS="";
+    
+ }
+
+}
+
+// Class used to create the payload for snow reset Fac service.
+export class Fac_Reset
+{
+    orinator_payload !: String;
+    cNum_payload !: String;
+    Projectid_Disp !: String;
+    icano_Disp !: String;
+    Department_number_Disp !: String;
+    accid_Disp !: String;
+    ReqNo !: String;
+    countryname !: String;
+    evolution_instance !: String;
+    gvs_portal_link !: String;
+    gvs_approval_link !: String;
+    Identifier_Selected !: String;
+    updated_for !: String;
+    request_type !: String;
+    prov_type !: String;
+    Current_VM !: String;
+    Current_COS !: String;
+    Justification !: String;
+    New_Voice !: String;
+    New_COS !: String;
+
+Fac_Reset()
  {
     
     this.orinator_payload ="";

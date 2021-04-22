@@ -131,7 +131,7 @@
             </tr>
             <tr valign="top" [hidden]='hideProjectId'>
               <td colspan="2" width="46%">
-                
+                <label for="Projectid" class="ds-text-capitalize ds-pad-t-1" translate>Jabbermove.ProjectIId</label>
                 <span class="ds-text-contextual-red-2"> *</span>
               </td>
               <td width="54%">
@@ -141,30 +141,8 @@
                 </div>
               </td>
             </tr>
-            <tr valign="top">
-              <td colspan="2" width="46%">
-                <label for="accid" class="ds-text-capitalize ds-pad-b-1" translate>Jabbermove.AccountId</label>
-                <span class="ds-text-contextual-red-2">*</span>
-              </td>
-              <td width="54%">
-                <div class="ds-input-container ">
-                  <input ngModel name="accid" value="" maxlength='6' id="accid" class="ds-input" style="width:300px !important;"
-                    title="Account Id">
-                </div>
-              </td>
-            </tr>
-            <tr valign="top">
-              <td colspan="2" width="46%">
-                <label for="icano" class="ds-text-capitalize" translate>Jabbermove.ICACode</label>
-                <span class="ds-text-contextual-red-2">*</span>
-              </td>
-              <td width="54%">
-                <div class="ds-input-container ">
-                  <input ngModel name="icano" value="" id="icano" maxlength='6' class="ds-input" style="width:300px !important;"
-                    title="ICA Code">
-                </div>
-              </td>
-            </tr>
+            
+           
             
            
           </tbody>
@@ -178,12 +156,12 @@
           <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                 (click)="backClick()">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="Next" *ngIf="warninginfo==false && warninginfosnow==false "><br>
+                value="NEXT" *ngIf="warninginfo==false && warninginfosnow==false "><br>
             </span>
           </div>
         </div>
@@ -253,24 +231,14 @@
 
           <tr valign="top" [hidden]='hideProjectId'>
             <td colspan="2" width="46%">
-             
+              <label for="Projectid" translate>Jabbermove.ProjectIId</label>
             </td>
             <td width="54%">{{reviewDetailsIndia.projectId}}</td>
           </tr>
 
-          <tr valign="top">
-            <td colspan="2" width="46%">
-              <label for="Projectid" translate>Jabbermove.AccountId</label>
-            </td>
-            <td width="54%">{{reviewDetailsIndia.accid_Disp}}</td>
-          </tr>
+          
 
-          <tr valign="top">
-            <td colspan="2" width="46%">
-              <label for="icano" translate>Jabbermove.ICACode</label>
-            </td>
-            <td width="54%">{{reviewDetailsIndia.icano_Disp}}</td>
-          </tr>
+          
         </tbody>
       </table>
 
@@ -290,12 +258,12 @@
           <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                 (click)='BackButton()' *ngIf="this.isButtonVisible && !errorinfo">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
+                value="SUBMIT" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
             </span>
             <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
         

@@ -172,7 +172,7 @@ export class NavigationComponent implements OnInit {
 
                {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : this.fin, "highlighted": this.fhl,"param":"fixedphoneservices"},            
 
-              {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
+              {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
               {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
