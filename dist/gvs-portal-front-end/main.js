@@ -5406,7 +5406,7 @@ VoipLaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "input", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "select", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "option", 20);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38, "Jabberupdate.Jabber/PhoneNumberLocation");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38, "Jabbernewtrans.JabberLocation");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](39, VoipLaNewComponent_option_39_Template, 2, 2, "option", 21);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -18566,6 +18566,7 @@ class UitoplinksComponent {
             { "name": "Latin America", "code": "631", "path": "././assets/flags/631.png" },
             { "name": "USA", "code": "897", "path": "././assets/flags/897.png" },
             { "name": "Australia", "code": "616", "path": "././assets/flags/616.png" },
+            { "name": "China", "code": "672", "path": "././assets/flags/672.png" },
         ];
     }
     ngOnInit() {
