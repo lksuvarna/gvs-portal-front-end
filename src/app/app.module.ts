@@ -129,7 +129,7 @@ handleError(error: Error){
     VoipUsaUpdateComponent,
 
     FacInUpdateComponent,
-    FacInResetComponent
+    FacInResetComponent,
 
     ApprovalResultPageComponent,
     ApprovalSinglePageComponent

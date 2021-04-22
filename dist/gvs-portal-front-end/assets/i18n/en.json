@@ -4,7 +4,7 @@
         "select-language": "Choose a language: ",
         "app-name": "Global Voice Services",
         "app-function": "Single entry point for ordering voice services in your country",
-        "sponsor":"Built on CIO Hybrid Cloud Powered by Red Hat OpenShift",
+        "sponsor": "Built on CIO Hybrid Cloud Powered by Red Hat OpenShift",
         "welcomemessage": "Welcome,",
         "question": "What service or country are you looking for?",
         "search-placeholder": "Search service...",
@@ -27,18 +27,18 @@
         "consult": "* This website supports Mozilla Firefox, Google Chrome, IE, Edge and Safari."
     },
 
-    "footnote":{
-        "Jabber":"Jabber",
-        "Fixed Phone":"Fixed Phone",
-        "FAC Code":"FAC Code",
-        "Special Request":"Special Request",
-        "Terms of use":"Terms of use",
-        "Useful Information":"Useful Information",
-        "Please bear in mind the following points when making a request :":"Please bear in mind the following points when making a request :",
-        "To make a request the Employee must exist in BluePages (except for cancellation requests).":"To make a request the Employee must exist in BluePages (except for cancellation requests).",
-        "You must know the IBM serial Number of the person making the request.":"You must know the IBM serial Number of the person making the request.",
-        "Only one request per employee per request type is processed at a time.":"Only one request per employee per request type is processed at a time."
-        
+    "footnote": {
+        "Jabber": "Jabber",
+        "Fixed Phone": "Fixed Phone",
+        "FAC Code": "FAC Code",
+        "Special Request": "Special Request",
+        "Terms of use": "Terms of use",
+        "Useful Information": "Useful Information",
+        "Please bear in mind the following points when making a request :": "Please bear in mind the following points when making a request :",
+        "To make a request the Employee must exist in BluePages (except for cancellation requests).": "To make a request the Employee must exist in BluePages (except for cancellation requests).",
+        "You must know the IBM serial Number of the person making the request.": "You must know the IBM serial Number of the person making the request.",
+        "Only one request per employee per request type is processed at a time.": "Only one request per employee per request type is processed at a time."
+
     },
 
     "lhs": {
@@ -49,204 +49,198 @@
         "Special Request": "Jabber",
         "Approvals Pending": "Approvals Pending",
         "Revalidation Pending": "Revalidation Pending",
-        "Requests" : "Requests",
-        "Resources" : "Resources"
-        
+        "Requests": "Requests",
+        "Resources": "Resources"
+
     },
     "Jabberservices": {
-        "initiateJabber":" Please click on a request type below to initiate a Jabber service request.",
-        "jnew":"Request a new service",
-        "jupdate":"Update an existing service",
-        "jmove":"Move an existing service",
-        "jdelete":"Delete an existing service"
-    
+
+        "initiateJabber": " Please click on a request type below to initiate a Jabber service request.",
+        "jnew": "Request a new service",
+        "jupdate": "Update an existing service",
+        "jmove": "Move an existing service",
+        "jdelete": "Delete an existing service"
+
     },
-    "Jabbernewtrans" :{
-        "Reqnewservice":"This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk",
-        "arerequired":"are required.",
-        "EmployeeSearch":"Employee Search",
-        "requestfor":"Who is this request for",
-        "Myself":"Myself",
-        "AnotherEmployee":"Another Employee",
-        "Name":"Name",
-        "SerialNumber":"Serial Number",
-        "EmployeeSerialNumber":"Employee Serial Number",
-        "forexample":"(eg 012789)",
-        "CountryCode":"Country Code",
-        "SelectOne":"Select One",
-        "norecord":"There is no record of an IBM employee with the serial number " ,
-        "availablefromBluePages" :"available from BluePages",
-        "opps":"Opps! Some thing went worng.Please try again latter.",
-        "JabberLocation" : "Jabber / Phone Number location",
-        "Voicemail" : "Voicemail",
-        "ClassofService" : "Class of Service",
-        "pleasesubmittostart":"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service."
+    "Jabbernewtrans": {
+        "Reqnewservice": "This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk",
+        "arerequired": "are required.",
+        "EmployeeSearch": "Employee Search",
+        "requestfor": "Who is this request for",
+        "Myself": "Myself",
+        "AnotherEmployee": "Another Employee",
+        "Name": "Name",
+        "SerialNumber": "Serial Number",
+        "EmployeeSerialNumber": "Employee Serial Number",
+        "forexample": "(eg 012789)",
+        "CountryCode": "Country Code",
+        "SelectOne": "Select One",
+        "norecord": "There is no record of an IBM employee with the serial number ",
+        "availablefromBluePages": "available from BluePages",
+        "opps": "Opps! Some thing went worng.Please try again latter.",
+        "JabberLocation": "Jabber Location",
+        "Voicemail": "Voicemail",
+        "ClassofService": "Class of Service",
+        "pleasesubmittostart": "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service."
 
     },
 
-    "servicestitle":{
-        "Request new Jabber service" :"Request new Jabber service",
-        "Delete an existing service" : "Delete an existing service",
-        "Request a new service" :"Request a new service",
-        "Update an existing service" : "Update an existing service",
-        "Request Move Jabber service" :"Request Move Jabber service",
-        "Requests" : "Requests",
-        "Resources" : "Resources",
-        "Update Jabber Request" : "Update Jabber Request",
-        "Delete Jabber Request" : "Delete Jabber Request",
-        "Deactivate an existing FAC Code" :"Deactivate an existing FAC Code",
-        "FAC Code Deactivate Request" : "FAC Code Deactivate Request",
-        "Move Jabber Request" : "Move Jabber Request",
-        "Fixed Phone - New Request" : "Fixed Phone - New Request",
-        "New Fixed Phone Request" : "New Fixed Phone Request",
-        "Request a new FAC Code" : "Request a new FAC Code",
-        "FAC Code New Request" : "FAC Code New Request",
-        "Update an existing FAC code" : "Update an existing FAC code",
-        "FAC Code Update Request":"FAC Code Update Request",
-        "Reset an existing FAC code" : "Reset an existing FAC code",
-        "FAC Code Reset Request": "FAC Code Update Request"
-        
-        
-        
+    "servicestitle": {
+        "Request new Jabber service": "Request new Jabber service",
+        "Delete an existing service": "Delete an existing service",
+        "Request a new service": "Request a new service",
+        "Update an existing service": "Update an existing service",
+        "Request Move Jabber service": "Request Move Jabber service",
+        "Requests": "Requests",
+        "Resources": "Resources",
+        "Update Jabber Request": "Update Jabber Request",
+        "Delete Jabber Request": "Delete Jabber Request",
+
+        "Move Jabber Request": "Move Jabber Request",
+        "Fixed Phone - New Request": "Fixed Phone - New Request",
+        "New Fixed Phone Request": "New Fixed Phone Request",
+        "FAC Code Update Request": "FAC Code Update Request",
+        "FAC Code Reset Request": "FAC Code Reset Request",
+        "FAC Code New Request": "FAC Code New Request"
+
+
+
 
 
     },
-    "employeeinfotrans":{
-        "ifinfoiscorrect":"If the following information is correct, click Next. Any errors must be corrected in the employee's",
-        "BluePagesrecord":"BluePages record",
-        "beforecontinuing":"before continuing.",
-        "EmployeeInformation":"Employee Information",
-        "EmployeeEntryDetails":"Employee Entry Details",
-        "Name":"Name:",
-        "SerialNumber":"Serial Number:",
-        "JobResponsibility":"Job Responsibility:",
-        "BusinessUnit":"Business Unit:",
-        "Department":"Department:",
-        "Country":"Country:",
-        "E-mail":"E-mail:",
-        "noteligiblejabber":"The serial number that you have entered is not eligible to request Jabber account.",
-        "itnexistsforuser":"The IBM Telephone Number (ITN) that exists for this user is .",
-        "nojabber":"There is no Jabber for this serial number.",
-        "nojabberusethislink":"The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN ",
-        "GlobalVoiceInfrastructure":"Global Voice Infrastructure.",
-        "receiveITN":"you have received the ITN you can then request Jabber.  Thank you.",
+    "employeeinfotrans": {
+        "ifinfoiscorrect": "If the following information is correct, click Next. Any errors must be corrected in the employee's",
+        "BluePagesrecord": "BluePages record",
+        "beforecontinuing": "before continuing.",
+        "EmployeeInformation": "Employee Information",
+        "EmployeeEntryDetails": "Employee Entry Details",
+        "Name": "Name:",
+        "SerialNumber": "Serial Number:",
+        "JobResponsibility": "Job Responsibility:",
+        "BusinessUnit": "Business Unit:",
+        "Department": "Department:",
+        "Country": "Country:",
+        "E-mail": "E-mail:",
+        "noteligiblejabber": "The serial number that you have entered is not eligible to request Jabber account.",
+        "itnexistsforuser": "The IBM Telephone Number (ITN) that exists for this user is .",
+        "nojabber": "There is no Jabber for this serial number.",
+        "nojabberusethislink": "The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN ",
+        "GlobalVoiceInfrastructure": "Global Voice Infrastructure.",
+        "receiveITN": "you have received the ITN you can then request Jabber.  Thank you.",
         "notauthorizedtoaccessjabber": "The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact",
-        "notauthorizedtoaccessip":"The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact",
-        "noteligibletorequestmorethanonejabber":"The serial number that you have entered is not eligible to request more than one Jabber account.",
-        "ITNexistsforthisuser":"The IBM Telephone Number (ITN) that exists for this users jabber account is",
-        "jabberconfiguration":"related to Jabber configuration can be found at",
-        "furtherassistance":"For any further assistance, please contact",
-        "alreadyone":"serial number that you have entered has already one",
-        "inprogess":"is in progress and request number is",
-        "ongoingrequestsbyclickonrequestpage":"You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.",
-        "nooutstandingreq":"No outstanding requests were found for the serial number.",
-        "noresources":"There are no resources for this serial number.",
-        "nojabberforthisserial":"There is no Jabber for this serial number.",
-        "BACK":"BACK",
-        "NEXT":"NEXT",
-        "SUBMIT1" : "SUBMIT",
-        "alreadyonerequestinprogress":"The serial number that you have entered has already one new Jabber request is in progress and request number is",
-        "alreadyoneupdaterequestinprogress":"The serial number that you have entered has already one Update Jabber request is in progress and request number is",
-        "alreadyonemoverequestinprogress":"The serial number that you have entered has already one move Jabber request is in progress and request number is",
-        "alreadyonedeleterequestinprogress":"The serial number that you have entered has already one delete Jabber request is in progress and request number is",
-        "alreadyonefacdeleterequestinprogress" :"The serial number that you have entered has already one delete FAC request is in progress and request number is",
-        "enterserialnumber":"Please enter a serial number "
-        
+        "notauthorizedtoaccessip": "The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact",
+        "noteligibletorequestmorethanonejabber": "The serial number that you have entered is not eligible to request more than one Jabber account.",
+        "ITNexistsforthisuser": "The IBM Telephone Number (ITN) that exists for this users jabber account is",
+        "jabberconfiguration": "related to Jabber configuration can be found at",
+        "furtherassistance": "For any further assistance, please contact",
+        "alreadyone": "serial number that you have entered has already one",
+        "inprogess": "is in progress and request number is",
+        "ongoingrequestsbyclickonrequestpage": "You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.",
+        "nooutstandingreq": "No outstanding requests were found for the serial number.",
+        "noresources": "There are no resources for this serial number.",
+        "nojabberforthisserial": "There is no Jabber for this serial number.",
+        "BACK": "BACK",
+        "NEXT": "NEXT",
+        "SUBMIT1": "SUBMIT",
+        "alreadyonerequestinprogress": "The serial number that you have entered has already one new Jabber request is in progress and request number is",
+        "alreadyoneupdaterequestinprogress": "The serial number that you have entered has already one Update Jabber request is in progress and request number is",
+        "alreadyonemoverequestinprogress": "The serial number that you have entered has already one move Jabber request is in progress and request number is",
+        "alreadyonedeleterequestinprogress": "The serial number that you have entered has already one delete Jabber request is in progress and request number is",
+        "enterserialnumber": "Please enter a serial number "
+
     },
-    "Jabberentrydetails":{
-       "Fieldsasterisk":"Fields marked with an asterisk",
-        "arerequired":"are required.",
-        "EmployeeEntryDetails":"Employee Entry Details",
-        "OfficeLocation" : "Office Location",
-        "Campus" : "Campus",
-        "Funded" : "Funded",
+    "Jabberentrydetails": {
+        "Fieldsasterisk": "Fields marked with an asterisk",
+        "arerequired": "are required.",
+        "EmployeeEntryDetails": "Employee Entry Details",
+        "OfficeLocation": "Office Location",
+        "Campus": "Campus",
+        "Funded": "Funded",
         "ChargeDepartmentCode": "Charge Department Code",
-        "BusinessUnit" : "Business Unit",
-        "Projectid" : "Project ID (for GBS employee only)",
-        "alreadyhaveFixedPhone":"If you already have Fixed Phone , please provide the identifier",
-        "toprocessPI":"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.",
-        "JabberRequestDetails":"Jabber Request Details",
-        "FixedPhoneIdentifier":"Fixed Phone Identifier",
-        "Submissioninprogress":"Your request submission is in progress.Do not Go back or Refresh the page.",
-        "Submissionbeinginprogress":"Your request is being submitted. Do not refresh or go back.",
-        "Back" : "Back",
-        "Next" : "Next",
-        "Select Location" : "Select Location"
-        
+        "BusinessUnit": "Business Unit",
+        "Projectid": "Project ID (for GBS employee only)",
+        "alreadyhaveFixedPhone": "If you already have Fixed Phone , please provide the identifier",
+        "toprocessPI": "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.",
+        "JabberRequestDetails": "Jabber Request Details",
+        "FixedPhoneIdentifier": "Fixed Phone Identifier",
+        "Submissioninprogress": "Your request submission is in progress.Do not Go back or Refresh the page.",
+        "Submissionbeinginprogress": "Your request is being submitted. Do not refresh or go back.",
+        "Back": "BACK",
+        "Next": "NEXT",
+        "Select Location": "Select Location"
+
     },
-    "Jabberupdate":{
-        "SELECTONE":"SELECT ONE",
-        "ReviewDetails" : "Review Details",
-        "JabberNumber" : "Jabber Number",
-        "SelectJabberNumber" : "Select Jabber Number",
-        "Jabber/PhoneNumberLocation" : "Select Jabber / Phone Number Location"
+    "Jabberupdate": {
+        "SelectJabberNumber": "Select Jabber Number",
+        "ReviewDetails": "Review Details",
+        "JabberNumber": "Jabber Number"
     },
-    "Jabbermove":{
-    "JabbertoMove":"Jabber number to Move",
-    "ProjectIId" : "Project Id",
-    "AccountId" : "Account Id",
-    "ICACode" : "ICA Code",
-    "NewOfficeLocation" :"New Office Location",
-    "Building" : "Building"
+    "Jabbermove": {
+        "JabbertoMove": "Jabber number to Move",
+        "ProjectIId": "Project Id",
+        "AccountId": "Account Id",
+        "ICACode": "ICA Code",
+        "NewOfficeLocation": "New Office Location",
+        "Building": "Building"
     },
 
-    "requesttrans" : {
-        "Requests" : "Requests",
-        "beingsubmitted":"Your request is being submitted.Do not refresh or go back.",
-        "EmployeeRequestsDetails":"Employee Requests Details",
-        "ResourceType" : "Resource Type",
-        "CreatedDate" : "Created Date",
-        "Status" : "Status",
-        "TrackingNumber" : "Tracking Number",
-        "AdditionalComments" :"Additional Comments"
+    "requesttrans": {
+        "Requests": "Requests",
+        "beingsubmitted": "Your request is being submitted.Do not refresh or go back.",
+        "EmployeeRequestsDetails": "Employee Requests Details",
+        "ResourceType": "Resource Type",
+        "CreatedDate": "Created Date",
+        "Status": "Status",
+        "TrackingNumber": "Tracking Number",
+        "AdditionalComments": "Additional Comments"
     },
-    "resultpagetrans" : {
-       "Yourrequestfor" : "Your request for",
-       "hasbeensubmitted" :"has been submitted",
-       "Trackingrequest":"Tracking number for the request is :",
-       "receiveemailnotification":"You will receive an email notification, when your request has been processed."
+    "resultpagetrans": {
+        "Yourrequestfor": "Your request for",
+        "hasbeensubmitted": "has been submitted",
+        "Trackingrequest": "Tracking number for the request is :",
+        "receiveemailnotification": "You will receive an email notification, when your request has been processed."
     },
-    "resourcespagetranslation" :{
-        "EmployeeResourcesDetails":"Employee Resources Details",
-        "Supplier":"Supplier",
-        "Phone/Dial" : "Phone/Dial",
-        "Innumber" : "In number",
-        "AdditionalInformation" : "Additional Information"
+    "resourcespagetranslation": {
+        "EmployeeResourcesDetails": "Employee Resources Details",
+        "Supplier": "Supplier",
+        "Phone/Dial": "Phone/Dial",
+        "Innumber": "In number",
+        "AdditionalInformation": "Additional Information"
     },
-     "alerttranslation" : {
-        "EXITREQUEST" : "EXIT REQUEST",
-        "digitserialnumber":"Employee Serial Number should be of 6 characters",
-        "enterserialnumber" : "Please enter a serial number",
-        "moverequest":"Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit",
-        "selectcountrycode":"Please select the Country Code",
-        "Only" : "Only",
-        "serialnumbersareallowed":"Serial numbers are allowed to create a request for",
-        "selectlocation":"Please select the Location",
-        "selectjabbernumber":"Please select the Jabber Number"
-     
+    "alerttranslation": {
+        "EXITREQUEST": "EXIT REQUEST",
+        "digitserialnumber": "Employee Serial Number should be of 6 characters",
+        "enterserialnumber": "Please enter a serial number",
+        "moverequest": "Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit",
+        "selectcountrycode": "Please select the Country Code",
+        "Only": "Only",
+        "serialnumbersareallowed": "Serial numbers are allowed to create a request for",
+        "selectlocation": "Please select the Location",
+        "selectjabbernumber": "Please select the Jabber Number"
+
     },
-    "topui" :{
-     "HOME" :"HOME",
-     "SERVICES" : "SERVICES",
-     "DATAPRIVACY" : "DATA PRIVACY",
-     "HELP" : "HELP",
-     "FEEDBACK" : "FEEDBACK",
-     "CHANGECOUNTRY" :"CHANGE COUNTRY"
+    "topui": {
+        "HOME": "HOME",
+        "SERVICES": "SERVICES",
+        "DATAPRIVACY": "DATA PRIVACY",
+        "HELP": "HELP",
+        "FEEDBACK": "FEEDBACK",
+        "CHANGECOUNTRY": "CHANGE COUNTRY"
+
     },
 
     "steps": {
-        "Employee Search" :"Employee Search",
-        "Employee Information" : "Employee Information",
-        "Employee Entry Details" : "Employee Entry Details",
-        "Review Details" : "Review Details",
-        "Employee Resources Details" : "Employee Resources Details",
-        "Employee Requests Details":"Employee Requests Details",
-        "STEP 1" : "STEP 1",
-        "STEP 2" : "STEP 2",
-        "STEP 3" : "STEP 3",
-        "STEP 4" :  "STEP 4"
+        "Employee Search": "Employee Search",
+        "Employee Information": "Employee Information",
+        "Employee Entry Details": "Employee Entry Details",
+        "Review Details": "Review Details",
+        "Employee Resources Details": "Employee Resources Details",
+        "Employee Requests Details": "Employee Requests Details",
+        "STEP 1": "STEP 1",
+        "STEP 2": "STEP 2",
+        "STEP 3": "STEP 3",
+        "STEP 4": "STEP 4"
 
     }
-    
+
 }
- 
