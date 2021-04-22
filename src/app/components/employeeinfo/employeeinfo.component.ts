@@ -67,7 +67,8 @@ export class EmployeeinfoComponent implements OnInit {
   backClick(){
     sessionStorage.setItem('backbutton','yes');
     sessionStorage.setItem('step','step1');
-    this.location.back();
+   // this.location.back();
+    this.router.navigate(['/employeesearch'],{ queryParams: { country: this.pcode, service: this.service } });
   }
   
   ngOnInit(): void {
