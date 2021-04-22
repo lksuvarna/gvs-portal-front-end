@@ -177,9 +177,7 @@
     },
     "Jabbermove": {
         "JabbertoMove": "Jabber number to Move",
-        "ProjectIId": "Project Id",
-        "AccountId": "Account Id",
-        "ICACode": "ICA Code",
+        "ProjectIId": "Project ID",       
         "NewOfficeLocation": "New Office Location",
         "Building": "Building"
     },

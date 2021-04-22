@@ -40,7 +40,7 @@ export class EmployeesearchComponent implements OnInit {
   exitrouting:any;
   exitservice:any;
   routingname:any;
-  fullName = '';
+  fullName:any;
   service = '';
   backbutton: any;
   step: any;
@@ -81,6 +81,9 @@ export class EmployeesearchComponent implements OnInit {
     this.showloader = false
 
     this.fullName = this.cookie.getCookie('username');
+    if(this.fullName.includes(undefined)){
+      this.fullName=this.cookie.getCookie('user');
+    }
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
     this.fullName = this.fullName.replace(",",", ");
     this.ccode = this.cookie.getCookie('ccode');
@@ -233,9 +236,13 @@ export class EmployeesearchComponent implements OnInit {
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
       console.log(' BP Details', data.userdata);
       if (data.userdata) {
+        var ename=data.username.preferredlastname+", "+data.username.preferredfirstname
+        if(data.username.preferredlastname==undefined||data.username.preferredfirstname==undefined){
+          ename=data.username.callupname
+        }
         this.employeeInfo = {
 
-          employeeName: data.username.preferredlastname+", "+data.username.preferredfirstname,
+          employeeName: ename,
           jobResponsibility: data.username.jobresponsibilities,
           businessUnit: data.bu,
           department: data.username.dept,
