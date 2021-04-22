@@ -40,7 +40,7 @@ export class EmployeesearchComponent implements OnInit {
   exitrouting:any;
   exitservice:any;
   routingname:any;
-  fullName = '';
+  fullName:any;
   service = '';
   backbutton: any;
   step: any;
@@ -81,6 +81,9 @@ export class EmployeesearchComponent implements OnInit {
     this.showloader = false
 
     this.fullName = this.cookie.getCookie('username');
+    if(this.fullName.includes(undefined)){
+      this.fullName=this.cookie.getCookie('user');
+    }
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
     this.fullName = this.fullName.replace(",",", ");
     this.ccode = this.cookie.getCookie('ccode');
@@ -233,9 +236,13 @@ export class EmployeesearchComponent implements OnInit {
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
       console.log(' BP Details', data.userdata);
       if (data.userdata) {
+        var ename=data.username.preferredlastname+", "+data.username.preferredfirstname
+        if(data.username.preferredlastname==undefined||data.username.preferredfirstname==undefined){
+          ename=data.username.callupname
+        }
         this.employeeInfo = {
 
-          employeeName: data.username.preferredlastname+", "+data.username.preferredfirstname,
+          employeeName: ename,
           jobResponsibility: data.username.jobresponsibilities,
           businessUnit: data.bu,
           department: data.username.dept,
@@ -332,10 +339,10 @@ export class EmployeesearchComponent implements OnInit {
     return this.datasnow;
   }
   getDBdata() {
+
     this.Db2Service.search_db2(this.employeeSerial, this.service).subscribe(data => {
       console.log(' db2 response', data);
       console.log(' db2 response', data.message.length);
-
       if (data.message.length > 0) {
         
         this.warninginfo = true
@@ -362,7 +369,13 @@ export class EmployeesearchComponent implements OnInit {
         } else if (this.service == "fac_new") {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";
-        } 
+        } else if (this.service == "fac_update" || this.service == "fac_reset") {
+          sessionStorage.setItem('db2data', JSON.stringify(data.message)) ; 
+          if((JSON.stringify(data.message[0].IDENTIFIER)).trim() !== ""){
+            sessionStorage.setItem('identifier', 'xxxxxxxx') ;
+          }
+          this.datadb= "yes";
+      } 
         else { 
           sessionStorage.setItem('identifier', this.itns) ;
           sessionStorage.setItem('voice_mail', this.voice_mail) ;
@@ -514,6 +527,16 @@ export class EmployeesearchComponent implements OnInit {
       this.routingname="/entrydetailsfac";
       this.reqname="-NS-";
       break;
+      case "fac_update":
+        this.title="FAC Code Update Request";
+        this.routingname="/entrydetailsfacu";
+        this.reqname="-US-";
+        break;
+      case "fac_reset":
+          this.title="FAC Code Reset Request";
+          this.routingname="/entrydetailsfacr";
+          this.reqname="-RS-";
+          break;
       case "resources":
         this.title="Resources";
         this.exitrouting='services';
