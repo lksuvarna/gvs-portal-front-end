@@ -66,7 +66,7 @@ export class VoipInMoveComponent implements OnInit {
     Voice_Type_Disp: true,
     icano_Disp: "",
     Location_final: "",
-    accid_Disp: "",
+    Identifier_Disp: "",
     reqno: ""
   }
   backClick(){	
@@ -135,22 +135,16 @@ export class VoipInMoveComponent implements OnInit {
       alert('Please select the Campus');
       return;
     }
-    if (formData.value.Department_number.toUpperCase().trim == '' && this.hideDeptCode == false) {
+    if (formData.value.Department_number.toUpperCase().trim() == '' && this.hideDeptCode == false) {
       alert('Please enter the Charge Department Code');
       return;
     }
-    if(formData.value.Projectid.trim == '' && this.hideProjectId == false) {
+    
+    if(formData.value.Projectid.trim() == '' && this.hideProjectId == false) {
       alert('Please enter the Project ID');
       return;
       }
-    if (formData.value.accid.trim == '') {
-      alert('Please enter the Account ID');
-      return;
-    }
-    if (formData.value.icano.trim == '') {
-      alert('Please enter the ICA Code');
-      return;
-    }
+   
     this.isEntryFormMove = true;
     this.isReviewFormMove = false;
     this.reviewDetailsIndia.jabberNumbertoMove = formData.value.Identifier_Selected;
@@ -160,8 +154,7 @@ export class VoipInMoveComponent implements OnInit {
     this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;
     this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
     this.reviewDetailsIndia.projectId = formData.value.Projectid;
-    this.reviewDetailsIndia.accid_Disp = formData.value.accid;
-    this.reviewDetailsIndia.icano_Disp = formData.value.icano;
+    
 
   }
 
@@ -179,15 +172,15 @@ export class VoipInMoveComponent implements OnInit {
     this.payload.orinator_payload = this.orgi;
     this.payload.cNum_payload = this.cnum;
     // fields picked up from form -- begins	
-    //this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
+    //this.payload. = this.reviewDetailsIndia.campus;
     // by default set to true. below line can be removed if needed.	
     //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
     this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;
     // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
-   // this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;
+    this.payload.Identifier_Disp = this.reviewDetailsIndia.jabberNumbertoMove;
     this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
-    this.payload.Location_final = this.reviewDetailsIndia.campus;
+    this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
     //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
     this.payload.ReqNo = this.reqno;
 

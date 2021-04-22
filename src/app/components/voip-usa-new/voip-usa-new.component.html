@@ -37,7 +37,7 @@
                                     <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                     
                                     <select name="Location" rows="2" [(ngModel)]="locationselected" (change)="onLocationSelect($event)" cols="40" id="LocationId"  
-                                    class="ds-title ds-align-text-left" style="width:300px !important;" title="Location" >
+                                    class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Location" >
                                     
                                         <option name="Location" *ngFor="let fl_location of locationlist" [value]="fl_location" [selected]="'locationselected==belongsTo'?true:false">
                                             {{ fl_location }}</option>

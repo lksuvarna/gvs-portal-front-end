@@ -20,6 +20,7 @@ export class ApprovalpendingComponent implements OnInit {
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
 
   pendingRequest:any=[]; 
+  pendingRequest_original: any=[];
   cloudantData: any = [];
   servicesData: any = [];
   countryname:any;
@@ -32,6 +33,7 @@ export class ApprovalpendingComponent implements OnInit {
   checkedList:any;
   errorinfo=true;
   flag =true;
+  search='';
 
   submit(){
     this.router.navigate(['/employeeinfo']) 
@@ -67,8 +69,10 @@ export class ApprovalpendingComponent implements OnInit {
         
         if(data.message.length==0)
         this.errorinfo=false;
-        else
-        this.pendingRequest=data.message;
+        else{
+        this.pendingRequest_original=data.message;
+        this.pendingRequest=this.pendingRequest_original;
+        }
 
       });
       console.log(' snow response', this.pendingRequest);
@@ -116,7 +120,7 @@ export class ApprovalpendingComponent implements OnInit {
         }
 
   }
-  
+
 
   process2(sysid:string){
     return new Promise(resolve=>{
@@ -157,6 +161,32 @@ openpage(req:any){
   sessionStorage.setItem('request_name',req['sysapproval.variables.requested_by.name']);
   sessionStorage.setItem('request_sysid',req.sys_id);
   this.router.navigate(['/approvalsingle'],{ queryParams: { country: this.pcode, service:this.service}}) ;
+  
+}
+
+performsearch(){
+  
+  const List: any=[]; 
+  if(this.search==''){
+  alert("Enter search text");
+  return;
+  }
+  
+  for (var i = 0; i < this.pendingRequest_original.length; i++) {
+    console.log(this.pendingRequest_original[i]['sysapproval.variables.requested_by.user_name'].replace('-',''));
+    if((this.search==this.pendingRequest_original[i]['sysapproval.variables.requested_by.user_name'].replace('-','')) || (this.search.toUpperCase() ===this.pendingRequest_original[i]['sysapproval.variables.id'].toUpperCase()))
+    List.push(this.pendingRequest_original[i])
+   }
+  
+   this.pendingRequest=List;
+
+
+}
+
+clear()
+{
+  this.search='';
+  this.pendingRequest=this.pendingRequest_original;
   
 }
 
