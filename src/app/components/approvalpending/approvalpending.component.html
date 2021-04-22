@@ -20,13 +20,14 @@
                 <td width="783"> 
                 <div>Enter Serial Number or Request Number</div></td>
                 <td width="217"><div class="ds-pad-l-1">
-            <input  class="ds-input" style="width:220px !important;" maxlength="17"></div></td><td width="169">
+            <input  class="ds-input" name="search" id="search" style="width:220px !important;" maxlength="17" [(ngModel)]="search"></div>
+            </td><td width="169">
                 <div class="ds-float-lg-right">
             <div class="ds-tray-fit-content ds-margin-bottom-0">
             <div class="button-bar ds-tray-fit-content ds-float-lg-right ">
                 <span class="ds-pad-l-1 ds-pad-r-1">
-                    <input type="button" class="ds-button ds-secondary ds-pad-l-1 ds-width-auto ds-pad-r-1"  value="SEARCH" ></span>
-                    <input type="button"  class="ds-button ds-secondary  ds-pad-l-1 ds-width-auto ds-pad-r-1" value="CLEAR" >
+                    <input type="button" class="ds-button ds-secondary ds-pad-l-1 ds-width-auto ds-pad-r-1"  value="SEARCH" (click)="performsearch()"></span>
+                    <input type="button"  class="ds-button ds-secondary  ds-pad-l-1 ds-width-auto ds-pad-r-1" value="CLEAR" (click)="clear()" >
                 </div></div>
             </div>
         </td>
