@@ -157,74 +157,77 @@
         "Campus": "Campus",
         "Funded": "Funded",
         "ChargeDepartmentCode": "Charge Department Code",
-        "BusinessUnit": "Business Unit",
-        "Projectid": "Project ID (for GBS employee only)",
-        "alreadyhaveFixedPhone": "If you already have Fixed Phone , please provide the identifier",
-        "toprocessPI": "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.",
-        "JabberRequestDetails": "Jabber Request Details",
-        "FixedPhoneIdentifier": "Fixed Phone Identifier",
-        "Submissioninprogress": "Your request submission is in progress.Do not Go back or Refresh the page.",
-        "Submissionbeinginprogress": "Your request is being submitted. Do not refresh or go back.",
-        "Back": "BACK",
-        "Next": "NEXT",
-        "Select Location": "Select Location"
+        "BusinessUnit" : "Business Unit",
+        "Projectid" : "Project ID (for GBS employee only)",
+        "alreadyhaveFixedPhone":"If you already have Fixed Phone , please provide the identifier",
+        "toprocessPI":"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.",
+        "JabberRequestDetails":"Jabber Request Details",
+        "FixedPhoneIdentifier":"Fixed Phone Identifier",
+        "Submissioninprogress":"Your request submission is in progress.Do not Go back or Refresh the page.",
+        "Submissionbeinginprogress":"Your request is being submitted. Do not refresh or go back.",
+        "Back" : "Back",
+        "Next" : "Next",
+        "Select Location" : "Select Location"
+        
+    },
+    "Jabberupdate":{
+        "SELECTONE":"SELECT ONE",
+        "ReviewDetails" : "Review Details",
+        "JabberNumber" : "Jabber Number",
+        "SelectJabberNumber" : "Select Jabber Number",
+        "Jabber/PhoneNumberLocation" : "Select Jabber / Phone Number Location"
+    },
+    "Jabbermove":{
+    "JabbertoMove":"Jabber number to Move",
+    "ProjectIId" : "Project ID",
+    "AccountId" : "Account ID",
+    "ICACode" : "ICA Code",
+    "NewOfficeLocation" :"New Office Location",
+    "Building" : "Building"
+    },
 
+    "requesttrans" : {
+        "Requests" : "Requests",
+        "beingsubmitted":"Your request is being submitted.Do not refresh or go back.",
+        "EmployeeRequestsDetails":"Employee Requests Details",
+        "ResourceType" : "Resource Type",
+        "CreatedDate" : "Created Date",
+        "Status" : "Status",
+        "TrackingNumber" : "Tracking Number",
+        "AdditionalComments" :"Additional Comments"
     },
-    "Jabberupdate": {
-        "SelectJabberNumber": "Select Jabber Number",
-        "ReviewDetails": "Review Details",
-        "JabberNumber": "Jabber Number"
+    "resultpagetrans" : {
+       "Yourrequestfor" : "Your request for",
+       "hasbeensubmitted" :"has been submitted",
+       "Trackingrequest":"Tracking number for the request is :",
+       "receiveemailnotification":"You will receive an email notification, when your request has been processed."
     },
-    "Jabbermove": {
-        "JabbertoMove": "Jabber number to Move",
-        "ProjectIId": "Project ID",       
-        "NewOfficeLocation": "New Office Location",
-        "Building": "Building"
+    "resourcespagetranslation" :{
+        "EmployeeResourcesDetails":"Employee Resources Details",
+        "Supplier":"Supplier",
+        "Phone/Dial" : "Phone/Dial",
+        "Innumber" : "In number",
+        "AdditionalInformation" : "Additional Information"
     },
-
-    "requesttrans": {
-        "Requests": "Requests",
-        "beingsubmitted": "Your request is being submitted.Do not refresh or go back.",
-        "EmployeeRequestsDetails": "Employee Requests Details",
-        "ResourceType": "Resource Type",
-        "CreatedDate": "Created Date",
-        "Status": "Status",
-        "TrackingNumber": "Tracking Number",
-        "AdditionalComments": "Additional Comments"
+     "alerttranslation" : {
+        "EXITREQUEST" : "EXIT REQUEST",
+        "digitserialnumber":"Employee Serial Number should be of 6 characters",
+        "enterserialnumber" : "Please enter a serial number",
+        "moverequest":"Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit",
+        "selectcountrycode":"Please select the Country Code",
+        "Only" : "Only",
+        "serialnumbersareallowed":"Serial numbers are allowed to create a request for",
+        "selectlocation":"Please select the Location",
+        "selectjabbernumber":"Please select the Jabber Number"
+     
     },
-    "resultpagetrans": {
-        "Yourrequestfor": "Your request for",
-        "hasbeensubmitted": "has been submitted",
-        "Trackingrequest": "Tracking number for the request is :",
-        "receiveemailnotification": "You will receive an email notification, when your request has been processed."
-    },
-    "resourcespagetranslation": {
-        "EmployeeResourcesDetails": "Employee Resources Details",
-        "Supplier": "Supplier",
-        "Phone/Dial": "Phone/Dial",
-        "Innumber": "In number",
-        "AdditionalInformation": "Additional Information"
-    },
-    "alerttranslation": {
-        "EXITREQUEST": "EXIT REQUEST",
-        "digitserialnumber": "Employee Serial Number should be of 6 characters",
-        "enterserialnumber": "Please enter a serial number",
-        "moverequest": "Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit",
-        "selectcountrycode": "Please select the Country Code",
-        "Only": "Only",
-        "serialnumbersareallowed": "Serial numbers are allowed to create a request for",
-        "selectlocation": "Please select the Location",
-        "selectjabbernumber": "Please select the Jabber Number"
-
-    },
-    "topui": {
-        "HOME": "HOME",
-        "SERVICES": "SERVICES",
-        "DATAPRIVACY": "DATA PRIVACY",
-        "HELP": "HELP",
-        "FEEDBACK": "FEEDBACK",
-        "CHANGECOUNTRY": "CHANGE COUNTRY"
-
+    "topui" :{
+     "HOME" :"HOME",
+     "SERVICES" : "SERVICES",
+     "DATAPRIVACY" : "DATA PRIVACY",
+     "HELP" : "HELP",
+     "FEEDBACK" : "FEEDBACK",
+     "CHANGECOUNTRY" :"CHANGE COUNTRY"
     },
 
     "steps": {
@@ -240,5 +243,5 @@
         "STEP 4": "STEP 4"
 
     }
-
+    
 }

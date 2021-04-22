@@ -57,6 +57,11 @@ import { FacservicesComponent } from './components/facservices/facservices.compo
 
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
 import { HpAuUpdateComponent } from './components/hp-au-update/hp-au-update.component';
+import { HpInUpdateComponent } from './components/hp-in-update/hp-in-update.component';
+import { HpInDeleteComponent } from './components/hp-in-delete/hp-in-delete.component';
+import { HpUsaNewComponent } from './components/hp-usa-new/hp-usa-new.component';
+import { HpEmeaNewComponent } from './components/hp-emea-new/hp-emea-new.component';
+import { HpIndonesiaNewComponent } from './components/hp-indonesia-new/hp-indonesia-new.component';
 
 import { FacInUpdateComponent } from './components/fac-in-update/fac-in-update.component';
 import { FacInResetComponent } from './components/fac-in-reset/fac-in-reset.component';
@@ -118,6 +123,7 @@ handleError(error: Error){
     VoipEmeaNewComponent,
     VoipAuMoveComponent,
     HpInNewComponent,
+    HpInUpdateComponent,
     VoipInMoveComponent,
     PagenotfoundComponent,
     FixedphoneservicesComponent,
@@ -129,6 +135,10 @@ handleError(error: Error){
     FacInNewComponent,
     VoipUsaUpdateComponent,
     HpAuUpdateComponent,
+    HpInDeleteComponent,
+    HpUsaNewComponent,
+    HpEmeaNewComponent,
+    HpIndonesiaNewComponent,
 
     FacInUpdateComponent,
     FacInResetComponent,
