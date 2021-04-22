@@ -41,6 +41,8 @@ export class EmployeeinfoComponent implements OnInit {
   warninginfoothers = false;
   warninginfosnowothers = false;
   warninginfofac = false;
+  warninginfofacu = false;
+  warninginfofacr = false;
   selfinfo = false;
   sessionwarninginfo :any;
   sessionwarninginfosnow :any;
@@ -109,8 +111,18 @@ export class EmployeeinfoComponent implements OnInit {
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
-   if (this.sessionwarninginfo =='true1'&& this.service=="fac_new"){
+   else if (this.sessionwarninginfo =='true1'&& this.service=="fac_new"){
     this.warninginfofac = true
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }
+   else if (this.sessionwarninginfo =='false1'&& this.service=="fac_update"){
+    this.warninginfofacu = true
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }
+   else if (this.sessionwarninginfo =='false1'&& this.service=="fac_reset"){
+    this.warninginfofacr = true
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
@@ -150,7 +162,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.employeeInfo1=sessionStorage.getItem('employeeInfo')
     this.employeeInfo=JSON.parse(this.employeeInfo1)
 
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac){
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac || this.warninginfofacu || this.warninginfofacr){
       this.hideSteps = true;
       this.warn = true;
     } else {
