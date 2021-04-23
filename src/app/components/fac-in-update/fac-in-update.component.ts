@@ -191,7 +191,7 @@ export class FacInUpdateComponent implements OnInit {
     this.Funded = formData.value.Voice_Mail
     this.chargeDepartmentCode = formData.value.chargeDepartmentCode
     this.authLevel = formData.value.authLevel
-    this.bj_disp=formData.value.businessjustification;
+    this.bj_disp=formData.value.businessjustification.replace(/[\n\r+]/g, ' ');
     this.isReviewForm = false;
     this.isEntryForm = true;
   }
