@@ -193,6 +193,7 @@ export class FacInUpdateComponent implements OnInit {
     this.authLevel = formData.value.authLevel
     this.bj_disp=formData.value.businessjustification.replace(/[\n\r+]/g, ' ');
     this.isReviewForm = false;
+    
     this.isEntryForm = true;
   }
   // Submit to Snow Jabber new code added by Swarnava ends	
