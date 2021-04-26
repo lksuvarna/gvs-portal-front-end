@@ -109,6 +109,13 @@
         <div id="fac_new" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofac">
             <p><span style="font-size: 1rem;">The serial number that you have entered is not eligible to request more than one FAC code.</span></p>
         </div>
+        <div id="fac_deactivate" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacdeactivate">
+            <p><span style="font-size: 1rem;">There is no FAC code for this serial number.</span></p>
+        </div> 
+        <!--<div id="fac_deactivate" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacdeactivatesnow">
+            <p><span style="font-size: 1rem;">There is no FAC code for this serial number snow.</span></p>
+        </div> --> 
+        
         <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}.<br>
         
@@ -143,7 +150,7 @@
                 <button (click)="backClick()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" translate>employeeinfotrans.BACK</button>
             </div>
             <div class="ds-col-lg-2 ds-push-lg-8">
-                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false" translate>employeeinfotrans.NEXT</button>
+                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfofacdeactivate==false" translate>employeeinfotrans.NEXT</button>
             </div>
         </div>
     </div>

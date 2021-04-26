@@ -362,7 +362,13 @@ export class EmployeesearchComponent implements OnInit {
         } else if (this.service == "fac_new") {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";
-        } 
+        }else if (this.service == "fac_deactivate" ) {
+          sessionStorage.setItem('db2data', JSON.stringify(data.message)) ; 
+          if((JSON.stringify(data.message[0].IDENTIFIER)).trim() !== ""){
+            sessionStorage.setItem('identifier', 'xxxxxxxx') ;
+          }
+          this.datadb= "yes";
+      } 
         else { 
           sessionStorage.setItem('identifier', this.itns) ;
           sessionStorage.setItem('voice_mail', this.voice_mail) ;
@@ -513,6 +519,12 @@ export class EmployeesearchComponent implements OnInit {
       this.title="FAC Code New Request";
       this.routingname="/entrydetailsfac";
       this.reqname="-NS-";
+      break;
+      case "fac_deactivate":
+      this.title="FAC Code Deactivate Request";
+      this.routingname="/entrydetailsfacdeactive";
+      this.exitrouting='facservices';
+      this.reqname="-DS-";
       break;
       case "resources":
         this.title="Resources";
