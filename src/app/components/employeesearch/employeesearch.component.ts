@@ -429,12 +429,23 @@ export class EmployeesearchComponent implements OnInit {
           this.datadb = "yes";
 
         } else if (this.service == "fac_new") {
+<<<<<<< HEAD
           sessionStorage.setItem('identifier', 'xxxxxxxx');
           this.datadb = "yes";
         } else if (this.service == "fac_update" || this.service == "fac_reset") {
           sessionStorage.setItem('db2data', JSON.stringify(data.message));
           if ((JSON.stringify(data.message[0].IDENTIFIER)).trim() !== "") {
             sessionStorage.setItem('identifier', 'xxxxxxxx');
+=======
+          sessionStorage.setItem('identifier', 'xxxxxxxx') ;
+          this.datadb= "yes";
+
+        } else if (this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_deactivate") {
+
+          sessionStorage.setItem('db2data', JSON.stringify(data.message)) ; 
+          if((JSON.stringify(data.message[0].IDENTIFIER)).trim() !== ""){
+            sessionStorage.setItem('identifier', 'xxxxxxxx') ;
+>>>>>>> 9992b00f125399d05da93969e2d2b0f279977ca2
           }
           this.datadb = "yes";
         }
@@ -612,20 +623,43 @@ export class EmployeesearchComponent implements OnInit {
         this.reqname = "-DS-";
         break;
       case "fac_new":
+<<<<<<< HEAD
         this.title = "FAC Code New Request";
         this.routingname = "/entrydetailsfac";
         this.reqname = "-NS-";
         break;
+=======
+      this.title="FAC Code New Request";
+      this.routingname="/entrydetailsfac";
+      this.reqname="-NS-";
+      break;
+
+      case "fac_deactivate":
+      this.title="FAC Code Deactivate Request";
+      this.routingname="/entrydetailsfacdeactive";
+      this.exitrouting='facservices';
+      this.reqname="-DS-";
+      break;
+
+>>>>>>> 9992b00f125399d05da93969e2d2b0f279977ca2
       case "fac_update":
         this.title = "FAC Code Update Request";
         this.routingname = "/entrydetailsfacu";
         this.reqname = "-US-";
         break;
       case "fac_reset":
+<<<<<<< HEAD
         this.title = "FAC Code Reset Request";
         this.routingname = "/entrydetailsfacr";
         this.reqname = "-RS-";
         break;
+=======
+          this.title="FAC Code Reset Request";
+          this.routingname="/entrydetailsfacr";
+          this.reqname="-RS-";
+          break;
+
+>>>>>>> 9992b00f125399d05da93969e2d2b0f279977ca2
       case "resources":
         this.title = "Resources";
         this.exitrouting = 'services';

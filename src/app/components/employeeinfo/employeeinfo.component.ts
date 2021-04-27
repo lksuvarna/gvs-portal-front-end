@@ -41,8 +41,13 @@ export class EmployeeinfoComponent implements OnInit {
   warninginfoothers = false;
   warninginfosnowothers = false;
   warninginfofac = false;
+
+  warninginfofacdeactivate = false;
+  warninginfofacdeactivatesnow=false;
+
   warninginfofacu = false;
   warninginfofacr = false;
+
   selfinfo = false;
   sessionwarninginfo :any;
   sessionwarninginfosnow :any;
@@ -117,6 +122,19 @@ export class EmployeeinfoComponent implements OnInit {
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
+
+   else if (this.sessionwarninginfo !=='true1'&& this.service=="fac_deactivate"){
+    this.warninginfofacdeactivate = true
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }
+   /*else if (this.sessionwarninginfosnow =='true1' && this.service=="fac_deactivate"){
+    this.warninginfofacdeactivatesnow = true
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }*/
+
+
    else if (this.sessionwarninginfo =='false1'&& this.service=="fac_update"){
     this.warninginfofacu = true
     this.identifier=sessionStorage.getItem('identifier')
@@ -127,6 +145,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
+
    else if (this.sessionwarninginfosnow =='false1' && this.service=="requests"){
     this.warninginfosnowreq = true    
     this.isDataLoaded=true
@@ -145,7 +164,9 @@ export class EmployeeinfoComponent implements OnInit {
        this.page = 'update Jabber';
      }else if(this.service == "jabber_move"){
       this.page = 'move Jabber';
-    }
+    } //else if(this.service == "fac_deactivate"){
+      //this.page = 'fac Deactivate';
+    //}
      if (this.sessionwarninginfosnow=='true1'){
        this.identifier1=sessionStorage.getItem('identifier1')
       this.warninginfosnowothers = true;   
@@ -163,7 +184,9 @@ export class EmployeeinfoComponent implements OnInit {
     this.employeeInfo1=sessionStorage.getItem('employeeInfo')
     this.employeeInfo=JSON.parse(this.employeeInfo1)
 
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac || this.warninginfofacu || this.warninginfofacr){
+
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdeactivatesnow){
+
       this.hideSteps = true;
       this.warn = true;
     } else {

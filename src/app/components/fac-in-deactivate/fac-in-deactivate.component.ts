@@ -5,18 +5,19 @@ import { NgForm } from '@angular/forms';
 import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
-import { Db2Service } from '../../_services/db2.service';
-import {Fac_Update} from '../../../../config/payload';
+import {Fac_Deactivate} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
+import { Db2Service } from '../../_services/db2.service';
+
+
 
 @Component({
-  selector: 'app-fac-in-reset',
-  templateUrl: './fac-in-reset.component.html',
-  styleUrls: ['./fac-in-reset.component.css']
+  selector: 'app-fac-in-deactivate',
+  templateUrl: './fac-in-deactivate.component.html',
+  styleUrls: ['./fac-in-deactivate.component.css']
 })
-export class FacInResetComponent implements OnInit {
-
+export class FacInDeactivateComponent implements OnInit {
   build: any = [];
   campus:any;
   hideBuilding = true;
@@ -90,9 +91,10 @@ export class FacInResetComponent implements OnInit {
   buildA: any =[];
   locationlist: any;
   radioFunded: string = "";
+  business_unit :any;
   j=0;
 
-  payload : Fac_Update = new Fac_Update();
+  payload : Fac_Deactivate = new Fac_Deactivate();
   db2data: any
 
   toggle_options(){
@@ -191,7 +193,7 @@ export class FacInResetComponent implements OnInit {
     this.Funded = formData.value.Voice_Mail
     this.chargeDepartmentCode = formData.value.chargeDepartmentCode
     this.authLevel = formData.value.authLevel
-    this.bj_disp=formData.value.businessjustification.replace(/[\n\r+]/g, ' ');
+    this.bj_disp=formData.value.businessjustification;
     this.isReviewForm = false;
     this.isEntryForm = true;
   }
@@ -214,38 +216,45 @@ export class FacInResetComponent implements OnInit {
   BackButton() {
     this.isReviewForm = true;
     this.isEntryForm = false;
+    
   }
 
   submit_snow(){	
-    this.reqno=this.countrydetails.isocode+"-US-"+this.cnum.substr(0,6)+"-"+gettime();	
+    this.reqno=this.countrydetails.isocode+"-DS-"+this.cnum.substr(0,6)+"-"+gettime();	
     sessionStorage.setItem('reqno',this.reqno)	
     this.isButtonVisible=false;	
     this.isSpinnerVisible=true;	
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
+      this.payload.site_address ='';
       // fields picked up from form -- begins	
-      this.payload.Projectid_Disp = '';
+      //-this.payload.Projectid_Disp = '';
      // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
-      this.payload.Department_number_Disp = '';
-      this.payload.accid_Disp = '';
+     //- this.payload.Department_number_Disp = '';
+     //- this.payload.accid_Disp = '';
       //this.payload.Identifier_Selected = this.jabberDisp;
-      this.payload.updated_for = '';
+     //- this.payload.updated_for = '';
       this.payload.ReqNo=this.reqno;
+      this.payload.Identifier_Disp=this.identifier;	
       // this.payload.Current_COS=this.cos_disp;
       // this.payload.Current_VM=this.vm_disp;
       // this.payload.Justification=this.bj_disp;
       // this.payload.New_Voice=this.new_vm_disp;
       // this.payload.New_COS=this.new_cos_disp
       // fields to be picked up from form -- ends	
-      this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+      //-this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
-      this.payload.request_type='jabber_update';	
+      this.payload.request_type='fac_deactivate';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
-      this.payload.prov_type=this.countrydetails.provision_type;
-      this.payload.updated_for=this.toup_disp+','+this.toup_disp2;
+      this.payload.authLevel_final = this.currAuthorizationLevel;
+      this.payload.authValue=this.authLevel;
+      this.payload.BusinessUnit_Disp = this.business_unit;
+      
+      //-this.payload.prov_type=this.countrydetails.provision_type;
+      //-this.payload.updated_for=this.toup_disp+','+this.toup_disp2;
       	
-     this.servicenowservice.submit_request_fac_update(this.payload).subscribe(data=> {	
+     this.servicenowservice.submit_request_fac_deactivate(this.payload).subscribe(data=> {	
      console.log('response', data);	
      if(data)	
      this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
@@ -259,11 +268,11 @@ export class FacInResetComponent implements OnInit {
      }	
    
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute) {
-
-   }
-
-  ngOnInit(): void {
-    // Submit to Snow Jabber Update code
+    
+    }
+    ngOnInit(): void {
+  
+        // Submit to Snow Jabber Update code
     this.cnum = sessionStorage.getItem('cnum');
     this.orgi = this.cookie.getCookie('ccode');
     this.countrydetails = sessionStorage.getItem('countrydetails');
