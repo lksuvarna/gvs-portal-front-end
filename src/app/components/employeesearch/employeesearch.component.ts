@@ -78,7 +78,11 @@ export class EmployeesearchComponent implements OnInit {
   extracodes: any = [];
   ngOnInit(): void {
     this.showloader = false
-
+    this.route.queryParams
+    .subscribe(params => {
+      console.log(params);
+      this.pcode = params.country;
+      this.service = params.service;
     this.fullName = this.cookie.getCookie('username');
     if (this.fullName.includes(undefined)) {
       this.fullName = this.cookie.getCookie('user');
@@ -86,18 +90,36 @@ export class EmployeesearchComponent implements OnInit {
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
     this.fullName = this.fullName.replace(",", ", ");
     this.ccode = this.cookie.getCookie('ccode');
-
-    this.countrydetails = sessionStorage.getItem('countrydetails')
+if(sessionStorage.getItem('countrydetails')==undefined){
+  
+  this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+    
+    console.log('Response received navigation', data.countrydetails.isspecial);
+    this.countryname = data.countrydetails;
+    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+    this.countrydetails=JSON.stringify(data.countrydetails);
     this.countrydetails = JSON.parse(this.countrydetails)
+   
+    sessionStorage.setItem('countryroute', this.pcode);
+    
     if (this.countrydetails.testuser) {
       this.ccode = this.countrydetails.testuser
     }
     else { this.ccode = this.cookie.getCookie('ccode'); }
-    this.route.queryParams
-      .subscribe(params => {
-        console.log(params);
-        this.pcode = params.country;
-        this.service = params.service;
+  });
+  
+}
+   else{ this.countrydetails = sessionStorage.getItem('countrydetails');
+   this.countrydetails = JSON.parse(this.countrydetails)
+   
+   if (this.countrydetails.testuser) {
+     this.ccode = this.countrydetails.testuser
+   }
+   else { this.ccode = this.cookie.getCookie('ccode'); }
+  }
+    
+   
+    
         console.log("navigation component" + this.pcode);
 
         this.backbutton = sessionStorage.getItem('backbutton');
@@ -171,7 +193,7 @@ export class EmployeesearchComponent implements OnInit {
     if (this.radioAction.toLowerCase() == "myself") {
       if (this.countrydetails.extracodes) {
 
-        if (this.countrydetails.extracodes.some((s: string | string[]) => s.includes(this.ccode.substr(6, 9)))) { }
+        if (this.countrydetails.extracodes.split(',').some((s: string[]) => s.includes(this.ccode.substr(6, 9)))) { }
         else {
           alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
           return;

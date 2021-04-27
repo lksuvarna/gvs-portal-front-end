@@ -17916,26 +17916,44 @@ class EmployeesearchComponent {
     }
     ngOnInit() {
         this.showloader = false;
-        this.fullName = this.cookie.getCookie('username');
-        if (this.fullName.includes(undefined)) {
-            this.fullName = this.cookie.getCookie('user');
-        }
-        this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
-        this.fullName = this.fullName.replace(",", ", ");
-        this.ccode = this.cookie.getCookie('ccode');
-        this.countrydetails = sessionStorage.getItem('countrydetails');
-        this.countrydetails = JSON.parse(this.countrydetails);
-        if (this.countrydetails.testuser) {
-            this.ccode = this.countrydetails.testuser;
-        }
-        else {
-            this.ccode = this.cookie.getCookie('ccode');
-        }
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
             this.pcode = params.country;
             this.service = params.service;
+            this.fullName = this.cookie.getCookie('username');
+            if (this.fullName.includes(undefined)) {
+                this.fullName = this.cookie.getCookie('user');
+            }
+            this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
+            this.fullName = this.fullName.replace(",", ", ");
+            this.ccode = this.cookie.getCookie('ccode');
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received navigation', data.countrydetails.isspecial);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    sessionStorage.setItem('countryroute', this.pcode);
+                    if (this.countrydetails.testuser) {
+                        this.ccode = this.countrydetails.testuser;
+                    }
+                    else {
+                        this.ccode = this.cookie.getCookie('ccode');
+                    }
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                if (this.countrydetails.testuser) {
+                    this.ccode = this.countrydetails.testuser;
+                }
+                else {
+                    this.ccode = this.cookie.getCookie('ccode');
+                }
+            }
             console.log("navigation component" + this.pcode);
             this.backbutton = sessionStorage.getItem('backbutton');
             this.step = sessionStorage.getItem('step');
@@ -17993,7 +18011,7 @@ class EmployeesearchComponent {
         console.log(this.pcode + this.ccode);
         if (this.radioAction.toLowerCase() == "myself") {
             if (this.countrydetails.extracodes) {
-                if (this.countrydetails.extracodes.some((s) => s.includes(this.ccode.substr(6, 9)))) { }
+                if (this.countrydetails.extracodes.split(',').some((s) => s.includes(this.ccode.substr(6, 9)))) { }
                 else {
                     alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
                     return;
