@@ -85,9 +85,9 @@
 
     "servicestitle":{
         "Request new Jabber service" :"Demander un nouveau service Jabber",
-        "Delete an existing service" : "Delete an existing service",
-        "Request a new service" :"Request a new service",
-        "Update an existing service" : "Update an existing service",
+        "Delete an existing service" : "Supprimer un service existant",
+        "Request a new service" :"Demander un nouveau service",
+        "Update an existing service" : "Mettre à jour un service existant",
         "Request Move Jabber service" :"Demander le service Move Jabber",
         "Requests" : "Demandes",
         "Resources" : "Ressources",
@@ -147,7 +147,8 @@
         "alreadyoneupdaterequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de mise à jour Jabber est en cours et le numéro de demande est",
         "alreadyonemoverequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de déplacement Jabber est en cours et le numéro de demande est",
         "alreadyonedeleterequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est",
-        "alreadyonefacdeleterequestinprogress" :"Le numéro de série que vous avez entré a déjà une demande de suppression FAC est en cours et le numéro de demande est"
+        "alreadyonefacdeleterequestinprogress" :"Le numéro de série que vous avez entré a déjà une demande de suppression FAC est en cours et le numéro de demande est",
+        "enterserialnumber":"Please enter a serial number"
     },
     "Jabberentrydetails":{
         "Fieldsasterisk":"Champs marqués d'un astérisque",
@@ -165,7 +166,8 @@
          "FixedPhoneIdentifier":"Identifiant de téléphone fixe",
          "Submissioninprogress":"La soumission de votre demande est en cours.Ne revenez pas en arrière ou n'actualisez pas la page.",
         "Submissionbeinginprogress":"Votre demande est en cours d'envoi. Ne pas actualiser ni revenir en arrière.",
-         "Back" : "Dos",
+         "Back" : "DOS",
+         "Next" : "SUIVANTE",
          "SelectLocation" : "Sélectionnez l'emplacement"
      },
      "Jabberupdate":{
