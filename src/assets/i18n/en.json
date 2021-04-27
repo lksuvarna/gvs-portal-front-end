@@ -183,8 +183,8 @@
     },
     "Jabbermove":{
     "JabbertoMove":"Jabber number to Move",
-    "ProjectIId" : "Project Id",
-    "AccountId" : "Account Id",
+    "ProjectIId" : "Project ID",
+    "AccountId" : "Account ID",
     "ICACode" : "ICA Code",
     "NewOfficeLocation" :"New Office Location",
     "Building" : "Building"
@@ -249,4 +249,3 @@
     }
     
 }
- 

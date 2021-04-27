@@ -28,10 +28,10 @@ export class FixedphoneservicesComponent implements OnInit {
         console.log("navigation component" + this.pcode);
         this.countrydetails = sessionStorage.getItem('countrydetails');	
         this.countrydetails = JSON.parse(this.countrydetails);
-     this.linkv=this.countrydetails.jservices
+     this.linkv=this.countrydetails.fservices
       
    
-    console.log(this.countrydetails.jservices)
+    console.log(this.countrydetails.fservices)
       const servicesData = { 
       "data": [
         {    

@@ -96,6 +96,9 @@
         "Move Jabber Request" : "Déplacer la demande Jabber",
         "Fixed Phone - New Request" : "Téléphone fixe - Nouvelle demande",
         "New Fixed Phone Request" : "Nouvelle demande de téléphone fixe",
+        "Fixed Phone - Update Request" : "Téléphone fixe - Demande de mise à jour",
+        "Fixed Phone - Delete Request"  : "Téléphone fixe - Demande de suppression",
+
         "Deactivate an existing FAC Code" :"Désactiver un code FAC existant",
         "FAC Code Deactivate Request" : "Demande de désactivation du code FAC",
         "Request a new FAC Code" : "Demander un nouveau code FAC",

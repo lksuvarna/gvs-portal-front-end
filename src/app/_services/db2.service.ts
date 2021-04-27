@@ -12,9 +12,13 @@ export class Db2Service {
   constructor(private http: HttpClient) { }
   private Url = '/api/db2_resource';
   payload : db2search = new db2search();
-  search_db2(cnum : string, type:string): Observable<any> {
+  search_db2(cnum : string, type:string, fixedphone: string, identifier: string,country:string): Observable<any> {
     this.payload.cnum=cnum;
     this.payload.request_type=type;
+    
+    this.payload.fixedphone = fixedphone;
+    this.payload.identifier = identifier;
+    this.payload.country = country;
     console.log('calling db2'+this.payload);
     return this.http.post(this.Url,this.payload)
     .pipe(catchError(this.errorhandler))

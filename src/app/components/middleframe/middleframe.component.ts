@@ -84,7 +84,7 @@ export class MiddleframeComponent implements OnInit {
           "lhs": [
             {"name" : "Services","routingname":"/services", "indented" : false, "highlighted": true},
             {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
-            {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
+            {"name" : "Revalidation Pending","routingname":"/approvalpending", "indented" : false, "highlighted": false},
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
          ],

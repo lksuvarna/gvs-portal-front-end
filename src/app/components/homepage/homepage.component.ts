@@ -51,7 +51,13 @@ export class HomepageComponent implements OnInit {
     //this.userDetails = (this.cookie.getCookie('user'));
 
 
-    this.fullName=this.cookie.getCookie('user');
+   
+    this.fullName = this.cookie.getCookie('usernamehome');
+    if(this.fullName==undefined){
+      this.fullName=this.cookie.getCookie('user');
+    }
+    this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
+    this.fullName = this.fullName.replace(","," ");
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);

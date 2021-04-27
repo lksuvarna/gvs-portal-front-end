@@ -15,7 +15,7 @@ import { Location } from '@angular/common';
 })
 export class VoipInMoveComponent implements OnInit {
   hideDeptCode: boolean = true;
-  jabberNumber:any = [];
+  jabberNumber = [78979812, 79870945];
   Voice_Type = "No";
   hideBuilding = true;
   displayDiv = false;
@@ -51,7 +51,7 @@ export class VoipInMoveComponent implements OnInit {
   campus: any;
   reqFor: any;
   hideProjectId = false;
-  hideSteps = false;
+  hideSteps = false
 
   payload: Jabber_Move = new Jabber_Move();
   reviewDetailsIndia = {
@@ -66,7 +66,7 @@ export class VoipInMoveComponent implements OnInit {
     Voice_Type_Disp: true,
     icano_Disp: "",
     Location_final: "",
-    accid_Disp: "",
+    Identifier_Disp: "",
     reqno: ""
   }
   backClick(){	
@@ -97,10 +97,10 @@ export class VoipInMoveComponent implements OnInit {
     if (jabberNumberVal != '') {
       this.displayDiv = true;
     }
-    else {
+    else
       this.displayDiv = false;
-      this.hideBuilding = true;}
 
+    //alert(this.displayDiv + this.jabberNumberVal)
   }
 
   selectedLocation(loc: String) {
@@ -135,22 +135,16 @@ export class VoipInMoveComponent implements OnInit {
       alert('Please select the Campus');
       return;
     }
-    if (formData.value.Department_number.toUpperCase().trim == '' && this.hideDeptCode == false) {
+    if (formData.value.Department_number.toUpperCase().trim() == '' && this.hideDeptCode == false) {
       alert('Please enter the Charge Department Code');
       return;
     }
-    if(formData.value.Projectid.trim == '' && this.hideProjectId == false) {
+    
+    if(formData.value.Projectid.trim() == '' && this.hideProjectId == false) {
       alert('Please enter the Project ID');
       return;
       }
-    if (formData.value.accid.trim == '') {
-      alert('Please enter the Account ID');
-      return;
-    }
-    if (formData.value.icano.trim == '') {
-      alert('Please enter the ICA Code');
-      return;
-    }
+   
     this.isEntryFormMove = true;
     this.isReviewFormMove = false;
     this.reviewDetailsIndia.jabberNumbertoMove = formData.value.Identifier_Selected;
@@ -160,8 +154,7 @@ export class VoipInMoveComponent implements OnInit {
     this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;
     this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
     this.reviewDetailsIndia.projectId = formData.value.Projectid;
-    this.reviewDetailsIndia.accid_Disp = formData.value.accid;
-    this.reviewDetailsIndia.icano_Disp = formData.value.icano;
+    
 
   }
 
@@ -179,15 +172,15 @@ export class VoipInMoveComponent implements OnInit {
     this.payload.orinator_payload = this.orgi;
     this.payload.cNum_payload = this.cnum;
     // fields picked up from form -- begins	
-    //this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
+    //this.payload. = this.reviewDetailsIndia.campus;
     // by default set to true. below line can be removed if needed.	
     //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
     this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;
     // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
-   // this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;
+    this.payload.Identifier_Disp = this.reviewDetailsIndia.jabberNumbertoMove;
     this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
-    this.payload.Location_final = this.reviewDetailsIndia.campus;
+    this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
     //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
     this.payload.ReqNo = this.reqno;
 
@@ -243,12 +236,10 @@ export class VoipInMoveComponent implements OnInit {
     }
     else if(this.sessionwarninginfosnow =='true1') {
 this.warninginfosnow=true
-this.identifier=sessionStorage.getItem('identifier')?.replace(" ","");
+this.identifier=sessionStorage.getItem('identifier')
     }
     else{
-      this.identifier=sessionStorage.getItem('identifier');
-      this.identifier = this.identifier.split(',');
-      this.jabberNumber = [...this.identifier];      
+      this.identifier=sessionStorage.getItem('identifier')      
     }	
      this.route.queryParams	
      .subscribe(params => {	
@@ -256,33 +247,10 @@ this.identifier=sessionStorage.getItem('identifier')?.replace(" ","");
        this.service=params.service;	
        this.pcode = params.country;	
        console.log("navigation component" + this.pcode);	
-     });
-    
-     this.reqFor = sessionStorage.getItem('radioAction'); 
-     if(this.warninginfo || this.warninginfosnow){
-      this.hideSteps = true
-    } else {
-      this.hideSteps = false
-    }
-    
-    const servicesData = { 	
-      "data": [	
-        {    	
-          
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-          "step" : 3,	
-          
-        }	
-      ]	
-  
      
-    }
-    this.servicesData = servicesData.data[0];
      this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','');
      this.locationlist=this.locationlist?.replace('"','').split(',');	
-
-     
-    
+   
      for (var i = 0; i < this.locationlist.length; i++) {	
        var n = this.locationlist[i].indexOf("~")	
        this.campA[i] = this.locationlist[i].substr(1, n - 1);	
@@ -294,13 +262,33 @@ this.identifier=sessionStorage.getItem('identifier')?.replace(" ","");
          this.j++;	
        }	
      }
-  
-
+     const servicesData = { 	
+       "data": [	
+         {    	
+           
+           "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+           "step" : 3,	
+           
+         }	
+       ]	
+   
+      
+     }
+     
+     
+     this.servicesData = servicesData.data[0];
+     if(this.warninginfo || this.warninginfosnow){
+      this.hideSteps = true
+    } else {
+      this.hideSteps = false
+    }		
      this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
      this.employeeInfo = JSON.parse(this.employeeInfo1);	
      if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
        this.hideProjectId = true;
-       } 	
+       }
+       this.reqFor = sessionStorage.getItem('radioAction')
+      });   	
   } 
   previousStep(event : any){
     this.isEntryFormMove = false;	
