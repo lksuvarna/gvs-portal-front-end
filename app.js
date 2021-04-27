@@ -93,13 +93,8 @@ if (!req.isAuthenticated()) {
   res.clearCookie('user');  
   res.clearCookie('ccode');          
     res.cookie('user',req.user._json.name);  
-<<<<<<< HEAD
-    res.cookie('username',req.user._json.lastName+","+req.user._json.firstName);  
-    res.cookie('usernamehome',req.user._json.firstName+" "+req.user._json.lastName); 
-=======
     res.cookie('username',req.user._json.lastName+","+req.user._json.firstName); 
     res.cookie('usernamehome',req.user._json.firstName+" "+req.user._json.lastName);  
->>>>>>> 9992b00f125399d05da93969e2d2b0f279977ca2
     res.cookie('ccode',req.user._json.uid);         
     req.session.authuser=req.user;        
     app.post('/api',function(req,res,next){
