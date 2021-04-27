@@ -360,7 +360,9 @@ export class EmployeesearchComponent implements OnInit {
         } else if (this.service == "fac_new") {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";
-        } else if (this.service == "fac_update" || this.service == "fac_reset") {
+
+        } else if (this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_deactivate") {
+
           sessionStorage.setItem('db2data', JSON.stringify(data.message)) ; 
           if((JSON.stringify(data.message[0].IDENTIFIER)).trim() !== ""){
             sessionStorage.setItem('identifier', 'xxxxxxxx') ;
@@ -543,6 +545,14 @@ export class EmployeesearchComponent implements OnInit {
       this.routingname="/entrydetailsfac";
       this.reqname="-NS-";
       break;
+
+      case "fac_deactivate":
+      this.title="FAC Code Deactivate Request";
+      this.routingname="/entrydetailsfacdeactive";
+      this.exitrouting='facservices';
+      this.reqname="-DS-";
+      break;
+
       case "fac_update":
         this.title="FAC Code Update Request";
         this.routingname="/entrydetailsfacu";
@@ -553,6 +563,7 @@ export class EmployeesearchComponent implements OnInit {
           this.routingname="/entrydetailsfacr";
           this.reqname="-RS-";
           break;
+
       case "resources":
         this.title="Resources";
         this.exitrouting='services';

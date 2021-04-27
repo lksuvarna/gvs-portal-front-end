@@ -46,6 +46,8 @@ import { HpUsaNewComponent } from './components/hp-usa-new/hp-usa-new.component'
 import { HpEmeaNewComponent } from './components/hp-emea-new/hp-emea-new.component';
 import { HpIndonesiaNewComponent } from './components/hp-indonesia-new/hp-indonesia-new.component';
 import { HpAuNewComponent } from './components/hp-au-new/hp-au-new.component';
+import { FacInDeactivateComponent } from './components/fac-in-deactivate/fac-in-deactivate.component';
+
 
 
 
@@ -98,6 +100,8 @@ const appRoutes: Routes = [
     { path: 'pagenotfound', component: PagenotfoundComponent},
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
     { path: 'entrydetailsfacin', component: FacInNewComponent},
+    { path: 'entrydetailsfacdeactive', component: FacInDeactivateComponent},
+    
     
     
    // {path: '**', redirectTo:'/pagenotfound?error'}
