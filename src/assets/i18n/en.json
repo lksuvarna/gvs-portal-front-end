@@ -134,7 +134,7 @@
         "notauthorizedtoaccessip":"The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact",
         "noteligibletorequestmorethanonejabber":"The serial number that you have entered is not eligible to request more than one Jabber account.",
         "ITNexistsforthisuser":"The IBM Telephone Number (ITN) that exists for this users jabber account is",
-        "jabberconfiguration":"related to Jabber configuration can be found at",
+        "jabberconfiguration":"Related to Jabber configuration can be found at",
         "furtherassistance":"For any further assistance, please contact",
         "alreadyone":"serial number that you have entered has already one",
         "inprogess":"is in progress and request number is",
@@ -150,7 +150,7 @@
         "alreadyonemoverequestinprogress":"The serial number that you have entered has already one move Jabber request is in progress and request number is",
         "alreadyonedeleterequestinprogress":"The serial number that you have entered has already one delete Jabber request is in progress and request number is",
         "alreadyonefacdeleterequestinprogress" :"The serial number that you have entered has already one delete FAC request is in progress and request number is",
-        "enterserialnumber":"Please enter a serial number "
+        "enterserialnumber":"Please enter a serial number"
         
     },
     "Jabberentrydetails":{
@@ -169,8 +169,8 @@
         "FixedPhoneIdentifier":"Fixed Phone Identifier",
         "Submissioninprogress":"Your request submission is in progress.Do not Go back or Refresh the page.",
         "Submissionbeinginprogress":"Your request is being submitted. Do not refresh or go back.",
-        "Back" : "Back",
-        "Next" : "Next",
+        "Back" : "BACK",
+        "Next" : "NEXT",
         "Select Location" : "Select Location"
         
     },

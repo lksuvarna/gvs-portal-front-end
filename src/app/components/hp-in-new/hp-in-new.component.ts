@@ -33,7 +33,7 @@ isSpinnerVisible= false;
 
 isEntryForm = false;	
 isReviewForm = true;	
-Voice_Type = "No";	
+Voice_Type = "no";	
 hideDeptCode = true;	
 hideBuilding = true;	
 //fixedPhoneIdentifier = false;	
@@ -57,7 +57,7 @@ showforAnyDevice = true;
 showforFixedPhone = true;
 showBusinessNeed = true;
 voicemail = 'no';
-COS = 'national';
+COS = 'National';
 selected_device:any = '';
 modelValue:any;
 empID:any='';
@@ -107,8 +107,8 @@ reviewDetailsIndia = {
 
   officeLocation:	"",	
   campus:	"",	
-  funded:	"",	
-  chargeDepartmentCode:	"",	
+  funded:	"No",	
+  chargeDepartmentCode:	"NA",	
   businessUnit:	"",	
   projectId: "",	
   accountId: " ",	
@@ -123,7 +123,7 @@ reviewDetailsIndia = {
   employeeId:"",
   voicemail:"",
   cos:"",
-  justification:"",
+  justification:"NA",
   description:"",
   mac:"",
 }	
@@ -175,7 +175,7 @@ selectedDevice(device:string) {
     this.models = [...this.fpModels];
     this.hideEmpID = false;
     this.hideVoicemail = false;
-    if(this.COS == 'international') {
+    if(this.COS == 'International') {
       this.showBusinessNeed = false;
     }
   }
@@ -249,7 +249,7 @@ onEmailClick() {
 }
 
 classofservice(cos:string) {
-  if(cos == 'international') {
+  if(cos == 'International') {
     this.showBusinessNeed = false;
   } else {
     this.showBusinessNeed = true;
@@ -333,7 +333,7 @@ entryDetails(formData: NgForm) {
   this.isReviewForm = false;	
 
   this.reviewDetailsIndia.officeLocation = formData.value.Location_1;	
-  this.reviewDetailsIndia.campus = formData.value.Buildings;	
+  this.reviewDetailsIndia.campus = formData.value.Buildings;
   this.reviewDetailsIndia.funded = this.Voice_Type;	
   this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;	
   this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
@@ -369,11 +369,11 @@ submit_snow(){
     // by default set to true. below line can be removed if needed.	
     //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
     this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
-    this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+    this.payload.icano_Disp = this.reviewDetailsIndia.icaCode;	
     this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
     this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;	
-    this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
+    this.payload.accid_Disp=this.reviewDetailsIndia.accountId;	
     this.payload.ReqNo=this.reqno;
     this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
     this.payload.Model_Disp =  this.reviewDetailsIndia.model;
@@ -435,9 +435,9 @@ ngOnInit(): void {
   this.emModels = sessionStorage.getItem('emmodels')?.replace('"','');
   this.emModels = this.emModels.replace('"','').split(',');
   this.fpModels = sessionStorage.getItem('fpmodels')?.replace('"','');
-  this.fpModels = this.fpModels.split(',');
+  this.fpModels = this.fpModels.replace('"','').split(',');
   this.cModels = sessionStorage.getItem('cmmodels')?.replace('"','');
-  this.cModels = this.cModels.split(',');
+  this.cModels = this.cModels.replace('"','').split(',');
   this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
   this.locationlist=this.locationlist?.replace('"','').split(',');	
 

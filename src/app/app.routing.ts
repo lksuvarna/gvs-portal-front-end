@@ -28,7 +28,7 @@ import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.comp
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {VoipLaUpdateComponent} from './components/voip-la-update/voip-la-update.component';
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
-
+import { HpAuUpdateComponent } from './components/hp-au-update/hp-au-update.component';
 import { FacInUpdateComponent } from './components/fac-in-update/fac-in-update.component';
 import { FacInResetComponent } from './components/fac-in-reset/fac-in-reset.component';
 
@@ -46,6 +46,8 @@ import { HpUsaNewComponent } from './components/hp-usa-new/hp-usa-new.component'
 import { HpEmeaNewComponent } from './components/hp-emea-new/hp-emea-new.component';
 import { HpIndonesiaNewComponent } from './components/hp-indonesia-new/hp-indonesia-new.component';
 import { HpAuNewComponent } from './components/hp-au-new/hp-au-new.component';
+import { FacInDeactivateComponent } from './components/fac-in-deactivate/fac-in-deactivate.component';
+
 
 
 
@@ -88,6 +90,7 @@ const appRoutes: Routes = [
     { path: 'entrydetailsindo', component: HpIndonesiaNewComponent},
 
     { path: 'entrydetailsaufn', component: HpAuNewComponent},
+    { path: 'entrydetailsaufu', component: HpAuUpdateComponent},
     { path: 'entrydetailsfac', component: FacInNewComponent},
     { path: 'entrydetailsfacu', component: FacInUpdateComponent},
     { path: 'entrydetailsfacr', component: FacInResetComponent},
@@ -97,6 +100,8 @@ const appRoutes: Routes = [
     { path: 'pagenotfound', component: PagenotfoundComponent},
     { path: 'pagenotfound?error', component: PagenotfoundComponent},
     { path: 'entrydetailsfacin', component: FacInNewComponent},
+    { path: 'entrydetailsfacdeactive', component: FacInDeactivateComponent},
+    
     
     
    // {path: '**', redirectTo:'/pagenotfound?error'}
