@@ -133,7 +133,7 @@ export class VoipUsaUpdateComponent implements OnInit {
       console.error('error caught in component'+error);
       this.isSpinnerVisible= false; 	
       this.errorinfo=true;
-      this.isButtonVisible=true;
+      this.isButtonVisible=false;
     });	
      }	
    

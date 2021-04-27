@@ -25,20 +25,28 @@ import { VoipInUpdateComponent } from './components/voip-in-update/voip-in-updat
 import { VoipEmeaNewComponent } from './components/voip-emea-new/voip-emea-new.component';
 import { VoipUsaNewComponent } from './components/voip-usa-new/voip-usa-new.component';
 import { VoipInMoveComponent } from './components/voip-in-move/voip-in-move.component';
-import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
-import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import {VoipLaUpdateComponent} from './components/voip-la-update/voip-la-update.component';
 import { FacInNewComponent } from './components/fac-in-new/fac-in-new.component';
+import { HpAuUpdateComponent } from './components/hp-au-update/hp-au-update.component';
+import { FacInUpdateComponent } from './components/fac-in-update/fac-in-update.component';
+import { FacInResetComponent } from './components/fac-in-reset/fac-in-reset.component';
+
+
+import { ApprovalResultPageComponent } from './components/approval-result-page/approval-result-page.component';
 
 import { FacservicesComponent } from './components/facservices/facservices.component';
-
+import {ApprovalSinglePageComponent} from './components/approval-single-page/approval-single-page.component';
 import { VoipUsaUpdateComponent } from './components/voip-usa-update/voip-usa-update.component';
+import { HpInNewComponent } from './components/hp-in-new/hp-in-new.component';
+import { FixedphoneservicesComponent } from './components/fixedphoneservices/fixedphoneservices.component';
+import { HpInUpdateComponent } from './components/hp-in-update/hp-in-update.component';
+import { HpInDeleteComponent } from './components/hp-in-delete/hp-in-delete.component';
+import { HpUsaNewComponent } from './components/hp-usa-new/hp-usa-new.component';
+import { HpEmeaNewComponent } from './components/hp-emea-new/hp-emea-new.component';
+import { HpIndonesiaNewComponent } from './components/hp-indonesia-new/hp-indonesia-new.component';
 import { HpAuNewComponent } from './components/hp-au-new/hp-au-new.component';
 import { FacInDeactivateComponent } from './components/fac-in-deactivate/fac-in-deactivate.component';
-
-
-
 
 
 
@@ -65,6 +73,8 @@ const appRoutes: Routes = [
     { path: 'entrydetailsijm', component: VoipInMoveComponent },      
     { path: 'reviewdetails', component: ReviewdetailsComponent },  
     { path: 'resultpage', component: ResultpageComponent },
+    {path: 'approvalresult', component: ApprovalResultPageComponent},
+    {path: 'approvalsingle', component:ApprovalSinglePageComponent},
     { path: 'employeesearchdelete', component: EmployeesearchVoipDeleteComponent},
     { path: 'revalidationpending', component: RevalidationpendingComponent},
     { path: 'approvalpending', component: ApprovalpendingComponent},
@@ -73,8 +83,17 @@ const appRoutes: Routes = [
     { path: 'entrydetailsus', component: VoipUsaNewComponent},        
     { path: 'resources', component: ResourcesComponent},
     { path: 'entrydetailsfn', component: HpInNewComponent},
+    { path: 'entrydetailsfup', component: HpInUpdateComponent},
+    { path: 'entrydetailsfde', component: HpInDeleteComponent},
+    { path: 'entrydetailsfusanew', component: HpUsaNewComponent},
+    { path: 'entrydetailsfemeanew', component: HpEmeaNewComponent},
+    { path: 'entrydetailsindo', component: HpIndonesiaNewComponent},
+
     { path: 'entrydetailsaufn', component: HpAuNewComponent},
+    { path: 'entrydetailsaufu', component: HpAuUpdateComponent},
     { path: 'entrydetailsfac', component: FacInNewComponent},
+    { path: 'entrydetailsfacu', component: FacInUpdateComponent},
+    { path: 'entrydetailsfacr', component: FacInResetComponent},
     { path: 'entrydetails_update_la', component: VoipLaUpdateComponent},
     { path: 'entrydetails_update_us', component: VoipUsaUpdateComponent} , 
     
@@ -86,7 +105,8 @@ const appRoutes: Routes = [
     
     
    // {path: '**', redirectTo:'/pagenotfound?error'}
-   {path: '**', component: PagenotfoundComponent}
+   {path: '**', component: PagenotfoundComponent},
+   {path: 'entrydetailsjusaup', component: VoipUsaUpdateComponent}
     
     
 ];

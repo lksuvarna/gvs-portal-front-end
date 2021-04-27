@@ -59,15 +59,15 @@
                         <!-- <td width="12">
                             <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
                         </td>  -->
-                        <td width="46%"><br>
+                        <td width="50%"><br>
                             <label for="LocationId" class="ds-text-capitalize" translate>Jabbernewtrans.JabberLocation</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="160">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <input name="%%Surrogate_Location" type="hidden" value="1">
-                                <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important;" title="Location" ngModel>
-                                    <option value ="" translate>Jabberupdate.Jabber/PhoneNumberLocation</option>
+                                <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Location" ngModel>
+                                    <option value ="" translate>Jabberentrydetails.Select Location</option>
                                     <option name="Location" *ngFor='let fl_location of locationlist' [value]='fl_location'>
                                         {{ fl_location }}</option>
                                 </select>
@@ -89,7 +89,7 @@
                         <!-- <td width="12">
                             <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
                         </td> -->
-                        <td width="46%"><br>
+                        <td width="50%"><br>
                             <span class="ds-text-capitalize" translate>Jabbernewtrans.Voicemail</span>
                         </td><td width="160"><br>Yes
                         </td>
@@ -111,7 +111,7 @@
                         <!-- <td width="12">
                             <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
                         </td> -->
-                        <td width="46%"><br>
+                        <td width="50%"><br>
                             <label for="COSId" translate>Jabbernewtrans.ClassofService</label><br>
                         </td>
                         <td width="160"><br>National
@@ -185,14 +185,14 @@
             <table id="t2" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td width="61%">
+                        <td width="70%">
                             <label for="addId1" translate>Jabbernewtrans.JabberLocation</label>
                         </td>
                         <td width="160">{{reviewDetailsIndia.officeLocation}}</td>
                     </tr>
                     <tr valign="top">
                         
-                        <td width="61%"><br>
+                        <td width="70%"><br>
                             <span class="ds-text-capitalize" translate>Jabbernewtrans.Voicemail</span>
                         </td>
                         <td width="160"><br>Yes
@@ -200,7 +200,7 @@
                     </tr>
                     <tr valign="top">
                         
-                       <td width="61%"><br>
+                       <td width="70%"><br>
                         <label for="COSId" translate>Jabbernewtrans.ClassofService</label><br>
                        </td>
                        <td width="160"><br>National<br>

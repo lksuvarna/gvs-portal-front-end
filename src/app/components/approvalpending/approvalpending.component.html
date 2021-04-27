@@ -4,66 +4,80 @@
 
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
-        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
-    </div>
+        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>    </div>
+
 
     <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
 
-    <b>Approvals</b>
-
-            <div class="ds-pad-t-0_5 ds-pad-b-1"></div>
-            <div class=" ds-panel ds-col-12 "></div> 
-
-            <table cellspacing="0" cellpadding="0" border="0">
-            <tbody><tr valign="top"><td width="865" height="5"></td></tr>
-            </tbody></table>
+        <h3><b>Approvals</b></h3>
+        <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
+        <div class=" ds-panel ds-col-12 "></div> 
+        <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " ></h2>
-            <table  cellspacing="0" cellpadding="0" border="0">
-            <tbody><tr valign="top"><td colspan="2" width="1000"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td><td width="169"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td></tr>
-
-            <tr valign="top"><td width="783"> <div>Enter Serial Number or Request Number</div></td><td width="217"><div class="ds-pad-l-1">
-            <input  class="ds-input" style="width:220px !important;" maxlength="17"></div></td><td width="169">
+            <table  cellspacing="0" cellpadding="0" border="0" *ngIf="errorinfo">
+            <tbody>
+            <tr valign="top" >
+                <td width="783"> 
+                <div>Enter Serial Number or Request Number</div></td>
+                <td width="217"><div class="ds-pad-l-1">
+            <input  class="ds-input" name="search" id="search" style="width:220px !important;" maxlength="17" [(ngModel)]="search"></div>
+            </td><td width="169">
                 <div class="ds-float-lg-right">
             <div class="ds-tray-fit-content ds-margin-bottom-0">
             <div class="button-bar ds-tray-fit-content ds-float-lg-right ">
                 <span class="ds-pad-l-1 ds-pad-r-1">
-                    <input type="button" class="ds-button ds-secondary ds-pad-l-1 ds-width-auto ds-pad-r-1"  value="SEARCH" ></span>
-                    <input type="button"  class="ds-button ds-secondary  ds-pad-l-1 ds-width-auto ds-pad-r-1" value="CLEAR" >
+                    <input type="button" class="ds-button ds-secondary ds-pad-l-1 ds-width-auto ds-pad-r-1"  value="SEARCH" (click)="performsearch()"></span>
+                    <input type="button"  class="ds-button ds-secondary  ds-pad-l-1 ds-width-auto ds-pad-r-1" value="CLEAR" (click)="clear()" >
                 </div></div>
-            </div></td></tr>
-            </tbody></table>
-            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Pending Requests</h2>
-            <table cellspacing="0" cellpadding="0" border="0">
-            <tbody *ngFor = "let req of pendingRequest, let i = index">
-            <tr valign="top">
-                <td width="59">
-                    <font color="#ffffff">
-                        <input [(ngModel)]="req.checked" type="checkbox">
-                    </font>
-                </td>
-                <td width="175"><a href="https://105.w3-969.ibm.com/tools/voice/test/SPOEWebfe_dev.nsf/RR_ApprovalSN?OpenForm&amp;Approval_IN_MgrApproval&amp;178ca4ec1baf2090427a33f8cd4bcbfd&amp;CNUM:06685M744~~User Name:Pavan Kumar B~~">06685M744</a></td>
-                <td width="194">{{req.name}}<font color="#808080"> </font></td>
-                <td width="213">{{req.requesting}}</td>
-                <td width="213">{{req.reqNumber}}</td>
-                
-            </tr>
-            <br>
-            </tbody>
+            </div>
+        </td>
+    </tr>
+       </tbody>
         </table>
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5">Pending Requests</h2>
+            <div class="ds-table-container">
+                <table class="ds-table">
+                    <tbody valign="top" *ngFor = "let req of pendingRequest, let i = index">
+                        <tr>
+                            <td width="59">
+                                <font color="#ffffff">
+                                    <input  name="req.sys_id" id="req.sys_id" type="checkbox" [(ngModel)]="checked[i]">
+                                </font>
+                            </td>
+                            <td width="175"><a (click)='openpage(req)'>{{req['sysapproval.variables.requested_by.user_name'].replace('-','')}}</a></td>
+                            <td width="194">{{req['sysapproval.variables.requested_by.name']}}<font color="#808080"> </font></td>
+                            <td width="213">{{req['sysapproval.short_description']}}</td>
+                            <td width="213">{{req['sysapproval.variables.id']}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo"><p></p>
+            <p>No pending approvals for entered serial number.</p><p>
+        </p></div>
 
         <div class="ds-panel ds-col-12" ></div> 
-        <div class="ds-row ds-pad-t-2" style="margin-right:12px">
-            <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-2 ds-offset-lg-5">
-                <button class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0 " (click)="selectAllcheck()">SELECT ALL</button>
-            </div>
-            <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-2 ">
-                <button class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0 " (click)="unSelectAllcheck()">DESELECT ALL</button>
-            </div>
-            <div class="ds-col-xs-12 ds-col-md-4 ds-col-lg-3">
-                <button class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0">APPROVE SELECTED ONE</button>
-            </div>
+        <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+            <div class="ds-loader-header">Your request is being processed. Do not refresh or go back.</div>
+            <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being processed. Do not refresh or go back."></div>
+        </div>
+        <div class="ds-row ds-pad-t-2" style="margin-right:12px" *ngIf="this.isButtonVisible && errorinfo">
+            <div class="ds-tray-fit-content ds-mar-b-0">
+                <div class="button-bar ds-tray-fit-content ds-pad-t-1 ds-float-lg-right">
+                <span class="ds-pad-l-4" id="button1">
+                <input type="button" (click)="selectAllcheck()" class="ds-button ds-secondary
+                ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="SELECT ALL">
+                </span>
+                <span class="ds-pad-l-1" id="button2">
+                <input type="button" (click)="unSelectAllcheck()" class="ds-button ds-secondary
+                ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="DESELECT ALL">
+                </span>
+                <span class="ds-pad-l-1 ds-pad-r-1" id="button3">
+                <input type="button" name="NEXT" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" (click)="process()" value="APPROVE SELECTED ONE">
+                </span>
         </div>
 
+    
           
 
     </div>

@@ -4,7 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { createOfflineCompileUrlResolver } from '@angular/compiler';
 
-import { Jabber_New,Jabber_Delete,Jabber_Update,Jabber_Move, snowsearch, fixedphone_new, fixedphone_delete, fixedphone_update, Fac_New ,Fac_Deactivate } from '../../../config/payload';
+
+import { Jabber_New,Jabber_Delete,Jabber_Update,Jabber_Move, snowsearch, fixedphone_new, fixedphone_delete, fixedphone_update, Fac_New, Fac_Update, Fac_Reset ,Fac_Deactivate  } from '../../../config/payload';
 
 
 @Injectable({ providedIn: 'root' })
@@ -13,6 +14,7 @@ export class servicenowservice {
 
   private submitUrl = '/api/submit_snow';
   private searchUrl ='/api/search_snow';
+  private approveUrl='/api/approve_snow';
   payload: snowsearch = new snowsearch();
   constructor(private http: HttpClient) { }
   submit_request(Jabber_new_payload : Jabber_New): Observable<any> {
@@ -72,6 +74,17 @@ export class servicenowservice {
     .pipe(catchError(this.errorhandler));
   }
   
+  submit_request_fac_update(Fac_update_payload : Fac_Update): Observable<any> {
+    console.log('calling snow');
+    return this.http.post(this.submitUrl,Fac_update_payload)
+      .pipe(catchError(this.errorhandler))
+  }
+
+  submit_request_fac_reset(Fac_reset_payload : Fac_Reset): Observable<any> {
+    console.log('calling snow');
+    return this.http.post(this.submitUrl,Fac_reset_payload)
+      .pipe(catchError(this.errorhandler))
+  }
 
   searchsnow(cnum: string, type: string,reqno : string): Observable<any> {
     console.log('calling snow swarch');
@@ -96,6 +109,15 @@ export class servicenowservice {
       // })
   }
   
+ approvesnow(sysid : string, status: string, comments: string): Observable<any> {
+    console.log('calling snow swarch');
+    this.payload.request_type='snow_approve_requests';
+    this.payload.sysid=sysid;
+    this.payload.status=status;
+    this.payload.comments=comments;
+    return this.http.post(this.approveUrl,this.payload)
+      .pipe(catchError(this.errorhandler));
+  }
 
   errorhandler(error: HttpErrorResponse) {
     console.log('error is intercept');

@@ -30,8 +30,8 @@ export class NavigationComponent implements OnInit {
   dataNav123: any
   dataNavParent:any
   countryroute :any
-  serhl:any;jhl:any;fhl:any;fachl:any;reqhl:any;reshl:any;
-  serin:any;jin:any;fin:any;facin:any;reqin:any;resin:any;
+  serhl:any;jhl:any;fhl:any;fachl:any;reqhl:any;reshl:any;apphl:any;
+  serin:any;jin:any;fin:any;facin:any;reqin:any;resin:any;appin:any;
   @Input('dataNav') dataNavParent1: any
   @Input('cloudantData') cloudantData1: any
    
@@ -106,8 +106,8 @@ export class NavigationComponent implements OnInit {
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
      
-      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;
-      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;
+      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;this.apphl=false;
+      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;this.appin=false;
       
       if (this.service=="services")
       {
@@ -142,7 +142,15 @@ export class NavigationComponent implements OnInit {
         this.reshl=true
         
       }
-      if (this.service=="services"||this.service=="requests"||this.service=="resources")
+
+      if ((this.service).includes("approvalpending"))
+      {        
+        this.apphl=true
+        
+      }
+
+
+      if (this.service=="services"||this.service=="requests"||this.service=="resources" || this.service=="approvalpending")
       {
         this.dataNav123 = { 
           "data": [
@@ -150,7 +158,7 @@ export class NavigationComponent implements OnInit {
               "lhs": [
                 {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
                // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
-                {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : false, "highlighted": false,"param":"services"},
+                {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
                 {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
                 {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
                 {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
@@ -172,7 +180,7 @@ export class NavigationComponent implements OnInit {
 
                {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : this.fin, "highlighted": this.fhl,"param":"fixedphoneservices"},            
 
-              {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
+              {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
               {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
               {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}

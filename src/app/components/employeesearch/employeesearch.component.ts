@@ -9,8 +9,6 @@ import { bpservices } from '../../_services/bp.service';
 import { Db2Service } from '../../_services/db2.service';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { TranslateConfigService} from '../../_services/translate-config.service';
-
-
 import { WebElementPromise } from 'selenium-webdriver';
 
 @Component({
@@ -18,14 +16,13 @@ import { WebElementPromise } from 'selenium-webdriver';
   templateUrl: './employeesearch.component.html',
   styleUrls: ['./employeesearch.component.css']
 })
-
 export class EmployeesearchComponent implements OnInit {
 
   radioAction: string = "";
   hideDisTextBox: boolean = false;
   hideDisserial: boolean = true;
 
-  constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private bpservices: bpservices, private Db2Service: Db2Service, private servicenowservice: servicenowservice,private servicesd : TranslateConfigService) { }
+  constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private bpservices: bpservices, private Db2Service: Db2Service, private servicenowservice: servicenowservice) { }
   cloudantData: any = []
   servicesData: any = []
   subCountries: any = []
@@ -40,8 +37,10 @@ export class EmployeesearchComponent implements OnInit {
   exitrouting:any;
   exitservice:any;
   routingname:any;
-  fullName = '';
+  fullName:any;
   service = '';
+  fixedphone = '';
+  itn = '';
   backbutton: any;
   step: any;
   s:any;
@@ -71,16 +70,13 @@ export class EmployeesearchComponent implements OnInit {
   cos : any =[];
   serviceName:any;
   returnValue:any;
-  mainConfiguration :any;
-  
   ngOnInit(): void {
-    this.mainConfiguration = this.servicesd.readConfigFile();
-    //alert (this.mainConfiguration);
-    
-   
     this.showloader = false
 
     this.fullName = this.cookie.getCookie('username');
+    if(this.fullName.includes(undefined)){
+      this.fullName=this.cookie.getCookie('user');
+    }
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
     this.fullName = this.fullName.replace(",",", ");
     this.ccode = this.cookie.getCookie('ccode');
@@ -155,7 +151,7 @@ export class EmployeesearchComponent implements OnInit {
   })
   setTimeout(()=>{
     if(sessionStorage.getItem('serviceName') == 'jabber_move'&&this.step == null || sessionStorage.getItem('serviceName') == 'jabber_move'&&sessionStorage.getItem('empserial') == '') {
-      this.returnValue = confirm(this.mainConfiguration.alerttranslation.moverequest);
+      this.returnValue = confirm('Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit');
       if(this.returnValue == false) {
         this.router.navigate(['/jabberservices'],{ queryParams: { country: this.pcode, service: this.service } });
       }
@@ -171,25 +167,24 @@ export class EmployeesearchComponent implements OnInit {
       if(this.countrydetails.scountries){
         
         if(this.countrydetails.scountries.some((s: string | string[]) => s.includes(this.ccode.substr(6, 9)))){        }
-        else{alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name + " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" " + this.countrydetails.name);
+        else{alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
         return;}
       }
       else if (this.pcode !== this.ccode.substr(6, 9)){                
-            alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name + " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" "  + this.countrydetails.name);
+            alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
             return;        
       }
      }
     if (this.radioAction.toLowerCase() == "anotheremployee") {
-      
       if (formData.value.employeeSerial.trim().length == 0 && this.hideDisTextBox == true) {
-        alert(this.mainConfiguration.alerttranslation.enterserialnumber);
+        alert("Please enter a serial number");
         return;
       }
       else if ((formData.value.employeeSerial.trim().length < 6 || formData.value.employeeSerial.includes(' ')) && this.hideDisTextBox == true){
-        alert(this.mainConfiguration.alerttranslation.digitserialnumber);
+        alert("Employee Serial Number should be of 6 characters");
         return;
       } else if (this.showCountryCode && this.hideDisTextBox && formData.value.selectedCountry === '') {
-        alert(this.mainConfiguration.alerttranslation.selectcountrycode);
+        alert("Please select the Country Code");
         return;
       }
       else {
@@ -233,9 +228,13 @@ export class EmployeesearchComponent implements OnInit {
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
       console.log(' BP Details', data.userdata);
       if (data.userdata) {
+        var ename=data.username.preferredlastname+", "+data.username.preferredfirstname
+        if(data.username.preferredlastname==undefined||data.username.preferredfirstname==undefined){
+          ename=data.username.callupname
+        }
         this.employeeInfo = {
 
-          employeeName: data.username.preferredlastname+", "+data.username.preferredfirstname,
+          employeeName: ename,
           jobResponsibility: data.username.jobresponsibilities,
           businessUnit: data.bu,
           department: data.username.dept,
@@ -332,10 +331,9 @@ export class EmployeesearchComponent implements OnInit {
     return this.datasnow;
   }
   getDBdata() {
-    this.Db2Service.search_db2(this.employeeSerial, this.service).subscribe(data => {
+    this.Db2Service.search_db2(this.employeeSerial, this.service, this.fixedphone, this.itn,this.countryname).subscribe(data => {
       console.log(' db2 response', data);
       console.log(' db2 response', data.message.length);
-
       if (data.message.length > 0) {
         
         this.warninginfo = true
@@ -362,7 +360,9 @@ export class EmployeesearchComponent implements OnInit {
         } else if (this.service == "fac_new") {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";
-        }else if (this.service == "fac_deactivate" ) {
+
+        } else if (this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_deactivate") {
+
           sessionStorage.setItem('db2data', JSON.stringify(data.message)) ; 
           if((JSON.stringify(data.message[0].IDENTIFIER)).trim() !== ""){
             sessionStorage.setItem('identifier', 'xxxxxxxx') ;
@@ -428,6 +428,8 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('emmodels',JSON.stringify(data.locationdetails.emmodels))
         sessionStorage.setItem('cmmodels',JSON.stringify(data.locationdetails.cmmodels))
         sessionStorage.setItem('fpmodels',JSON.stringify(data.locationdetails.fpmodels))
+        sessionStorage.setItem('updaterequired', JSON.stringify(data.locationdetails.updaterequired))
+        sessionStorage.setItem('fpumodels', JSON.stringify(data.locationdetails.fpumodels))
       }
       else if(this.service.includes('fac')){
         this.lookuploc=JSON.stringify(data.locationdetails.faclocations)
@@ -510,10 +512,33 @@ export class EmployeesearchComponent implements OnInit {
       case "fixedphone_new":
       this.title="Fixed Phone - New Request";
       this.exitrouting='fixedphoneservices';
-      if(this.countrydetails.jnavpage=='AP'){
-        this.routingname="/entrydetailsfn";
+      if(this.countrydetails.fnavpage=='AP'){
+      this.routingname="/entrydetailsfn";
+      } else if(this.countrydetails.fnavpage=='AU') {
+      this.routingname='/entrydetailsaufn';
+      } else if(this.countrydetails.fnavpage=='EMEA') {
+      this.routingname='/entrydetailsfemeanew';
+      //Add routingname here for EMEA
+      } else if(this.countrydetails.fnavpage=='NA') {
+      //Add routingname here for NA
+      }else if (this.countrydetails.fnavpage=='US'){
+      this.routingname='/entrydetailsfusanew';
+      }else if(this.countrydetails.fnavpage=='ID'){
+      this.routingname="/entrydetailsindo";
       }
       this.reqname="-NS-";
+      break;
+      case "fixedphone_update":
+      this.title="Fixed Phone - Update Request";
+      this.routingname="/entrydetailsfup";
+      this.exitrouting='fixedphoneservices';
+      this.reqname="-US-";
+      break;
+      case "fixedphone_delete":
+      this.title="Fixed Phone - Delete Request";
+      this.routingname="/entrydetailsfde";
+      this.exitrouting='fixedphoneservices';
+      this.reqname="-DS-";
       break;
       case "fac_new":
       this.title="FAC Code New Request";
@@ -526,6 +551,16 @@ export class EmployeesearchComponent implements OnInit {
       this.exitrouting='facservices';
       this.reqname="-DS-";
       break;
+      case "fac_update":
+        this.title="FAC Code Update Request";
+        this.routingname="/entrydetailsfacu";
+        this.reqname="-US-";
+        break;
+      case "fac_reset":
+          this.title="FAC Code Reset Request";
+          this.routingname="/entrydetailsfacr";
+          this.reqname="-RS-";
+          break;
       case "resources":
         this.title="Resources";
         this.exitrouting='services';

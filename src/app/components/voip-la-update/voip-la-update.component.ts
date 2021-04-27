@@ -96,6 +96,7 @@ export class VoipLaUpdateComponent implements OnInit {
       this.newcos=true;
       this.businessJust=true;
       this.toup_disp2='';
+      this.selectcos="";
     }
   }
 
@@ -203,7 +204,7 @@ export class VoipLaUpdateComponent implements OnInit {
       this.payload.ReqNo=this.reqno;
       this.payload.Current_COS=this.cos_disp;
       this.payload.Current_VM=this.vm_disp;
-      this.payload.Justification=this.bj_disp;
+      this.payload.Justification=this.bj_disp.replace(/[\n\r+]/g, ' ');
       this.payload.New_Voice=this.new_vm_disp;
       this.payload.New_COS=this.new_cos_disp
       // fields to be picked up from form -- ends	
@@ -224,7 +225,7 @@ export class VoipLaUpdateComponent implements OnInit {
       console.error('error caught in component'+error);
       this.isSpinnerVisible= false; 	
       this.errorinfo=true;
-      this.isButtonVisible=true;
+      this.isButtonVisible=false;
     });	
      }	
    

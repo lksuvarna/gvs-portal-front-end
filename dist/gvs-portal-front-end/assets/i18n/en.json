@@ -49,8 +49,9 @@
         "Special Request": "Jabber",
         "Approvals Pending": "Approvals Pending",
         "Revalidation Pending": "Revalidation Pending",
-        "Resources": "Resources",
-        "Requests": "Requests"
+        "Requests" : "Requests",
+        "Resources" : "Resources"
+        
     },
     "Jabberservices": {
         "initiateJabber":" Please click on a request type below to initiate a Jabber service request.",
@@ -76,7 +77,7 @@
         "norecord":"There is no record of an IBM employee with the serial number " ,
         "availablefromBluePages" :"available from BluePages",
         "opps":"Opps! Some thing went worng.Please try again latter.",
-        "JabberLocation" : "Jabber Location",
+        "JabberLocation" : "Jabber / Phone Number location",
         "Voicemail" : "Voicemail",
         "ClassofService" : "Class of Service",
         "pleasesubmittostart":"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service."
@@ -93,9 +94,19 @@
         "Resources" : "Resources",
         "Update Jabber Request" : "Update Jabber Request",
         "Delete Jabber Request" : "Delete Jabber Request",
+        "Deactivate an existing FAC Code" :"Deactivate an existing FAC Code",
+        "FAC Code Deactivate Request" : "FAC Code Deactivate Request",
         "Move Jabber Request" : "Move Jabber Request",
         "Fixed Phone - New Request" : "Fixed Phone - New Request",
-        "New Fixed Phone Request" : "New Fixed Phone Request"
+        "New Fixed Phone Request" : "New Fixed Phone Request",
+        "Request a new FAC Code" : "Request a new FAC Code",
+        "FAC Code New Request" : "FAC Code New Request",
+        "Update an existing FAC code" : "Update an existing FAC code",
+        "FAC Code Update Request":"FAC Code Update Request",
+        "Reset an existing FAC code" : "Reset an existing FAC code",
+        "FAC Code Reset Request": "FAC Code Update Request"
+        
+        
         
 
 
@@ -124,7 +135,7 @@
         "noteligibletorequestmorethanonejabber":"The serial number that you have entered is not eligible to request more than one Jabber account.",
         "ITNexistsforthisuser":"The IBM Telephone Number (ITN) that exists for this users jabber account is",
         "jabberconfiguration":"related to Jabber configuration can be found at",
-        "furtherassistance":"For any further assistance, pbuttlease contact",
+        "furtherassistance":"For any further assistance, please contact",
         "alreadyone":"serial number that you have entered has already one",
         "inprogess":"is in progress and request number is",
         "ongoingrequestsbyclickonrequestpage":"You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.",
@@ -138,6 +149,7 @@
         "alreadyoneupdaterequestinprogress":"The serial number that you have entered has already one Update Jabber request is in progress and request number is",
         "alreadyonemoverequestinprogress":"The serial number that you have entered has already one move Jabber request is in progress and request number is",
         "alreadyonedeleterequestinprogress":"The serial number that you have entered has already one delete Jabber request is in progress and request number is",
+        "alreadyonefacdeleterequestinprogress" :"The serial number that you have entered has already one delete FAC request is in progress and request number is",
         "enterserialnumber":"Please enter a serial number "
         
     },
@@ -163,14 +175,16 @@
         
     },
     "Jabberupdate":{
-        "SelectJabberNumber":"Select Jabber Number",
+        "SELECTONE":"SELECT ONE",
         "ReviewDetails" : "Review Details",
-        "JabberNumber" : "Jabber Number"
+        "JabberNumber" : "Jabber Number",
+        "SelectJabberNumber" : "Select Jabber Number",
+        "Jabber/PhoneNumberLocation" : "Select Jabber / Phone Number Location"
     },
     "Jabbermove":{
     "JabbertoMove":"Jabber number to Move",
-    "ProjectIId" : "Project Id",
-    "AccountId" : "Account Id",
+    "ProjectIId" : "Project ID",
+    "AccountId" : "Account ID",
     "ICACode" : "ICA Code",
     "NewOfficeLocation" :"New Office Location",
     "Building" : "Building"
@@ -235,4 +249,3 @@
     }
     
 }
- 
