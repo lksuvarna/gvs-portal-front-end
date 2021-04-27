@@ -157,6 +157,15 @@ export class EmployeesearchComponent implements OnInit {
       }
     }
   },200);
+
+  setTimeout(() => {
+    if (this.service.includes('fixed')) {
+      if (!(this.countrydetails.power_users.includes(this.ccode))) {
+        alert(this.countrydetails.alert_message.replace(/<br>/g,"\n"));
+        this.router.navigate(['fixedphoneservices'], { queryParams: { country: this.pcode, service: this.service } });
+      }
+    }
+  }, 200);
   }
 
   onSubmit(formData: NgForm) {
