@@ -545,12 +545,14 @@ export class EmployeesearchComponent implements OnInit {
       this.routingname="/entrydetailsfac";
       this.reqname="-NS-";
       break;
+
       case "fac_deactivate":
       this.title="FAC Code Deactivate Request";
       this.routingname="/entrydetailsfacdeactive";
       this.exitrouting='facservices';
       this.reqname="-DS-";
       break;
+
       case "fac_update":
         this.title="FAC Code Update Request";
         this.routingname="/entrydetailsfacu";
@@ -561,6 +563,7 @@ export class EmployeesearchComponent implements OnInit {
           this.routingname="/entrydetailsfacr";
           this.reqname="-RS-";
           break;
+
       case "resources":
         this.title="Resources";
         this.exitrouting='services';

@@ -60,7 +60,10 @@
     </span>
     </span>
 
+    
+
     <span *ngIf="service !== 'resources' && service !== 'requests' && service !== 'fac_reset' && service !== 'fac_deactivate' && isSelf && !isWarning2">
+
         <span [ngClass]="step===3 ? 'ds-pad-l-r-1 ds-text-contextual-green-3' : 'ds-pad-l-r-1 ds-text-contextual-blue-5'"><b>-----&gt;</b></span>
     <span [ngClass]="changeClass3 ? 'ds-tooltip ds-hover ds-text-align-center ds-open' : 'ds-tooltip ds-hover ds-text-align-center' " id="tooltip-demo1">
         <span (mouseenter)="changeClass3=true" (mouseout)="changeClass3=false">
