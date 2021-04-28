@@ -46,6 +46,7 @@ export class VoipInMoveComponent implements OnInit {
   Locations: any;	
   pcode: any;	
   service: any;	
+  Jabber:any = [];
   employeeInfo: any;	
   employeeInfo1: any;	
   campus: any;
@@ -237,9 +238,12 @@ export class VoipInMoveComponent implements OnInit {
     else if(this.sessionwarninginfosnow =='true1') {
 this.warninginfosnow=true
 this.identifier=sessionStorage.getItem('identifier')
+
     }
     else{
-      this.identifier=sessionStorage.getItem('identifier')      
+      this.identifier=sessionStorage.getItem('identifier') 
+      this.identifier = this.identifier.split(',');
+      this.Jabber = [...this.identifier];     
     }	
      this.route.queryParams	
      .subscribe(params => {	

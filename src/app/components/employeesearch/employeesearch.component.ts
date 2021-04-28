@@ -91,7 +91,7 @@ export class EmployeesearchComponent implements OnInit {
     this.fullName = this.fullName.replace(",", ", ");
     this.ccode = this.cookie.getCookie('ccode');
 if(sessionStorage.getItem('countrydetails')==undefined){
-  
+  this.getTitle();
   this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
     
     console.log('Response received navigation', data.countrydetails.isspecial);
@@ -106,6 +106,11 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       this.ccode = this.countrydetails.testuser
     }
     else { this.ccode = this.cookie.getCookie('ccode'); }
+    
+        if (this.countrydetails.scountries) {
+          this.showCountryCode = true
+          this.subCountries = this.countrydetails.scountries
+        }
   });
   
 }
@@ -181,6 +186,14 @@ if(sessionStorage.getItem('countrydetails')==undefined){
         this.returnValue = confirm('Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit');
         if (this.returnValue == false) {
           this.router.navigate(['/jabberservices'], { queryParams: { country: this.pcode, service: this.service } });
+        }
+      }
+    }, 200);
+    setTimeout(() => {
+      if (this.service.includes('fixed')) {
+        if (!(this.countrydetails.power_users.includes(this.ccode))) {
+          alert(this.countrydetails.alert_message.replace(/<br>/g,"\n"));
+          this.router.navigate(['fixedphoneservices'], { queryParams: { country: this.pcode, service: this.service } });
         }
       }
     }, 200);
@@ -279,7 +292,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
   }
   }
  async getExtracodes():Promise<any>{
-  
+  var count=0
    for ( this.i = 0; this.i < this.extracodes.length;this.i++) {  
   //  this.i = 0      
    // while(this.i < this.extracodes.length)  {    
@@ -289,7 +302,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       console.log("empserialnumr" + employeeSerial1)
    this.bpservices.bpdetails(employeeSerial1).subscribe(data => {
        console.log(' BP Detailschina', data.userdata);
-
+      count++;
        if (data.userdata) {
          this.employeeSerial = data.username.uid;
          console.log("empserialnumrif" + this.employeeSerial);
@@ -301,7 +314,10 @@ if(sessionStorage.getItem('countrydetails')==undefined){
 
        }
        else {
-        
+        if(count == this.extracodes.length) {
+          this.getBPData();
+          return;
+          }
        }
      })
      
