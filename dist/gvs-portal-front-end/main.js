@@ -12166,7 +12166,7 @@ function VoipInMoveComponent_table_25_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r3.jabberNumber);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r3.Jabber);
 } }
 function VoipInMoveComponent_div_26_option_15_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 80);
@@ -12403,6 +12403,7 @@ class VoipInMoveComponent {
         this.servicesData = [];
         this.warninginfo = false;
         this.warninginfosnow = false;
+        this.Jabber = [];
         this.hideProjectId = false;
         this.hideSteps = false;
         this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["Jabber_Move"]();
@@ -12571,6 +12572,8 @@ class VoipInMoveComponent {
         }
         else {
             this.identifier = sessionStorage.getItem('identifier');
+            this.identifier = this.identifier.split(',');
+            this.Jabber = [...this.identifier];
         }
         this.route.queryParams
             .subscribe(params => {
@@ -18121,6 +18124,7 @@ class EmployeesearchComponent {
     }
     getExtracodes() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            var count = 0;
             for (this.i = 0; this.i < this.extracodes.length; this.i++) {
                 //  this.i = 0      
                 // while(this.i < this.extracodes.length)  {    
@@ -18129,6 +18133,7 @@ class EmployeesearchComponent {
                 console.log("empserialnumr" + employeeSerial1);
                 this.bpservices.bpdetails(employeeSerial1).subscribe(data => {
                     console.log(' BP Detailschina', data.userdata);
+                    count++;
                     if (data.userdata) {
                         this.employeeSerial = data.username.uid;
                         console.log("empserialnumrif" + this.employeeSerial);
@@ -18137,6 +18142,10 @@ class EmployeesearchComponent {
                         return;
                     }
                     else {
+                        if (count == this.extracodes.length) {
+                            this.getBPData();
+                            return;
+                        }
                     }
                 });
             }
