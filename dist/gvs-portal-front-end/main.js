@@ -848,7 +848,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Users\PavanKumarB\GVS-FE-MASTER\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -4295,6 +4295,10 @@ class VoipInUpdateComponent {
         }
         if (formData.value.Charge_Dept.toUpperCase() == 'NA') {
             alert('No value is changed, so Update request is not required');
+            return;
+        }
+        if (formData.value.Charge_Dept == '') {
+            alert('Please enter the Charge Department code');
             return;
         }
         this.jabberDisp = formData.value.Jabber_1;
@@ -8616,6 +8620,7 @@ class FacInUpdateComponent {
         this.isSpinnerVisible = false;
         this.warninginfo = false;
         this.warninginfosnow = false;
+        this.authValue = '';
         this.classOfService = [];
         this.checked = false;
         this.checked2 = false;
@@ -8637,6 +8642,9 @@ class FacInUpdateComponent {
         this.Funded = '';
         this.chargeDepartmentCode = '';
         this.authLevel = '';
+        this.UpdatedFor = '';
+        this.UpdatedForValues = '';
+        this.newAuthLevelValue = '';
         this.camp = [];
         this.campA = [];
         this.buildA = [];
@@ -8719,17 +8727,31 @@ class FacInUpdateComponent {
             alert('Please enter Business Justification');
             return;
         }
-        //  this.jabberDisp = formData.value.Jabber_1;
-        // this.new_cos_disp=formData.value.select_cos;
-        // this.new_vm_disp=formData.value.Voice_Mail;
         this.Location_1 = formData.value.Location_1;
         this.Buildings = formData.value.Buildings;
         this.Funded = formData.value.Voice_Mail;
         this.chargeDepartmentCode = formData.value.chargeDepartmentCode;
         this.authLevel = formData.value.authLevel;
+        this.newAuthLevelValue = this.authCalculation(formData.value.authLevel);
+        this.bj_disp = formData.value.businessjustification;
         this.bj_disp = formData.value.businessjustification.replace(/[\n\r+]/g, ' ');
         this.isReviewForm = false;
         this.isEntryForm = true;
+        this.authValue = this.authCalculation(this.currAuthorizationLevel);
+    }
+    authCalculation(val) {
+        if (val === 'STD') {
+            return '4';
+        }
+        else if (val === 'Local') {
+            return '3';
+        }
+        else if (val === 'ISD') {
+            return '5';
+        }
+        else {
+            return '';
+        }
     }
     // Submit to Snow Jabber new code added by Swarnava ends	
     backClick() {
@@ -8756,27 +8778,28 @@ class FacInUpdateComponent {
         this.isSpinnerVisible = true;
         this.payload.orinator_payload = this.orgi;
         this.payload.cNum_payload = this.cnum;
+        this.payload.currLocation = this.currLocation;
+        this.payload.currChargeDeptCode = this.currChargeDeptCode;
+        this.payload.currAuthorizationLevel = this.authValue;
+        this.payload.currFACCodeType = this.currFACCodeType;
+        this.payload.currvalidity = this.currvalidity;
         // fields picked up from form -- begins	
-        this.payload.Projectid_Disp = '';
-        // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
-        this.payload.Department_number_Disp = '';
-        this.payload.accid_Disp = '';
-        //this.payload.Identifier_Selected = this.jabberDisp;
-        this.payload.updated_for = '';
+        this.payload.Location_1 = this.Location_1;
+        this.payload.Buildings = this.Buildings;
+        this.payload.Funded = this.Funded;
+        this.payload.chargeDepartmentCode = this.chargeDepartmentCode;
+        this.payload.authLevel = this.newAuthLevelValue;
+        this.payload.bj_disp = this.bj_disp;
         this.payload.ReqNo = this.reqno;
-        // this.payload.Current_COS=this.cos_disp;
-        // this.payload.Current_VM=this.vm_disp;
-        // this.payload.Justification=this.bj_disp;
-        // this.payload.New_Voice=this.new_vm_disp;
-        // this.payload.New_COS=this.new_cos_disp
+        this.payload.updated_for = this.getUpdatedFor();
+        this.payload.updated_for_values = this.UpdatedForValues;
         // fields to be picked up from form -- ends	
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
         this.payload.countryname = this.countrydetails.name;
-        this.payload.request_type = 'jabber_update';
+        this.payload.request_type = 'fac_update';
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
         this.payload.prov_type = this.countrydetails.provision_type;
-        this.payload.updated_for = this.toup_disp + ',' + this.toup_disp2;
         this.servicenowservice.submit_request_fac_update(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
@@ -8787,6 +8810,21 @@ class FacInUpdateComponent {
             this.errorinfo = true;
             this.isButtonVisible = true;
         });
+    }
+    getUpdatedFor() {
+        if (this.toup_disp) {
+            this.UpdatedFor = this.toup_disp;
+            this.UpdatedForValues = this.Location_1 + '~~' + this.Buildings;
+        }
+        if (this.toup_disp2) {
+            this.UpdatedFor += ',' + this.toup_disp2;
+            this.UpdatedForValues += ',' + this.chargeDepartmentCode;
+        }
+        if (this.toup_disp3) {
+            this.UpdatedFor += ',' + this.toup_disp3;
+            this.UpdatedForValues += ',' + this.authLevel;
+        }
+        return this.UpdatedFor;
     }
     ngOnInit() {
         var _a, _b, _c;
@@ -9175,6 +9213,42 @@ FeedbackService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineI
                 providedIn: 'root'
             }]
     }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] }]; }, null); })();
+
+
+/***/ }),
+
+/***/ "Np1w":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/components/en-extension-au-summary/en-extension-au-summary.component.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: EnExtensionAuSummaryComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EnExtensionAuSummaryComponent", function() { return EnExtensionAuSummaryComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+
+class EnExtensionAuSummaryComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+EnExtensionAuSummaryComponent.ɵfac = function EnExtensionAuSummaryComponent_Factory(t) { return new (t || EnExtensionAuSummaryComponent)(); };
+EnExtensionAuSummaryComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: EnExtensionAuSummaryComponent, selectors: [["app-en-extension-au-summary"]], decls: 2, vars: 0, template: function EnExtensionAuSummaryComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "en-extension-au-summary works!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJlbi1leHRlbnNpb24tYXUtc3VtbWFyeS5jb21wb25lbnQuY3NzIn0= */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](EnExtensionAuSummaryComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-en-extension-au-summary',
+                templateUrl: './en-extension-au-summary.component.html',
+                styleUrls: ['./en-extension-au-summary.component.css']
+            }]
+    }], function () { return []; }, null); })();
 
 
 /***/ }),
@@ -13390,7 +13464,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./components/fac-in-reset/fac-in-reset.component */ "bsso");
 /* harmony import */ var _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./components/approval-result-page/approval-result-page.component */ "6juO");
 /* harmony import */ var _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./components/approval-single-page/approval-single-page.component */ "icyV");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _components_en_extension_au_summary_en_extension_au_summary_component__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ./components/en-extension-au-summary/en-extension-au-summary.component */ "Np1w");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! @angular/router */ "tyNb");
+
 
 
 
@@ -13540,10 +13616,11 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
         _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_60__["FacInUpdateComponent"],
         _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_61__["FacInResetComponent"],
         _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_62__["ApprovalResultPageComponent"],
-        _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_63__["ApprovalSinglePageComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_63__["ApprovalSinglePageComponent"],
+        _components_en_extension_au_summary_en_extension_au_summary_component__WEBPACK_IMPORTED_MODULE_64__["EnExtensionAuSummaryComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-        _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_64__["RouterModule"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_39__["TranslateModule"]] }); })();
+        _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_65__["RouterModule"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_39__["TranslateModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
@@ -13602,7 +13679,8 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_60__["FacInUpdateComponent"],
                     _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_61__["FacInResetComponent"],
                     _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_62__["ApprovalResultPageComponent"],
-                    _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_63__["ApprovalSinglePageComponent"]
+                    _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_63__["ApprovalSinglePageComponent"],
+                    _components_en_extension_au_summary_en_extension_au_summary_component__WEBPACK_IMPORTED_MODULE_64__["EnExtensionAuSummaryComponent"]
                 ],
                 imports: [
                     _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -16443,17 +16521,6 @@ class FacInResetComponent {
         this.servicesData = [];
         this.Jabber = [];
         this.Voice_Mail = "No";
-        //cos : any =[];
-        //itns:any = [];
-        //vm :any;
-        //css :any;
-        //Jabber_Identifier:any;
-        //selected = true;
-        this.hideChargeDept = true;
-        this.currentcos = true;
-        this.currentVoiceMail = true;
-        this.hideDeptCode = true;
-        this.updaterequested = true;
         this.isReviewForm = true;
         this.isEntryForm = false;
         this.fixedPhoneIdentifier = false;
@@ -16464,14 +16531,6 @@ class FacInResetComponent {
         this.isSpinnerVisible = false;
         this.warninginfo = false;
         this.warninginfosnow = false;
-        this.classOfService = [];
-        this.checked = false;
-        this.checked2 = false;
-        this.checked3 = false;
-        this.newLocation = true;
-        this.newFunded = true;
-        // newcos = true;
-        this.newAuthorizationLevel = true;
         this.businessJust = true;
         this.errorinfo = false;
         this.currLocation = '';
@@ -16490,94 +16549,9 @@ class FacInResetComponent {
         this.buildA = [];
         this.radioFunded = "";
         this.j = 0;
-        this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["Fac_Update"]();
-    }
-    toggle_options() {
-        if (this.checked) {
-            this.newLocation = false;
-            this.toup_disp = "Location";
-        }
-        else {
-            this.newLocation = true;
-            this.toup_disp = '';
-        }
-        if (this.checked2) {
-            this.newFunded = false;
-            this.toup_disp2 = "Funded";
-        }
-        else {
-            this.newFunded = true;
-            this.toup_disp2 = '';
-        }
-        if (this.checked3) {
-            this.newAuthorizationLevel = false;
-            this.toup_disp3 = "Authorization Level";
-        }
-        else {
-            this.newAuthorizationLevel = true;
-            this.toup_disp3 = '';
-        }
-    }
-    hidebusinessjust(select) {
-        if ((select != "") && (select.toUpperCase() == "INTERNATIONAL"))
-            this.businessJust = false;
-        else
-            this.businessJust = true;
-    }
-    EntryDetails(formData) {
-        if ((this.checked === false) && (this.checked2 === false) && (this.checked3 === false)) {
-            alert('Please select update required for');
-            return;
-        }
-        if (this.checked) {
-            if (formData.value.Location_1 === '' || formData.value.Location_1.toLowerCase() === 'select office location') {
-                alert('Please select office location');
-                return;
-            }
-            if (formData.value.Buildings === '' || formData.value.Buildings.toLowerCase() === 'select one') {
-                alert('Please select a campus');
-                return;
-            }
-            if (formData.value.Location_1 + '~~' + formData.value.Buildings === this.currLocation) {
-                alert('Please provide a new campus');
-                return;
-            }
-        }
-        if (this.checked2 && formData.value.Voice_Mail === 'Yes') {
-            if (formData.value.chargeDepartmentCode === '') {
-                alert('Please enter the charge department code');
-                return;
-            }
-            if (formData.value.chargeDepartmentCode === this.currChargeDeptCode) {
-                alert('Please enter a new charge department code');
-                return;
-            }
-        }
-        if (this.checked3) {
-            if (formData.value.authLevel === '' || formData.value.authLevel.toLowerCase() === 'select authorization level') {
-                alert('Please select an authorization level');
-                return;
-            }
-            if (formData.value.authLevel === this.currAuthorizationLevel) {
-                alert('Please provide a new authorization level');
-                return;
-            }
-        }
-        if (formData.value.businessjustification == '') {
-            alert('Please enter Business Justification');
-            return;
-        }
-        //  this.jabberDisp = formData.value.Jabber_1;
-        // this.new_cos_disp=formData.value.select_cos;
-        // this.new_vm_disp=formData.value.Voice_Mail;
-        this.Location_1 = formData.value.Location_1;
-        this.Buildings = formData.value.Buildings;
-        this.Funded = formData.value.Voice_Mail;
-        this.chargeDepartmentCode = formData.value.chargeDepartmentCode;
-        this.authLevel = formData.value.authLevel;
-        this.bj_disp = formData.value.businessjustification.replace(/[\n\r+]/g, ' ');
-        this.isReviewForm = false;
-        this.isEntryForm = true;
+        this.business_unit = '';
+        this.authValue = '';
+        this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["Fac_Reset"]();
     }
     // Submit to Snow Jabber new code added by Swarnava ends	
     backClick() {
@@ -16585,12 +16559,18 @@ class FacInResetComponent {
         sessionStorage.setItem('step', 'step1');
         this.location.back();
     }
-    isFunded() {
-        if (this.Voice_Mail === 'Yes') {
-            this.hideDeptCode = false;
+    authCalculation(val) {
+        if (val === 'STD') {
+            return '4';
+        }
+        else if (val === 'Local') {
+            return '3';
+        }
+        else if (val === 'ISD') {
+            return '5';
         }
         else {
-            this.hideDeptCode = true;
+            return '';
         }
     }
     BackButton() {
@@ -16598,34 +16578,24 @@ class FacInResetComponent {
         this.isEntryForm = false;
     }
     submit_snow() {
-        this.reqno = this.countrydetails.isocode + "-US-" + this.cnum.substr(0, 6) + "-" + gettime();
+        this.reqno = this.countrydetails.isocode + "-RS-" + this.cnum.substr(0, 6) + "-" + gettime();
         sessionStorage.setItem('reqno', this.reqno);
         this.isButtonVisible = false;
         this.isSpinnerVisible = true;
         this.payload.orinator_payload = this.orgi;
         this.payload.cNum_payload = this.cnum;
-        // fields picked up from form -- begins	
-        this.payload.Projectid_Disp = '';
-        // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
-        this.payload.Department_number_Disp = '';
-        this.payload.accid_Disp = '';
-        //this.payload.Identifier_Selected = this.jabberDisp;
-        this.payload.updated_for = '';
         this.payload.ReqNo = this.reqno;
-        // this.payload.Current_COS=this.cos_disp;
-        // this.payload.Current_VM=this.vm_disp;
-        // this.payload.Justification=this.bj_disp;
-        // this.payload.New_Voice=this.new_vm_disp;
-        // this.payload.New_COS=this.new_cos_disp
-        // fields to be picked up from form -- ends	
+        this.payload.Curr_Location = this.currLocation;
+        this.payload.authLevel_final = this.authValue;
+        this.payload.authLevel = this.currAuthorizationLevel;
+        this.payload.business_unit = this.business_unit;
+        this.payload.siteaddress = '';
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
         this.payload.countryname = this.countrydetails.name;
-        this.payload.request_type = 'jabber_update';
+        this.payload.request_type = 'fac_reset';
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
-        this.payload.prov_type = this.countrydetails.provision_type;
-        this.payload.updated_for = this.toup_disp + ',' + this.toup_disp2;
-        this.servicenowservice.submit_request_fac_update(this.payload).subscribe(data => {
+        this.servicenowservice.submit_request_fac_reset(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
                 this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
@@ -16638,10 +16608,13 @@ class FacInResetComponent {
     }
     ngOnInit() {
         var _a, _b, _c;
-        // Submit to Snow Jabber Update code
+        // Submit to Snow Jabber reset code
         this.cnum = sessionStorage.getItem('cnum');
         this.orgi = this.cookie.getCookie('ccode');
         this.countrydetails = sessionStorage.getItem('countrydetails');
+        this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
+        this.employeeInfo = JSON.parse(this.employeeInfo1);
+        this.business_unit = this.employeeInfo.businessUnit;
         this.countrydetails = JSON.parse(this.countrydetails);
         this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
         this.sessionwarninginfo = sessionStorage.getItem('warninginfo');
@@ -16660,10 +16633,8 @@ class FacInResetComponent {
             this.db2data = sessionStorage.getItem('db2data');
             this.db2data = JSON.parse(this.db2data);
             this.currLocation = this.db2data[0].ATTRIBUTE3;
-            this.currChargeDeptCode = this.db2data[0].ATTRIBUTE7;
             this.currAuthorizationLevel = this.db2data[0].ATTRIBUTE4;
-            this.currFACCodeType = this.db2data[0].ATTRIBUTE5;
-            this.currvalidity = this.db2data[0].ATTRIBUTE6;
+            this.authValue = this.authCalculation(this.currAuthorizationLevel);
         }
         this.locationlist = (_b = sessionStorage.getItem('locationdetails')) === null || _b === void 0 ? void 0 : _b.replace('"', '');
         this.locationlist = (_c = this.locationlist) === null || _c === void 0 ? void 0 : _c.replace('"', '').split(',');
@@ -17077,24 +17048,29 @@ class Fac_Update {
     Fac_Update() {
         this.orinator_payload = "";
         this.cNum_payload = "";
-        this.Projectid_Disp = "";
         this.icano_Disp = "";
-        this.Department_number_Disp = "";
         this.accid_Disp = "";
         this.ReqNo = "";
         this.countryname = "";
         this.evolution_instance = "";
         this.gvs_portal_link = "";
         this.gvs_approval_link = "";
-        this.Identifier_Selected = "";
         this.updated_for = "";
-        this.request_type = "";
+        this.updated_for_values = "",
+            this.request_type = "";
         this.prov_type = "";
-        this.Current_VM = "";
-        this.Current_COS = "";
         this.Justification = "";
-        this.New_Voice = "";
-        this.New_COS = "";
+        this.Location_1 = "";
+        this.Buildings = "";
+        this.Funded = "";
+        this.chargeDepartmentCode = "";
+        this.authLevel = "";
+        this.bj_disp = "";
+        this.currLocation = "";
+        this.currChargeDeptCode = "";
+        this.currAuthorizationLevel = "";
+        this.currFACCodeType = "";
+        this.currvalidity = "";
     }
 }
 // Class used to create the payload for snow reset Fac service.
@@ -17102,24 +17078,17 @@ class Fac_Reset {
     Fac_Reset() {
         this.orinator_payload = "";
         this.cNum_payload = "";
-        this.Projectid_Disp = "";
-        this.icano_Disp = "";
-        this.Department_number_Disp = "";
-        this.accid_Disp = "";
         this.ReqNo = "";
         this.countryname = "";
         this.evolution_instance = "";
         this.gvs_portal_link = "";
         this.gvs_approval_link = "";
-        this.Identifier_Selected = "";
-        this.updated_for = "";
+        this.Curr_Location = "";
+        this.authLevel_final = "";
         this.request_type = "";
-        this.prov_type = "";
-        this.Current_VM = "";
-        this.Current_COS = "";
-        this.Justification = "";
-        this.New_Voice = "";
-        this.New_COS = "";
+        this.business_unit = "";
+        this.siteaddress = "";
+        this.authLevel = "";
     }
 }
 // // class used to create the payload for snow special request service
@@ -18033,6 +18002,14 @@ class EmployeesearchComponent {
                 this.returnValue = confirm('Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit');
                 if (this.returnValue == false) {
                     this.router.navigate(['/jabberservices'], { queryParams: { country: this.pcode, service: this.service } });
+                }
+            }
+        }, 200);
+        setTimeout(() => {
+            if (this.service.includes('fixed')) {
+                if (!(this.countrydetails.power_users.includes(this.ccode))) {
+                    alert(this.countrydetails.alert_message.replace(/<br>/g, "\n"));
+                    this.router.navigate(['fixedphoneservices'], { queryParams: { country: this.pcode, service: this.service } });
                 }
             }
         }, 200);
@@ -20478,6 +20455,7 @@ class NavigationComponent {
         this.onLoad = true;
         this.dataNav = [];
         this.dataNav1 = [];
+        this.fixphoneVisibility = true;
     }
     getNavClass(i) {
         if (this.dataNav123.data[0].lhs[i].indented && this.dataNav123.data[0].lhs[i].highlighted) {
@@ -20546,6 +20524,22 @@ class NavigationComponent {
             this.service = params.service;
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
+            //ACL for Fixed Phone Services - starts
+            this.countrydetails = sessionStorage.getItem('countrydetails');
+            this.parcountrydetails = JSON.parse(this.countrydetails);
+            this.loggedinuser = this.cookie.getCookie('ccode');
+            if (this.parcountrydetails.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+                if (this.parcountrydetails.auth_fixphone.includes(this.loggedinuser)) {
+                    this.fixphoneVisibility = true;
+                }
+                else {
+                    this.fixphoneVisibility = false;
+                }
+            }
+            else {
+                this.fixphoneVisibility = this.parcountrydetails.isfixphone;
+            }
+            //ACL for Fixed Phone Services - ends
             this.serhl = false;
             this.jhl = false;
             this.fhl = false;
@@ -20566,16 +20560,18 @@ class NavigationComponent {
             if ((this.service).includes("jabber")) {
                 this.jin = true;
                 this.jhl = true;
+                this.fin = this.fixphoneVisibility;
             }
             if ((this.service).includes("fixedphone")) {
-                this.fin = true;
-                this.fhl = true;
+                this.fin = this.fixphoneVisibility;
+                this.fhl = this.fixphoneVisibility;
                 this.jin = true;
                 this.facin = true;
             }
             if (this.service.includes("fac")) {
                 this.facin = true;
                 this.fachl = true;
+                this.fin = this.fixphoneVisibility;
             }
             if ((this.service).includes("requests")) {
                 this.reqhl = true;
@@ -20635,7 +20631,7 @@ class NavigationComponent {
                     "name": this.countryname.name,
                     "isocode": this.countryname.isocode,
                     "isjabber": this.countryname.isjabber,
-                    "isfixedphone": this.countryname.isfixphone,
+                    "isfixedphone": this.fixphoneVisibility,
                     "isfac": this.countryname.isfac,
                     "isspecial": this.countryname.isspecial,
                     "isreval": this.countryname.isreval,
@@ -20664,7 +20660,7 @@ class NavigationComponent {
                         "name": this.countryname.name,
                         "isocode": this.countryname.isocode,
                         "isjabber": this.countryname.isjabber,
-                        "isfixedphone": this.countryname.isfixphone,
+                        "isfixedphone": this.fixphoneVisibility,
                         "isfac": this.countryname.isfac,
                         "isspecial": this.countryname.isspecial,
                         "isreval": this.countryname.isreval,
@@ -24319,8 +24315,8 @@ function MiddleframeComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.servicesData.services[0]);
 } }
-const _c2 = function () { return ["/inprogress"]; };
-const _c3 = function (a0) { return { country: a0 }; };
+const _c2 = function () { return ["/fixedphoneservices"]; };
+const _c3 = function (a0) { return { country: a0, service: "fixedphoneservices" }; };
 function MiddleframeComponent_div_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 8);
@@ -24363,6 +24359,8 @@ function MiddleframeComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r2.servicesData.services[2]);
 } }
+const _c6 = function () { return ["/inprogress"]; };
+const _c7 = function (a0) { return { country: a0 }; };
 function MiddleframeComponent_div_5_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 8);
@@ -24379,7 +24377,7 @@ function MiddleframeComponent_div_5_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c2))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c3, ctx_r3.pcode));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c6))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c7, ctx_r3.pcode));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r3.servicesData.services[3]);
 } }
@@ -24412,16 +24410,28 @@ class MiddleframeComponent {
             this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
             this.countryroute = sessionStorage.getItem('countryroute');
             console.log("navigation component country route" + this.countryroute);
+            this.loggedinuser = this.cookie.getCookie('ccode');
             if (this.pcode == this.countryroute) {
                 this.pcountrydetails = sessionStorage.getItem('countrydetails');
                 console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
                 this.countryname = JSON.parse(this.pcountrydetails);
+                if (this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+                    if (this.countryname.auth_fixphone.includes(this.loggedinuser)) {
+                        this.fixphoneVisibility = true;
+                    }
+                    else {
+                        this.fixphoneVisibility = false;
+                    }
+                }
+                else {
+                    this.fixphoneVisibility = this.countryname.isfixphone;
+                }
                 this.cloudantData = {
                     "code": this.ccode,
                     "name": this.countryname.name,
                     "isocode": this.countryname.isocode,
                     "isjabber": this.countryname.isjabber,
-                    "isfixedphone": this.countryname.isfixphone,
+                    "isfixedphone": this.fixphoneVisibility,
                     "isfac": this.countryname.isfac,
                     "isspecial": this.countryname.isspecial,
                     "isreval": this.countryname.isreval,
@@ -24439,12 +24449,23 @@ class MiddleframeComponent {
                     this.countryname = data.countrydetails;
                     sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
                     sessionStorage.setItem('countryroute', this.pcode);
+                    if (this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+                        if (this.countryname.auth_fixphone.includes(this.loggedinuser)) {
+                            this.fixphoneVisibility = true;
+                        }
+                        else {
+                            this.fixphoneVisibility = false;
+                        }
+                    }
+                    else {
+                        this.fixphoneVisibility = this.countryname.isfixphone;
+                    }
                     this.cloudantData = {
                         "code": this.pcode,
                         "name": this.countryname.name,
                         "isocode": this.countryname.isocode,
                         "isjabber": this.countryname.isjabber,
-                        "isfixedphone": this.countryname.isfixphone,
+                        "isfixedphone": this.fixphoneVisibility,
                         "isfac": this.countryname.isfac,
                         "isspecial": this.countryname.isspecial,
                         "isreval": this.countryname.isreval,
