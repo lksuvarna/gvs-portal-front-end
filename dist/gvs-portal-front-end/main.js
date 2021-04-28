@@ -1048,10 +1048,22 @@ class JabberservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            this.countrydetails = sessionStorage.getItem('countrydetails');
-            this.countrydetails = JSON.parse(this.countrydetails);
-            this.linkv = this.countrydetails.jservices;
-            console.log(this.countrydetails.jservices);
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received navigation', data.countrydetails.isspecial);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    this.linkv = this.countrydetails.jservices;
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                this.linkv = this.countrydetails.jservices;
+            }
+            //console.log(this.countrydetails.jservices)
             const servicesData = {
                 "data": [
                     {
@@ -13224,10 +13236,21 @@ class FixedphoneservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            this.countrydetails = sessionStorage.getItem('countrydetails');
-            this.countrydetails = JSON.parse(this.countrydetails);
-            this.linkv = this.countrydetails.fservices;
-            console.log(this.countrydetails.fservices);
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received navigation', data.countrydetails.isspecial);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    this.linkv = this.countrydetails.fservices;
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                this.linkv = this.countrydetails.fservices;
+            }
             const servicesData = {
                 "data": [
                     {
@@ -19092,45 +19115,60 @@ class ApprovalpendingComponent {
         this.router.navigate(['/employeeinfo']);
     }
     ngOnInit() {
-        this.countrydetails = sessionStorage.getItem('countrydetails');
-        this.countrydetails = JSON.parse(this.countrydetails);
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
             this.service = params.service;
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-        });
-        console.log(this.countrydetails);
-        if (this.countrydetails.testuser) {
-            this.ccode = this.countrydetails.testuser;
-        }
-        else {
-            this.ccode = this.cookie.getCookie('ccode');
-        }
-        this.empserial = this.ccode;
-        this.ccode = this.ccode.substring(6, 9);
-        this.empserial = "467756744";
-        this.servicenowservice.searchsnowcoments(this.empserial, "snow_approve", "", "").subscribe(data => {
-            console.log(' snow response', data.message);
-            console.log(' snow response', data.message.length);
-            if (data.message.length == 0)
-                this.errorinfo = false;
-            else {
-                this.pendingRequest_original = data.message;
-                this.pendingRequest = this.pendingRequest_original;
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    if (this.countrydetails.testuser) {
+                        this.ccode = this.countrydetails.testuser;
+                    }
+                    else {
+                        this.ccode = this.cookie.getCookie('ccode');
+                    }
+                });
             }
-        });
-        console.log(' snow response', this.pendingRequest);
-        const servicesData = {
-            "data": [
-                {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
-                    "step": 3,
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                if (this.countrydetails.testuser) {
+                    this.ccode = this.countrydetails.testuser;
                 }
-            ]
-        };
-        this.servicesData = servicesData.data[0];
+                else {
+                    this.ccode = this.cookie.getCookie('ccode');
+                }
+            }
+            this.empserial = this.ccode;
+            this.ccode = this.ccode.substring(6, 9);
+            this.empserial = "467756744";
+            this.servicenowservice.searchsnowcoments(this.empserial, "snow_approve", "", "").subscribe(data => {
+                console.log(' snow response', data.message);
+                console.log(' snow response', data.message.length);
+                if (data.message.length == 0)
+                    this.errorinfo = false;
+                else {
+                    this.pendingRequest_original = data.message;
+                    this.pendingRequest = this.pendingRequest_original;
+                }
+            });
+            console.log(' snow response', this.pendingRequest);
+            const servicesData = {
+                "data": [
+                    {
+                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "step": 3,
+                    }
+                ]
+            };
+            this.servicesData = servicesData.data[0];
+        });
     }
     selectAllcheck() {
         for (var i = 0; i < this.pendingRequest.length; i++) {
@@ -20291,10 +20329,20 @@ class FacservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            this.countrydetails = sessionStorage.getItem('countrydetails');
-            this.countrydetails = JSON.parse(this.countrydetails);
-            this.linkv = this.countrydetails.facservices;
-            console.log(this.countrydetails.jservices);
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    this.linkv = this.countrydetails.facservices;
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                this.linkv = this.countrydetails.facservices;
+            }
             const servicesData = {
                 "data": [
                     {

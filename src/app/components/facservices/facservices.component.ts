@@ -25,12 +25,21 @@ export class FacservicesComponent implements OnInit {
 
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
+        if(sessionStorage.getItem('countrydetails')==undefined){
+  
+          this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {            
+            
+            this.countryname = data.countrydetails;
+            sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+            this.countrydetails=JSON.stringify(data.countrydetails);
+            this.countrydetails = JSON.parse(this.countrydetails)
+            this.linkv=this.countrydetails.facservices})}
+       else{
         this.countrydetails = sessionStorage.getItem('countrydetails');	
         this.countrydetails = JSON.parse(this.countrydetails);
-        this.linkv=this.countrydetails.facservices
-      
+        this.linkv=this.countrydetails.facservices}      
    
-    console.log(this.countrydetails.jservices)
+    
       const servicesData = { 
       "data": [
         {    
