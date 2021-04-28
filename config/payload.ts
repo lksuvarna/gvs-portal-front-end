@@ -335,48 +335,58 @@ export class Fac_Update
 {
     orinator_payload !: String;
     cNum_payload !: String;
-    Projectid_Disp !: String;
     icano_Disp !: String;
-    Department_number_Disp !: String;
     accid_Disp !: String;
     ReqNo !: String;
     countryname !: String;
     evolution_instance !: String;
     gvs_portal_link !: String;
     gvs_approval_link !: String;
-    Identifier_Selected !: String;
     updated_for !: String;
     request_type !: String;
     prov_type !: String;
-    Current_VM !: String;
-    Current_COS !: String;
     Justification !: String;
-    New_Voice !: String;
-    New_COS !: String;
+    Location_1  !: String;
+    Buildings  !: String;
+    Funded  !: String;
+    chargeDepartmentCode  !: String;
+    authLevel  !: String;
+    bj_disp !: String;
+    currLocation !: String;
+    currChargeDeptCode !: String;
+    currAuthorizationLevel !: String;
+    currFACCodeType !: String;	
+    currvalidity !: String;
+    updated_for_values !: String;
 
 Fac_Update()
  {
     
     this.orinator_payload ="";
     this.cNum_payload  ="";
-    this.Projectid_Disp  ="";
     this.icano_Disp ="";
-    this.Department_number_Disp  ="";
     this.accid_Disp  ="";
     this.ReqNo  ="";
     this.countryname  ="";
     this.evolution_instance  ="";
     this.gvs_portal_link ="";
     this.gvs_approval_link  ="";
-    this.Identifier_Selected  ="";
     this.updated_for  ="";
+    this.updated_for_values = "",
     this.request_type="";
     this.prov_type="";
-    this.Current_VM="";
-    this.Current_COS="";
     this.Justification="";
-    this.New_Voice="";
-    this.New_COS="";
+    this.Location_1 ="";
+    this.Buildings = "";
+    this.Funded = "";
+    this.chargeDepartmentCode = "";
+    this.authLevel = "";
+    this.bj_disp="";
+    this.currLocation ="";
+    this.currChargeDeptCode ="";
+    this.currAuthorizationLevel ="";
+    this.currFACCodeType ="";
+    this.currvalidity ="";
     
  }
 
@@ -387,49 +397,34 @@ export class Fac_Reset
 {
     orinator_payload !: String;
     cNum_payload !: String;
-    Projectid_Disp !: String;
-    icano_Disp !: String;
-    Department_number_Disp !: String;
-    accid_Disp !: String;
     ReqNo !: String;
     countryname !: String;
     evolution_instance !: String;
     gvs_portal_link !: String;
     gvs_approval_link !: String;
-    Identifier_Selected !: String;
-    updated_for !: String;
+    Curr_Location !: String;
+    authLevel_final !: String;
     request_type !: String;
-    prov_type !: String;
-    Current_VM !: String;
-    Current_COS !: String;
-    Justification !: String;
-    New_Voice !: String;
-    New_COS !: String;
+    business_unit !: String;
+    siteaddress !: String;
+    authLevel !: String
 
 Fac_Reset()
  {
     
     this.orinator_payload ="";
     this.cNum_payload  ="";
-    this.Projectid_Disp  ="";
-    this.icano_Disp ="";
-    this.Department_number_Disp  ="";
-    this.accid_Disp  ="";
     this.ReqNo  ="";
     this.countryname  ="";
     this.evolution_instance  ="";
     this.gvs_portal_link ="";
     this.gvs_approval_link  ="";
-    this.Identifier_Selected  ="";
-    this.updated_for  ="";
-    this.request_type="";
-    this.prov_type="";
-    this.Current_VM="";
-    this.Current_COS="";
-    this.Justification="";
-    this.New_Voice="";
-    this.New_COS="";
-    
+    this.Curr_Location  ="";
+    this.authLevel_final ="";
+    this.request_type  ="";  
+    this.business_unit = "";
+    this.siteaddress = "";
+    this.authLevel = ""
  }
 
 }
