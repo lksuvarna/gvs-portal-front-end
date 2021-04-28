@@ -91,7 +91,7 @@ export class EmployeesearchComponent implements OnInit {
     this.fullName = this.fullName.replace(",", ", ");
     this.ccode = this.cookie.getCookie('ccode');
 if(sessionStorage.getItem('countrydetails')==undefined){
-  
+  this.getTitle();
   this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
     
     console.log('Response received navigation', data.countrydetails.isspecial);
@@ -106,6 +106,11 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       this.ccode = this.countrydetails.testuser
     }
     else { this.ccode = this.cookie.getCookie('ccode'); }
+    
+        if (this.countrydetails.scountries) {
+          this.showCountryCode = true
+          this.subCountries = this.countrydetails.scountries
+        }
   });
   
 }
