@@ -185,7 +185,8 @@ export class EmployeeinfoComponent implements OnInit {
     this.employeeInfo=JSON.parse(this.employeeInfo1)
 
 
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdeactivatesnow){
+    
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdeactivate ||this.warninginfofacdeactivatesnow){
 
       this.hideSteps = true;
       this.warn = true;
