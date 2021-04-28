@@ -848,7 +848,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -16872,7 +16872,7 @@ PagenotfoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
 /*!***************************!*\
   !*** ./config/payload.ts ***!
   \***************************/
-/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Fac_New, Fac_Deactivate, Fac_Update, Fac_Reset, Special_Request, fixedphone_new, fixedphone_delete, fixedphone_update */
+/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Fac_New, Fac_Deactivate, Fac_Update, Fac_Reset, Special_Request, fixedphone_new, fixedphone_delete, fixedphone_update, Create_Cache */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -16891,6 +16891,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fixedphone_new", function() { return fixedphone_new; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fixedphone_delete", function() { return fixedphone_delete; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fixedphone_update", function() { return fixedphone_update; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Create_Cache", function() { return Create_Cache; });
 // Class used to create the payload for Db2 search service.
 class db2search {
     db2search() {
@@ -17183,6 +17184,19 @@ class fixedphone_update {
         this.evolution_instance = "";
         this.gvs_portal_link = "";
         this.gvs_approval_link = "";
+    }
+}
+//setting up cache class for data retention.
+class Create_Cache {
+    Create_Cache() {
+        this.cnum = '';
+        this.Buildings_Disp = '';
+        this.Projectid_Disp = '';
+        this.icano_Disp = '';
+        this.identifier_hp_Disp = '';
+        this.Department_number_Disp = '';
+        this.Location_final = '';
+        this.accid_Disp = '';
     }
 }
 
