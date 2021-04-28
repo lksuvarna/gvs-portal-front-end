@@ -1048,10 +1048,22 @@ class JabberservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            this.countrydetails = sessionStorage.getItem('countrydetails');
-            this.countrydetails = JSON.parse(this.countrydetails);
-            this.linkv = this.countrydetails.jservices;
-            console.log(this.countrydetails.jservices);
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received navigation', data.countrydetails.isspecial);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    this.linkv = this.countrydetails.jservices;
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                this.linkv = this.countrydetails.jservices;
+            }
+            //console.log(this.countrydetails.jservices)
             const servicesData = {
                 "data": [
                     {
@@ -9591,7 +9603,7 @@ function EmployeeinfoComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("servicestitle.", ctx_r0.title, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r0.warninginfoothers && ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false && ctx_r0.warninginfosnowreq == false && ctx_r0.warninginfosnowres == false && ctx_r0.warninginfoothers == false && ctx_r0.warninginfosnowothers == false && ctx_r0.warninginfofacr == false && ctx_r0.warninginfofacu == false && ctx_r0.warninginfofacdeactivate == false);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx_r0.servicesData.step)("isSelf", ctx_r0.reqFor)("hideSteps", ctx_r0.hideSteps);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -12154,7 +12166,7 @@ function VoipInMoveComponent_table_25_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r3.jabberNumber);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r3.Jabber);
 } }
 function VoipInMoveComponent_div_26_option_15_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 80);
@@ -12391,6 +12403,7 @@ class VoipInMoveComponent {
         this.servicesData = [];
         this.warninginfo = false;
         this.warninginfosnow = false;
+        this.Jabber = [];
         this.hideProjectId = false;
         this.hideSteps = false;
         this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["Jabber_Move"]();
@@ -12559,6 +12572,8 @@ class VoipInMoveComponent {
         }
         else {
             this.identifier = sessionStorage.getItem('identifier');
+            this.identifier = this.identifier.split(',');
+            this.Jabber = [...this.identifier];
         }
         this.route.queryParams
             .subscribe(params => {
@@ -13224,10 +13239,21 @@ class FixedphoneservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            this.countrydetails = sessionStorage.getItem('countrydetails');
-            this.countrydetails = JSON.parse(this.countrydetails);
-            this.linkv = this.countrydetails.fservices;
-            console.log(this.countrydetails.fservices);
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received navigation', data.countrydetails.isspecial);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    this.linkv = this.countrydetails.fservices;
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                this.linkv = this.countrydetails.fservices;
+            }
             const servicesData = {
                 "data": [
                     {
@@ -17916,26 +17942,49 @@ class EmployeesearchComponent {
     }
     ngOnInit() {
         this.showloader = false;
-        this.fullName = this.cookie.getCookie('username');
-        if (this.fullName.includes(undefined)) {
-            this.fullName = this.cookie.getCookie('user');
-        }
-        this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
-        this.fullName = this.fullName.replace(",", ", ");
-        this.ccode = this.cookie.getCookie('ccode');
-        this.countrydetails = sessionStorage.getItem('countrydetails');
-        this.countrydetails = JSON.parse(this.countrydetails);
-        if (this.countrydetails.testuser) {
-            this.ccode = this.countrydetails.testuser;
-        }
-        else {
-            this.ccode = this.cookie.getCookie('ccode');
-        }
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
             this.pcode = params.country;
             this.service = params.service;
+            this.fullName = this.cookie.getCookie('username');
+            if (this.fullName.includes(undefined)) {
+                this.fullName = this.cookie.getCookie('user');
+            }
+            this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
+            this.fullName = this.fullName.replace(",", ", ");
+            this.ccode = this.cookie.getCookie('ccode');
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.getTitle();
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received navigation', data.countrydetails.isspecial);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    sessionStorage.setItem('countryroute', this.pcode);
+                    if (this.countrydetails.testuser) {
+                        this.ccode = this.countrydetails.testuser;
+                    }
+                    else {
+                        this.ccode = this.cookie.getCookie('ccode');
+                    }
+                    if (this.countrydetails.scountries) {
+                        this.showCountryCode = true;
+                        this.subCountries = this.countrydetails.scountries;
+                    }
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                if (this.countrydetails.testuser) {
+                    this.ccode = this.countrydetails.testuser;
+                }
+                else {
+                    this.ccode = this.cookie.getCookie('ccode');
+                }
+            }
             console.log("navigation component" + this.pcode);
             this.backbutton = sessionStorage.getItem('backbutton');
             this.step = sessionStorage.getItem('step');
@@ -17993,7 +18042,7 @@ class EmployeesearchComponent {
         console.log(this.pcode + this.ccode);
         if (this.radioAction.toLowerCase() == "myself") {
             if (this.countrydetails.extracodes) {
-                if (this.countrydetails.extracodes.some((s) => s.includes(this.ccode.substr(6, 9)))) { }
+                if (this.countrydetails.extracodes.split(',').some((s) => s.includes(this.ccode.substr(6, 9)))) { }
                 else {
                     alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
                     return;
@@ -18075,6 +18124,7 @@ class EmployeesearchComponent {
     }
     getExtracodes() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            var count = 0;
             for (this.i = 0; this.i < this.extracodes.length; this.i++) {
                 //  this.i = 0      
                 // while(this.i < this.extracodes.length)  {    
@@ -18083,6 +18133,7 @@ class EmployeesearchComponent {
                 console.log("empserialnumr" + employeeSerial1);
                 this.bpservices.bpdetails(employeeSerial1).subscribe(data => {
                     console.log(' BP Detailschina', data.userdata);
+                    count++;
                     if (data.userdata) {
                         this.employeeSerial = data.username.uid;
                         console.log("empserialnumrif" + this.employeeSerial);
@@ -18091,6 +18142,10 @@ class EmployeesearchComponent {
                         return;
                     }
                     else {
+                        if (count == this.extracodes.length) {
+                            this.getBPData();
+                            return;
+                        }
                     }
                 });
             }
@@ -19074,45 +19129,60 @@ class ApprovalpendingComponent {
         this.router.navigate(['/employeeinfo']);
     }
     ngOnInit() {
-        this.countrydetails = sessionStorage.getItem('countrydetails');
-        this.countrydetails = JSON.parse(this.countrydetails);
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
             this.service = params.service;
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-        });
-        console.log(this.countrydetails);
-        if (this.countrydetails.testuser) {
-            this.ccode = this.countrydetails.testuser;
-        }
-        else {
-            this.ccode = this.cookie.getCookie('ccode');
-        }
-        this.empserial = this.ccode;
-        this.ccode = this.ccode.substring(6, 9);
-        this.empserial = "467756744";
-        this.servicenowservice.searchsnowcoments(this.empserial, "snow_approve", "", "").subscribe(data => {
-            console.log(' snow response', data.message);
-            console.log(' snow response', data.message.length);
-            if (data.message.length == 0)
-                this.errorinfo = false;
-            else {
-                this.pendingRequest_original = data.message;
-                this.pendingRequest = this.pendingRequest_original;
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    if (this.countrydetails.testuser) {
+                        this.ccode = this.countrydetails.testuser;
+                    }
+                    else {
+                        this.ccode = this.cookie.getCookie('ccode');
+                    }
+                });
             }
-        });
-        console.log(' snow response', this.pendingRequest);
-        const servicesData = {
-            "data": [
-                {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
-                    "step": 3,
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                if (this.countrydetails.testuser) {
+                    this.ccode = this.countrydetails.testuser;
                 }
-            ]
-        };
-        this.servicesData = servicesData.data[0];
+                else {
+                    this.ccode = this.cookie.getCookie('ccode');
+                }
+            }
+            this.empserial = this.ccode;
+            this.ccode = this.ccode.substring(6, 9);
+            this.empserial = "467756744";
+            this.servicenowservice.searchsnowcoments(this.empserial, "snow_approve", "", "").subscribe(data => {
+                console.log(' snow response', data.message);
+                console.log(' snow response', data.message.length);
+                if (data.message.length == 0)
+                    this.errorinfo = false;
+                else {
+                    this.pendingRequest_original = data.message;
+                    this.pendingRequest = this.pendingRequest_original;
+                }
+            });
+            console.log(' snow response', this.pendingRequest);
+            const servicesData = {
+                "data": [
+                    {
+                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "step": 3,
+                    }
+                ]
+            };
+            this.servicesData = servicesData.data[0];
+        });
     }
     selectAllcheck() {
         for (var i = 0; i < this.pendingRequest.length; i++) {
@@ -20273,10 +20343,20 @@ class FacservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            this.countrydetails = sessionStorage.getItem('countrydetails');
-            this.countrydetails = JSON.parse(this.countrydetails);
-            this.linkv = this.countrydetails.facservices;
-            console.log(this.countrydetails.jservices);
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    this.linkv = this.countrydetails.facservices;
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                this.linkv = this.countrydetails.facservices;
+            }
             const servicesData = {
                 "data": [
                     {

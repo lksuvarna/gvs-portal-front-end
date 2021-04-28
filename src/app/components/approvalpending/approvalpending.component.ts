@@ -41,23 +41,41 @@ export class ApprovalpendingComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.countrydetails = sessionStorage.getItem('countrydetails')
-    this.countrydetails = JSON.parse(this.countrydetails)
+    
     this.route.queryParams	
     .subscribe(params => {	
       console.log(params);	
       this.service=params.service;	
       this.pcode = params.country;	
       console.log("navigation component" + this.pcode);	
-    })	
 
-    console.log(this.countrydetails);
-
-    if(this.countrydetails.testuser)
+      if(sessionStorage.getItem('countrydetails')==undefined){
+  
+        this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {            
+          
+          this.countryname = data.countrydetails;
+          sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+          this.countrydetails=JSON.stringify(data.countrydetails);
+          this.countrydetails = JSON.parse(this.countrydetails)
+          if(this.countrydetails.testuser)
       {
         this.ccode=this.countrydetails.testuser;
       }
       else{this.ccode = this.cookie.getCookie('ccode');}
+          })}
+          else{
+            this.countrydetails = sessionStorage.getItem('countrydetails')
+            this.countrydetails = JSON.parse(this.countrydetails)
+            if(this.countrydetails.testuser)
+      {
+        this.ccode=this.countrydetails.testuser;
+      }
+      else{this.ccode = this.cookie.getCookie('ccode');}
+          }	
+
+    
+
+    
  
     this.empserial = this.ccode; 
     this.ccode=this.ccode.substring(6,9);
@@ -84,7 +102,7 @@ export class ApprovalpendingComponent implements OnInit {
       }
     ]
   }
-    this.servicesData = servicesData.data[0]
+    this.servicesData = servicesData.data[0]})
   }
 
 
