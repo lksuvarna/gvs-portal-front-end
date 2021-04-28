@@ -584,3 +584,33 @@ fixedphone_update(){
 }
 
 }
+
+//setting up cache class for data retention.
+
+export class Create_Cache
+{
+
+    cnum !:string;
+    Buildings_Disp !: String;
+    Projectid_Disp !: String;
+    icano_Disp !: String;
+    identifier_hp_Disp !: String;
+    Department_number_Disp !: String;
+    Location_final !: String;
+    accid_Disp !: String;
+
+    Create_Cache(){
+
+       this.cnum='';
+       this.Buildings_Disp='';
+       this.Projectid_Disp='';
+       this.icano_Disp='';
+       this.identifier_hp_Disp='';
+       this.Department_number_Disp ='';
+       this.Location_final ='';
+       this.accid_Disp ='';
+    
+
+    }
+
+}
