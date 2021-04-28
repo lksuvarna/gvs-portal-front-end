@@ -213,7 +213,7 @@ class FacInNewComponent {
         this.reviewDetailsIndia.authLevel = formData.value.authLevel;
         this.reviewDetailsIndia.Fac_Type = formData.value.Fac_Type;
         this.reviewDetailsIndia.validity = formData.value.validity;
-        this.reviewDetailsIndia.Comments = formData.value.Comments;
+        this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r+]/g, ' ');
         if (formData.value.authLevel === 'STD') {
             this.reviewDetailsIndia.authValue = '4';
         }
@@ -1048,10 +1048,22 @@ class JabberservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            this.countrydetails = sessionStorage.getItem('countrydetails');
-            this.countrydetails = JSON.parse(this.countrydetails);
-            this.linkv = this.countrydetails.jservices;
-            console.log(this.countrydetails.jservices);
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received navigation', data.countrydetails.isspecial);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    this.linkv = this.countrydetails.jservices;
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                this.linkv = this.countrydetails.jservices;
+            }
+            //console.log(this.countrydetails.jservices)
             const servicesData = {
                 "data": [
                     {
@@ -1108,6 +1120,777 @@ JabberservicesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
                 styleUrls: ['./jabberservices.component.css']
             }]
     }], function () { return [{ type: _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__["cloudantservice"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }]; }, null); })();
+
+
+/***/ }),
+
+/***/ "4a48":
+/*!***************************************************************!*\
+  !*** ./src/app/components/hp-usa-new/hp-usa-new.component.ts ***!
+  \***************************************************************/
+/*! exports provided: HpUsaNewComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HpUsaNewComponent", function() { return HpUsaNewComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var config_payload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! config/payload */ "dP2x");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services/cookie-handler.service */ "oxqP");
+/* harmony import */ var _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services/cloudant.service */ "Rfmm");
+/* harmony import */ var _services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services/servicenow.service */ "qWuM");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _services_bp_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../_services/bp.service */ "Qz7Q");
+/* harmony import */ var _topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../topcountryframe/topcountryframe.component */ "aDsg");
+/* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../navigation/navigation.component */ "mvyS");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../steps/steps.component */ "52XD");
+
+
+
+
+
+
+
+
+
+
+
+
+
+function HpUsaNewComponent_option_33_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 76);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const fl_location_r12 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_location_r12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_location_r12, "");
+} }
+function HpUsaNewComponent_option_49_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 77);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const device_r13 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", device_r13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](device_r13);
+} }
+function HpUsaNewComponent_option_63_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 78);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const model_r14 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", model_r14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](model_r14);
+} }
+function HpUsaNewComponent_label_106_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "e.g. IBMC Lv21 EM desk ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpUsaNewComponent_label_107_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "e.g. IBMC Lv21 conference room 3 ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpUsaNewComponent_div_191_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 79);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 80);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Your request submission is in progress.Do not Go back or Refresh the page.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 81);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpUsaNewComponent_input_196_Template(rf, ctx) { if (rf & 1) {
+    const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpUsaNewComponent_input_196_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r16); const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r15.BackButton(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpUsaNewComponent_input_198_Template(rf, ctx) { if (rf & 1) {
+    const _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 82);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpUsaNewComponent_input_198_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r18); const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r17.submit_snow(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+class HpUsaNewComponent {
+    constructor(router, cookie, cloudantservice, route, servicenowservice, location, bpservices) {
+        this.router = router;
+        this.cookie = cookie;
+        this.cloudantservice = cloudantservice;
+        this.route = route;
+        this.servicenowservice = servicenowservice;
+        this.location = location;
+        this.bpservices = bpservices;
+        this.cloudantData = [];
+        this.servicesData = [];
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        this.showBusinessNeed = true;
+        this.Voice_Type = "No";
+        this.models = [];
+        this.hideDeviceSection = true;
+        this.showforAnyDevice = true;
+        this.showforFixedPhone = true;
+        this.errorinfo = false;
+        this.COS = 'national';
+        this.isButtonVisible = true;
+        this.isSpinnerVisible = false;
+        this.ccode = '';
+        this.devices = ['Extension Mobility Station', 'Conference / Meeting Room Phone', 'Fixed Phone User'];
+        this.hideProjectId = false;
+        this.selected_device = '';
+        this.voicemail = 'no';
+        this.payload = new config_payload__WEBPACK_IMPORTED_MODULE_1__["fixedphone_new"]();
+        this.reviewDetailsIndia = {
+            officeLocation: "",
+            campus: "",
+            funded: "",
+            chargeDepartmentCode: "",
+            businessUnit: "",
+            projectId: "",
+            accountId: " ",
+            Voice_Type_Disp: true,
+            icano_Disp: "",
+            Location_final: "",
+            accid_Disp: "",
+            reqno: "",
+            icaCode: "",
+            device: "",
+            model: "",
+            employeeId: "",
+            voicemail: "",
+            cos: "",
+            justification: "",
+            description: "",
+            mac: "",
+        };
+    }
+    backClick() {
+        sessionStorage.setItem('backbutton', 'yes');
+        sessionStorage.setItem('step', 'step1');
+        this.location.back();
+    }
+    selectedDevice(device) {
+        this.models = [];
+        this.modelValue = '';
+        if (device != '') {
+            this.hideDeviceSection = false;
+        }
+        if (device == '') {
+            this.hideDeviceSection = true;
+        }
+        if (device.toUpperCase() == 'FIXED PHONE USER') {
+            this.showforAnyDevice = false;
+            this.showforFixedPhone = false;
+            this.models = [...this.fpModels];
+            this.hideEmpID = false;
+            this.hideVoicemail = false;
+            if (this.COS == 'international') {
+                this.showBusinessNeed = false;
+            }
+        }
+        if (device.toUpperCase() == 'EXTENSION MOBILITY STATION') {
+            this.showforAnyDevice = false;
+            this.showforFixedPhone = true;
+            this.models = [...this.emModels];
+            this.hideEmpID = true;
+            this.hideVoicemail = true;
+            this.showBusinessNeed = true;
+        }
+        if (device.toUpperCase() == 'CONFERENCE / MEETING ROOM PHONE') {
+            this.showforAnyDevice = false;
+            this.showforFixedPhone = true;
+            this.models = [...this.cModels];
+            this.hideEmpID = true;
+            this.hideVoicemail = true;
+            this.showBusinessNeed = true;
+        }
+    }
+    classofservice(cos) {
+        if (cos == 'international') {
+            this.showBusinessNeed = false;
+        }
+        else {
+            this.showBusinessNeed = true;
+        }
+    }
+    entryDetails(formData) {
+        if (formData.value.Location_1.toUpperCase() == 'SELECT LOCATION' || formData.value.Location_1 == '') {
+            alert('Please select the Location');
+            return;
+        }
+        // if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
+        //   alert('Please select the Campus');	
+        //   return;	
+        // }	
+        if (formData.value.Device_Type == '') {
+            alert('Please select a device type');
+            return;
+        }
+        if (formData.value.Model_Type == '') {
+            alert('Please select a type of model');
+            return;
+        }
+        if (formData.value.Justification == '' && this.showBusinessNeed == false) {
+            alert('Please enter the business need for Class of Service.');
+            return;
+        }
+        if (formData.value.Description == '') {
+            alert('Please Enter a description and it should not be more than 30 characters');
+            return;
+        }
+        if (formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
+            alert('Please enter 12 characters MAC address');
+            return;
+        }
+        var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
+        if (pat1.test(formData.value.MACAddress)) {
+            alert('MAC field value to be in combination of 0 to 9 and A to F');
+            return;
+        }
+        this.isEntryForm = true;
+        this.isReviewForm = false;
+        this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
+        this.reviewDetailsIndia.campus = formData.value.Buildings;
+        this.reviewDetailsIndia.funded = this.Voice_Type;
+        this.reviewDetailsIndia.device = formData.value.Device_Type;
+        this.reviewDetailsIndia.model = formData.value.Model_Type;
+        // this.reviewDetailsIndia.employeeId = formData.value.StepMentor;
+        this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
+        this.reviewDetailsIndia.cos = formData.value.cos;
+        this.reviewDetailsIndia.justification = formData.value.Justification;
+        this.reviewDetailsIndia.description = formData.value.Description;
+        this.reviewDetailsIndia.mac = formData.value.MACAddress;
+    }
+    BackButton() {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        // this.fixedPhoneIdentifier = false;	
+    }
+    submit_snow() {
+        this.reqno = this.countrydetails.isocode + "-NS-" + this.cnum.substr(0, 6) + "-" + gettime();
+        sessionStorage.setItem('reqno', this.reqno);
+        this.isButtonVisible = false;
+        this.isSpinnerVisible = true;
+        this.payload.orinator_payload = this.orgi;
+        this.payload.cNum_payload = this.cnum;
+        this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
+        this.payload.ReqNo = this.reqno;
+        this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
+        this.payload.Model_Disp = this.reviewDetailsIndia.model;
+        this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
+        this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
+        this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+        this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation;
+        this.payload.COS_Disp = this.reviewDetailsIndia.cos;
+        this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+        this.payload.level1_japproval = this.countrydetails.level1_japproval;
+        this.payload.level2_japproval = this.countrydetails.level2_japproval;
+        this.payload.SLA_type = this.countrydetails.SLA_type;
+        this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
+        this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
+        this.payload.countryname = this.countrydetails.name;
+        this.payload.request_type = 'fixedphone_new';
+        this.payload.evolution_instance = this.countrydetails.evolution_instance;
+        this.payload.country_code = this.countrydetails.code;
+        this.servicenowservice.submit_request_fixed_new(this.payload).subscribe(data => {
+            console.log('response', data);
+            if (data)
+                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+        }, (error) => {
+            console.error('error caught in component' + error);
+            this.isSpinnerVisible = false;
+            this.errorinfo = true;
+            this.isButtonVisible = true;
+        });
+    }
+    ngOnInit() {
+        var _a, _b, _c, _d, _e, _f;
+        // Submit to Snow Jabber new code added by Swarnava	
+        this.orgi = this.cookie.getCookie('ccode');
+        this.cnum = sessionStorage.getItem('cnum');
+        this.countrydetails = sessionStorage.getItem('countrydetails');
+        this.countrydetails = JSON.parse(this.countrydetails);
+        // Submit to Snow Jabber new code added by Swarnava ends	
+        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+        this.route.queryParams
+            .subscribe(params => {
+            console.log(params);
+            this.service = params.service;
+            this.pcode = params.country;
+            console.log("navigation component" + this.pcode);
+        });
+        this.devices = (_a = sessionStorage.getItem('fdevices')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
+        this.devices = this.devices.replace('"', '').split(',');
+        this.emModels = (_b = sessionStorage.getItem('emmodels')) === null || _b === void 0 ? void 0 : _b.replace('"', '');
+        this.emModels = this.emModels.replace('"', '').split(',');
+        this.fpModels = (_c = sessionStorage.getItem('fpmodels')) === null || _c === void 0 ? void 0 : _c.replace('"', '');
+        this.fpModels = this.fpModels.split(',');
+        this.cModels = (_d = sessionStorage.getItem('cmmodels')) === null || _d === void 0 ? void 0 : _d.replace('"', '');
+        this.cModels = this.cModels.split(',');
+        this.locationlist = (_e = sessionStorage.getItem('locationdetails')) === null || _e === void 0 ? void 0 : _e.replace('"', '');
+        this.locationlist = (_f = this.locationlist) === null || _f === void 0 ? void 0 : _f.replace('"', '').split(',');
+        const servicesData = {
+            "data": [
+                {
+                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "step": 3,
+                }
+            ]
+        };
+        this.reqFor = sessionStorage.getItem('radioAction');
+        this.servicesData = servicesData.data[0];
+        //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
+        //alert(this.reviewDetailsIndia.reqno);	
+        this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
+        this.employeeInfo = JSON.parse(this.employeeInfo1);
+        if (this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null) {
+            this.hideProjectId = true;
+        }
+    }
+    previousStep(event) {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        // this.fixedPhoneIdentifier = false;	
+    }
+}
+HpUsaNewComponent.ɵfac = function HpUsaNewComponent_Factory(t) { return new (t || HpUsaNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bp_service__WEBPACK_IMPORTED_MODULE_7__["bpservices"])); };
+HpUsaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpUsaNewComponent, selectors: [["app-hp-usa-new"]], decls: 199, vars: 38, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "DeviceType", 1, "ds-text-capitalize"], ["rows", "2", "name", "Device_Type", "cols", "40", "id", "DeviceTypeId", "title", "Device Type", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["name", "Device_Type", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t3", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 3, "hidden"], ["valign", "top", 3, "hidden"], ["rows", "2", "name", "Model_Type", "cols", "40", "id", "ModelTypeId", "title", "Model", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Model_Type", 3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 1, "ds-mar-t-1_5", 3, "hidden"], ["for", "Voicemail", 1, "ds-text-capitalize", "ds-mar-t-1", 2, "display", "inline-block"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Voicemail", "cols", "40", "id", "VoicemailId", "title", "Voicemail", "ngModel", "", 1, "ds-title", "ds-align-text-left", "ds-mar-t-1", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["value", "yes"], ["value", "no"], ["for", "cos", 1, "ds-text-capitalize"], ["rows", "2", "name", "cos", "cols", "40", "id", "COSId", "title", "Class of Service", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["cos", ""], ["value", "national"], ["value", "international"], ["colspan", "2", "width", "46%"], ["for", "Justification", 1, "ds-text-capitalize", "ds-pad-t-1"], ["width", "54%"], ["name", "Justification", "title", "Business Justification", "tabindex", "2", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "Description", 1, "ds-text-capitalize", "ds-pad-t-1"], [1, "ds-input-container", "ds-pad-t-1"], ["name", "Description", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "DescriptionId", "title", "Description", "maxlength", "30", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [4, "ngIf"], ["for", "MACAddress", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["name", "MACAddress", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "MACAddressId", "title", "MAC Address", "maxlength", "12", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["for", "addId1"], ["for", "device"], ["for", "model"], ["for", "voiemail"], ["for", "cos"], ["for", "justification"], ["for", "description"], ["for", "mac"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Back", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Submit", 3, "click", 4, "ngIf"], ["name", "Location_1", 3, "value"], ["name", "Device_Type", 3, "value"], ["name", "Model_Type", 3, "value"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpUsaNewComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-navigation", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 5, 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function HpUsaNewComponent_Template_form_submit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r19); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.entryDetails(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Fixed Phone - New Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " Fields marked with an asterisk (");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, ") are required. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "app-steps", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "h2", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "Employee Entry Details");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "table", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "label", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Location");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "select", 17, 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "option", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Select Location");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](33, HpUsaNewComponent_option_33_Template, 2, 2, "option", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, " --> ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "table", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "label", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](40, "Type of Device ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "select", 23, 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpUsaNewComponent_Template_select_change_45_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r19); const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](46); return ctx.selectedDevice(_r3.value); })("ngModelChange", function HpUsaNewComponent_Template_select_ngModelChange_45_listener($event) { return ctx.selected_device = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "option", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](48, "Select Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](49, HpUsaNewComponent_option_49_Template, 2, 2, "option", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "table", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "label", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](55, "Type of Model ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](57, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "select", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpUsaNewComponent_Template_select_ngModelChange_60_listener($event) { return ctx.modelValue = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "option", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](62, "Select Model");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](63, HpUsaNewComponent_option_63_Template, 2, 2, "option", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "tr", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "label", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](67, "Voicemail Required");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "div", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "select", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpUsaNewComponent_Template_select_ngModelChange_70_listener($event) { return ctx.voicemail = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "option", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](72, "Yes");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "option", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](74, "No");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](76, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](78, "Select Class of Service (COS)");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](80, "div", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "select", 37, 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpUsaNewComponent_Template_select_ngModelChange_81_listener($event) { return ctx.COS = $event; })("change", function HpUsaNewComponent_Template_select_change_81_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r19); const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](82); return ctx.classofservice(_r6.value); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](83, "option", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](84, "National");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](85, "option", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](86, "International");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](88, "td", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](89, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](90, "label", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](91, "Business Need (Why is international required?) ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](92, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](93, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](94, "td", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](95, "textarea", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](96, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](97, "td", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](98, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](99, "label", 45);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](100, "Description of the Device ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](101, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](102, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](103, "td", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](104, "div", 46);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](105, "input", 47);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](106, HpUsaNewComponent_label_106_Template, 2, 0, "label", 48);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](107, HpUsaNewComponent_label_107_Template, 2, 0, "label", 48);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](108, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](109, "td", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](110, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](111, "label", 49);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](112, "MAC Address of the Device ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](113, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](114, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](115, "td", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](116, "div", 50);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](117, "input", 51);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](118, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](119, "Note:Combination of (0 to 9 , A to F) and Length:12");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](120, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](121, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](122, "div", 52);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](123, "div", 53);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](124, "div", 54);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](125, "span", 55);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](126, "input", 56);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpUsaNewComponent_Template_input_click_126_listener() { return ctx.backClick(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](127, "span", 57);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](128, "input", 58);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](129, "form", 59);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](130, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](131, "Fixed Phone - New Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](132, "div", 60);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](133, "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](134, "div", 61);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](135, "app-steps", 62);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpUsaNewComponent_Template_app_steps_previousStep_135_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](136, "h2", 63);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](137, "Review Details");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](138, "table", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](139, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](140, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](141, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](142, "label", 64);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](143, "Office Location");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](144, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](145);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](146, "table", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](147, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](148, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](149, "td", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](150, "label", 65);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](151, "Type of Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](152, "td", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](153);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](154, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](155, "td", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](156, "label", 66);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](157, "Type of Model");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](158, "td", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](159);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](160, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](161, "td", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](162, "label", 67);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](163, "Voicemail Required");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](164, "td", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](165);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](166, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](167, "td", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](168, "label", 68);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](169, "Class of Service");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](170, "td", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](171);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](172, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](173, "td", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](174, "label", 69);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](175, "Business Justification");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](176, "td", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](177);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](178, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](179, "td", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](180, "label", 70);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](181, "Description of Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](182, "td", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](183);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](184, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](185, "td", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](186, "label", 71);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](187, "MAC Address of the Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](188, "td", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](189);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](190, "div", 72);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](191, HpUsaNewComponent_div_191_Template, 4, 0, "div", 73);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](192, "div", 52);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](193, "div", 53);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](194, "div", 54);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](195, "span", 55);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](196, HpUsaNewComponent_input_196_Template, 1, 0, "input", 74);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](197, "span", 57);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](198, HpUsaNewComponent_input_198_Template, 1, 0, "input", 75);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dataNav", ctx.servicesData)("cloudantData", ctx.cloudantData);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isEntryForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.locationlist);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.selected_device);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.devices);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.hideDeviceSection);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforAnyDevice);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.modelValue);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.models);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforFixedPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.voicemail);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforFixedPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.COS);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showBusinessNeed);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforAnyDevice);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.selected_device == "Extension Mobility Station");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.selected_device == "Conference / Meeting Room Phone");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforAnyDevice);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isReviewForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.officeLocation);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.device);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.model);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.hideVoicemail);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.voicemail);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforFixedPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.cos);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showBusinessNeed);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.justification);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.description);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.mac);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isSpinnerVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgForm"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["MaxLengthValidator"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJocC11c2EtbmV3LmNvbXBvbmVudC5jc3MifQ== */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HpUsaNewComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-hp-usa-new',
+                templateUrl: './hp-usa-new.component.html',
+                styleUrls: ['./hp-usa-new.component.css']
+            }]
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }, { type: _services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"] }, { type: _angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"] }, { type: _services_bp_service__WEBPACK_IMPORTED_MODULE_7__["bpservices"] }]; }, null); })();
+function gettime() {
+    var date = new Date();
+    var minutes1 = '';
+    var seconds1 = '';
+    var seconds = date.getSeconds();
+    var minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes1 = '0' + minutes;
+    }
+    else {
+        minutes1 = '' + minutes;
+    }
+    if (seconds < 10) {
+        seconds1 = '0' + seconds;
+    }
+    else {
+        seconds1 = '' + seconds;
+    }
+    console.log(minutes1 + seconds1);
+    return minutes1 + seconds1;
+}
 
 
 /***/ }),
@@ -1680,7 +2463,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function HpAuNewComponent_option_33_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 87);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 88);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -1690,7 +2473,7 @@ function HpAuNewComponent_option_33_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_location_r16, "");
 } }
 function HpAuNewComponent_option_45_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 88);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 89);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -1700,7 +2483,7 @@ function HpAuNewComponent_option_45_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](fl_campus_r17);
 } }
 function HpAuNewComponent_option_60_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 89);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 90);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -1710,7 +2493,7 @@ function HpAuNewComponent_option_60_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", device_r18, "");
 } }
 function HpAuNewComponent_option_74_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 90);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 91);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -1721,10 +2504,10 @@ function HpAuNewComponent_option_74_Template(rf, ctx) { if (rf & 1) {
 } }
 function HpAuNewComponent_div_87_Template(rf, ctx) { if (rf & 1) {
     const _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 91);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 92);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Search result: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "a", 92);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "a", 93);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpAuNewComponent_div_87_Template_a_click_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21); const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r20.onEmailClick(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1737,7 +2520,7 @@ function HpAuNewComponent_div_87_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r7.email);
 } }
 function HpAuNewComponent_ng_template_88_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 93);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 94);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " No match, please try again");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -1753,22 +2536,22 @@ function HpAuNewComponent_label_133_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function HpAuNewComponent_div_227_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 94);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 95);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 95);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 96);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Your request submission is in progress.Do not Go back or Refresh the page.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 96);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 97);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function HpAuNewComponent_input_232_Template(rf, ctx) { if (rf & 1) {
     const _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 97);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 98);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpAuNewComponent_input_232_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r22.BackButton(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function HpAuNewComponent_input_234_Template(rf, ctx) { if (rf & 1) {
     const _r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 98);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 99);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpAuNewComponent_input_234_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r25); const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r24.submit_snow(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
@@ -1785,14 +2568,14 @@ class HpAuNewComponent {
         this.camp = [];
         this.buildA = [];
         this.build = [];
-        this.devices = ['Extension Mobility Station', 'Conference / Meeting Room Phone', 'Fixed Phone User'];
+        this.devices = [];
         this.j = 0;
         this.ccode = '';
         this.isButtonVisible = true;
         this.isSpinnerVisible = false;
         this.isEntryForm = false;
         this.isReviewForm = true;
-        this.Voice_Type = "No";
+        this.Voice_Type = "no";
         this.hideDeptCode = true;
         this.hideBuilding = true;
         //fixedPhoneIdentifier = false;	
@@ -1805,7 +2588,7 @@ class HpAuNewComponent {
         this.showforFixedPhone = true;
         this.showBusinessNeed = true;
         this.voicemail = 'no';
-        this.COS = 'national';
+        this.COS = 'National';
         this.selected_device = '';
         this.empID = '';
         this.go = false;
@@ -1815,16 +2598,13 @@ class HpAuNewComponent {
         this.empIDValue = '';
         this.emailResult = false;
         this.errorinfo = false;
-        // submit(){	
-        //   this.router.navigate(['/reviewdetails']) 	
-        // }	
         // Submit to Fixed Phone New to Snow
         this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["fixedphone_new"]();
         this.reviewDetailsIndia = {
             officeLocation: "",
             campus: "",
-            funded: "",
-            chargeDepartmentCode: "",
+            funded: "No",
+            chargeDepartmentCode: "NA",
             businessUnit: "",
             projectId: "",
             accountId: " ",
@@ -1839,25 +2619,10 @@ class HpAuNewComponent {
             employeeId: "",
             voicemail: "",
             cos: "",
-            justification: "",
+            justification: "NA",
             description: "",
             mac: "",
         };
-        /* this.Locations = {
-           locc : ['Banglore~~MTP','Banglore~~SA',
-           'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech','Hyderabad~~Hitech2']
-           };
-         for(var i=0;i<this.Locations.locc.length;i++) {
-           var n=this.Locations.locc[i].indexOf("~")
-           this.campA[i] = this.Locations.locc[i].substr(0,n);
-           this.buildA[i] = this.Locations.locc[i].substr(n+2,this.Locations.locc[i].length);
-           }
-           for (var i=0;i<this.campA.length;i++) {
-           if(this.campA[i] !=this.campA[i+1]) {
-           this.camp[this.j] = this.campA[i];
-           this.j++;
-           }
-           }	*/
     }
     // Submit to Snow Jabber new code added by Swarnava ends	
     backClick() {
@@ -1904,7 +2669,7 @@ class HpAuNewComponent {
             this.models = [...this.fpModels];
             this.hideEmpID = false;
             this.hideVoicemail = false;
-            if (this.COS == 'international') {
+            if (this.COS == 'International') {
                 this.showBusinessNeed = false;
             }
         }
@@ -1961,6 +2726,7 @@ class HpAuNewComponent {
                     this.go = true;
                     this.goResults = true;
                     this.emailClick = false;
+                    this.emailResult = false;
                 }
                 else {
                     this.go = false;
@@ -1977,7 +2743,7 @@ class HpAuNewComponent {
         this.emailResult = true;
     }
     classofservice(cos) {
-        if (cos == 'international') {
+        if (cos == 'International') {
             this.showBusinessNeed = false;
         }
         else {
@@ -2070,11 +2836,11 @@ class HpAuNewComponent {
         // by default set to true. below line can be removed if needed.	
         //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
         //this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
-        this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp;
+        //this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
         this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
-        this.payload.accid_Disp = this.reviewDetailsIndia.accid_Disp;
+        //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
         this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
         this.payload.Model_Disp = this.reviewDetailsIndia.model;
@@ -2124,18 +2890,21 @@ class HpAuNewComponent {
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
         });
-        this.emModels = (_a = sessionStorage.getItem('emmodels')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
+        this.devices = (_a = sessionStorage.getItem('fdevices')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
+        this.devices = this.devices.replace('"', '').split(',');
+        this.emModels = (_b = sessionStorage.getItem('emmodels')) === null || _b === void 0 ? void 0 : _b.replace('"', '');
         this.emModels = this.emModels.replace('"', '').split(',');
-        this.fpModels = (_b = sessionStorage.getItem('fpmodels')) === null || _b === void 0 ? void 0 : _b.replace('"', '');
+        this.fpModels = (_c = sessionStorage.getItem('fpmodels')) === null || _c === void 0 ? void 0 : _c.replace('"', '');
         this.fpModels = this.fpModels.replace('"', '').split(',');
-        this.cModels = (_c = sessionStorage.getItem('cmmodels')) === null || _c === void 0 ? void 0 : _c.replace('"', '');
+        this.cModels = (_d = sessionStorage.getItem('cmmodels')) === null || _d === void 0 ? void 0 : _d.replace('"', '');
         this.cModels = this.cModels.replace('"', '').split(',');
-        this.locationlist = (_d = sessionStorage.getItem('locationdetails')) === null || _d === void 0 ? void 0 : _d.replace('"', '');
-        this.locationlist = (_e = this.locationlist) === null || _e === void 0 ? void 0 : _e.replace('"', '').split(',');
+        this.locationlist = sessionStorage.getItem('locationdetails');
+        this.locationlist = (_e = this.locationlist) === null || _e === void 0 ? void 0 : _e.replaceAll('"', '').split(',');
+        console.log("lllll" + this.locationlist);
         for (var i = 0; i < this.locationlist.length; i++) {
-            var n = this.locationlist[i].indexOf("~");
-            this.campA[i] = this.locationlist[i].substr(1, n - 1);
-            this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);
+            var n = this.locationlist[i].indexOf("-");
+            this.campA[i] = this.locationlist[i].substr(0, n);
+            this.buildA[i] = this.locationlist[i].substring(n + 1, this.locationlist[i].length);
         }
         for (var i = 0; i < this.campA.length; i++) {
             if (this.campA[i] != this.campA[i + 1]) {
@@ -2153,13 +2922,6 @@ class HpAuNewComponent {
         };
         this.reqFor = sessionStorage.getItem('radioAction');
         this.servicesData = servicesData.data[0];
-        //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
-        //alert(this.reviewDetailsIndia.reqno);	
-        // this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
-        // this.employeeInfo = JSON.parse(this.employeeInfo1);	
-        // if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
-        //   this.hideProjectId = true;
-        //   }
     }
     previousStep(event) {
         this.isEntryForm = false;
@@ -2168,7 +2930,7 @@ class HpAuNewComponent {
     }
 }
 HpAuNewComponent.ɵfac = function HpAuNewComponent_Factory(t) { return new (t || HpAuNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bp_service__WEBPACK_IMPORTED_MODULE_7__["bpservices"])); };
-HpAuNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpAuNewComponent, selectors: [["app-hp-au-new"]], decls: 235, vars: 48, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["colspan", "2", "width", "46%"], ["for", "builId", 1, "ds-text-capitalize"], ["width", "54%"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Buildings", "value", "Select Location"], ["name", "Buildings", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "DeviceType", 1, "ds-text-capitalize"], ["rows", "2", "name", "Device_Type", "cols", "40", "id", "DeviceTypeId", "title", "Device Type", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["name", "Device_Type", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t3", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 3, "hidden"], ["valign", "top", 3, "hidden"], ["rows", "2", "name", "Model_Type", "cols", "40", "id", "ModelTypeId", "title", "Model", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Model_Type", 3, "value", 4, "ngFor", "ngForOf"], ["for", "EmployeeID", 1, "ds-text-capitalize"], [2, "display", "ruby-base-container"], ["name", "StepMentor", "title", "Employee ID", 1, "ds-input", 2, "width", "250px !important", "display", "inline-block", 3, "ngModel", "ngModelChange", "change"], [1, "ds-button", "ds-small", "ds-width-auto", 2, "padding-right", "1rem", "padding-left", "1rem", "margin-left", "2px", "margin-bottom", "0px", 3, "click"], [3, "hidden"], ["id", "StepMentorDiv", "style", "font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;", 3, "hidden", 4, "ngIf", "ngIfElse"], ["elseBlock", ""], ["valign", "top", 1, "ds-mar-t-1_5", 3, "hidden"], ["for", "Voicemail", 1, "ds-text-capitalize", "ds-mar-t-1", 2, "display", "inline-block"], ["rows", "2", "name", "Voicemail", "cols", "40", "id", "VoicemailId", "title", "Voicemail", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", "ds-mar-t-1", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["value", "yes"], ["value", "no"], ["for", "cos", 1, "ds-text-capitalize"], ["rows", "2", "name", "cos", "cols", "40", "id", "COSId", "title", "Class of Service", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["cos", ""], ["value", "national"], ["value", "international"], ["for", "Justification", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Justification", "title", "Business Justification", "tabindex", "2", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "Description", 1, "ds-text-capitalize", "ds-pad-t-1"], [1, "ds-input-container", "ds-pad-t-1"], ["name", "Description", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "DescriptionId", "title", "Description", "maxlength", "30", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [4, "ngIf"], ["for", "MACAddress", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["name", "MACAddress", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "MACAddressId", "title", "MAC Address", "maxlength", "12", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "8", "cellpadding", "0", "border", "0"], ["for", "addId1"], ["for", "device"], ["for", "model"], ["for", "employeeId"], ["for", "voiemail"], ["for", "cos"], ["for", "justification"], ["for", "description"], ["for", "mac"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Back", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Submit", 3, "click", 4, "ngIf"], ["name", "Location_1", 3, "value"], ["name", "Buildings", 3, "value"], ["name", "Device_Type", 3, "value"], ["name", "Model_Type", 3, "value"], ["id", "StepMentorDiv", 2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px", 3, "hidden"], [3, "click"], [2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "submit", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpAuNewComponent_Template(rf, ctx) { if (rf & 1) {
+HpAuNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpAuNewComponent, selectors: [["app-hp-au-new"]], decls: 235, vars: 48, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["colspan", "2", "width", "46%"], ["for", "builId", 1, "ds-text-capitalize"], ["width", "54%"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Buildings", "value", "Select Location"], ["name", "Buildings", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "DeviceType", 1, "ds-text-capitalize"], ["rows", "2", "name", "Device_Type", "cols", "40", "id", "DeviceTypeId", "title", "Device Type", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["name", "Device_Type", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t3", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 3, "hidden"], ["valign", "top", 3, "hidden"], ["rows", "2", "name", "Model_Type", "cols", "40", "id", "ModelTypeId", "title", "Model", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Model_Type", 3, "value", 4, "ngFor", "ngForOf"], ["for", "EmployeeID", 1, "ds-text-capitalize"], [2, "display", "inline-flex"], ["name", "StepMentor", "title", "Employee ID", 1, "ds-input", 2, "width", "250px !important", "display", "inline-block", 3, "ngModel", "ngModelChange", "change"], [1, "ds-button", "ds-small", "ds-width-auto", 2, "padding-right", "1rem", "padding-left", "1rem", "margin", "4px", 3, "click"], [3, "hidden"], ["id", "StepMentorDiv", "style", "font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;", 3, "hidden", 4, "ngIf", "ngIfElse"], ["elseBlock", ""], ["valign", "top", 1, "ds-mar-t-1_5", 3, "hidden"], ["for", "Voicemail", 1, "ds-text-capitalize", "ds-mar-t-1", 2, "display", "inline-block"], ["rows", "2", "name", "Voicemail", "cols", "40", "id", "VoicemailId", "title", "Voicemail", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", "ds-mar-t-1", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["value", "yes"], ["value", "no"], ["for", "cos", 1, "ds-text-capitalize"], ["rows", "2", "name", "cos", "cols", "40", "id", "COSId", "title", "Class of Service", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["cos", ""], ["value", "National"], ["value", "International"], ["for", "Justification", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Justification", "title", "Business Justification", "tabindex", "2", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "Description", 1, "ds-text-capitalize", "ds-pad-t-1"], [1, "ds-input-container", "ds-pad-t-1"], ["name", "Description", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "DescriptionId", "title", "Description", "maxlength", "30", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [4, "ngIf"], ["for", "MACAddress", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["name", "MACAddress", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "MACAddressId", "title", "MAC Address", "maxlength", "12", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "8", "cellpadding", "0", "border", "0"], ["for", "addId1"], ["for", "device"], ["for", "model"], ["for", "employeeId"], ["for", "voiemail"], ["for", "cos"], ["for", "justification"], ["width", "54%", 2, "word-wrap", "break-word"], ["for", "description"], ["for", "mac"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["name", "Location_1", 3, "value"], ["name", "Buildings", 3, "value"], ["name", "Device_Type", 3, "value"], ["name", "Model_Type", 3, "value"], ["id", "StepMentorDiv", 2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px", 3, "hidden"], [3, "click"], [2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpAuNewComponent_Template(rf, ctx) { if (rf & 1) {
         const _r26 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -2515,13 +3277,13 @@ HpAuNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](211, "Business Justification");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](212, "td", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](212, "td", 81);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](213);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](214, "tr", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](215, "td", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](216, "label", 81);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](216, "label", 82);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](217, "Description of Device");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2531,7 +3293,7 @@ HpAuNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](220, "tr", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](221, "td", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](222, "label", 82);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](222, "label", 83);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](223, "MAC Address of the Device");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2541,16 +3303,16 @@ HpAuNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](226, "div", 83);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](227, HpAuNewComponent_div_227_Template, 4, 0, "div", 84);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](226, "div", 84);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](227, HpAuNewComponent_div_227_Template, 4, 0, "div", 85);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](228, "div", 62);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](229, "div", 63);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](230, "div", 64);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](231, "span", 65);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](232, HpAuNewComponent_input_232_Template, 1, 0, "input", 85);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](232, HpAuNewComponent_input_232_Template, 1, 0, "input", 86);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](233, "span", 67);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](234, HpAuNewComponent_input_234_Template, 1, 0, "input", 86);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](234, HpAuNewComponent_input_234_Template, 1, 0, "input", 87);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2883,6 +3645,424 @@ DemoComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
 
 /***/ }),
 
+/***/ "7P22":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/hp-in-delete/hp-in-delete.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: HpInDeleteComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HpInDeleteComponent", function() { return HpInDeleteComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _config_payload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../config/payload */ "dP2x");
+/* harmony import */ var _services_db2_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/db2.service */ "qtc7");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/cookie-handler.service */ "oxqP");
+/* harmony import */ var _services_cloudant_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services/cloudant.service */ "Rfmm");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../_services/servicenow.service */ "qWuM");
+/* harmony import */ var _topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../topcountryframe/topcountryframe.component */ "aDsg");
+/* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../navigation/navigation.component */ "mvyS");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../steps/steps.component */ "52XD");
+
+
+
+
+
+
+
+
+
+
+
+
+
+function HpInDeleteComponent_input_46_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 37);
+} }
+function HpInDeleteComponent_div_80_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Your request submission is in progress.Do not Go back or Refresh the page.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpInDeleteComponent_input_85_Template(rf, ctx) { if (rf & 1) {
+    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInDeleteComponent_input_85_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r6); const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r5.BackButton(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpInDeleteComponent_input_87_Template(rf, ctx) { if (rf & 1) {
+    const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInDeleteComponent_input_87_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r8); const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r7.submit_snow(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+class HpInDeleteComponent {
+    constructor(db2, router, route, cookie, cloudantservice, location, servicenowservice) {
+        this.db2 = db2;
+        this.router = router;
+        this.route = route;
+        this.cookie = cookie;
+        this.cloudantservice = cloudantservice;
+        this.location = location;
+        this.servicenowservice = servicenowservice;
+        this.cloudantData = [];
+        this.servicesData = [];
+        this.isReviewForm = true;
+        this.isEntryForm = false;
+        this.fixedPhoneIdentifier = false;
+        this.warninginfosnow = false;
+        this.warninginfo = false;
+        this.hideSteps = false;
+        this.ccode = '';
+        this.Jabber = [];
+        this.currentMacOrPhone = '';
+        this.showSearch = false;
+        this.currentMac = "";
+        this.isButtonVisible = true;
+        this.isSpinnerVisible = false;
+        this.errorinfo = false;
+        this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["fixedphone_delete"]();
+    }
+    OnSearchClick() {
+        if (this.currentMacOrPhone != '') {
+            this.db2.search_db2(this.cnum, "fixedphone_search", this.currentMacOrPhone, this.currentMacOrPhone, this.countrydetails.name).subscribe(data => {
+                if (data != null) {
+                    this.currentMac = data.message[0].ATTRIBUTE1;
+                    this.currentPhone = data.message[0].IDENTIFIER;
+                    this.currentdesc = data.message[0].ATTRIBUTE4;
+                    this.showSearch = true;
+                    this.isReviewForm = false;
+                    this.isEntryForm = true;
+                }
+                else {
+                    alert("something went wrong");
+                }
+            });
+        }
+        else {
+            alert("Please enter a number to search");
+        }
+    }
+    entryDetails(formData) {
+        if (this.currentMacOrPhone == '') {
+            // alert("Please give some ");
+        }
+        // if(formData.value.Jabber_1.toUpperCase() == 'SELECT JABBER NUMBER' || formData.value.Jabber_1 == '') {
+        //   alert('Please select the Jabber Number');
+        //   return;
+        // }
+        // this.selectedJabber = formData.value.Jabber_1;
+        this.isReviewForm = false;
+        this.isEntryForm = true;
+    }
+    BackButton() {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        this.fixedPhoneIdentifier = false;
+    }
+    backClick() {
+        sessionStorage.setItem('backbutton', 'yes');
+        sessionStorage.setItem('step', 'step1');
+        this.location.back();
+    }
+    submit_snow() {
+        this.reqno = this.countrydetails.isocode + "-DS-" + this.cnum.substr(0, 6) + "-" + gettime();
+        sessionStorage.setItem('reqno', this.reqno);
+        this.isButtonVisible = false;
+        this.isSpinnerVisible = true;
+        this.payload.orinator_payload = this.orgi;
+        this.payload.cNum_payload = this.cnum;
+        this.payload.ReqNo = this.reqno;
+        this.payload.Identifier = this.currentPhone;
+        this.payload.mac = this.currentMac;
+        this.payload.olddesc = this.currentdesc;
+        this.payload.countryname = this.countrydetails.name;
+        this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
+        this.payload.request_type = 'fixedphone_delete';
+        this.payload.evolution_instance = this.countrydetails.evolution_instance;
+        this.servicenowservice.submit_request_fixed_delete(this.payload).subscribe(data => {
+            console.log('response', data);
+            if (data)
+                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+        }, (error) => {
+            console.error('error caught in component' + error);
+            this.isSpinnerVisible = false;
+            this.errorinfo = true;
+            this.isButtonVisible = true;
+        });
+    }
+    ngOnInit() {
+        // Submit to Snow Jabber new code added by Swarnava	
+        this.orgi = this.cookie.getCookie('ccode');
+        this.cnum = sessionStorage.getItem('cnum');
+        this.countrydetails = sessionStorage.getItem('countrydetails');
+        this.countrydetails = JSON.parse(this.countrydetails);
+        // Submit to Snow Jabber new code added by Swarnava ends	
+        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+        this.route.queryParams
+            .subscribe(params => {
+            console.log(params);
+            this.service = params.service;
+            this.pcode = params.country;
+            console.log("navigation component" + this.pcode);
+        });
+        this.sessionwarninginfo = sessionStorage.getItem('warninginfo');
+        this.sessionwarninginfosnow = sessionStorage.getItem('warninginfosnow');
+        if (this.sessionwarninginfo == 'false1') {
+            this.warninginfo = true;
+        }
+        else if (this.sessionwarninginfosnow == 'true1') {
+            this.warninginfosnow = true;
+            this.identifier = sessionStorage.getItem('identifier');
+        }
+        else {
+            this.identifier = sessionStorage.getItem('identifier');
+            this.identifier = this.identifier.split(',');
+            this.Jabber = [...this.identifier];
+            //this.Jabber.push(this.identifier)
+        }
+        const servicesData = {
+            "data": [
+                {
+                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "step": 3,
+                }
+            ]
+        };
+        this.servicesData = servicesData.data[0];
+        this.reqFor = sessionStorage.getItem('radioAction');
+        if (this.warninginfo || this.warninginfosnow) {
+            this.hideSteps = true;
+        }
+        else {
+            this.hideSteps = false;
+        }
+    }
+    previousStep(event) {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        this.fixedPhoneIdentifier = false;
+    }
+}
+HpInDeleteComponent.ɵfac = function HpInDeleteComponent_Factory(t) { return new (t || HpInDeleteComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_db2_service__WEBPACK_IMPORTED_MODULE_2__["Db2Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_4__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_5__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__["servicenowservice"])); };
+HpInDeleteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpInDeleteComponent, selectors: [["app-hp-in-delete"]], decls: 88, vars: 17, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "50%"], ["for", "Sear class="], [1, "ds-col-12"], [1, "ds-row"], [1, "ds-col-7"], ["name", "IdNum1", "value", "", "maxlength", "15;", 1, "ds-input", 2, "width", "180px !important", 3, "ngModel", "ngModelChange"], [1, "ds-col-5", "ds-pad-l-1"], ["type", "button", "name", "back", "value", "Search", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-margin-bottom-0", "ds-pad-l-1", "ds-pad-r-1", 3, "click"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 \n                                ds-pad-r-3", "tabindex", "32767", "value", "NEXT", 4, "ngIf"], [3, "hidden"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%"], ["for", "addId1"], ["width", "54%"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Back", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Submit", 3, "click", 4, "ngIf"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "submit", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpInDeleteComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-navigation", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 5, 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function HpInDeleteComponent_Template_form_submit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.entryDetails(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Fixed Phone - Delete Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, " Fields marked with an asterick (");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, ") are required. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "app-steps", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpInDeleteComponent_Template_app_steps_previousStep_17_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "h2", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Employee Entry Details");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "table", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "label", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Enter Current MAC Address or Phone Number");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, " *");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "input", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInDeleteComponent_Template_input_ngModelChange_34_listener($event) { return ctx.currentMacOrPhone = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "div", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "input", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInDeleteComponent_Template_input_click_37_listener() { return ctx.OnSearchClick(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](38, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "div", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "span", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "input", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInDeleteComponent_Template_input_click_44_listener() { return ctx.backClick(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "span", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](46, HpInDeleteComponent_input_46_Template, 1, 0, "input", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "form", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](49, "Fixed Phone - Delete Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](51, " By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](52, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "app-steps", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpInDeleteComponent_Template_app_steps_previousStep_53_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "h2", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](55, "ReviewDetails");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "table", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "td", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "label", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](61, "MAC Address");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "td", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](63);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](64, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "td", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "label", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](68, "Current Phone Number ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "td", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](70);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](71, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "td", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "label", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](75, "Current Description");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](76, "td", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](77);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](78, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](79, "div", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](80, HpInDeleteComponent_div_80_Template, 4, 0, "div", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "div", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](82, "div", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](83, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "span", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](85, HpInDeleteComponent_input_85_Template, 1, 0, "input", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](86, "span", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](87, HpInDeleteComponent_input_87_Template, 1, 0, "input", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dataNav", ctx.servicesData)("cloudantData", ctx.cloudantData);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isEntryForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step)("isSelf", ctx.reqFor)("hideSteps", ctx.hideSteps);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.currentMacOrPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.warninginfo == false && ctx.warninginfosnow == false);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isReviewForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.currentMac);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.currentPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.currentdesc);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isSpinnerVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgForm"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJocC1pbi1kZWxldGUuY29tcG9uZW50LmNzcyJ9 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HpInDeleteComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-hp-in-delete',
+                templateUrl: './hp-in-delete.component.html',
+                styleUrls: ['./hp-in-delete.component.css']
+            }]
+    }], function () { return [{ type: _services_db2_service__WEBPACK_IMPORTED_MODULE_2__["Db2Service"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }, { type: src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_4__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_5__["cloudantservice"] }, { type: _angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"] }, { type: _services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__["servicenowservice"] }]; }, null); })();
+function gettime() {
+    var date = new Date();
+    var minutes1 = '';
+    var seconds1 = '';
+    var seconds = date.getSeconds();
+    var minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes1 = '0' + minutes;
+    }
+    else {
+        minutes1 = '' + minutes;
+    }
+    if (seconds < 10) {
+        seconds1 = '0' + seconds;
+    }
+    else {
+        seconds1 = '' + seconds;
+    }
+    console.log(minutes1 + seconds1);
+    return minutes1 + seconds1;
+}
+
+
+/***/ }),
+
 /***/ "8sw4":
 /*!***********************************************************************!*\
   !*** ./src/app/components/voip-in-update/voip-in-update.component.ts ***!
@@ -3117,14 +4297,6 @@ class VoipInUpdateComponent {
             alert('No value is changed, so Update request is not required');
             return;
         }
-        if (formData.value.Charge_Dept.includes(" ")) {
-            alert('Please enter the correct Charge department code');
-            return;
-        }
-        if (formData.value.Charge_Dept.toUpperCase() == '') {
-            alert('Please enter the Charge Department code');
-            return;
-        }
         this.jabberDisp = formData.value.Jabber_1;
         this.chargeDisp = formData.value.Charge_Dept;
         this.isReviewForm = false;
@@ -3179,7 +4351,6 @@ class VoipInUpdateComponent {
         });
     }
     ngOnInit() {
-        var _a;
         // Submit to Snow Jabber Update code
         this.cnum = sessionStorage.getItem('cnum');
         this.orgi = this.cookie.getCookie('ccode');
@@ -3193,7 +4364,7 @@ class VoipInUpdateComponent {
         }
         else if (this.sessionwarninginfosnow == 'true1') {
             this.warninginfosnow = true;
-            this.identifier = (_a = sessionStorage.getItem('identifier')) === null || _a === void 0 ? void 0 : _a.replace(" ", "");
+            this.identifier = sessionStorage.getItem('identifier');
         }
         else {
             this.identifier = sessionStorage.getItem('identifier');
@@ -3244,7 +4415,7 @@ class VoipInUpdateComponent {
     }
 }
 VoipInUpdateComponent.ɵfac = function VoipInUpdateComponent_Factory(t) { return new (t || VoipInUpdateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_db2_service__WEBPACK_IMPORTED_MODULE_6__["Db2Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"])); };
-VoipInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipInUpdateComponent, selectors: [["app-voip-in-update"]], decls: 65, vars: 23, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], ["translate", "", 4, "ngIf"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], ["class", "ds-pad-l-1 ds-pad-r-1", "id", "button2", 4, "ngIf"], [3, "hidden"], ["translate", "", 1, "ds-pad-t-0_5", "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", "translate", "", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32765", 3, "value", "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32767", 3, "value", "click", 4, "ngIf"], [1, "ds-text-contextual-red-2"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Jabber_1", "cols", "40", "id", "LocationId", "title", "Select the Jabber number you wish to update", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["number", ""], ["value", ""], ["name", "Jabber_1", "selected", "", 3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 3, "hidden"], [1, "ds-input-container"], ["name", "Charge_Dept", "value", "NA", "tabindex", "3", "id", "ch", "title", "Contact FirstLine Manager for Charge Department Code", "maxlength", "6", "ngModel", "NA", 1, "ds-input", 2, "width", "300px !important"], ["name", "Jabber_1", "selected", "", 3, "value"], ["type", "submit", "name", "next", "tabindex", "32767", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "next", "tabindex", "32767", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"]], template: function VoipInUpdateComponent_Template(rf, ctx) { if (rf & 1) {
+VoipInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipInUpdateComponent, selectors: [["app-voip-in-update"]], decls: 65, vars: 23, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], ["translate", "", 4, "ngIf"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], ["class", "ds-pad-l-1 ds-pad-r-1", "id", "button2", 4, "ngIf"], [3, "hidden"], ["translate", "", 1, "ds-pad-t-0_5", "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", "translate", "", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32765", 3, "value", "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32767", 3, "value", "click", 4, "ngIf"], [1, "ds-text-contextual-red-2"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Jabber_1", "cols", "40", "id", "LocationId", "title", "Select the Jabber number you wish to update", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["number", ""], ["value", ""], ["name", "Jabber_1", "selected", "", 3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 3, "hidden"], [1, "ds-input-container"], ["name", "Charge_Dept", "value", "NA", "tabindex", "3", "id", "ch", "title", "Contact FirstLine Manager for Charge Department Code", "ngModel", "NA", 1, "ds-input", 2, "width", "300px !important"], ["name", "Jabber_1", "selected", "", 3, "value"], ["type", "submit", "name", "next", "tabindex", "32767", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "next", "tabindex", "32767", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"]], template: function VoipInUpdateComponent_Template(rf, ctx) { if (rf & 1) {
         const _r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -3381,7 +4552,7 @@ VoipInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
-    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgForm"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_11__["TranslateDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_12__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["MaxLengthValidator"]], pipes: [_ngx_translate_core__WEBPACK_IMPORTED_MODULE_11__["TranslatePipe"]], styles: [".tooltip[_ngcontent-%COMP%] {\r\n    position: relative;\r\n    display: inline-block;\r\n  }\r\n  \r\n  .tooltiptext[_ngcontent-%COMP%] {\r\n    visibility: hidden;\r\n    width: 280px;\r\n    background-color: black;\r\n    color: #fff;\r\n    text-align: center;\r\n    border-radius: 3px;\r\n    padding: 5px 0;\r\n    position: absolute;\r\n    z-index: 1;\r\n    top: 150%;\r\n    left: 40%;\r\n    margin-left: -100px;\r\n  }\r\n  \r\n  .tooltip[_ngcontent-%COMP%]:hover   .tooltiptext[_ngcontent-%COMP%] {\r\n    visibility: visible;\r\n  }\r\n  \r\n  .tooltip[_ngcontent-%COMP%]   .newtooltiptext[_ngcontent-%COMP%] {\r\n    visibility: hidden;\r\n    width: 280px;\r\n    background-color: black;\r\n    color: #fff;\r\n    text-align: center;\r\n    border-radius: 3px;\r\n    padding: 5px 0;\r\n    position: absolute;\r\n    z-index: 1;\r\n    top: 150%;\r\n    left: 80%;\r\n    margin-left: -100px;\r\n  }\r\n  \r\n  .tooltip[_ngcontent-%COMP%]:hover   .newtooltiptext[_ngcontent-%COMP%] {\r\n    visibility: visible;\r\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZvaXAtaW4tdXBkYXRlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIscUJBQXFCO0VBQ3ZCOztFQUVBO0lBQ0Usa0JBQWtCO0lBQ2xCLFlBQVk7SUFDWix1QkFBdUI7SUFDdkIsV0FBVztJQUNYLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsY0FBYztJQUNkLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsU0FBUztJQUNULFNBQVM7SUFDVCxtQkFBbUI7RUFDckI7O0VBRUE7SUFDRSxtQkFBbUI7RUFDckI7O0VBRUE7SUFDRSxrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLHVCQUF1QjtJQUN2QixXQUFXO0lBQ1gsa0JBQWtCO0lBQ2xCLGtCQUFrQjtJQUNsQixjQUFjO0lBQ2Qsa0JBQWtCO0lBQ2xCLFVBQVU7SUFDVixTQUFTO0lBQ1QsU0FBUztJQUNULG1CQUFtQjtFQUNyQjs7RUFFQTtJQUNFLG1CQUFtQjtFQUNyQiIsImZpbGUiOiJ2b2lwLWluLXVwZGF0ZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRvb2x0aXAge1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIH1cclxuICBcclxuICAudG9vbHRpcHRleHQge1xyXG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xyXG4gICAgd2lkdGg6IDI4MHB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGJvcmRlci1yYWRpdXM6IDNweDtcclxuICAgIHBhZGRpbmc6IDVweCAwO1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgei1pbmRleDogMTtcclxuICAgIHRvcDogMTUwJTtcclxuICAgIGxlZnQ6IDQwJTtcclxuICAgIG1hcmdpbi1sZWZ0OiAtMTAwcHg7XHJcbiAgfVxyXG4gIFxyXG4gIC50b29sdGlwOmhvdmVyIC50b29sdGlwdGV4dCB7XHJcbiAgICB2aXNpYmlsaXR5OiB2aXNpYmxlO1xyXG4gIH1cclxuICBcclxuICAudG9vbHRpcCAubmV3dG9vbHRpcHRleHQge1xyXG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xyXG4gICAgd2lkdGg6IDI4MHB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGJvcmRlci1yYWRpdXM6IDNweDtcclxuICAgIHBhZGRpbmc6IDVweCAwO1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgei1pbmRleDogMTtcclxuICAgIHRvcDogMTUwJTtcclxuICAgIGxlZnQ6IDgwJTtcclxuICAgIG1hcmdpbi1sZWZ0OiAtMTAwcHg7XHJcbiAgfVxyXG4gIFxyXG4gIC50b29sdGlwOmhvdmVyIC5uZXd0b29sdGlwdGV4dCB7XHJcbiAgICB2aXNpYmlsaXR5OiB2aXNpYmxlO1xyXG4gIH0iXX0= */"] });
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgForm"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_11__["TranslateDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_12__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["DefaultValueAccessor"]], pipes: [_ngx_translate_core__WEBPACK_IMPORTED_MODULE_11__["TranslatePipe"]], styles: [".tooltip[_ngcontent-%COMP%] {\r\n    position: relative;\r\n    display: inline-block;\r\n  }\r\n  \r\n  .tooltiptext[_ngcontent-%COMP%] {\r\n    visibility: hidden;\r\n    width: 280px;\r\n    background-color: black;\r\n    color: #fff;\r\n    text-align: center;\r\n    border-radius: 3px;\r\n    padding: 5px 0;\r\n    position: absolute;\r\n    z-index: 1;\r\n    top: 150%;\r\n    left: 40%;\r\n    margin-left: -100px;\r\n  }\r\n  \r\n  .tooltip[_ngcontent-%COMP%]:hover   .tooltiptext[_ngcontent-%COMP%] {\r\n    visibility: visible;\r\n  }\r\n  \r\n  .tooltip[_ngcontent-%COMP%]   .newtooltiptext[_ngcontent-%COMP%] {\r\n    visibility: hidden;\r\n    width: 280px;\r\n    background-color: black;\r\n    color: #fff;\r\n    text-align: center;\r\n    border-radius: 3px;\r\n    padding: 5px 0;\r\n    position: absolute;\r\n    z-index: 1;\r\n    top: 150%;\r\n    left: 80%;\r\n    margin-left: -100px;\r\n  }\r\n  \r\n  .tooltip[_ngcontent-%COMP%]:hover   .newtooltiptext[_ngcontent-%COMP%] {\r\n    visibility: visible;\r\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZvaXAtaW4tdXBkYXRlLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIscUJBQXFCO0VBQ3ZCOztFQUVBO0lBQ0Usa0JBQWtCO0lBQ2xCLFlBQVk7SUFDWix1QkFBdUI7SUFDdkIsV0FBVztJQUNYLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsY0FBYztJQUNkLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsU0FBUztJQUNULFNBQVM7SUFDVCxtQkFBbUI7RUFDckI7O0VBRUE7SUFDRSxtQkFBbUI7RUFDckI7O0VBRUE7SUFDRSxrQkFBa0I7SUFDbEIsWUFBWTtJQUNaLHVCQUF1QjtJQUN2QixXQUFXO0lBQ1gsa0JBQWtCO0lBQ2xCLGtCQUFrQjtJQUNsQixjQUFjO0lBQ2Qsa0JBQWtCO0lBQ2xCLFVBQVU7SUFDVixTQUFTO0lBQ1QsU0FBUztJQUNULG1CQUFtQjtFQUNyQjs7RUFFQTtJQUNFLG1CQUFtQjtFQUNyQiIsImZpbGUiOiJ2b2lwLWluLXVwZGF0ZS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnRvb2x0aXAge1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gIH1cclxuICBcclxuICAudG9vbHRpcHRleHQge1xyXG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xyXG4gICAgd2lkdGg6IDI4MHB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGJvcmRlci1yYWRpdXM6IDNweDtcclxuICAgIHBhZGRpbmc6IDVweCAwO1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgei1pbmRleDogMTtcclxuICAgIHRvcDogMTUwJTtcclxuICAgIGxlZnQ6IDQwJTtcclxuICAgIG1hcmdpbi1sZWZ0OiAtMTAwcHg7XHJcbiAgfVxyXG4gIFxyXG4gIC50b29sdGlwOmhvdmVyIC50b29sdGlwdGV4dCB7XHJcbiAgICB2aXNpYmlsaXR5OiB2aXNpYmxlO1xyXG4gIH1cclxuICBcclxuICAudG9vbHRpcCAubmV3dG9vbHRpcHRleHQge1xyXG4gICAgdmlzaWJpbGl0eTogaGlkZGVuO1xyXG4gICAgd2lkdGg6IDI4MHB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XHJcbiAgICBjb2xvcjogI2ZmZjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGJvcmRlci1yYWRpdXM6IDNweDtcclxuICAgIHBhZGRpbmc6IDVweCAwO1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgei1pbmRleDogMTtcclxuICAgIHRvcDogMTUwJTtcclxuICAgIGxlZnQ6IDgwJTtcclxuICAgIG1hcmdpbi1sZWZ0OiAtMTAwcHg7XHJcbiAgfVxyXG4gIFxyXG4gIC50b29sdGlwOmhvdmVyIC5uZXd0b29sdGlwdGV4dCB7XHJcbiAgICB2aXNpYmlsaXR5OiB2aXNpYmxlO1xyXG4gIH0iXX0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](VoipInUpdateComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -4743,7 +5914,7 @@ class VoipLaUpdateComponent {
         this.payload.ReqNo = this.reqno;
         this.payload.Current_COS = this.cos_disp;
         this.payload.Current_VM = this.vm_disp;
-        this.payload.Justification = this.bj_disp;
+        this.payload.Justification = this.bj_disp.replace(/[\n\r+]/g, ' ');
         this.payload.New_Voice = this.new_vm_disp;
         this.payload.New_COS = this.new_cos_disp;
         // fields to be picked up from form -- ends	
@@ -4762,7 +5933,7 @@ class VoipLaUpdateComponent {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
             this.errorinfo = true;
-            this.isButtonVisible = true;
+            this.isButtonVisible = false;
         });
     }
     ngOnInit() {
@@ -4840,7 +6011,7 @@ class VoipLaUpdateComponent {
     }
 }
 VoipLaUpdateComponent.ɵfac = function VoipLaUpdateComponent_Factory(t) { return new (t || VoipLaUpdateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_db2_service__WEBPACK_IMPORTED_MODULE_6__["Db2Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"])); };
-VoipLaUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipLaUpdateComponent, selectors: [["app-voip-la-update"]], decls: 75, vars: 25, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [4, "ngIf"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["class", "ds-pad-l-1 ds-pad-r-1", "id", "button2", 4, "ngIf"], [3, "hidden"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["for", "current_vm", 1, "ds-text-capitalize"], ["for", "current_cos", 1, "ds-text-capitalize"], ["valign", "top", 4, "ngIf"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32765", "value", "Back", 3, "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32767", "value", "Submit", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], [1, "ds-text-contextual-red-2"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Jabber_1", "cols", "40", "id", "LocationId", "title", "Select the Jabber number you wish to update", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["number", ""], ["value", ""], ["name", "Jabber_1", "selected", "", 3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 3, "hidden"], [1, "ds-input-container"], ["for", "updaterequested", 1, "ds-text-capitalize"], [1, "ds-input-container", "ds-mar-b-2"], ["role", "group", "aria-labelledby", "basic-checkboxes-example", 1, "ds-input-checkbox-group"], [1, "ds-input-checkbox"], ["type", "checkbox", "id", "checkbox1", "name", "checked", "title", "Update requested for", 1, "ds-input", 3, "ngModel", "ngModelOptions", "change", "ngModelChange"], [1, "ds-input-control"], ["for", "checkbox1"], ["type", "checkbox", "id", "checkbox2", "name", "checked1", "title", "Update requested for", 1, "ds-input", 3, "ngModel", "ngModelOptions", "change", "ngModelChange"], ["for", "checkbox2"], ["colspan", "2", "width", "46%"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], ["width", "54%"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Mail", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Mail", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange"], ["rows", "2", "name", "select_cos", "cols", "40", "id", "LocationId", "title", "Select the Jabber number you wish to update", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["name", "select_cos", "selected", "", 3, "value", 4, "ngFor", "ngForOf"], ["name", "businessjustification", "tabindex", "3", "id", "ch", "title", "Contact FirstLine Manager for Charge Department Code", "rows", "2", "cols", "40", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["name", "Jabber_1", "selected", "", 3, "value"], ["name", "select_cos", "selected", "", 3, "value"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipLaUpdateComponent_Template(rf, ctx) { if (rf & 1) {
+VoipLaUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipLaUpdateComponent, selectors: [["app-voip-la-update"]], decls: 75, vars: 25, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [4, "ngIf"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["class", "ds-pad-l-1 ds-pad-r-1", "id", "button2", 4, "ngIf"], [3, "hidden"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["for", "current_vm", 1, "ds-text-capitalize"], ["for", "current_cos", 1, "ds-text-capitalize"], ["valign", "top", 4, "ngIf"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32765", "value", "Back", 3, "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "this.errorinfo", "true;", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32767", "value", "Submit", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], [1, "ds-text-contextual-red-2"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Jabber_1", "cols", "40", "id", "LocationId", "title", "Select the Jabber number you wish to update", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["number", ""], ["value", ""], ["name", "Jabber_1", "selected", "", 3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 3, "hidden"], [1, "ds-input-container"], ["for", "updaterequested", 1, "ds-text-capitalize"], [1, "ds-input-container", "ds-mar-b-2"], ["role", "group", "aria-labelledby", "basic-checkboxes-example", 1, "ds-input-checkbox-group"], [1, "ds-input-checkbox"], ["type", "checkbox", "id", "checkbox1", "name", "checked", "title", "Update requested for", 1, "ds-input", 3, "ngModel", "ngModelOptions", "change", "ngModelChange"], [1, "ds-input-control"], ["for", "checkbox1"], ["type", "checkbox", "id", "checkbox2", "name", "checked1", "title", "Update requested for", 1, "ds-input", 3, "ngModel", "ngModelOptions", "change", "ngModelChange"], ["for", "checkbox2"], ["colspan", "2", "width", "46%"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], ["width", "54%"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Mail", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Mail", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange"], ["rows", "2", "name", "select_cos", "cols", "40", "id", "LocationId", "title", "Select the Jabber number you wish to update", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["name", "select_cos", "selected", "", 3, "value", 4, "ngFor", "ngForOf"], ["name", "businessjustification", "tabindex", "3", "id", "ch", "title", "Contact FirstLine Manager for Charge Department Code", "rows", "2", "cols", "40", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["name", "Jabber_1", "selected", "", 3, "value"], ["name", "select_cos", "selected", "", 3, "value"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "next", "this.errorinfo", "true;", "tabindex", "32767", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipLaUpdateComponent_Template(rf, ctx) { if (rf & 1) {
         const _r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -4995,9 +6166,9 @@ VoipLaUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isSpinnerVisible);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible && !ctx.errorinfo);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible && !ctx.errorinfo);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.errorinfo);
     } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgForm"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["DefaultValueAccessor"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ2b2lwLWxhLXVwZGF0ZS5jb21wb25lbnQuY3NzIn0= */"] });
@@ -5356,7 +6527,7 @@ class VoipLaNewComponent {
     }
 }
 VoipLaNewComponent.ɵfac = function VoipLaNewComponent_Factory(t) { return new (t || VoipLaNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"])); };
-VoipLaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipLaNewComponent, selectors: [["app-voip-la-new"]], decls: 114, vars: 21, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t1", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "46%"], ["for", "LocationId", "translate", "", 1, "ds-text-capitalize"], ["width", "160"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "%%Surrogate_Location", "type", "hidden", "value", "1"], ["name", "Location", "rows", "2", "cols", "40", "id", "LocationId", "title", "Location", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important"], ["value", "", "translate", ""], ["name", "Location", 3, "value", 4, "ngFor", "ngForOf"], ["translate", "", 1, "ds-text-capitalize"], ["for", "COSId", "translate", ""], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value"], [3, "hidden"], ["translate", "", 1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["width", "61%"], ["for", "addId1", "translate", ""], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 \n                            ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary \n                        ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "routerLink", "queryParams", "value", 4, "ngIf"], ["name", "Location", 3, "value"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], ["type", "button", "name", "exit", "type", "button", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams", "value"]], template: function VoipLaNewComponent_Template(rf, ctx) { if (rf & 1) {
+VoipLaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipLaNewComponent, selectors: [["app-voip-la-new"]], decls: 114, vars: 21, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t1", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "50%"], ["for", "LocationId", "translate", "", 1, "ds-text-capitalize"], ["width", "160"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "%%Surrogate_Location", "type", "hidden", "value", "1"], ["name", "Location", "rows", "2", "cols", "40", "id", "LocationId", "title", "Location", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase"], ["value", "", "translate", ""], ["name", "Location", 3, "value", 4, "ngFor", "ngForOf"], ["translate", "", 1, "ds-text-capitalize"], ["for", "COSId", "translate", ""], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value"], [3, "hidden"], ["translate", "", 1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["width", "70%"], ["for", "addId1", "translate", ""], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 \n                            ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary \n                        ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "routerLink", "queryParams", "value", 4, "ngIf"], ["name", "Location", 3, "value"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], ["type", "button", "name", "exit", "type", "button", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams", "value"]], template: function VoipLaNewComponent_Template(rf, ctx) { if (rf & 1) {
         const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -5406,7 +6577,7 @@ VoipLaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "input", 18);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "select", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "option", 20);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38, "Jabberupdate.Jabber/PhoneNumberLocation");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](38, "Jabberentrydetails.Select Location");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](39, VoipLaNewComponent_option_39_Template, 2, 2, "option", 21);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -7556,7 +8727,7 @@ class FacInUpdateComponent {
         this.Funded = formData.value.Voice_Mail;
         this.chargeDepartmentCode = formData.value.chargeDepartmentCode;
         this.authLevel = formData.value.authLevel;
-        this.bj_disp = formData.value.businessjustification;
+        this.bj_disp = formData.value.businessjustification.replace(/[\n\r+]/g, ' ');
         this.isReviewForm = false;
         this.isEntryForm = true;
     }
@@ -8046,7 +9217,7 @@ __webpack_require__.r(__webpack_exports__);
 function EmployeeinfoComponent_div_2_p_7_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "employeeinfotrans.ifinfoiscorrect ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "a", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "a", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "employeeinfotrans.BluePagesrecord ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 6);
@@ -8055,99 +9226,99 @@ function EmployeeinfoComponent_div_2_p_7_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function EmployeeinfoComponent_div_2_h2_10_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h2", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h2", 38);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "employeeinfotrans.EmployeeInformation");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function EmployeeinfoComponent_div_2_h2_11_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h2", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h2", 38);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "employeeinfotrans.EmployeeEntryDetails");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function EmployeeinfoComponent_div_2_table_12_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 39);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tbody");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "tr", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "tr", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "employeeinfotrans.Name");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "td", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "tr", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "td", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "tr", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "td", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "label", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "employeeinfotrans.SerialNumber");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "td", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "tr", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "td", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "label", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "tr", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "td", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "label", 43);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "employeeinfotrans.JobResponsibility");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](22, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](23, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "td", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "tr", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "td", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "label", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "tr", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "td", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "label", 44);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, "employeeinfotrans.BusinessUnit");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](30, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](31, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "td", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](33);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "tr", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "td", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "label", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "tr", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "td", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "label", 45);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "employeeinfotrans.Department");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](38, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "td", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "tr", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "td", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "tr", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "td", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "label", 46);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](45, "employeeinfotrans.Country");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](46, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](47, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "td", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](49);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "tr", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "td", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "label", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "tr", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "td", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "label", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](53, "employeeinfotrans.E-mail");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](54, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](55, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "td", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](57);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -8171,7 +9342,7 @@ function EmployeeinfoComponent_div_2_table_12_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r4.employeeInfo.email);
 } }
 function EmployeeinfoComponent_div_2_div_45_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "employeeinfotrans.noteligibletorequestmorethanonejabber");
@@ -8184,7 +9355,7 @@ function EmployeeinfoComponent_div_2_div_45_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "span", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, " employeeinfotrans.jabberconfiguration ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "a", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "a", 49);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Help@IBM");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, ". ");
@@ -8193,7 +9364,7 @@ function EmployeeinfoComponent_div_2_div_45_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, " employeeinfotrans.furtherassistance ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, " ' ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "a", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "a", 50);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "#voice-at-ibm");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, " '.");
@@ -8207,36 +9378,45 @@ function EmployeeinfoComponent_div_2_div_45_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r5.identifier, ".");
 } }
 function EmployeeinfoComponent_div_2_div_46_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 51);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "The serial number that you have entered is not eligible to request more than one FAC code.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function EmployeeinfoComponent_div_2_div_47_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 53);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "There is no FAC code for this serial number.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function EmployeeinfoComponent_div_2_div_48_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "There is no FAC code for this serial number.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function EmployeeinfoComponent_div_2_div_49_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 55);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "There is no FAC code for this serial number.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function EmployeeinfoComponent_div_2_div_50_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "employeeinfotrans.alreadyonerequestinprogress");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -8249,7 +9429,7 @@ function EmployeeinfoComponent_div_2_div_49_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "span", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " employeeinfotrans.furtherassistance ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "a", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "a", 50);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "#voice-at-ibm");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, ".");
@@ -8258,14 +9438,14 @@ function EmployeeinfoComponent_div_2_div_49_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r9.identifier, ".");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r10.identifier, ".");
 } }
-function EmployeeinfoComponent_div_2_div_50_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 55);
+function EmployeeinfoComponent_div_2_div_51_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 57);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " employeeinfotrans.alreadyone ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -8282,7 +9462,7 @@ function EmployeeinfoComponent_div_2_div_50_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "span", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, " employeeinfotrans.furtherassistance ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "a", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "a", 50);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "#voice-at-ibm");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, ".");
@@ -8291,42 +9471,42 @@ function EmployeeinfoComponent_div_2_div_50_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r10.page, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r11.page, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r10.identifier1, ".");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r11.identifier1, ".");
 } }
-function EmployeeinfoComponent_div_2_div_51_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 56);
+function EmployeeinfoComponent_div_2_div_52_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 58);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "employeeinfotrans.nooutstandingreq");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function EmployeeinfoComponent_div_2_div_52_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 56);
+function EmployeeinfoComponent_div_2_div_53_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 58);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "employeeinfotrans.noresources");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function EmployeeinfoComponent_div_2_div_53_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 57);
+function EmployeeinfoComponent_div_2_div_54_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "employeeinfotrans.nojabberforthisserial ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function EmployeeinfoComponent_div_2_button_60_Template(rf, ctx) { if (rf & 1) {
-    const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 58);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function EmployeeinfoComponent_div_2_button_60_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r16); const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r15.submit(); });
+function EmployeeinfoComponent_div_2_button_61_Template(rf, ctx) { if (rf & 1) {
+    const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 60);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function EmployeeinfoComponent_div_2_button_61_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r17); const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r16.submit(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "employeeinfotrans.NEXT");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function EmployeeinfoComponent_div_2_Template(rf, ctx) { if (rf & 1) {
-    const _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "app-navigation", 4);
@@ -8396,21 +9576,22 @@ function EmployeeinfoComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](46, EmployeeinfoComponent_div_2_div_46_Template, 4, 0, "div", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](47, EmployeeinfoComponent_div_2_div_47_Template, 4, 0, "div", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](48, EmployeeinfoComponent_div_2_div_48_Template, 4, 0, "div", 25);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](49, EmployeeinfoComponent_div_2_div_49_Template, 16, 1, "div", 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](50, EmployeeinfoComponent_div_2_div_50_Template, 19, 2, "div", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](51, EmployeeinfoComponent_div_2_div_51_Template, 3, 0, "div", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](52, EmployeeinfoComponent_div_2_div_52_Template, 3, 0, "div", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](49, EmployeeinfoComponent_div_2_div_49_Template, 4, 0, "div", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](50, EmployeeinfoComponent_div_2_div_50_Template, 16, 1, "div", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](51, EmployeeinfoComponent_div_2_div_51_Template, 19, 2, "div", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](52, EmployeeinfoComponent_div_2_div_52_Template, 3, 0, "div", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](53, EmployeeinfoComponent_div_2_div_53_Template, 3, 0, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](54, "div", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "div", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](54, EmployeeinfoComponent_div_2_div_54_Template, 3, 0, "div", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](55, "div", 31);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "div", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "button", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function EmployeeinfoComponent_div_2_Template_button_click_57_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r18); const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r17.backClick(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](58, "employeeinfotrans.BACK");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "div", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "button", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function EmployeeinfoComponent_div_2_Template_button_click_58_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r19); const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r18.backClick(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](59, "employeeinfotrans.BACK");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "div", 34);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](60, EmployeeinfoComponent_div_2_button_60_Template, 2, 0, "button", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "div", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](61, EmployeeinfoComponent_div_2_button_61_Template, 2, 0, "button", 36);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -8422,7 +9603,7 @@ function EmployeeinfoComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("servicestitle.", ctx_r0.title, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false && ctx_r0.warninginfosnowreq == false && ctx_r0.warninginfosnowres == false && ctx_r0.warninginfoothers == false && ctx_r0.warninginfosnowothers == false && ctx_r0.warninginfofacr == false && ctx_r0.warninginfofacu == false && ctx_r0.warninginfofacdeactivate == false);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx_r0.servicesData.step)("isSelf", ctx_r0.reqFor)("hideSteps", ctx_r0.hideSteps);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -8435,6 +9616,8 @@ function EmployeeinfoComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfo);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofacdeactivate);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofacu);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -8452,7 +9635,7 @@ function EmployeeinfoComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false && ctx_r0.warn == false ? "ds-col-lg-2 ds-push-lg-8" : "ds-col-lg-2 ds-push-lg-10");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false && ctx_r0.warninginfosnowreq == false && ctx_r0.warninginfosnowres == false && ctx_r0.warninginfoothers == false && ctx_r0.warninginfosnowothers == false && ctx_r0.warninginfofacr == false && ctx_r0.warninginfofacu == false);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false && ctx_r0.warninginfosnowreq == false && ctx_r0.warninginfosnowres == false && ctx_r0.warninginfoothers == false && ctx_r0.warninginfosnowothers == false && ctx_r0.warninginfofacr == false && ctx_r0.warninginfofacu == false && ctx_r0.warninginfofacdeactivate == false);
 } }
 class EmployeeinfoComponent {
     constructor(router, cookie, cloudantservice, Db2Service, servicenowservice, bpservices, location, route) {
@@ -8475,6 +9658,8 @@ class EmployeeinfoComponent {
         this.warninginfoothers = false;
         this.warninginfosnowothers = false;
         this.warninginfofac = false;
+        this.warninginfofacdeactivate = false;
+        this.warninginfofacdeactivatesnow = false;
         this.warninginfofacu = false;
         this.warninginfofacr = false;
         this.selfinfo = false;
@@ -8494,12 +9679,12 @@ class EmployeeinfoComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        // this.location.back();
+        this.router.navigate(['/employeesearch'], { queryParams: { country: this.pcode, service: this.service } });
     }
     ngOnInit() {
         this.route.queryParams
             .subscribe(params => {
-            var _a;
             console.log(params);
             this.service = params.service;
             this.pcode = params.country;
@@ -8540,6 +9725,16 @@ class EmployeeinfoComponent {
                 this.identifier = sessionStorage.getItem('identifier');
                 this.isDataLoaded = true;
             }
+            else if (this.sessionwarninginfo !== 'true1' && this.service == "fac_deactivate") {
+                this.warninginfofacdeactivate = true;
+                this.identifier = sessionStorage.getItem('identifier');
+                this.isDataLoaded = true;
+            }
+            /*else if (this.sessionwarninginfosnow =='true1' && this.service=="fac_deactivate"){
+             this.warninginfofacdeactivatesnow = true
+             this.identifier=sessionStorage.getItem('identifier')
+             this.isDataLoaded=true
+            }*/
             else if (this.sessionwarninginfo == 'false1' && this.service == "fac_update") {
                 this.warninginfofacu = true;
                 this.identifier = sessionStorage.getItem('identifier');
@@ -8570,9 +9765,11 @@ class EmployeeinfoComponent {
                 }
                 else if (this.service == "jabber_move") {
                     this.page = 'move Jabber';
-                }
+                } //else if(this.service == "fac_deactivate"){
+                //this.page = 'fac Deactivate';
+                //}
                 if (this.sessionwarninginfosnow == 'true1') {
-                    this.identifier1 = (_a = sessionStorage.getItem('identifier1')) === null || _a === void 0 ? void 0 : _a.replace(" ", "");
+                    this.identifier1 = sessionStorage.getItem('identifier1');
                     this.warninginfosnowothers = true;
                     this.isDataLoaded = true;
                 }
@@ -8586,7 +9783,7 @@ class EmployeeinfoComponent {
             //this.identifier=sessionStorage.getItem('identifier')
             this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
             this.employeeInfo = JSON.parse(this.employeeInfo1);
-            if (this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac || this.warninginfofacu || this.warninginfofacr) {
+            if (this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac || this.warninginfofacu || this.warninginfofacr || this.warninginfofacdeactivatesnow) {
                 this.hideSteps = true;
                 this.warn = true;
             }
@@ -8597,10 +9794,10 @@ class EmployeeinfoComponent {
     }
 }
 EmployeeinfoComponent.ɵfac = function EmployeeinfoComponent_Factory(t) { return new (t || EmployeeinfoComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_2__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_3__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_db2_service__WEBPACK_IMPORTED_MODULE_4__["Db2Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bp_service__WEBPACK_IMPORTED_MODULE_6__["bpservices"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_7__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"])); };
-EmployeeinfoComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: EmployeeinfoComponent, selectors: [["app-employeeinfo"]], decls: 3, vars: 1, consts: [[1, "ds-panel", "ds-col-12"], ["class", "ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4", 4, "ngIf"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-0_4"], ["translate", "", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps"], ["class", "ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ", "translate", "", 4, "ngIf"], ["cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], ["id", "war11", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["id", "war2", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["translate", "", 2, "font-size", "1rem"], ["id", "war3", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["id", "war4", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["translate", "", "target", "_blank", "href", "https://105.w3-969.ibm.com/tools/voice/SPOEProd.nsf/EntryPage?OpenForm&EMEA_Voice", 2, "color", "blue"], ["id", "err-dept1", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["target", "_blank", "href", "mailto:Ladislav.Kosar@sk.ibm.com", 2, "color", "blue"], ["id", "err-dept2", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["id", "w1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "fac_new", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "fac_update", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "fac_reset", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick"], [1, "ds-row", "ds-grid", "ds-mar-t-b-3_5", "ds-pad-r-1"], [3, "ngClass"], ["translate", "", 1, "ds-button", "ds-secondary", "ds-no-expand", "ds-text-align-center", "ds-mar-b-0", 2, "width", "100%", 3, "click"], [1, "ds-col-lg-2", "ds-push-lg-8"], ["class", "ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center", "style", "width: 100%", "translate", "", 3, "click", 4, "ngIf"], ["translate", "", "href", "https://w3.ibm.com/bluepages/", "target", "_blank"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "359"], ["for", "NameID", "translate", ""], ["for", "JobID", "translate", ""], ["for", "BUID", "translate", ""], ["for", "DeptID", "translate", ""], ["for", "EmpCountryID", "translate", ""], ["for", "EmailID", "translate", ""], ["id", "w1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["target", "_blank", "href", "https://w3.ibm.com/help/#/article/jabbernewuser", 2, "color", "blue"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["id", "fac_new", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["id", "fac_update", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "fac_reset", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["translate", "", 1, "ds-button", "ds-primary", "ds-pad-l-0", "ds-pad-r-0", "ds-text-align-center", 2, "width", "100%", 3, "click"]], template: function EmployeeinfoComponent_Template(rf, ctx) { if (rf & 1) {
+EmployeeinfoComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: EmployeeinfoComponent, selectors: [["app-employeeinfo"]], decls: 3, vars: 1, consts: [[1, "ds-panel", "ds-col-12"], ["class", "ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4", 4, "ngIf"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-0_4"], ["translate", "", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps"], ["class", "ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ", "translate", "", 4, "ngIf"], ["cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], ["id", "war11", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["id", "war2", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["translate", "", 2, "font-size", "1rem"], ["id", "war3", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["id", "war4", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["translate", "", "target", "_blank", "href", "https://105.w3-969.ibm.com/tools/voice/SPOEProd.nsf/EntryPage?OpenForm&EMEA_Voice", 2, "color", "blue"], ["id", "err-dept1", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["target", "_blank", "href", "mailto:Ladislav.Kosar@sk.ibm.com", 2, "color", "blue"], ["id", "err-dept2", 1, "ds-col-xs-12", "ds-alert", "ds-warning", 2, "display", "none"], ["id", "w1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "fac_new", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "fac_deactivate", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "fac_update", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "fac_reset", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick"], [1, "ds-row", "ds-grid", "ds-mar-t-b-3_5", "ds-pad-r-1"], [3, "ngClass"], ["translate", "", 1, "ds-button", "ds-secondary", "ds-no-expand", "ds-text-align-center", "ds-mar-b-0", 2, "width", "100%", 3, "click"], [1, "ds-col-lg-2", "ds-push-lg-8"], ["class", "ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center", "style", "width: 100%", "translate", "", 3, "click", 4, "ngIf"], ["translate", "", "href", "https://w3.ibm.com/bluepages/", "target", "_blank"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "359"], ["for", "NameID", "translate", ""], ["for", "JobID", "translate", ""], ["for", "BUID", "translate", ""], ["for", "DeptID", "translate", ""], ["for", "EmpCountryID", "translate", ""], ["for", "EmailID", "translate", ""], ["id", "w1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["target", "_blank", "href", "https://w3.ibm.com/help/#/article/jabbernewuser", 2, "color", "blue"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["id", "fac_new", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["id", "fac_deactivate", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "fac_update", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "fac_reset", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["translate", "", 1, "ds-button", "ds-primary", "ds-pad-l-0", "ds-pad-r-0", "ds-text-align-center", 2, "width", "100%", 3, "click"]], template: function EmployeeinfoComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, EmployeeinfoComponent_div_2_Template, 61, 21, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, EmployeeinfoComponent_div_2_Template, 62, 22, "div", 1);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isDataLoaded);
@@ -8799,6 +9996,533 @@ EntrydetailsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
 
 /***/ }),
 
+/***/ "PglX":
+/*!*****************************************************************************!*\
+  !*** ./src/app/components/fac-in-deactivate/fac-in-deactivate.component.ts ***!
+  \*****************************************************************************/
+/*! exports provided: FacInDeactivateComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FacInDeactivateComponent", function() { return FacInDeactivateComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _config_payload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../config/payload */ "dP2x");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_services/cookie-handler.service */ "oxqP");
+/* harmony import */ var _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services/cloudant.service */ "Rfmm");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _services_db2_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_services/db2.service */ "qtc7");
+/* harmony import */ var _services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../_services/servicenow.service */ "qWuM");
+/* harmony import */ var _topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../topcountryframe/topcountryframe.component */ "aDsg");
+/* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../navigation/navigation.component */ "mvyS");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../steps/steps.component */ "52XD");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ngx-translate/core */ "sYmb");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function FacInDeactivateComponent_div_6_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "employeeinfotrans.alreadyonedeleterequestinprogress");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "span", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "employeeinfotrans.ongoingrequestsbyclickonrequestpage");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "span", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "employeeinfotrans.furtherassistance");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "a", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "#voice-at-ibm");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, ".");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r0.identifier, ".");
+} }
+function FacInDeactivateComponent_div_30_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Opps! Some thing went worng.Please try again latter.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function FacInDeactivateComponent_div_32_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Your request submission is in progress.Do not Go back or Refresh the page. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function FacInDeactivateComponent_input_37_Template(rf, ctx) { if (rf & 1) {
+    const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FacInDeactivateComponent_input_37_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.backClick(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function FacInDeactivateComponent_input_39_Template(rf, ctx) { if (rf & 1) {
+    const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FacInDeactivateComponent_input_39_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r8.submit_snow(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+class FacInDeactivateComponent {
+    constructor(router, cookie, cloudantservice, location, Db2Service, servicenowservice, route) {
+        this.router = router;
+        this.cookie = cookie;
+        this.cloudantservice = cloudantservice;
+        this.location = location;
+        this.Db2Service = Db2Service;
+        this.servicenowservice = servicenowservice;
+        this.route = route;
+        this.build = [];
+        this.hideBuilding = true;
+        this.ccode = '';
+        this.cloudantData = [];
+        this.servicesData = [];
+        this.Jabber = [];
+        this.Voice_Mail = "No";
+        //cos : any =[];
+        //itns:any = [];
+        //vm :any;
+        //css :any;
+        //Jabber_Identifier:any;
+        //selected = true;
+        this.hideChargeDept = true;
+        this.currentcos = true;
+        this.currentVoiceMail = true;
+        this.hideDeptCode = true;
+        this.updaterequested = true;
+        this.isReviewForm = true;
+        this.isEntryForm = false;
+        this.fixedPhoneIdentifier = false;
+        this.employeeSerial = '';
+        this.service = '';
+        this.hideSteps = false;
+        this.isButtonVisible = true;
+        this.isSpinnerVisible = false;
+        this.warninginfo = false;
+        this.warninginfosnow = false;
+        this.classOfService = [];
+        this.checked = false;
+        this.checked2 = false;
+        this.checked3 = false;
+        this.newLocation = true;
+        this.newFunded = true;
+        // newcos = true;
+        this.newAuthorizationLevel = true;
+        this.businessJust = true;
+        this.errorinfo = false;
+        this.currLocation = '';
+        this.currChargeDeptCode = '';
+        this.currAuthorizationLevel = '';
+        this.currFACCodeType = '';
+        this.currvalidity = '';
+        this.newvoicemail = '';
+        this.Location_1 = '';
+        this.Buildings = '';
+        this.Funded = '';
+        this.chargeDepartmentCode = '';
+        this.authLevel = '';
+        this.camp = [];
+        this.campA = [];
+        this.buildA = [];
+        this.radioFunded = "";
+        this.j = 0;
+        this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["Fac_Deactivate"]();
+    }
+    toggle_options() {
+        if (this.checked) {
+            this.newLocation = false;
+            this.toup_disp = "Location";
+        }
+        else {
+            this.newLocation = true;
+            this.toup_disp = '';
+        }
+        if (this.checked2) {
+            this.newFunded = false;
+            this.toup_disp2 = "Funded";
+        }
+        else {
+            this.newFunded = true;
+            this.toup_disp2 = '';
+        }
+        if (this.checked3) {
+            this.newAuthorizationLevel = false;
+            this.toup_disp3 = "Authorization Level";
+        }
+        else {
+            this.newAuthorizationLevel = true;
+            this.toup_disp3 = '';
+        }
+    }
+    hidebusinessjust(select) {
+        if ((select != "") && (select.toUpperCase() == "INTERNATIONAL"))
+            this.businessJust = false;
+        else
+            this.businessJust = true;
+    }
+    EntryDetails(formData) {
+        if ((this.checked === false) && (this.checked2 === false) && (this.checked3 === false)) {
+            alert('Please select update required for');
+            return;
+        }
+        if (this.checked) {
+            if (formData.value.Location_1 === '' || formData.value.Location_1.toLowerCase() === 'select office location') {
+                alert('Please select office location');
+                return;
+            }
+            if (formData.value.Buildings === '' || formData.value.Buildings.toLowerCase() === 'select one') {
+                alert('Please select a campus');
+                return;
+            }
+            if (formData.value.Location_1 + '~~' + formData.value.Buildings === this.currLocation) {
+                alert('Please provide a new campus');
+                return;
+            }
+        }
+        if (this.checked2 && formData.value.Voice_Mail === 'Yes') {
+            if (formData.value.chargeDepartmentCode === '') {
+                alert('Please enter the charge department code');
+                return;
+            }
+            if (formData.value.chargeDepartmentCode === this.currChargeDeptCode) {
+                alert('Please enter a new charge department code');
+                return;
+            }
+        }
+        if (this.checked3) {
+            if (formData.value.authLevel === '' || formData.value.authLevel.toLowerCase() === 'select authorization level') {
+                alert('Please select an authorization level');
+                return;
+            }
+            if (formData.value.authLevel === this.currAuthorizationLevel) {
+                alert('Please provide a new authorization level');
+                return;
+            }
+        }
+        if (formData.value.businessjustification == '') {
+            alert('Please enter Business Justification');
+            return;
+        }
+        //  this.jabberDisp = formData.value.Jabber_1;
+        // this.new_cos_disp=formData.value.select_cos;
+        // this.new_vm_disp=formData.value.Voice_Mail;
+        this.Location_1 = formData.value.Location_1;
+        this.Buildings = formData.value.Buildings;
+        this.Funded = formData.value.Voice_Mail;
+        this.chargeDepartmentCode = formData.value.chargeDepartmentCode;
+        this.authLevel = formData.value.authLevel;
+        this.bj_disp = formData.value.businessjustification;
+        this.isReviewForm = false;
+        this.isEntryForm = true;
+    }
+    // Submit to Snow Jabber new code added by Swarnava ends	
+    backClick() {
+        sessionStorage.setItem('backbutton', 'yes');
+        sessionStorage.setItem('step', 'step1');
+        this.location.back();
+    }
+    isFunded() {
+        if (this.Voice_Mail === 'Yes') {
+            this.hideDeptCode = false;
+        }
+        else {
+            this.hideDeptCode = true;
+        }
+    }
+    BackButton() {
+        this.isReviewForm = true;
+        this.isEntryForm = false;
+    }
+    submit_snow() {
+        this.reqno = this.countrydetails.isocode + "-DS-" + this.cnum.substr(0, 6) + "-" + gettime();
+        sessionStorage.setItem('reqno', this.reqno);
+        this.isButtonVisible = false;
+        this.isSpinnerVisible = true;
+        this.payload.orinator_payload = this.orgi;
+        this.payload.cNum_payload = this.cnum;
+        this.payload.site_address = '';
+        // fields picked up from form -- begins	
+        //-this.payload.Projectid_Disp = '';
+        // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+        //- this.payload.Department_number_Disp = '';
+        //- this.payload.accid_Disp = '';
+        //this.payload.Identifier_Selected = this.jabberDisp;
+        //- this.payload.updated_for = '';
+        this.payload.ReqNo = this.reqno;
+        this.payload.Identifier_Disp = this.identifier;
+        // this.payload.Current_COS=this.cos_disp;
+        // this.payload.Current_VM=this.vm_disp;
+        // this.payload.Justification=this.bj_disp;
+        // this.payload.New_Voice=this.new_vm_disp;
+        // this.payload.New_COS=this.new_cos_disp
+        // fields to be picked up from form -- ends	
+        //-this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+        this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
+        this.payload.countryname = this.countrydetails.name;
+        this.payload.request_type = 'fac_deactivate';
+        this.payload.evolution_instance = this.countrydetails.evolution_instance;
+        this.payload.authLevel_final = this.currAuthorizationLevel;
+        this.payload.authValue = this.authLevel;
+        this.payload.BusinessUnit_Disp = this.business_unit;
+        //-this.payload.prov_type=this.countrydetails.provision_type;
+        //-this.payload.updated_for=this.toup_disp+','+this.toup_disp2;
+        this.servicenowservice.submit_request_fac_deactivate(this.payload).subscribe(data => {
+            console.log('response', data);
+            if (data)
+                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+        }, (error) => {
+            console.error('error caught in component' + error);
+            this.isSpinnerVisible = false;
+            this.errorinfo = true;
+            this.isButtonVisible = true;
+        });
+    }
+    ngOnInit() {
+        var _a, _b, _c;
+        // Submit to Snow Jabber Update code
+        this.cnum = sessionStorage.getItem('cnum');
+        this.orgi = this.cookie.getCookie('ccode');
+        this.countrydetails = sessionStorage.getItem('countrydetails');
+        this.countrydetails = JSON.parse(this.countrydetails);
+        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+        this.sessionwarninginfo = sessionStorage.getItem('warninginfo');
+        this.sessionwarninginfosnow = sessionStorage.getItem('warninginfosnow');
+        if (this.sessionwarninginfo == 'false1') {
+            this.warninginfo = true;
+        }
+        else if (this.sessionwarninginfosnow == 'true1') {
+            this.warninginfosnow = true;
+            this.identifier = (_a = sessionStorage.getItem('identifier')) === null || _a === void 0 ? void 0 : _a.replace(" ", "");
+        }
+        else {
+            this.identifier = sessionStorage.getItem('identifier');
+            this.identifier = this.identifier.split(',');
+            this.Jabber = [...this.identifier];
+            this.db2data = sessionStorage.getItem('db2data');
+            this.db2data = JSON.parse(this.db2data);
+            this.currLocation = this.db2data[0].ATTRIBUTE3;
+            this.currChargeDeptCode = this.db2data[0].ATTRIBUTE7;
+            this.currAuthorizationLevel = this.db2data[0].ATTRIBUTE4;
+            this.currFACCodeType = this.db2data[0].ATTRIBUTE5;
+            this.currvalidity = this.db2data[0].ATTRIBUTE6;
+        }
+        this.locationlist = (_b = sessionStorage.getItem('locationdetails')) === null || _b === void 0 ? void 0 : _b.replace('"', '');
+        this.locationlist = (_c = this.locationlist) === null || _c === void 0 ? void 0 : _c.replace('"', '').split(',');
+        for (var i = 0; i < this.locationlist.length; i++) {
+            var n = this.locationlist[i].indexOf("~");
+            this.campA[i] = this.locationlist[i].substr(1, n - 1);
+            this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);
+        }
+        for (var i = 0; i < this.campA.length; i++) {
+            if (this.campA[i] != this.campA[i + 1]) {
+                this.camp[this.j] = this.campA[i];
+                this.j++;
+            }
+        }
+        this.route.queryParams
+            .subscribe(params => {
+            console.log(params);
+            this.service = params.service;
+            this.pcode = params.country;
+            console.log("navigation component" + this.pcode);
+        });
+        this.cloudantservice.getcountrydetails(this.ccode).subscribe(data => {
+            console.log('Response received', data.countrydetails.name);
+            this.countryname = data.countrydetails;
+            this.cloudantData = {
+                "code": this.ccode,
+                "name": this.countryname.name,
+                "isocode": this.countryname.isocode,
+                "isjabber": this.countryname.isjabber,
+                "isfixedphone": this.countryname.isfixphone,
+                "isfac": this.countryname.isfac,
+                "isspecial": this.countryname.isspecial
+            };
+        });
+        const servicesData = {
+            "data": [
+                {
+                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "step": 3,
+                }
+            ]
+        };
+        this.reqFor = sessionStorage.getItem('radioAction');
+        this.servicesData = servicesData.data[0];
+        if (this.warninginfo || this.warninginfosnow) {
+            this.hideSteps = true;
+        }
+        else {
+            this.hideSteps = false;
+        }
+    }
+    previousStep(event) {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        this.fixedPhoneIdentifier = false;
+    }
+    selectedLocation(loc) {
+        this.build = [];
+        this.campus = '';
+        //alert("Location"+loc);
+        if (loc != '') {
+            this.hideBuilding = false;
+            var k = 0;
+            for (var i = 0; i < this.campA.length; i++) {
+                if (loc == this.campA[i]) {
+                    this.build[k] = this.buildA[i];
+                    k = k + 1;
+                }
+            }
+        }
+        else {
+            this.hideBuilding = true;
+            this.build = [];
+        }
+    }
+}
+FacInDeactivateComponent.ɵfac = function FacInDeactivateComponent_Factory(t) { return new (t || FacInDeactivateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_db2_service__WEBPACK_IMPORTED_MODULE_6__["Db2Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"])); };
+FacInDeactivateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FacInDeactivateComponent, selectors: [["app-fac-in-deactivate"]], decls: 40, vars: 10, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "current_cos", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32765", "value", "Back", 3, "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32767", "value", "Submit", 3, "click", 4, "ngIf"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["translate", ""], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "tabindex", "32765", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function FacInDeactivateComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-navigation", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, FacInDeactivateComponent_div_6_Template, 16, 1, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "form", null, 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "FAC Code Deactivate Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, " By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "app-steps", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function FacInDeactivateComponent_Template_app_steps_previousStep_14_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "h2", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Employee Entry Details");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "table", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "tr", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "td", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "label", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, " Current Authorization Level ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "td", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "span");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](26, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Click on submit to Deactivate the FAC code.");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](29, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](30, FacInDeactivateComponent_div_30_Template, 5, 0, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](31, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](32, FacInDeactivateComponent_div_32_Template, 4, 0, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "div", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "div", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "span", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](37, FacInDeactivateComponent_input_37_Template, 1, 0, "input", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "span", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](39, FacInDeactivateComponent_input_39_Template, 1, 0, "input", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dataNav", ctx.servicesData)("cloudantData", ctx.cloudantData);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.warninginfosnow);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.currAuthorizationLevel);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.errorinfo);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isSpinnerVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__["NavigationComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgForm"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__["StepsComponent"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_12__["TranslateDirective"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJmYWMtaW4tZGVhY3RpdmF0ZS5jb21wb25lbnQuY3NzIn0= */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](FacInDeactivateComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-fac-in-deactivate',
+                templateUrl: './fac-in-deactivate.component.html',
+                styleUrls: ['./fac-in-deactivate.component.css']
+            }]
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"] }, { type: _angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"] }, { type: _services_db2_service__WEBPACK_IMPORTED_MODULE_6__["Db2Service"] }, { type: _services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__["servicenowservice"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }]; }, null); })();
+function gettime() {
+    var date = new Date();
+    var minutes1 = '';
+    var seconds1 = '';
+    var seconds = date.getSeconds();
+    var minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes1 = '0' + minutes;
+    }
+    else {
+        minutes1 = '' + minutes;
+    }
+    if (seconds < 10) {
+        seconds1 = '0' + seconds;
+    }
+    else {
+        seconds1 = '' + seconds;
+    }
+    console.log(minutes1 + seconds1);
+    return minutes1 + seconds1;
+}
+
+
+/***/ }),
+
 /***/ "QY2u":
 /*!************************************!*\
   !*** ./src/assets/i18n/fr_ca.json ***!
@@ -8806,7 +10530,7 @@ EntrydetailsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
 /*! exports provided: home, footer, footnote, lhs, Jabberservices, Jabbernewtrans, servicestitle, employeeinfotrans, Jabberentrydetails, Jabberupdate, Jabbermove, requesttrans, resultpagetrans, resourcespagetranslation, alerttranslation, topui, steps, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choisissez une langue: \",\"app-name\":\"Services téléphoniques mondiaux\",\"app-function\":\"Point d'entrée unique pour commander des services vocaux dans votre pays\",\"sponsor\":\"Basé sur le cloud hybride CIO optimisé par Red Hat OpenShift\",\"welcomemessage\":\"Bienvenue,\",\"question\":\"Quel service ou quel pays rechercherez-vous?\",\"search-placeholder\":\"Service de recherche ...\",\"search-text\":\"Cliquez ici pour voir tous les résultats de la recherche GVS\",\"my-country\":\"Mon pays\",\"click-here\":\"Cliquez ici\",\"available\":\"pour afficher tous les\",\"servicesonlyokay\":\"services pour\",\"most-viewed-services\":\"Services les plus consultés\",\"find-right-service\":\"Trouvez les bons services, vérifiez leur disponibilité,\",\"find-right-service2\":\"puis choisissez la façon dont vous vous connectez et travaillez ensemble.\",\"jabber-description\":\"Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.\",\"button-value\":\"Premiers pas\",\"Searchservice\":\"Service de recherche...\"},\"footer\":{\"aditional-question\":\"Vous avez des questions supplémentaires sur la commande de  Services téléphoniques mondiaux ?\",\"please consult\":\"Veuillez consulter\",\"consult\":\"* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE, Edge et Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code\":\"FAC Code\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Conditions d'utilisation\",\"Useful Information\":\"Informations utiles\",\"Please bear in mind the following points when making a request :\":\"Veuillez garder à l'esprit les points suivants lorsque vous faites une demande:\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"Pour faire une demande, l'Employé doit exister dans BluePages (sauf pour les demandes d'annulation).\",\"You must know the IBM serial Number of the person making the request.\":\"Vous devez connaître le numéro de série IBM de la personne qui fait la demande.\",\"Only one request per employee per request type is processed at a time.\":\"Une seule demande par employé et par type de demande est traitée à la fois.\"},\"lhs\":{\"Services\":\"Prestations de service\",\"Jabber\":\"Jabber\",\"FAC Code\":\"FAC Code\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approbations en attente\",\"Revalidation Pending\":\"Revalidation en attente\",\"Resources\":\"Ressources\",\"Requests\":\"Demandes\"},\"Jabberservices\":{\"initiateJabber\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service Jabber.\",\"jnew\":\"Demander un nouveau service\",\"jupdate\":\"Mettre à jour un service existant\",\"jmove\":\"Déplacer un service existant\",\"jdelete\":\"Supprimer un service existant\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"Cette demande peut être soumise pour vous-même ou au nom d'un autre employé. Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeSearch\":\"Recherche d'employés\",\"requestfor\":\"À qui s'adresse cette demande\",\"Myself\":\"Moi-même\",\"AnotherEmployee\":\"Un autre employé\",\"Name\":\"Nom\",\"SerialNumber\":\"Numéro de série\",\"EmployeeSerialNumber\":\"Numéro de série de l'employé\",\"forexample\":\"(par exemple 012789)\",\"CountryCode\":\"Code postal\",\"SelectOne\":\"Sélectionnez-en un\",\"norecord\":\"Il n'y a pas d'enregistrement d'un employé IBM avec le numéro de série \",\"availablefromBluePages\":\"disponible auprès de BluePages\",\"opps\":\"Opps! Quelque chose s'est usé Veuillez réessayer plus tard.\",\"JabberLocation\":\"Emplacement de Jabber / Emplacement du numéro de téléphone\",\"Voicemail\":\"Messagerie vocale\",\"ClassofService\":\"Classe de service\",\"pleasesubmittostart\":\"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\"},\"servicestitle\":{\"Request new Jabber service\":\"Demander un nouveau service Jabber\",\"Delete an existing service\":\"Delete an existing service\",\"Request a new service\":\"Request a new service\",\"Update an existing service\":\"Update an existing service\",\"Request Move Jabber service\":\"Demander le service Move Jabber\",\"Requests\":\"Demandes\",\"Resources\":\"Ressources\",\"Update Jabber Request\":\"Mettre à jour la demande Jabber\",\"Delete Jabber Request\":\"Supprimer la demande Jabber\",\"Move Jabber Request\":\"Déplacer la demande Jabber\",\"Fixed Phone - New Request\":\"Téléphone fixe - Nouvelle demande\",\"New Fixed Phone Request\":\"Nouvelle demande de téléphone fixe\",\"Deactivate an existing FAC Code\":\"Désactiver un code FAC existant\",\"FAC Code Deactivate Request\":\"Demande de désactivation du code FAC\",\"Request a new FAC Code\":\"Demander un nouveau code FAC\",\"Fac Code New Request\":\"Nouvelle demande de code FAC\",\"Update an existing FAC code\":\"Mettre à jour un code FAC existant\",\"FAC Code Update Request\":\"Demande de mise à jour du code FAC\",\"Reset an existing FAC code\":\"Réinitialiser un code FAC existant\",\"FAC Code Reset Request\":\"Demande de mise à jour du code FAC\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"Si les informations suivantes sont correctes, cliquez sur Suivant. Toute erreur doit être corrigée dans le\",\"BluePagesrecord\":\"enregistrer BluePages\",\"beforecontinuing\":\"avant de continuer.\",\"EmployeeInformation\":\"Information sur les employés\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"Name\":\"Nom:\",\"SerialNumber\":\"Numéro de série:\",\"JobResponsibility\":\"Responsabilité du travail:\",\"BusinessUnit\":\"Unité commerciale:\",\"Department\":\"département:\",\"Country\":\"Pays:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander un compte Jabber.\",\"itnexistsforuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour cet utilisateur est .\",\"nojabber\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"nojabberusethislink\":\"Le numéro de série que vous avez entré ne possède pas de numéro de téléphone IP (ITN) et n'est donc pas éligible pour Jabber. Veuillez utiliser ce lien pour faire une demande d'ITN \",\"GlobalVoiceInfrastructure\":\"Infrastructure vocale mondiale.\",\"receiveITN\":\"vous avez reçu l'ITN, vous pouvez alors demander Jabber. Merci.\",\"notauthorizedtoaccessjabber\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter\",\"notauthorizedtoaccessip\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter\",\"noteligibletorequestmorethanonejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander plus d'un compte Jabber.\",\"ITNexistsforthisuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour ce compte jabber d'utilisateurs est\",\"jabberconfiguration\":\"lié à la configuration de Jabber peut être trouvé à\",\"furtherassistance\":\"Pour toute assistance supplémentaire, veuillez contacter\",\"alreadyone\":\"le numéro de série que vous avez entré en a déjà un\",\"inprogess\":\"est en cours et le numéro de la demande est\",\"ongoingrequestsbyclickonrequestpage\":\"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.\",\"nooutstandingreq\":\"Aucune demande en suspens n'a été trouvée pour le numéro de série.\",\"noresources\":\"Il n'y a pas de ressources pour ce numéro de série.\",\"nojabberforthisserial\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"BACK\":\"DOS\",\"NEXT\":\"SUIVANTE\",\"SUBMIT1\":\"NOUS FAIRE PARVENIR\",\"alreadyonerequestinprogress\":\"Le numéro de série que vous avez entré a déjà une nouvelle demande Jabber est en cours et le numéro de demande est\",\"alreadyoneupdaterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de mise à jour Jabber est en cours et le numéro de demande est\",\"alreadyonemoverequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de déplacement Jabber est en cours et le numéro de demande est\",\"alreadyonedeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est\",\"alreadyonefacdeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression FAC est en cours et le numéro de demande est\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"OfficeLocation\":\"Emplacement du bureau\",\"Campus\":\"Campus\",\"Funded\":\"Financé\",\"ChargeDepartmentCode\":\"Code du département de facturation\",\"BusinessUnit\":\"Unité commerciale\",\"Projectid\":\"ID du projet (pour les employés de GBS uniquement)\",\"alreadyhaveFixedPhone\":\"Si vous avez déjà un téléphone fixe, veuillez fournir l'identifiant\",\"toprocessPI\":\"En soumettant cette demande de provisioning, vous consentez expressément par écrit à IBM pour traiter les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\",\"JabberRequestDetails\":\"Détails de la demande Jabber\",\"FixedPhoneIdentifier\":\"Identifiant de téléphone fixe\",\"Submissioninprogress\":\"La soumission de votre demande est en cours.Ne revenez pas en arrière ou n'actualisez pas la page.\",\"Submissionbeinginprogress\":\"Votre demande est en cours d'envoi. Ne pas actualiser ni revenir en arrière.\",\"Back\":\"Dos\",\"SelectLocation\":\"Sélectionnez l'emplacement\"},\"Jabberupdate\":{\"SELECTONE\":\"CHOISISSEZ UNE\",\"ReviewDetails\":\"revoir les détails\",\"JabberNumber\":\"Numéro Jabber\",\"SelectJabberNumber\":\"Sélectionnez le numéro Jabber\",\"Jabber/PhoneNumberLocation\":\"Sélectionnez Emplacement du numéro de téléphone / Jabber\"},\"Jabbermove\":{\"JabbertoMove\":\"Numéro Jabber à déplacer\",\"ProjectIId\":\"Id du projet\",\"AccountId\":\"Identifiant de compte\",\"ICA Code\":\"Code ICA\",\"NewOfficeLocation\":\"Nouveau bureau\",\"Building\":\"Imeuble\"},\"requesttrans\":{\"Requests\":\"Demandes\",\"beingsubmitted\":\"Votre demande est en cours d'envoi.Ne pas actualiser ni revenir en arrière.\",\"EmployeeRequestsDetails\":\"Détails des demandes des employés\",\"ResourceType\":\"Type de ressource\",\"CreatedDate\":\"Date de création\",\"Status\":\"Statut\",\"TrackingNumber\":\"Numéro de suivi\",\"AdditionalComments\":\"Commentaires supplémentaires\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Votre demande de\",\"hasbeensubmitted\":\"a été soumis\",\"Trackingrequest\":\"Le numéro de suivi de la demande est :\",\"receiveemailnotification\":\"Vous recevrez une notification par e-mail, lorsque votre demande aura été traitée.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Détails des ressources des employés\",\"Supplier\":\"Fournisseuse\",\"Phone/Dial\":\"Téléphone / Numérotation\",\"Innumber\":\"En nombre\",\"AdditionalInformation\":\"Informations Complémentaires\"},\"alerttranslation\":{\"EXITREQUEST\":\"DEMANDE DE SORTIE\",\"digitserialnumber\":\"Le numéro de série de l'employé doit être composé de 6 caractères\",\"enterserialnumber\":\"Veuillez saisir un numéro de série\",\"moverequest\":\"La demande de déplacement supprimera l'ITN actuel et un nouvel ITN sera attribué. Cliquez sur OK pour continuer ou sur Annuler pour quitter\",\"selectcountrycode\":\"Veuillez sélectionner le code du pays\",\"Only\":\"Seule\",\"serialnumbersareallowed\":\"Les numéros de série sont autorisés à créer une demande de\",\"selectlocation\":\"Veuillez sélectionner l'emplacement\",\"selectjabbernumber\":\"Veuillez sélectionner le numéro Jabber\"},\"topui\":{\"HOME\":\"DOMICILE\",\"SERVICES\":\"PRESTATIONS DE SERVICE\",\"DATAPRIVACY\":\"CONFIDENTIALITÉ DES DONNÉES\",\"HELP\":\"AIDER\",\"FEEDBACK\":\"RÉTROACTION\",\"CHANGECOUNTRY\":\"CHANGER DE PAYS\"},\"steps\":{\"Employee Search\":\"Recherche d'employés\",\"Employee Information\":\"Information sur les employés\",\"Employee Entry Details\":\"Détails de l'entrée des employés\",\"Review Details\":\"Détails de l'examen\",\"Employee Resources Details\":\"Détails des ressources des employés\",\"Employee Requests Details\":\"Détails des demandes des employés\",\"STEP 1\":\"MARCHER 1\",\"STEP 2\":\"MARCHER 2\",\"STEP 3\":\"MARCHER 3\",\"STEP 4\":\"MARCHER 4\"}}");
+module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choisissez une langue: \",\"app-name\":\"Services téléphoniques mondiaux\",\"app-function\":\"Point d'entrée unique pour commander des services vocaux dans votre pays\",\"sponsor\":\"Basé sur le cloud hybride CIO optimisé par Red Hat OpenShift\",\"welcomemessage\":\"Bienvenue,\",\"question\":\"Quel service ou quel pays rechercherez-vous?\",\"search-placeholder\":\"Service de recherche ...\",\"search-text\":\"Cliquez ici pour voir tous les résultats de la recherche GVS\",\"my-country\":\"Mon pays\",\"click-here\":\"Cliquez ici\",\"available\":\"pour afficher tous les\",\"servicesonlyokay\":\"services pour\",\"most-viewed-services\":\"Services les plus consultés\",\"find-right-service\":\"Trouvez les bons services, vérifiez leur disponibilité,\",\"find-right-service2\":\"puis choisissez la façon dont vous vous connectez et travaillez ensemble.\",\"jabber-description\":\"Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.\",\"button-value\":\"Premiers pas\",\"Searchservice\":\"Service de recherche...\"},\"footer\":{\"aditional-question\":\"Vous avez des questions supplémentaires sur la commande de  Services téléphoniques mondiaux ?\",\"please consult\":\"Veuillez consulter\",\"consult\":\"* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE, Edge et Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code\":\"FAC Code\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Conditions d'utilisation\",\"Useful Information\":\"Informations utiles\",\"Please bear in mind the following points when making a request :\":\"Veuillez garder à l'esprit les points suivants lorsque vous faites une demande:\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"Pour faire une demande, l'Employé doit exister dans BluePages (sauf pour les demandes d'annulation).\",\"You must know the IBM serial Number of the person making the request.\":\"Vous devez connaître le numéro de série IBM de la personne qui fait la demande.\",\"Only one request per employee per request type is processed at a time.\":\"Une seule demande par employé et par type de demande est traitée à la fois.\"},\"lhs\":{\"Services\":\"Prestations de service\",\"Jabber\":\"Jabber\",\"FAC Code\":\"FAC Code\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approbations en attente\",\"Revalidation Pending\":\"Revalidation en attente\",\"Resources\":\"Ressources\",\"Requests\":\"Demandes\"},\"Jabberservices\":{\"initiateJabber\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service Jabber.\",\"jnew\":\"Demander un nouveau service\",\"jupdate\":\"Mettre à jour un service existant\",\"jmove\":\"Déplacer un service existant\",\"jdelete\":\"Supprimer un service existant\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"Cette demande peut être soumise pour vous-même ou au nom d'un autre employé. Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeSearch\":\"Recherche d'employés\",\"requestfor\":\"À qui s'adresse cette demande\",\"Myself\":\"Moi-même\",\"AnotherEmployee\":\"Un autre employé\",\"Name\":\"Nom\",\"SerialNumber\":\"Numéro de série\",\"EmployeeSerialNumber\":\"Numéro de série de l'employé\",\"forexample\":\"(par exemple 012789)\",\"CountryCode\":\"Code postal\",\"SelectOne\":\"Sélectionnez-en un\",\"norecord\":\"Il n'y a pas d'enregistrement d'un employé IBM avec le numéro de série \",\"availablefromBluePages\":\"disponible auprès de BluePages\",\"opps\":\"Opps! Quelque chose s'est usé Veuillez réessayer plus tard.\",\"JabberLocation\":\"Emplacement de Jabber / Emplacement du numéro de téléphone\",\"Voicemail\":\"Messagerie vocale\",\"ClassofService\":\"Classe de service\",\"pleasesubmittostart\":\"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\"},\"servicestitle\":{\"Request new Jabber service\":\"Demander un nouveau service Jabber\",\"Delete an existing service\":\"Supprimer un service existant\",\"Request a new service\":\"Demander un nouveau service\",\"Update an existing service\":\"Mettre à jour un service existant\",\"Request Move Jabber service\":\"Demander le service Move Jabber\",\"Requests\":\"Demandes\",\"Resources\":\"Ressources\",\"Update Jabber Request\":\"Mettre à jour la demande Jabber\",\"Delete Jabber Request\":\"Supprimer la demande Jabber\",\"Move Jabber Request\":\"Déplacer la demande Jabber\",\"Fixed Phone - New Request\":\"Téléphone fixe - Nouvelle demande\",\"New Fixed Phone Request\":\"Nouvelle demande de téléphone fixe\",\"Fixed Phone - Update Request\":\"Téléphone fixe - Demande de mise à jour\",\"Fixed Phone - Delete Request\":\"Téléphone fixe - Demande de suppression\",\"Deactivate an existing FAC Code\":\"Désactiver un code FAC existant\",\"FAC Code Deactivate Request\":\"Demande de désactivation du code FAC\",\"Request a new FAC Code\":\"Demander un nouveau code FAC\",\"Fac Code New Request\":\"Nouvelle demande de code FAC\",\"Update an existing FAC code\":\"Mettre à jour un code FAC existant\",\"FAC Code Update Request\":\"Demande de mise à jour du code FAC\",\"Reset an existing FAC code\":\"Réinitialiser un code FAC existant\",\"FAC Code Reset Request\":\"Demande de mise à jour du code FAC\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"Si les informations suivantes sont correctes, cliquez sur Suivant. Toute erreur doit être corrigée dans le\",\"BluePagesrecord\":\"enregistrer BluePages\",\"beforecontinuing\":\"avant de continuer.\",\"EmployeeInformation\":\"Information sur les employés\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"Name\":\"Nom:\",\"SerialNumber\":\"Numéro de série:\",\"JobResponsibility\":\"Responsabilité du travail:\",\"BusinessUnit\":\"Unité commerciale:\",\"Department\":\"département:\",\"Country\":\"Pays:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander un compte Jabber.\",\"itnexistsforuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour cet utilisateur est .\",\"nojabber\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"nojabberusethislink\":\"Le numéro de série que vous avez entré ne possède pas de numéro de téléphone IP (ITN) et n'est donc pas éligible pour Jabber. Veuillez utiliser ce lien pour faire une demande d'ITN \",\"GlobalVoiceInfrastructure\":\"Infrastructure vocale mondiale.\",\"receiveITN\":\"vous avez reçu l'ITN, vous pouvez alors demander Jabber. Merci.\",\"notauthorizedtoaccessjabber\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter\",\"notauthorizedtoaccessip\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter\",\"noteligibletorequestmorethanonejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander plus d'un compte Jabber.\",\"ITNexistsforthisuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour ce compte jabber d'utilisateurs est\",\"jabberconfiguration\":\"lié à la configuration de Jabber peut être trouvé à\",\"furtherassistance\":\"Pour toute assistance supplémentaire, veuillez contacter\",\"alreadyone\":\"le numéro de série que vous avez entré en a déjà un\",\"inprogess\":\"est en cours et le numéro de la demande est\",\"ongoingrequestsbyclickonrequestpage\":\"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.\",\"nooutstandingreq\":\"Aucune demande en suspens n'a été trouvée pour le numéro de série.\",\"noresources\":\"Il n'y a pas de ressources pour ce numéro de série.\",\"nojabberforthisserial\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"BACK\":\"DOS\",\"NEXT\":\"SUIVANTE\",\"SUBMIT1\":\"NOUS FAIRE PARVENIR\",\"alreadyonerequestinprogress\":\"Le numéro de série que vous avez entré a déjà une nouvelle demande Jabber est en cours et le numéro de demande est\",\"alreadyoneupdaterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de mise à jour Jabber est en cours et le numéro de demande est\",\"alreadyonemoverequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de déplacement Jabber est en cours et le numéro de demande est\",\"alreadyonedeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est\",\"alreadyonefacdeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression FAC est en cours et le numéro de demande est\",\"enterserialnumber\":\"Please enter a serial number\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"OfficeLocation\":\"Emplacement du bureau\",\"Campus\":\"Campus\",\"Funded\":\"Financé\",\"ChargeDepartmentCode\":\"Code du département de facturation\",\"BusinessUnit\":\"Unité commerciale\",\"Projectid\":\"ID du projet (pour les employés de GBS uniquement)\",\"alreadyhaveFixedPhone\":\"Si vous avez déjà un téléphone fixe, veuillez fournir l'identifiant\",\"toprocessPI\":\"En soumettant cette demande de provisioning, vous consentez expressément par écrit à IBM pour traiter les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\",\"JabberRequestDetails\":\"Détails de la demande Jabber\",\"FixedPhoneIdentifier\":\"Identifiant de téléphone fixe\",\"Submissioninprogress\":\"La soumission de votre demande est en cours.Ne revenez pas en arrière ou n'actualisez pas la page.\",\"Submissionbeinginprogress\":\"Votre demande est en cours d'envoi. Ne pas actualiser ni revenir en arrière.\",\"Back\":\"DOS\",\"Next\":\"SUIVANTE\",\"SelectLocation\":\"Sélectionnez l'emplacement\"},\"Jabberupdate\":{\"SELECTONE\":\"CHOISISSEZ UNE\",\"ReviewDetails\":\"revoir les détails\",\"JabberNumber\":\"Numéro Jabber\",\"SelectJabberNumber\":\"Sélectionnez le numéro Jabber\",\"Jabber/PhoneNumberLocation\":\"Sélectionnez Emplacement du numéro de téléphone / Jabber\"},\"Jabbermove\":{\"JabbertoMove\":\"Numéro Jabber à déplacer\",\"ProjectIId\":\"Id du projet\",\"AccountId\":\"Identifiant de compte\",\"ICA Code\":\"Code ICA\",\"NewOfficeLocation\":\"Nouveau bureau\",\"Building\":\"Imeuble\"},\"requesttrans\":{\"Requests\":\"Demandes\",\"beingsubmitted\":\"Votre demande est en cours d'envoi.Ne pas actualiser ni revenir en arrière.\",\"EmployeeRequestsDetails\":\"Détails des demandes des employés\",\"ResourceType\":\"Type de ressource\",\"CreatedDate\":\"Date de création\",\"Status\":\"Statut\",\"TrackingNumber\":\"Numéro de suivi\",\"AdditionalComments\":\"Commentaires supplémentaires\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Votre demande de\",\"hasbeensubmitted\":\"a été soumis\",\"Trackingrequest\":\"Le numéro de suivi de la demande est :\",\"receiveemailnotification\":\"Vous recevrez une notification par e-mail, lorsque votre demande aura été traitée.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Détails des ressources des employés\",\"Supplier\":\"Fournisseuse\",\"Phone/Dial\":\"Téléphone / Numérotation\",\"Innumber\":\"En nombre\",\"AdditionalInformation\":\"Informations Complémentaires\"},\"alerttranslation\":{\"EXITREQUEST\":\"DEMANDE DE SORTIE\",\"digitserialnumber\":\"Le numéro de série de l'employé doit être composé de 6 caractères\",\"enterserialnumber\":\"Veuillez saisir un numéro de série\",\"moverequest\":\"La demande de déplacement supprimera l'ITN actuel et un nouvel ITN sera attribué. Cliquez sur OK pour continuer ou sur Annuler pour quitter\",\"selectcountrycode\":\"Veuillez sélectionner le code du pays\",\"Only\":\"Seule\",\"serialnumbersareallowed\":\"Les numéros de série sont autorisés à créer une demande de\",\"selectlocation\":\"Veuillez sélectionner l'emplacement\",\"selectjabbernumber\":\"Veuillez sélectionner le numéro Jabber\"},\"topui\":{\"HOME\":\"DOMICILE\",\"SERVICES\":\"PRESTATIONS DE SERVICE\",\"DATAPRIVACY\":\"CONFIDENTIALITÉ DES DONNÉES\",\"HELP\":\"AIDER\",\"FEEDBACK\":\"RÉTROACTION\",\"CHANGECOUNTRY\":\"CHANGER DE PAYS\"},\"steps\":{\"Employee Search\":\"Recherche d'employés\",\"Employee Information\":\"Information sur les employés\",\"Employee Entry Details\":\"Détails de l'entrée des employés\",\"Review Details\":\"Détails de l'examen\",\"Employee Resources Details\":\"Détails des ressources des employés\",\"Employee Requests Details\":\"Détails des demandes des employés\",\"STEP 1\":\"MARCHER 1\",\"STEP 2\":\"MARCHER 2\",\"STEP 3\":\"MARCHER 3\",\"STEP 4\":\"MARCHER 4\"}}");
 
 /***/ }),
 
@@ -9127,7 +10851,7 @@ class VoipEmeaNewComponent {
     }
 }
 VoipEmeaNewComponent.ɵfac = function VoipEmeaNewComponent_Factory(t) { return new (t || VoipEmeaNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_translate_config_service__WEBPACK_IMPORTED_MODULE_7__["TranslateConfigService"])); };
-VoipEmeaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipEmeaNewComponent, selectors: [["app-voip-emea-new"]], decls: 92, vars: 15, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-left-0_5"], ["id", "tabsubform", "width", "100%"], ["valign", "top"], ["colspan", "2", "width", "47%"], ["for", "LocationId", "translate", ""], ["width", "53%"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "Location", "rows", "2", "cols", "40", "id", "LocationId", "title", "Location", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", 3, "change"], ["location", ""], ["value", ""], ["name", "Location", 3, "value", 4, "ngFor", "ngForOf"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["width", "5%"], ["width", "41%"], ["src", "/icons/ecblank.gif", "alt", "", "width", "1", "height", "1", "border", "0"], [1, "ds-row", "ds-grid", "ds-mar-b-5", "ds-pad-r-1"], [1, "ds-col-lg-2", "ds-push-lg-8"], ["type", "button", "translate", "", 1, "ds-button", "ds-secondary", "ds-no-expand", "ds-text-align-center", "ds-mar-b-0", 2, "width", "100%", 3, "click"], ["type", "submit", "translate", "", 1, "ds-button", "ds-primary", "ds-pad-l-0", "ds-pad-r-0", "ds-text-align-center", 2, "width", "100%"], [3, "hidden"], ["translate", "", 1, "ds-pad-t-0_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "tabsubform", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "class", "ds-button ds-secondary \n                                ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto \n                                ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 \n                                ds-pad-r-3", 3, "routerLink", "queryParams", "value", 4, "ngIf"], ["name", "Location", 3, "value"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], ["type", "submit", "name", "submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], ["type", "button", "name", "exit", "type", "button", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams", "value"]], template: function VoipEmeaNewComponent_Template(rf, ctx) { if (rf & 1) {
+VoipEmeaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipEmeaNewComponent, selectors: [["app-voip-emea-new"]], decls: 92, vars: 15, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-left-0_5"], ["id", "tabsubform", "width", "100%"], ["valign", "top"], ["colspan", "2", "width", "47%"], ["for", "LocationId", "translate", ""], ["width", "53%"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "Location", "rows", "2", "cols", "40", "id", "LocationId", "title", "Location", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["value", ""], ["name", "Location", 3, "value", 4, "ngFor", "ngForOf"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["width", "5%"], ["width", "41%"], ["src", "/icons/ecblank.gif", "alt", "", "width", "1", "height", "1", "border", "0"], [1, "ds-row", "ds-grid", "ds-mar-b-5", "ds-pad-r-1"], [1, "ds-col-lg-2", "ds-push-lg-8"], ["type", "button", "translate", "", 1, "ds-button", "ds-secondary", "ds-no-expand", "ds-text-align-center", "ds-mar-b-0", 2, "width", "100%", 3, "click"], ["type", "submit", "translate", "", 1, "ds-button", "ds-primary", "ds-pad-l-0", "ds-pad-r-0", "ds-text-align-center", 2, "width", "100%"], [3, "hidden"], ["translate", "", 1, "ds-pad-t-0_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "tabsubform", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "class", "ds-button ds-secondary \n                                ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto \n                                ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 \n                                ds-pad-r-3", 3, "routerLink", "queryParams", "value", 4, "ngIf"], ["name", "Location", 3, "value"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], ["type", "submit", "name", "submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], ["type", "button", "name", "exit", "type", "button", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams", "value"]], template: function VoipEmeaNewComponent_Template(rf, ctx) { if (rf & 1) {
         const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -9454,6 +11178,883 @@ AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCompo
 
 /***/ }),
 
+/***/ "UiN3":
+/*!***************************************************************************!*\
+  !*** ./src/app/components/hp-indonesia-new/hp-indonesia-new.component.ts ***!
+  \***************************************************************************/
+/*! exports provided: HpIndonesiaNewComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HpIndonesiaNewComponent", function() { return HpIndonesiaNewComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _config_payload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../config/payload */ "dP2x");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_services/cookie-handler.service */ "oxqP");
+/* harmony import */ var _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services/cloudant.service */ "Rfmm");
+/* harmony import */ var _services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services/servicenow.service */ "qWuM");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _services_bp_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../_services/bp.service */ "Qz7Q");
+/* harmony import */ var _topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../topcountryframe/topcountryframe.component */ "aDsg");
+/* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../navigation/navigation.component */ "mvyS");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../steps/steps.component */ "52XD");
+
+
+
+
+
+
+
+
+
+
+
+
+
+function HpIndonesiaNewComponent_option_33_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 76);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const fl_location_r15 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_location_r15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_location_r15, "");
+} }
+function HpIndonesiaNewComponent_option_48_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 77);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const device_r16 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", device_r16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", device_r16, "");
+} }
+function HpIndonesiaNewComponent_option_62_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 78);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const model_r17 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", model_r17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", model_r17, "");
+} }
+function HpIndonesiaNewComponent_div_75_Template(rf, ctx) { if (rf & 1) {
+    const _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 79);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Search result: ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "a", 80);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpIndonesiaNewComponent_div_75_Template_a_click_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r19); const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r18.onEmailClick(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx_r6.emailResult);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r6.email);
+} }
+function HpIndonesiaNewComponent_ng_template_76_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 81);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " No match, please try again");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpIndonesiaNewComponent_label_110_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "e.g. IBMC Lv21 EM desk ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpIndonesiaNewComponent_label_111_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "e.g. IBMC Lv21 conference room 3 ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpIndonesiaNewComponent_div_195_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 82);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 83);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Your request submission is in progress.Do not Go back or Refresh the page.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 84);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpIndonesiaNewComponent_input_200_Template(rf, ctx) { if (rf & 1) {
+    const _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 85);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpIndonesiaNewComponent_input_200_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21); const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r20.BackButton(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpIndonesiaNewComponent_input_202_Template(rf, ctx) { if (rf & 1) {
+    const _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 86);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpIndonesiaNewComponent_input_202_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r22.submit_snow(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+class HpIndonesiaNewComponent {
+    constructor(router, cookie, cloudantservice, route, servicenowservice, location, bpservices) {
+        this.router = router;
+        this.cookie = cookie;
+        this.cloudantservice = cloudantservice;
+        this.route = route;
+        this.servicenowservice = servicenowservice;
+        this.location = location;
+        this.bpservices = bpservices;
+        this.cloudantData = [];
+        this.servicesData = [];
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        this.showBusinessNeed = true;
+        this.Voice_Type = "No";
+        this.models = [];
+        this.hideDeviceSection = true;
+        this.showforAnyDevice = true;
+        this.showforFixedPhone = true;
+        this.errorinfo = false;
+        this.COS = 'national';
+        this.isButtonVisible = true;
+        this.isSpinnerVisible = false;
+        this.ccode = '';
+        this.devices = ['Extension Mobility Station', 'Conference / Meeting Room Phone', 'Fixed Phone User'];
+        this.hideProjectId = false;
+        this.selected_device = '';
+        this.voicemail = 'no';
+        this.go = false;
+        this.goClick = true;
+        this.empID = '';
+        this.empIDEmail = '';
+        this.empIDValue = '';
+        this.emailResult = false;
+        this.emailClick = false;
+        this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["fixedphone_new"]();
+        this.reviewDetailsIndia = {
+            officeLocation: "",
+            campus: "",
+            funded: "",
+            chargeDepartmentCode: "",
+            businessUnit: "",
+            projectId: "",
+            accountId: " ",
+            Voice_Type_Disp: true,
+            icano_Disp: "",
+            Location_final: "",
+            accid_Disp: "",
+            reqno: "",
+            icaCode: "",
+            device: "",
+            model: "",
+            employeeId: "",
+            voicemail: "",
+            cos: "",
+            justification: "",
+            description: "",
+            mac: "",
+        };
+    }
+    // Submit to Snow Jabber new code added by Swarnava ends	
+    backClick() {
+        sessionStorage.setItem('backbutton', 'yes');
+        sessionStorage.setItem('step', 'step1');
+        this.location.back();
+    }
+    selectedDevice(device) {
+        this.models = [];
+        this.modelValue = '';
+        if (device != '') {
+            this.hideDeviceSection = false;
+        }
+        if (device == '') {
+            this.hideDeviceSection = true;
+        }
+        if (device.toUpperCase() == 'FIXED PHONE USER') {
+            this.showforAnyDevice = false;
+            this.showforFixedPhone = false;
+            this.models = [...this.fpModels];
+            this.hideEmpID = false;
+            this.hideVoicemail = false;
+            if (this.COS == 'international') {
+                this.showBusinessNeed = false;
+            }
+        }
+        if (device.toUpperCase() == 'EXTENSION MOBILITY STATION') {
+            this.showforAnyDevice = false;
+            this.showforFixedPhone = true;
+            this.models = [...this.emModels];
+            this.hideEmpID = true;
+            this.hideVoicemail = true;
+            this.showBusinessNeed = true;
+        }
+        if (device.toUpperCase() == 'CONFERENCE / MEETING ROOM PHONE') {
+            this.showforAnyDevice = false;
+            this.showforFixedPhone = true;
+            this.models = [...this.cModels];
+            this.hideEmpID = true;
+            this.hideVoicemail = true;
+            this.showBusinessNeed = true;
+        }
+    }
+    onEmpIDChange() {
+        this.go = false;
+        this.empIDChanged(this.empID);
+    }
+    empIDChanged(id) {
+        if (this.empIDValue != id) {
+            this.empIDValue = id;
+            this.changed = true;
+            this.gggg = false;
+        }
+        else {
+            this.changed = false;
+            this.gggg = true;
+        }
+    }
+    fetchEmployee() {
+        if (this.empID == '') {
+            alert('Please enter the Employee ID');
+            return false;
+        }
+        else if (this.empID.length != 6) {
+            alert('Please enter 6 digit Employee ID');
+            return false;
+        }
+        else {
+            this.countryCode = sessionStorage.getItem('countryroute');
+            this.employeeID = this.empID.concat(this.countryCode);
+            this.bpservices.bpdetails(this.employeeID).subscribe(data => {
+                this.goClick = false;
+                this.gggg = true;
+                console.log(' BP Details', data.userdata);
+                if (data.userdata) {
+                    this.email = data.username.preferredidentity;
+                    this.go = true;
+                    this.goResults = true;
+                    this.emailClick = false;
+                }
+                else {
+                    this.go = false;
+                    this.goResults = false;
+                }
+            });
+            return false;
+        }
+    }
+    onEmailClick() {
+        this.empIDEmail = this.employeeID + "--" + this.email;
+        this.empID = this.empIDEmail;
+        this.emailClick = true;
+        this.emailResult = true;
+    }
+    classofservice(cos) {
+        if (cos == 'international') {
+            this.showBusinessNeed = false;
+        }
+        else {
+            this.showBusinessNeed = true;
+        }
+    }
+    entryDetails(formData) {
+        if (formData.value.Location_1.toUpperCase() == 'SELECT LOCATION' || formData.value.Location_1 == '') {
+            alert('Please select the Location');
+            return;
+        }
+        if (formData.value.Device_Type == '') {
+            alert('Please select a device type');
+            return;
+        }
+        if (formData.value.Model_Type == '') {
+            alert('Please select a type of model');
+            return;
+        }
+        if (this.goResults == false && formData.value.StepMentor != '' && this.gggg == true && this.showforFixedPhone == false) {
+            alert('No match was found for the employee ID. Please provide the correct employee ID');
+            this.empID = '';
+            return;
+        }
+        if (formData.value.StepMentor == '' && this.showforFixedPhone == false && this.showforFixedPhone == false) {
+            alert('Please enter the employee ID');
+            return;
+        }
+        if (formData.value.StepMentor.length != 6 && this.empIDEmail == '' && this.goClick == true && this.showforFixedPhone == false) {
+            alert('Please enter 6 digit Employee ID');
+            return;
+        }
+        if (this.go == false && this.changed == true && this.showforFixedPhone == false) {
+            alert('Please click Go to fetch employee details');
+            return;
+        }
+        if (this.emailClick == false && this.showforFixedPhone == false) {
+            alert('Please click search result to fetch Employee details');
+            return;
+        }
+        if (formData.value.Justification == '' && this.showBusinessNeed == false) {
+            alert('Please enter the business need for Class of Service.');
+            return;
+        }
+        if (formData.value.Description == '') {
+            alert('Please Enter a description and it should not be more than 30 characters');
+            return;
+        }
+        if (formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
+            alert('Please enter 12 characters MAC address');
+            return;
+        }
+        var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
+        if (pat1.test(formData.value.MACAddress)) {
+            alert('MAC field value to be in combination of 0 to 9 and A to F');
+            return;
+        }
+        this.isEntryForm = true;
+        this.isReviewForm = false;
+        this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
+        // this.reviewDetailsIndia.campus = formData.value.Buildings;	
+        this.reviewDetailsIndia.device = formData.value.Device_Type;
+        this.reviewDetailsIndia.model = formData.value.Model_Type;
+        this.reviewDetailsIndia.employeeId = formData.value.StepMentor;
+        this.reviewDetailsIndia.cos = formData.value.cos;
+        this.reviewDetailsIndia.justification = formData.value.Justification;
+        this.reviewDetailsIndia.description = formData.value.Description;
+        this.reviewDetailsIndia.mac = formData.value.MACAddress;
+    }
+    BackButton() {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        // this.fixedPhoneIdentifier = false;	
+    }
+    submit_snow() {
+        this.reqno = this.countrydetails.isocode + "-NS-" + this.cnum.substr(0, 6) + "-" + gettime();
+        sessionStorage.setItem('reqno', this.reqno);
+        this.isButtonVisible = false;
+        this.isSpinnerVisible = true;
+        this.payload.orinator_payload = this.orgi;
+        this.payload.cNum_payload = this.cnum;
+        this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
+        this.payload.ReqNo = this.reqno;
+        this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
+        this.payload.Model_Disp = this.reviewDetailsIndia.model;
+        this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
+        this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+        this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation;
+        this.payload.COS_Disp = this.reviewDetailsIndia.cos;
+        this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+        this.payload.level1_japproval = this.countrydetails.level1_japproval;
+        this.payload.level2_japproval = this.countrydetails.level2_japproval;
+        this.payload.SLA_type = this.countrydetails.SLA_type;
+        this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
+        this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
+        this.payload.countryname = this.countrydetails.name;
+        this.payload.request_type = 'fixedphone_new';
+        this.payload.evolution_instance = this.countrydetails.evolution_instance;
+        this.payload.country_code = this.countrydetails.code;
+        this.servicenowservice.submit_request_fixed_new(this.payload).subscribe(data => {
+            console.log('response', data);
+            if (data)
+                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+        }, (error) => {
+            console.error('error caught in component' + error);
+            this.isSpinnerVisible = false;
+            this.errorinfo = true;
+            this.isButtonVisible = true;
+        });
+    }
+    ngOnInit() {
+        var _a, _b, _c, _d, _e, _f;
+        // Submit to Snow Jabber new code added by Swarnava	
+        this.orgi = this.cookie.getCookie('ccode');
+        this.cnum = sessionStorage.getItem('cnum');
+        this.countrydetails = sessionStorage.getItem('countrydetails');
+        this.countrydetails = JSON.parse(this.countrydetails);
+        // Submit to Snow Jabber new code added by Swarnava ends	
+        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+        this.route.queryParams
+            .subscribe(params => {
+            console.log(params);
+            this.service = params.service;
+            this.pcode = params.country;
+            console.log("navigation component" + this.pcode);
+        });
+        this.devices = (_a = sessionStorage.getItem('fdevices')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
+        this.devices = this.devices.replace('"', '').split(',');
+        this.emModels = (_b = sessionStorage.getItem('emmodels')) === null || _b === void 0 ? void 0 : _b.replace('"', '');
+        this.emModels = this.emModels.replace('"', '').split(',');
+        this.fpModels = (_c = sessionStorage.getItem('fpmodels')) === null || _c === void 0 ? void 0 : _c.replace('"', '');
+        this.fpModels = this.fpModels.split(',');
+        this.cModels = (_d = sessionStorage.getItem('cmmodels')) === null || _d === void 0 ? void 0 : _d.replace('"', '');
+        this.cModels = this.cModels.split(',');
+        this.locationlist = (_e = sessionStorage.getItem('locationdetails')) === null || _e === void 0 ? void 0 : _e.replace('"', '');
+        this.locationlist = (_f = this.locationlist) === null || _f === void 0 ? void 0 : _f.replace('"', '').split(',');
+        const servicesData = {
+            "data": [
+                {
+                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "step": 3,
+                }
+            ]
+        };
+        this.reqFor = sessionStorage.getItem('radioAction');
+        this.servicesData = servicesData.data[0];
+        //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
+        //alert(this.reviewDetailsIndia.reqno);	
+        this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
+        this.employeeInfo = JSON.parse(this.employeeInfo1);
+        if (this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null) {
+            this.hideProjectId = true;
+        }
+    }
+    previousStep(event) {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        // this.fixedPhoneIdentifier = false;	
+    }
+}
+HpIndonesiaNewComponent.ɵfac = function HpIndonesiaNewComponent_Factory(t) { return new (t || HpIndonesiaNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bp_service__WEBPACK_IMPORTED_MODULE_7__["bpservices"])); };
+HpIndonesiaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpIndonesiaNewComponent, selectors: [["app-hp-indonesia-new"]], decls: 203, vars: 41, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "DeviceType", 1, "ds-text-capitalize"], ["rows", "2", "name", "Device_Type", "cols", "40", "id", "DeviceTypeId", "title", "Device Type", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["name", "Device_Type", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t3", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 3, "hidden"], ["valign", "top", 3, "hidden"], ["rows", "2", "name", "Model_Type", "cols", "40", "id", "ModelTypeId", "title", "Model", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Model_Type", 3, "value", 4, "ngFor", "ngForOf"], ["for", "EmployeeID", 1, "ds-text-capitalize"], [2, "display", "ruby-base-container"], ["name", "StepMentor", "title", "Employee ID", 1, "ds-input", 2, "width", "250px !important", "display", "inline-block", 3, "ngModel", "ngModelChange", "change"], [1, "ds-button", "ds-small", "ds-width-auto", 2, "padding-right", "1rem", "padding-left", "1rem", "margin-left", "2px", "margin-bottom", "0px", 3, "click"], [3, "hidden"], ["id", "StepMentorDiv", "style", "font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;", 3, "hidden", 4, "ngIf", "ngIfElse"], ["elseBlock", ""], ["for", "cos", 1, "ds-text-capitalize"], ["rows", "2", "name", "cos", "cols", "40", "id", "COSId", "title", "Class of Service", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["cos", ""], ["value", "national"], ["value", "international"], ["colspan", "2", "width", "46%"], ["for", "Justification", 1, "ds-text-capitalize", "ds-pad-t-1"], ["width", "54%"], ["name", "Justification", "title", "Business Justification", "tabindex", "2", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "Description", 1, "ds-text-capitalize", "ds-pad-t-1"], [1, "ds-input-container", "ds-pad-t-1"], ["name", "Description", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "DescriptionId", "title", "Description", "maxlength", "30", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [4, "ngIf"], ["for", "MACAddress", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["name", "MACAddress", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "MACAddressId", "title", "MAC Address", "maxlength", "12", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["for", "addId1"], ["for", "device"], ["for", "model"], ["for", "employeeId"], ["for", "cos"], ["for", "justification"], ["for", "description"], ["for", "mac"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Back", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Submit", 3, "click", 4, "ngIf"], ["name", "Location_1", 3, "value"], ["name", "Device_Type", 3, "value"], ["name", "Model_Type", 3, "value"], ["id", "StepMentorDiv", 2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px", 3, "hidden"], [3, "click"], [2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "submit", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpIndonesiaNewComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-navigation", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 5, 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function HpIndonesiaNewComponent_Template_form_submit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r24); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.entryDetails(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Fixed Phone - New Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " Fields marked with an asterisk (");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, ") are required. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "app-steps", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "h2", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "Employee Entry Details");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "table", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "label", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, " Office Location");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "select", 17, 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "option", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Select Location");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](33, HpIndonesiaNewComponent_option_33_Template, 2, 2, "option", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "table", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "label", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39, "Type of Device ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "select", 23, 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpIndonesiaNewComponent_Template_select_change_44_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r24); const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](45); return ctx.selectedDevice(_r3.value); })("ngModelChange", function HpIndonesiaNewComponent_Template_select_ngModelChange_44_listener($event) { return ctx.selected_device = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "option", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](47, "Select Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](48, HpIndonesiaNewComponent_option_48_Template, 2, 2, "option", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "table", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "label", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54, "Type of Model ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "select", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpIndonesiaNewComponent_Template_select_ngModelChange_59_listener($event) { return ctx.modelValue = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "option", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](61, "Select Model");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](62, HpIndonesiaNewComponent_option_62_Template, 2, 2, "option", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "label", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](66, "Employee ID ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](68, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "label", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "input", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpIndonesiaNewComponent_Template_input_ngModelChange_71_listener($event) { return ctx.empID = $event; })("change", function HpIndonesiaNewComponent_Template_input_change_71_listener() { return ctx.onEmpIDChange(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "button", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpIndonesiaNewComponent_Template_button_click_72_listener() { return ctx.fetchEmployee(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](73, "Go");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "div", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](75, HpIndonesiaNewComponent_div_75_Template, 6, 2, "div", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](76, HpIndonesiaNewComponent_ng_template_76_Template, 3, 0, "ng-template", null, 36, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](78, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](80, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "label", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](82, "Select Class of Service (COS)");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](83, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](85, "select", 38, 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpIndonesiaNewComponent_Template_select_ngModelChange_85_listener($event) { return ctx.COS = $event; })("change", function HpIndonesiaNewComponent_Template_select_change_85_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r24); const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](86); return ctx.classofservice(_r9.value); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "option", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](88, "National");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](89, "option", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](90, "International");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](92, "td", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](93, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](94, "label", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](95, "Business Need (Why is international required?) ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](96, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](97, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](98, "td", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](99, "textarea", 45);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](100, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](101, "td", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](102, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](103, "label", 46);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](104, "Description of the Device ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](105, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](106, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](107, "td", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](108, "div", 47);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](109, "input", 48);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](110, HpIndonesiaNewComponent_label_110_Template, 2, 0, "label", 49);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](111, HpIndonesiaNewComponent_label_111_Template, 2, 0, "label", 49);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](112, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](113, "td", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](114, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](115, "label", 50);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](116, "MAC Address of the Device ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](117, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](118, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](119, "td", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](120, "div", 51);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](121, "input", 52);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](122, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](123, "Note:Combination of (0 to 9 , A to F) and Length:12");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](124, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](125, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](126, "div", 53);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](127, "div", 54);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](128, "div", 55);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](129, "span", 56);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](130, "input", 57);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpIndonesiaNewComponent_Template_input_click_130_listener() { return ctx.backClick(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](131, "span", 58);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](132, "input", 59);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](133, "form", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](134, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](135, "Fixed Phone - New Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](136, "div", 60);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](137, "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](138, "div", 61);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](139, "app-steps", 62);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpIndonesiaNewComponent_Template_app_steps_previousStep_139_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](140, "h2", 63);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](141, "Review Details");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](142, "table", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](143, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](144, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](145, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](146, "label", 64);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](147, "Office Location");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](148, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](149);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](150, "table", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](151, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](152, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](153, "td", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](154, "label", 65);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](155, "Type of Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](156, "td", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](157);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](158, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](159, "td", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](160, "label", 66);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](161, "Type of Model");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](162, "td", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](163);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](164, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](165, "td", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](166, "label", 67);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](167, "Employee ID");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](168, "td", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](169);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](170, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](171, "td", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](172, "label", 68);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](173, "Class of Service");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](174, "td", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](175);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](176, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](177, "td", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](178, "label", 69);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](179, "Business Justification");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](180, "td", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](181);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](182, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](183, "td", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](184, "label", 70);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](185, "Description of Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](186, "td", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](187);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](188, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](189, "td", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](190, "label", 71);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](191, "MAC Address of the Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](192, "td", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](193);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](194, "div", 72);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](195, HpIndonesiaNewComponent_div_195_Template, 4, 0, "div", 73);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](196, "div", 53);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](197, "div", 54);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](198, "div", 55);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](199, "span", 56);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](200, HpIndonesiaNewComponent_input_200_Template, 1, 0, "input", 74);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](201, "span", 58);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](202, HpIndonesiaNewComponent_input_202_Template, 1, 0, "input", 75);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](77);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dataNav", ctx.servicesData)("cloudantData", ctx.cloudantData);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isEntryForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.locationlist);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.selected_device);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.devices);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.hideDeviceSection);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforAnyDevice);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.modelValue);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.models);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforFixedPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.empID);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.goClick);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.goResults)("ngIfElse", _r7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforFixedPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.COS);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showBusinessNeed);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforAnyDevice);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.selected_device == "Extension Mobility Station");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.selected_device == "Conference / Meeting Room Phone");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforAnyDevice);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isReviewForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.officeLocation);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.device);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.model);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.hideEmpID);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.employeeId);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforFixedPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.cos);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showBusinessNeed);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.justification);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.description);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.mac);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isSpinnerVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgForm"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["DefaultValueAccessor"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["MaxLengthValidator"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJocC1pbmRvbmVzaWEtbmV3LmNvbXBvbmVudC5jc3MifQ== */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HpIndonesiaNewComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-hp-indonesia-new',
+                templateUrl: './hp-indonesia-new.component.html',
+                styleUrls: ['./hp-indonesia-new.component.css']
+            }]
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }, { type: _services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"] }, { type: _angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"] }, { type: _services_bp_service__WEBPACK_IMPORTED_MODULE_7__["bpservices"] }]; }, null); })();
+function gettime() {
+    var date = new Date();
+    var minutes1 = '';
+    var seconds1 = '';
+    var seconds = date.getSeconds();
+    var minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes1 = '0' + minutes;
+    }
+    else {
+        minutes1 = '' + minutes;
+    }
+    if (seconds < 10) {
+        seconds1 = '0' + seconds;
+    }
+    else {
+        seconds1 = '' + seconds;
+    }
+    console.log(minutes1 + seconds1);
+    return minutes1 + seconds1;
+}
+
+
+/***/ }),
+
 /***/ "Uo6X":
 /*!*******************************************************************!*\
   !*** ./src/app/components/voip-in-move/voip-in-move.component.ts ***!
@@ -9490,16 +12091,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function VoipInMoveComponent_div_23_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "employeeinfotrans.nojabber");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function VoipInMoveComponent_div_24_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 43);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 44);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "employeeinfotrans.alreadyonemoverequestinprogress");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -9512,7 +12113,7 @@ function VoipInMoveComponent_div_24_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "span", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "employeeinfotrans.furtherassistance ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "a", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "a", 45);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "#voice-at-ibm");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, ".");
@@ -9526,7 +12127,7 @@ function VoipInMoveComponent_div_24_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r2.identifier, ".");
 } }
 function VoipInMoveComponent_table_25_option_14_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 53);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -9537,11 +12138,11 @@ function VoipInMoveComponent_table_25_option_14_Template(rf, ctx) { if (rf & 1) 
 } }
 function VoipInMoveComponent_table_25_Template(rf, ctx) { if (rf & 1) {
     const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 46);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tbody");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "tr", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Jabbermove.JabbertoMove");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 9);
@@ -9549,13 +12150,13 @@ function VoipInMoveComponent_table_25_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "td", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "select", 50, 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "select", 49, 50);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function VoipInMoveComponent_table_25_Template_select_change_10_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r15); const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](11); const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r14.getjabberNumberVal(_r11.value); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "option", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "option", 51);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Select One");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, VoipInMoveComponent_table_25_option_14_Template, 2, 2, "option", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, VoipInMoveComponent_table_25_option_14_Template, 2, 2, "option", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -9565,10 +12166,10 @@ function VoipInMoveComponent_table_25_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r3.jabberNumber);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r3.Jabber);
 } }
 function VoipInMoveComponent_div_26_option_15_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 85);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 80);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -9578,7 +12179,7 @@ function VoipInMoveComponent_div_26_option_15_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_location_r19, "");
 } }
 function VoipInMoveComponent_div_26_option_27_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 53);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -9590,11 +12191,11 @@ function VoipInMoveComponent_div_26_option_27_Template(rf, ctx) { if (rf & 1) {
 function VoipInMoveComponent_div_26_Template(rf, ctx) { if (rf & 1) {
     const _r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "table", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "table", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "tbody");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "tr", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label", 55);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Jabberentrydetails.OfficeLocation");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "span", 9);
@@ -9602,20 +12203,20 @@ function VoipInMoveComponent_div_26_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "td", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 57);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "select", 58, 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "select", 57, 58);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function VoipInMoveComponent_div_26_Template_select_change_11_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r22); const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](12); const ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r21.selectedLocation(_r16.value); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "option", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "option", 51);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Select Office Location");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, VoipInMoveComponent_div_26_option_15_Template, 2, 2, "option", 60);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, VoipInMoveComponent_div_26_option_15_Template, 2, 2, "option", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "tr", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "td", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "label", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "label", 60);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, " Jabberentrydetails.Campus");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "span", 9);
@@ -9623,41 +12224,41 @@ function VoipInMoveComponent_div_26_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "td", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 57);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "select", 62);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "select", 61);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function VoipInMoveComponent_div_26_Template_select_ngModelChange_24_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r22); const ctx_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r23.campus = $event; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "option", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "option", 51);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Select One");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](27, VoipInMoveComponent_div_26_option_27_Template, 2, 2, "option", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](27, VoipInMoveComponent_div_26_option_27_Template, 2, 2, "option", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "tr", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "td", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "label", 63);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "label", 62);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "Jabberentrydetails.Funded");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "td", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 64);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "div", 65);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "label", 66);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "input", 67);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 63);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "div", 64);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "label", 65);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "input", 66);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function VoipInMoveComponent_div_26_Template_input_ngModelChange_36_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r22); const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r24.Voice_Type = $event; })("click", function VoipInMoveComponent_div_26_Template_input_click_36_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r22); const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r25.showChargeDepartmentCode(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](37, "div", 68);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "span", 69);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](37, "div", 67);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "span", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39, "Yes");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "label", 70);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "input", 71);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "label", 69);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "input", 70);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function VoipInMoveComponent_div_26_Template_input_ngModelChange_41_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r22); const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r26.Voice_Type = $event; })("click", function VoipInMoveComponent_div_26_Template_input_click_41_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r22); const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r27.hideChargeDepartmentCode(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](42, "div", 68);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "span", 69);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](42, "div", 67);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "span", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](44, "No");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -9667,8 +12268,8 @@ function VoipInMoveComponent_div_26_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "tr", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "td", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "div", 72);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "label", 73);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "div", 71);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "label", 72);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](49, "Jabberentrydetails.ChargeDepartmentCode");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "span", 9);
@@ -9677,27 +12278,27 @@ function VoipInMoveComponent_div_26_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "td", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "div", 74);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](54, "input", 75);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](55, "div", 76);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "div", 73);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](54, "input", 74);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](55, "div", 75);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "tr", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "td", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "label", 77);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "label", 76);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](59, "Jabberentrydetails.BusinessUnit");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "td", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "div", 78);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "div", 77);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](62);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "tr", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "td", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "label", 79);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "label", 78);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](66, "Jabbermove.ProjectIId");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "span", 9);
@@ -9705,38 +12306,8 @@ function VoipInMoveComponent_div_26_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "td", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "div", 78);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](71, "input", 80);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "tr", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "td", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "label", 81);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](75, "Jabbermove.AccountId");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](76, "span", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](77, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](78, "td", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "div", 78);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](80, "input", 82);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "tr", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](82, "td", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](83, "label", 83);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](84, "Jabbermove.ICACode");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](85, "span", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](86, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "td", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](88, "div", 78);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](89, "input", 84);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "div", 77);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](71, "input", 79);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -9765,10 +12336,10 @@ function VoipInMoveComponent_div_26_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx_r4.hideProjectId);
 } }
 function VoipInMoveComponent_input_36_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 86);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 81);
 } }
-function VoipInMoveComponent_div_103_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 87);
+function VoipInMoveComponent_div_91_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 82);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "p", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Jabbernewtrans.opps");
@@ -9776,30 +12347,30 @@ function VoipInMoveComponent_div_103_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function VoipInMoveComponent_div_105_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 88);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 89);
+function VoipInMoveComponent_div_93_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 83);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 84);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "requesttrans.beingsubmitted");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 90);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 85);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function VoipInMoveComponent_input_110_Template(rf, ctx) { if (rf & 1) {
+function VoipInMoveComponent_input_98_Template(rf, ctx) { if (rf & 1) {
     const _r29 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function VoipInMoveComponent_input_110_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r29); const ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r28.BackButton(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function VoipInMoveComponent_input_98_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r29); const ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r28.BackButton(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function VoipInMoveComponent_input_112_Template(rf, ctx) { if (rf & 1) {
+function VoipInMoveComponent_input_100_Template(rf, ctx) { if (rf & 1) {
     const _r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 91);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function VoipInMoveComponent_input_112_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r31); const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r30.submit_snow(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 86);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function VoipInMoveComponent_input_100_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r31); const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r30.submit_snow(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 const _c0 = function () { return ["/jabberservices"]; };
 const _c1 = function (a0, a1) { return { country: a0, service: a1 }; };
-function VoipInMoveComponent_input_113_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 92);
+function VoipInMoveComponent_input_101_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 87);
 } if (rf & 2) {
     const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](2, _c0))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](3, _c1, ctx_r10.pcode, ctx_r10.service));
@@ -9813,7 +12384,7 @@ class VoipInMoveComponent {
         this.servicenowservice = servicenowservice;
         this.location = location;
         this.hideDeptCode = true;
-        this.jabberNumber = [];
+        this.jabberNumber = [78979812, 79870945];
         this.Voice_Type = "No";
         this.hideBuilding = true;
         this.displayDiv = false;
@@ -9832,6 +12403,7 @@ class VoipInMoveComponent {
         this.servicesData = [];
         this.warninginfo = false;
         this.warninginfosnow = false;
+        this.Jabber = [];
         this.hideProjectId = false;
         this.hideSteps = false;
         this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["Jabber_Move"]();
@@ -9847,7 +12419,7 @@ class VoipInMoveComponent {
             Voice_Type_Disp: true,
             icano_Disp: "",
             Location_final: "",
-            accid_Disp: "",
+            Identifier_Disp: "",
             reqno: ""
         };
         /* this.Locations = {
@@ -9875,10 +12447,9 @@ class VoipInMoveComponent {
         if (jabberNumberVal != '') {
             this.displayDiv = true;
         }
-        else {
+        else
             this.displayDiv = false;
-            this.hideBuilding = true;
-        }
+        //alert(this.displayDiv + this.jabberNumberVal)
     }
     selectedLocation(loc) {
         this.build = [];
@@ -9911,20 +12482,12 @@ class VoipInMoveComponent {
             alert('Please select the Campus');
             return;
         }
-        if (formData.value.Department_number.toUpperCase().trim == '' && this.hideDeptCode == false) {
+        if (formData.value.Department_number.toUpperCase().trim() == '' && this.hideDeptCode == false) {
             alert('Please enter the Charge Department Code');
             return;
         }
-        if (formData.value.Projectid.trim == '' && this.hideProjectId == false) {
+        if (formData.value.Projectid.trim() == '' && this.hideProjectId == false) {
             alert('Please enter the Project ID');
-            return;
-        }
-        if (formData.value.accid.trim == '') {
-            alert('Please enter the Account ID');
-            return;
-        }
-        if (formData.value.icano.trim == '') {
-            alert('Please enter the ICA Code');
             return;
         }
         this.isEntryFormMove = true;
@@ -9936,8 +12499,6 @@ class VoipInMoveComponent {
         this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;
         this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;
         this.reviewDetailsIndia.projectId = formData.value.Projectid;
-        this.reviewDetailsIndia.accid_Disp = formData.value.accid;
-        this.reviewDetailsIndia.icano_Disp = formData.value.icano;
     }
     BackButton() {
         this.isEntryFormMove = false;
@@ -9952,15 +12513,15 @@ class VoipInMoveComponent {
         this.payload.orinator_payload = this.orgi;
         this.payload.cNum_payload = this.cnum;
         // fields picked up from form -- begins	
-        //this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
+        //this.payload. = this.reviewDetailsIndia.campus;
         // by default set to true. below line can be removed if needed.	
         //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
         this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;
         // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
-        // this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;
+        this.payload.Identifier_Disp = this.reviewDetailsIndia.jabberNumbertoMove;
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
         this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
-        this.payload.Location_final = this.reviewDetailsIndia.campus;
+        this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends	
@@ -9995,7 +12556,6 @@ class VoipInMoveComponent {
         this.hideDeptCode = true;
     }
     ngOnInit() {
-        var _a, _b, _c;
         this.orgi = this.cookie.getCookie('ccode');
         this.cnum = sessionStorage.getItem('cnum');
         this.countrydetails = sessionStorage.getItem('countrydetails');
@@ -10008,54 +12568,55 @@ class VoipInMoveComponent {
         }
         else if (this.sessionwarninginfosnow == 'true1') {
             this.warninginfosnow = true;
-            this.identifier = (_a = sessionStorage.getItem('identifier')) === null || _a === void 0 ? void 0 : _a.replace(" ", "");
+            this.identifier = sessionStorage.getItem('identifier');
         }
         else {
             this.identifier = sessionStorage.getItem('identifier');
             this.identifier = this.identifier.split(',');
-            this.jabberNumber = [...this.identifier];
+            this.Jabber = [...this.identifier];
         }
         this.route.queryParams
             .subscribe(params => {
+            var _a, _b;
             console.log(params);
             this.service = params.service;
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-        });
-        this.reqFor = sessionStorage.getItem('radioAction');
-        if (this.warninginfo || this.warninginfosnow) {
-            this.hideSteps = true;
-        }
-        else {
-            this.hideSteps = false;
-        }
-        const servicesData = {
-            "data": [
-                {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
-                    "step": 3,
-                }
-            ]
-        };
-        this.servicesData = servicesData.data[0];
-        this.locationlist = (_b = sessionStorage.getItem('locationdetails')) === null || _b === void 0 ? void 0 : _b.replace('"', '');
-        this.locationlist = (_c = this.locationlist) === null || _c === void 0 ? void 0 : _c.replace('"', '').split(',');
-        for (var i = 0; i < this.locationlist.length; i++) {
-            var n = this.locationlist[i].indexOf("~");
-            this.campA[i] = this.locationlist[i].substr(1, n - 1);
-            this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);
-        }
-        for (var i = 0; i < this.campA.length; i++) {
-            if (this.campA[i] != this.campA[i + 1]) {
-                this.camp[this.j] = this.campA[i];
-                this.j++;
+            this.locationlist = (_a = sessionStorage.getItem('locationdetails')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
+            this.locationlist = (_b = this.locationlist) === null || _b === void 0 ? void 0 : _b.replace('"', '').split(',');
+            for (var i = 0; i < this.locationlist.length; i++) {
+                var n = this.locationlist[i].indexOf("~");
+                this.campA[i] = this.locationlist[i].substr(1, n - 1);
+                this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);
             }
-        }
-        this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
-        this.employeeInfo = JSON.parse(this.employeeInfo1);
-        if (this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null) {
-            this.hideProjectId = true;
-        }
+            for (var i = 0; i < this.campA.length; i++) {
+                if (this.campA[i] != this.campA[i + 1]) {
+                    this.camp[this.j] = this.campA[i];
+                    this.j++;
+                }
+            }
+            const servicesData = {
+                "data": [
+                    {
+                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "step": 3,
+                    }
+                ]
+            };
+            this.servicesData = servicesData.data[0];
+            if (this.warninginfo || this.warninginfosnow) {
+                this.hideSteps = true;
+            }
+            else {
+                this.hideSteps = false;
+            }
+            this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
+            this.employeeInfo = JSON.parse(this.employeeInfo1);
+            if (this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null) {
+                this.hideProjectId = true;
+            }
+            this.reqFor = sessionStorage.getItem('radioAction');
+        });
     }
     previousStep(event) {
         this.isEntryFormMove = false;
@@ -10063,7 +12624,7 @@ class VoipInMoveComponent {
     }
 }
 VoipInMoveComponent.ɵfac = function VoipInMoveComponent_Factory(t) { return new (t || VoipInMoveComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"])); };
-VoipInMoveComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipInMoveComponent, selectors: [["app-voip-in-move"]], decls: 114, vars: 30, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Next", 4, "ngIf"], [3, "hidden"], ["translate", "", 1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1", "translate", ""], ["width", "54%", "height", "10"], ["colspan", "2", "width", "46%"], ["width", "54%"], ["valign", "top", 3, "hidden"], ["for", "Projectid", "translate", ""], ["for", "icano", "translate", ""], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Back", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Submit", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "IdentifierId", "translate", "", 1, "ds-text-capitalize"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["ngModel", "", "name", "Identifier_Selected", "id", "IdentifierId", "title", "Identifier to Move", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["jabberNumberVal", ""], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "LocationId", "translate", "", 1, "ds-text-capitalize"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["for", "builId", "translate", "", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["for", "addId", "translate", "", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", "translate", "", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "Department_number", "value", "", "maxlength", "6", "tabindex", "4", "id", "d2", "title", "Contact FirstLine Manager\\Project Manager for Charge Department Code", "autocomplete", "off", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["id", "Mentor1Div"], ["for", "addId", "translate", "", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["for", "Projectid", "translate", "", 1, "ds-text-capitalize", "ds-pad-t-1"], ["ngModel", "", "name", "Projectid", "value", "", "rows", "2", "maxlength", "6", "cols", "40", "id", "Projectid", "title", "Project id", 1, "ds-input", 2, "width", "300px !important"], ["for", "accid", "translate", "", 1, "ds-text-capitalize", "ds-pad-b-1"], ["ngModel", "", "name", "accid", "value", "", "maxlength", "6", "id", "accid", "title", "Account Id", 1, "ds-input", 2, "width", "300px !important"], ["for", "icano", "translate", "", 1, "ds-text-capitalize"], ["ngModel", "", "name", "icano", "value", "", "id", "icano", "maxlength", "6", "title", "ICA Code", 1, "ds-input", 2, "width", "300px !important"], ["name", "Location_1", 3, "value"], ["type", "submit", "name", "next", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipInMoveComponent_Template(rf, ctx) { if (rf & 1) {
+VoipInMoveComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipInMoveComponent, selectors: [["app-voip-in-move"]], decls: 102, vars: 28, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "NEXT", 4, "ngIf"], [3, "hidden"], ["translate", "", 1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1", "translate", ""], ["width", "54%", "height", "10"], ["colspan", "2", "width", "46%"], ["width", "54%"], ["valign", "top", 3, "hidden"], ["for", "Projectid", "translate", ""], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "IdentifierId", "translate", "", 1, "ds-text-capitalize"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["ngModel", "", "name", "Identifier_Selected", "id", "IdentifierId", "title", "Identifier to Move", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["jabberNumberVal", ""], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "LocationId", "translate", "", 1, "ds-text-capitalize"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["for", "builId", "translate", "", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["for", "addId", "translate", "", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", "translate", "", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "Department_number", "value", "", "maxlength", "6", "tabindex", "4", "id", "d2", "title", "Contact FirstLine Manager\\Project Manager for Charge Department Code", "autocomplete", "off", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["id", "Mentor1Div"], ["for", "addId", "translate", "", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["for", "Projectid", "translate", "", 1, "ds-text-capitalize", "ds-pad-t-1"], ["ngModel", "", "name", "Projectid", "value", "", "rows", "2", "maxlength", "6", "cols", "40", "id", "Projectid", "title", "Project id", 1, "ds-input", 2, "width", "300px !important"], ["name", "Location_1", 3, "value"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipInMoveComponent_Template(rf, ctx) { if (rf & 1) {
         const _r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -10100,7 +12661,7 @@ VoipInMoveComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](23, VoipInMoveComponent_div_23_Template, 3, 0, "div", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](24, VoipInMoveComponent_div_24_Template, 16, 1, "div", 13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](25, VoipInMoveComponent_table_25_Template, 15, 1, "table", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](26, VoipInMoveComponent_div_26_Template, 90, 9, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](26, VoipInMoveComponent_div_26_Template, 72, 9, "div", 15);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](28, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](29, "div", 0);
@@ -10206,41 +12767,21 @@ VoipInMoveComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](90);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "tr", 28);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](92, "td", 32);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](93, "label", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](94, "Jabbermove.AccountId");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](95, "td", 33);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](96);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](91, VoipInMoveComponent_div_91_Template, 5, 0, "div", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](92, "div", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](93, VoipInMoveComponent_div_93_Template, 4, 0, "div", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](94, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](95, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](96, "div", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](97, "span", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](98, VoipInMoveComponent_input_98_Template, 1, 0, "input", 39);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](99, "span", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](100, VoipInMoveComponent_input_100_Template, 1, 0, "input", 40);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](97, "tr", 28);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](98, "td", 32);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](99, "label", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](100, "Jabbermove.ICACode");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](101, "td", 33);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](102);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](103, VoipInMoveComponent_div_103_Template, 5, 0, "div", 37);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](104, "div", 38);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](105, VoipInMoveComponent_div_105_Template, 4, 0, "div", 39);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](106, "div", 16);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](107, "div", 17);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](108, "div", 18);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](109, "span", 19);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](110, VoipInMoveComponent_input_110_Template, 1, 0, "input", 40);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](111, "span", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](112, VoipInMoveComponent_input_112_Template, 1, 0, "input", 41);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](113, VoipInMoveComponent_input_113_Template, 1, 6, "input", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](101, VoipInMoveComponent_input_101_Template, 1, 6, "input", 41);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10286,10 +12827,6 @@ VoipInMoveComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.hideProjectId);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.projectId);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.accid_Disp);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.icano_Disp);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.errorinfo);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -10411,7 +12948,7 @@ function ResourcesComponent_table_16_tbody_28_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", no_r3.TYPE.includes("fac") ? "XXXXXXXX" : no_r3.IDENTIFIER, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", no_r3.ATTRIBUTE8.includes("chcs") ? "Primary" : no_r3.ATTRIBUTE8.includes("secondary") ? "Add-on" : "", " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", no_r3.ATTRIBUTE6, " ");
 } }
 function ResourcesComponent_table_16_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 14);
@@ -10576,8 +13113,8 @@ __webpack_require__.r(__webpack_exports__);
 function FixedphoneservicesComponent_div_8_br_13_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
-const _c0 = function () { return ["/inprogress"]; };
-const _c1 = function (a0) { return { country: a0 }; };
+const _c0 = function () { return ["/employeesearch"]; };
+const _c1 = function (a0) { return { country: a0, service: "fixedphone_update" }; };
 function FixedphoneservicesComponent_div_8_div_14_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 9);
@@ -10609,6 +13146,7 @@ function FixedphoneservicesComponent_div_8_div_14_Template(rf, ctx) { if (rf & 1
 function FixedphoneservicesComponent_div_8_br_15_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
+const _c2 = function (a0) { return { country: a0, service: "fixedphone_delete" }; };
 function FixedphoneservicesComponent_div_8_div_16_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 9);
@@ -10635,12 +13173,11 @@ function FixedphoneservicesComponent_div_8_div_16_Template(rf, ctx) { if (rf & 1
 } if (rf & 2) {
     const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](2, _c0))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](3, _c1, ctx_r4.pcode));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](2, _c0))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](3, _c2, ctx_r4.pcode));
 } }
 function FixedphoneservicesComponent_div_8_br_17_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
-const _c2 = function () { return ["/employeesearch"]; };
 const _c3 = function (a0) { return { country: a0, service: "fixedphone_new" }; };
 function FixedphoneservicesComponent_div_8_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
@@ -10675,7 +13212,7 @@ function FixedphoneservicesComponent_div_8_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](7, _c2))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](8, _c3, ctx_r0.pcode));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](7, _c0))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](8, _c3, ctx_r0.pcode));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.linkv.includes("new"));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -10702,10 +13239,21 @@ class FixedphoneservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            this.countrydetails = sessionStorage.getItem('countrydetails');
-            this.countrydetails = JSON.parse(this.countrydetails);
-            this.linkv = this.countrydetails.jservices;
-            console.log(this.countrydetails.jservices);
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received navigation', data.countrydetails.isspecial);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    this.linkv = this.countrydetails.fservices;
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                this.linkv = this.countrydetails.fservices;
+            }
             const servicesData = {
                 "data": [
                     {
@@ -10734,7 +13282,7 @@ class FixedphoneservicesComponent {
     }
 }
 FixedphoneservicesComponent.ɵfac = function FixedphoneservicesComponent_Factory(t) { return new (t || FixedphoneservicesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"])); };
-FixedphoneservicesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FixedphoneservicesComponent, selectors: [["app-fixedphoneservices"]], decls: 9, vars: 2, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [1, "lead-in"], ["class", "ds-col-12", 4, "ngIf"], [1, "ds-col-12"], [1, "ds-panel"], [1, "ds-panel-container"], [2, "text-decoration", "none", 3, "routerLink", "queryParams"], ["src", "././assets/arr.png"], [1, "ds-text-blue-6", "ds-pad-l-1"], [4, "ngIf"], ["class", "ds-panel", 4, "ngIf"], [1, "ds-padding-left-1", "ds-text-blue-6", "ds-pad-l-1"]], template: function FixedphoneservicesComponent_Template(rf, ctx) { if (rf & 1) {
+FixedphoneservicesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FixedphoneservicesComponent, selectors: [["app-fixedphoneservices"]], decls: 9, vars: 2, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [1, "lead-in"], ["class", "ds-col-12", 4, "ngIf"], [1, "ds-col-12"], [1, "ds-panel"], [1, "ds-panel-container"], [2, "text-decoration", "none", 3, "routerLink", "queryParams"], ["src", "././assets/arr.png"], [1, "ds-text-blue-6", "ds-pad-l-1"], [4, "ngIf"], ["class", "ds-panel", 4, "ngIf"], [1, "ds-pad-l-1", "ds-text-blue-6", "ds-pad-l-1"]], template: function FixedphoneservicesComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
@@ -10831,11 +13379,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_hp_au_new_hp_au_new_component__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./components/hp-au-new/hp-au-new.component */ "5O5C");
 /* harmony import */ var _components_facservices_facservices_component__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./components/facservices/facservices.component */ "kPm3");
 /* harmony import */ var _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./components/voip-usa-update/voip-usa-update.component */ "jTLy");
-/* harmony import */ var _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./components/fac-in-update/fac-in-update.component */ "L9kc");
-/* harmony import */ var _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./components/fac-in-reset/fac-in-reset.component */ "bsso");
-/* harmony import */ var _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./components/approval-result-page/approval-result-page.component */ "6juO");
-/* harmony import */ var _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./components/approval-single-page/approval-single-page.component */ "icyV");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _components_fac_in_deactivate_fac_in_deactivate_component__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./components/fac-in-deactivate/fac-in-deactivate.component */ "PglX");
+/* harmony import */ var _components_hp_au_update_hp_au_update_component__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./components/hp-au-update/hp-au-update.component */ "pPZ4");
+/* harmony import */ var _components_hp_in_update_hp_in_update_component__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./components/hp-in-update/hp-in-update.component */ "wx85");
+/* harmony import */ var _components_hp_in_delete_hp_in_delete_component__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./components/hp-in-delete/hp-in-delete.component */ "7P22");
+/* harmony import */ var _components_hp_usa_new_hp_usa_new_component__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./components/hp-usa-new/hp-usa-new.component */ "4a48");
+/* harmony import */ var _components_hp_emea_new_hp_emea_new_component__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./components/hp-emea-new/hp-emea-new.component */ "p96R");
+/* harmony import */ var _components_hp_indonesia_new_hp_indonesia_new_component__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./components/hp-indonesia-new/hp-indonesia-new.component */ "UiN3");
+/* harmony import */ var _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./components/fac-in-update/fac-in-update.component */ "L9kc");
+/* harmony import */ var _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./components/fac-in-reset/fac-in-reset.component */ "bsso");
+/* harmony import */ var _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./components/approval-result-page/approval-result-page.component */ "6juO");
+/* harmony import */ var _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./components/approval-single-page/approval-single-page.component */ "icyV");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! @angular/router */ "tyNb");
+
+
+
+
+
+
+
 
 
 
@@ -10958,6 +13520,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
         _components_voip_emea_new_voip_emea_new_component__WEBPACK_IMPORTED_MODULE_43__["VoipEmeaNewComponent"],
         _components_voip_au_move_voip_au_move_component__WEBPACK_IMPORTED_MODULE_44__["VoipAuMoveComponent"],
         _components_hp_in_new_hp_in_new_component__WEBPACK_IMPORTED_MODULE_45__["HpInNewComponent"],
+        _components_hp_in_update_hp_in_update_component__WEBPACK_IMPORTED_MODULE_55__["HpInUpdateComponent"],
         _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_33__["VoipInMoveComponent"],
         _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_46__["PagenotfoundComponent"],
         _components_fixedphoneservices_fixedphoneservices_component__WEBPACK_IMPORTED_MODULE_47__["FixedphoneservicesComponent"],
@@ -10968,13 +13531,19 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
         _components_voip_la_update_voip_la_update_component__WEBPACK_IMPORTED_MODULE_48__["VoipLaUpdateComponent"],
         _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_49__["FacInNewComponent"],
         _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_52__["VoipUsaUpdateComponent"],
-        _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_53__["FacInUpdateComponent"],
-        _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_54__["FacInResetComponent"],
-        _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_55__["ApprovalResultPageComponent"],
-        _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_56__["ApprovalSinglePageComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
+        _components_fac_in_deactivate_fac_in_deactivate_component__WEBPACK_IMPORTED_MODULE_53__["FacInDeactivateComponent"],
+        _components_hp_au_update_hp_au_update_component__WEBPACK_IMPORTED_MODULE_54__["HpAuUpdateComponent"],
+        _components_hp_in_delete_hp_in_delete_component__WEBPACK_IMPORTED_MODULE_56__["HpInDeleteComponent"],
+        _components_hp_usa_new_hp_usa_new_component__WEBPACK_IMPORTED_MODULE_57__["HpUsaNewComponent"],
+        _components_hp_emea_new_hp_emea_new_component__WEBPACK_IMPORTED_MODULE_58__["HpEmeaNewComponent"],
+        _components_hp_indonesia_new_hp_indonesia_new_component__WEBPACK_IMPORTED_MODULE_59__["HpIndonesiaNewComponent"],
+        _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_60__["FacInUpdateComponent"],
+        _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_61__["FacInResetComponent"],
+        _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_62__["ApprovalResultPageComponent"],
+        _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_63__["ApprovalSinglePageComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
         _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClientModule"],
-        _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_57__["RouterModule"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_39__["TranslateModule"]] }); })();
+        _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _angular_router__WEBPACK_IMPORTED_MODULE_64__["RouterModule"], _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_39__["TranslateModule"]] }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
@@ -11013,6 +13582,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _components_voip_emea_new_voip_emea_new_component__WEBPACK_IMPORTED_MODULE_43__["VoipEmeaNewComponent"],
                     _components_voip_au_move_voip_au_move_component__WEBPACK_IMPORTED_MODULE_44__["VoipAuMoveComponent"],
                     _components_hp_in_new_hp_in_new_component__WEBPACK_IMPORTED_MODULE_45__["HpInNewComponent"],
+                    _components_hp_in_update_hp_in_update_component__WEBPACK_IMPORTED_MODULE_55__["HpInUpdateComponent"],
                     _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_33__["VoipInMoveComponent"],
                     _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_46__["PagenotfoundComponent"],
                     _components_fixedphoneservices_fixedphoneservices_component__WEBPACK_IMPORTED_MODULE_47__["FixedphoneservicesComponent"],
@@ -11023,10 +13593,16 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
                     _components_voip_la_update_voip_la_update_component__WEBPACK_IMPORTED_MODULE_48__["VoipLaUpdateComponent"],
                     _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_49__["FacInNewComponent"],
                     _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_52__["VoipUsaUpdateComponent"],
-                    _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_53__["FacInUpdateComponent"],
-                    _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_54__["FacInResetComponent"],
-                    _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_55__["ApprovalResultPageComponent"],
-                    _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_56__["ApprovalSinglePageComponent"]
+                    _components_fac_in_deactivate_fac_in_deactivate_component__WEBPACK_IMPORTED_MODULE_53__["FacInDeactivateComponent"],
+                    _components_hp_au_update_hp_au_update_component__WEBPACK_IMPORTED_MODULE_54__["HpAuUpdateComponent"],
+                    _components_hp_in_delete_hp_in_delete_component__WEBPACK_IMPORTED_MODULE_56__["HpInDeleteComponent"],
+                    _components_hp_usa_new_hp_usa_new_component__WEBPACK_IMPORTED_MODULE_57__["HpUsaNewComponent"],
+                    _components_hp_emea_new_hp_emea_new_component__WEBPACK_IMPORTED_MODULE_58__["HpEmeaNewComponent"],
+                    _components_hp_indonesia_new_hp_indonesia_new_component__WEBPACK_IMPORTED_MODULE_59__["HpIndonesiaNewComponent"],
+                    _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_60__["FacInUpdateComponent"],
+                    _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_61__["FacInResetComponent"],
+                    _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_62__["ApprovalResultPageComponent"],
+                    _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_63__["ApprovalSinglePageComponent"]
                 ],
                 imports: [
                     _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -11334,7 +13910,7 @@ class VoipUsaNewComponent {
     }
 }
 VoipUsaNewComponent.ɵfac = function VoipUsaNewComponent_Factory(t) { return new (t || VoipUsaNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"])); };
-VoipUsaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipUsaNewComponent, selectors: [["app-voip-usa-new"]], decls: 70, vars: 17, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-sm-2", "ds-col-md-7", "ds-padding-left-1_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t1"], ["width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "47%", "height", "10"], ["for", "LocationId", "translate", "", 1, "ds-text-capitalize"], [1, "ds-text-contextual-red-2"], ["width", "53%", "height", "10"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "Location", "rows", "2", "cols", "40", "id", "LocationId", "title", "Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", 3, "ngModel", "ngModelChange", "change"], ["name", "Location", 3, "value", "selected", 4, "ngFor", "ngForOf"], ["id", "msgdis", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1", "translate", ""], ["width", "54%", "height", "10"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["name", "Location", 3, "value", "selected"], ["id", "msgdis"], ["href", "https://pdydalhcsad01.sl.bluecloud.ibm.com/reports/home.htm", "target", "_blank"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipUsaNewComponent_Template(rf, ctx) { if (rf & 1) {
+VoipUsaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipUsaNewComponent, selectors: [["app-voip-usa-new"]], decls: 70, vars: 17, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-sm-2", "ds-col-md-7", "ds-padding-left-1_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t1"], ["width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "47%", "height", "10"], ["for", "LocationId", "translate", "", 1, "ds-text-capitalize"], [1, "ds-text-contextual-red-2"], ["width", "53%", "height", "10"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "Location", "rows", "2", "cols", "40", "id", "LocationId", "title", "Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["name", "Location", 3, "value", "selected", 4, "ngFor", "ngForOf"], ["id", "msgdis", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1", "translate", ""], ["width", "54%", "height", "10"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["name", "Location", 3, "value", "selected"], ["id", "msgdis"], ["href", "https://pdydalhcsad01.sl.bluecloud.ibm.com/reports/home.htm", "target", "_blank"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipUsaNewComponent_Template(rf, ctx) { if (rf & 1) {
         const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -11538,7 +14114,7 @@ class TopcountryframeComponent {
         this.route = route;
         this.ccode = '';
         this.pcode = '';
-        this.routingservices = ['services', 'jabberservices', 'fixedphoneservices', 'facservices', 'jabber_new', 'jabber_delete', 'jabber_update', 'jabber_move', 'fixedphone_new', 'fixedphone_update', 'fixedphone_delete', 'fac_new', 'fac_update', 'fac_reset', 'fac_deactivate', 'requests', 'resources'];
+        this.routingservices = ['services', 'jabberservices', 'fixedphoneservices', 'facservices', 'jabber_new', 'jabber_delete', 'jabber_update', 'jabber_move', 'fixedphone_new', 'fixedphone_update', 'fixedphone_delete', 'fac_new', 'fac_update', 'fac_reset', 'fac_deactivate', 'requests', 'resources', 'approvalpending'];
     }
     ngOnInit() {
         this.route.queryParams
@@ -11966,7 +14542,7 @@ class VoipInNewComponent {
     }
 }
 VoipInNewComponent.ɵfac = function VoipInNewComponent_Factory(t) { return new (t || VoipInNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"])); };
-VoipInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipInNewComponent, selectors: [["app-voip-in-new"]], decls: 175, vars: 44, consts: [[3, "ngClass"], [1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData", "ngClass"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 3, "hidden"], ["colspan", "2", "width", "46%"], ["for", "builId", 1, "ds-text-capitalize"], ["width", "54%"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "Department_number", "value", "", "tabindex", "4", "id", "d2", "title", "Contact FirstLine Manager\\Project Manager for Charge Department Code", "maxlength", "6", "autocomplete", "off", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["id", "Mentor1Div"], ["for", "addId", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["name", "BusinessUnit", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["for", "Projectid", 1, "ds-pad-t-1"], [1, "ds-input-container", "ds-pad-t-1"], ["name", "Projectid", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "Projectid", "title", "Contact FirstLine Manager\\Project Manager for Project ID", "maxlength", "11", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["for", "icano", 1, "ds-pad-t-1"], [1, "ds-input-container"], ["name", "identifier_hp", "value", "", "tabindex", "7", "title", "Fixed Phone Identifier", "maxlength", "8", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "ngClass", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["for", "addId1"], ["for", "addId1", 3, "hidden"], ["width", "54%", 3, "hidden"], ["for", "Projectid"], ["for", "icano"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["name", "Location_1", 3, "value"], [3, "value"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipInNewComponent_Template(rf, ctx) { if (rf & 1) {
+VoipInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipInNewComponent, selectors: [["app-voip-in-new"]], decls: 175, vars: 44, consts: [[3, "ngClass"], [1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData", "ngClass"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 3, "hidden"], ["colspan", "2", "width", "46%"], ["for", "builId", 1, "ds-text-capitalize"], ["width", "54%"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "Department_number", "value", "", "tabindex", "4", "id", "d2", "title", "Contact FirstLine Manager\\Project Manager for Charge Department Code", "maxlength", "6", "autocomplete", "off", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["id", "Mentor1Div"], ["for", "addId", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["name", "BusinessUnit", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["for", "Projectid", 1, "ds-pad-t-1"], [1, "ds-input-container", "ds-pad-t-1"], ["name", "Projectid", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "Projectid", "title", "Contact FirstLine Manager\\Project Manager for Project ID", "maxlength", "11", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["for", "icano", 1, "ds-pad-t-1"], [1, "ds-input-container"], ["name", "identifier_hp", "value", "", "tabindex", "7", "title", "Fixed Phone Identifier", "maxlength", "8", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "ngClass", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["for", "addId1"], ["for", "addId1", 3, "hidden"], ["width", "54%", 3, "hidden"], ["for", "Projectid"], ["for", "icano"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["name", "Location_1", 3, "value"], [3, "value"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipInNewComponent_Template(rf, ctx) { if (rf & 1) {
         const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 1);
@@ -12399,7 +14975,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function HpInNewComponent_option_33_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 110);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 111);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -12409,7 +14985,7 @@ function HpInNewComponent_option_33_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_location_r16, "");
 } }
 function HpInNewComponent_option_45_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 111);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 112);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -12419,7 +14995,7 @@ function HpInNewComponent_option_45_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](fl_campus_r17);
 } }
 function HpInNewComponent_option_125_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 112);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 113);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -12429,7 +15005,7 @@ function HpInNewComponent_option_125_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", device_r18, "");
 } }
 function HpInNewComponent_option_139_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 113);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 114);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -12440,10 +15016,10 @@ function HpInNewComponent_option_139_Template(rf, ctx) { if (rf & 1) {
 } }
 function HpInNewComponent_div_152_Template(rf, ctx) { if (rf & 1) {
     const _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 114);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 115);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Search result: ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "a", 115);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "a", 116);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInNewComponent_div_152_Template_a_click_3_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21); const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r20.onEmailClick(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -12456,7 +15032,7 @@ function HpInNewComponent_div_152_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r7.email);
 } }
 function HpInNewComponent_ng_template_153_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 116);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 117);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " No match, please try again");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -12472,22 +15048,22 @@ function HpInNewComponent_label_198_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function HpInNewComponent_div_328_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 117);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 118);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 118);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 119);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Your request submission is in progress.Do not Go back or Refresh the page.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 119);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 120);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function HpInNewComponent_input_333_Template(rf, ctx) { if (rf & 1) {
     const _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 120);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 121);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInNewComponent_input_333_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r22.BackButton(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function HpInNewComponent_input_335_Template(rf, ctx) { if (rf & 1) {
     const _r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 121);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 122);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInNewComponent_input_335_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r25); const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r24.submit_snow(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
@@ -12511,7 +15087,7 @@ class HpInNewComponent {
         this.isSpinnerVisible = false;
         this.isEntryForm = false;
         this.isReviewForm = true;
-        this.Voice_Type = "No";
+        this.Voice_Type = "no";
         this.hideDeptCode = true;
         this.hideBuilding = true;
         //fixedPhoneIdentifier = false;	
@@ -12524,7 +15100,7 @@ class HpInNewComponent {
         this.showforFixedPhone = true;
         this.showBusinessNeed = true;
         this.voicemail = 'no';
-        this.COS = 'national';
+        this.COS = 'National';
         this.selected_device = '';
         this.empID = '';
         this.go = false;
@@ -12542,8 +15118,8 @@ class HpInNewComponent {
         this.reviewDetailsIndia = {
             officeLocation: "",
             campus: "",
-            funded: "",
-            chargeDepartmentCode: "",
+            funded: "No",
+            chargeDepartmentCode: "NA",
             businessUnit: "",
             projectId: "",
             accountId: " ",
@@ -12558,7 +15134,7 @@ class HpInNewComponent {
             employeeId: "",
             voicemail: "",
             cos: "",
-            justification: "",
+            justification: "NA",
             description: "",
             mac: "",
         };
@@ -12623,7 +15199,7 @@ class HpInNewComponent {
             this.models = [...this.fpModels];
             this.hideEmpID = false;
             this.hideVoicemail = false;
-            if (this.COS == 'international') {
+            if (this.COS == 'International') {
                 this.showBusinessNeed = false;
             }
         }
@@ -12697,7 +15273,7 @@ class HpInNewComponent {
         this.emailResult = true;
     }
     classofservice(cos) {
-        if (cos == 'international') {
+        if (cos == 'International') {
             this.showBusinessNeed = false;
         }
         else {
@@ -12812,11 +15388,11 @@ class HpInNewComponent {
         // by default set to true. below line can be removed if needed.	
         //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
         this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;
-        this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp;
+        this.payload.icano_Disp = this.reviewDetailsIndia.icaCode;
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
         this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
-        this.payload.accid_Disp = this.reviewDetailsIndia.accid_Disp;
+        this.payload.accid_Disp = this.reviewDetailsIndia.accountId;
         this.payload.ReqNo = this.reqno;
         this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
         this.payload.Model_Disp = this.reviewDetailsIndia.model;
@@ -12871,9 +15447,9 @@ class HpInNewComponent {
         this.emModels = (_b = sessionStorage.getItem('emmodels')) === null || _b === void 0 ? void 0 : _b.replace('"', '');
         this.emModels = this.emModels.replace('"', '').split(',');
         this.fpModels = (_c = sessionStorage.getItem('fpmodels')) === null || _c === void 0 ? void 0 : _c.replace('"', '');
-        this.fpModels = this.fpModels.split(',');
+        this.fpModels = this.fpModels.replace('"', '').split(',');
         this.cModels = (_d = sessionStorage.getItem('cmmodels')) === null || _d === void 0 ? void 0 : _d.replace('"', '');
-        this.cModels = this.cModels.split(',');
+        this.cModels = this.cModels.replace('"', '').split(',');
         this.locationlist = (_e = sessionStorage.getItem('locationdetails')) === null || _e === void 0 ? void 0 : _e.replace('"', '');
         this.locationlist = (_f = this.locationlist) === null || _f === void 0 ? void 0 : _f.replace('"', '').split(',');
         for (var i = 0; i < this.locationlist.length; i++) {
@@ -12912,7 +15488,7 @@ class HpInNewComponent {
     }
 }
 HpInNewComponent.ɵfac = function HpInNewComponent_Factory(t) { return new (t || HpInNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bp_service__WEBPACK_IMPORTED_MODULE_7__["bpservices"])); };
-HpInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpInNewComponent, selectors: [["app-hp-in-new"]], decls: 336, vars: 62, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 3, "hidden"], ["colspan", "2", "width", "46%"], ["for", "builId", 1, "ds-text-capitalize"], ["width", "54%"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "Department_number", "value", "", "tabindex", "4", "id", "d2", "title", "Contact FirstLine Manager\\Project Manager for Charge Department Code", "autocomplete", "off", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["id", "Mentor1Div"], ["for", "addId", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["name", "BusinessUnit", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["for", "Projectid", 1, "ds-text-capitalize", "ds-pad-t-1"], [1, "ds-input-container", "ds-pad-t-1"], ["name", "Projectid", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "Projectid", "title", "Project ID", "maxlength", "11", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "Accountid", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Accountid", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "Accountid", "title", "Account ID", "maxlength", "8", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "ICAcode", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "ICAcode", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "ICAcode", "title", "ICA Code", "maxlength", "100", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "DeviceType", 1, "ds-text-capitalize"], ["rows", "2", "name", "Device_Type", "cols", "40", "id", "DeviceTypeId", "title", "Device Type", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["name", "Device_Type", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t3", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 3, "hidden"], ["rows", "2", "name", "Model_Type", "cols", "40", "id", "ModelTypeId", "title", "Model", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Model_Type", 3, "value", 4, "ngFor", "ngForOf"], ["for", "EmployeeID", 1, "ds-text-capitalize"], [2, "display", "ruby-base-container"], ["name", "StepMentor", "title", "Employee ID", 1, "ds-input", 2, "width", "250px !important", "display", "inline-block", 3, "ngModel", "ngModelChange", "change"], [1, "ds-button", "ds-small", "ds-width-auto", 2, "padding-right", "1rem", "padding-left", "1rem", "margin-left", "2px", "margin-bottom", "0px", 3, "click"], [3, "hidden"], ["id", "StepMentorDiv", "style", "font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;", 3, "hidden", 4, "ngIf", "ngIfElse"], ["elseBlock", ""], ["valign", "top", 1, "ds-mar-t-1_5", 3, "hidden"], ["for", "Voicemail", 1, "ds-text-capitalize", "ds-mar-t-1", 2, "display", "inline-block"], ["rows", "2", "name", "Voicemail", "cols", "40", "id", "VoicemailId", "title", "Voicemail", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", "ds-mar-t-1", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["value", "yes"], ["value", "no"], ["for", "cos", 1, "ds-text-capitalize"], ["rows", "2", "name", "cos", "cols", "40", "id", "COSId", "title", "Class of Service", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["cos", ""], ["value", "national"], ["value", "international"], ["for", "Justification", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Justification", "title", "Business Justification", "tabindex", "2", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "Description", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Description", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "DescriptionId", "title", "Description", "maxlength", "30", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [4, "ngIf"], ["for", "MACAddress", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["name", "MACAddress", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "MACAddressId", "title", "MAC Address", "maxlength", "12", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "8", "cellpadding", "0", "border", "0"], ["for", "addId1"], ["for", "Projectid"], ["for", "icano"], ["for", "device"], ["for", "model"], ["for", "employeeId"], ["for", "voiemail"], ["for", "cos"], ["for", "justification"], ["for", "description"], ["for", "mac"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Back", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Submit", 3, "click", 4, "ngIf"], ["name", "Location_1", 3, "value"], [3, "value"], ["name", "Device_Type", 3, "value"], ["name", "Model_Type", 3, "value"], ["id", "StepMentorDiv", 2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px", 3, "hidden"], [3, "click"], [2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "submit", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpInNewComponent_Template(rf, ctx) { if (rf & 1) {
+HpInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpInNewComponent, selectors: [["app-hp-in-new"]], decls: 336, vars: 62, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 3, "hidden"], ["colspan", "2", "width", "46%"], ["for", "builId", 1, "ds-text-capitalize"], ["width", "54%"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "no", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "Department_number", "value", "", "tabindex", "4", "id", "d2", "title", "Contact FirstLine Manager\\Project Manager for Charge Department Code", "maxlength", "6", "autocomplete", "off", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["id", "Mentor1Div"], ["for", "addId", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["name", "BusinessUnit", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["for", "Projectid", 1, "ds-text-capitalize", "ds-pad-t-1"], [1, "ds-input-container", "ds-pad-t-1"], ["name", "Projectid", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "Projectid", "title", "Project ID", "maxlength", "11", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "Accountid", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Accountid", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "Accountid", "title", "Account ID", "maxlength", "8", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "ICAcode", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "ICAcode", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "ICAcode", "title", "ICA Code", "maxlength", "100", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "DeviceType", 1, "ds-text-capitalize"], ["rows", "2", "name", "Device_Type", "cols", "40", "id", "DeviceTypeId", "title", "Device Type", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["name", "Device_Type", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t3", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 3, "hidden"], ["rows", "2", "name", "Model_Type", "cols", "40", "id", "ModelTypeId", "title", "Model", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Model_Type", 3, "value", 4, "ngFor", "ngForOf"], ["for", "EmployeeID", 1, "ds-text-capitalize"], [2, "display", "inline-flex"], ["name", "StepMentor", "title", "Employee ID", 1, "ds-input", 2, "width", "250px !important", "display", "inline-block", 3, "ngModel", "ngModelChange", "change"], [1, "ds-button", "ds-small", "ds-width-auto", 2, "padding-right", "1rem", "padding-left", "1rem", "margin", "4px", 3, "click"], [3, "hidden"], ["id", "StepMentorDiv", "style", "font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;", 3, "hidden", 4, "ngIf", "ngIfElse"], ["elseBlock", ""], ["valign", "top", 1, "ds-mar-t-1_5", 3, "hidden"], ["for", "Voicemail", 1, "ds-text-capitalize", "ds-mar-t-1", 2, "display", "inline-block"], ["rows", "2", "name", "Voicemail", "cols", "40", "id", "VoicemailId", "title", "Voicemail", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", "ds-mar-t-1", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["value", "yes"], ["value", "no"], ["for", "cos", 1, "ds-text-capitalize"], ["rows", "2", "name", "cos", "cols", "40", "id", "COSId", "title", "Class of Service", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["cos", ""], ["value", "National"], ["value", "International"], ["for", "Justification", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Justification", "title", "Business Justification", "tabindex", "2", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "Description", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Description", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "DescriptionId", "title", "Description", "maxlength", "30", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [4, "ngIf"], ["for", "MACAddress", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["name", "MACAddress", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "MACAddressId", "title", "MAC Address", "maxlength", "12", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "8", "cellpadding", "0", "border", "0"], ["for", "addId1"], ["for", "Projectid"], ["for", "icano"], ["for", "device"], ["for", "model"], ["for", "employeeId"], ["for", "voiemail"], ["for", "cos"], ["for", "justification"], ["width", "54%", 2, "word-wrap", "anywhere"], ["for", "description"], ["for", "mac"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["name", "Location_1", 3, "value"], [3, "value"], ["name", "Device_Type", 3, "value"], ["name", "Model_Type", 3, "value"], ["id", "StepMentorDiv", 2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px", 3, "hidden"], [3, "click"], [2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpInNewComponent_Template(rf, ctx) { if (rf & 1) {
         const _r26 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -13428,13 +16004,13 @@ HpInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](312, "Business Justification");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](313, "td", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](313, "td", 104);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](314);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](315, "tr", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](316, "td", 22);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](317, "label", 104);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](317, "label", 105);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](318, "Description of Device");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -13444,7 +16020,7 @@ HpInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](321, "tr", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](322, "td", 22);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](323, "label", 105);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](323, "label", 106);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](324, "MAC Address of the Device");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -13454,16 +16030,16 @@ HpInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](327, "div", 106);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](328, HpInNewComponent_div_328_Template, 4, 0, "div", 107);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](327, "div", 107);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](328, HpInNewComponent_div_328_Template, 4, 0, "div", 108);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](329, "div", 83);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](330, "div", 84);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](331, "div", 85);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](332, "span", 86);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](333, HpInNewComponent_input_333_Template, 1, 0, "input", 108);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](333, HpInNewComponent_input_333_Template, 1, 0, "input", 109);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](334, "span", 88);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](335, HpInNewComponent_input_335_Template, 1, 0, "input", 109);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](335, HpInNewComponent_input_335_Template, 1, 0, "input", 110);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -13630,7 +16206,7 @@ function gettime() {
 /*! exports provided: home, footer, footnote, lhs, Jabberservices, Jabbernewtrans, servicestitle, employeeinfotrans, Jabberentrydetails, Jabberupdate, Jabbermove, requesttrans, resultpagetrans, resourcespagetranslation, alerttranslation, topui, steps, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choose a language: \",\"app-name\":\"Global Voice Services\",\"app-function\":\"Single entry point for ordering voice services in your country\",\"sponsor\":\"Built on CIO Hybrid Cloud Powered by Red Hat OpenShift\",\"welcomemessage\":\"Welcome,\",\"question\":\"What service or country are you looking for?\",\"search-placeholder\":\"Search service...\",\"search-text\":\"Click here to see all results in GVS search\",\"my-country\":\"My Country\",\"click-here\":\"Click here\",\"available\":\"to view all available\",\"servicesonlyokay\":\"services for\",\"most-viewed-services\":\"Most Viewed Services\",\"find-right-service\":\"Find the right services, check their availability,\",\"find-right-service2\":\"and then choose the way you connect and work together.\",\"jabber-description\":\"Cisco Jabber is a multiple platform soft phone application to make and receive phone calls.\",\"button-value\":\"Get Started\",\"Searchservice\":\"Search service...\"},\"footer\":{\"aditional-question\":\"Have additional questions about ordering Global Voice Services ?\",\"please consult\":\"Please consult\",\"consult\":\"* This website supports Mozilla Firefox, Google Chrome, IE, Edge and Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code\":\"FAC Code\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Terms of use\",\"Useful Information\":\"Useful Information\",\"Please bear in mind the following points when making a request :\":\"Please bear in mind the following points when making a request :\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"To make a request the Employee must exist in BluePages (except for cancellation requests).\",\"You must know the IBM serial Number of the person making the request.\":\"You must know the IBM serial Number of the person making the request.\",\"Only one request per employee per request type is processed at a time.\":\"Only one request per employee per request type is processed at a time.\"},\"lhs\":{\"Services\":\"Services\",\"Jabber\":\"Jabber\",\"FAC Code\":\"FAC Code\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Jabber\",\"Approvals Pending\":\"Approvals Pending\",\"Revalidation Pending\":\"Revalidation Pending\",\"Requests\":\"Requests\",\"Resources\":\"Resources\"},\"Jabberservices\":{\"initiateJabber\":\" Please click on a request type below to initiate a Jabber service request.\",\"jnew\":\"Request a new service\",\"jupdate\":\"Update an existing service\",\"jmove\":\"Move an existing service\",\"jdelete\":\"Delete an existing service\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeSearch\":\"Employee Search\",\"requestfor\":\"Who is this request for\",\"Myself\":\"Myself\",\"AnotherEmployee\":\"Another Employee\",\"Name\":\"Name\",\"SerialNumber\":\"Serial Number\",\"EmployeeSerialNumber\":\"Employee Serial Number\",\"forexample\":\"(eg 012789)\",\"CountryCode\":\"Country Code\",\"SelectOne\":\"Select One\",\"norecord\":\"There is no record of an IBM employee with the serial number \",\"availablefromBluePages\":\"available from BluePages\",\"opps\":\"Opps! Some thing went worng.Please try again latter.\",\"JabberLocation\":\"Jabber Location\",\"Voicemail\":\"Voicemail\",\"ClassofService\":\"Class of Service\",\"pleasesubmittostart\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service.\"},\"servicestitle\":{\"Request new Jabber service\":\"Request new Jabber service\",\"Delete an existing service\":\"Delete an existing service\",\"Request a new service\":\"Request a new service\",\"Update an existing service\":\"Update an existing service\",\"Request Move Jabber service\":\"Request Move Jabber service\",\"Requests\":\"Requests\",\"Resources\":\"Resources\",\"Update Jabber Request\":\"Update Jabber Request\",\"Delete Jabber Request\":\"Delete Jabber Request\",\"Move Jabber Request\":\"Move Jabber Request\",\"Fixed Phone - New Request\":\"Fixed Phone - New Request\",\"New Fixed Phone Request\":\"New Fixed Phone Request\",\"FAC Code Update Request\":\"FAC Code Update Request\",\"FAC Code Reset Request\":\"FAC Code Reset Request\",\"FAC Code New Request\":\"FAC Code New Request\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"If the following information is correct, click Next. Any errors must be corrected in the employee's\",\"BluePagesrecord\":\"BluePages record\",\"beforecontinuing\":\"before continuing.\",\"EmployeeInformation\":\"Employee Information\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"Name\":\"Name:\",\"SerialNumber\":\"Serial Number:\",\"JobResponsibility\":\"Job Responsibility:\",\"BusinessUnit\":\"Business Unit:\",\"Department\":\"Department:\",\"Country\":\"Country:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"The serial number that you have entered is not eligible to request Jabber account.\",\"itnexistsforuser\":\"The IBM Telephone Number (ITN) that exists for this user is .\",\"nojabber\":\"There is no Jabber for this serial number.\",\"nojabberusethislink\":\"The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN \",\"GlobalVoiceInfrastructure\":\"Global Voice Infrastructure.\",\"receiveITN\":\"you have received the ITN you can then request Jabber.  Thank you.\",\"notauthorizedtoaccessjabber\":\"The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact\",\"notauthorizedtoaccessip\":\"The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact\",\"noteligibletorequestmorethanonejabber\":\"The serial number that you have entered is not eligible to request more than one Jabber account.\",\"ITNexistsforthisuser\":\"The IBM Telephone Number (ITN) that exists for this users jabber account is\",\"jabberconfiguration\":\"related to Jabber configuration can be found at\",\"furtherassistance\":\"For any further assistance, please contact\",\"alreadyone\":\"serial number that you have entered has already one\",\"inprogess\":\"is in progress and request number is\",\"ongoingrequestsbyclickonrequestpage\":\"You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.\",\"nooutstandingreq\":\"No outstanding requests were found for the serial number.\",\"noresources\":\"There are no resources for this serial number.\",\"nojabberforthisserial\":\"There is no Jabber for this serial number.\",\"BACK\":\"BACK\",\"NEXT\":\"NEXT\",\"SUBMIT1\":\"SUBMIT\",\"alreadyonerequestinprogress\":\"The serial number that you have entered has already one new Jabber request is in progress and request number is\",\"alreadyoneupdaterequestinprogress\":\"The serial number that you have entered has already one Update Jabber request is in progress and request number is\",\"alreadyonemoverequestinprogress\":\"The serial number that you have entered has already one move Jabber request is in progress and request number is\",\"alreadyonedeleterequestinprogress\":\"The serial number that you have entered has already one delete Jabber request is in progress and request number is\",\"enterserialnumber\":\"Please enter a serial number \"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"OfficeLocation\":\"Office Location\",\"Campus\":\"Campus\",\"Funded\":\"Funded\",\"ChargeDepartmentCode\":\"Charge Department Code\",\"BusinessUnit\":\"Business Unit\",\"Projectid\":\"Project ID (for GBS employee only)\",\"alreadyhaveFixedPhone\":\"If you already have Fixed Phone , please provide the identifier\",\"toprocessPI\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.\",\"JabberRequestDetails\":\"Jabber Request Details\",\"FixedPhoneIdentifier\":\"Fixed Phone Identifier\",\"Submissioninprogress\":\"Your request submission is in progress.Do not Go back or Refresh the page.\",\"Submissionbeinginprogress\":\"Your request is being submitted. Do not refresh or go back.\",\"Back\":\"BACK\",\"Next\":\"NEXT\",\"Select Location\":\"Select Location\"},\"Jabberupdate\":{\"SelectJabberNumber\":\"Select Jabber Number\",\"ReviewDetails\":\"Review Details\",\"JabberNumber\":\"Jabber Number\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber number to Move\",\"ProjectIId\":\"Project Id\",\"AccountId\":\"Account Id\",\"ICACode\":\"ICA Code\",\"NewOfficeLocation\":\"New Office Location\",\"Building\":\"Building\"},\"requesttrans\":{\"Requests\":\"Requests\",\"beingsubmitted\":\"Your request is being submitted.Do not refresh or go back.\",\"EmployeeRequestsDetails\":\"Employee Requests Details\",\"ResourceType\":\"Resource Type\",\"CreatedDate\":\"Created Date\",\"Status\":\"Status\",\"TrackingNumber\":\"Tracking Number\",\"AdditionalComments\":\"Additional Comments\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Your request for\",\"hasbeensubmitted\":\"has been submitted\",\"Trackingrequest\":\"Tracking number for the request is :\",\"receiveemailnotification\":\"You will receive an email notification, when your request has been processed.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Employee Resources Details\",\"Supplier\":\"Supplier\",\"Phone/Dial\":\"Phone/Dial\",\"Innumber\":\"In number\",\"AdditionalInformation\":\"Additional Information\"},\"alerttranslation\":{\"EXITREQUEST\":\"EXIT REQUEST\",\"digitserialnumber\":\"Employee Serial Number should be of 6 characters\",\"enterserialnumber\":\"Please enter a serial number\",\"moverequest\":\"Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit\",\"selectcountrycode\":\"Please select the Country Code\",\"Only\":\"Only\",\"serialnumbersareallowed\":\"Serial numbers are allowed to create a request for\",\"selectlocation\":\"Please select the Location\",\"selectjabbernumber\":\"Please select the Jabber Number\"},\"topui\":{\"HOME\":\"HOME\",\"SERVICES\":\"SERVICES\",\"DATAPRIVACY\":\"DATA PRIVACY\",\"HELP\":\"HELP\",\"FEEDBACK\":\"FEEDBACK\",\"CHANGECOUNTRY\":\"CHANGE COUNTRY\"},\"steps\":{\"Employee Search\":\"Employee Search\",\"Employee Information\":\"Employee Information\",\"Employee Entry Details\":\"Employee Entry Details\",\"Review Details\":\"Review Details\",\"Employee Resources Details\":\"Employee Resources Details\",\"Employee Requests Details\":\"Employee Requests Details\",\"STEP 1\":\"STEP 1\",\"STEP 2\":\"STEP 2\",\"STEP 3\":\"STEP 3\",\"STEP 4\":\"STEP 4\"}}");
+module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choose a language: \",\"app-name\":\"Global Voice Services\",\"app-function\":\"Single entry point for ordering voice services in your country\",\"sponsor\":\"Built on CIO Hybrid Cloud Powered by Red Hat OpenShift\",\"welcomemessage\":\"Welcome,\",\"question\":\"What service or country are you looking for?\",\"search-placeholder\":\"Search service...\",\"search-text\":\"Click here to see all results in GVS search\",\"my-country\":\"My Country\",\"click-here\":\"Click here\",\"available\":\"to view all available\",\"servicesonlyokay\":\"services for\",\"most-viewed-services\":\"Most Viewed Services\",\"find-right-service\":\"Find the right services, check their availability,\",\"find-right-service2\":\"and then choose the way you connect and work together.\",\"jabber-description\":\"Cisco Jabber is a multiple platform soft phone application to make and receive phone calls.\",\"button-value\":\"Get Started\",\"Searchservice\":\"Search service...\"},\"footer\":{\"aditional-question\":\"Have additional questions about ordering Global Voice Services ?\",\"please consult\":\"Please consult\",\"consult\":\"* This website supports Mozilla Firefox, Google Chrome, IE, Edge and Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code\":\"FAC Code\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Terms of use\",\"Useful Information\":\"Useful Information\",\"Please bear in mind the following points when making a request :\":\"Please bear in mind the following points when making a request :\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"To make a request the Employee must exist in BluePages (except for cancellation requests).\",\"You must know the IBM serial Number of the person making the request.\":\"You must know the IBM serial Number of the person making the request.\",\"Only one request per employee per request type is processed at a time.\":\"Only one request per employee per request type is processed at a time.\"},\"lhs\":{\"Services\":\"Services\",\"Jabber\":\"Jabber\",\"FAC Code\":\"FAC Code\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Jabber\",\"Approvals Pending\":\"Approvals Pending\",\"Revalidation Pending\":\"Revalidation Pending\",\"Requests\":\"Requests\",\"Resources\":\"Resources\"},\"Jabberservices\":{\"initiateJabber\":\" Please click on a request type below to initiate a Jabber service request.\",\"jnew\":\"Request a new service\",\"jupdate\":\"Update an existing service\",\"jmove\":\"Move an existing service\",\"jdelete\":\"Delete an existing service\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeSearch\":\"Employee Search\",\"requestfor\":\"Who is this request for\",\"Myself\":\"Myself\",\"AnotherEmployee\":\"Another Employee\",\"Name\":\"Name\",\"SerialNumber\":\"Serial Number\",\"EmployeeSerialNumber\":\"Employee Serial Number\",\"forexample\":\"(eg 012789)\",\"CountryCode\":\"Country Code\",\"SelectOne\":\"Select One\",\"norecord\":\"There is no record of an IBM employee with the serial number \",\"availablefromBluePages\":\"available from BluePages\",\"opps\":\"Opps! Some thing went worng.Please try again latter.\",\"JabberLocation\":\"Jabber / Phone Number location\",\"Voicemail\":\"Voicemail\",\"ClassofService\":\"Class of Service\",\"pleasesubmittostart\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service.\"},\"servicestitle\":{\"Request new Jabber service\":\"Request new Jabber service\",\"Delete an existing service\":\"Delete an existing service\",\"Request a new service\":\"Request a new service\",\"Update an existing service\":\"Update an existing service\",\"Request Move Jabber service\":\"Request Move Jabber service\",\"Requests\":\"Requests\",\"Resources\":\"Resources\",\"Update Jabber Request\":\"Update Jabber Request\",\"Delete Jabber Request\":\"Delete Jabber Request\",\"Deactivate an existing FAC Code\":\"Deactivate an existing FAC Code\",\"FAC Code Deactivate Request\":\"FAC Code Deactivate Request\",\"Move Jabber Request\":\"Move Jabber Request\",\"Fixed Phone - New Request\":\"Fixed Phone - New Request\",\"New Fixed Phone Request\":\"New Fixed Phone Request\",\"Request a new FAC Code\":\"Request a new FAC Code\",\"FAC Code New Request\":\"FAC Code New Request\",\"Update an existing FAC code\":\"Update an existing FAC code\",\"FAC Code Update Request\":\"FAC Code Update Request\",\"Reset an existing FAC code\":\"Reset an existing FAC code\",\"FAC Code Reset Request\":\"FAC Code Update Request\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"If the following information is correct, click Next. Any errors must be corrected in the employee's\",\"BluePagesrecord\":\"BluePages record\",\"beforecontinuing\":\"before continuing.\",\"EmployeeInformation\":\"Employee Information\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"Name\":\"Name:\",\"SerialNumber\":\"Serial Number:\",\"JobResponsibility\":\"Job Responsibility:\",\"BusinessUnit\":\"Business Unit:\",\"Department\":\"Department:\",\"Country\":\"Country:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"The serial number that you have entered is not eligible to request Jabber account.\",\"itnexistsforuser\":\"The IBM Telephone Number (ITN) that exists for this user is .\",\"nojabber\":\"There is no Jabber for this serial number.\",\"nojabberusethislink\":\"The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN \",\"GlobalVoiceInfrastructure\":\"Global Voice Infrastructure.\",\"receiveITN\":\"you have received the ITN you can then request Jabber.  Thank you.\",\"notauthorizedtoaccessjabber\":\"The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact\",\"notauthorizedtoaccessip\":\"The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact\",\"noteligibletorequestmorethanonejabber\":\"The serial number that you have entered is not eligible to request more than one Jabber account.\",\"ITNexistsforthisuser\":\"The IBM Telephone Number (ITN) that exists for this users jabber account is\",\"jabberconfiguration\":\"Related to Jabber configuration can be found at\",\"furtherassistance\":\"For any further assistance, please contact\",\"alreadyone\":\"serial number that you have entered has already one\",\"inprogess\":\"is in progress and request number is\",\"ongoingrequestsbyclickonrequestpage\":\"You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.\",\"nooutstandingreq\":\"No outstanding requests were found for the serial number.\",\"noresources\":\"There are no resources for this serial number.\",\"nojabberforthisserial\":\"There is no Jabber for this serial number.\",\"BACK\":\"BACK\",\"NEXT\":\"NEXT\",\"SUBMIT1\":\"SUBMIT\",\"alreadyonerequestinprogress\":\"The serial number that you have entered has already one new Jabber request is in progress and request number is\",\"alreadyoneupdaterequestinprogress\":\"The serial number that you have entered has already one Update Jabber request is in progress and request number is\",\"alreadyonemoverequestinprogress\":\"The serial number that you have entered has already one move Jabber request is in progress and request number is\",\"alreadyonedeleterequestinprogress\":\"The serial number that you have entered has already one delete Jabber request is in progress and request number is\",\"alreadyonefacdeleterequestinprogress\":\"The serial number that you have entered has already one delete FAC request is in progress and request number is\",\"enterserialnumber\":\"Please enter a serial number\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"OfficeLocation\":\"Office Location\",\"Campus\":\"Campus\",\"Funded\":\"Funded\",\"ChargeDepartmentCode\":\"Charge Department Code\",\"BusinessUnit\":\"Business Unit\",\"Projectid\":\"Project ID (for GBS employee only)\",\"alreadyhaveFixedPhone\":\"If you already have Fixed Phone , please provide the identifier\",\"toprocessPI\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.\",\"JabberRequestDetails\":\"Jabber Request Details\",\"FixedPhoneIdentifier\":\"Fixed Phone Identifier\",\"Submissioninprogress\":\"Your request submission is in progress.Do not Go back or Refresh the page.\",\"Submissionbeinginprogress\":\"Your request is being submitted. Do not refresh or go back.\",\"Back\":\"BACK\",\"Next\":\"NEXT\",\"Select Location\":\"Select Location\"},\"Jabberupdate\":{\"SELECTONE\":\"SELECT ONE\",\"ReviewDetails\":\"Review Details\",\"JabberNumber\":\"Jabber Number\",\"SelectJabberNumber\":\"Select Jabber Number\",\"Jabber/PhoneNumberLocation\":\"Select Jabber / Phone Number Location\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber number to Move\",\"ProjectIId\":\"Project ID\",\"AccountId\":\"Account ID\",\"ICACode\":\"ICA Code\",\"NewOfficeLocation\":\"New Office Location\",\"Building\":\"Building\"},\"requesttrans\":{\"Requests\":\"Requests\",\"beingsubmitted\":\"Your request is being submitted.Do not refresh or go back.\",\"EmployeeRequestsDetails\":\"Employee Requests Details\",\"ResourceType\":\"Resource Type\",\"CreatedDate\":\"Created Date\",\"Status\":\"Status\",\"TrackingNumber\":\"Tracking Number\",\"AdditionalComments\":\"Additional Comments\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Your request for\",\"hasbeensubmitted\":\"has been submitted\",\"Trackingrequest\":\"Tracking number for the request is :\",\"receiveemailnotification\":\"You will receive an email notification, when your request has been processed.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Employee Resources Details\",\"Supplier\":\"Supplier\",\"Phone/Dial\":\"Phone/Dial\",\"Innumber\":\"In number\",\"AdditionalInformation\":\"Additional Information\"},\"alerttranslation\":{\"EXITREQUEST\":\"EXIT REQUEST\",\"digitserialnumber\":\"Employee Serial Number should be of 6 characters\",\"enterserialnumber\":\"Please enter a serial number\",\"moverequest\":\"Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit\",\"selectcountrycode\":\"Please select the Country Code\",\"Only\":\"Only\",\"serialnumbersareallowed\":\"Serial numbers are allowed to create a request for\",\"selectlocation\":\"Please select the Location\",\"selectjabbernumber\":\"Please select the Jabber Number\"},\"topui\":{\"HOME\":\"HOME\",\"SERVICES\":\"SERVICES\",\"DATAPRIVACY\":\"DATA PRIVACY\",\"HELP\":\"HELP\",\"FEEDBACK\":\"FEEDBACK\",\"CHANGECOUNTRY\":\"CHANGE COUNTRY\"},\"steps\":{\"Employee Search\":\"Employee Search\",\"Employee Information\":\"Employee Information\",\"Employee Entry Details\":\"Employee Entry Details\",\"Review Details\":\"Review Details\",\"Employee Resources Details\":\"Employee Resources Details\",\"Employee Requests Details\":\"Employee Requests Details\",\"STEP 1\":\"STEP 1\",\"STEP 2\":\"STEP 2\",\"STEP 3\":\"STEP 3\",\"STEP 4\":\"STEP 4\"}}");
 
 /***/ }),
 
@@ -13668,18 +16244,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_voip_emea_new_voip_emea_new_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/voip-emea-new/voip-emea-new.component */ "R5fI");
 /* harmony import */ var _components_voip_usa_new_voip_usa_new_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/voip-usa-new/voip-usa-new.component */ "ZSIN");
 /* harmony import */ var _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/voip-in-move/voip-in-move.component */ "Uo6X");
-/* harmony import */ var _components_hp_in_new_hp_in_new_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/hp-in-new/hp-in-new.component */ "aJjB");
-/* harmony import */ var _components_fixedphoneservices_fixedphoneservices_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/fixedphoneservices/fixedphoneservices.component */ "WwOP");
-/* harmony import */ var _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/pagenotfound/pagenotfound.component */ "cw5x");
-/* harmony import */ var _components_voip_la_update_voip_la_update_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/voip-la-update/voip-la-update.component */ "HTI5");
-/* harmony import */ var _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/fac-in-new/fac-in-new.component */ "/UO4");
-/* harmony import */ var _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/fac-in-update/fac-in-update.component */ "L9kc");
-/* harmony import */ var _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/fac-in-reset/fac-in-reset.component */ "bsso");
-/* harmony import */ var _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/approval-result-page/approval-result-page.component */ "6juO");
-/* harmony import */ var _components_facservices_facservices_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/facservices/facservices.component */ "kPm3");
-/* harmony import */ var _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/approval-single-page/approval-single-page.component */ "icyV");
-/* harmony import */ var _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/voip-usa-update/voip-usa-update.component */ "jTLy");
-/* harmony import */ var _components_hp_au_new_hp_au_new_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/hp-au-new/hp-au-new.component */ "5O5C");
+/* harmony import */ var _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/pagenotfound/pagenotfound.component */ "cw5x");
+/* harmony import */ var _components_voip_la_update_voip_la_update_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/voip-la-update/voip-la-update.component */ "HTI5");
+/* harmony import */ var _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/fac-in-new/fac-in-new.component */ "/UO4");
+/* harmony import */ var _components_hp_au_update_hp_au_update_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/hp-au-update/hp-au-update.component */ "pPZ4");
+/* harmony import */ var _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/fac-in-update/fac-in-update.component */ "L9kc");
+/* harmony import */ var _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/fac-in-reset/fac-in-reset.component */ "bsso");
+/* harmony import */ var _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/approval-result-page/approval-result-page.component */ "6juO");
+/* harmony import */ var _components_facservices_facservices_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/facservices/facservices.component */ "kPm3");
+/* harmony import */ var _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/approval-single-page/approval-single-page.component */ "icyV");
+/* harmony import */ var _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/voip-usa-update/voip-usa-update.component */ "jTLy");
+/* harmony import */ var _components_hp_in_new_hp_in_new_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/hp-in-new/hp-in-new.component */ "aJjB");
+/* harmony import */ var _components_fixedphoneservices_fixedphoneservices_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/fixedphoneservices/fixedphoneservices.component */ "WwOP");
+/* harmony import */ var _components_hp_in_update_hp_in_update_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/hp-in-update/hp-in-update.component */ "wx85");
+/* harmony import */ var _components_hp_in_delete_hp_in_delete_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/hp-in-delete/hp-in-delete.component */ "7P22");
+/* harmony import */ var _components_hp_usa_new_hp_usa_new_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/hp-usa-new/hp-usa-new.component */ "4a48");
+/* harmony import */ var _components_hp_emea_new_hp_emea_new_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/hp-emea-new/hp-emea-new.component */ "p96R");
+/* harmony import */ var _components_hp_indonesia_new_hp_indonesia_new_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/hp-indonesia-new/hp-indonesia-new.component */ "UiN3");
+/* harmony import */ var _components_hp_au_new_hp_au_new_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/hp-au-new/hp-au-new.component */ "5O5C");
+/* harmony import */ var _components_fac_in_deactivate_fac_in_deactivate_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/fac-in-deactivate/fac-in-deactivate.component */ "PglX");
+
+
+
+
+
+
+
 
 
 
@@ -13723,8 +16313,8 @@ const appRoutes = [
     { path: 'services', component: _components_services_services_component__WEBPACK_IMPORTED_MODULE_2__["ServicesComponent"] },
     // { path: 'services' , loadChildren: () => import('./components/navigation/navigation.component').then(m => m.ServicesComponent)}  
     { path: 'jabberservices', component: _components_jabberservices_jabberservices_component__WEBPACK_IMPORTED_MODULE_4__["JabberservicesComponent"] },
-    { path: 'fixedphoneservices', component: _components_fixedphoneservices_fixedphoneservices_component__WEBPACK_IMPORTED_MODULE_25__["FixedphoneservicesComponent"] },
-    { path: 'facservices', component: _components_facservices_facservices_component__WEBPACK_IMPORTED_MODULE_32__["FacservicesComponent"] },
+    { path: 'fixedphoneservices', component: _components_fixedphoneservices_fixedphoneservices_component__WEBPACK_IMPORTED_MODULE_35__["FixedphoneservicesComponent"] },
+    { path: 'facservices', component: _components_facservices_facservices_component__WEBPACK_IMPORTED_MODULE_31__["FacservicesComponent"] },
     { path: 'employeesearch', component: _components_employeesearch_employeesearch_component__WEBPACK_IMPORTED_MODULE_5__["EmployeesearchComponent"] },
     { path: 'employeeinfo', component: _components_employeeinfo_employeeinfo_component__WEBPACK_IMPORTED_MODULE_7__["EmployeeinfoComponent"] },
     { path: 'resultpage', component: _components_resultpage_resultpage_component__WEBPACK_IMPORTED_MODULE_6__["ResultpageComponent"] },
@@ -13738,8 +16328,8 @@ const appRoutes = [
     { path: 'entrydetailsijm', component: _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_23__["VoipInMoveComponent"] },
     { path: 'reviewdetails', component: _components_reviewdetails_reviewdetails_component__WEBPACK_IMPORTED_MODULE_10__["ReviewdetailsComponent"] },
     { path: 'resultpage', component: _components_resultpage_resultpage_component__WEBPACK_IMPORTED_MODULE_6__["ResultpageComponent"] },
-    { path: 'approvalresult', component: _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_31__["ApprovalResultPageComponent"] },
-    { path: 'approvalsingle', component: _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_33__["ApprovalSinglePageComponent"] },
+    { path: 'approvalresult', component: _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_30__["ApprovalResultPageComponent"] },
+    { path: 'approvalsingle', component: _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_32__["ApprovalSinglePageComponent"] },
     { path: 'employeesearchdelete', component: _components_employeesearch_voip_delete_employeesearch_voip_delete_component__WEBPACK_IMPORTED_MODULE_16__["EmployeesearchVoipDeleteComponent"] },
     { path: 'revalidationpending', component: _components_revalidationpending_revalidationpending_component__WEBPACK_IMPORTED_MODULE_17__["RevalidationpendingComponent"] },
     { path: 'approvalpending', component: _components_approvalpending_approvalpending_component__WEBPACK_IMPORTED_MODULE_18__["ApprovalpendingComponent"] },
@@ -13747,18 +16337,26 @@ const appRoutes = [
     { path: 'entrydetailsemea', component: _components_voip_emea_new_voip_emea_new_component__WEBPACK_IMPORTED_MODULE_21__["VoipEmeaNewComponent"] },
     { path: 'entrydetailsus', component: _components_voip_usa_new_voip_usa_new_component__WEBPACK_IMPORTED_MODULE_22__["VoipUsaNewComponent"] },
     { path: 'resources', component: _components_resources_resources_component__WEBPACK_IMPORTED_MODULE_12__["ResourcesComponent"] },
-    { path: 'entrydetailsfn', component: _components_hp_in_new_hp_in_new_component__WEBPACK_IMPORTED_MODULE_24__["HpInNewComponent"] },
-    { path: 'entrydetailsaufn', component: _components_hp_au_new_hp_au_new_component__WEBPACK_IMPORTED_MODULE_35__["HpAuNewComponent"] },
-    { path: 'entrydetailsfac', component: _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_28__["FacInNewComponent"] },
-    { path: 'entrydetailsfacu', component: _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_29__["FacInUpdateComponent"] },
-    { path: 'entrydetailsfacr', component: _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_30__["FacInResetComponent"] },
-    { path: 'entrydetails_update_la', component: _components_voip_la_update_voip_la_update_component__WEBPACK_IMPORTED_MODULE_27__["VoipLaUpdateComponent"] },
-    { path: 'entrydetails_update_us', component: _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_34__["VoipUsaUpdateComponent"] },
-    { path: 'pagenotfound', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_26__["PagenotfoundComponent"] },
-    { path: 'pagenotfound?error', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_26__["PagenotfoundComponent"] },
-    { path: 'entrydetailsfacin', component: _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_28__["FacInNewComponent"] },
+    { path: 'entrydetailsfn', component: _components_hp_in_new_hp_in_new_component__WEBPACK_IMPORTED_MODULE_34__["HpInNewComponent"] },
+    { path: 'entrydetailsfup', component: _components_hp_in_update_hp_in_update_component__WEBPACK_IMPORTED_MODULE_36__["HpInUpdateComponent"] },
+    { path: 'entrydetailsfde', component: _components_hp_in_delete_hp_in_delete_component__WEBPACK_IMPORTED_MODULE_37__["HpInDeleteComponent"] },
+    { path: 'entrydetailsfusanew', component: _components_hp_usa_new_hp_usa_new_component__WEBPACK_IMPORTED_MODULE_38__["HpUsaNewComponent"] },
+    { path: 'entrydetailsfemeanew', component: _components_hp_emea_new_hp_emea_new_component__WEBPACK_IMPORTED_MODULE_39__["HpEmeaNewComponent"] },
+    { path: 'entrydetailsindo', component: _components_hp_indonesia_new_hp_indonesia_new_component__WEBPACK_IMPORTED_MODULE_40__["HpIndonesiaNewComponent"] },
+    { path: 'entrydetailsaufn', component: _components_hp_au_new_hp_au_new_component__WEBPACK_IMPORTED_MODULE_41__["HpAuNewComponent"] },
+    { path: 'entrydetailsaufu', component: _components_hp_au_update_hp_au_update_component__WEBPACK_IMPORTED_MODULE_27__["HpAuUpdateComponent"] },
+    { path: 'entrydetailsfac', component: _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_26__["FacInNewComponent"] },
+    { path: 'entrydetailsfacu', component: _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_28__["FacInUpdateComponent"] },
+    { path: 'entrydetailsfacr', component: _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_29__["FacInResetComponent"] },
+    { path: 'entrydetails_update_la', component: _components_voip_la_update_voip_la_update_component__WEBPACK_IMPORTED_MODULE_25__["VoipLaUpdateComponent"] },
+    { path: 'entrydetails_update_us', component: _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_33__["VoipUsaUpdateComponent"] },
+    { path: 'pagenotfound', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__["PagenotfoundComponent"] },
+    { path: 'pagenotfound?error', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__["PagenotfoundComponent"] },
+    { path: 'entrydetailsfacin', component: _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_26__["FacInNewComponent"] },
+    { path: 'entrydetailsfacdeactive', component: _components_fac_in_deactivate_fac_in_deactivate_component__WEBPACK_IMPORTED_MODULE_42__["FacInDeactivateComponent"] },
     // {path: '**', redirectTo:'/pagenotfound?error'}
-    { path: '**', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_26__["PagenotfoundComponent"] }
+    { path: '**', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__["PagenotfoundComponent"] },
+    { path: 'entrydetailsjusaup', component: _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_33__["VoipUsaUpdateComponent"] }
 ];
 const appRoutingProviders = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes, { onSameUrlNavigation: 'reload' });
 
@@ -13977,7 +16575,7 @@ class FacInResetComponent {
         this.Funded = formData.value.Voice_Mail;
         this.chargeDepartmentCode = formData.value.chargeDepartmentCode;
         this.authLevel = formData.value.authLevel;
-        this.bj_disp = formData.value.businessjustification;
+        this.bj_disp = formData.value.businessjustification.replace(/[\n\r+]/g, ' ');
         this.isReviewForm = false;
         this.isEntryForm = true;
     }
@@ -14300,7 +16898,7 @@ PagenotfoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
 /*!***************************!*\
   !*** ./config/payload.ts ***!
   \***************************/
-/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Fac_New, Fac_Update, Fac_Reset, Special_Request, fixedphone_new, fixedphone_delete, fixedphone_update */
+/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Fac_New, Fac_Deactivate, Fac_Update, Fac_Reset, Special_Request, fixedphone_new, fixedphone_delete, fixedphone_update */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -14312,6 +16910,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_Move", function() { return Jabber_Move; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Jabber_Update", function() { return Jabber_Update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Fac_New", function() { return Fac_New; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Fac_Deactivate", function() { return Fac_Deactivate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Fac_Update", function() { return Fac_Update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Fac_Reset", function() { return Fac_Reset; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Special_Request", function() { return Special_Request; });
@@ -14457,6 +17056,22 @@ class Fac_New {
         this.authValue = "";
     }
 }
+// class used to create the payload for snow deactivate fac service
+class Fac_Deactivate {
+    Fac_Deactivate() {
+        this.orinator_payload = "";
+        this.cNum_payload = "";
+        this.authLevel_final = "";
+        this.BusinessUnit_Disp = "";
+        this.ReqNo = "";
+        this.authValue = "";
+        this.gvs_portal_link = "";
+        this.countryname = "";
+        this.request_type = "";
+        this.evolution_instance = "";
+        this.country_code = "";
+    }
+}
 // Class used to create the payload for snow update Fac service.
 class Fac_Update {
     Fac_Update() {
@@ -14586,7 +17201,7 @@ class fixedphone_update {
         this.olddesc = "";
         this.Identifier = "";
         this.MAC = "";
-        this.Location_fina = "";
+        this.Location_final = "";
         this.LocationCorrectnew = "";
         this.ReqNo = "";
         this.countryname = "";
@@ -14680,6 +17295,14 @@ class ResultpageComponent {
         }
         if (this.service == 'fixedphone_new') {
             this.page = 'new Fixed Phone';
+            return this.page;
+        }
+        if (this.service == 'fixedphone_update') {
+            this.page = 'update Fixed Phone';
+            return this.page;
+        }
+        if (this.service == 'fixedphone_delete') {
+            this.page = 'delete Fixed Phone';
             return this.page;
         }
     }
@@ -15081,14 +17704,14 @@ RequestsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmployeesearchComponent", function() { return EmployeesearchComponent; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/cookie-handler.service */ "oxqP");
-/* harmony import */ var _services_cloudant_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_services/cloudant.service */ "Rfmm");
-/* harmony import */ var _services_bp_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services/bp.service */ "Qz7Q");
-/* harmony import */ var _services_db2_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services/db2.service */ "qtc7");
-/* harmony import */ var _services_servicenow_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_services/servicenow.service */ "qWuM");
-/* harmony import */ var _services_translate_config_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../_services/translate-config.service */ "5V17");
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../_services/cookie-handler.service */ "oxqP");
+/* harmony import */ var _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services/cloudant.service */ "Rfmm");
+/* harmony import */ var _services_bp_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services/bp.service */ "Qz7Q");
+/* harmony import */ var _services_db2_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_services/db2.service */ "qtc7");
+/* harmony import */ var _services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../_services/servicenow.service */ "qWuM");
 /* harmony import */ var _topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../topcountryframe/topcountryframe.component */ "aDsg");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "ofXK");
 /* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../navigation/navigation.component */ "mvyS");
@@ -15110,165 +17733,180 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function EmployeesearchComponent_tr_42_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Jabbernewtrans.Name");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r1.fullName, " ");
+function EmployeesearchComponent_div_11_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1, "Jabbernewtrans.Reqnewservice ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "(");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "span", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, ")");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](8, " Jabbernewtrans.arerequired");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
-function EmployeesearchComponent_div_45_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Jabbernewtrans.SerialNumber");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+function EmployeesearchComponent_tr_34_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "tr");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "td", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "label", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "Jabbernewtrans.Name");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "td", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" ", ctx_r2.fullName, " ");
+} }
+function EmployeesearchComponent_div_37_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "label", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "Jabbernewtrans.SerialNumber");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function EmployeesearchComponent_div_39_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r4.ccode);
+} }
+function EmployeesearchComponent_div_42_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "label", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "Jabbernewtrans.EmployeeSerialNumber");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "span", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function EmployeesearchComponent_div_44_Template(rf, ctx) { if (rf & 1) {
+    const _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "input", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function EmployeesearchComponent_div_44_Template_input_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r14); const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r13.hidedata(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "span", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](5, "Jabbernewtrans.forexample");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpropertyInterpolate"]("ngModel", ctx_r6.empno);
+} }
+function EmployeesearchComponent_tr_45_option_14_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "option", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const subCountry_r16 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("value", subCountry_r16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](subCountry_r16);
+} }
+function EmployeesearchComponent_tr_45_Template(rf, ctx) { if (rf & 1) {
+    const _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "tr");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "td");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "label", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4, "Jabbernewtrans.CountryCode");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "span", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "td", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "div", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "div", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](10, "div", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "select", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function EmployeesearchComponent_tr_45_Template_select_click_11_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r18); const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r17.hidedata(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "option", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](13, "Jabbernewtrans.SelectOne");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](14, EmployeesearchComponent_tr_45_option_14_Template, 2, 2, "option", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngForOf", ctx_r7.subCountries);
+} }
+function EmployeesearchComponent_p_46_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "p", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "font", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, "Jabbernewtrans.norecord ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "span");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, " Jabbernewtrans.availablefromBluePages");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](ctx_r8.employeeSerial.substr(0, 6));
 } }
 function EmployeesearchComponent_div_47_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r3.ccode);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "p", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "Jabbernewtrans.opps");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "p");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 function EmployeesearchComponent_div_50_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "label", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Jabbernewtrans.EmployeeSerialNumber");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} }
-function EmployeesearchComponent_div_52_Template(rf, ctx) { if (rf & 1) {
-    const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 41);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "input", 42);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function EmployeesearchComponent_div_52_Template_input_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r13); const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r12.hidedata(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 43);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "Jabbernewtrans.forexample");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("ngModel", ctx_r5.empno);
-} }
-function EmployeesearchComponent_tr_53_option_14_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 51);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const subCountry_r15 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", subCountry_r15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](subCountry_r15);
-} }
-function EmployeesearchComponent_tr_53_Template(rf, ctx) { if (rf & 1) {
-    const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Jabbernewtrans.CountryCode");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "td", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 41);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 47);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "select", 48);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function EmployeesearchComponent_tr_53_Template_select_click_11_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r17); const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r16.hidedata(); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "option", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Jabbernewtrans.SelectOne");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, EmployeesearchComponent_tr_53_option_14_Template, 2, 2, "option", 50);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](14);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r6.subCountries);
-} }
-function EmployeesearchComponent_p_54_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 52);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "font", 53);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Jabbernewtrans.norecord ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Jabbernewtrans.availablefromBluePages");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r7.employeeSerial.substr(0, 6));
-} }
-function EmployeesearchComponent_div_55_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "p", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Jabbernewtrans.opps");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} }
-function EmployeesearchComponent_div_58_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 55);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 56);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "div", 57);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "div", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "div", 58);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 const _c0 = function (a0) { return [a0]; };
 const _c1 = function (a0, a1) { return { country: a0, service: a1 }; };
-function EmployeesearchComponent_input_63_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 58);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](1, "translate");
+function EmployeesearchComponent_input_55_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "input", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](1, "translate");
 } if (rf & 2) {
-    const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](1, 3, "alerttranslation.EXITREQUEST"));
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](5, _c0, "/" + ctx_r10.exitrouting))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](7, _c1, ctx_r10.pcode, ctx_r10.exitrouting));
+    const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpropertyInterpolate"]("value", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](1, 3, "alerttranslation.EXITREQUEST"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](5, _c0, "/" + ctx_r11.exitrouting))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction2"](7, _c1, ctx_r11.pcode, ctx_r11.exitrouting));
 } }
-function EmployeesearchComponent_span_64_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "span", 59);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "input", 60);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](2, "translate");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+function EmployeesearchComponent_span_56_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "span", 60);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "input", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](2, "translate");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](2, 1, "employeeinfotrans.NEXT"));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpropertyInterpolate"]("value", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](2, 1, "employeeinfotrans.NEXT"));
 } }
 const _c2 = function (a0) { return { "disabled": a0 }; };
 class EmployeesearchComponent {
-    constructor(router, cookie, cloudantservice, route, bpservices, Db2Service, servicenowservice, servicesd) {
+    constructor(router, cookie, cloudantservice, route, bpservices, Db2Service, servicenowservice) {
         this.router = router;
         this.cookie = cookie;
         this.cloudantservice = cloudantservice;
@@ -15276,7 +17914,6 @@ class EmployeesearchComponent {
         this.bpservices = bpservices;
         this.Db2Service = Db2Service;
         this.servicenowservice = servicenowservice;
-        this.servicesd = servicesd;
         this.radioAction = "";
         this.hideDisTextBox = false;
         this.hideDisserial = true;
@@ -15285,8 +17922,9 @@ class EmployeesearchComponent {
         this.subCountries = [];
         this.ccode = '';
         this.pcode = '';
-        this.fullName = '';
         this.service = '';
+        this.fixedphone = '';
+        this.itn = '';
         this.warninginfo = true;
         this.warninginfosnow = true;
         this.employeeSerial = '';
@@ -15299,28 +17937,54 @@ class EmployeesearchComponent {
         this.itns = [];
         this.voice_mail = [];
         this.cos = [];
+        this.validcnum = false;
+        this.extracodes = [];
     }
     ngOnInit() {
-        this.mainConfiguration = this.servicesd.readConfigFile();
-        //alert (this.mainConfiguration);
         this.showloader = false;
-        this.fullName = this.cookie.getCookie('username');
-        this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
-        this.fullName = this.fullName.replace(",", ", ");
-        this.ccode = this.cookie.getCookie('ccode');
-        this.countrydetails = sessionStorage.getItem('countrydetails');
-        this.countrydetails = JSON.parse(this.countrydetails);
-        if (this.countrydetails.testuser) {
-            this.ccode = this.countrydetails.testuser;
-        }
-        else {
-            this.ccode = this.cookie.getCookie('ccode');
-        }
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
             this.pcode = params.country;
             this.service = params.service;
+            this.fullName = this.cookie.getCookie('username');
+            if (this.fullName.includes(undefined)) {
+                this.fullName = this.cookie.getCookie('user');
+            }
+            this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
+            this.fullName = this.fullName.replace(",", ", ");
+            this.ccode = this.cookie.getCookie('ccode');
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.getTitle();
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    console.log('Response received navigation', data.countrydetails.isspecial);
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    sessionStorage.setItem('countryroute', this.pcode);
+                    if (this.countrydetails.testuser) {
+                        this.ccode = this.countrydetails.testuser;
+                    }
+                    else {
+                        this.ccode = this.cookie.getCookie('ccode');
+                    }
+                    if (this.countrydetails.scountries) {
+                        this.showCountryCode = true;
+                        this.subCountries = this.countrydetails.scountries;
+                    }
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                if (this.countrydetails.testuser) {
+                    this.ccode = this.countrydetails.testuser;
+                }
+                else {
+                    this.ccode = this.cookie.getCookie('ccode');
+                }
+            }
             console.log("navigation component" + this.pcode);
             this.backbutton = sessionStorage.getItem('backbutton');
             this.step = sessionStorage.getItem('step');
@@ -15366,7 +18030,7 @@ class EmployeesearchComponent {
         });
         setTimeout(() => {
             if (sessionStorage.getItem('serviceName') == 'jabber_move' && this.step == null || sessionStorage.getItem('serviceName') == 'jabber_move' && sessionStorage.getItem('empserial') == '') {
-                this.returnValue = confirm(this.mainConfiguration.alerttranslation.moverequest);
+                this.returnValue = confirm('Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit');
                 if (this.returnValue == false) {
                     this.router.navigate(['/jabberservices'], { queryParams: { country: this.pcode, service: this.service } });
                 }
@@ -15377,29 +18041,36 @@ class EmployeesearchComponent {
         sessionStorage.setItem('radioAction', this.radioAction.toLowerCase());
         console.log(this.pcode + this.ccode);
         if (this.radioAction.toLowerCase() == "myself") {
-            if (this.countrydetails.scountries) {
+            if (this.countrydetails.extracodes) {
+                if (this.countrydetails.extracodes.split(',').some((s) => s.includes(this.ccode.substr(6, 9)))) { }
+                else {
+                    alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
+                    return;
+                }
+            }
+            else if (this.countrydetails.scountries) {
                 if (this.countrydetails.scountries.some((s) => s.includes(this.ccode.substr(6, 9)))) { }
                 else {
-                    alert("" + this.mainConfiguration.alerttranslation.Only + " " + this.countrydetails.name + " " + this.mainConfiguration.alerttranslation.serialnumbersareallowed + " " + this.countrydetails.name);
+                    alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
                     return;
                 }
             }
             else if (this.pcode !== this.ccode.substr(6, 9)) {
-                alert("" + this.mainConfiguration.alerttranslation.Only + " " + this.countrydetails.name + " " + this.mainConfiguration.alerttranslation.serialnumbersareallowed + " " + this.countrydetails.name);
+                alert("Only " + this.countrydetails.name + " Serial numbers are allowed to create a request for " + this.countrydetails.name);
                 return;
             }
         }
         if (this.radioAction.toLowerCase() == "anotheremployee") {
             if (formData.value.employeeSerial.trim().length == 0 && this.hideDisTextBox == true) {
-                alert(this.mainConfiguration.alerttranslation.enterserialnumber);
+                alert("Please enter a serial number");
                 return;
             }
             else if ((formData.value.employeeSerial.trim().length < 6 || formData.value.employeeSerial.includes(' ')) && this.hideDisTextBox == true) {
-                alert(this.mainConfiguration.alerttranslation.digitserialnumber);
+                alert("Employee Serial Number should be of 6 characters");
                 return;
             }
             else if (this.showCountryCode && this.hideDisTextBox && formData.value.selectedCountry === '') {
-                alert(this.mainConfiguration.alerttranslation.selectcountrycode);
+                alert("Please select the Country Code");
                 return;
             }
             else {
@@ -15442,11 +18113,56 @@ class EmployeesearchComponent {
         }
         this.showloader = true;
         //BP verification and getting data
+        if (this.countrydetails.extracodes) {
+            this.extracodes = this.countrydetails.extracodes.split(',');
+            console.log(this.extracodes.length);
+            this.getExtracodes();
+        }
+        else {
+            this.getBPData();
+        }
+    }
+    getExtracodes() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            var count = 0;
+            for (this.i = 0; this.i < this.extracodes.length; this.i++) {
+                //  this.i = 0      
+                // while(this.i < this.extracodes.length)  {    
+                var employeeSerial1 = this.employeeSerial.substr(0, 6) + this.extracodes[this.i];
+                console.log(this.i);
+                console.log("empserialnumr" + employeeSerial1);
+                this.bpservices.bpdetails(employeeSerial1).subscribe(data => {
+                    console.log(' BP Detailschina', data.userdata);
+                    count++;
+                    if (data.userdata) {
+                        this.employeeSerial = data.username.uid;
+                        console.log("empserialnumrif" + this.employeeSerial);
+                        this.validcnum = true;
+                        this.getBPData();
+                        return;
+                    }
+                    else {
+                        if (count == this.extracodes.length) {
+                            this.getBPData();
+                            return;
+                        }
+                    }
+                });
+            }
+        });
+    }
+    getBPData() {
+        console.log(' this.employeeSerial', this.employeeSerial);
         this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
+            console.log(' this.employeeSerial', this.employeeSerial);
             console.log(' BP Details', data.userdata);
             if (data.userdata) {
+                var ename = data.username.preferredlastname + ", " + data.username.preferredfirstname;
+                if (data.username.preferredlastname == undefined || data.username.preferredfirstname == undefined) {
+                    ename = data.username.callupname;
+                }
                 this.employeeInfo = {
-                    employeeName: data.username.preferredlastname + ", " + data.username.preferredfirstname,
+                    employeeName: ename,
                     jobResponsibility: data.username.jobresponsibilities,
                     businessUnit: data.bu,
                     department: data.username.dept,
@@ -15525,7 +18241,7 @@ class EmployeesearchComponent {
         return this.datasnow;
     }
     getDBdata() {
-        this.Db2Service.search_db2(this.employeeSerial, this.service).subscribe(data => {
+        this.Db2Service.search_db2(this.employeeSerial, this.service, this.fixedphone, this.itn, this.countryname).subscribe(data => {
             console.log(' db2 response', data);
             console.log(' db2 response', data.message.length);
             if (data.message.length > 0) {
@@ -15553,7 +18269,7 @@ class EmployeesearchComponent {
                     sessionStorage.setItem('identifier', 'xxxxxxxx');
                     this.datadb = "yes";
                 }
-                else if (this.service == "fac_update" || this.service == "fac_reset") {
+                else if (this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_deactivate") {
                     sessionStorage.setItem('db2data', JSON.stringify(data.message));
                     if ((JSON.stringify(data.message[0].IDENTIFIER)).trim() !== "") {
                         sessionStorage.setItem('identifier', 'xxxxxxxx');
@@ -15619,6 +18335,8 @@ class EmployeesearchComponent {
                 sessionStorage.setItem('emmodels', JSON.stringify(data.locationdetails.emmodels));
                 sessionStorage.setItem('cmmodels', JSON.stringify(data.locationdetails.cmmodels));
                 sessionStorage.setItem('fpmodels', JSON.stringify(data.locationdetails.fpmodels));
+                sessionStorage.setItem('updaterequired', JSON.stringify(data.locationdetails.updaterequired));
+                sessionStorage.setItem('fpumodels', JSON.stringify(data.locationdetails.fpumodels));
             }
             else if (this.service.includes('fac')) {
                 this.lookuploc = JSON.stringify(data.locationdetails.faclocations);
@@ -15695,15 +18413,49 @@ class EmployeesearchComponent {
             case "fixedphone_new":
                 this.title = "Fixed Phone - New Request";
                 this.exitrouting = 'fixedphoneservices';
-                if (this.countrydetails.jnavpage == 'AP') {
+                if (this.countrydetails.fnavpage == 'AP') {
                     this.routingname = "/entrydetailsfn";
                 }
+                else if (this.countrydetails.fnavpage == 'AU') {
+                    this.routingname = '/entrydetailsaufn';
+                }
+                else if (this.countrydetails.fnavpage == 'EMEA') {
+                    this.routingname = '/entrydetailsfemeanew';
+                    //Add routingname here for EMEA
+                }
+                else if (this.countrydetails.fnavpage == 'NA') {
+                    //Add routingname here for NA
+                }
+                else if (this.countrydetails.fnavpage == 'US') {
+                    this.routingname = '/entrydetailsfusanew';
+                }
+                else if (this.countrydetails.fnavpage == 'ID') {
+                    this.routingname = "/entrydetailsindo";
+                }
                 this.reqname = "-NS-";
+                break;
+            case "fixedphone_update":
+                this.title = "Fixed Phone - Update Request";
+                this.routingname = "/entrydetailsfup";
+                this.exitrouting = 'fixedphoneservices';
+                this.reqname = "-US-";
+                break;
+            case "fixedphone_delete":
+                this.title = "Fixed Phone - Delete Request";
+                this.routingname = "/entrydetailsfde";
+                this.exitrouting = 'fixedphoneservices';
+                this.reqname = "-DS-";
                 break;
             case "fac_new":
                 this.title = "FAC Code New Request";
                 this.routingname = "/entrydetailsfac";
                 this.reqname = "-NS-";
+                break;
+            case "fac_deactivate":
+                this.title = "FAC Code Deactivate Request";
+                this.routingname = "/entrydetailsfacdeactive";
+                this.exitrouting = 'facservices';
+                this.reqname = "-DS-";
                 break;
             case "fac_update":
                 this.title = "FAC Code Update Request";
@@ -15745,152 +18497,142 @@ class EmployeesearchComponent {
         }
     }
 }
-EmployeesearchComponent.ɵfac = function EmployeesearchComponent_Factory(t) { return new (t || EmployeesearchComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_2__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_3__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bp_service__WEBPACK_IMPORTED_MODULE_4__["bpservices"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_db2_service__WEBPACK_IMPORTED_MODULE_5__["Db2Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_6__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_translate_config_service__WEBPACK_IMPORTED_MODULE_7__["TranslateConfigService"])); };
-EmployeesearchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: EmployeesearchComponent, selectors: [["app-employeesearch"]], decls: 65, vars: 28, consts: [[3, "ngClass"], [1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData", "ngClass"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "ngSubmit"], ["formData", "ngForm"], ["translate", ""], ["translate", "", 1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "ngClass"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "41%", "translate", ""], [1, "ds-input-container"], ["role", "group", "aria-labelledby", "horizontal-radio-buttons-example", 1, "ds-input-radio-group", "ds-flex"], [1, "ds-input-radio", "ds-mar-r-1"], ["type", "radio", "name", "radio-group2", "id", "radio4", "value", "myself", 1, "ds-input", 3, "ngModel", "ngModelChange", "change", "click"], [1, "ds-input-control"], ["for", "radio4", "translate", ""], [1, "ds-input-radio"], ["type", "radio", "name", "radio-group2", "id", "radio5", "value", "anotheremployee", 1, "ds-input", 3, "ngModel", "ngModelChange", "change", "click"], ["for", "radio5", "translate", ""], [4, "ngIf"], ["width", "41%"], ["class", "ds-pad-t-1", 4, "ngIf"], ["colspan", "2"], ["class", "ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning", "id", "error", 4, "ngIf"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "EXIT REQUEST", "class", "ds-button ds-secondary \n                            ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1", 3, "routerLink", "queryParams", "value", 4, "ngIf"], ["class", "ds-pad-l-1 ds-pad-r-1", "id", "button2", 4, "ngIf"], ["for", "OriginatorNameId", "translate", ""], [1, "ds-pad-t-1"], [1, "ds-col-4"], ["maxlength", "6", "name", "employeeSerial", "ngModel", "", "type", "text", 1, "ds-input", 3, "ngModel", "click"], [1, "ds-col-6", "ds-pad-t-0_5", "ds-pad-l-0_3"], ["translate", "", 2, "color", "#808080"], [1, "ds-pad-t-2"], [1, "row", "ds-pad-t-2"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "selectedCountry", "rows", "2", "cols", "40", "id", "sub-Countries", "title", "CountryCode", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "230px !important", "text-transform", "uppercase", 3, "click"], ["value", "", "translate", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "error", 1, "ds-col-xs-12", "ds-mar-t-1", "ds-alert", "ds-warning"], ["color", "black", "translate", ""], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "", 1, "ds-loader"], ["type", "button", "name", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-1", "ds-pad-r-1", 3, "routerLink", "queryParams", "value"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value"]], template: function EmployeesearchComponent_Template(rf, ctx) { if (rf & 1) {
-        const _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-navigation", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 6, 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function EmployeesearchComponent_Template_form_ngSubmit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r18); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.onSubmit(_r0); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "b", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Jabbernewtrans.Reqnewservice ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "span");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "(");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "span", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "*");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, ")");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "span", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, " Jabbernewtrans.arerequired");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](20, "div", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](21, "app-steps", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "h2", 13);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Jabbernewtrans.EmployeeSearch");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "table", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "tbody");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "tr", 15);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "td", 16);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Jabbernewtrans.requestfor");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "td");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 17);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 18);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 19);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "input", 20);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function EmployeesearchComponent_Template_input_ngModelChange_33_listener($event) { return ctx.radioAction = $event; })("change", function EmployeesearchComponent_Template_input_change_33_listener() { return ctx.onRequestForChange(); })("click", function EmployeesearchComponent_Template_input_click_33_listener() { return ctx.hidedata(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](34, "div", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "label", 22);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "Jabbernewtrans.Myself");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "div", 23);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "input", 24);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function EmployeesearchComponent_Template_input_ngModelChange_38_listener($event) { return ctx.radioAction = $event; })("change", function EmployeesearchComponent_Template_input_change_38_listener() { return ctx.onRequestForChange(); })("click", function EmployeesearchComponent_Template_input_click_38_listener() { return ctx.hidedata(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "div", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "label", 25);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41, "Jabbernewtrans.AnotherEmployee");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](42, EmployeesearchComponent_tr_42_Template, 6, 1, "tr", 26);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "tr");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "td", 27);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](45, EmployeesearchComponent_div_45_Template, 3, 0, "div", 28);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "td", 29);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](47, EmployeesearchComponent_div_47_Template, 2, 1, "div", 28);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "tr");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "td", 27);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](50, EmployeesearchComponent_div_50_Template, 5, 0, "div", 26);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "td", 29);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](52, EmployeesearchComponent_div_52_Template, 6, 1, "div", 26);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](53, EmployeesearchComponent_tr_53_Template, 15, 1, "tr", 26);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](54, EmployeesearchComponent_p_54_Template, 7, 1, "p", 30);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](55, EmployeesearchComponent_div_55_Template, 5, 0, "div", 31);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](56, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](57, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](58, EmployeesearchComponent_div_58_Template, 3, 0, "div", 32);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "div", 33);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "div", 34);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "div", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "span", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](63, EmployeesearchComponent_input_63_Template, 2, 10, "input", 37);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](64, EmployeesearchComponent_span_64_Template, 3, 3, "span", 38);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+EmployeesearchComponent.ɵfac = function EmployeesearchComponent_Factory(t) { return new (t || EmployeesearchComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_bp_service__WEBPACK_IMPORTED_MODULE_5__["bpservices"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_db2_service__WEBPACK_IMPORTED_MODULE_6__["Db2Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__["servicenowservice"])); };
+EmployeesearchComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: EmployeesearchComponent, selectors: [["app-employeesearch"]], decls: 57, vars: 29, consts: [[3, "ngClass"], [1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData", "ngClass"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "ngSubmit"], ["formData", "ngForm"], ["translate", ""], ["class", "ds-pad-t-0_5 ds-pad-b-1", "translate", "", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "ngClass"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "41%", "translate", ""], [1, "ds-input-container"], ["role", "group", "aria-labelledby", "horizontal-radio-buttons-example", 1, "ds-input-radio-group", "ds-flex"], [1, "ds-input-radio", "ds-mar-r-1"], ["type", "radio", "name", "radio-group2", "id", "radio4", "value", "myself", 1, "ds-input", 3, "ngModel", "ngModelChange", "change", "click"], [1, "ds-input-control"], ["for", "radio4", "translate", ""], [1, "ds-input-radio"], ["type", "radio", "name", "radio-group2", "id", "radio5", "value", "anotheremployee", 1, "ds-input", 3, "ngModel", "ngModelChange", "change", "click"], ["for", "radio5", "translate", ""], [4, "ngIf"], ["width", "41%"], ["class", "ds-pad-t-1", 4, "ngIf"], ["colspan", "2"], ["class", "ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning", "id", "error", 4, "ngIf"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "EXIT REQUEST", "class", "ds-button ds-secondary \n                            ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1", 3, "routerLink", "queryParams", "value", 4, "ngIf"], ["class", "ds-pad-l-1 ds-pad-r-1", "id", "button2", 4, "ngIf"], ["translate", "", 1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], ["for", "OriginatorNameId", "translate", ""], [1, "ds-pad-t-1"], [1, "ds-col-4"], ["maxlength", "6", "name", "employeeSerial", "ngModel", "", "type", "text", 1, "ds-input", 3, "ngModel", "click"], [1, "ds-col-6", "ds-pad-t-0_5", "ds-pad-l-0_3"], ["translate", "", 2, "color", "#808080"], [1, "ds-pad-t-2"], [1, "row", "ds-pad-t-2"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "selectedCountry", "rows", "2", "cols", "40", "id", "sub-Countries", "title", "CountryCode", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "230px !important", "text-transform", "uppercase", 3, "click"], ["value", "", "translate", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "error", 1, "ds-col-xs-12", "ds-mar-t-1", "ds-alert", "ds-warning"], ["color", "black", "translate", ""], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "", 1, "ds-loader"], ["type", "button", "name", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-1", "ds-pad-r-1", 3, "routerLink", "queryParams", "value"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value"]], template: function EmployeesearchComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "app-topcountryframe", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "app-navigation", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "form", 6, 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngSubmit", function EmployeesearchComponent_Template_form_ngSubmit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r19); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](7); return ctx.onSubmit(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](8, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "b", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](11, EmployeesearchComponent_div_11_Template, 9, 0, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](12, "div", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](13, "app-steps", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](14, "h2", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "Jabbernewtrans.EmployeeSearch");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](16, "table", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](17, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](18, "tr", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](19, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](20, "Jabbernewtrans.requestfor");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](21, "td");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](23, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "div", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](25, "input", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EmployeesearchComponent_Template_input_ngModelChange_25_listener($event) { return ctx.radioAction = $event; })("change", function EmployeesearchComponent_Template_input_change_25_listener() { return ctx.onRequestForChange(); })("click", function EmployeesearchComponent_Template_input_click_25_listener() { return ctx.hidedata(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](26, "div", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "label", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, "Jabbernewtrans.Myself");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](29, "div", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](30, "input", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function EmployeesearchComponent_Template_input_ngModelChange_30_listener($event) { return ctx.radioAction = $event; })("change", function EmployeesearchComponent_Template_input_change_30_listener() { return ctx.onRequestForChange(); })("click", function EmployeesearchComponent_Template_input_click_30_listener() { return ctx.hidedata(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](31, "div", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](32, "label", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "Jabbernewtrans.AnotherEmployee");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](34, EmployeesearchComponent_tr_34_Template, 6, 1, "tr", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](35, "tr");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](36, "td", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](37, EmployeesearchComponent_div_37_Template, 3, 0, "div", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](38, "td", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](39, EmployeesearchComponent_div_39_Template, 2, 1, "div", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](40, "tr");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](41, "td", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](42, EmployeesearchComponent_div_42_Template, 5, 0, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](43, "td", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](44, EmployeesearchComponent_div_44_Template, 6, 1, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](45, EmployeesearchComponent_tr_45_Template, 15, 1, "tr", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](46, EmployeesearchComponent_p_46_Template, 7, 1, "p", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](47, EmployeesearchComponent_div_47_Template, 5, 0, "div", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](48, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](49, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](50, EmployeesearchComponent_div_50_Template, 3, 0, "div", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](51, "div", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](52, "div", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](53, "div", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](54, "span", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](55, EmployeesearchComponent_input_55_Template, 2, 10, "input", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](56, EmployeesearchComponent_span_56_Template, 3, 3, "span", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](22, _c2, ctx.showloader == true));
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dataNav", ctx.servicesData)("cloudantData", ctx.cloudantData)("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](24, _c2, ctx.showloader == true));
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("servicestitle.", ctx.title, "");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step)("isSelf", ctx.hideDisserial)("hideSteps", ctx.notvalid)("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](26, _c2, ctx.showloader == true));
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.radioAction);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.radioAction);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.hideDisserial);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.hideDisserial);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.hideDisserial);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.hideDisTextBox);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.hideDisTextBox);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.hideDisTextBox && ctx.showCountryCode);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.notvalid);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.errorinfo);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showloader);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.showloader);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.showloader && !ctx.notvalid && !ctx.errorinfo);
-    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgClass"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_10__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["NgForm"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_12__["TranslateDirective"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_13__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterLink"]], pipes: [_ngx_translate_core__WEBPACK_IMPORTED_MODULE_12__["TranslatePipe"]], styles: [".tooltip[_ngcontent-%COMP%] {\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.ds-text-contextual-green-3[_ngcontent-%COMP%] {\r\n    color: #27aa7c !important;\r\n}\r\n\r\n.ds-text-contextual-blue-5[_ngcontent-%COMP%] {\r\n    color: #0370b0 !important;\r\n    font-family: \"IBMPlexSans\",\"Helvetica Neue\",Helvetica,Arial,sans-serif;\r\n    \r\n}\r\n\r\n.disabled[_ngcontent-%COMP%]\r\n{\r\n  pointer-events: none;\r\n  \r\n  opacity: 0.5;\r\n  background: #CCC;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVtcGxveWVlc2VhcmNoLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIscUJBQXFCO0FBQ3pCOztBQUVBO0lBQ0kseUJBQXlCO0FBQzdCOztBQUVBO0lBQ0kseUJBQXlCO0lBQ3pCLHNFQUFzRTs7QUFFMUU7O0FBQ0E7O0VBRUUsb0JBQW9CO0VBQ3BCLDBCQUEwQjtFQUMxQixZQUFZO0VBQ1osZ0JBQWdCO0FBQ2xCIiwiZmlsZSI6ImVtcGxveWVlc2VhcmNoLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudG9vbHRpcCB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbn1cclxuXHJcbi5kcy10ZXh0LWNvbnRleHR1YWwtZ3JlZW4tMyB7XHJcbiAgICBjb2xvcjogIzI3YWE3YyAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uZHMtdGV4dC1jb250ZXh0dWFsLWJsdWUtNSB7XHJcbiAgICBjb2xvcjogIzAzNzBiMCAhaW1wb3J0YW50O1xyXG4gICAgZm9udC1mYW1pbHk6IFwiSUJNUGxleFNhbnNcIixcIkhlbHZldGljYSBOZXVlXCIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWY7XHJcbiAgICBcclxufVxyXG4uZGlzYWJsZWRcclxue1xyXG4gIHBvaW50ZXItZXZlbnRzOiBub25lO1xyXG4gIC8qIGZvciBcImRpc2FibGVkXCIgZWZmZWN0ICovXHJcbiAgb3BhY2l0eTogMC41O1xyXG4gIGJhY2tncm91bmQ6ICNDQ0M7XHJcbn0iXX0= */"] });
-/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](EmployeesearchComponent, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](23, _c2, ctx.showloader == true));
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("dataNav", ctx.servicesData)("cloudantData", ctx.cloudantData)("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](25, _c2, ctx.showloader == true));
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("servicestitle.", ctx.title, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.notvalid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("step", ctx.servicesData.step)("isSelf", ctx.hideDisserial)("hideSteps", ctx.notvalid)("ngClass", _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpureFunction1"](27, _c2, ctx.showloader == true));
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx.radioAction);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx.radioAction);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.hideDisserial);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.hideDisserial);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.hideDisserial);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.hideDisTextBox);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.hideDisTextBox);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.hideDisTextBox && ctx.showCountryCode);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.notvalid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.errorinfo);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.showloader);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.showloader);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.showloader && !ctx.notvalid && !ctx.errorinfo);
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgClass"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_10__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["NgForm"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_12__["TranslateDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_13__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_11__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_9__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"]], pipes: [_ngx_translate_core__WEBPACK_IMPORTED_MODULE_12__["TranslatePipe"]], styles: [".tooltip[_ngcontent-%COMP%] {\r\n    position: relative;\r\n    display: inline-block;\r\n}\r\n\r\n.ds-text-contextual-green-3[_ngcontent-%COMP%] {\r\n    color: #27aa7c !important;\r\n}\r\n\r\n.ds-text-contextual-blue-5[_ngcontent-%COMP%] {\r\n    color: #0370b0 !important;\r\n    font-family: \"IBMPlexSans\",\"Helvetica Neue\",Helvetica,Arial,sans-serif;\r\n    \r\n}\r\n\r\n.disabled[_ngcontent-%COMP%]\r\n{\r\n  pointer-events: none;\r\n  \r\n  opacity: 0.5;\r\n  background: #CCC;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVtcGxveWVlc2VhcmNoLmNvbXBvbmVudC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7SUFDSSxrQkFBa0I7SUFDbEIscUJBQXFCO0FBQ3pCOztBQUVBO0lBQ0kseUJBQXlCO0FBQzdCOztBQUVBO0lBQ0kseUJBQXlCO0lBQ3pCLHNFQUFzRTs7QUFFMUU7O0FBQ0E7O0VBRUUsb0JBQW9CO0VBQ3BCLDBCQUEwQjtFQUMxQixZQUFZO0VBQ1osZ0JBQWdCO0FBQ2xCIiwiZmlsZSI6ImVtcGxveWVlc2VhcmNoLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudG9vbHRpcCB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbn1cclxuXHJcbi5kcy10ZXh0LWNvbnRleHR1YWwtZ3JlZW4tMyB7XHJcbiAgICBjb2xvcjogIzI3YWE3YyAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4uZHMtdGV4dC1jb250ZXh0dWFsLWJsdWUtNSB7XHJcbiAgICBjb2xvcjogIzAzNzBiMCAhaW1wb3J0YW50O1xyXG4gICAgZm9udC1mYW1pbHk6IFwiSUJNUGxleFNhbnNcIixcIkhlbHZldGljYSBOZXVlXCIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWY7XHJcbiAgICBcclxufVxyXG4uZGlzYWJsZWRcclxue1xyXG4gIHBvaW50ZXItZXZlbnRzOiBub25lO1xyXG4gIC8qIGZvciBcImRpc2FibGVkXCIgZWZmZWN0ICovXHJcbiAgb3BhY2l0eTogMC41O1xyXG4gIGJhY2tncm91bmQ6ICNDQ0M7XHJcbn0iXX0= */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](EmployeesearchComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
         args: [{
                 selector: 'app-employeesearch',
                 templateUrl: './employeesearch.component.html',
                 styleUrls: ['./employeesearch.component.css']
             }]
-    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"] }, { type: _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_2__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_3__["cloudantservice"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"] }, { type: _services_bp_service__WEBPACK_IMPORTED_MODULE_4__["bpservices"] }, { type: _services_db2_service__WEBPACK_IMPORTED_MODULE_5__["Db2Service"] }, { type: _services_servicenow_service__WEBPACK_IMPORTED_MODULE_6__["servicenowservice"] }, { type: _services_translate_config_service__WEBPACK_IMPORTED_MODULE_7__["TranslateConfigService"] }]; }, null); })();
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: _services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }, { type: _services_bp_service__WEBPACK_IMPORTED_MODULE_5__["bpservices"] }, { type: _services_db2_service__WEBPACK_IMPORTED_MODULE_6__["Db2Service"] }, { type: _services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__["servicenowservice"] }]; }, null); })();
 
 
 /***/ }),
@@ -16238,6 +18980,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function ApprovalpendingComponent_table_13_Template(rf, ctx) { if (rf & 1) {
+    const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "table", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "tbody");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "tr", 15);
@@ -16248,7 +18991,9 @@ function ApprovalpendingComponent_table_13_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "td", 17);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "div", 18);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](8, "input", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "input", 19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function ApprovalpendingComponent_table_13_Template_input_ngModelChange_8_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r6); const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r5.search = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](9, "td", 20);
@@ -16256,31 +19001,39 @@ function ApprovalpendingComponent_table_13_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "div", 22);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](12, "div", 23);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](13, "span", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](14, "input", 25);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](15, "input", 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](14, "input", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ApprovalpendingComponent_table_13_Template_input_click_14_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r6); const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r7.performsearch(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](15, "input", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ApprovalpendingComponent_table_13_Template_input_click_15_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r6); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r8.clear(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r0.search);
 } }
 function ApprovalpendingComponent_tbody_18_Template(rf, ctx) { if (rf & 1) {
-    const _r8 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "tbody", 15);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "tr");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "td", 27);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "font", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "input", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function ApprovalpendingComponent_tbody_18_Template_input_ngModelChange_4_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r8); const i_r6 = ctx.index; const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return (ctx_r7.checked[i_r6] = $event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngModelChange", function ApprovalpendingComponent_tbody_18_Template_input_ngModelChange_4_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r12); const i_r10 = ctx.index; const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return (ctx_r11.checked[i_r10] = $event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "td", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "a", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ApprovalpendingComponent_tbody_18_Template_a_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r8); const req_r5 = ctx.$implicit; const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r9.openpage(req_r5); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ApprovalpendingComponent_tbody_18_Template_a_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r12); const req_r9 = ctx.$implicit; const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r13.openpage(req_r9); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](7);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -16297,19 +19050,19 @@ function ApprovalpendingComponent_tbody_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const req_r5 = ctx.$implicit;
-    const i_r6 = ctx.index;
+    const req_r9 = ctx.$implicit;
+    const i_r10 = ctx.index;
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r1.checked[i_r6]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngModel", ctx_r1.checked[i_r10]);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](req_r5["sysapproval.variables.requested_by.user_name"].replace("-", ""));
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](req_r9["sysapproval.variables.requested_by.user_name"].replace("-", ""));
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](req_r5["sysapproval.variables.requested_by.name"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](req_r9["sysapproval.variables.requested_by.name"]);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](req_r5["sysapproval.short_description"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](req_r9["sysapproval.short_description"]);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](req_r5["sysapproval.variables.id"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](req_r9["sysapproval.variables.id"]);
 } }
 function ApprovalpendingComponent_div_19_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 35);
@@ -16329,23 +19082,23 @@ function ApprovalpendingComponent_div_21_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } }
 function ApprovalpendingComponent_div_22_Template(rf, ctx) { if (rf & 1) {
-    const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 39);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](3, "span", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](4, "input", 43);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ApprovalpendingComponent_div_22_Template_input_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r11); const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r10.selectAllcheck(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ApprovalpendingComponent_div_22_Template_input_click_4_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r15); const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r14.selectAllcheck(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "span", 44);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "input", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ApprovalpendingComponent_div_22_Template_input_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r11); const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r12.unSelectAllcheck(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ApprovalpendingComponent_div_22_Template_input_click_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r15); const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r16.unSelectAllcheck(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](7, "span", 46);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "input", 47);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ApprovalpendingComponent_div_22_Template_input_click_8_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r11); const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r13.process(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function ApprovalpendingComponent_div_22_Template_input_click_8_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r15); const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r17.process(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -16361,6 +19114,7 @@ class ApprovalpendingComponent {
         this.servicenowservice = servicenowservice;
         this.location = location;
         this.pendingRequest = [];
+        this.pendingRequest_original = [];
         this.cloudantData = [];
         this.servicesData = [];
         this.ccode = '';
@@ -16369,48 +19123,66 @@ class ApprovalpendingComponent {
         this.checked = [];
         this.errorinfo = true;
         this.flag = true;
+        this.search = '';
     }
     submit() {
         this.router.navigate(['/employeeinfo']);
     }
     ngOnInit() {
-        this.countrydetails = sessionStorage.getItem('countrydetails');
-        this.countrydetails = JSON.parse(this.countrydetails);
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
             this.service = params.service;
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-        });
-        console.log(this.countrydetails);
-        if (this.countrydetails.testuser) {
-            this.ccode = this.countrydetails.testuser;
-        }
-        else {
-            this.ccode = this.cookie.getCookie('ccode');
-        }
-        this.empserial = this.ccode;
-        this.ccode = this.ccode.substring(6, 9);
-        this.empserial = "467756744";
-        this.servicenowservice.searchsnowcoments(this.empserial, "snow_approve", "", "").subscribe(data => {
-            console.log(' snow response', data.message);
-            console.log(' snow response', data.message.length);
-            if (data.message.length == 0)
-                this.errorinfo = false;
-            else
-                this.pendingRequest = data.message;
-        });
-        console.log(' snow response', this.pendingRequest);
-        const servicesData = {
-            "data": [
-                {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
-                    "step": 3,
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    if (this.countrydetails.testuser) {
+                        this.ccode = this.countrydetails.testuser;
+                    }
+                    else {
+                        this.ccode = this.cookie.getCookie('ccode');
+                    }
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                if (this.countrydetails.testuser) {
+                    this.ccode = this.countrydetails.testuser;
                 }
-            ]
-        };
-        this.servicesData = servicesData.data[0];
+                else {
+                    this.ccode = this.cookie.getCookie('ccode');
+                }
+            }
+            this.empserial = this.ccode;
+            this.ccode = this.ccode.substring(6, 9);
+            this.empserial = "467756744";
+            this.servicenowservice.searchsnowcoments(this.empserial, "snow_approve", "", "").subscribe(data => {
+                console.log(' snow response', data.message);
+                console.log(' snow response', data.message.length);
+                if (data.message.length == 0)
+                    this.errorinfo = false;
+                else {
+                    this.pendingRequest_original = data.message;
+                    this.pendingRequest = this.pendingRequest_original;
+                }
+            });
+            console.log(' snow response', this.pendingRequest);
+            const servicesData = {
+                "data": [
+                    {
+                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "step": 3,
+                    }
+                ]
+            };
+            this.servicesData = servicesData.data[0];
+        });
     }
     selectAllcheck() {
         for (var i = 0; i < this.pendingRequest.length; i++) {
@@ -16476,9 +19248,26 @@ class ApprovalpendingComponent {
         sessionStorage.setItem('request_sysid', req.sys_id);
         this.router.navigate(['/approvalsingle'], { queryParams: { country: this.pcode, service: this.service } });
     }
+    performsearch() {
+        const List = [];
+        if (this.search == '') {
+            alert("Enter search text");
+            return;
+        }
+        for (var i = 0; i < this.pendingRequest_original.length; i++) {
+            console.log(this.pendingRequest_original[i]['sysapproval.variables.requested_by.user_name'].replace('-', ''));
+            if ((this.search.toUpperCase() === this.pendingRequest_original[i]['sysapproval.variables.requested_by.user_name'].replace('-', '').toUpperCase()) || (this.search.toUpperCase() === this.pendingRequest_original[i]['sysapproval.variables.id'].toUpperCase()))
+                List.push(this.pendingRequest_original[i]);
+        }
+        this.pendingRequest = List;
+    }
+    clear() {
+        this.search = '';
+        this.pendingRequest = this.pendingRequest_original;
+    }
 }
 ApprovalpendingComponent.ɵfac = function ApprovalpendingComponent_Factory(t) { return new (t || ApprovalpendingComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"])); };
-ApprovalpendingComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: ApprovalpendingComponent, selectors: [["app-approvalpending"]], decls: 23, vars: 7, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-sm-2", "ds-col-md-7", "ds-padding-left-1_5"], [1, "ds-padding-top-0_5", "ds-padding-bottom-1"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-table-container"], [1, "ds-table"], ["valign", "top", 4, "ngFor", "ngForOf"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], ["class", "ds-row ds-pad-t-2", "style", "margin-right:12px", 4, "ngIf"], ["cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "783"], ["width", "217"], [1, "ds-pad-l-1"], ["maxlength", "17", 1, "ds-input", 2, "width", "220px !important"], ["width", "169"], [1, "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-margin-bottom-0"], [1, "button-bar", "ds-tray-fit-content", "ds-float-lg-right"], [1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "button", "value", "SEARCH", 1, "ds-button", "ds-secondary", "ds-pad-l-1", "ds-width-auto", "ds-pad-r-1"], ["type", "button", "value", "CLEAR", 1, "ds-button", "ds-secondary", "ds-pad-l-1", "ds-width-auto", "ds-pad-r-1"], ["width", "59"], ["color", "#ffffff"], ["name", "req.sys_id", "id", "req.sys_id", "type", "checkbox", 3, "ngModel", "ngModelChange"], ["width", "175"], [3, "click"], ["width", "194"], ["color", "#808080"], ["width", "213"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being processed. Do not refresh or go back.", 1, "ds-loader"], [1, "ds-row", "ds-pad-t-2", 2, "margin-right", "12px"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "value", "SELECT ALL", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-1", "ds-pad-r-1", 3, "click"], ["id", "button2", 1, "ds-pad-l-1"], ["type", "button", "value", "DESELECT ALL", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-1", "ds-pad-r-1", 3, "click"], ["id", "button3", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "button", "name", "NEXT", "value", "APPROVE SELECTED ONE", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function ApprovalpendingComponent_Template(rf, ctx) { if (rf & 1) {
+ApprovalpendingComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: ApprovalpendingComponent, selectors: [["app-approvalpending"]], decls: 23, vars: 7, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-sm-2", "ds-col-md-7", "ds-padding-left-1_5"], [1, "ds-padding-top-0_5", "ds-padding-bottom-1"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-table-container"], [1, "ds-table"], ["valign", "top", 4, "ngFor", "ngForOf"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], ["class", "ds-row ds-pad-t-2", "style", "margin-right:12px", 4, "ngIf"], ["cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "783"], ["width", "217"], [1, "ds-pad-l-1"], ["name", "search", "id", "search", "maxlength", "17", 1, "ds-input", 2, "width", "220px !important", 3, "ngModel", "ngModelChange"], ["width", "169"], [1, "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-margin-bottom-0"], [1, "button-bar", "ds-tray-fit-content", "ds-float-lg-right"], [1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "button", "value", "SEARCH", 1, "ds-button", "ds-secondary", "ds-pad-l-1", "ds-width-auto", "ds-pad-r-1", 3, "click"], ["type", "button", "value", "CLEAR", 1, "ds-button", "ds-secondary", "ds-pad-l-1", "ds-width-auto", "ds-pad-r-1", 3, "click"], ["width", "59"], ["color", "#ffffff"], ["name", "req.sys_id", "id", "req.sys_id", "type", "checkbox", 3, "ngModel", "ngModelChange"], ["width", "175"], [3, "click"], ["width", "194"], ["color", "#808080"], ["width", "213"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being processed. Do not refresh or go back.", 1, "ds-loader"], [1, "ds-row", "ds-pad-t-2", 2, "margin-right", "12px"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "value", "SELECT ALL", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-1", "ds-pad-r-1", 3, "click"], ["id", "button2", 1, "ds-pad-l-1"], ["type", "button", "value", "DESELECT ALL", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-1", "ds-pad-r-1", 3, "click"], ["id", "button3", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "button", "name", "NEXT", "value", "APPROVE SELECTED ONE", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function ApprovalpendingComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 1);
@@ -16495,7 +19284,7 @@ ApprovalpendingComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵ�
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](10, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](11, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](12, "h2", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](13, ApprovalpendingComponent_table_13_Template, 16, 0, "table", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](13, ApprovalpendingComponent_table_13_Template, 16, 1, "table", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](14, "h2", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "Pending Requests");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
@@ -16523,7 +19312,7 @@ ApprovalpendingComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵ�
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.isSpinnerVisible);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.isButtonVisible && ctx.errorinfo);
-    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_7__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_8__["NavigationComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["CheckboxControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgModel"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHByb3ZhbHBlbmRpbmcuY29tcG9uZW50LmNzcyJ9 */"] });
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_7__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_8__["NavigationComponent"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["CheckboxControlValueAccessor"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHByb3ZhbHBlbmRpbmcuY29tcG9uZW50LmNzcyJ9 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ApprovalpendingComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
         args: [{
@@ -16815,7 +19604,7 @@ class VoipUsaUpdateComponent {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
             this.errorinfo = true;
-            this.isButtonVisible = true;
+            this.isButtonVisible = false;
         });
     }
     ngOnInit() {
@@ -17022,12 +19811,12 @@ VoipUsaUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵd
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isSpinnerVisible);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible && !ctx.errorinfo);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible && !ctx.errorinfo);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.errorinfo);
-    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgForm"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["MaxLengthValidator"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJ2b2lwLXVzYS11cGRhdGUuY29tcG9uZW50LmNzcyJ9 */"] });
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgForm"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["MaxLengthValidator"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"]], styles: [".tooltip[_ngcontent-%COMP%] {\r\n    position: relative;\r\n    display: inline-block;\r\n  }\r\n  \r\n  .tooltiptext[_ngcontent-%COMP%] {\r\n    visibility: hidden;\r\n    width: 280px;\r\n    background-color: black;\r\n    color: #fff;\r\n    text-align: center;\r\n    border-radius: 3px;\r\n    padding: 5px 0;\r\n    position: absolute;\r\n    z-index: 1;\r\n    top: 150%;\r\n    left: 40%;\r\n    margin-left: -100px;\r\n  }\r\n  \r\n  .tooltip[_ngcontent-%COMP%]:hover   .tooltiptext[_ngcontent-%COMP%] {\r\n    visibility: visible;\r\n  }\r\n  \r\n  .tooltip[_ngcontent-%COMP%]   .newtooltiptext[_ngcontent-%COMP%] {\r\n    visibility: hidden;\r\n    width: 280px;\r\n    background-color: black;\r\n    color: #fff;\r\n    text-align: center;\r\n    border-radius: 3px;\r\n    padding: 5px 0;\r\n    position: absolute;\r\n    z-index: 1;\r\n    top: 150%;\r\n    left: 80%;\r\n    margin-left: -100px;\r\n  }\r\n  \r\n  .tooltip[_ngcontent-%COMP%]:hover   .newtooltiptext[_ngcontent-%COMP%] {\r\n    visibility: visible;\r\n  }\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZvaXAtdXNhLXVwZGF0ZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksa0JBQWtCO0lBQ2xCLHFCQUFxQjtFQUN2Qjs7RUFFQTtJQUNFLGtCQUFrQjtJQUNsQixZQUFZO0lBQ1osdUJBQXVCO0lBQ3ZCLFdBQVc7SUFDWCxrQkFBa0I7SUFDbEIsa0JBQWtCO0lBQ2xCLGNBQWM7SUFDZCxrQkFBa0I7SUFDbEIsVUFBVTtJQUNWLFNBQVM7SUFDVCxTQUFTO0lBQ1QsbUJBQW1CO0VBQ3JCOztFQUVBO0lBQ0UsbUJBQW1CO0VBQ3JCOztFQUVBO0lBQ0Usa0JBQWtCO0lBQ2xCLFlBQVk7SUFDWix1QkFBdUI7SUFDdkIsV0FBVztJQUNYLGtCQUFrQjtJQUNsQixrQkFBa0I7SUFDbEIsY0FBYztJQUNkLGtCQUFrQjtJQUNsQixVQUFVO0lBQ1YsU0FBUztJQUNULFNBQVM7SUFDVCxtQkFBbUI7RUFDckI7O0VBRUE7SUFDRSxtQkFBbUI7RUFDckIiLCJmaWxlIjoidm9pcC11c2EtdXBkYXRlLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudG9vbHRpcCB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgfVxyXG4gIFxyXG4gIC50b29sdGlwdGV4dCB7XHJcbiAgICB2aXNpYmlsaXR5OiBoaWRkZW47XHJcbiAgICB3aWR0aDogMjgwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBibGFjaztcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgYm9yZGVyLXJhZGl1czogM3B4O1xyXG4gICAgcGFkZGluZzogNXB4IDA7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB6LWluZGV4OiAxO1xyXG4gICAgdG9wOiAxNTAlO1xyXG4gICAgbGVmdDogNDAlO1xyXG4gICAgbWFyZ2luLWxlZnQ6IC0xMDBweDtcclxuICB9XHJcbiAgXHJcbiAgLnRvb2x0aXA6aG92ZXIgLnRvb2x0aXB0ZXh0IHtcclxuICAgIHZpc2liaWxpdHk6IHZpc2libGU7XHJcbiAgfVxyXG4gIFxyXG4gIC50b29sdGlwIC5uZXd0b29sdGlwdGV4dCB7XHJcbiAgICB2aXNpYmlsaXR5OiBoaWRkZW47XHJcbiAgICB3aWR0aDogMjgwcHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBibGFjaztcclxuICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgYm9yZGVyLXJhZGl1czogM3B4O1xyXG4gICAgcGFkZGluZzogNXB4IDA7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB6LWluZGV4OiAxO1xyXG4gICAgdG9wOiAxNTAlO1xyXG4gICAgbGVmdDogODAlO1xyXG4gICAgbWFyZ2luLWxlZnQ6IC0xMDBweDtcclxuICB9XHJcbiAgXHJcbiAgLnRvb2x0aXA6aG92ZXIgLm5ld3Rvb2x0aXB0ZXh0IHtcclxuICAgIHZpc2liaWxpdHk6IHZpc2libGU7XHJcbiAgfSJdfQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](VoipUsaUpdateComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -17182,7 +19971,12 @@ class HomepageComponent {
     }
     ngOnInit() {
         //this.userDetails = (this.cookie.getCookie('user'));
-        this.fullName = this.cookie.getCookie('user');
+        this.fullName = this.cookie.getCookie('usernamehome');
+        if (this.fullName == undefined) {
+            this.fullName = this.cookie.getCookie('user');
+        }
+        this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
+        this.fullName = this.fullName.replace(",", " ");
         this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
         this.cloudantservice.getcountrydetails(this.ccode).subscribe(data => {
             console.log('Response received', data.countrydetails.name);
@@ -17549,10 +20343,20 @@ class FacservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            this.countrydetails = sessionStorage.getItem('countrydetails');
-            this.countrydetails = JSON.parse(this.countrydetails);
-            this.linkv = this.countrydetails.facservices;
-            console.log(this.countrydetails.jservices);
+            if (sessionStorage.getItem('countrydetails') == undefined) {
+                this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+                    this.countryname = data.countrydetails;
+                    sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+                    this.countrydetails = JSON.stringify(data.countrydetails);
+                    this.countrydetails = JSON.parse(this.countrydetails);
+                    this.linkv = this.countrydetails.facservices;
+                });
+            }
+            else {
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.countrydetails = JSON.parse(this.countrydetails);
+                this.linkv = this.countrydetails.facservices;
+            }
             const servicesData = {
                 "data": [
                     {
@@ -17748,12 +20552,14 @@ class NavigationComponent {
             this.fachl = false;
             this.reqhl = false;
             this.reshl = false;
+            this.apphl = false;
             this.serin = false;
             this.jin = false;
             this.fin = false;
             this.facin = false;
             this.reqin = false;
             this.resin = false;
+            this.appin = false;
             if (this.service == "services") {
                 this.serhl = true;
             }
@@ -17777,14 +20583,17 @@ class NavigationComponent {
             if ((this.service).includes("resources")) {
                 this.reshl = true;
             }
-            if (this.service == "services" || this.service == "requests" || this.service == "resources") {
+            if ((this.service).includes("approvalpending")) {
+                this.apphl = true;
+            }
+            if (this.service == "services" || this.service == "requests" || this.service == "resources" || this.service == "approvalpending") {
                 this.dataNav123 = {
                     "data": [
                         {
                             "lhs": [
                                 { "name": "Services", "routingname": "/services", "indented": this.serin, "highlighted": this.serhl, "param": "services" },
                                 // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
-                                { "name": "Approvals Pending", "routingname": "/approvalpending", "indented": false, "highlighted": false, "param": "services" },
+                                { "name": "Approvals Pending", "routingname": "/approvalpending", "indented": this.appin, "highlighted": this.apphl, "param": "approvalpending" },
                                 { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false, "param": "services" },
                                 { "name": "Resources", "routingname": "/employeesearch", "indented": this.resin, "highlighted": this.reshl, "param": "resources" },
                                 { "name": "Requests", "routingname": "/employeesearch", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests" }
@@ -17804,7 +20613,7 @@ class NavigationComponent {
                                 { "name": "Jabber", "routingname": "/jabberservices", "indented": true, "highlighted": this.jhl, "param": "jabberservices" },
                                 { "name": "FAC Code", "routingname": "/facservices", "indented": true, "highlighted": this.fachl, "param": "facservices" },
                                 { "name": "Fixed Phone", "routingname": "/fixedphoneservices", "indented": this.fin, "highlighted": this.fhl, "param": "fixedphoneservices" },
-                                { "name": "Approvals Pending", "routingname": "/approvalpending", "indented": false, "highlighted": false, "param": "services" },
+                                { "name": "Approvals Pending", "routingname": "/approvalpending", "indented": this.appin, "highlighted": this.apphl, "param": "approvalpending" },
                                 { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false, "param": "services" },
                                 { "name": "Resources", "routingname": "/employeesearch", "indented": this.resin, "highlighted": this.reshl, "param": "resources" },
                                 { "name": "Requests", "routingname": "/employeesearch", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests" }
@@ -17960,7 +20769,7 @@ class DummyComponent {
         };
         this.servicesData = servicesData.data[0];
         // Code to search Db2 for resrouces
-        this.Db2Service.search_db2('06685M744', 'jabber_delete').subscribe(data => {
+        this.Db2Service.search_db2('06685M744', 'fixedphone_delete', 'SEP006789TR7832', '35301234', 'India').subscribe(data => {
             console.log(' db2 response', data);
         });
         // Code to search Snow
@@ -18087,6 +20896,1626 @@ CookieHandlerService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
                 providedIn: 'root'
             }]
     }], function () { return []; }, null); })();
+
+
+/***/ }),
+
+/***/ "p96R":
+/*!*****************************************************************!*\
+  !*** ./src/app/components/hp-emea-new/hp-emea-new.component.ts ***!
+  \*****************************************************************/
+/*! exports provided: HpEmeaNewComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HpEmeaNewComponent", function() { return HpEmeaNewComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var config_payload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! config/payload */ "dP2x");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services/cookie-handler.service */ "oxqP");
+/* harmony import */ var _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services/cloudant.service */ "Rfmm");
+/* harmony import */ var _services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services/servicenow.service */ "qWuM");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _services_bp_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../_services/bp.service */ "Qz7Q");
+/* harmony import */ var _topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../topcountryframe/topcountryframe.component */ "aDsg");
+/* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../navigation/navigation.component */ "mvyS");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../steps/steps.component */ "52XD");
+
+
+
+
+
+
+
+
+
+
+
+
+
+function HpEmeaNewComponent_option_33_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 70);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const fl_location_r12 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_location_r12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_location_r12, "");
+} }
+function HpEmeaNewComponent_option_48_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 71);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const device_r13 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", device_r13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](device_r13);
+} }
+function HpEmeaNewComponent_option_62_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 72);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const model_r14 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", model_r14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](model_r14);
+} }
+function HpEmeaNewComponent_label_94_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "e.g. IBMC Lv21 EM desk ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpEmeaNewComponent_label_95_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "e.g. IBMC Lv21 conference room 3 ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpEmeaNewComponent_div_173_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 73);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 74);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Your request submission is in progress.Do not Go back or Refresh the page.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 75);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpEmeaNewComponent_input_178_Template(rf, ctx) { if (rf & 1) {
+    const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpEmeaNewComponent_input_178_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r16); const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r15.BackButton(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpEmeaNewComponent_input_180_Template(rf, ctx) { if (rf & 1) {
+    const _r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 76);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpEmeaNewComponent_input_180_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r18); const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r17.submit_snow(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+class HpEmeaNewComponent {
+    constructor(router, cookie, cloudantservice, route, servicenowservice, location, bpservices) {
+        this.router = router;
+        this.cookie = cookie;
+        this.cloudantservice = cloudantservice;
+        this.route = route;
+        this.servicenowservice = servicenowservice;
+        this.location = location;
+        this.bpservices = bpservices;
+        this.cloudantData = [];
+        this.servicesData = [];
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        this.showBusinessNeed = true;
+        this.Voice_Type = "No";
+        this.models = [];
+        this.hideDeviceSection = true;
+        this.showforAnyDevice = true;
+        this.showforFixedPhone = true;
+        this.errorinfo = false;
+        this.COS = 'national';
+        this.isButtonVisible = true;
+        this.isSpinnerVisible = false;
+        this.ccode = '';
+        this.devices = ['Extension Mobility Station', 'Conference / Meeting Room Phone', 'Fixed Phone User'];
+        this.hideProjectId = false;
+        this.selected_device = '';
+        this.voicemail = 'no';
+        this.payload = new config_payload__WEBPACK_IMPORTED_MODULE_1__["fixedphone_new"]();
+        this.reviewDetailsIndia = {
+            officeLocation: "",
+            campus: "",
+            funded: "",
+            chargeDepartmentCode: "",
+            businessUnit: "",
+            projectId: "",
+            accountId: " ",
+            Voice_Type_Disp: true,
+            icano_Disp: "",
+            Location_final: "",
+            accid_Disp: "",
+            reqno: "",
+            icaCode: "",
+            device: "",
+            model: "",
+            employeeId: "",
+            voicemail: "",
+            cos: "",
+            justification: "",
+            description: "",
+            mac: "",
+        };
+    }
+    backClick() {
+        sessionStorage.setItem('backbutton', 'yes');
+        sessionStorage.setItem('step', 'step1');
+        this.location.back();
+    }
+    selectedDevice(device) {
+        this.models = [];
+        this.modelValue = '';
+        if (device != '') {
+            this.hideDeviceSection = false;
+        }
+        if (device == '') {
+            this.hideDeviceSection = true;
+        }
+        if (device.toUpperCase() == 'FIXED PHONE USER') {
+            this.showforAnyDevice = false;
+            this.showforFixedPhone = false;
+            this.models = [...this.fpModels];
+            this.hideEmpID = false;
+            this.hideVoicemail = false;
+            if (this.COS == 'international') {
+                this.showBusinessNeed = false;
+            }
+        }
+        if (device.toUpperCase() == 'EXTENSION MOBILITY STATION') {
+            this.showforAnyDevice = false;
+            this.showforFixedPhone = true;
+            this.models = [...this.emModels];
+            this.hideEmpID = true;
+            this.hideVoicemail = true;
+            this.showBusinessNeed = true;
+        }
+        if (device.toUpperCase() == 'CONFERENCE / MEETING ROOM PHONE') {
+            this.showforAnyDevice = false;
+            this.showforFixedPhone = true;
+            this.models = [...this.cModels];
+            this.hideEmpID = true;
+            this.hideVoicemail = true;
+            this.showBusinessNeed = true;
+        }
+    }
+    classofservice(cos) {
+        if (cos == 'international') {
+            this.showBusinessNeed = false;
+        }
+        else {
+            this.showBusinessNeed = true;
+        }
+    }
+    entryDetails(formData) {
+        if (formData.value.Location_1.toUpperCase() == 'SELECT LOCATION' || formData.value.Location_1 == '') {
+            alert('Please select the Location');
+            return;
+        }
+        // if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
+        //   alert('Please select the Campus');	
+        //   return;	
+        // }	
+        if (formData.value.Device_Type == '') {
+            alert('Please select a device type');
+            return;
+        }
+        if (formData.value.Model_Type == '') {
+            alert('Please select a type of model');
+            return;
+        }
+        if (formData.value.Justification == '' && this.showBusinessNeed == false) {
+            alert('Please enter the business need for Class of Service.');
+            return;
+        }
+        if (formData.value.Description == '') {
+            alert('Please Enter a description and it should not be more than 30 characters');
+            return;
+        }
+        if (formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
+            alert('Please enter 12 characters MAC address');
+            return;
+        }
+        var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
+        if (pat1.test(formData.value.MACAddress)) {
+            alert('MAC field value to be in combination of 0 to 9 and A to F');
+            return;
+        }
+        this.isEntryForm = true;
+        this.isReviewForm = false;
+        this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
+        this.reviewDetailsIndia.campus = formData.value.Buildings;
+        this.reviewDetailsIndia.funded = this.Voice_Type;
+        // this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;	
+        // this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
+        // this.reviewDetailsIndia.projectId = formData.value.Projectid;	
+        // this.reviewDetailsIndia.accountId = formData.value.Accountid;
+        // this.reviewDetailsIndia.icaCode = formData.value.ICAcode;
+        this.reviewDetailsIndia.device = formData.value.Device_Type;
+        this.reviewDetailsIndia.model = formData.value.Model_Type;
+        // this.reviewDetailsIndia.employeeId = formData.value.StepMentor;
+        this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
+        this.reviewDetailsIndia.cos = formData.value.cos;
+        this.reviewDetailsIndia.justification = formData.value.Justification;
+        this.reviewDetailsIndia.description = formData.value.Description;
+        this.reviewDetailsIndia.mac = formData.value.MACAddress;
+    }
+    BackButton() {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        // this.fixedPhoneIdentifier = false;	
+    }
+    submit_snow() {
+        this.reqno = this.countrydetails.isocode + "-NS-" + this.cnum.substr(0, 6) + "-" + gettime();
+        sessionStorage.setItem('reqno', this.reqno);
+        this.isButtonVisible = false;
+        this.isSpinnerVisible = true;
+        this.payload.orinator_payload = this.orgi;
+        this.payload.cNum_payload = this.cnum;
+        this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.ReqNo = this.reqno;
+        this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
+        this.payload.Model_Disp = this.reviewDetailsIndia.model;
+        this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
+        this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
+        this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+        this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.COS_Disp = this.reviewDetailsIndia.cos;
+        this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+        this.payload.level1_japproval = this.countrydetails.level1_japproval;
+        this.payload.level2_japproval = this.countrydetails.level2_japproval;
+        this.payload.SLA_type = this.countrydetails.SLA_type;
+        this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
+        this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
+        this.payload.countryname = this.countrydetails.name;
+        this.payload.request_type = 'fixedphone_new';
+        this.payload.evolution_instance = this.countrydetails.evolution_instance;
+        this.payload.country_code = this.countrydetails.code;
+        this.servicenowservice.submit_request_fixed_new(this.payload).subscribe(data => {
+            console.log('response', data);
+            if (data)
+                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+        }, (error) => {
+            console.error('error caught in component' + error);
+            this.isSpinnerVisible = false;
+            this.errorinfo = true;
+            this.isButtonVisible = true;
+        });
+    }
+    ngOnInit() {
+        var _a, _b, _c, _d, _e, _f;
+        // Submit to Snow Jabber new code added by Swarnava	
+        this.orgi = this.cookie.getCookie('ccode');
+        this.cnum = sessionStorage.getItem('cnum');
+        this.countrydetails = sessionStorage.getItem('countrydetails');
+        this.countrydetails = JSON.parse(this.countrydetails);
+        // Submit to Snow Jabber new code added by Swarnava ends	
+        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+        this.route.queryParams
+            .subscribe(params => {
+            console.log(params);
+            this.service = params.service;
+            this.pcode = params.country;
+            console.log("navigation component" + this.pcode);
+        });
+        this.devices = (_a = sessionStorage.getItem('fdevices')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
+        this.devices = this.devices.replace('"', '').split(',');
+        this.emModels = (_b = sessionStorage.getItem('emmodels')) === null || _b === void 0 ? void 0 : _b.replace('"', '');
+        this.emModels = this.emModels.replace('"', '').split(',');
+        this.fpModels = (_c = sessionStorage.getItem('fpmodels')) === null || _c === void 0 ? void 0 : _c.replace('"', '');
+        this.fpModels = this.fpModels.split(',');
+        this.cModels = (_d = sessionStorage.getItem('cmmodels')) === null || _d === void 0 ? void 0 : _d.replace('"', '');
+        this.cModels = this.cModels.split(',');
+        this.locationlist = (_e = sessionStorage.getItem('locationdetails')) === null || _e === void 0 ? void 0 : _e.replace('"', '');
+        this.locationlist = (_f = this.locationlist) === null || _f === void 0 ? void 0 : _f.replace('"', '').split(',');
+        const servicesData = {
+            "data": [
+                {
+                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "step": 3,
+                }
+            ]
+        };
+        this.reqFor = sessionStorage.getItem('radioAction');
+        this.servicesData = servicesData.data[0];
+        //this.reviewDetailsIndia.reqno = "IN-NS-" + this.cnum.substring(0, 6) + "-" + (Math.floor(Math.random() * (this.max - this.min)) + this.min);	
+        //alert(this.reviewDetailsIndia.reqno);	
+        this.employeeInfo1 = sessionStorage.getItem('employeeInfo');
+        this.employeeInfo = JSON.parse(this.employeeInfo1);
+        if (this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null) {
+            this.hideProjectId = true;
+        }
+    }
+    previousStep(event) {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        // this.fixedPhoneIdentifier = false;	
+    }
+}
+HpEmeaNewComponent.ɵfac = function HpEmeaNewComponent_Factory(t) { return new (t || HpEmeaNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bp_service__WEBPACK_IMPORTED_MODULE_7__["bpservices"])); };
+HpEmeaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpEmeaNewComponent, selectors: [["app-hp-emea-new"]], decls: 181, vars: 34, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "DeviceType", 1, "ds-text-capitalize"], ["rows", "2", "name", "Device_Type", "cols", "40", "id", "DeviceTypeId", "title", "Device Type", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["name", "Device_Type", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t3", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 3, "hidden"], ["valign", "top", 3, "hidden"], ["rows", "2", "name", "Model_Type", "cols", "40", "id", "ModelTypeId", "title", "Model", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Model_Type", 3, "value", 4, "ngFor", "ngForOf"], ["for", "cos", 1, "ds-text-capitalize"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "cos", "cols", "40", "id", "COSId", "title", "Class of Service", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["cos", ""], ["value", "national"], ["value", "international"], ["colspan", "2", "width", "46%"], ["for", "Justification", 1, "ds-text-capitalize", "ds-pad-t-1"], ["width", "54%"], ["name", "Justification", "title", "Business Justification", "tabindex", "2", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["for", "Description", 1, "ds-text-capitalize", "ds-pad-t-1"], [1, "ds-input-container", "ds-pad-t-1"], ["name", "Description", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "DescriptionId", "title", "Description", "maxlength", "30", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [4, "ngIf"], ["for", "MACAddress", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["name", "MACAddress", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "MACAddressId", "title", "MAC Address", "maxlength", "12", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["for", "addId1"], ["for", "device"], ["for", "model"], ["for", "cos"], ["for", "justification"], ["for", "description"], ["for", "mac"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Back", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Submit", 3, "click", 4, "ngIf"], ["name", "Location_1", 3, "value"], ["name", "Device_Type", 3, "value"], ["name", "Model_Type", 3, "value"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpEmeaNewComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-navigation", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 5, 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function HpEmeaNewComponent_Template_form_submit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r19); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.entryDetails(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Fixed Phone - New Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " Fields marked with an asterisk (");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, ") are required. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "app-steps", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "h2", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "Employee Entry Details");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "table", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "label", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Location");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "select", 17, 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "option", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, "Select Location");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](33, HpEmeaNewComponent_option_33_Template, 2, 2, "option", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "table", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "label", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39, "Type of Device ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "select", 23, 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpEmeaNewComponent_Template_select_change_44_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r19); const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](45); return ctx.selectedDevice(_r3.value); })("ngModelChange", function HpEmeaNewComponent_Template_select_ngModelChange_44_listener($event) { return ctx.selected_device = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "option", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](47, "Select Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](48, HpEmeaNewComponent_option_48_Template, 2, 2, "option", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "table", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "label", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54, "Type of Model ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "select", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpEmeaNewComponent_Template_select_ngModelChange_59_listener($event) { return ctx.modelValue = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "option", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](61, "Select Model");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](62, HpEmeaNewComponent_option_62_Template, 2, 2, "option", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "label", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](66, "Select Class of Service (COS)");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "div", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "select", 32, 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpEmeaNewComponent_Template_select_ngModelChange_69_listener($event) { return ctx.COS = $event; })("change", function HpEmeaNewComponent_Template_select_change_69_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r19); const _r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](70); return ctx.classofservice(_r6.value); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "option", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](72, "National");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "option", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](74, "International");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](76, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](77, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](78, "label", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](79, "Business Need (Why is international required?) ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](80, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](81, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](82, "td", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](83, "textarea", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](85, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](86, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "label", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](88, "Description of the Device ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](89, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](90, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "td", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](92, "div", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](93, "input", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](94, HpEmeaNewComponent_label_94_Template, 2, 0, "label", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](95, HpEmeaNewComponent_label_95_Template, 2, 0, "label", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](96, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](97, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](98, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](99, "label", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](100, "MAC Address of the Device ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](101, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](102, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](103, "td", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](104, "div", 45);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](105, "input", 46);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](106, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](107, "Note:Combination of (0 to 9 , A to F) and Length:12");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](108, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](109, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](110, "div", 47);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](111, "div", 48);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](112, "div", 49);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](113, "span", 50);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](114, "input", 51);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpEmeaNewComponent_Template_input_click_114_listener() { return ctx.backClick(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](115, "span", 52);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](116, "input", 53);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](117, "form", 54);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](118, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](119, "Fixed Phone - New Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](120, "div", 55);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](121, "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](122, "div", 56);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](123, "app-steps", 57);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpEmeaNewComponent_Template_app_steps_previousStep_123_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](124, "h2", 58);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](125, "Review Details");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](126, "table", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](127, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](128, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](129, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](130, "label", 59);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](131, "Office Location");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](132, "td", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](133);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](134, "table", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](135, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](136, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](137, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](138, "label", 60);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](139, "Type of Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](140, "td", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](141);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](142, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](143, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](144, "label", 61);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](145, "Type of Model");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](146, "td", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](147);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](148, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](149, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](150, "label", 62);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](151, "Class of Service");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](152, "td", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](153);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](154, "tr", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](155, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](156, "label", 63);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](157, "Business Justification");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](158, "td", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](159);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](160, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](161, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](162, "label", 64);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](163, "Description of Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](164, "td", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](165);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](166, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](167, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](168, "label", 65);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](169, "MAC Address of the Device");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](170, "td", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](171);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](172, "div", 66);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](173, HpEmeaNewComponent_div_173_Template, 4, 0, "div", 67);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](174, "div", 47);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](175, "div", 48);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](176, "div", 49);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](177, "span", 50);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](178, HpEmeaNewComponent_input_178_Template, 1, 0, "input", 68);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](179, "span", 52);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](180, HpEmeaNewComponent_input_180_Template, 1, 0, "input", 69);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dataNav", ctx.servicesData)("cloudantData", ctx.cloudantData);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isEntryForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.locationlist);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.selected_device);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.devices);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.hideDeviceSection);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforAnyDevice);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.modelValue);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.models);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforFixedPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.COS);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showBusinessNeed);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforAnyDevice);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.selected_device == "Extension Mobility Station");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.selected_device == "Conference / Meeting Room Phone");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforAnyDevice);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isReviewForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.officeLocation);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.device);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.model);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showforFixedPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.cos);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.showBusinessNeed);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.justification);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.description);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.mac);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isSpinnerVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgForm"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["MaxLengthValidator"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJocC1lbWVhLW5ldy5jb21wb25lbnQuY3NzIn0= */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HpEmeaNewComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-hp-emea-new',
+                templateUrl: './hp-emea-new.component.html',
+                styleUrls: ['./hp-emea-new.component.css']
+            }]
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }, { type: _services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"] }, { type: _angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"] }, { type: _services_bp_service__WEBPACK_IMPORTED_MODULE_7__["bpservices"] }]; }, null); })();
+function gettime() {
+    var date = new Date();
+    var minutes1 = '';
+    var seconds1 = '';
+    var seconds = date.getSeconds();
+    var minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes1 = '0' + minutes;
+    }
+    else {
+        minutes1 = '' + minutes;
+    }
+    if (seconds < 10) {
+        seconds1 = '0' + seconds;
+    }
+    else {
+        seconds1 = '' + seconds;
+    }
+    console.log(minutes1 + seconds1);
+    return minutes1 + seconds1;
+}
+
+
+/***/ }),
+
+/***/ "pPZ4":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/hp-au-update/hp-au-update.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: HpAuUpdateComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HpAuUpdateComponent", function() { return HpAuUpdateComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var config_payload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! config/payload */ "dP2x");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/_services/cookie-handler.service */ "oxqP");
+/* harmony import */ var _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../_services/cloudant.service */ "Rfmm");
+/* harmony import */ var _services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services/servicenow.service */ "qWuM");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../topcountryframe/topcountryframe.component */ "aDsg");
+/* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../navigation/navigation.component */ "mvyS");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _steps_steps_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../steps/steps.component */ "52XD");
+
+
+
+
+
+
+
+
+
+
+
+
+function HpAuUpdateComponent_tr_37_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Current MAC Address ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r1.currentMac, " ");
+} }
+function HpAuUpdateComponent_tr_38_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Current Phone Number ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r2.currentPhone, " ");
+} }
+function HpAuUpdateComponent_tr_39_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Current Description ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r3.currentdesc);
+} }
+function HpAuUpdateComponent_tr_40_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Current Model");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r4.currentmodel);
+} }
+function HpAuUpdateComponent_tr_41_option_14_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const device_r13 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", device_r13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](device_r13);
+} }
+function HpAuUpdateComponent_tr_41_Template(rf, ctx) { if (rf & 1) {
+    const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Update Required for");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " *");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "select", 48, 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpAuUpdateComponent_tr_41_Template_select_change_10_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r15); const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](11); const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r14.updateFor(_r11.value); })("ngModelChange", function HpAuUpdateComponent_tr_41_Template_select_ngModelChange_10_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r15); const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r16.selected_device = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "option", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Select One");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, HpAuUpdateComponent_tr_41_option_14_Template, 2, 2, "option", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r5.selected_device);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r5.updateRequiredFor);
+} }
+function HpAuUpdateComponent_table_42_tr_2_option_12_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const fl_location_r21 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_location_r21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_location_r21, "");
+} }
+function HpAuUpdateComponent_table_42_tr_2_Template(rf, ctx) { if (rf & 1) {
+    const _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Select State ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "select", 58, 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpAuUpdateComponent_table_42_tr_2_Template_select_change_8_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](9); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r22.selectedLocation(_r19.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "option", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Select State");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, HpAuUpdateComponent_table_42_tr_2_option_12_Template, 2, 2, "option", 60);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r17.camp);
+} }
+function HpAuUpdateComponent_table_42_tr_3_option_11_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 67);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const fl_campus_r25 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_campus_r25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](fl_campus_r25);
+} }
+function HpAuUpdateComponent_table_42_tr_3_Template(rf, ctx) { if (rf & 1) {
+    const _r27 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 62);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 63);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Select New Location ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "select", 64);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpAuUpdateComponent_table_42_tr_3_Template_select_ngModelChange_8_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r27); const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r26.campus = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "option", 65);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Select Location");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, HpAuUpdateComponent_table_42_tr_3_option_11_Template, 2, 2, "option", 66);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r18.campus);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r18.build);
+} }
+function HpAuUpdateComponent_table_42_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tbody");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, HpAuUpdateComponent_table_42_tr_2_Template, 13, 1, "tr", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HpAuUpdateComponent_table_42_tr_3_Template, 12, 2, "tr", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r6.showLocation);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r6.showLocation);
+} }
+function HpAuUpdateComponent_table_43_tr_2_option_13_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 74);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const model_r33 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", model_r33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](model_r33);
+} }
+function HpAuUpdateComponent_table_43_tr_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 69);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label", 70);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Type Of Model");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 71);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "select", 72);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "option", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Select Phone Model");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, HpAuUpdateComponent_table_43_tr_2_option_13_Template, 2, 2, "option", 73);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r28.models);
+} }
+function HpAuUpdateComponent_table_43_tr_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 75);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 76);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New MAC Address");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " *");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 77);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 78);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpAuUpdateComponent_table_43_tr_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 79);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 80);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New Description to Update ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " *");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 81);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 82);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpAuUpdateComponent_table_43_tr_5_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 76);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Reason for Updation");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " *");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "textarea", 83);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpAuUpdateComponent_table_43_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 68);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tbody");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, HpAuUpdateComponent_table_43_tr_2_Template, 14, 1, "tr", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HpAuUpdateComponent_table_43_tr_3_Template, 8, 0, "tr", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HpAuUpdateComponent_table_43_tr_4_Template, 9, 0, "tr", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, HpAuUpdateComponent_table_43_tr_5_Template, 10, 0, "tr", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r7.showformodel);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r7.showformacadd);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r7.showforNewDesc);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r7.showforrsn);
+} }
+function HpAuUpdateComponent_div_131_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 84);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 85);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Your request submission is in progress.Do not Go back or Refresh the page.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 86);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpAuUpdateComponent_input_136_Template(rf, ctx) { if (rf & 1) {
+    const _r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 87);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpAuUpdateComponent_input_136_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r35); const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r34.BackButton(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpAuUpdateComponent_input_138_Template(rf, ctx) { if (rf & 1) {
+    const _r37 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 88);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpAuUpdateComponent_input_138_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r37); const ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r36.submit_snow(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+class HpAuUpdateComponent {
+    constructor(router, cookie, cloudantservice, route, servicenowservice, location) {
+        this.router = router;
+        this.cookie = cookie;
+        this.cloudantservice = cloudantservice;
+        this.route = route;
+        this.servicenowservice = servicenowservice;
+        this.location = location;
+        this.campA = [];
+        this.camp = [];
+        this.buildA = [];
+        this.build = [];
+        this.hideDeviceSection = true;
+        this.selected_device = '';
+        this.cloudantData = [];
+        this.servicesData = [];
+        this.j = 0;
+        this.ccode = '';
+        this.currentMac = '20BBC0DD14DB';
+        this.currentPhone = 3413073;
+        this.currentdesc = 'testing 123';
+        this.currentmodel = 6961;
+        this.showformodel = false;
+        this.showformacadd = false;
+        this.showforrsn = false;
+        this.showforNewDesc = false;
+        this.showLocation = false;
+        this.showSearch = false;
+        this.currentMacOrPhone = '';
+        this.isButtonVisible = true;
+        this.isSpinnerVisible = false;
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        this.hideBuilding = false;
+        this.payload = new config_payload__WEBPACK_IMPORTED_MODULE_1__["Jabber_New"]();
+        this.reviewDetailsIndia = {
+            officeLocation: "",
+            campus: "",
+            funded: "",
+            chargeDepartmentCode: "",
+            businessUnit: "",
+            projectId: "",
+            accountId: " ",
+            Voice_Type_Disp: true,
+            icano_Disp: "",
+            Location_final: "",
+            accid_Disp: "",
+            reqno: "",
+            icaCode: "",
+            device: "",
+            model: "",
+            employeeId: "",
+            voicemail: "",
+            cos: "",
+            justification: "",
+            description: "",
+            mac: "",
+        };
+    }
+    OnSearchClick() {
+        if (this.currentMacOrPhone != '') {
+            this.showSearch = true;
+        }
+        else {
+            alert("Please enter a MAC Address or Phone number to search");
+        }
+    }
+    updateFor(device) {
+        // if(device != ''){
+        //   this.hideDeviceSection = false;
+        // }
+        if (device == '') {
+            this.showformodel = false;
+            this.showformacadd = false;
+            this.showforrsn = false;
+            this.showforNewDesc = false;
+            this.showLocation = false;
+            this.hideBuilding = false;
+        }
+        if (device.toUpperCase() == 'REPLACE THE HARDPHONE ONLY') {
+            this.showformodel = true;
+            this.showformacadd = true;
+            this.showforrsn = true;
+            this.showforNewDesc = false;
+            this.showLocation = false;
+            this.hideBuilding = false;
+        }
+        if (device.toUpperCase() == 'DESCRIPTION ONLY') {
+            this.showforNewDesc = true;
+            this.showforrsn = true;
+            this.showformodel = false;
+            this.showformacadd = false;
+            this.showLocation = false;
+            this.hideBuilding = false;
+        }
+        if (device.toUpperCase() == 'CHANGE PHONE LOCATION') {
+            this.showLocation = true;
+            this.showforNewDesc = true;
+            this.showforrsn = true;
+            this.showformodel = false;
+            this.showformacadd = false;
+        }
+    }
+    // Submit to Snow Jabber new code added by Swarnava ends	
+    backClick() {
+        sessionStorage.setItem('backbutton', 'yes');
+        sessionStorage.setItem('step', 'step1');
+        this.location.back();
+    }
+    selectedLocation(loc) {
+        this.build = [];
+        this.campus = '';
+        if (loc != '') {
+            this.hideBuilding = true;
+            var k = 0;
+            for (var i = 0; i < this.campA.length; i++) {
+                if (loc == this.campA[i]) {
+                    this.build[k] = this.buildA[i];
+                    k = k + 1;
+                }
+            }
+        }
+        else {
+            this.hideBuilding = false;
+            this.build = [];
+        }
+    }
+    entryDetails(formData) {
+        if (formData.value.UpdateReq == '') {
+            alert('Please select update required for');
+        }
+        if (formData.value.MAC1 == '') {
+            alert('Please enter 12 characters MAC address');
+        }
+        if (formData.value.Comments == '') {
+            alert('Please provide the reason for updation.');
+        }
+        if (formData.value.Newdesc == '') {
+            alert('Please provide the New Description. ');
+        }
+        if (formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION') {
+            alert('Please select a location');
+        }
+        if (formData.value.Buildings.toUpperCase() == 'SELECT ONE') {
+            alert('Please select a campus');
+            return;
+        }
+        this.isEntryForm = true;
+        this.isReviewForm = false;
+    }
+    BackButton() {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        // this.fixedPhoneIdentifier = false;	
+    }
+    // Submit to Snow Jabber new code added by Swarnava	
+    submit_snow() {
+        this.isButtonVisible = false;
+        this.isSpinnerVisible = true;
+    }
+    ngOnInit() {
+        var _a, _b;
+        this.updateRequiredFor = sessionStorage.getItem('updaterequired');
+        this.updateRequiredFor = JSON.parse(this.updateRequiredFor).split(",");
+        this.models = sessionStorage.getItem('fpumodels');
+        this.models = JSON.parse(this.models).split(",");
+        // Submit to Snow Jabber new code added by Swarnava	
+        this.orgi = this.cookie.getCookie('ccode');
+        this.cnum = sessionStorage.getItem('cnum');
+        this.countrydetails = sessionStorage.getItem('countrydetails');
+        this.countrydetails = JSON.parse(this.countrydetails);
+        // Submit to Snow Jabber new code added by Swarnava ends	
+        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+        this.route.queryParams
+            .subscribe(params => {
+            console.log(params);
+            this.service = params.service;
+            this.pcode = params.country;
+            console.log("navigation component" + this.pcode);
+        });
+        this.locationlist = (_a = sessionStorage.getItem('locationdetails')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
+        this.locationlist = (_b = this.locationlist) === null || _b === void 0 ? void 0 : _b.replace('"', '').split(',');
+        for (var i = 0; i < this.locationlist.length; i++) {
+            var n = this.locationlist[i].indexOf("~");
+            this.campA[i] = this.locationlist[i].substr(1, n - 1);
+            this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);
+        }
+        for (var i = 0; i < this.campA.length; i++) {
+            if (this.campA[i] != this.campA[i + 1]) {
+                this.camp[this.j] = this.campA[i];
+                this.j++;
+            }
+        }
+        const servicesData = {
+            "data": [
+                {
+                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "step": 3,
+                }
+            ]
+        };
+        // this.reqFor = sessionStorage.getItem('radioAction')
+        // this.models = sessionStorage.getItem('fpumodels')
+        // this.servicesData = servicesData.data[0];
+    }
+    previousStep(event) {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        // this.fixedPhoneIdentifier = false;	
+    }
+}
+HpAuUpdateComponent.ɵfac = function HpAuUpdateComponent_Factory(t) { return new (t || HpAuUpdateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"])); };
+HpAuUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpAuUpdateComponent, selectors: [["app-hp-au-update"]], decls: 139, vars: 21, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t1", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "50%"], ["for", "Sear class="], [1, "ds-col-12"], [1, "ds-row"], [1, "ds-col-7"], ["name", "IdNum1", "value", "", "maxlength", "15", 1, "ds-input", 2, "width", "180px !important", 3, "ngModel", "ngModelChange"], [1, "ds-col-5", "ds-pad-l-1"], ["type", "button", "name", "back", "value", "SEARCH", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-margin-bottom-0", "ds-pad-l-1", "ds-pad-r-1", 3, "click"], ["valign", "top", 4, "ngIf"], ["id", "t2", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], ["id", "t3", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%"], ["for", "addId1"], ["width", "54%"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%", "height", "10"], ["width", "54%", "height", "10"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["for", "sear", 1, ""], ["for", "up", 1, ""], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "UpdateReq", "id", "voicetype", "title", "Update Required For", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "t2", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top", "class", "ds-pad-t-1", 4, "ngIf"], ["colspan", "2", "width", "50%"], ["for", "LocationId", 1, "ds-text-capitalize"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["name", "Location_1", 3, "value"], ["valign", "top", 1, "ds-pad-t-1"], ["for", "builId", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Buildings", "value", "Select Location"], ["name", "Buildings", 3, "value", 4, "ngFor", "ngForOf"], ["name", "Buildings", 3, "value"], ["id", "t3", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["id", "modelid"], ["for", "modelid", 1, "ds-text-capitalize"], ["id", "model1", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "NewModel", "rows", "2", "cols", "40", "title", "Phone Model", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important"], ["name", "NewModel", 3, "value", 4, "ngFor", "ngForOf"], ["name", "NewModel", 3, "value"], ["colspan", "2", "width", "50%", 1, "ds-pad-t-1", "ds-pad-b-2"], [1, ""], ["width", "50%", 1, "ds-pad-t-1", "ds-pad-b-2"], ["name", "MAC1", "value", "", "title", "New MAC Address", "maxlength", "12;", "ngModel", "", 1, "ds-input", "ds-pad-b-1", 2, "width", "300px !important"], ["colspan", "2", "width", "50%", 1, "ds-pad-t-1", "ds-pad-b-1"], ["for", "descn", "id", "desc1", 1, ""], ["width", "50%", 1, "ds-pad-t-1", "ds-pad-b-1"], ["name", "Newdesc", "value", "", "id", "desc", "title", "New Description", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["name", "Comments", "title", "Reason for Update", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpAuUpdateComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r38 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-navigation", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 5, 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function HpAuUpdateComponent_Template_form_submit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.entryDetails(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Fixed Phone - Update Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " Fields marked with an asterick (");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, ") are required. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "app-steps", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpAuUpdateComponent_Template_app_steps_previousStep_16_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "h2", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "Employee Entry Details");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "table", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "label", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Enter Current MAC Address or Phone Number");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, " *");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "input", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpAuUpdateComponent_Template_input_ngModelChange_33_listener($event) { return ctx.currentMacOrPhone = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "div", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "input", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpAuUpdateComponent_Template_input_click_36_listener() { return ctx.OnSearchClick(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](37, HpAuUpdateComponent_tr_37_Template, 8, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, HpAuUpdateComponent_tr_38_Template, 8, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](39, HpAuUpdateComponent_tr_39_Template, 8, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](40, HpAuUpdateComponent_tr_40_Template, 8, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](41, HpAuUpdateComponent_tr_41_Template, 15, 2, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](42, HpAuUpdateComponent_table_42_Template, 4, 2, "table", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](43, HpAuUpdateComponent_table_43_Template, 6, 4, "table", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](44, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](45, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "div", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "div", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "span", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "input", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpAuUpdateComponent_Template_input_click_50_listener() { return ctx.backClick(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "span", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](52, "input", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "form", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](55, "Fixed Phone - Update Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "div", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](57, "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](58, "div", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "app-steps", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpAuUpdateComponent_Template_app_steps_previousStep_59_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "table", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](65, "Current MAC Address");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](67, "{{reviewDetailsIndia.mac}");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](71, "Current Phone Number ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](73, "{{reviewDetailsIndia}");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](76, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](77, "Current Description");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](78, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](79, "{{reviewDetailsIndia.description}");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](80, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](82, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](83, "Current Model");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](85, "{{reviewDetailsIndia.model}");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](86, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](88, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](89, "Update Required for");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](90, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](91, "{{reviewDetailsIndia}");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](92, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](93, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](94, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](95, "Type Of Model");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](96, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](97, "{{reviewDetailsIndia}");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](98, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](99, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](100, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](101, "New MAC Address");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](102, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](103, "{{reviewDetailsIndia}");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](104, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](105, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](106, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](107, "Reason for Updation");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](108, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](109, "{{reviewDetailsIndia}");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](110, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](111, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](112, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](113, "New Description to Update");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](114, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](115, "{{reviewDetailsIndia}");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](116, "table", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](117, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](118, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](119, "td", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](120, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](121, "Office Location");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](122, "td", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](123);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](124, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](125, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](126, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](127, "Campus");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](128, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](129);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](130, "div", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](131, HpAuUpdateComponent_div_131_Template, 4, 0, "div", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](132, "div", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](133, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](134, "div", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](135, "span", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](136, HpAuUpdateComponent_input_136_Template, 1, 0, "input", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](137, "span", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](138, HpAuUpdateComponent_input_138_Template, 1, 0, "input", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dataNav", ctx.servicesData)("cloudantData", ctx.cloudantData);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isEntryForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.currentMacOrPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isReviewForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](64);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.officeLocation);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.campus);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isSpinnerVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_7__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_8__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgForm"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_10__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_9__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJocC1hdS11cGRhdGUuY29tcG9uZW50LmNzcyJ9 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HpAuUpdateComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-hp-au-update',
+                templateUrl: './hp-au-update.component.html',
+                styleUrls: ['./hp-au-update.component.css']
+            }]
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }, { type: _services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"] }, { type: _angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"] }]; }, null); })();
+function gettime() {
+    var date = new Date();
+    var minutes1 = '';
+    var seconds1 = '';
+    var seconds = date.getSeconds();
+    var minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes1 = '0' + minutes;
+    }
+    else {
+        minutes1 = '' + minutes;
+    }
+    if (seconds < 10) {
+        seconds1 = '0' + seconds;
+    }
+    else {
+        seconds1 = '' + seconds;
+    }
+    console.log(minutes1 + seconds1);
+    return minutes1 + seconds1;
+}
 
 
 /***/ }),
@@ -18428,6 +22857,11 @@ class servicenowservice {
         return this.http.post(this.submitUrl, fac_new_payload)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorhandler));
     }
+    submit_request_fac_deactivate(fac_deactivate_payload) {
+        console.log('calling snow');
+        return this.http.post(this.submitUrl, fac_deactivate_payload)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorhandler));
+    }
     submit_request_fac_update(Fac_update_payload) {
         console.log('calling snow');
         return this.http.post(this.submitUrl, Fac_update_payload)
@@ -18513,9 +22947,12 @@ class Db2Service {
         this.Url = '/api/db2_resource';
         this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_3__["db2search"]();
     }
-    search_db2(cnum, type) {
+    search_db2(cnum, type, fixedphone, identifier, country) {
         this.payload.cnum = cnum;
         this.payload.request_type = type;
+        this.payload.fixedphone = fixedphone;
+        this.payload.identifier = identifier;
+        this.payload.country = country;
         console.log('calling db2' + this.payload);
         return this.http.post(this.Url, this.payload)
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["catchError"])(this.errorhandler));
@@ -18619,6 +23056,7 @@ class UitoplinksComponent {
             { "name": "Latin America", "code": "631", "path": "././assets/flags/631.png" },
             { "name": "USA", "code": "897", "path": "././assets/flags/897.png" },
             { "name": "Australia", "code": "616", "path": "././assets/flags/616.png" },
+            { "name": "China", "code": "672", "path": "././assets/flags/672.png" },
         ];
     }
     ngOnInit() {
@@ -18814,6 +23252,1028 @@ AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineI
 
 /***/ }),
 
+/***/ "wx85":
+/*!*******************************************************************!*\
+  !*** ./src/app/components/hp-in-update/hp-in-update.component.ts ***!
+  \*******************************************************************/
+/*! exports provided: HpInUpdateComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HpInUpdateComponent", function() { return HpInUpdateComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var config_payload__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! config/payload */ "dP2x");
+/* harmony import */ var _services_db2_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../_services/db2.service */ "qtc7");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/_services/cookie-handler.service */ "oxqP");
+/* harmony import */ var _services_cloudant_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../_services/cloudant.service */ "Rfmm");
+/* harmony import */ var _services_servicenow_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../_services/servicenow.service */ "qWuM");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../topcountryframe/topcountryframe.component */ "aDsg");
+/* harmony import */ var _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../navigation/navigation.component */ "mvyS");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/forms */ "3Pt+");
+/* harmony import */ var _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../steps/steps.component */ "52XD");
+
+
+
+
+
+
+
+
+
+
+
+
+
+function HpInUpdateComponent_tr_37_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Current MAC Address ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r1.currentMac, " ");
+} }
+function HpInUpdateComponent_tr_38_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Current Phone Number ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx_r2.currentPhone, " ");
+} }
+function HpInUpdateComponent_tr_39_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Current Description ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r3.currentdesc);
+} }
+function HpInUpdateComponent_tr_40_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Current Model");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r4.currentmodel);
+} }
+function HpInUpdateComponent_tr_41_option_14_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const device_r19 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", device_r19);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](device_r19);
+} }
+function HpInUpdateComponent_tr_41_Template(rf, ctx) { if (rf & 1) {
+    const _r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Update Required for");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " *");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "select", 46, 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpInUpdateComponent_tr_41_Template_select_change_10_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21); const _r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](11); const ctx_r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r20.updateFor(_r17.value); })("ngModelChange", function HpInUpdateComponent_tr_41_Template_select_ngModelChange_10_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r21); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r22.selected_device = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "option", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Select One");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, HpInUpdateComponent_tr_41_option_14_Template, 2, 2, "option", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r5.selected_device);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r5.updateRequiredFor);
+} }
+function HpInUpdateComponent_table_42_tr_2_option_12_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const fl_location_r27 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_location_r27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_location_r27, "");
+} }
+function HpInUpdateComponent_table_42_tr_2_Template(rf, ctx) { if (rf & 1) {
+    const _r29 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Office Location");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "select", 56, 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpInUpdateComponent_table_42_tr_2_Template_select_change_8_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r29); const _r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](9); const ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r28.selectedLocation(_r25.value); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "option", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Select Office Location");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, HpInUpdateComponent_table_42_tr_2_option_12_Template, 2, 2, "option", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r23.camp);
+} }
+function HpInUpdateComponent_table_42_tr_3_option_11_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const fl_campus_r31 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_campus_r31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](fl_campus_r31);
+} }
+function HpInUpdateComponent_table_42_tr_3_Template(rf, ctx) { if (rf & 1) {
+    const _r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 58);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Campus");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "select", 60);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInUpdateComponent_table_42_tr_3_Template_select_ngModelChange_8_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r33); const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r32.campus = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "option", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Select One");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, HpInUpdateComponent_table_42_tr_3_option_11_Template, 2, 2, "option", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r24.campus);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r24.build);
+} }
+function HpInUpdateComponent_table_42_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tbody");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, HpInUpdateComponent_table_42_tr_2_Template, 13, 1, "tr", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HpInUpdateComponent_table_42_tr_3_Template, 12, 2, "tr", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r6.showLocation);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r6.hideBuilding);
+} }
+function HpInUpdateComponent_table_43_tr_2_option_13_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 67);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const model_r39 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", model_r39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](model_r39);
+} }
+function HpInUpdateComponent_table_43_tr_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 62);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label", 63);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Type Of Model");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 64);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "select", 65);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "option", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Select Phone Model");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, HpInUpdateComponent_table_43_tr_2_option_13_Template, 2, 2, "option", 66);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r34.models);
+} }
+function HpInUpdateComponent_table_43_tr_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 68);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 69);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New MAC Address");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " *");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 70);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 71);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpInUpdateComponent_table_43_tr_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 72);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 73);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New Description to Update ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " *");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 74);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 75);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpInUpdateComponent_table_43_tr_5_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 69);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Reason for Updation");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " *");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "textarea", 76);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "                        ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpInUpdateComponent_table_43_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tbody");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, HpInUpdateComponent_table_43_tr_2_Template, 14, 1, "tr", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HpInUpdateComponent_table_43_tr_3_Template, 8, 0, "tr", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HpInUpdateComponent_table_43_tr_4_Template, 9, 0, "tr", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, HpInUpdateComponent_table_43_tr_5_Template, 10, 0, "tr", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r7.showformodel);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r7.showformacadd);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r7.showforNewDesc);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r7.showforrsn);
+} }
+function HpInUpdateComponent_tr_74_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Current Description");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r8.reviewDetailsIndia.Currentdescription);
+} }
+function HpInUpdateComponent_tr_87_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Type Of Model");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r9.reviewDetailsIndia.newModel);
+} }
+function HpInUpdateComponent_tr_88_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New MAC Address");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r10.reviewDetailsIndia.newMac);
+} }
+function HpInUpdateComponent_tr_95_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New Description to Update");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.reviewDetailsIndia.description);
+} }
+function HpInUpdateComponent_tr_98_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 77);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Office Location");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 78);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r12.reviewDetailsIndia.officeLocation);
+} }
+function HpInUpdateComponent_tr_99_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Campus");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r13.reviewDetailsIndia.campus);
+} }
+function HpInUpdateComponent_div_101_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 79);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 80);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Your request submission is in progress.Do not Go back or Refresh the page.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 81);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpInUpdateComponent_input_106_Template(rf, ctx) { if (rf & 1) {
+    const _r41 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInUpdateComponent_input_106_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r41); const ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r40.BackButton(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function HpInUpdateComponent_input_108_Template(rf, ctx) { if (rf & 1) {
+    const _r43 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 82);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInUpdateComponent_input_108_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r43); const ctx_r42 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r42.submit_snow(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+class HpInUpdateComponent {
+    constructor(db2, router, cookie, cloudantservice, route, servicenowservice, location) {
+        this.db2 = db2;
+        this.router = router;
+        this.cookie = cookie;
+        this.cloudantservice = cloudantservice;
+        this.route = route;
+        this.servicenowservice = servicenowservice;
+        this.location = location;
+        this.campA = [];
+        this.camp = [];
+        this.buildA = [];
+        this.build = [];
+        this.hideDeviceSection = true;
+        this.selected_device = '';
+        this.cloudantData = [];
+        this.servicesData = [];
+        this.j = 0;
+        this.ccode = '';
+        this.currentMac = "";
+        this.showformodel = false;
+        this.showformacadd = false;
+        this.showforrsn = false;
+        this.showforNewDesc = false;
+        this.showLocation = false;
+        this.showSearch = false;
+        this.currentMacOrPhone = '';
+        this.isButtonVisible = true;
+        this.isSpinnerVisible = false;
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        this.hideBuilding = false;
+        this.warninginfo = false;
+        this.warninginfosnow = false;
+        this.hideSteps = false;
+        this.errorinfo = false;
+        this.payload = new config_payload__WEBPACK_IMPORTED_MODULE_1__["fixedphone_update"]();
+        this.reviewDetailsIndia = {
+            officeLocation: "",
+            campus: "",
+            funded: "",
+            chargeDepartmentCode: "",
+            businessUnit: "",
+            projectId: "",
+            accountId: " ",
+            Voice_Type_Disp: true,
+            icano_Disp: "",
+            Location_final: "",
+            accid_Disp: "",
+            reqno: "",
+            icaCode: "",
+            device: "",
+            model: "",
+            employeeId: "",
+            voicemail: "",
+            cos: "",
+            justification: "",
+            description: "",
+            mac: "",
+            phoneNunmer: "",
+            newModel: "",
+            newMac: "",
+            Currentdescription: "",
+        };
+    }
+    OnSearchClick() {
+        if (this.currentMacOrPhone != '') {
+            this.db2.search_db2(this.cnum, "fixedphone_search", this.currentMacOrPhone, this.currentMacOrPhone, this.countrydetails.name).subscribe(data => {
+                if (data != null) {
+                    this.currentMac = data.message[0].ATTRIBUTE1;
+                    this.currentPhone = data.message[0].IDENTIFIER;
+                    this.currentdesc = data.message[0].ATTRIBUTE4;
+                    this.currentmodel = data.message[0].ATTRIBUTE2;
+                    // console.log(data.message[0].COUNTRY);
+                    // console.log(data.message[0].ATTRIBUTE1);
+                    // console.log(data.message[0].IDENTIFIER);
+                    // console.log( data.message[0].ATTRIBUTE2);
+                    // console.log(data.message[0].ATTRIBUTE4);
+                    this.showSearch = true;
+                }
+                else {
+                    alert("something went wrong");
+                }
+            });
+        }
+        else {
+            alert("Please enter a MAC Address or Phone number to search");
+        }
+    }
+    updateFor(device) {
+        // if(device != ''){
+        //   this.hideDeviceSection = false;
+        // }
+        if (device == '') {
+            this.showformodel = false;
+            this.showformacadd = false;
+            this.showforrsn = false;
+            this.showforNewDesc = false;
+            this.showLocation = false;
+            this.hideBuilding = false;
+        }
+        if (device.toUpperCase() == 'REPLACE THE HARDPHONE ONLY') {
+            this.showformodel = true;
+            this.showformacadd = true;
+            this.showforrsn = true;
+            this.showforNewDesc = false;
+            this.showLocation = false;
+            this.hideBuilding = false;
+        }
+        if (device.toUpperCase() == 'DESCRIPTION ONLY') {
+            this.showforNewDesc = true;
+            this.showforrsn = true;
+            this.showformodel = false;
+            this.showformacadd = false;
+            this.showLocation = false;
+            this.hideBuilding = false;
+        }
+        if (device.toUpperCase() == 'CHANGE PHONE LOCATION') {
+            this.showLocation = true;
+            this.showforNewDesc = true;
+            this.showforrsn = true;
+            this.showformodel = false;
+            this.showformacadd = false;
+        }
+    }
+    // Submit to Snow Jabber new code added by Swarnava ends	
+    backClick() {
+        sessionStorage.setItem('backbutton', 'yes');
+        sessionStorage.setItem('step', 'step1');
+        this.location.back();
+    }
+    selectedLocation(loc) {
+        this.build = [];
+        this.campus = '';
+        if (loc != '') {
+            this.hideBuilding = true;
+            var k = 0;
+            for (var i = 0; i < this.campA.length; i++) {
+                if (loc == this.campA[i]) {
+                    this.build[k] = this.buildA[i];
+                    k = k + 1;
+                }
+            }
+        }
+        else {
+            this.hideBuilding = false;
+            this.build = [];
+        }
+    }
+    entryDetails(formData) {
+        if (this.currentMacOrPhone == '') {
+            // alert("Please give some ");
+        }
+        else if (formData.value.UpdateReq == '') {
+            alert('Please select update required for');
+        }
+        else if (formData.value.MAC1 == '') {
+            alert('Please enter 12 characters MAC address');
+        }
+        else if (formData.value.Comments == '') {
+            alert('Please provide the reason for updation.');
+        }
+        else if (formData.value.Newdesc == '') {
+            alert('Please provide the New Description. ');
+        }
+        else if (formData.value.Location_1 == '' && this.showLocation == true) {
+            alert('Please select a location');
+        }
+        else if (formData.value.Buildings == '' && this.showLocation == true) {
+            alert('Please select a campus');
+        }
+        else {
+            this.isEntryForm = true;
+            this.isReviewForm = false;
+            this.reviewDetailsIndia.mac = this.currentMac;
+            this.reviewDetailsIndia.phoneNunmer = this.currentPhone;
+            this.reviewDetailsIndia.Currentdescription = this.currentdesc;
+            this.reviewDetailsIndia.model = this.currentmodel;
+            this.reviewDetailsIndia.device = this.selected_device;
+            this.reviewDetailsIndia.newModel = formData.value.NewModel;
+            this.reviewDetailsIndia.newMac = formData.value.MAC1;
+            this.reviewDetailsIndia.justification = formData.value.Comments;
+            this.reviewDetailsIndia.description = formData.value.Newdesc;
+            this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
+            this.reviewDetailsIndia.campus = this.campus;
+        }
+    }
+    BackButton() {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        // this.fixedPhoneIdentifier = false;	
+    }
+    // Submit to Snow Jabber new code added by Swarnava	
+    submit_snow() {
+        this.reqno = this.countrydetails.isocode + "-US-" + this.cnum.substr(0, 6) + "-" + gettime();
+        sessionStorage.setItem('reqno', this.reqno);
+        this.isButtonVisible = false;
+        this.isSpinnerVisible = true;
+        this.payload.orinator_payload = this.orgi;
+        this.payload.cNum_payload = this.cnum;
+        this.payload.Comments_Disp = this.reviewDetailsIndia.justification;
+        this.payload.Newdesc_Disp = this.reviewDetailsIndia.description;
+        this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
+        this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
+        this.payload.updatereq_Disp = this.reviewDetailsIndia.device;
+        this.payload.currmodel = this.reviewDetailsIndia.model;
+        this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
+        this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
+        this.payload.MAC = this.reviewDetailsIndia.newMac;
+        this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.LocationCorrectnew = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.ReqNo = this.reqno;
+        this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
+        this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
+        this.payload.countryname = this.countrydetails.name;
+        this.payload.evolution_instance = this.countrydetails.evolution_instance;
+        this.payload.request_type = 'fixedphone_update';
+        this.servicenowservice.submit_request_fixed_update(this.payload).subscribe(data => {
+            console.log('response', data);
+            if (data)
+                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+        }, (error) => {
+            console.error('error caught in component' + error);
+            this.isSpinnerVisible = false;
+            this.errorinfo = true;
+            this.isButtonVisible = true;
+        });
+    }
+    ngOnInit() {
+        var _a, _b;
+        this.updateRequiredFor = sessionStorage.getItem('updaterequired');
+        this.updateRequiredFor = JSON.parse(this.updateRequiredFor).split(",");
+        this.models = sessionStorage.getItem('fpumodels');
+        this.models = JSON.parse(this.models).split(",");
+        // Submit to Snow Jabber new code added by Swarnava	
+        this.orgi = this.cookie.getCookie('ccode');
+        this.cnum = sessionStorage.getItem('cnum');
+        this.countrydetails = sessionStorage.getItem('countrydetails');
+        this.countrydetails = JSON.parse(this.countrydetails);
+        // Submit to Snow Jabber new code added by Swarnava ends	
+        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+        this.route.queryParams
+            .subscribe(params => {
+            console.log(params);
+            this.service = params.service;
+            this.pcode = params.country;
+            console.log("navigation component" + this.pcode);
+        });
+        this.locationlist = (_a = sessionStorage.getItem('locationdetails')) === null || _a === void 0 ? void 0 : _a.replace('"', '');
+        this.locationlist = (_b = this.locationlist) === null || _b === void 0 ? void 0 : _b.replace('"', '').split(',');
+        for (var i = 0; i < this.locationlist.length; i++) {
+            var n = this.locationlist[i].indexOf("~");
+            this.campA[i] = this.locationlist[i].substr(1, n - 1);
+            this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);
+        }
+        for (var i = 0; i < this.campA.length; i++) {
+            if (this.campA[i] != this.campA[i + 1]) {
+                this.camp[this.j] = this.campA[i];
+                this.j++;
+            }
+        }
+        const servicesData = {
+            "data": [
+                {
+                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "step": 3,
+                }
+            ]
+        };
+        // this.reqFor = sessionStorage.getItem('radioAction')
+        // this.models = sessionStorage.getItem('fpumodels')
+        // this.servicesData = servicesData.data[0];
+        this.reqFor = sessionStorage.getItem('radioAction');
+        this.servicesData = servicesData.data[0];
+        if (this.warninginfo || this.warninginfosnow) {
+            this.hideSteps = true;
+        }
+        else {
+            this.hideSteps = false;
+        }
+    }
+    previousStep(event) {
+        this.isEntryForm = false;
+        this.isReviewForm = true;
+        // this.fixedPhoneIdentifier = false;	
+    }
+}
+HpInUpdateComponent.ɵfac = function HpInUpdateComponent_Factory(t) { return new (t || HpInUpdateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_db2_service__WEBPACK_IMPORTED_MODULE_2__["Db2Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_4__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_5__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_6__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_7__["Location"])); };
+HpInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpInUpdateComponent, selectors: [["app-hp-in-update"]], decls: 109, vars: 30, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t1", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "50%"], ["for", "Sear class="], [1, "ds-col-12"], [1, "ds-row"], [1, "ds-col-7"], ["name", "IdNum1", "value", "", "maxlength", "15;", 1, "ds-input", 2, "width", "180px !important", 3, "ngModel", "ngModelChange"], [1, "ds-col-5", "ds-pad-l-1"], ["type", "button", "name", "back", "value", "Search", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-margin-bottom-0", "ds-pad-l-1", "ds-pad-r-1", 3, "click"], ["valign", "top", 4, "ngIf"], ["id", "t2", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], ["id", "t3", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "Back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "Next", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%"], ["for", "addId1"], ["width", "54%"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Back", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "Submit", 3, "click", 4, "ngIf"], ["for", "sear", 1, ""], ["for", "up", 1, ""], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "UpdateReq", "id", "voicetype", "title", "Update Required For", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "t2", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top", "class", "ds-pad-t-1", 4, "ngIf"], ["colspan", "2", "width", "50%"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "50%", 1, "ds-pad-t-1"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["valign", "top", 1, "ds-pad-t-1"], ["for", "builId", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "title", "Campus", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["id", "t3", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["id", "modelid"], ["for", "modelid", 1, "ds-text-capitalize"], ["id", "model1", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "NewModel", "rows", "2", "cols", "40", "title", "Phone Model", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important"], ["name", "NewModel", 3, "value", 4, "ngFor", "ngForOf"], ["name", "NewModel", 3, "value"], ["colspan", "2", "width", "50%", 1, "ds-pad-t-1", "ds-pad-b-2"], [1, ""], ["width", "50%", 1, "ds-pad-t-1", "ds-pad-b-2"], ["name", "MAC1", "value", "", "title", "New MAC Address", "maxlength", "12;", "ngModel", "", 1, "ds-input", "ds-pad-b-1", 2, "width", "300px !important"], ["colspan", "2", "width", "50%", 1, "ds-pad-t-1", "ds-pad-b-1"], ["for", "descn", "id", "desc1", 1, ""], ["width", "50%", 1, "ds-pad-t-1", "ds-pad-b-1"], ["name", "Newdesc", "value", "", "id", "desc", "title", "New Description", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["name", "Comments", "title", "Reason for Update", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["colspan", "2", "width", "46%", "height", "10"], ["width", "54%", "height", "10"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "Submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpInUpdateComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r44 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "app-navigation", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 5, 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function HpInUpdateComponent_Template_form_submit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r44); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.entryDetails(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Fixed Phone - Update Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " Fields marked with an asterick (");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "*");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, ") are required. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "app-steps", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpInUpdateComponent_Template_app_steps_previousStep_16_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "h2", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "Employee Entry Details");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "table", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "label", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Enter Current MAC Address or Phone Number");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "span", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, " *");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "td", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 16);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "input", 18);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInUpdateComponent_Template_input_ngModelChange_33_listener($event) { return ctx.currentMacOrPhone = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "div", 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "input", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInUpdateComponent_Template_input_click_36_listener() { return ctx.OnSearchClick(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](37, HpInUpdateComponent_tr_37_Template, 8, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, HpInUpdateComponent_tr_38_Template, 8, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](39, HpInUpdateComponent_tr_39_Template, 8, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](40, HpInUpdateComponent_tr_40_Template, 8, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](41, HpInUpdateComponent_tr_41_Template, 15, 2, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](42, HpInUpdateComponent_table_42_Template, 4, 2, "table", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](43, HpInUpdateComponent_table_43_Template, 6, 4, "table", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](44, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](45, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "div", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "div", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "span", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "input", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInUpdateComponent_Template_input_click_50_listener() { return ctx.backClick(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "span", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](52, "input", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "form", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](55, "Fixed Phone - Update Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "div", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](57, "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](58, "div", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "app-steps", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpInUpdateComponent_Template_app_steps_previousStep_59_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](60, "table", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](65, "Current MAC Address");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](67);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](71, "Current Phone Number ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](73);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](74, HpInUpdateComponent_tr_74_Template, 6, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](76, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](78, "Current Model");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](80);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](82, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](83, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](84, "Update Required for");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](85, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](86);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](87, HpInUpdateComponent_tr_87_Template, 6, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](88, HpInUpdateComponent_tr_88_Template, 6, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](89, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](90, "td", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](92, "Reason for Updation");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](93, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](94);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](95, HpInUpdateComponent_tr_95_Template, 6, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](96, "table", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](97, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](98, HpInUpdateComponent_tr_98_Template, 6, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](99, HpInUpdateComponent_tr_99_Template, 6, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](100, "div", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](101, HpInUpdateComponent_div_101_Template, 4, 0, "div", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](102, "div", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](103, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](104, "div", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](105, "span", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](106, HpInUpdateComponent_input_106_Template, 1, 0, "input", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](107, "span", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](108, HpInUpdateComponent_input_108_Template, 1, 0, "input", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dataNav", ctx.servicesData)("cloudantData", ctx.cloudantData);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isEntryForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](17);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.currentMacOrPhone);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isReviewForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.mac);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.phoneNunmer);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.model);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.device);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showformodel);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showformacadd);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.justification);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showforNewDesc);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showLocation);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.hideBuilding);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isSpinnerVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isButtonVisible);
+    } }, directives: [_topcountryframe_topcountryframe_component__WEBPACK_IMPORTED_MODULE_8__["TopcountryframeComponent"], _navigation_navigation_component__WEBPACK_IMPORTED_MODULE_9__["NavigationComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgForm"], _steps_steps_component__WEBPACK_IMPORTED_MODULE_11__["StepsComponent"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["MaxLengthValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_10__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJocC1pbi11cGRhdGUuY29tcG9uZW50LmNzcyJ9 */"] });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](HpInUpdateComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-hp-in-update',
+                templateUrl: './hp-in-update.component.html',
+                styleUrls: ['./hp-in-update.component.css']
+            }]
+    }], function () { return [{ type: _services_db2_service__WEBPACK_IMPORTED_MODULE_2__["Db2Service"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }, { type: src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_4__["CookieHandlerService"] }, { type: _services_cloudant_service__WEBPACK_IMPORTED_MODULE_5__["cloudantservice"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }, { type: _services_servicenow_service__WEBPACK_IMPORTED_MODULE_6__["servicenowservice"] }, { type: _angular_common__WEBPACK_IMPORTED_MODULE_7__["Location"] }]; }, null); })();
+function gettime() {
+    var date = new Date();
+    var minutes1 = '';
+    var seconds1 = '';
+    var seconds = date.getSeconds();
+    var minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes1 = '0' + minutes;
+    }
+    else {
+        minutes1 = '' + minutes;
+    }
+    if (seconds < 10) {
+        seconds1 = '0' + seconds;
+    }
+    else {
+        seconds1 = '' + seconds;
+    }
+    console.log(minutes1 + seconds1);
+    return minutes1 + seconds1;
+}
+
+
+/***/ }),
+
 /***/ "xD7X":
 /*!*****************************************************************!*\
   !*** ./src/app/components/middleframe/middleframe.component.ts ***!
@@ -18859,8 +24319,8 @@ function MiddleframeComponent_div_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r0.servicesData.services[0]);
 } }
-const _c2 = function () { return ["/fixedphoneservices"]; };
-const _c3 = function (a0) { return { country: a0, service: "fixedphoneservices" }; };
+const _c2 = function () { return ["/inprogress"]; };
+const _c3 = function (a0) { return { country: a0 }; };
 function MiddleframeComponent_div_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 8);
@@ -18903,8 +24363,6 @@ function MiddleframeComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r2.servicesData.services[2]);
 } }
-const _c6 = function () { return ["/inprogress"]; };
-const _c7 = function (a0) { return { country: a0 }; };
 function MiddleframeComponent_div_5_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 8);
@@ -18921,7 +24379,7 @@ function MiddleframeComponent_div_5_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c6))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c7, ctx_r3.pcode));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c2))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c3, ctx_r3.pcode));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r3.servicesData.services[3]);
 } }

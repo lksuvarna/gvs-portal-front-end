@@ -26,12 +26,23 @@ export class FixedphoneservicesComponent implements OnInit {
 
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
+        if(sessionStorage.getItem('countrydetails')==undefined){
+  
+          this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+            
+            console.log('Response received navigation', data.countrydetails.isspecial);
+            this.countryname = data.countrydetails;
+            sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+            this.countrydetails=JSON.stringify(data.countrydetails);
+            this.countrydetails = JSON.parse(this.countrydetails)
+            this.linkv=this.countrydetails.fservices})}
+  else{
         this.countrydetails = sessionStorage.getItem('countrydetails');	
         this.countrydetails = JSON.parse(this.countrydetails);
-     this.linkv=this.countrydetails.jservices
+     this.linkv=this.countrydetails.fservices}
       
    
-    console.log(this.countrydetails.jservices)
+    
       const servicesData = { 
       "data": [
         {    

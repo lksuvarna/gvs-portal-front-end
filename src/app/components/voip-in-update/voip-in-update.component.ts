@@ -66,14 +66,6 @@ export class VoipInUpdateComponent implements OnInit {
       alert('No value is changed, so Update request is not required');
       return;
     }
-    if(formData.value.Charge_Dept.includes(" ")) {
-      alert('Please enter the correct Charge department code');
-      return;
-    }
-    if(formData.value.Charge_Dept.toUpperCase() == '') {
-      alert('Please enter the Charge Department code');
-      return;
-    }
     this.jabberDisp = formData.value.Jabber_1;
     this.chargeDisp = formData.value.Charge_Dept;
     this.isReviewForm = false;
@@ -153,7 +145,7 @@ export class VoipInUpdateComponent implements OnInit {
     }
     else if (this.sessionwarninginfosnow == 'true1') {
       this.warninginfosnow = true
-      this.identifier = sessionStorage.getItem('identifier')?.replace(" ","");
+      this.identifier = sessionStorage.getItem('identifier')
     }
     else {
       this.identifier = sessionStorage.getItem('identifier')

@@ -77,6 +77,7 @@ export class FacInResetComponent implements OnInit {
   db2data: any
 
   
+
   // Submit to Snow Jabber new code added by Swarnava ends	
   backClick() {
     sessionStorage.setItem('backbutton', 'yes');
