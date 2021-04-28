@@ -35,14 +35,12 @@ export class MiddleframeComponent implements OnInit {
       this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
       this.countryroute = sessionStorage.getItem('countryroute');
       console.log("navigation component country route" + this.countryroute );
-
-      this.loggedinuser = this.cookie.getCookie('ccode');
     
     if (this.pcode== this.countryroute) {
       this.pcountrydetails = sessionStorage.getItem('countrydetails')
       console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code)
       this.countryname = JSON.parse(this.pcountrydetails)
-
+      this.loggedinuser = this.cookie.getCookie('ccode');
       if(this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
         if(this.countryname.auth_fixphone.includes(this.loggedinuser)) {
         this.fixphoneVisibility = true;
@@ -77,7 +75,7 @@ export class MiddleframeComponent implements OnInit {
         this.countryname = data.countrydetails;
         sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
         sessionStorage.setItem('countryroute', this.pcode);
-
+        this.loggedinuser = this.cookie.getCookie('ccode');
         if(this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
           if(this.countryname.auth_fixphone.includes(this.loggedinuser)) {
           this.fixphoneVisibility = true;

@@ -20455,7 +20455,6 @@ class NavigationComponent {
         this.onLoad = true;
         this.dataNav = [];
         this.dataNav1 = [];
-        this.fixphoneVisibility = true;
     }
     getNavClass(i) {
         if (this.dataNav123.data[0].lhs[i].indented && this.dataNav123.data[0].lhs[i].highlighted) {
@@ -20524,22 +20523,25 @@ class NavigationComponent {
             this.service = params.service;
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            //ACL for Fixed Phone Services - starts
-            this.countrydetails = sessionStorage.getItem('countrydetails');
-            this.parcountrydetails = JSON.parse(this.countrydetails);
-            this.loggedinuser = this.cookie.getCookie('ccode');
-            if (this.parcountrydetails.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
-                if (this.parcountrydetails.auth_fixphone.includes(this.loggedinuser)) {
-                    this.fixphoneVisibility = true;
-                }
-                else {
-                    this.fixphoneVisibility = false;
-                }
+            if (sessionStorage.getItem('countrydetails') == undefined) {
             }
             else {
-                this.fixphoneVisibility = this.parcountrydetails.isfixphone;
+                this.countrydetails = sessionStorage.getItem('countrydetails');
+                this.parcountrydetails = JSON.parse(this.countrydetails);
+                this.loggedinuser = this.cookie.getCookie('ccode');
+                //ACL for Fixed Phone Services - starts
+                if (this.parcountrydetails.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+                    if (this.parcountrydetails.auth_fixphone.includes(this.loggedinuser)) {
+                        this.fixphoneVisibility = true;
+                    }
+                    else {
+                        this.fixphoneVisibility = false;
+                    }
+                }
+                else {
+                    this.fixphoneVisibility = this.parcountrydetails.isfixphone;
+                }
             }
-            //ACL for Fixed Phone Services - ends
             this.serhl = false;
             this.jhl = false;
             this.fhl = false;
@@ -20560,18 +20562,18 @@ class NavigationComponent {
             if ((this.service).includes("jabber")) {
                 this.jin = true;
                 this.jhl = true;
-                this.fin = this.fixphoneVisibility;
+                this.fin = true;
             }
             if ((this.service).includes("fixedphone")) {
-                this.fin = this.fixphoneVisibility;
-                this.fhl = this.fixphoneVisibility;
+                this.fin = true;
+                this.fhl = true;
                 this.jin = true;
                 this.facin = true;
             }
             if (this.service.includes("fac")) {
                 this.facin = true;
                 this.fachl = true;
-                this.fin = this.fixphoneVisibility;
+                this.fin = true;
             }
             if ((this.service).includes("requests")) {
                 this.reqhl = true;
@@ -20655,6 +20657,17 @@ class NavigationComponent {
                     this.countryname = data.countrydetails;
                     sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
                     sessionStorage.setItem('countryroute', this.pcode);
+                    if (this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+                        if (this.countryname.auth_fixphone.includes(this.loggedinuser)) {
+                            this.fixphoneVisibility = true;
+                        }
+                        else {
+                            this.fixphoneVisibility = false;
+                        }
+                    }
+                    else {
+                        this.fixphoneVisibility = this.parcountrydetails.isfixphone;
+                    }
                     this.cloudantData = {
                         "code": this.pcode,
                         "name": this.countryname.name,
@@ -24410,11 +24423,11 @@ class MiddleframeComponent {
             this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
             this.countryroute = sessionStorage.getItem('countryroute');
             console.log("navigation component country route" + this.countryroute);
-            this.loggedinuser = this.cookie.getCookie('ccode');
             if (this.pcode == this.countryroute) {
                 this.pcountrydetails = sessionStorage.getItem('countrydetails');
                 console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
                 this.countryname = JSON.parse(this.pcountrydetails);
+                this.loggedinuser = this.cookie.getCookie('ccode');
                 if (this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
                     if (this.countryname.auth_fixphone.includes(this.loggedinuser)) {
                         this.fixphoneVisibility = true;
@@ -24449,6 +24462,7 @@ class MiddleframeComponent {
                     this.countryname = data.countrydetails;
                     sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
                     sessionStorage.setItem('countryroute', this.pcode);
+                    this.loggedinuser = this.cookie.getCookie('ccode');
                     if (this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
                         if (this.countryname.auth_fixphone.includes(this.loggedinuser)) {
                             this.fixphoneVisibility = true;
