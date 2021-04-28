@@ -294,6 +294,41 @@ Fac_New()
  }
 
 }
+// class used to create the payload for snow deactivate fac service
+
+export class Fac_Deactivate
+{
+    orinator_payload !: String;
+    cNum_payload !: String;
+    ReqNo !: String;
+    countryname !: String;
+    Identifier_Disp !: String;
+    site_address !: String;
+    request_type !: String;
+    evolution_instance !: String;
+    country_code !:String;
+    authLevel_final !:String;
+    BusinessUnit_Disp!:String;
+    authValue !:String;
+    gvs_portal_link !: String;
+
+
+Fac_Deactivate()
+ {
+    this.orinator_payload ="";
+    this.cNum_payload ="";
+    this.authLevel_final="";
+    this.BusinessUnit_Disp="";
+    this.ReqNo ="";
+    this.authValue="";
+    this.gvs_portal_link=""
+    this.countryname ="";
+    this.request_type ="";
+    this.evolution_instance ="";
+    this.country_code  ="";
+ }
+
+}
 
 // Class used to create the payload for snow update Fac service.
 export class Fac_Update
