@@ -103,17 +103,20 @@ export class EmployeeinfoComponent implements OnInit {
     this.cnum = sessionStorage.getItem('cnum') 
     this.servicesData = servicesData.data[0];    
     this.warninginfo = false
+    this.warninginfofac = false
     this.warninginfosnow=false
     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
     this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
     console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
    if (this.sessionwarninginfo =='true1'&& this.service=="jabber_new"){
     this.warninginfo = true
+    
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
    else if (this.sessionwarninginfosnow =='true1' && this.service=="jabber_new"){
     this.warninginfosnow = true
+    
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }

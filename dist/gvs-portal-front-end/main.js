@@ -9706,6 +9706,7 @@ class EmployeeinfoComponent {
             this.cnum = sessionStorage.getItem('cnum');
             this.servicesData = servicesData.data[0];
             this.warninginfo = false;
+            this.warninginfofac = false;
             this.warninginfosnow = false;
             this.sessionwarninginfo = sessionStorage.getItem('warninginfo');
             this.sessionwarninginfosnow = sessionStorage.getItem('warninginfosnow');
@@ -18188,7 +18189,7 @@ class EmployeesearchComponent {
                 if (this.service.includes("fixedphone")) {
                     this.getLocationdata();
                 }
-                if (this.service.includes("fac")) {
+                if (this.service.includes("fac") && this.service !== "fac_new") {
                     this.getLocationdata();
                 }
                 if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' || this.service == 'fac_deactivate') {
@@ -18221,7 +18222,7 @@ class EmployeesearchComponent {
             }
             else {
                 this.datasnow = "nodata";
-                if (this.service == "jabber_new" || this.service == "jabber_move") {
+                if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new") {
                     this.getLocationdata();
                 }
                 else {
