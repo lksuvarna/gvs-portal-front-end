@@ -66,6 +66,10 @@ export class VoipInUpdateComponent implements OnInit {
       alert('No value is changed, so Update request is not required');
       return;
     }
+    if(formData.value.Charge_Dept == '') {
+      alert('Please enter the Charge Department code');
+      return;
+    }
     this.jabberDisp = formData.value.Jabber_1;
     this.chargeDisp = formData.value.Charge_Dept;
     this.isReviewForm = false;
