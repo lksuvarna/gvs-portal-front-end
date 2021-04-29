@@ -32,7 +32,7 @@ export class NavigationComponent implements OnInit {
   countryroute :any
   countrydetails:any
   parcountrydetails:any
-  fixphoneVisibility:boolean = true
+  fixphoneVisibility:any;
   loggedinuser:any
   serhl:any;jhl:any;fhl:any;fachl:any;reqhl:any;reshl:any;apphl:any;
   serin:any;jin:any;fin:any;facin:any;reqin:any;resin:any;appin:any;
@@ -110,21 +110,23 @@ export class NavigationComponent implements OnInit {
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
 
-      //ACL for Fixed Phone Services - starts
-      this.countrydetails = sessionStorage.getItem('countrydetails')
-      this.parcountrydetails = JSON.parse(this.countrydetails);
-      this.loggedinuser = this.cookie.getCookie('ccode')
-      if(this.parcountrydetails.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
-        if(this.parcountrydetails.auth_fixphone.includes(this.loggedinuser)) {
-        this.fixphoneVisibility = true;
+        if(sessionStorage.getItem('countrydetails')==undefined){
+  
         } else {
-          this.fixphoneVisibility = false;
+          this.countrydetails = sessionStorage.getItem('countrydetails')
+          this.parcountrydetails = JSON.parse(this.countrydetails);
+          this.loggedinuser = this.cookie.getCookie('ccode')
+          //ACL for Fixed Phone Services - starts
+          if(this.parcountrydetails.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+            if(this.parcountrydetails.auth_fixphone.includes(this.loggedinuser)) {
+            this.fixphoneVisibility = true;
+            } else {
+              this.fixphoneVisibility = false;
+            }
+          } else {
+            this.fixphoneVisibility = this.parcountrydetails.isfixphone;
+          }
         }
-      } else {
-        this.fixphoneVisibility = this.parcountrydetails.isfixphone;
-      }
-      //ACL for Fixed Phone Services - ends
-     
       this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;this.apphl=false;
       this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;this.appin=false;
       
@@ -136,12 +138,12 @@ export class NavigationComponent implements OnInit {
       {        
         this.jin=true
         this.jhl=true
-        this.fin=this.fixphoneVisibility;
+        this.fin=true
       }
       if ((this.service).includes("fixedphone"))
       {        
-        this.fin=this.fixphoneVisibility
-        this.fhl=this.fixphoneVisibility
+        this.fin=true
+        this.fhl=true
         this.jin=true
         this.facin=true
       }
@@ -150,7 +152,7 @@ export class NavigationComponent implements OnInit {
       {        
         this.facin=true
         this.fachl=true
-        this.fin=this.fixphoneVisibility
+        this.fin=true;
       }
       
       if ((this.service).includes("requests"))
@@ -249,6 +251,15 @@ export class NavigationComponent implements OnInit {
         this.countryname = data.countrydetails;
         sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
         sessionStorage.setItem('countryroute', this.pcode);
+        if(this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+          if(this.countryname.auth_fixphone.includes(this.loggedinuser)) {
+          this.fixphoneVisibility = true;
+          } else {
+            this.fixphoneVisibility = false;
+          }
+        } else {
+          this.fixphoneVisibility = this.parcountrydetails.isfixphone;
+        }
         this.cloudantData = {
           "code": this.pcode,
           "name": this.countryname.name,
