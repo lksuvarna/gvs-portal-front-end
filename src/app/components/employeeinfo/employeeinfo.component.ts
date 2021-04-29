@@ -103,17 +103,20 @@ export class EmployeeinfoComponent implements OnInit {
     this.cnum = sessionStorage.getItem('cnum') 
     this.servicesData = servicesData.data[0];    
     this.warninginfo = false
+    this.warninginfofac = false
     this.warninginfosnow=false
     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
     this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
     console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
    if (this.sessionwarninginfo =='true1'&& this.service=="jabber_new"){
     this.warninginfo = true
+    
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
    else if (this.sessionwarninginfosnow =='true1' && this.service=="jabber_new"){
     this.warninginfosnow = true
+    
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
@@ -185,7 +188,8 @@ export class EmployeeinfoComponent implements OnInit {
     this.employeeInfo=JSON.parse(this.employeeInfo1)
 
 
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdeactivatesnow){
+    
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdeactivate ||this.warninginfofacdeactivatesnow){
 
       this.hideSteps = true;
       this.warn = true;

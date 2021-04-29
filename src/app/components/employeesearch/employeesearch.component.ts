@@ -370,7 +370,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
 
         }
 
-        if (this.service.includes("fac")) {
+        if (this.service.includes("fac") && this.service !== "fac_new") {
           this.getLocationdata();
 
         }
@@ -417,7 +417,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
 
       else {
         this.datasnow = "nodata";
-        if (this.service == "jabber_new" || this.service == "jabber_move") {
+        if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new") {
           this.getLocationdata()
         }
 
