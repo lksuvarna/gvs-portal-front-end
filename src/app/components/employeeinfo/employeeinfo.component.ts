@@ -69,13 +69,13 @@ export class EmployeeinfoComponent implements OnInit {
       this.navpage='/'+this.service}       
       else{this.navpage=this.navpage;}  
        
-    this.router.navigate([this.navpage],{ queryParams: { country: this.pcode,service:this.service } }) ;
+    this.router.navigate([this.navpage],{ skipLocationChange: true ,queryParams: { country: this.pcode,service:this.service } }) ;
   }
   backClick(){
     sessionStorage.setItem('backbutton','yes');
     sessionStorage.setItem('step','step1');
    // this.location.back();
-    this.router.navigate(['/employeesearch'],{ queryParams: { country: this.pcode, service: this.service } });
+    this.router.navigate(['/employeesearch'],{  queryParams: { country: this.pcode, service: this.service } });
   }
   
   ngOnInit(): void {
