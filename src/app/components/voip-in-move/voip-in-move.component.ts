@@ -140,11 +140,17 @@ export class VoipInMoveComponent implements OnInit {
       alert('Please enter the Charge Department Code');
       return;
     }
+    if((formData.value.Department_number.trim() == '' || formData.value.Department_number.includes(' ')) && this.hideDeptCode == false) {	
+      alert('Please enter the correct Charge department code');	
+      
+      return;	
+    }
+    if((formData.value.Projectid.trim() == '' || formData.value.Projectid.includes(' ')) && this.hideProjectId == false) {	
+      alert('Please enter the correct Project ID');	
+      
+      return;	
+    }	
     
-    if(formData.value.Projectid.trim() == '' && this.hideProjectId == false) {
-      alert('Please enter the Project ID');
-      return;
-      }
    
     this.isEntryFormMove = true;
     this.isReviewFormMove = false;
