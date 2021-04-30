@@ -46,6 +46,7 @@ export class VoipInMoveComponent implements OnInit {
   Locations: any;	
   pcode: any;	
   service: any;	
+  Jabber:any = [];
   employeeInfo: any;	
   employeeInfo1: any;	
   campus: any;
@@ -139,11 +140,17 @@ export class VoipInMoveComponent implements OnInit {
       alert('Please enter the Charge Department Code');
       return;
     }
+    if((formData.value.Department_number.trim() == '' || formData.value.Department_number.includes(' ')) && this.hideDeptCode == false) {	
+      alert('Please enter the correct Charge department code');	
+      
+      return;	
+    }
+    if((formData.value.Projectid.trim() == '' || formData.value.Projectid.includes(' ')) && this.hideProjectId == false) {	
+      alert('Please enter the correct Project ID');	
+      
+      return;	
+    }	
     
-    if(formData.value.Projectid.trim() == '' && this.hideProjectId == false) {
-      alert('Please enter the Project ID');
-      return;
-      }
    
     this.isEntryFormMove = true;
     this.isReviewFormMove = false;
@@ -237,9 +244,12 @@ export class VoipInMoveComponent implements OnInit {
     else if(this.sessionwarninginfosnow =='true1') {
 this.warninginfosnow=true
 this.identifier=sessionStorage.getItem('identifier')
+
     }
     else{
-      this.identifier=sessionStorage.getItem('identifier')      
+      this.identifier=sessionStorage.getItem('identifier') 
+      this.identifier = this.identifier.split(',');
+      this.Jabber = [...this.identifier];     
     }	
      this.route.queryParams	
      .subscribe(params => {	
