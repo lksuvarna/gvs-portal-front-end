@@ -256,7 +256,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
     }
     //to change the routing
 
-    if (this.service == "jabber_new" || this.service == "fac_new") {
+    if (this.service == "jabber_new" || this.service == "fac_new" ) {
       this.getTitle();
       this.navpage = this.routingname; this.navpage1 = '/employeeinfo';
     }
@@ -358,7 +358,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
         sessionStorage.setItem('warninginfosnow', 'false1')
         sessionStorage.setItem('identifier', '')
         //Data and routing 
-        if (this.service == "jabber_new" || this.service == "fac_new") {
+        if (this.service == "jabber_new" || this.service == "fac_new" ) {
           this.getDBdata()
         }
         if (this.service == "requests") {
@@ -370,7 +370,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
 
         }
 
-        if (this.service.includes("fac") && this.service !== "fac_new") {
+        if (this.service.includes("fac") && this.service !== "fac_new" ) {
           this.getLocationdata();
 
         }
@@ -417,7 +417,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
 
       else {
         this.datasnow = "nodata";
-        if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new") {
+        if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset") {
           this.getLocationdata()
         }
 
@@ -485,7 +485,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
 
           this.datadb = "yes";
         }
-        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move') {
+        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' ) {
           console.log("insidesnowdelete")
           this.getSNOWdata();
           this.datadb = "yes";
@@ -498,7 +498,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       else {
         console.log("nodb2data");
         this.datadb = "nodata";
-        if (this.service == "jabber_new" || this.service == "fac_new") {
+        if (this.service == "jabber_new" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset") {
           this.getSNOWdata()
         }
         else {
@@ -654,6 +654,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       case "fac_new":
       this.title="FAC Code New Request";
       this.routingname="/entrydetailsfac";
+      this.exitrouting='facservices';
       this.reqname="-NS-";
       break;
 
@@ -667,13 +668,15 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       case "fac_update":
         this.title = "FAC Code Update Request";
         this.routingname = "/entrydetailsfacu";
+        this.exitrouting='facservices';
         this.reqname = "-US-";
         break;
       case "fac_reset":
-          this.title="FAC Code Reset Request";
-          this.routingname="/entrydetailsfacr";
-          this.reqname="-RS-";
-          break;
+        this.title="FAC Code Reset Request";
+        this.routingname="/entrydetailsfacr";
+        this.exitrouting='facservices';
+        this.reqname="-RS-";
+        break;
 
       case "resources":
         this.title = "Resources";

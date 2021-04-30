@@ -36,10 +36,12 @@ export class EmployeeinfoComponent implements OnInit {
   identifier1: any;
   warninginfo = true;
   warninginfosnow = true;
+  warninginfosnowfac = true
   warninginfosnowreq = false;
   warninginfosnowres=false;
   warninginfoothers = false;
   warninginfosnowothers = false;
+  warninginfosnowothersfac = false
   warninginfofac = false;
 
   warninginfofacdeactivate = false;
@@ -105,6 +107,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.warninginfo = false
     this.warninginfofac = false
     this.warninginfosnow=false
+    this.warninginfosnowfac=false
     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
     this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
     console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
@@ -117,6 +120,11 @@ export class EmployeeinfoComponent implements OnInit {
    else if (this.sessionwarninginfosnow =='true1' && this.service=="jabber_new"){
     this.warninginfosnow = true
     
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }
+   else if (this.sessionwarninginfosnow =='true1' && this.service=="fac_new"){
+    this.warninginfosnowfac = true
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
@@ -148,7 +156,18 @@ export class EmployeeinfoComponent implements OnInit {
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
-
+   else if (this.sessionwarninginfosnow =='true1' && (this.service==="fac_reset" || this.service==="fac_update")){
+    this.identifier1=sessionStorage.getItem('identifier1')
+    this.warninginfosnowothersfac = true;   
+    this.isDataLoaded=true;
+    if(this.service == "fac_deactivate") {
+      this.page = 'FAC delete';
+    } else if(this.service == "fac_update"){
+      this.page = 'FAC update';
+    }else if(this.service == "fac_reset"){
+     this.page = 'FAC reset';
+   } 
+   }
    else if (this.sessionwarninginfosnow =='false1' && this.service=="requests"){
     this.warninginfosnowreq = true    
     this.isDataLoaded=true
@@ -189,7 +208,7 @@ export class EmployeeinfoComponent implements OnInit {
 
 
     
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdeactivate ||this.warninginfofacdeactivatesnow){
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdeactivate ||this.warninginfofacdeactivatesnow || this.warninginfosnowfac){
 
       this.hideSteps = true;
       this.warn = true;
