@@ -185,7 +185,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       if (sessionStorage.getItem('serviceName') == 'jabber_move' && this.step == null || sessionStorage.getItem('serviceName') == 'jabber_move' && sessionStorage.getItem('empserial') == '') {
         this.returnValue = confirm('Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit');
         if (this.returnValue == false) {
-          this.router.navigate(['/jabberservices'], { queryParams: { country: this.pcode, service: this.service } });
+          this.router.navigate(['/jabberservices'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
         }
       }
     }, 200);
@@ -193,7 +193,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       if (this.service.includes('fixed')) {
         if (!(this.countrydetails.power_users.includes(this.ccode))) {
           alert(this.countrydetails.alert_message.replace(/<br>/g,"\n"));
-          this.router.navigate(['fixedphoneservices'], { queryParams: { country: this.pcode, service: this.service } });
+          this.router.navigate(['fixedphoneservices'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
         }
       }
     }, 200);
@@ -411,7 +411,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
 
         this.datasnow = "yes"
 
-        this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+        this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
 
       }
 
@@ -423,10 +423,10 @@ if(sessionStorage.getItem('countrydetails')==undefined){
 
         else {
           if (this.radioAction.toLowerCase() == "anotheremployee") {
-            this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+            this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
           }
           else {
-            this.router.navigate([this.navpage], { queryParams: { country: this.pcode, service: this.service } });
+            this.router.navigate([this.navpage], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
           }
         }
       }
@@ -492,7 +492,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
         }
         else {
 
-          this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+          this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
         }
       }
       else {
@@ -503,10 +503,10 @@ if(sessionStorage.getItem('countrydetails')==undefined){
         }
         else {
           if (this.radioAction.toLowerCase() == "anotheremployee") {
-            this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+            this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
           }
           else {
-            this.router.navigate([this.navpage], { queryParams: { country: this.pcode, service: this.service } });
+            this.router.navigate([this.navpage], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
           }
         }
       }
@@ -552,10 +552,10 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       // sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
       sessionStorage.setItem('locationdetails', this.lookuploc)
       if (this.radioAction.toLowerCase() == "anotheremployee") {
-        this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+        this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
       }
       else {
-        this.router.navigate([this.navpage], { queryParams: { country: this.pcode, service: this.service } });
+        this.router.navigate([this.navpage], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
       }
     });
 

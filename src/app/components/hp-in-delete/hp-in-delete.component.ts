@@ -134,7 +134,7 @@ export class HpInDeleteComponent implements OnInit {
     this.servicenowservice.submit_request_fixed_delete(this.payload).subscribe(data=> {	
       console.log('response', data);	
       if(data)	
-      this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
+      this.router.navigate(['/resultpage'],{ skipLocationChange: true , queryParams: { country: this.pcode,service:this.service }}) ;	
       },
       (error) => {                              //Error callback
        console.error('error caught in component'+error);

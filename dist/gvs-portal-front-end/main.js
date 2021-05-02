@@ -270,7 +270,7 @@ class FacInNewComponent {
         this.servicenowservice.submit_request_fac_new(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -1403,7 +1403,7 @@ class HpUsaNewComponent {
         this.servicenowservice.submit_request_fixed_new(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -2865,7 +2865,7 @@ class HpAuNewComponent {
         this.servicenowservice.submit_request_fixed_new(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -3790,7 +3790,7 @@ class HpInDeleteComponent {
         this.servicenowservice.submit_request_fixed_delete(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -4346,7 +4346,7 @@ class VoipInUpdateComponent {
         this.servicenowservice.submit_request_update(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -5932,7 +5932,7 @@ class VoipLaUpdateComponent {
         this.servicenowservice.submit_request_update(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -6473,7 +6473,7 @@ class VoipLaNewComponent {
         this.servicenowservice.submit_request(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -7327,7 +7327,7 @@ class VoipInDeleteComponent {
         this.servicenowservice.submit_request_delete(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -7711,7 +7711,7 @@ class VoipAuMoveComponent {
         this.servicenowservice.submit_request(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -8808,7 +8808,7 @@ class FacInUpdateComponent {
         this.servicenowservice.submit_request_fac_update(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -9825,7 +9825,7 @@ class EmployeeinfoComponent {
         else {
             this.navpage = this.navpage;
         }
-        this.router.navigate([this.navpage], { queryParams: { country: this.pcode, service: this.service } });
+        this.router.navigate([this.navpage], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
     }
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
@@ -10469,7 +10469,7 @@ class FacInDeactivateComponent {
         this.servicenowservice.submit_request_fac_deactivate(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -10962,7 +10962,7 @@ class VoipEmeaNewComponent {
         this.servicenowservice.submit_request(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -11725,7 +11725,7 @@ class HpIndonesiaNewComponent {
         this.servicenowservice.submit_request_fixed_new(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -12717,7 +12717,7 @@ class VoipInMoveComponent {
         this.servicenowservice.submit_request_move(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -12800,7 +12800,7 @@ class VoipInMoveComponent {
     }
 }
 VoipInMoveComponent.ɵfac = function VoipInMoveComponent_Factory(t) { return new (t || VoipInMoveComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"])); };
-VoipInMoveComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipInMoveComponent, selectors: [["app-voip-in-move"]], decls: 102, vars: 28, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "NEXT", 4, "ngIf"], [3, "hidden"], ["translate", "", 1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1", "translate", ""], ["width", "54%", "height", "10"], ["colspan", "2", "width", "46%"], ["width", "54%"], ["valign", "top", 3, "hidden"], ["for", "Projectid", "translate", ""], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "IdentifierId", "translate", "", 1, "ds-text-capitalize"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["ngModel", "", "name", "Identifier_Selected", "id", "IdentifierId", "title", "Identifier to Move", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["jabberNumberVal", ""], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "LocationId", "translate", "", 1, "ds-text-capitalize"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["for", "builId", "translate", "", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["for", "addId", "translate", "", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", "translate", "", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "Department_number", "value", "", "maxlength", "6", "tabindex", "4", "id", "d2", "title", "Contact FirstLine Manager\\Project Manager for Charge Department Code", "autocomplete", "off", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["id", "Mentor1Div"], ["for", "addId", "translate", "", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["for", "Projectid", "translate", "", 1, "ds-text-capitalize", "ds-pad-t-1"], ["ngModel", "", "name", "Projectid", "value", "", "rows", "2", "maxlength", "11", "cols", "40", "id", "Projectid", "title", "Project id", 1, "ds-input", 2, "width", "300px !important"], ["name", "Location_1", 3, "value"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipInMoveComponent_Template(rf, ctx) { if (rf & 1) {
+VoipInMoveComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipInMoveComponent, selectors: [["app-voip-in-move"]], decls: 102, vars: 28, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "NEXT", 4, "ngIf"], [3, "hidden"], ["translate", "", 1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1", "translate", ""], ["width", "54%", "height", "10"], ["colspan", "2", "width", "46%"], ["width", "54%"], ["valign", "top", 3, "hidden"], ["for", "Projectid", "translate", ""], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "IdentifierId", "translate", "", 1, "ds-text-capitalize"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["ngModel", "", "name", "Identifier_Selected", "id", "IdentifierId", "title", "Identifier to Move", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["jabberNumberVal", ""], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "LocationId", "translate", "", 1, "ds-text-capitalize"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "change"], ["location", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["for", "builId", "translate", "", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["for", "addId", "translate", "", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", "translate", "", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "Department_number", "value", "", "maxlength", "6", "tabindex", "4", "id", "d2", "title", "Contact FirstLine Manager\\Project Manager for Charge Department Code", "autocomplete", "off", "ngModel", "", 1, "ds-input", 2, "width", "300px !important"], ["id", "Mentor1Div"], ["for", "addId", "translate", "", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["for", "Projectid", "translate", "", 1, "ds-text-capitalize", "ds-pad-t-1"], ["ngModel", "", "name", "Projectid", "value", "", "rows", "2", "maxlength", "11", "cols", "40", "id", "Projectid", "title", "Project ID", 1, "ds-input", 2, "width", "300px !important"], ["name", "Location_1", 3, "value"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipInMoveComponent_Template(rf, ctx) { if (rf & 1) {
         const _r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -13994,7 +13994,7 @@ class VoipUsaNewComponent {
         this.servicenowservice.submit_request(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -14711,7 +14711,7 @@ class VoipInNewComponent {
         this.servicenowservice.submit_request(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -15649,7 +15649,7 @@ class HpInNewComponent {
         this.servicenowservice.submit_request_fixed_new(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -16752,7 +16752,7 @@ class FacInResetComponent {
         this.servicenowservice.submit_request_fac_reset(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -18155,7 +18155,7 @@ class EmployeesearchComponent {
             if (sessionStorage.getItem('serviceName') == 'jabber_move' && this.step == null || sessionStorage.getItem('serviceName') == 'jabber_move' && sessionStorage.getItem('empserial') == '') {
                 this.returnValue = confirm('Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit');
                 if (this.returnValue == false) {
-                    this.router.navigate(['/jabberservices'], { queryParams: { country: this.pcode, service: this.service } });
+                    this.router.navigate(['/jabberservices'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                 }
             }
         }, 200);
@@ -18163,7 +18163,7 @@ class EmployeesearchComponent {
             if (this.service.includes('fixed')) {
                 if (!(this.countrydetails.power_users.includes(this.ccode))) {
                     alert(this.countrydetails.alert_message.replace(/<br>/g, "\n"));
-                    this.router.navigate(['fixedphoneservices'], { queryParams: { country: this.pcode, service: this.service } });
+                    this.router.navigate(['fixedphoneservices'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                 }
             }
         }, 200);
@@ -18348,7 +18348,7 @@ class EmployeesearchComponent {
                 sessionStorage.setItem('identifier', JSON.stringify(this.identifier));
                 sessionStorage.setItem('identifier1', JSON.stringify(this.identifier));
                 this.datasnow = "yes";
-                this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
             }
             else {
                 this.datasnow = "nodata";
@@ -18357,10 +18357,10 @@ class EmployeesearchComponent {
                 }
                 else {
                     if (this.radioAction.toLowerCase() == "anotheremployee") {
-                        this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+                        this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                     }
                     else {
-                        this.router.navigate([this.navpage], { queryParams: { country: this.pcode, service: this.service } });
+                        this.router.navigate([this.navpage], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                     }
                 }
             }
@@ -18419,7 +18419,7 @@ class EmployeesearchComponent {
                     this.datadb = "yes";
                 }
                 else {
-                    this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+                    this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                 }
             }
             else {
@@ -18430,10 +18430,10 @@ class EmployeesearchComponent {
                 }
                 else {
                     if (this.radioAction.toLowerCase() == "anotheremployee") {
-                        this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+                        this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                     }
                     else {
-                        this.router.navigate([this.navpage], { queryParams: { country: this.pcode, service: this.service } });
+                        this.router.navigate([this.navpage], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                     }
                 }
             }
@@ -18478,10 +18478,10 @@ class EmployeesearchComponent {
             // sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
             sessionStorage.setItem('locationdetails', this.lookuploc);
             if (this.radioAction.toLowerCase() == "anotheremployee") {
-                this.router.navigate([this.navpage1], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
             }
             else {
-                this.router.navigate([this.navpage], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate([this.navpage], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
             }
         });
     }
@@ -19733,7 +19733,7 @@ class VoipUsaUpdateComponent {
         this.servicenowservice.submit_request_update(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -21350,7 +21350,7 @@ class HpEmeaNewComponent {
         this.servicenowservice.submit_request_fixed_new(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
@@ -24103,7 +24103,7 @@ class HpInUpdateComponent {
         this.servicenowservice.submit_request_fixed_update(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
-                this.router.navigate(['/resultpage'], { queryParams: { country: this.pcode, service: this.service } });
+                this.router.navigate(['/resultpage'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
         }, (error) => {
             console.error('error caught in component' + error);
             this.isSpinnerVisible = false;
