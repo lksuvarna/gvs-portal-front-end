@@ -190,12 +190,8 @@ export class NavigationComponent implements OnInit {
                 {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
                // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
                 {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
-<<<<<<< HEAD
                 {"name" : "Revalidation Pending","routingname":"/revalidationpending", "indented" : false, "highlighted": false,"param":"revalidationpending"},
-=======
-                {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
                 {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search"},
->>>>>>> 0160fa753933751f74e1b0f9a5c46a96984b1ed2
                 {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
                 {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
               ],

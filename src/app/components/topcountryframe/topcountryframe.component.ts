@@ -23,11 +23,7 @@ export class TopcountryframeComponent implements OnInit {
   pagedisplay:any;
   translatecountryname :any;
   translatecountryname1 :boolean =false;
-<<<<<<< HEAD
-  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_deactivate','requests','resources','approvalpending','revalidationpending']
-=======
-  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_deactivate','requests','resources','approvalpending','phone_search']
->>>>>>> 0160fa753933751f74e1b0f9a5c46a96984b1ed2
+  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_deactivate','requests','resources','approvalpending','revalidationpending','phone_search']
 
   changeLanguage(type :string){
     this.translateconfigservice.changeLanguage(type);
