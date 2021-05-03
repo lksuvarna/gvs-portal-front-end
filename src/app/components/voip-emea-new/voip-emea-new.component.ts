@@ -4,7 +4,7 @@ import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Location} from '@angular/common';	
-import { Jabber_New } from 'config/payload';
+import { Create_Cache_jabber, Jabber_New } from 'config/payload';
 import { NgForm } from '@angular/forms';
 import { TranslateConfigService} from '../../_services/translate-config.service';
 
@@ -16,6 +16,8 @@ import { TranslateConfigService} from '../../_services/translate-config.service'
 export class VoipEmeaNewComponent implements OnInit {
 
   payload : Jabber_New = new Jabber_New();
+  cache : Create_Cache_jabber = new Create_Cache_jabber();
+  cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
   reviewDetailsEMEA = {	
   
     officeLocation:	"",	
@@ -55,6 +57,8 @@ export class VoipEmeaNewComponent implements OnInit {
   employeeInfo: any;	
   employeeInfo1: any;	
   hideProjectId = false;
+  cache_tmp:  any = [];
+  selected_location ="";
   campA: any = [];	
     camp: any = [];	
     buildA: any = [];	
@@ -62,6 +66,8 @@ export class VoipEmeaNewComponent implements OnInit {
     j = 0;
     hideBuilding = true;	
     campus : any;
+
+
 
 
   entryDetailsEMEA(formData: NgForm) {	    
@@ -75,6 +81,9 @@ export class VoipEmeaNewComponent implements OnInit {
     this.isEntryFormEmea = true;
     this.isReviewFormEmea = false;
 
+    //set up the cache for form values.
+    this.create_cache(formData);
+
   }
 
   BackButton(){
@@ -85,10 +94,11 @@ export class VoipEmeaNewComponent implements OnInit {
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,public location:Location,private servicesd : TranslateConfigService) {}
   mainConfiguration :any;
 
-  backClick(){	
+  backClick(formData:NgForm){	
     sessionStorage.setItem('backbutton','yes');	
     sessionStorage.setItem('step','step1');	
     this.location.back();	
+    this.create_cache(formData);
   }
 
   selectedLocation(loc:String) {	
@@ -163,6 +173,15 @@ export class VoipEmeaNewComponent implements OnInit {
     });	
      }
 
+     create_cache(formData:NgForm){
+      console.log("Starting Cache");
+      this.cache.setflag=true;
+      this.cache.cnum=this.cnum;
+      this.cache.officeLocation = formData.value.Location;		
+      sessionStorage.setItem('cache',JSON.stringify(this.cache));
+      console.log("cached");
+    }
+
 
   ngOnInit(): void {
     this.mainConfiguration = this.servicesd.readConfigFile();
@@ -215,12 +234,29 @@ export class VoipEmeaNewComponent implements OnInit {
     if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
       this.hideProjectId = true;
       }
+
+      //load cache data for entry details form. -- START
+   this.cache_tmp=sessionStorage.getItem('cache')	
+   console.log(this.cache_tmp);
+   this.cache_disp=JSON.parse(this.cache_tmp);
+   if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_new')){
+   this.selected_location=String(this.cache_disp.officeLocation) ;    
+   console.log("cache restored");
+   }else{
+     sessionStorage.removeItem('cache');
+   }
+
+   //Load Cache ends.
   }
+
+  
 
   previousStep(event : any){
     this.isEntryFormEmea = false;	
     this.isReviewFormEmea = true;	
   }
+
+   
 
   
 }

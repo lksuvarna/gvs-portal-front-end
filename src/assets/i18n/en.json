@@ -76,7 +76,7 @@
         "SelectOne":"Select One",
         "norecord":"There is no record of an IBM employee with the serial number " ,
         "availablefromBluePages" :"available from BluePages",
-        "opps":"Opps! Some thing went worng.Please try again latter.",
+        "opps":"Something seems to have gone wrong. Please try later.",
         "JabberLocation" : "Jabber / Phone Number location",
         "Voicemail" : "Voicemail",
         "ClassofService" : "Class of Service",

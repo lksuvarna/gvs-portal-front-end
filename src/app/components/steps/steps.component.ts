@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Create_Cache_jabber } from 'config/payload';
 
 @Component({
   selector: 'app-steps',
@@ -13,6 +15,8 @@ export class StepsComponent implements OnInit {
   isWarning2 = false
   isWarning3 = false
 
+  @Input('cnum') cnum : any;
+  @Input('formData') formData !:NgForm;
   @Input ('step') step : any;
   @Input ('isSelf') isSelf : any;
   @Input('hideSteps') set onChange (isWarning: any) {
@@ -29,6 +33,7 @@ export class StepsComponent implements OnInit {
            }
         }
   }
+  
 
   @Output() previousStep = new EventEmitter<string>()
 
@@ -111,10 +116,41 @@ export class StepsComponent implements OnInit {
   }
 
   }
-  
-
   sendToEntryDetails () {
     this.previousStep.emit('true')
   }
+
+  cache : Create_Cache_jabber = new Create_Cache_jabber();
+  cache_data(){
+
+  if(this.service=='jabber_new'){
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    if(this.formData.value.Location!=undefined)
+    this.cache.officeLocation = this.formData.value.Location;		
+    else
+    this.cache.officeLocation = this.formData.value.Location_1;	
+    this.cache.campus = this.formData.value.Buildings;		
+    this.cache.funded = this.formData.value.Voice_Type;
+    this.cache.chargeDepartmentCode=this.formData.value.Department_number;	
+    this.cache.projectId=this.formData.value.Projectid;	
+    this.cache.fixPhoneIdentifier=this.formData.value.identifier_hp;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached");
+
+  }
+
+  if(this.service=='jabber_delete'){
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.selected_jabber =this.formData.value.Jabber_1;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached"+JSON.stringify(this.cache));
+
+  }
+
+}
 
 } 
