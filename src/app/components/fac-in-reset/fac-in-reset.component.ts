@@ -171,6 +171,27 @@ export class FacInResetComponent implements OnInit {
     }
     this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
     this.locationlist=this.locationlist?.replace('"','').split(',');	
+
+    const servicesData = { 	
+      "data": [	
+        {    		
+          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "step" : 3,	
+          
+        }	
+      ]	
+  
+     
+    }	
+    
+    this.reqFor = sessionStorage.getItem('radioAction');
+      this.servicesData = servicesData.data[0]
+  
+      if(this.warninginfo || this.warninginfosnow){
+        this.hideSteps = true
+      } else {
+        this.hideSteps = false
+      }
   
     for (var i = 0; i < this.locationlist.length; i++) {	
       var n = this.locationlist[i].indexOf("~")	
@@ -205,26 +226,7 @@ export class FacInResetComponent implements OnInit {
       "isspecial": this.countryname.isspecial
     }
   });
-  const servicesData = { 	
-    "data": [	
-      {    		
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "step" : 3,	
-        
-      }	
-    ]	
 
-   
-  }	
-  
-  this.reqFor = sessionStorage.getItem('radioAction');
-    this.servicesData = servicesData.data[0]
-
-    if(this.warninginfo || this.warninginfosnow){
-      this.hideSteps = true
-    } else {
-      this.hideSteps = false
-    }
   }
   previousStep(event : any){
     this.isEntryForm = false;	

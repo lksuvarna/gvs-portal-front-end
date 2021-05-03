@@ -103,8 +103,8 @@
         "FAC Code New Request": "FAC Code New Request",
         "Update an existing FAC code": "Update an existing FAC code",
         "FAC Code Update Request": "FAC Code Update Request",
-        "Reset an existing FAC code": "Reset an existing FAC code",
-        "FAC Code Reset Request": "FAC Code Update Request"
+        "FAC Code Reset Request": "FAC Code Reset Request",
+        "Reset an existing FAC code": "Reset an existing FAC code"
 
 
 
@@ -137,7 +137,7 @@
         "jabberconfiguration": "Related to Jabber configuration can be found at",
         "furtherassistance": "For any further assistance, please contact",
         "alreadyone": "Serial number that you have entered has already one",
-        "inprogess": "is in progress and request number is",
+        "inprogess": "request in progress and request number is",
         "ongoingrequestsbyclickonrequestpage": "You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.",
         "nooutstandingreq": "No outstanding requests were found for the serial number.",
         "noresources": "There are no resources for this serial number.",
