@@ -76,6 +76,8 @@ export class FacInUpdateComponent implements OnInit {
   errorinfo=false;
 
   currLocation = ''
+  currLocation1 = ''
+  currBuilding = ''
   currChargeDeptCode = ''
   currAuthorizationLevel = ''
   currFACCodeType = ''
@@ -154,7 +156,7 @@ export class FacInUpdateComponent implements OnInit {
         return;
       }
 
-      if(formData.value.Location_1 + '~~' + formData.value.Buildings === this.currLocation ) {
+      if(formData.value.Location_1.toLowerCase() + '~~' + formData.value.Buildings.toLowerCase() === this.currLocation.toLocaleLowerCase() ) {
         alert('Please provide a new campus');
         return;
       }
@@ -165,7 +167,7 @@ export class FacInUpdateComponent implements OnInit {
         alert('Please enter the charge department code');
         return;
       }
-      if(formData.value.chargeDepartmentCode === this.currChargeDeptCode) {
+      if(formData.value.chargeDepartmentCode.trim() === this.currChargeDeptCode) {
         alert('Please enter a new charge department code');
         return;
       }
@@ -183,7 +185,7 @@ export class FacInUpdateComponent implements OnInit {
     }
 
     if(formData.value.businessjustification == ''){
-      alert('Please enter Business Justification');
+      alert('Please provide business justification');
       return;
     }
   
@@ -325,11 +327,34 @@ export class FacInUpdateComponent implements OnInit {
       this.db2data = sessionStorage.getItem('db2data')
       this.db2data = JSON.parse(this.db2data)
       this.currLocation = this.db2data[0].ATTRIBUTE3
+      this.currLocation1 = this.currLocation.split('~~')[0]
+      this.currBuilding = this.currLocation.split('~~')[1]
       this.currChargeDeptCode = this.db2data[0].ATTRIBUTE7
       this.currAuthorizationLevel = this.db2data[0].ATTRIBUTE4
       this.currFACCodeType = this.db2data[0].ATTRIBUTE5
       this.currvalidity = this.db2data[0].ATTRIBUTE6
     }
+
+    
+    const servicesData = { 	
+      "data": [	
+        {    		
+          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "step" : 3,	
+          
+        }	
+      ]	
+  
+     
+    }	
+    this.reqFor = sessionStorage.getItem('radioAction');
+      this.servicesData = servicesData.data[0]
+      if(this.warninginfo || this.warninginfosnow){
+        this.hideSteps = true
+      } else {
+        this.hideSteps = false
+      } 
+
     this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
     this.locationlist=this.locationlist?.replace('"','').split(',');	
   
@@ -344,7 +369,7 @@ export class FacInUpdateComponent implements OnInit {
         this.j++;	
       }	
     }
-    
+
     this.route.queryParams	
     .subscribe(params => {	
       console.log(params);	
@@ -366,26 +391,7 @@ export class FacInUpdateComponent implements OnInit {
       "isspecial": this.countryname.isspecial
     }
   });
-  const servicesData = { 	
-    "data": [	
-      {    		
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "step" : 3,	
-        
-      }	
-    ]	
 
-   
-  }	
-  
-  this.reqFor = sessionStorage.getItem('radioAction');
-    this.servicesData = servicesData.data[0]
-
-    if(this.warninginfo || this.warninginfosnow){
-      this.hideSteps = true
-    } else {
-      this.hideSteps = false
-    }
   }
   previousStep(event : any){
     this.isEntryForm = false;	
