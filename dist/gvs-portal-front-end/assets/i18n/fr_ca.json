@@ -214,6 +214,7 @@
     },
     "phonenumber" :{
         "PhoneNumberSearch":"Recherche par numéro de téléphone",
+        "PhoneNumberDetails":"Détails du numéro de téléphone",
         "EnterITNNumber":"Entrez le numéro ITN",
         "EmpID":"EmpID",
         "UserName":"Nom d'utilisateur",
@@ -248,6 +249,8 @@
         "Review Details" : "Détails de l'examen",
         "Employee Resources Details" : "Détails des ressources des employés",
         "Employee Requests Details":"Détails des demandes des employés",
+        "Phone Number Search": "Recherche par numéro de téléphone",
+        "Phone Number Details": "Détails du numéro de téléphone",
         "STEP 1" : "MARCHER 1",
         "STEP 2" : "MARCHER 2",
         "STEP 3" : "MARCHER 3",

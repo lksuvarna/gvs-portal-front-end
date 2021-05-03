@@ -133,7 +133,7 @@ export class EnExtensionAuSummaryComponent implements OnInit {
     "data": [	
       {    		
         "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "step" : 3,	
+        "step" : 1,	
         
       }	
     ]	
@@ -141,14 +141,14 @@ export class EnExtensionAuSummaryComponent implements OnInit {
    
   }	
   
-  this.reqFor = sessionStorage.getItem('radioAction');
+  //this.reqFor = sessionStorage.getItem('radioAction');
     this.servicesData = servicesData.data[0]
     this.showloader = false;
   }
   previousStep(event : any){
     this.isEntryForm = false;	
     this.isReviewForm = true;	
-    this.fixedPhoneIdentifier = false;	
+    // this.fixedPhoneIdentifier = false;	
   }
   
 
