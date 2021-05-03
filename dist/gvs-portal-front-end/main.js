@@ -135,7 +135,13 @@ class FacInNewComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     selectedLocation(loc) {
         this.build = [];
@@ -1277,7 +1283,13 @@ class HpUsaNewComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     selectedDevice(device) {
         this.models = [];
@@ -1989,7 +2001,7 @@ function StepsComponent_span_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("mouseenter", function StepsComponent_span_3_Template_span_mouseenter_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r20); const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r19.changeClass2 = true; })("mouseout", function StepsComponent_span_3_Template_span_mouseout_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r20); const ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r21.changeClass2 = false; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "b", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2008,7 +2020,7 @@ function StepsComponent_span_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r2.changeClass2 ? "ds-tooltip ds-hover ds-text-align-center ds-open" : "ds-tooltip ds-hover ds-text-align-center");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("disabled", ctx_r2.step === 1 || ctx_r2.step === 2 ? true : false);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](9, _c2))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](10, _c1, ctx_r2.pcode, ctx_r2.service))("ngClass", ctx_r2.step === 2 ? "ds-tooltip-trigger ds-text-contextual-green-3" : "ds-tooltip-trigger ds-text-contextual-blue-5");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](10, _c2))("skipLocationChange", true)("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](11, _c1, ctx_r2.pcode, ctx_r2.service))("ngClass", ctx_r2.step === 2 ? "ds-tooltip-trigger ds-text-contextual-green-3" : "ds-tooltip-trigger ds-text-contextual-blue-5");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("steps.", ctx_r2.servicesData[1].name, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -2136,7 +2148,7 @@ function StepsComponent_span_7_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("mouseenter", function StepsComponent_span_7_Template_span_mouseenter_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r35); const ctx_r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r34.changeClass2 = true; })("mouseout", function StepsComponent_span_7_Template_span_mouseout_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r35); const ctx_r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r36.changeClass2 = false; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "b", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2210,7 +2222,7 @@ function StepsComponent_span_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("mouseenter", function StepsComponent_span_9_Template_span_mouseenter_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r41.changeClass3 = true; })("mouseout", function StepsComponent_span_9_Template_span_mouseout_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r43.changeClass3 = false; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "b", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2229,7 +2241,7 @@ function StepsComponent_span_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r8.changeClass3 ? "ds-tooltip ds-hover ds-text-align-center ds-open" : "ds-tooltip ds-hover ds-text-align-center");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("disabled", ctx_r8.step === 1 || ctx_r8.step === 2 || ctx_r8.step === 3 ? true : false);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](9, _c3))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](10, _c1, ctx_r8.pcode, ctx_r8.service))("ngClass", ctx_r8.step === 3 ? "ds-tooltip-trigger ds-text-contextual-green-3" : "ds-tooltip-trigger ds-text-contextual-blue-5");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](10, _c3))("skipLocationChange", true)("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](11, _c1, ctx_r8.pcode, ctx_r8.service))("ngClass", ctx_r8.step === 3 ? "ds-tooltip-trigger ds-text-contextual-green-3" : "ds-tooltip-trigger ds-text-contextual-blue-5");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("steps.", ctx_r8.servicesData[4].name, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -2320,7 +2332,7 @@ function StepsComponent_span_12_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("mouseenter", function StepsComponent_span_12_Template_span_mouseenter_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r53); const ctx_r52 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r52.changeClass4 = true; })("mouseout", function StepsComponent_span_12_Template_span_mouseout_5_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r53); const ctx_r54 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r54.changeClass4 = false; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "b", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2439,17 +2451,17 @@ class StepsComponent {
     }
 }
 StepsComponent.ɵfac = function StepsComponent_Factory(t) { return new (t || StepsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"])); };
-StepsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: StepsComponent, selectors: [["app-steps"]], inputs: { step: "step", isSelf: "isSelf", onChange: ["hideSteps", "onChange"] }, outputs: { previousStep: "previousStep" }, decls: 13, vars: 12, consts: [[1, "ds-panel-row"], [4, "ngIf"], ["id", "tooltip-demo1", 3, "ngClass"], [3, "mouseenter", "mouseout"], ["aria-label", "help", "tabindex", "0", 3, "routerLink", "queryParams", "ngClass"], ["translate", ""], ["id", "tooltip-demo1-content", "role", "tooltip", "translate", "", 1, "ds-tooltip-content", "ds-text-neutral-7", "text-style"], ["aria-label", "help", "tabindex", "0", 3, "ngClass", "click"], [3, "ngClass"], ["aria-label", "help", "tabindex", "0", 3, "ngClass"]], template: function StepsComponent_Template(rf, ctx) { if (rf & 1) {
+StepsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: StepsComponent, selectors: [["app-steps"]], inputs: { step: "step", isSelf: "isSelf", onChange: ["hideSteps", "onChange"] }, outputs: { previousStep: "previousStep" }, decls: 13, vars: 12, consts: [[1, "ds-panel-row"], [4, "ngIf"], ["id", "tooltip-demo1", 3, "ngClass"], [3, "mouseenter", "mouseout"], ["aria-label", "help", "tabindex", "0", 3, "routerLink", "queryParams", "ngClass"], ["translate", ""], ["id", "tooltip-demo1-content", "role", "tooltip", "translate", "", 1, "ds-tooltip-content", "ds-text-neutral-7", "text-style"], ["aria-label", "help", "tabindex", "0", 3, "ngClass", "click"], [3, "ngClass"], ["aria-label", "help", "tabindex", "0", 3, "routerLink", "skipLocationChange", "queryParams", "ngClass"], ["aria-label", "help", "tabindex", "0", 3, "ngClass"]], template: function StepsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, StepsComponent_span_1_Template, 8, 12, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, StepsComponent_span_2_Template, 8, 6, "span", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, StepsComponent_span_3_Template, 11, 13, "span", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, StepsComponent_span_3_Template, 11, 14, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, StepsComponent_span_4_Template, 11, 7, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, StepsComponent_span_5_Template, 11, 7, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, StepsComponent_span_6_Template, 11, 7, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, StepsComponent_span_7_Template, 11, 7, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](8, StepsComponent_span_8_Template, 11, 7, "span", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, StepsComponent_span_9_Template, 11, 13, "span", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](9, StepsComponent_span_9_Template, 11, 14, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, StepsComponent_span_10_Template, 11, 7, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, StepsComponent_span_11_Template, 11, 7, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, StepsComponent_span_12_Template, 11, 7, "span", 1);
@@ -2704,7 +2716,13 @@ class HpAuNewComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     selectedLocation(loc) {
         this.build = [];
@@ -3846,7 +3864,13 @@ class HpInDeleteComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     submit_snow() {
         this.reqno = this.countrydetails.isocode + "-DS-" + this.cnum.substr(0, 6) + "-" + gettime();
@@ -4386,7 +4410,13 @@ class VoipInUpdateComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     BackButton() {
         this.isReviewForm = true;
@@ -5971,7 +6001,13 @@ class VoipLaUpdateComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     BackButton() {
         this.isReviewForm = true;
@@ -6440,7 +6476,13 @@ class VoipLaNewComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     selectedLocation(loc) {
         this.build = [];
@@ -7366,7 +7408,13 @@ class VoipInDeleteComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     BackButton() {
         this.isEntryForm = false;
@@ -8869,7 +8917,13 @@ class FacInUpdateComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     isFunded() {
         if (this.Voice_Mail === 'Yes') {
@@ -10786,7 +10840,13 @@ class FacInDeactivateComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     authCalculation(val) {
         if (val === 'STD') {
@@ -11243,7 +11303,13 @@ class VoipEmeaNewComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     selectedLocation(loc) {
         this.build = [];
@@ -11866,7 +11932,13 @@ class HpIndonesiaNewComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     selectedDevice(device) {
         this.models = [];
@@ -12947,7 +13019,13 @@ class VoipInMoveComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     getjabberNumberVal(jabberNumberVal) {
         if (jabberNumberVal != '') {
@@ -14284,7 +14362,13 @@ class VoipUsaNewComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     BackButton() {
         this.isEntryForm = false;
@@ -14925,7 +15009,13 @@ class VoipInNewComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     selectedLocation(loc) {
         this.build = [];
@@ -15724,7 +15814,13 @@ class HpInNewComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     selectedLocation(loc) {
         this.build = [];
@@ -17103,7 +17199,13 @@ class FacInResetComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     authCalculation(val) {
         if (val === 'STD') {
@@ -20073,7 +20175,13 @@ class VoipUsaUpdateComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     BackButton() {
         this.isReviewForm = true;
@@ -21605,7 +21713,13 @@ class HpEmeaNewComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     selectedDevice(device) {
         this.models = [];
@@ -22664,7 +22778,13 @@ class HpAuUpdateComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     selectedLocation(loc) {
         this.build = [];
@@ -24399,7 +24519,13 @@ class HpInUpdateComponent {
     backClick() {
         sessionStorage.setItem('backbutton', 'yes');
         sessionStorage.setItem('step', 'step1');
-        this.location.back();
+        //this.location.back();	
+        if (sessionStorage.getItem('radioAction') == 'myself') {
+            this.router.navigate(['employeesearch'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
+        else {
+            this.router.navigate(['employeeinfo'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+        }
     }
     selectedLocation(loc) {
         this.build = [];
