@@ -134,18 +134,11 @@ export class EmployeeinfoComponent implements OnInit {
     this.isDataLoaded=true
    }
 
-   else if (this.sessionwarninginfo !=='true1'&& this.service=="fac_deactivate"){
+   else if (this.sessionwarninginfo =='false1'&& this.service=="fac_deactivate"){
     this.warninginfofacdeactivate = true
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
-   /*else if (this.sessionwarninginfosnow =='true1' && this.service=="fac_deactivate"){
-    this.warninginfofacdeactivatesnow = true
-    this.identifier=sessionStorage.getItem('identifier')
-    this.isDataLoaded=true
-   }*/
-
-
    else if (this.sessionwarninginfo =='false1'&& this.service=="fac_update"){
     this.warninginfofacu = true
     this.identifier=sessionStorage.getItem('identifier')
@@ -156,7 +149,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
-   else if (this.sessionwarninginfosnow =='true1' && (this.service==="fac_reset" || this.service==="fac_update")){
+   else if (this.sessionwarninginfosnow =='true1' && (this.service==="fac_reset" || this.service==="fac_update" ||this.service == "fac_deactivate" )){
     this.identifier1=sessionStorage.getItem('identifier1')
     this.warninginfosnowothersfac = true;   
     this.isDataLoaded=true;
@@ -186,9 +179,7 @@ export class EmployeeinfoComponent implements OnInit {
        this.page = 'update Jabber';
      }else if(this.service == "jabber_move"){
       this.page = 'move Jabber';
-    } //else if(this.service == "fac_deactivate"){
-      //this.page = 'fac Deactivate';
-    //}
+    } 
      if (this.sessionwarninginfosnow=='true1'){
        this.identifier1=sessionStorage.getItem('identifier1')
       this.warninginfosnowothers = true;   
