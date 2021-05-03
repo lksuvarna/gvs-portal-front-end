@@ -34,7 +34,7 @@ export class ReviewdetailsComponent implements OnInit {
     businessUnit:	"GBS",
     projectId: "ABCDS",
     fixPhoneIdentifier: " ",
-    Voice_Type_Disp : true,
+    Voice_Type_Disp : "",
     icano_Disp : "disp",
     Location_final :"",
     accid_Disp: "",
