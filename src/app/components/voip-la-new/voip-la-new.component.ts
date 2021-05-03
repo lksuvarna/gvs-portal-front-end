@@ -195,8 +195,12 @@ submit_snow(){
     //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
     this.payload.ReqNo=this.reqno;	
 
-    // fields to be picked up from form -- ends	
-    this.payload.level1_japproval=this.countrydetails.level1_japproval;	
+    // fields to be picked up from form -- ends
+    if(	this.reviewDetailsIndia.campus.includes("Guadalajara"))	{
+      this.payload.level1_japproval="yes";	 
+    }
+    else{
+    this.payload.level1_japproval=this.countrydetails.level1_japproval;	}
     this.payload.level2_japproval=this.countrydetails.level2_japproval;	
     this.payload.SLA_type=this.countrydetails.SLA_type;	
     this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
@@ -214,7 +218,7 @@ submit_snow(){
    this.servicenowservice.submit_request(this.payload).subscribe(data=> {	
    console.log('response', data);	
    if(data)	
-   this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
+   this.router.navigate(['/resultpage'],{ skipLocationChange: true , queryParams: { country: this.pcode,service:this.service }}) ;	
    },
    (error) => {                              //Error callback
     console.error('error caught in component'+error);
