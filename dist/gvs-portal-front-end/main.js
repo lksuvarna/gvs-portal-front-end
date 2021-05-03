@@ -11342,17 +11342,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
 /* harmony import */ var _components_uitoplinks_uitoplinks_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/uitoplinks/uitoplinks.component */ "rXSL");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/footer/footer.component */ "LmEr");
+/* harmony import */ var _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/footer/footer.component */ "LmEr");
 
 
 
 
 
-
-function AppComponent_app_footer_3_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-footer");
-} }
 class AppComponent {
     constructor(router, route) {
         this.router = router;
@@ -11383,16 +11378,13 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 4, vars: 1, consts: [[1, "ds-grid"], [4, "ngIf"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 4, vars: 0, consts: [[1, "ds-grid"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "app-uitoplinks");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "router-outlet");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, AppComponent_app_footer_3_Template, 1, 0, "app-footer", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "app-footer");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.display);
-    } }, directives: [_components_uitoplinks_uitoplinks_component__WEBPACK_IMPORTED_MODULE_2__["UitoplinksComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterOutlet"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_4__["FooterComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LmNzcyJ9 */"] });
+    } }, directives: [_components_uitoplinks_uitoplinks_component__WEBPACK_IMPORTED_MODULE_2__["UitoplinksComponent"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterOutlet"], _components_footer_footer_component__WEBPACK_IMPORTED_MODULE_3__["FooterComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhcHAuY29tcG9uZW50LmNzcyJ9 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AppComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -14387,7 +14379,7 @@ class TopcountryframeComponent {
         this.ccode = '';
         this.pcode = '';
         this.translatecountryname1 = false;
-        this.routingservices = ['services', 'jabberservices', 'fixedphoneservices', 'facservices', 'jabber_new', 'jabber_delete', 'jabber_update', 'jabber_move', 'fixedphone_new', 'fixedphone_update', 'fixedphone_delete', 'fac_new', 'fac_update', 'fac_reset', 'fac_deactivate', 'requests', 'resources', 'approvalpending'];
+        this.routingservices = ['services', 'jabberservices', 'fixedphoneservices', 'facservices', 'jabber_new', 'jabber_delete', 'jabber_update', 'jabber_move', 'fixedphone_new', 'fixedphone_update', 'fixedphone_delete', 'fac_new', 'fac_update', 'fac_reset', 'fac_deactivate', 'requests', 'resources', 'approvalpending', 'revalidationpending'];
     }
     changeLanguage(type) {
         this.translateconfigservice.changeLanguage(type);
@@ -16524,33 +16516,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_voip_in_new_voip_in_new_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./components/voip-in-new/voip-in-new.component */ "aGf8");
 /* harmony import */ var _components_voip_in_delete_voip_in_delete_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./components/voip-in-delete/voip-in-delete.component */ "JIgN");
 /* harmony import */ var _components_employeesearch_voip_delete_employeesearch_voip_delete_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./components/employeesearch-voip-delete/employeesearch-voip-delete.component */ "IE7g");
-/* harmony import */ var _components_revalidationpending_revalidationpending_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/revalidationpending/revalidationpending.component */ "pt/k");
-/* harmony import */ var _components_approvalpending_approvalpending_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/approvalpending/approvalpending.component */ "jKZD");
-/* harmony import */ var _components_voip_la_new_voip_la_new_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/voip-la-new/voip-la-new.component */ "Hq2D");
-/* harmony import */ var _components_voip_in_update_voip_in_update_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/voip-in-update/voip-in-update.component */ "8sw4");
-/* harmony import */ var _components_voip_emea_new_voip_emea_new_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/voip-emea-new/voip-emea-new.component */ "R5fI");
-/* harmony import */ var _components_voip_usa_new_voip_usa_new_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/voip-usa-new/voip-usa-new.component */ "ZSIN");
-/* harmony import */ var _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/voip-in-move/voip-in-move.component */ "Uo6X");
-/* harmony import */ var _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/pagenotfound/pagenotfound.component */ "cw5x");
-/* harmony import */ var _components_voip_la_update_voip_la_update_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/voip-la-update/voip-la-update.component */ "HTI5");
-/* harmony import */ var _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/fac-in-new/fac-in-new.component */ "/UO4");
-/* harmony import */ var _components_hp_au_update_hp_au_update_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/hp-au-update/hp-au-update.component */ "pPZ4");
-/* harmony import */ var _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/fac-in-update/fac-in-update.component */ "L9kc");
-/* harmony import */ var _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/fac-in-reset/fac-in-reset.component */ "bsso");
-/* harmony import */ var _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/approval-result-page/approval-result-page.component */ "6juO");
-/* harmony import */ var _components_facservices_facservices_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/facservices/facservices.component */ "kPm3");
-/* harmony import */ var _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/approval-single-page/approval-single-page.component */ "icyV");
-/* harmony import */ var _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/voip-usa-update/voip-usa-update.component */ "jTLy");
-/* harmony import */ var _components_hp_in_new_hp_in_new_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/hp-in-new/hp-in-new.component */ "aJjB");
-/* harmony import */ var _components_fixedphoneservices_fixedphoneservices_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/fixedphoneservices/fixedphoneservices.component */ "WwOP");
-/* harmony import */ var _components_hp_in_update_hp_in_update_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/hp-in-update/hp-in-update.component */ "wx85");
-/* harmony import */ var _components_hp_in_delete_hp_in_delete_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/hp-in-delete/hp-in-delete.component */ "7P22");
-/* harmony import */ var _components_hp_usa_new_hp_usa_new_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/hp-usa-new/hp-usa-new.component */ "4a48");
-/* harmony import */ var _components_hp_emea_new_hp_emea_new_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/hp-emea-new/hp-emea-new.component */ "p96R");
-/* harmony import */ var _components_hp_indonesia_new_hp_indonesia_new_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/hp-indonesia-new/hp-indonesia-new.component */ "UiN3");
-/* harmony import */ var _components_hp_au_new_hp_au_new_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/hp-au-new/hp-au-new.component */ "5O5C");
-/* harmony import */ var _components_fac_in_deactivate_fac_in_deactivate_component__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./components/fac-in-deactivate/fac-in-deactivate.component */ "PglX");
-
+/* harmony import */ var _components_approvalpending_approvalpending_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./components/approvalpending/approvalpending.component */ "jKZD");
+/* harmony import */ var _components_voip_la_new_voip_la_new_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./components/voip-la-new/voip-la-new.component */ "Hq2D");
+/* harmony import */ var _components_voip_in_update_voip_in_update_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./components/voip-in-update/voip-in-update.component */ "8sw4");
+/* harmony import */ var _components_voip_emea_new_voip_emea_new_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./components/voip-emea-new/voip-emea-new.component */ "R5fI");
+/* harmony import */ var _components_voip_usa_new_voip_usa_new_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./components/voip-usa-new/voip-usa-new.component */ "ZSIN");
+/* harmony import */ var _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./components/voip-in-move/voip-in-move.component */ "Uo6X");
+/* harmony import */ var _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./components/pagenotfound/pagenotfound.component */ "cw5x");
+/* harmony import */ var _components_voip_la_update_voip_la_update_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./components/voip-la-update/voip-la-update.component */ "HTI5");
+/* harmony import */ var _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./components/fac-in-new/fac-in-new.component */ "/UO4");
+/* harmony import */ var _components_hp_au_update_hp_au_update_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./components/hp-au-update/hp-au-update.component */ "pPZ4");
+/* harmony import */ var _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./components/fac-in-update/fac-in-update.component */ "L9kc");
+/* harmony import */ var _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./components/fac-in-reset/fac-in-reset.component */ "bsso");
+/* harmony import */ var _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./components/approval-result-page/approval-result-page.component */ "6juO");
+/* harmony import */ var _components_facservices_facservices_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./components/facservices/facservices.component */ "kPm3");
+/* harmony import */ var _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/approval-single-page/approval-single-page.component */ "icyV");
+/* harmony import */ var _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/voip-usa-update/voip-usa-update.component */ "jTLy");
+/* harmony import */ var _components_hp_in_new_hp_in_new_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./components/hp-in-new/hp-in-new.component */ "aJjB");
+/* harmony import */ var _components_fixedphoneservices_fixedphoneservices_component__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./components/fixedphoneservices/fixedphoneservices.component */ "WwOP");
+/* harmony import */ var _components_hp_in_update_hp_in_update_component__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./components/hp-in-update/hp-in-update.component */ "wx85");
+/* harmony import */ var _components_hp_in_delete_hp_in_delete_component__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./components/hp-in-delete/hp-in-delete.component */ "7P22");
+/* harmony import */ var _components_hp_usa_new_hp_usa_new_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./components/hp-usa-new/hp-usa-new.component */ "4a48");
+/* harmony import */ var _components_hp_emea_new_hp_emea_new_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./components/hp-emea-new/hp-emea-new.component */ "p96R");
+/* harmony import */ var _components_hp_indonesia_new_hp_indonesia_new_component__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./components/hp-indonesia-new/hp-indonesia-new.component */ "UiN3");
+/* harmony import */ var _components_hp_au_new_hp_au_new_component__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./components/hp-au-new/hp-au-new.component */ "5O5C");
+/* harmony import */ var _components_fac_in_deactivate_fac_in_deactivate_component__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./components/fac-in-deactivate/fac-in-deactivate.component */ "PglX");
 
 
 
@@ -16600,8 +16590,8 @@ const appRoutes = [
     { path: 'services', component: _components_services_services_component__WEBPACK_IMPORTED_MODULE_2__["ServicesComponent"] },
     // { path: 'services' , loadChildren: () => import('./components/navigation/navigation.component').then(m => m.ServicesComponent)}  
     { path: 'jabberservices', component: _components_jabberservices_jabberservices_component__WEBPACK_IMPORTED_MODULE_4__["JabberservicesComponent"] },
-    { path: 'fixedphoneservices', component: _components_fixedphoneservices_fixedphoneservices_component__WEBPACK_IMPORTED_MODULE_35__["FixedphoneservicesComponent"] },
-    { path: 'facservices', component: _components_facservices_facservices_component__WEBPACK_IMPORTED_MODULE_31__["FacservicesComponent"] },
+    { path: 'fixedphoneservices', component: _components_fixedphoneservices_fixedphoneservices_component__WEBPACK_IMPORTED_MODULE_34__["FixedphoneservicesComponent"] },
+    { path: 'facservices', component: _components_facservices_facservices_component__WEBPACK_IMPORTED_MODULE_30__["FacservicesComponent"] },
     { path: 'employeesearch', component: _components_employeesearch_employeesearch_component__WEBPACK_IMPORTED_MODULE_5__["EmployeesearchComponent"] },
     { path: 'employeeinfo', component: _components_employeeinfo_employeeinfo_component__WEBPACK_IMPORTED_MODULE_7__["EmployeeinfoComponent"] },
     { path: 'resultpage', component: _components_resultpage_resultpage_component__WEBPACK_IMPORTED_MODULE_6__["ResultpageComponent"] },
@@ -16611,41 +16601,41 @@ const appRoutes = [
     { path: 'inprogress', component: _components_dummy_dummy_component__WEBPACK_IMPORTED_MODULE_13__["DummyComponent"] },
     { path: 'entrydetailsjd', component: _components_voip_in_delete_voip_in_delete_component__WEBPACK_IMPORTED_MODULE_15__["VoipInDeleteComponent"] },
     { path: 'entrydetails', component: _components_voip_in_new_voip_in_new_component__WEBPACK_IMPORTED_MODULE_14__["VoipInNewComponent"] },
-    { path: 'entrydetailsiju', component: _components_voip_in_update_voip_in_update_component__WEBPACK_IMPORTED_MODULE_20__["VoipInUpdateComponent"] },
-    { path: 'entrydetailsijm', component: _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_23__["VoipInMoveComponent"] },
+    { path: 'entrydetailsiju', component: _components_voip_in_update_voip_in_update_component__WEBPACK_IMPORTED_MODULE_19__["VoipInUpdateComponent"] },
+    { path: 'entrydetailsijm', component: _components_voip_in_move_voip_in_move_component__WEBPACK_IMPORTED_MODULE_22__["VoipInMoveComponent"] },
     { path: 'reviewdetails', component: _components_reviewdetails_reviewdetails_component__WEBPACK_IMPORTED_MODULE_10__["ReviewdetailsComponent"] },
     { path: 'resultpage', component: _components_resultpage_resultpage_component__WEBPACK_IMPORTED_MODULE_6__["ResultpageComponent"] },
-    { path: 'approvalresult', component: _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_30__["ApprovalResultPageComponent"] },
-    { path: 'approvalsingle', component: _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_32__["ApprovalSinglePageComponent"] },
+    { path: 'approvalresult', component: _components_approval_result_page_approval_result_page_component__WEBPACK_IMPORTED_MODULE_29__["ApprovalResultPageComponent"] },
+    { path: 'approvalsingle', component: _components_approval_single_page_approval_single_page_component__WEBPACK_IMPORTED_MODULE_31__["ApprovalSinglePageComponent"] },
     { path: 'employeesearchdelete', component: _components_employeesearch_voip_delete_employeesearch_voip_delete_component__WEBPACK_IMPORTED_MODULE_16__["EmployeesearchVoipDeleteComponent"] },
     { path: 'employeesearchres', component: _components_employeesearch_employeesearch_component__WEBPACK_IMPORTED_MODULE_5__["EmployeesearchComponent"] },
     { path: 'employeesearchreq', component: _components_employeesearch_employeesearch_component__WEBPACK_IMPORTED_MODULE_5__["EmployeesearchComponent"] },
-    { path: 'revalidationpending', component: _components_revalidationpending_revalidationpending_component__WEBPACK_IMPORTED_MODULE_17__["RevalidationpendingComponent"] },
-    { path: 'approvalpending', component: _components_approvalpending_approvalpending_component__WEBPACK_IMPORTED_MODULE_18__["ApprovalpendingComponent"] },
-    { path: 'entrydetailsla', component: _components_voip_la_new_voip_la_new_component__WEBPACK_IMPORTED_MODULE_19__["VoipLaNewComponent"] },
-    { path: 'entrydetailsemea', component: _components_voip_emea_new_voip_emea_new_component__WEBPACK_IMPORTED_MODULE_21__["VoipEmeaNewComponent"] },
-    { path: 'entrydetailsus', component: _components_voip_usa_new_voip_usa_new_component__WEBPACK_IMPORTED_MODULE_22__["VoipUsaNewComponent"] },
+    { path: 'revalidationpending', component: _components_approvalpending_approvalpending_component__WEBPACK_IMPORTED_MODULE_17__["ApprovalpendingComponent"] },
+    { path: 'approvalpending', component: _components_approvalpending_approvalpending_component__WEBPACK_IMPORTED_MODULE_17__["ApprovalpendingComponent"] },
+    { path: 'entrydetailsla', component: _components_voip_la_new_voip_la_new_component__WEBPACK_IMPORTED_MODULE_18__["VoipLaNewComponent"] },
+    { path: 'entrydetailsemea', component: _components_voip_emea_new_voip_emea_new_component__WEBPACK_IMPORTED_MODULE_20__["VoipEmeaNewComponent"] },
+    { path: 'entrydetailsus', component: _components_voip_usa_new_voip_usa_new_component__WEBPACK_IMPORTED_MODULE_21__["VoipUsaNewComponent"] },
     { path: 'resources', component: _components_resources_resources_component__WEBPACK_IMPORTED_MODULE_12__["ResourcesComponent"] },
-    { path: 'entrydetailsfn', component: _components_hp_in_new_hp_in_new_component__WEBPACK_IMPORTED_MODULE_34__["HpInNewComponent"] },
-    { path: 'entrydetailsfup', component: _components_hp_in_update_hp_in_update_component__WEBPACK_IMPORTED_MODULE_36__["HpInUpdateComponent"] },
-    { path: 'entrydetailsfde', component: _components_hp_in_delete_hp_in_delete_component__WEBPACK_IMPORTED_MODULE_37__["HpInDeleteComponent"] },
-    { path: 'entrydetailsfusanew', component: _components_hp_usa_new_hp_usa_new_component__WEBPACK_IMPORTED_MODULE_38__["HpUsaNewComponent"] },
-    { path: 'entrydetailsfemeanew', component: _components_hp_emea_new_hp_emea_new_component__WEBPACK_IMPORTED_MODULE_39__["HpEmeaNewComponent"] },
-    { path: 'entrydetailsindo', component: _components_hp_indonesia_new_hp_indonesia_new_component__WEBPACK_IMPORTED_MODULE_40__["HpIndonesiaNewComponent"] },
-    { path: 'entrydetailsaufn', component: _components_hp_au_new_hp_au_new_component__WEBPACK_IMPORTED_MODULE_41__["HpAuNewComponent"] },
-    { path: 'entrydetailsaufu', component: _components_hp_au_update_hp_au_update_component__WEBPACK_IMPORTED_MODULE_27__["HpAuUpdateComponent"] },
-    { path: 'entrydetailsfac', component: _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_26__["FacInNewComponent"] },
-    { path: 'entrydetailsfacu', component: _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_28__["FacInUpdateComponent"] },
-    { path: 'entrydetailsfacr', component: _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_29__["FacInResetComponent"] },
-    { path: 'entrydetails_update_la', component: _components_voip_la_update_voip_la_update_component__WEBPACK_IMPORTED_MODULE_25__["VoipLaUpdateComponent"] },
-    { path: 'entrydetails_update_us', component: _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_33__["VoipUsaUpdateComponent"] },
-    { path: 'pagenotfound', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__["PagenotfoundComponent"] },
-    { path: 'pagenotfound?error', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__["PagenotfoundComponent"] },
-    { path: 'entrydetailsfacin', component: _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_26__["FacInNewComponent"] },
-    { path: 'entrydetailsfacdeactive', component: _components_fac_in_deactivate_fac_in_deactivate_component__WEBPACK_IMPORTED_MODULE_42__["FacInDeactivateComponent"] },
+    { path: 'entrydetailsfn', component: _components_hp_in_new_hp_in_new_component__WEBPACK_IMPORTED_MODULE_33__["HpInNewComponent"] },
+    { path: 'entrydetailsfup', component: _components_hp_in_update_hp_in_update_component__WEBPACK_IMPORTED_MODULE_35__["HpInUpdateComponent"] },
+    { path: 'entrydetailsfde', component: _components_hp_in_delete_hp_in_delete_component__WEBPACK_IMPORTED_MODULE_36__["HpInDeleteComponent"] },
+    { path: 'entrydetailsfusanew', component: _components_hp_usa_new_hp_usa_new_component__WEBPACK_IMPORTED_MODULE_37__["HpUsaNewComponent"] },
+    { path: 'entrydetailsfemeanew', component: _components_hp_emea_new_hp_emea_new_component__WEBPACK_IMPORTED_MODULE_38__["HpEmeaNewComponent"] },
+    { path: 'entrydetailsindo', component: _components_hp_indonesia_new_hp_indonesia_new_component__WEBPACK_IMPORTED_MODULE_39__["HpIndonesiaNewComponent"] },
+    { path: 'entrydetailsaufn', component: _components_hp_au_new_hp_au_new_component__WEBPACK_IMPORTED_MODULE_40__["HpAuNewComponent"] },
+    { path: 'entrydetailsaufu', component: _components_hp_au_update_hp_au_update_component__WEBPACK_IMPORTED_MODULE_26__["HpAuUpdateComponent"] },
+    { path: 'entrydetailsfac', component: _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_25__["FacInNewComponent"] },
+    { path: 'entrydetailsfacu', component: _components_fac_in_update_fac_in_update_component__WEBPACK_IMPORTED_MODULE_27__["FacInUpdateComponent"] },
+    { path: 'entrydetailsfacr', component: _components_fac_in_reset_fac_in_reset_component__WEBPACK_IMPORTED_MODULE_28__["FacInResetComponent"] },
+    { path: 'entrydetails_update_la', component: _components_voip_la_update_voip_la_update_component__WEBPACK_IMPORTED_MODULE_24__["VoipLaUpdateComponent"] },
+    { path: 'entrydetails_update_us', component: _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_32__["VoipUsaUpdateComponent"] },
+    { path: 'pagenotfound', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_23__["PagenotfoundComponent"] },
+    { path: 'pagenotfound?error', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_23__["PagenotfoundComponent"] },
+    { path: 'entrydetailsfacin', component: _components_fac_in_new_fac_in_new_component__WEBPACK_IMPORTED_MODULE_25__["FacInNewComponent"] },
+    { path: 'entrydetailsfacdeactive', component: _components_fac_in_deactivate_fac_in_deactivate_component__WEBPACK_IMPORTED_MODULE_41__["FacInDeactivateComponent"] },
     // {path: '**', redirectTo:'/pagenotfound?error'}
-    { path: '**', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_24__["PagenotfoundComponent"] },
-    { path: 'entrydetailsjusaup', component: _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_33__["VoipUsaUpdateComponent"] }
+    { path: '**', component: _components_pagenotfound_pagenotfound_component__WEBPACK_IMPORTED_MODULE_23__["PagenotfoundComponent"] },
+    { path: 'entrydetailsjusaup', component: _components_voip_usa_update_voip_usa_update_component__WEBPACK_IMPORTED_MODULE_32__["VoipUsaUpdateComponent"] }
 ];
 const appRoutingProviders = _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(appRoutes, { onSameUrlNavigation: 'reload' });
 
@@ -20845,7 +20835,7 @@ class NavigationComponent {
                                 { "name": "Services", "routingname": "/services", "indented": this.serin, "highlighted": this.serhl, "param": "services" },
                                 // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
                                 { "name": "Approvals Pending", "routingname": "/approvalpending", "indented": this.appin, "highlighted": this.apphl, "param": "approvalpending" },
-                                { "name": "Revalidation Pending", "routingname": "/inprogress", "indented": false, "highlighted": false, "param": "services" },
+                                { "name": "Revalidation Pending", "routingname": "/revalidationpending", "indented": false, "highlighted": false, "param": "revalidationpending" },
                                 { "name": "Resources", "routingname": "/employeesearchres", "indented": this.resin, "highlighted": this.reshl, "param": "resources" },
                                 { "name": "Requests", "routingname": "/employeesearchreq", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests" }
                             ],
