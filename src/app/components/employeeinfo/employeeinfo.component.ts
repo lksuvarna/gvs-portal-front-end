@@ -36,10 +36,12 @@ export class EmployeeinfoComponent implements OnInit {
   identifier1: any;
   warninginfo = true;
   warninginfosnow = true;
+  warninginfosnowfac = true
   warninginfosnowreq = false;
   warninginfosnowres=false;
   warninginfoothers = false;
   warninginfosnowothers = false;
+  warninginfosnowothersfac = false
   warninginfofac = false;
 
   warninginfofacdeactivate = false;
@@ -67,13 +69,13 @@ export class EmployeeinfoComponent implements OnInit {
       this.navpage='/'+this.service}       
       else{this.navpage=this.navpage;}  
        
-    this.router.navigate([this.navpage],{ queryParams: { country: this.pcode,service:this.service } }) ;
+    this.router.navigate([this.navpage],{ skipLocationChange: true ,queryParams: { country: this.pcode,service:this.service } }) ;
   }
   backClick(){
     sessionStorage.setItem('backbutton','yes');
     sessionStorage.setItem('step','step1');
    // this.location.back();
-    this.router.navigate(['/employeesearch'],{ queryParams: { country: this.pcode, service: this.service } });
+    this.router.navigate(['/employeesearch'],{  queryParams: { country: this.pcode, service: this.service } });
   }
   
   ngOnInit(): void {
@@ -103,17 +105,26 @@ export class EmployeeinfoComponent implements OnInit {
     this.cnum = sessionStorage.getItem('cnum') 
     this.servicesData = servicesData.data[0];    
     this.warninginfo = false
+    this.warninginfofac = false
     this.warninginfosnow=false
+    this.warninginfosnowfac=false
     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
     this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
     console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
    if (this.sessionwarninginfo =='true1'&& this.service=="jabber_new"){
     this.warninginfo = true
+    
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
    else if (this.sessionwarninginfosnow =='true1' && this.service=="jabber_new"){
     this.warninginfosnow = true
+    
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }
+   else if (this.sessionwarninginfosnow =='true1' && this.service=="fac_new"){
+    this.warninginfosnowfac = true
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
@@ -123,18 +134,11 @@ export class EmployeeinfoComponent implements OnInit {
     this.isDataLoaded=true
    }
 
-   else if (this.sessionwarninginfo !=='true1'&& this.service=="fac_deactivate"){
+   else if (this.sessionwarninginfo =='false1'&& this.service=="fac_deactivate"){
     this.warninginfofacdeactivate = true
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
-   /*else if (this.sessionwarninginfosnow =='true1' && this.service=="fac_deactivate"){
-    this.warninginfofacdeactivatesnow = true
-    this.identifier=sessionStorage.getItem('identifier')
-    this.isDataLoaded=true
-   }*/
-
-
    else if (this.sessionwarninginfo =='false1'&& this.service=="fac_update"){
     this.warninginfofacu = true
     this.identifier=sessionStorage.getItem('identifier')
@@ -145,7 +149,18 @@ export class EmployeeinfoComponent implements OnInit {
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
-
+   else if (this.sessionwarninginfosnow =='true1' && (this.service==="fac_reset" || this.service==="fac_update" ||this.service == "fac_deactivate" )){
+    this.identifier1=sessionStorage.getItem('identifier1')
+    this.warninginfosnowothersfac = true;   
+    this.isDataLoaded=true;
+    if(this.service == "fac_deactivate") {
+      this.page = 'FAC delete';
+    } else if(this.service == "fac_update"){
+      this.page = 'FAC update';
+    }else if(this.service == "fac_reset"){
+     this.page = 'FAC reset';
+   } 
+   }
    else if (this.sessionwarninginfosnow =='false1' && this.service=="requests"){
     this.warninginfosnowreq = true    
     this.isDataLoaded=true
@@ -164,9 +179,7 @@ export class EmployeeinfoComponent implements OnInit {
        this.page = 'update Jabber';
      }else if(this.service == "jabber_move"){
       this.page = 'move Jabber';
-    } //else if(this.service == "fac_deactivate"){
-      //this.page = 'fac Deactivate';
-    //}
+    } 
      if (this.sessionwarninginfosnow=='true1'){
        this.identifier1=sessionStorage.getItem('identifier1')
       this.warninginfosnowothers = true;   
@@ -185,7 +198,8 @@ export class EmployeeinfoComponent implements OnInit {
     this.employeeInfo=JSON.parse(this.employeeInfo1)
 
 
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdeactivatesnow){
+    
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdeactivate ||this.warninginfofacdeactivatesnow || this.warninginfosnowfac){
 
       this.hideSteps = true;
       this.warn = true;

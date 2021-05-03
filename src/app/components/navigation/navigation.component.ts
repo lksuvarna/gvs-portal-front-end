@@ -30,8 +30,12 @@ export class NavigationComponent implements OnInit {
   dataNav123: any
   dataNavParent:any
   countryroute :any
-  serhl:any;jhl:any;fhl:any;fachl:any;reqhl:any;reshl:any;apphl:any;
-  serin:any;jin:any;fin:any;facin:any;reqin:any;resin:any;appin:any;
+  countrydetails:any
+  parcountrydetails:any
+  fixphoneVisibility:any;
+  loggedinuser:any
+  serhl:any;jhl:any;fhl:any;fachl:any;reqhl:any;reshl:any;apphl:any;pnshl:any;
+  serin:any;jin:any;fin:any;facin:any;reqin:any;resin:any;appin:any;pnsin:any;
   @Input('dataNav') dataNavParent1: any
   @Input('cloudantData') cloudantData1: any
    
@@ -93,6 +97,9 @@ export class NavigationComponent implements OnInit {
     if (!this.cloudantData.isreval) {
       this.removeService('Revalidation Pending')
     }
+    if (!this.cloudantData.isphonenumbersearch) {
+      this.removeService('Phone Number Search')
+    }
 
   }
 
@@ -105,9 +112,26 @@ export class NavigationComponent implements OnInit {
         this.service = params.service;
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
-     
-      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;this.apphl=false;
-      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;this.appin=false;
+
+        if(sessionStorage.getItem('countrydetails')==undefined){
+  
+        } else {
+          this.countrydetails = sessionStorage.getItem('countrydetails')
+          this.parcountrydetails = JSON.parse(this.countrydetails);
+          this.loggedinuser = this.cookie.getCookie('ccode')
+          //ACL for Fixed Phone Services - starts
+          if(this.parcountrydetails.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+            if(this.parcountrydetails.auth_fixphone.includes(this.loggedinuser)) {
+            this.fixphoneVisibility = true;
+            } else {
+              this.fixphoneVisibility = false;
+            }
+          } else {
+            this.fixphoneVisibility = this.parcountrydetails.isfixphone;
+          }
+        }
+      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;this.apphl=false;this.pnshl=false;
+      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;this.appin=false;this.pnsin=false;
       
       if (this.service=="services")
       {
@@ -117,6 +141,7 @@ export class NavigationComponent implements OnInit {
       {        
         this.jin=true
         this.jhl=true
+        this.fin=true
       }
       if ((this.service).includes("fixedphone"))
       {        
@@ -130,6 +155,7 @@ export class NavigationComponent implements OnInit {
       {        
         this.facin=true
         this.fachl=true
+        this.fin=true;
       }
       
       if ((this.service).includes("requests"))
@@ -148,9 +174,14 @@ export class NavigationComponent implements OnInit {
         this.apphl=true
         
       }
+      if ((this.service).includes("phone_search"))
+      {        
+        this.pnshl=true
+        
+      }
 
 
-      if (this.service=="services"||this.service=="requests"||this.service=="resources" || this.service=="approvalpending")
+      if (this.service=="services"||this.service=="requests"||this.service=="resources" || this.service=="approvalpending" || this.service=='phone_search')
       {
         this.dataNav123 = { 
           "data": [
@@ -159,9 +190,10 @@ export class NavigationComponent implements OnInit {
                 {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
                // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
                 {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
-                {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
-                {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
-                {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
+                {"name" : "Revalidation Pending","routingname":"/revalidationpending", "indented" : false, "highlighted": false,"param":"revalidationpending"},
+                {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search"},
+                {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
+                {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
               ],
               "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
               "step" : 1,
@@ -182,8 +214,9 @@ export class NavigationComponent implements OnInit {
 
               {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
               {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
-              {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
-              {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
+              {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search"},
+              {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
+              {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
             ],
             "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
             "step" : 1,
@@ -201,7 +234,7 @@ export class NavigationComponent implements OnInit {
         "name": this.countryname.name,
         "isocode": this.countryname.isocode,
         "isjabber": this.countryname.isjabber,
-        "isfixedphone": this.countryname.isfixphone,
+        "isfixedphone": this.fixphoneVisibility,
         "isfac": this.countryname.isfac,
         "isspecial": this.countryname.isspecial,
         "isreval": this.countryname.isreval,
@@ -210,6 +243,7 @@ export class NavigationComponent implements OnInit {
         "isjabberdelete":this.countryname.isjabberdelete,
         "isjabbermove":this.countryname.isjabbermove,
         "isjabberupdate":this.countryname.isjabberupdate,
+        "isphonenumbersearch":this.countryname.isphonenumbersearch
 
        
       } 
@@ -228,12 +262,21 @@ export class NavigationComponent implements OnInit {
         this.countryname = data.countrydetails;
         sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
         sessionStorage.setItem('countryroute', this.pcode);
+        if(this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+          if(this.countryname.auth_fixphone.includes(this.loggedinuser)) {
+          this.fixphoneVisibility = true;
+          } else {
+            this.fixphoneVisibility = false;
+          }
+        } else {
+          this.fixphoneVisibility = this.parcountrydetails.isfixphone;
+        }
         this.cloudantData = {
           "code": this.pcode,
           "name": this.countryname.name,
           "isocode": this.countryname.isocode,
           "isjabber": this.countryname.isjabber,
-          "isfixedphone": this.countryname.isfixphone,
+          "isfixedphone": this.fixphoneVisibility,
           "isfac": this.countryname.isfac,
           "isspecial": this.countryname.isspecial,          
           "isreval": this.countryname.isreval,
@@ -241,7 +284,8 @@ export class NavigationComponent implements OnInit {
         "isjabbernew":this.countryname.isjabbernew,
         "isjabberdelete":this.countryname.isjabberdelete,
         "isjabbermove":this.countryname.isjabbermove,
-        "isjabberupdate":this.countryname.isjabberupdate
+        "isjabberupdate":this.countryname.isjabberupdate,
+        "isphonenumbersearch":this.countryname.isphonenumbersearch
         }   
         this.dataNavParent=this.dataNav123
       //end for lhs

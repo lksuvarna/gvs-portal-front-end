@@ -80,7 +80,7 @@ export class ApprovalpendingComponent implements OnInit {
     this.empserial = this.ccode; 
     this.ccode=this.ccode.substring(6,9);
    
-    //this.empserial="467756744";
+   // this.empserial="467756744";
       this.servicenowservice.searchsnowcoments(this.empserial, "snow_approve","","").subscribe(data => {
         console.log(' snow response', data.message);
         console.log(' snow response', data.message.length);

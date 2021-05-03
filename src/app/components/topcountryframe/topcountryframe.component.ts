@@ -3,6 +3,8 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import {TranslateConfigService} from '../../_services/translate-config.service';
+
 
 @Component({
   selector: 'app-topcountryframe',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class TopcountryframeComponent implements OnInit {
 
-  constructor(private router: Router,private cloudantservice:cloudantservice,private cookie: CookieHandlerService, private route: ActivatedRoute) { }
+  constructor(private router: Router,private cloudantservice:cloudantservice,private cookie: CookieHandlerService, private route: ActivatedRoute, private translateconfigservice : TranslateConfigService) { }
   countryname:any;
   ccode='';
   pcode = '';
@@ -19,7 +21,13 @@ export class TopcountryframeComponent implements OnInit {
   countryroute:any
   service:any;
   pagedisplay:any;
-  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_deactivate','requests','resources','approvalpending']
+  translatecountryname :any;
+  translatecountryname1 :boolean =false;
+  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_deactivate','requests','resources','approvalpending','revalidationpending','phone_search']
+
+  changeLanguage(type :string){
+    this.translateconfigservice.changeLanguage(type);
+  }
   ngOnInit(): void {
    
     this.route.queryParams
@@ -55,6 +63,12 @@ export class TopcountryframeComponent implements OnInit {
       this.pcountrydetails=sessionStorage.getItem('countrydetails')
             console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code)
       this.countryname = JSON.parse(this.pcountrydetails)
+      this.translatecountryname = this.countryname.name;
+      if (this.translatecountryname == 'Canada/Caribbean'){
+          this.translatecountryname1 = true;
+        }
+      
+        
     }
     else{
       console.log("topcountrysession storageelse" + this.pcode)
@@ -74,6 +88,11 @@ export class TopcountryframeComponent implements OnInit {
       this.countryname=data.countrydetails;
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.pcode);}
+       this.translatecountryname = this.countryname.name;
+      if (this.translatecountryname == 'Canada/Caribbean'){
+          this.translatecountryname1 = true;
+        } 
+      
      });
     }
   })

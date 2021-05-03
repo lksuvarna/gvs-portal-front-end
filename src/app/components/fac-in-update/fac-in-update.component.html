@@ -22,10 +22,10 @@
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
             <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
-                <p>You don't have a FAC code, so you can't create an update request.</p>
+                <p>There is no FAC code for this serial number.</p>
             </div>
             <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
-                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Update Jabber request
+                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Update FAC Code request
             is in progress and request number is {{identifier}}.<br>
 
             You can view the status of the on-going request by clicking on the Requests link on the left side navigation
@@ -139,7 +139,6 @@
 
                     <tr valign="top" [hidden]='newFunded'>
                         <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize ds-padding-top-2">Funded</label>
-                            <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%">
                             <div class="ds-mar-b-1">
@@ -164,18 +163,18 @@
                         </td>
                         <td width="54%">
                             <div id="d21" class="ds-input-container ">
-                                <input name="chargeDepartmentCode" value="" id="d2" class="ds-input" style="width: 300px !important;" title="Charge Department Code" maxlength='6' autocomplete="off" ngModel>
+                                <input name="chargeDepartmentCode" value="" id="d2" class="ds-input" style="width: 300px !important;" title="Charge Department Code" autocomplete="off" ngModel>
                                 <div id="Mentor1Div"></div>
                             </div>
                         </td>
                     </tr>
 
                     <tr valign="top" [hidden]='newAuthorizationLevel'>
-                        <td colspan="2" width="50%">
+                        <td colspan="2" width="46%">
                             <label for="LocationId" class=""> Authorization Level</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="50%">
+                        <td width="54%">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="authLevel" rows="2" cols="40" id="authLevel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Authorization Level" #authLevel ngModel>
                                  <option value ="">Select Authorization Level</option>
@@ -193,7 +192,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager for Charge Department Code" rows="2" cols="40" ngModel=""></textarea></div>
+                                <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Business Justification" rows="2" cols="40" ngModel=""></textarea></div>
                         </td>
                     </tr>
 
@@ -207,11 +206,11 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="Back" (click)="backClick()">
+                value="BACK" (click)="backClick()">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2" *ngIf="warninginfo==false && warninginfosnow==false">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Next">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="NEXT">
             </span>
                     </div>
                 </div>
@@ -237,16 +236,16 @@
 
                         </td>
                         <td width="54%" height="10">
-                            <label>{{currLocation}}</label>
+                            <label>{{currLocation1}}-{{currBuilding}}</label>
                         </td>
-                    </tr><br>
+                    </tr><br *ngIf="this.currLocation">
                     <tr valign="top" *ngIf="this.currChargeDeptCode">
                         <td colspan="2" width="46%" height="10"><label for="current_vm" class="ds-text-capitalize"> Current Charge Dept Code </label>
                         </td>
                         <td width="54%" height="10">
                             <span>{{currChargeDeptCode}}</span>
                         </td>
-                    </tr><br>
+                    </tr><br *ngIf="this.currChargeDeptCode">
 
                     <tr valign="top" *ngIf="this.currAuthorizationLevel">
                         <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current Authorization Level </label>
@@ -254,7 +253,7 @@
                         <td width="54%" height="10">
                             <span>{{currAuthorizationLevel}}</span>
                         </td>
-                    </tr><br>
+                    </tr><br *ngIf="this.currAuthorizationLevel">
 
                     <tr valign="top" *ngIf="this.currFACCodeType">
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Current FAC Code Type</label>
@@ -262,7 +261,7 @@
                         <td width="54%" height="10">
                             <label>{{currFACCodeType}}</label>
                         </td>
-                    </tr><br>
+                    </tr><br *ngIf="this.currFACCodeType">
 
                     <tr valign="top" *ngIf="this.currvalidity">
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Current Validity</label>
@@ -270,47 +269,47 @@
                         <td width="54%" height="10">
                             <label>{{currvalidity}}</label>
                         </td>
-                    </tr><br>
+                    </tr><br *ngIf="this.currvalidity">
                     <tr valign="top" *ngIf="this.Location_1 && checked">
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Location</label>
                         </td>
                         <td width="54%" height="10">
                             <label>{{Location_1}}</label>
                         </td>
-                    </tr><br>
+                    </tr><br *ngIf="this.Location_1 && checked">
                     <tr valign="top" *ngIf="this.Buildings && checked">
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Campus</label>
                         </td>
                         <td width="54%" height="10">
                             <label>{{Buildings}}</label>
                         </td>
-                    </tr><br>
+                    </tr><br *ngIf="this.Buildings && checked">
                     <tr valign="top" *ngIf="this.Funded && checked2">
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Funded</label>
                         </td>
                         <td width="54%" height="10">
                             <label>{{Funded}}</label>
                         </td>
-                    </tr><br>
+                    </tr><br *ngIf="this.Funded && checked2">
                     <tr valign="top" *ngIf="this.chargeDepartmentCode && checked2 && !hideDeptCode">
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Charge Department Code</label>
                         </td>
                         <td width="54%" height="10">
                             <label>{{chargeDepartmentCode}}</label>
                         </td>
-                    </tr><br>
+                    </tr><br *ngIf="this.chargeDepartmentCode && checked2 && !hideDeptCode">
                     <tr valign="top" *ngIf="this.authLevel && checked3">
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Authorization Level</label>
                         </td>
                         <td width="54%" height="10">
                             <label>{{authLevel}}</label>
                         </td>
-                    </tr><br>
+                    </tr><br *ngIf="this.authLevel && checked3">
                     <tr valign="top" *ngIf="this.bj_disp">
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Business Justification</label>
                         </td>
                         <td width="54%" height="10">
-                            <label>{{bj_disp}}</label>
+                            <label><span style="word-break:break-all;">{{bj_disp}}</span></label>
                         </td>
                     </tr>
 
@@ -337,11 +336,11 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="Back" (click)='BackButton()' *ngIf="this.isButtonVisible">
+                value="BACK" (click)='BackButton()' *ngIf="this.isButtonVisible">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="SUBMIT" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
                     </div>
                 </div>

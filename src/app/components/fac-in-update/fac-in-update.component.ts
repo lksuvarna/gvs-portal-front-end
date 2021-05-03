@@ -58,6 +58,7 @@ export class FacInUpdateComponent implements OnInit {
   warninginfo=false;
   warninginfosnow=false;
   identifier:any;
+  authValue =''
   // index:any;
   toup_disp : any;
   toup_disp2 : any;
@@ -75,6 +76,8 @@ export class FacInUpdateComponent implements OnInit {
   errorinfo=false;
 
   currLocation = ''
+  currLocation1 = ''
+  currBuilding = ''
   currChargeDeptCode = ''
   currAuthorizationLevel = ''
   currFACCodeType = ''
@@ -85,6 +88,9 @@ export class FacInUpdateComponent implements OnInit {
   Funded = ''
   chargeDepartmentCode = ''
   authLevel = ''
+  UpdatedFor = ''
+  UpdatedForValues = ''
+  newAuthLevelValue =''
   camp: any = [];	
   campA: any = [];
   buildA: any =[];
@@ -150,7 +156,7 @@ export class FacInUpdateComponent implements OnInit {
         return;
       }
 
-      if(formData.value.Location_1 + '~~' + formData.value.Buildings === this.currLocation ) {
+      if(formData.value.Location_1.toLowerCase() + '~~' + formData.value.Buildings.toLowerCase() === this.currLocation.toLocaleLowerCase() ) {
         alert('Please provide a new campus');
         return;
       }
@@ -161,7 +167,7 @@ export class FacInUpdateComponent implements OnInit {
         alert('Please enter the charge department code');
         return;
       }
-      if(formData.value.chargeDepartmentCode === this.currChargeDeptCode) {
+      if(formData.value.chargeDepartmentCode.trim() === this.currChargeDeptCode) {
         alert('Please enter a new charge department code');
         return;
       }
@@ -179,23 +185,39 @@ export class FacInUpdateComponent implements OnInit {
     }
 
     if(formData.value.businessjustification == ''){
-      alert('Please enter Business Justification');
+      alert('Please provide business justification');
       return;
     }
   
-  //  this.jabberDisp = formData.value.Jabber_1;
-    // this.new_cos_disp=formData.value.select_cos;
-    // this.new_vm_disp=formData.value.Voice_Mail;
     this.Location_1 = formData.value.Location_1
     this.Buildings = formData.value.Buildings
     this.Funded = formData.value.Voice_Mail
     this.chargeDepartmentCode = formData.value.chargeDepartmentCode
     this.authLevel = formData.value.authLevel
+
+    this.newAuthLevelValue = this.authCalculation(formData.value.authLevel)
+    this.bj_disp=formData.value.businessjustification;
+
     this.bj_disp=formData.value.businessjustification.replace(/[\n\r+]/g, ' ');
+
     this.isReviewForm = false;
     
     this.isEntryForm = true;
+    this.authValue = this.authCalculation(this.currAuthorizationLevel)
   }
+
+  authCalculation(val:any): string{
+    if(val==='STD'){
+      return '4'
+    } else if (val==='Local') {
+      return '3'
+    } else if (val==='ISD') {
+     return '5'
+    } else {
+      return ''
+    }
+  }
+
   // Submit to Snow Jabber new code added by Swarnava ends	
   backClick() {
     sessionStorage.setItem('backbutton', 'yes');
@@ -224,32 +246,33 @@ export class FacInUpdateComponent implements OnInit {
     this.isSpinnerVisible=true;	
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
+      this.payload.currLocation=this.currLocation;	
+      this.payload.currChargeDeptCode=this.currChargeDeptCode;	
+      this.payload.currAuthorizationLevel=this.authValue;	
+      this.payload.currFACCodeType=this.currFACCodeType;	
+      this.payload.currvalidity=this.currvalidity;	
       // fields picked up from form -- begins	
-      this.payload.Projectid_Disp = '';
-     // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
-      this.payload.Department_number_Disp = '';
-      this.payload.accid_Disp = '';
-      //this.payload.Identifier_Selected = this.jabberDisp;
-      this.payload.updated_for = '';
+      this.payload.Location_1 = this.Location_1
+      this.payload.Buildings = this.Buildings
+      this.payload.Funded = this.Funded
+      this.payload.chargeDepartmentCode = this.chargeDepartmentCode
+      this.payload.authLevel = this.newAuthLevelValue
+      this.payload.bj_disp= this.bj_disp;
       this.payload.ReqNo=this.reqno;
-      // this.payload.Current_COS=this.cos_disp;
-      // this.payload.Current_VM=this.vm_disp;
-      // this.payload.Justification=this.bj_disp;
-      // this.payload.New_Voice=this.new_vm_disp;
-      // this.payload.New_COS=this.new_cos_disp
+      this.payload.updated_for= this.getUpdatedFor()
+      this.payload.updated_for_values= this.UpdatedForValues
       // fields to be picked up from form -- ends	
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
-      this.payload.request_type='jabber_update';	
+      this.payload.request_type='fac_update';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
       this.payload.prov_type=this.countrydetails.provision_type;
-      this.payload.updated_for=this.toup_disp+','+this.toup_disp2;
       	
      this.servicenowservice.submit_request_fac_update(this.payload).subscribe(data=> {	
      console.log('response', data);	
      if(data)	
-     this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
+     this.router.navigate(['/resultpage'],{ skipLocationChange: true , queryParams: { country: this.pcode,service:this.service }}) ;	
      },
      (error) => {                              //Error callback
       console.error('error caught in component'+error);
@@ -259,6 +282,23 @@ export class FacInUpdateComponent implements OnInit {
     });	
      }	
    
+  getUpdatedFor(): any{
+       if (this.toup_disp){
+         this.UpdatedFor = this.toup_disp
+         this.UpdatedForValues = this.Location_1 +'~~'+ this.Buildings
+       }
+       if(this.toup_disp2){
+        this.UpdatedFor += ','+ this.toup_disp2
+        this.UpdatedForValues += ','+ this.chargeDepartmentCode
+       }
+       if(this.toup_disp3){
+        this.UpdatedFor += ','+ this.toup_disp3;
+        this.UpdatedForValues += ','+ this.authLevel
+       }
+
+       return this.UpdatedFor
+  }
+
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute) {
 
    }
@@ -287,11 +327,34 @@ export class FacInUpdateComponent implements OnInit {
       this.db2data = sessionStorage.getItem('db2data')
       this.db2data = JSON.parse(this.db2data)
       this.currLocation = this.db2data[0].ATTRIBUTE3
+      this.currLocation1 = this.currLocation.split('~~')[0]
+      this.currBuilding = this.currLocation.split('~~')[1]
       this.currChargeDeptCode = this.db2data[0].ATTRIBUTE7
       this.currAuthorizationLevel = this.db2data[0].ATTRIBUTE4
       this.currFACCodeType = this.db2data[0].ATTRIBUTE5
       this.currvalidity = this.db2data[0].ATTRIBUTE6
     }
+
+    
+    const servicesData = { 	
+      "data": [	
+        {    		
+          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "step" : 3,	
+          
+        }	
+      ]	
+  
+     
+    }	
+    this.reqFor = sessionStorage.getItem('radioAction');
+      this.servicesData = servicesData.data[0]
+      if(this.warninginfo || this.warninginfosnow){
+        this.hideSteps = true
+      } else {
+        this.hideSteps = false
+      } 
+
     this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
     this.locationlist=this.locationlist?.replace('"','').split(',');	
   
@@ -306,7 +369,7 @@ export class FacInUpdateComponent implements OnInit {
         this.j++;	
       }	
     }
-    
+
     this.route.queryParams	
     .subscribe(params => {	
       console.log(params);	
@@ -328,26 +391,7 @@ export class FacInUpdateComponent implements OnInit {
       "isspecial": this.countryname.isspecial
     }
   });
-  const servicesData = { 	
-    "data": [	
-      {    		
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "step" : 3,	
-        
-      }	
-    ]	
 
-   
-  }	
-  
-  this.reqFor = sessionStorage.getItem('radioAction');
-    this.servicesData = servicesData.data[0]
-
-    if(this.warninginfo || this.warninginfosnow){
-      this.hideSteps = true
-    } else {
-      this.hideSteps = false
-    }
   }
   previousStep(event : any){
     this.isEntryForm = false;	

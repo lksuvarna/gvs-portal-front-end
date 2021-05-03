@@ -7,206 +7,8 @@
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
     </div>
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
-        <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
-            <p><span style="font-size: 1rem;"><span translate>employeeinfotrans.alreadyonedeleterequestinprogress</span> {{identifier}}.<br>
-
-<span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>              
-
-<span translate>employeeinfotrans.furtherassistance</span> <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
-        </div>
         
-        <!-- <form [hidden]='isEntryForm' (submit)='EntryDetails(formData)' #formData='ngForm'>
-            <b>FAC Code Update Request</b>
-            <div class="ds-pad-t-0_5 ds-pad-b-1">
-                <label *ngIf="warninginfo==false">Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</label>
-            </div>
-            <div class=" ds-panel ds-col-12 "></div>
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
-            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
-            <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
-                <p>You don't have a FAC code, so you can't create an update request.</p>
-            </div>
-            <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
-                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Update Jabber request
-            is in progress and request number is {{identifier}}.<br>
-            You can view the status of the on-going request by clicking on the Requests link on the left side navigation
-            menu.<br>
-            For any further assistance, please contact <a style="color:blue" target="_blank"
-              href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
-            </div>
-            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
-                <tbody>
-                    <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_loc" class="ds-text-capitalize"> Current Location </label>
-                        </td>
-                        <td width="54%" height="10">
-                            <div class="ds-input-container">
-                                <span>{{currLocation}}</span></div>
-                        </td>
-                    </tr>
-                    <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current Charge Dept Code </label>
-                        </td>
-                        <td width="54%" height="10">
-                            <div class="ds-input-container">
-                                <span>{{currChargeDeptCode}}</span></div>
-                        </td>
-                    </tr>
-                    <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current Authorization Level </label>
-                        </td>
-                        <td width="54%" height="10">
-                            <div class="ds-input-container">
-                                <span>{{currAuthorizationLevel}}</span></div>
-                        </td>
-                    </tr>
-                    <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current FAC Code Type </label>
-                        </td>
-                        <td width="54%" height="10">
-                            <div class="ds-input-container">
-                                <span>{{currFACCodeType}}</span></div>
-                        </td>
-                    </tr>
-                    <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current Validity </label>
-                        </td>
-                        <td width="54%" height="10">
-                            <div class="ds-input-container">
-                                <span>{{currvalidity}}</span></div>
-                        </td>
-                    </tr>
-                    <tr valign="top">
-                        <td colspan="2" width="46%" height="10">
-                            <label for="updaterequested" class="ds-text-capitalize"> Update Required for </label>
-                            <span class="ds-text-contextual-red-2">*</span>
-                        </td>
-                        <td width="54%" height="10">
-                            <div class="ds-input-container">
-                                <div class="ds-input-checkbox-group" role="group" aria-labelledby="basic-checkboxes-example">
-                                    <div class="ds-input-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="checked" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">
-                                        <div class="ds-input-control"></div>
-                                        <label for="checkbox1">Location</label>
-                                    </div>
-                                    <div class="ds-input-checkbox">
-                                        <input type="checkbox" id="checkbox2" name="checked1" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked2" [ngModelOptions]="{standalone: true}">
-                                        <div class="ds-input-control"></div>
-                                        <label for="checkbox2">Funded</label>
-                                    </div>
-                                    <div class="ds-input-checkbox">
-                                        <input type="checkbox" id="checkbox3" name="checked2" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked3" [ngModelOptions]="{standalone: true}">
-                                        <div class="ds-input-control"></div>
-                                        <label for="checkbox3">Authorization Level</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr valign="top" [hidden]='newLocation'>
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Location</label>
-                            <span class="ds-text-contextual-red-2">*</span>
-                        </td>
-                        <td width="54%" height="10">
-                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location (change)='selectedLocation(location.value)' ngModel>
-                                    <option value ="">Select Office Location</option>
-                                    <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
-                    {{ fl_location }}</option>
-                </select>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr valign="top" [hidden]='newLocation || hideBuilding'>
-                        <td colspan="2" width="46%"><label for="builId" class="ds-text-capitalize"> Campus</label>
-                            <span class="ds-text-contextual-red-2">*</span>
-                        </td>
-                        <td width="54%">
-                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select name="Buildings" rows="2" cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" [(ngModel)]='campus'>
-                                    <option value ="">Select One</option>
-                                    <option *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
-                                </select>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr valign="top" [hidden]='newFunded'>
-                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize ds-padding-top-2">Funded</label>
-                            <span class="ds-text-contextual-red-2">*</span>
-                        </td>
-                        <td width="54%">
-                            <div class="ds-mar-b-1">
-                                <div class="ds-input-radio-group">
-                                    <label for="radio1" class="ds-input-radio ds-pad-r-1" style="display:inline">
-                                        <input type="radio" [(ngModel)]="Voice_Mail" name="Voice_Mail" id="radio1" class="ds-input"
-                                        value="Yes" (change)="isFunded()"> 
-                                        <div class="ds-input-control"></div><span class="ds-pad-l-0_5">Yes</span>
-                                    </label><label for="radio2" class="ds-input-radio ds-pad-r-1" style="display:inline">
-                                        <input type="radio" [(ngModel)]="Voice_Mail" name="Voice_Mail" id="radio2" class="ds-input"
-                                        value="No" checked (change)="isFunded()">
-                                        <div class="ds-input-control"></div><span class="ds-pad-l-0_5">No</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr valign="top" [hidden]='newFunded || hideDeptCode'>
-                        <td colspan="2" width="46%">
-                            <div id="d1"><label for="addId" class="ds-text-capitalize ds-pad-t-1">Charge Department
-                  Code</label> <span class="ds-text-contextual-red-2">*</span></div>
-                        </td>
-                        <td width="54%">
-                            <div id="d21" class="ds-input-container ">
-                                <input name="chargeDepartmentCode" value="" id="d2" class="ds-input" style="width: 300px !important;" title="Charge Department Code" maxlength='6' autocomplete="off" ngModel>
-                                <div id="Mentor1Div"></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr valign="top" [hidden]='newAuthorizationLevel'>
-                        <td colspan="2" width="50%">
-                            <label for="LocationId" class=""> Authorization Level</label>
-                            <span class="ds-text-contextual-red-2">*</span>
-                        </td>
-                        <td width="50%">
-                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select name="authLevel" rows="2" cols="40" id="authLevel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Authorization Level" #authLevel ngModel>
-                                 <option value ="">Select Authorization Level</option>
-                                 <option>Local</option>
-                                 <option>STD</option>
-                                 <option>ISD</option>
-                                </select>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">  Business Justification</label>
-                            <span class="ds-text-contextual-red-2">*</span>
-                        </td>
-                        <td width="54%" height="10">
-                            <div class="ds-input-container">
-                                <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager for Charge Department Code" rows="2" cols="40" ngModel=""></textarea></div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <div class=" ds-panel ds-col-12 "></div>
-            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
-                <div class="ds-tray-fit-content ds-mar-b-0">
-                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
-                        <span class="ds-pad-l-4" id="button1">
-              <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="Back" (click)="backClick()">
-            </span>
-                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2" *ngIf="warninginfo==false && warninginfosnow==false">
-              <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Next">
-            </span>
-                    </div>
-                </div>
-            </div>
-        </form> -->
+        
 
         <form #formData='ngForm'>
             
@@ -218,26 +20,25 @@
             <div class=" ds-panel ds-col-12 "></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+            
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
+            <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
+                <p>There is no FAC code for this serial number.</p>
+            </div>
+            <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
+                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Reset FAC request
+            is in progress and request number is {{identifier}}.<br>
 
-            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+            You can view the status of the on-going request by clicking on the Requests link on the left side navigation
+            menu.<br>
+
+            For any further assistance, please contact <a style="color:blue" target="_blank"
+              href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+            </div>
+            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
                 <tbody>
-                    <!-- <tr valign="top" *ngIf="this.currLocation">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Current Location </label>
-                        </td>
-                        <td width="54%" height="10">
-                            <label>{{currLocation}}</label>
-                        </td>
-                    </tr><br>
-                    <tr valign="top" *ngIf="this.currChargeDeptCode">
-                        <td colspan="2" width="46%" height="10"><label for="current_vm" class="ds-text-capitalize"> Current Charge Dept Code </label>
-                        </td>
-                        <td width="54%" height="10">
-                            <span>{{currChargeDeptCode}}</span>
-                        </td>
-                    </tr><br> -->
-
+                    
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current Authorization Level </label>
                         </td>
@@ -246,64 +47,7 @@
                         </td>
                     </tr><br>
                     <p>Click on submit to Deactivate the FAC code.</p>
-                    <!-- 
-                    <tr valign="top" *ngIf="this.currFACCodeType">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Current FAC Code Type</label>
-                        </td>
-                        <td width="54%" height="10">
-                            <label>{{currFACCodeType}}</label>
-                        </td>
-                    </tr><br>
-                    <tr valign="top" *ngIf="this.currvalidity">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Current Validity</label>
-                        </td>
-                        <td width="54%" height="10">
-                            <label>{{currvalidity}}</label>
-                        </td>
-                    </tr><br>
-                    <tr valign="top" *ngIf="this.Location_1 && checked">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Location</label>
-                        </td>
-                        <td width="54%" height="10">
-                            <label>{{Location_1}}</label>
-                        </td>
-                    </tr><br>
-                    <tr valign="top" *ngIf="this.Buildings && checked">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Campus</label>
-                        </td>
-                        <td width="54%" height="10">
-                            <label>{{Buildings}}</label>
-                        </td>
-                    </tr><br>
-                    <tr valign="top" *ngIf="this.Funded && checked2">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Funded</label>
-                        </td>
-                        <td width="54%" height="10">
-                            <label>{{Funded}}</label>
-                        </td>
-                    </tr><br>
-                    <tr valign="top" *ngIf="this.chargeDepartmentCode && checked2 && !hideDeptCode">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Charge Department Code</label>
-                        </td>
-                        <td width="54%" height="10">
-                            <label>{{chargeDepartmentCode}}</label>
-                        </td>
-                    </tr><br>
-                    <tr valign="top" *ngIf="this.authLevel && checked3">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Authorization Level</label>
-                        </td>
-                        <td width="54%" height="10">
-                            <label>{{authLevel}}</label>
-                        </td>
-                    </tr><br>
-                    <tr valign="top" *ngIf="this.bj_disp">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Business Justification</label>
-                        </td>
-                        <td width="54%" height="10">
-                            <label>{{bj_disp}}</label>
-                        </td>
-                    </tr>
- -->
+
                 </tbody>
             </table>
             <br>
@@ -327,11 +71,11 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="Back" (click)="backClick()" *ngIf="this.isButtonVisible">
+                value="BACK" (click)='backClick()' *ngIf="this.isButtonVisible">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="SUBMIT" (click)="submit_snow()" *ngIf="this.isButtonVisible && warninginfo==false && warninginfosnow==false">
             </span>
                     </div>
                 </div>

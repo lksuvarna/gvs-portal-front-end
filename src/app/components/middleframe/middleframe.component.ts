@@ -18,6 +18,10 @@ export class MiddleframeComponent implements OnInit {
   pcode = '';
   ccode='';
   countryroute :any
+  countrydetails:any
+  parcountrydetails:any
+  fixphoneVisibility:any
+  loggedinuser:any
     ngOnInit(): void {
       
       this.route.queryParams
@@ -36,12 +40,23 @@ export class MiddleframeComponent implements OnInit {
       this.pcountrydetails = sessionStorage.getItem('countrydetails')
       console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code)
       this.countryname = JSON.parse(this.pcountrydetails)
+      this.loggedinuser = this.cookie.getCookie('ccode');
+      if(this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+        if(this.countryname.auth_fixphone.includes(this.loggedinuser)) {
+        this.fixphoneVisibility = true;
+        } else {
+          this.fixphoneVisibility = false;
+        }
+      } else {
+        this.fixphoneVisibility = this.countryname.isfixphone;
+      }
+
       this.cloudantData = {
         "code": this.ccode,
         "name": this.countryname.name,
         "isocode": this.countryname.isocode,
         "isjabber": this.countryname.isjabber,
-        "isfixedphone": this.countryname.isfixphone,
+        "isfixedphone": this.fixphoneVisibility,
         "isfac": this.countryname.isfac,
         "isspecial": this.countryname.isspecial,
         "isreval": this.countryname.isreval,
@@ -60,12 +75,23 @@ export class MiddleframeComponent implements OnInit {
         this.countryname = data.countrydetails;
         sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
         sessionStorage.setItem('countryroute', this.pcode);
+        this.loggedinuser = this.cookie.getCookie('ccode');
+        if(this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+          if(this.countryname.auth_fixphone.includes(this.loggedinuser)) {
+          this.fixphoneVisibility = true;
+          } else {
+            this.fixphoneVisibility = false;
+          }
+        } else {
+          this.fixphoneVisibility = this.countryname.isfixphone;
+        }
+
         this.cloudantData = {
           "code": this.pcode,
           "name": this.countryname.name,
           "isocode": this.countryname.isocode,
           "isjabber": this.countryname.isjabber,
-          "isfixedphone": this.countryname.isfixphone,
+          "isfixedphone": this.fixphoneVisibility,
           "isfac": this.countryname.isfac,
           "isspecial": this.countryname.isspecial,
           "isreval": this.countryname.isreval,

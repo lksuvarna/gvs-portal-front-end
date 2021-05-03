@@ -66,6 +66,10 @@ export class VoipInUpdateComponent implements OnInit {
       alert('No value is changed, so Update request is not required');
       return;
     }
+    if(formData.value.Charge_Dept == '') {
+      alert('Please enter the Charge Department code');
+      return;
+    }
     this.jabberDisp = formData.value.Jabber_1;
     this.chargeDisp = formData.value.Charge_Dept;
     this.isReviewForm = false;
@@ -116,7 +120,7 @@ export class VoipInUpdateComponent implements OnInit {
      this.servicenowservice.submit_request_update(this.payload).subscribe(data=> {	
      console.log('response', data);	
      if(data)	
-     this.router.navigate(['/resultpage'],{ queryParams: { country: this.pcode,service:this.service }}) ;	
+     this.router.navigate(['/resultpage'],{ skipLocationChange: true , queryParams: { country: this.pcode,service:this.service }}) ;	
      },
      (error) => {                              //Error callback
       console.error('error caught in component'+error);
