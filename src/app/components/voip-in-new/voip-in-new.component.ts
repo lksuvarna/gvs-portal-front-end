@@ -94,8 +94,8 @@ export class VoipInNewComponent implements OnInit {
     chargeDepartmentCode:	"",	
     businessUnit:	"",	
     projectId: "",	
-    fixPhoneIdentifier: " ",	
-    Voice_Type_Disp : true,	
+    fixPhoneIdentifier: "",	
+    Voice_Type_Disp : "",	
     icano_Disp : "",	
     Location_final :"",	
     accid_Disp: "",	
@@ -205,14 +205,14 @@ export class VoipInNewComponent implements OnInit {
       // fields picked up from form -- begins	
       this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
       // by default set to true. below line can be removed if needed.	
-      //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
+      this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;	
       this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
-     // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+      this.payload.icano_Disp = "";
       this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;	
       this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
       this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
-      this.payload.Location_final =this.reviewDetailsIndia.campus;	
-      //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
+      this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.accid_Disp="";
       this.payload.ReqNo=this.reqno;	
   
       // fields to be picked up from form -- ends	

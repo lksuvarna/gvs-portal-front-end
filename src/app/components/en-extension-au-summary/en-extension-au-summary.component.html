@@ -1,1 +1,138 @@
-<p>en-extension-au-summary works!</p>
+<app-topcountryframe [ngClass]="{'disabled':showloader==true}"></app-topcountryframe>
+
+
+<div class=" ds-panel ds-col-12"></div>
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+  <div class="ds-col-md-4 ds-col-xl-4">
+    <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData" [ngClass]="{'disabled':showloader==true}"></app-navigation>
+  </div>
+  <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
+    <form [hidden]='isEntryForm' (submit)='EntryDetails(formData)' #formData='ngForm'>
+
+      <b translate>servicestitle.Phone Number Search</b>
+
+      <div class="ds-pad-t-0_5 ds-pad-b-1">
+        <label *ngIf="warninginfo==false" translate>Jabberentrydetails.Fieldsasterisk <span>(</span><span
+            class="ds-text-contextual-red-2">*</span>) <span translate> Jabberentrydetails.arerequired </span></label>
+      </div>
+      <div class=" ds-panel ds-col-12 "></div>
+
+      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps" [ngClass]="{'disabled':showloader==true}"></app-steps>
+
+
+      <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>
+        phonenumber.PhoneNumberSearch</h2>
+
+      <!--<div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
+        <p translate>employeeinfotrans.nojabber </p>
+      </div>
+      <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
+        <p><span style="font-size: 1rem;"><Span translate>employeeinfotrans.alreadyoneupdaterequestinprogress</Span>
+            {{identifier}}.<br>
+
+            <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>
+
+            <span translate> employeeinfotrans.furtherassistance</span><a style="color:blue" target="_blank"
+              href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+      </div>-->
+
+      <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <tbody>
+          <tr valign="top">
+            <td width="50%">
+              <label for="Sear class=" translate>phonenumber.EnterITNNumber</label>
+              <span class="ds-text-contextual-red-2"> *</span>
+            </td>
+            <td width="50%">
+              <div class="ds-col-12">
+                <div class="ds-row">
+                  <div class="ds-col-12">
+                    <div class="ds-row">
+                      <div class="ds-col-7">
+                        <input name="identifier" value="" maxlength="8" class="ds-input" style="width:180px !important;"
+                          ngModel>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <div class=" ds-panel ds-col-12 "></div>
+      <div class="ds-loader-container" *ngIf=showloader>
+        <div class="ds-loader-header"></div>
+        <div class="ds-loader" role="alert" aria-busy="true" aria-label=""> </div>
+    </div>
+
+      <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+        <div class="ds-tray-fit-content ds-mar-b-0">
+          <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+            <span id="button1" *ngIf="!showloader">
+              <input type="button" name="exit"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" tabindex="32765"
+                value="{{'alerttranslation.EXITREQUEST' | translate}}" (click)="backClick()">
+            </span>
+            <span *ngIf="!showloader" class="ds-pad-l-1 ds-pad-r-1" id="button2">
+              <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                tabindex="32767" value="{{'employeeinfotrans.NEXT'|translate}}">
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+
+
+
+    <form [hidden]='isReviewForm' #formData='ngForm'>
+
+      <b translate>servicestitle.Phone Number Search</b>
+
+      <div class=" ds-panel ds-col-12 "></div>
+
+      <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)">
+      </app-steps>
+
+
+      <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>phonenumber.PhoneNumberDetails</h2>
+
+      <div id="err" *ngIf='warningmessage' class="ds-col-xs-12 ds-alert ds-warning">Either it is a free number or No record was found for the
+        number you entered. Please check and try again. If you still have problems, contact <a style="color:blue"
+          target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<div></div>
+      </div>
+
+      <table [hidden]='reviewDetails' id="t2" width="100%" cellspacing="8" cellpadding="0" border="0">
+        <tbody>
+          <tr valign="top">
+            <td colspan="2" width="46%" height="10"><label for="empId" class="ds-text-capitalize" translate>
+                phonenumber.EmpID </label>
+            </td>
+            <td width="54%" height="10">
+              <label>{{serial}}</label>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td colspan="2" width="46%" height="10"><label for="userName" class="ds-text-capitalize"
+                translate>phonenumber.UserName</label>
+            </td>
+            <td width="54%" height="10">
+              <label>{{userName}}</label>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td colspan="2" width="46%" height="10"><label for="serviceDetails" class="ds-text-capitalize"
+                translate>phonenumber.ServiceDetails</label>
+            </td>
+            <td width="54%" height="10">
+              <label>{{serviceDetails}}</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
