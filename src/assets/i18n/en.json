@@ -49,6 +49,7 @@
         "Special Request": "Jabber",
         "Approvals Pending": "Approvals Pending",
         "Revalidation Pending": "Revalidation Pending",
+        "Phone Number Search": "Phone Number Search",
         "Requests" : "Requests",
         "Resources" : "Resources"
         
@@ -104,7 +105,8 @@
         "Update an existing FAC code" : "Update an existing FAC code",
         "FAC Code Update Request":"FAC Code Update Request",
         "Reset an existing FAC code" : "Reset an existing FAC code",
-        "FAC Code Reset Request": "FAC Code Update Request"
+        "FAC Code Reset Request": "FAC Code Update Request",
+        "Phone Number Search": "Phone Number Search"
         
         
         
@@ -212,6 +214,13 @@
         "Phone/Dial" : "Phone/Dial",
         "Innumber" : "In number",
         "AdditionalInformation" : "Additional Information"
+    },
+    "phonenumber" :{
+        "PhoneNumberSearch":"Phone Number Search",
+        "EnterITNNumber":"Enter ITN Number",
+        "EmpID":"EmpID",
+        "UserName":"User Name",
+        "ServiceDetails":"Service Details"
     },
      "alerttranslation" : {
         "EXITREQUEST" : "EXIT REQUEST",

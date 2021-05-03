@@ -72,6 +72,7 @@ export class VoipEmeaNewComponent implements OnInit {
     }
     
     this.selectedLocationEmea = formData.value.Location;
+    this.reviewDetailsEMEA.Location_final = formData.value.Location;
     this.isEntryFormEmea = true;
     this.isReviewFormEmea = false;
 
@@ -124,14 +125,14 @@ export class VoipEmeaNewComponent implements OnInit {
       // fields picked up from form -- begins	
       this.payload.Buildings_Disp=this.reviewDetailsEMEA.campus;	
       // by default set to true. below line can be removed if needed.	
-      //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
+      this.payload.Voice_Type_Disp = "No";
       this.payload.Projectid_Disp = this.reviewDetailsEMEA.projectId;	
-     // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+      this.payload.icano_Disp = "";
       this.payload.identifier_hp_Disp = this.reviewDetailsEMEA.fixPhoneIdentifier;	
       this.payload.BusinessUnit_Disp =this.reviewDetailsEMEA.businessUnit;	
       this.payload.Department_number_Disp = this.reviewDetailsEMEA.chargeDepartmentCode;	
-      this.payload.Location_final =this.reviewDetailsEMEA.campus;	
-      //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
+      this.payload.Location_final =this.reviewDetailsEMEA.Location_final;
+      this.payload.accid_Disp="";
       this.payload.ReqNo=this.reqno;	
   
       // fields to be picked up from form -- ends	

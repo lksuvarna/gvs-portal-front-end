@@ -50,6 +50,7 @@
         "Special Request": "Special Request",
         "Approvals Pending": "Approbations en attente",
         "Revalidation Pending": "Revalidation en attente",
+        "Phone Number Search": "Recherche par numéro de téléphone",
         "Resources": "Ressources",
         "Requests": "Demandes"
     },
@@ -106,7 +107,8 @@
         "Update an existing FAC code" : "Mettre à jour un code FAC existant",
         "FAC Code Update Request":"Demande de mise à jour du code FAC",
         "Reset an existing FAC code" : "Réinitialiser un code FAC existant",
-        "FAC Code Reset Request": "Demande de mise à jour du code FAC"
+        "FAC Code Reset Request": "Demande de mise à jour du code FAC",
+        "Phone Number Search": "Recherche par numéro de téléphone"
 
     },
     "employeeinfotrans":{
@@ -209,6 +211,13 @@
         "Phone/Dial" : "Téléphone / Numérotation",
         "Innumber" : "En nombre",
         "AdditionalInformation" : "Informations Complémentaires"
+    },
+    "phonenumber" :{
+        "PhoneNumberSearch":"Recherche par numéro de téléphone",
+        "EnterITNNumber":"Entrez le numéro ITN",
+        "EmpID":"EmpID",
+        "UserName":"Nom d'utilisateur",
+        "ServiceDetails":"Détails du service"
     },
     "alerttranslation" : {
         "EXITREQUEST" : "DEMANDE DE SORTIE",
