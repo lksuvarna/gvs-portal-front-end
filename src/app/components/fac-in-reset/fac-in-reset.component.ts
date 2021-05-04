@@ -79,12 +79,16 @@ export class FacInResetComponent implements OnInit {
   
 
   // Submit to Snow Jabber new code added by Swarnava ends	
-  backClick() {
-    sessionStorage.setItem('backbutton', 'yes');
-    sessionStorage.setItem('step', 'step1');
-    this.location.back();
-    
-  }
+  backClick(): void{	
+    sessionStorage.setItem('backbutton','yes');	
+    sessionStorage.setItem('step','step1');	
+    //this.location.back();	
+    if(sessionStorage.getItem('radioAction')=='myself'){
+      this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+    }
+    else{
+    this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }	}
 
   authCalculation(val:any): string{
     if(val==='STD'){
@@ -171,6 +175,27 @@ export class FacInResetComponent implements OnInit {
     }
     this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
     this.locationlist=this.locationlist?.replace('"','').split(',');	
+
+    const servicesData = { 	
+      "data": [	
+        {    		
+          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "step" : 3,	
+          
+        }	
+      ]	
+  
+     
+    }	
+    
+    this.reqFor = sessionStorage.getItem('radioAction');
+      this.servicesData = servicesData.data[0]
+  
+      if(this.warninginfo || this.warninginfosnow){
+        this.hideSteps = true
+      } else {
+        this.hideSteps = false
+      }
   
     for (var i = 0; i < this.locationlist.length; i++) {	
       var n = this.locationlist[i].indexOf("~")	
@@ -205,26 +230,7 @@ export class FacInResetComponent implements OnInit {
       "isspecial": this.countryname.isspecial
     }
   });
-  const servicesData = { 	
-    "data": [	
-      {    		
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
-        "step" : 3,	
-        
-      }	
-    ]	
 
-   
-  }	
-  
-  this.reqFor = sessionStorage.getItem('radioAction');
-    this.servicesData = servicesData.data[0]
-
-    if(this.warninginfo || this.warninginfosnow){
-      this.hideSteps = true
-    } else {
-      this.hideSteps = false
-    }
   }
   previousStep(event : any){
     this.isEntryForm = false;	

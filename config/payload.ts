@@ -47,7 +47,7 @@ export class Jabber_New
     orinator_payload !: String;
     cNum_payload !: String;
     Buildings_Disp !: String;
-    Voice_Type_Disp !: boolean;
+    Voice_Type_Disp !: String;
     Projectid_Disp !: String;
     icano_Disp !: String;
     identifier_hp_Disp !: String;
@@ -74,7 +74,7 @@ Jabber_New()
     this.orinator_payload ="";
     this.cNum_payload ="";
     this.Buildings_Disp  ="";
-    this.Voice_Type_Disp  =true;
+    this.Voice_Type_Disp  ="";
     this.Projectid_Disp  ="";
     this.icano_Disp  ="";
     this.identifier_hp_Disp  ="";

@@ -49,6 +49,7 @@
         "Special Request": "Jabber",
         "Approvals Pending": "Approvals Pending",
         "Revalidation Pending": "Revalidation Pending",
+        "Phone Number Search": "Phone Number Search",
         "Requests": "Requests",
         "Resources": "Resources"
 
@@ -99,12 +100,15 @@
         "Move Jabber Request": "Move Jabber Request",
         "Fixed Phone - New Request": "Fixed Phone - New Request",
         "New Fixed Phone Request": "New Fixed Phone Request",
+        "Fixed Phone - Update Request": "Fixed Phone - Update Request",
+        "Fixed Phone - Delete Request": "Fixed Phone - Delete Request",
         "Request a new FAC Code": "Request a new FAC Code",
         "FAC Code New Request": "FAC Code New Request",
         "Update an existing FAC code": "Update an existing FAC code",
         "FAC Code Update Request": "FAC Code Update Request",
+        "FAC Code Reset Request": "FAC Code Reset Request",
         "Reset an existing FAC code": "Reset an existing FAC code",
-        "FAC Code Reset Request": "FAC Code Update Request"
+        "Phone Number Search": "Phone Number Search"
 
 
 
@@ -137,7 +141,7 @@
         "jabberconfiguration": "Related to Jabber configuration can be found at",
         "furtherassistance": "For any further assistance, please contact",
         "alreadyone": "Serial number that you have entered has already one",
-        "inprogess": "is in progress and request number is",
+        "inprogess": "request in progress and request number is",
         "ongoingrequestsbyclickonrequestpage": "You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.",
         "nooutstandingreq": "No outstanding requests were found for the serial number.",
         "noresources": "There are no resources for this serial number.",
@@ -214,6 +218,14 @@
         "Innumber": "In number",
         "AdditionalInformation": "Additional Information"
     },
+    "phonenumber" :{
+        "PhoneNumberSearch":"Phone Number Search",
+        "PhoneNumberDetails":"Phone Number Details",
+        "EnterITNNumber":"Enter ITN Number",
+        "EmpID":"EmpID",
+        "UserName":"User Name",
+        "ServiceDetails":"Service Details"
+    },
     "alerttranslation": {
         "EXITREQUEST": "EXIT REQUEST",
         "digitserialnumber": "Employee Serial Number should be of 6 characters",
@@ -242,6 +254,8 @@
         "Review Details": "Review Details",
         "Employee Resources Details": "Employee Resources Details",
         "Employee Requests Details": "Employee Requests Details",
+        "Phone Number Search": "Phone Number Search",
+        "Phone Number Details": "Phone Number Details",
         "STEP 1": "STEP 1",
         "STEP 2": "STEP 2",
         "STEP 3": "STEP 3",

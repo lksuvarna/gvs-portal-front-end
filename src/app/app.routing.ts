@@ -47,6 +47,7 @@ import { HpEmeaNewComponent } from './components/hp-emea-new/hp-emea-new.compone
 import { HpIndonesiaNewComponent } from './components/hp-indonesia-new/hp-indonesia-new.component';
 import { HpAuNewComponent } from './components/hp-au-new/hp-au-new.component';
 import { FacInDeactivateComponent } from './components/fac-in-deactivate/fac-in-deactivate.component';
+import { EnExtensionAuSummaryComponent } from './components/en-extension-au-summary/en-extension-au-summary.component'
 
 
 
@@ -76,7 +77,9 @@ const appRoutes: Routes = [
     {path: 'approvalresult', component: ApprovalResultPageComponent},
     {path: 'approvalsingle', component:ApprovalSinglePageComponent},
     { path: 'employeesearchdelete', component: EmployeesearchVoipDeleteComponent},
-    { path: 'revalidationpending', component: RevalidationpendingComponent},
+    { path: 'employeesearchres', component: EmployeesearchComponent},
+    { path: 'employeesearchreq', component: EmployeesearchComponent},
+    { path: 'revalidationpending', component: ApprovalpendingComponent},
     { path: 'approvalpending', component: ApprovalpendingComponent},
     { path: 'entrydetailsla', component: VoipLaNewComponent},
     { path: 'entrydetailsemea', component: VoipEmeaNewComponent},
@@ -95,7 +98,8 @@ const appRoutes: Routes = [
     { path: 'entrydetailsfacu', component: FacInUpdateComponent},
     { path: 'entrydetailsfacr', component: FacInResetComponent},
     { path: 'entrydetails_update_la', component: VoipLaUpdateComponent},
-    { path: 'entrydetails_update_us', component: VoipUsaUpdateComponent} , 
+    { path: 'entrydetails_update_us', component: VoipUsaUpdateComponent},
+    { path: 'extensionsummaryau', component: EnExtensionAuSummaryComponent}, 
     
     { path: 'pagenotfound', component: PagenotfoundComponent},
     { path: 'pagenotfound?error', component: PagenotfoundComponent},

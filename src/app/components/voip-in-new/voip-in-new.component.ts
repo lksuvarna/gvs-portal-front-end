@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { CookieHandlerService } from '../../_services/cookie-handler.service';	
 import { NgForm } from '@angular/forms';	
-import {Router} from  '@angular/router';	
+import {Router,RouterEvent, NavigationEnd} from  '@angular/router';	
 import { ActivatedRoute } from '@angular/router';	
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Jabber_New} from '../../../../config/payload';	
@@ -47,6 +47,7 @@ export class VoipInNewComponent implements OnInit {
   servicesData: any = []	
   Locations: any;	
   locationlist: any;	
+  previousUrl:any
   pcode: any;	
   service: any;	
   //min = 1000;	
@@ -94,19 +95,24 @@ export class VoipInNewComponent implements OnInit {
     chargeDepartmentCode:	"",	
     businessUnit:	"",	
     projectId: "",	
-    fixPhoneIdentifier: " ",	
-    Voice_Type_Disp : true,	
+    fixPhoneIdentifier: "",	
+    Voice_Type_Disp : "",	
     icano_Disp : "",	
     Location_final :"",	
     accid_Disp: "",	
     reqno:""	
   }	
  // Submit to Snow Jabber new code added by Swarnava ends	
- backClick(){	
+ backClick(): void{	
   sessionStorage.setItem('backbutton','yes');	
   sessionStorage.setItem('step','step1');	
-  this.location.back();	
-}	
+  //this.location.back();	
+  if(sessionStorage.getItem('radioAction')=='myself'){
+    this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }
+  else{
+  this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+}	}
   selectedLocation(loc:String) {	
     this.build = [];	
     this.campus = '';	
@@ -205,14 +211,14 @@ export class VoipInNewComponent implements OnInit {
       // fields picked up from form -- begins	
       this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
       // by default set to true. below line can be removed if needed.	
-      //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
+      this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;	
       this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
-     // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+      this.payload.icano_Disp = "";
       this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;	
       this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
       this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
-      this.payload.Location_final =this.reviewDetailsIndia.campus;	
-      //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
+      this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.accid_Disp="";
       this.payload.ReqNo=this.reqno;	
   
       // fields to be picked up from form -- ends	

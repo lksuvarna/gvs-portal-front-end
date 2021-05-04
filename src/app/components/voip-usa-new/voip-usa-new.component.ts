@@ -61,11 +61,16 @@ belongsTo:any;
   hideSteps = false;
  
   locationselected = "Home and Mobile";
-  backClick(){	
-    sessionStorage.setItem('backbutton','yes');	
-    sessionStorage.setItem('step','step1');	
-    this.location.back();	
+ backClick(): void{	
+  sessionStorage.setItem('backbutton','yes');	
+  sessionStorage.setItem('step','step1');	
+  //this.location.back();	
+  if(sessionStorage.getItem('radioAction')=='myself'){
+    this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
   }
+  else{
+  this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+}	}
   BackButton() {	
     this.isEntryForm = false;	
     this.isReviewForm = true;	

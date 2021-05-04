@@ -370,11 +370,6 @@ if(sessionStorage.getItem('countrydetails')==undefined){
 
         }
 
-        if (this.service.includes("fac") && this.service !== "fac_new" ) {
-          this.getLocationdata();
-
-        }
-
         if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' || this.service == 'fac_deactivate') {
           this.getDBdata();
 
@@ -417,7 +412,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
 
       else {
         this.datasnow = "nodata";
-        if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset") {
+        if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_deactivate") {
           this.getLocationdata()
         }
 
@@ -485,7 +480,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
 
           this.datadb = "yes";
         }
-        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' ) {
+        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' ||this.service == 'fac_deactivate' ) {
           console.log("insidesnowdelete")
           this.getSNOWdata();
           this.datadb = "yes";
@@ -498,7 +493,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       else {
         console.log("nodb2data");
         this.datadb = "nodata";
-        if (this.service == "jabber_new" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset") {
+        if (this.service == "jabber_new" || this.service == "fac_new" ) {
           this.getSNOWdata()
         }
         else {

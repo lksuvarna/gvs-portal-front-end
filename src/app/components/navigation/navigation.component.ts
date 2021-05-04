@@ -34,8 +34,8 @@ export class NavigationComponent implements OnInit {
   parcountrydetails:any
   fixphoneVisibility:any;
   loggedinuser:any
-  serhl:any;jhl:any;fhl:any;fachl:any;reqhl:any;reshl:any;apphl:any;
-  serin:any;jin:any;fin:any;facin:any;reqin:any;resin:any;appin:any;
+  serhl:any;jhl:any;fhl:any;fachl:any;reqhl:any;reshl:any;apphl:any;pnshl:any;
+  serin:any;jin:any;fin:any;facin:any;reqin:any;resin:any;appin:any;pnsin:any;
   @Input('dataNav') dataNavParent1: any
   @Input('cloudantData') cloudantData1: any
    
@@ -97,6 +97,9 @@ export class NavigationComponent implements OnInit {
     if (!this.cloudantData.isreval) {
       this.removeService('Revalidation Pending')
     }
+    if (!this.cloudantData.isphonenumbersearch) {
+      this.removeService('Phone Number Search')
+    }
 
   }
 
@@ -127,8 +130,8 @@ export class NavigationComponent implements OnInit {
             this.fixphoneVisibility = this.parcountrydetails.isfixphone;
           }
         }
-      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;this.apphl=false;
-      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;this.appin=false;
+      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;this.apphl=false;this.pnshl=false;
+      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;this.appin=false;this.pnsin=false;
       
       if (this.service=="services")
       {
@@ -171,9 +174,14 @@ export class NavigationComponent implements OnInit {
         this.apphl=true
         
       }
+      if ((this.service).includes("phone_search"))
+      {        
+        this.pnshl=true
+        
+      }
 
 
-      if (this.service=="services"||this.service=="requests"||this.service=="resources" || this.service=="approvalpending")
+      if (this.service=="services"||this.service=="requests"||this.service=="resources" || this.service=="approvalpending" || this.service=='phone_search')
       {
         this.dataNav123 = { 
           "data": [
@@ -182,9 +190,10 @@ export class NavigationComponent implements OnInit {
                 {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
                // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
                 {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
-                {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
-                {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
-                {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
+                {"name" : "Revalidation Pending","routingname":"/revalidationpending", "indented" : false, "highlighted": false,"param":"revalidationpending"},
+                {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search"},
+                {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
+                {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
               ],
               "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
               "step" : 1,
@@ -205,8 +214,9 @@ export class NavigationComponent implements OnInit {
 
               {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
               {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
-              {"name" : "Resources","routingname":"/employeesearch", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
-              {"name" : "Requests","routingname":"/employeesearch", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
+              {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search"},
+              {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
+              {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
             ],
             "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
             "step" : 1,
@@ -233,6 +243,7 @@ export class NavigationComponent implements OnInit {
         "isjabberdelete":this.countryname.isjabberdelete,
         "isjabbermove":this.countryname.isjabbermove,
         "isjabberupdate":this.countryname.isjabberupdate,
+        "isphonenumbersearch":this.countryname.isphonenumbersearch
 
        
       } 
@@ -273,7 +284,8 @@ export class NavigationComponent implements OnInit {
         "isjabbernew":this.countryname.isjabbernew,
         "isjabberdelete":this.countryname.isjabberdelete,
         "isjabbermove":this.countryname.isjabbermove,
-        "isjabberupdate":this.countryname.isjabberupdate
+        "isjabberupdate":this.countryname.isjabberupdate,
+        "isphonenumbersearch":this.countryname.isphonenumbersearch
         }   
         this.dataNavParent=this.dataNav123
       //end for lhs
