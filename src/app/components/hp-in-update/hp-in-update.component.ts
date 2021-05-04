@@ -223,14 +223,19 @@ export class HpInUpdateComponent implements OnInit {
       alert('Please enter 12 characters MAC address');
     }
 
-   else if(formData.value.Comments == '') {	
+   else if(formData.value.Comments.trim() == '' || formData.value.Comments == '/\s/') {	
       alert('Please provide the reason for updation.');	
     }
 
-    else if(formData.value.Newdesc == '') {	
-      alert('Please provide the New Description. ');	
+    else if(formData.value.Newdesc == '' || formData.value.Comments == '/\s/') {	
+      alert('Please provide the New Description.');	
       	
     }
+
+    else if(formData.value.Newdesc == this.currentdesc){
+      alert('Please choose a different Description as the current Description is already '+this.currentdesc +' for the selected Jabber number.');
+    }
+  
 
     else if(formData.value.Location_1 == '' && this.showLocation == true) {	
       alert('Please select a location');	
@@ -239,6 +244,8 @@ export class HpInUpdateComponent implements OnInit {
     else if(formData.value.Buildings == '' && this.showLocation == true) {	
       alert('Please select a campus');	
     }
+
+   
     
 
     else
