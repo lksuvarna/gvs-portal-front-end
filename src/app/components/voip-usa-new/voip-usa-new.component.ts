@@ -63,11 +63,12 @@ belongsTo:any;
   
   hideSteps = false;
  
-  locationselec
+  locationselected = "Home and Mobile";
+
   backClick(formData:NgForm){	
     sessionStorage.setItem('backbutton','yes');	
     sessionStorage.setItem('step','step1');	
-    //this.location.back();	
+   // this.location.back();	
     this.create_cache(formData);
     if(sessionStorage.getItem('radioAction')=='myself'){
       this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
