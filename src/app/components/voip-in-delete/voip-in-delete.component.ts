@@ -53,13 +53,21 @@ export class VoipInDeleteComponent implements OnInit {
       this.selected = true;
     }}
     mainConfiguration :any;
+
     backClick(formData: NgForm){	
       sessionStorage.setItem('backbutton','yes');	
       sessionStorage.setItem('step','step1');	
-      this.location.back();	
+     // this.location.back();	
        //set up the cache for form values.
     this.create_cache(formData);
+    if(sessionStorage.getItem('radioAction')=='myself'){
+      this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+    }
+    else{
+    this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }	
     }	
+
     BackButton() {	
       this.isEntryForm = false;	
       this.isReviewForm = true;	

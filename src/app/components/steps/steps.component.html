@@ -86,7 +86,7 @@
         <span [ngClass]="step===3 ? 'ds-pad-l-r-1 ds-text-contextual-green-3' : 'ds-pad-l-r-1 ds-text-contextual-blue-5'"><b>-----&gt;</b></span>
     <span [ngClass]="changeClass3 ? 'ds-tooltip ds-hover ds-text-align-center ds-open' : 'ds-tooltip ds-hover ds-text-align-center' " id="tooltip-demo1">
         <span (mouseenter)="changeClass3=true" (mouseout)="changeClass3=false">
-            <a [routerLink]="['/entrydetails']" [queryParams]="{country:pcode,service:service}"  [class.disabled]="(step===1 || step===2 || step===3) ? true : false"  [ngClass]="step===3 ? 'ds-tooltip-trigger ds-text-contextual-green-3' : 'ds-tooltip-trigger ds-text-contextual-blue-5'" aria-label="help" tabindex="0"><b translate>steps.{{servicesData[4].name}}</b></a>
+            <a [routerLink]="['/entrydetails']" [skipLocationChange]=true [queryParams]="{country:pcode,service:service}"  [class.disabled]="(step===1 || step===2 || step===3) ? true : false"  [ngClass]="step===3 ? 'ds-tooltip-trigger ds-text-contextual-green-3' : 'ds-tooltip-trigger ds-text-contextual-blue-5'" aria-label="help" tabindex="0"><b translate>steps.{{servicesData[4].name}}</b></a>
             </span>
     <div class="ds-tooltip-content ds-text-neutral-7 text-style" id="tooltip-demo1-content" role="tooltip" translate>steps.{{servicesData[4].tooltip}}</div>
     </span>

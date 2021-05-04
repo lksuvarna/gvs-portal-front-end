@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { CookieHandlerService } from '../../_services/cookie-handler.service';	
 import { NgForm } from '@angular/forms';	
-import {Router} from  '@angular/router';	
+import {Router,RouterEvent, NavigationEnd} from  '@angular/router';	
 import { ActivatedRoute } from '@angular/router';	
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Create_Cache_jabber, Jabber_New} from '../../../../config/payload';	
@@ -48,6 +48,7 @@ export class VoipInNewComponent implements OnInit {
   locationlist: any;	
   selected_location ="";
   selected_campus="";
+  previousUrl:any
   pcode: any;	
   service: any;	
   //min = 1000;	
@@ -109,12 +110,20 @@ export class VoipInNewComponent implements OnInit {
     reqno:""	
   }	
  // Submit to Snow Jabber new code added by Swarnava ends	
+
  backClick(formData:NgForm){	
   sessionStorage.setItem('backbutton','yes');	
   sessionStorage.setItem('step','step1');	
-  this.location.back();
+  //this.location.back();
   this.create_cache(formData);	
+  if(sessionStorage.getItem('radioAction')=='myself'){
+    this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }
+  else{
+  this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
 }	
+}	
+
   selectedLocation(loc:String) {	
     this.build = [];	
     this.campus = '';	

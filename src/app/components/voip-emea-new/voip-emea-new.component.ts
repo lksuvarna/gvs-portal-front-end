@@ -95,11 +95,18 @@ export class VoipEmeaNewComponent implements OnInit {
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,public location:Location,private servicesd : TranslateConfigService) {}
   mainConfiguration :any;
 
+
   backClick(formData:NgForm){	
     sessionStorage.setItem('backbutton','yes');	
     sessionStorage.setItem('step','step1');	
-    this.location.back();	
+    //this.location.back();	
     this.create_cache(formData);
+    if(sessionStorage.getItem('radioAction')=='myself'){
+      this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+    }
+    else{
+    this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }	
   }
 
   selectedLocation(loc:String) {	
