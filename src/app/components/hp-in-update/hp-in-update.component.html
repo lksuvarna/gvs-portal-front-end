@@ -332,8 +332,12 @@
                 
             </tbody>
         </table>
-
-        
+        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
+            <p></p>
+            <p>Something seems to have gone wrong. Please try later.</p>
+            <p>
+            </p>
+        </div>
         <div class="ds-hr-thick ds-mar-t-1_5"></div>
         <!-- Dark Background -->
         <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
