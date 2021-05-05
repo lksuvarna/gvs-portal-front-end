@@ -153,6 +153,20 @@ export class StepsComponent implements OnInit {
 
   }
 
+  if(this.service=='jabber_update'){
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.selected_jabber = this.formData.value.Jabber_1;
+    if(this.formData.value.account_id==undefined)
+    this.cache.projectId=this.formData.value.Charge_Dept;
+    else			
+    this.cache.projectId=this.formData.value.account_id;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached"+JSON.stringify(this.cache));
+
+  }
+
+
 }
 
 } 

@@ -345,6 +345,9 @@ export class VoipInNewComponent implements OnInit {
     if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_new')){
       this.selected_location=String(this.cache_disp.officeLocation) ;
       this.selectedLocation(this.cache_disp.officeLocation);
+      if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION') || (this.cache_disp.officeLocation=='') )
+      this.hideBuilding=true;
+      else
       this.hideBuilding=false;
       this.campus = String(this.cache_disp.campus);	
       this.Voice_Type= String(this.cache_disp.funded);
