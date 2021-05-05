@@ -52,7 +52,10 @@ export class VoipInMoveComponent implements OnInit {
   campus: any;
   reqFor: any;
   hideProjectId = false;
-  hideSteps = false
+  hideSteps = false;
+  currentLocations:any = [];
+  currentPLocations:any = [];
+  selectedjabber:any;
 
   payload: Jabber_Move = new Jabber_Move();
   reviewDetailsIndia = {
@@ -64,11 +67,12 @@ export class VoipInMoveComponent implements OnInit {
     businessUnit: "",
     projectId: "",
     fixPhoneIdentifier: " ",
-    Voice_Type_Disp: true,
+    Voice_Type_Disp: "",
     icano_Disp: "",
     Location_final: "",
     Identifier_Disp: "",
-    reqno: ""
+    reqno: "",
+    currentLocation: ""
   }
   backClick(){	
     sessionStorage.setItem('backbutton','yes');	
@@ -98,10 +102,10 @@ export class VoipInMoveComponent implements OnInit {
     if (jabberNumberVal != '') {
       this.displayDiv = true;
     }
-    else
+    else {
       this.displayDiv = false;
-
-    //alert(this.displayDiv + this.jabberNumberVal)
+    }
+    
   }
 
   selectedLocation(loc: String) {
@@ -128,6 +132,7 @@ export class VoipInMoveComponent implements OnInit {
       alert('Please select the jabber number to move');
       return;
     }
+    this.selectedjabber = formData.value.Identifier_Selected;
     if (formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {
       alert('Please select the Office Location');
       return;
@@ -161,6 +166,11 @@ export class VoipInMoveComponent implements OnInit {
     this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;
     this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
     this.reviewDetailsIndia.projectId = formData.value.Projectid;
+    for(var j=0;j<this.Jabber.length;j++){
+      if(this.selectedjabber == this.Jabber[j]) {
+        this.reviewDetailsIndia.currentLocation = this.currentLocations[j];
+      }
+    }
     
 
   }
@@ -181,14 +191,15 @@ export class VoipInMoveComponent implements OnInit {
     // fields picked up from form -- begins	
     //this.payload. = this.reviewDetailsIndia.campus;
     // by default set to true. below line can be removed if needed.	
-    //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
+    this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;
     this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;
-    // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+    this.payload.icano_Disp = '';	
     this.payload.Identifier_Disp = this.reviewDetailsIndia.jabberNumbertoMove;
     this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
     this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
-    //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
+    this.payload.correct_location = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    this.payload.accid_Disp='';
     this.payload.ReqNo = this.reqno;
 
     // fields to be picked up from form -- ends	
@@ -202,6 +213,8 @@ export class VoipInMoveComponent implements OnInit {
     this.payload.evolution_instance = this.countrydetails.evolution_instance;
     this.payload.qag = this.countrydetails.qag;
     this.payload.class_of_serice = this.countrydetails.class_of_serice;
+    this.payload.default_call_permission=this.countrydetails.default_call_permission;
+    this.payload.Site_location= this.reviewDetailsIndia.currentLocation;
     //this.payload.country_code = this.countrydetails.code;
     console.log('Payload');
     //console.log(this.payload);	
@@ -249,7 +262,10 @@ this.identifier=sessionStorage.getItem('identifier')
     else{
       this.identifier=sessionStorage.getItem('identifier') 
       this.identifier = this.identifier.split(',');
-      this.Jabber = [...this.identifier];     
+      this.Jabber = [...this.identifier];
+      this.currentPLocations= sessionStorage.getItem('profile_location');
+      this.currentPLocations = this.currentPLocations.split(',');
+      this.currentLocations = [...this.currentPLocations]; 
     }	
      this.route.queryParams	
      .subscribe(params => {	

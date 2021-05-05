@@ -48,6 +48,7 @@ import { HpIndonesiaNewComponent } from './components/hp-indonesia-new/hp-indone
 import { HpAuNewComponent } from './components/hp-au-new/hp-au-new.component';
 import { FacInDeactivateComponent } from './components/fac-in-deactivate/fac-in-deactivate.component';
 import { EnExtensionAuSummaryComponent } from './components/en-extension-au-summary/en-extension-au-summary.component'
+import { VoipAuMoveComponent } from './components/voip-au-move/voip-au-move.component';
 
 
 
@@ -71,7 +72,8 @@ const appRoutes: Routes = [
     { path: 'entrydetailsjd', component: VoipInDeleteComponent },
     { path: 'entrydetails', component: VoipInNewComponent },
     { path: 'entrydetailsiju', component: VoipInUpdateComponent },  
-    { path: 'entrydetailsijm', component: VoipInMoveComponent },      
+    { path: 'entrydetailsijm', component: VoipInMoveComponent }, 
+    { path: 'entrydetailsaumv', component: VoipAuMoveComponent},     
     { path: 'reviewdetails', component: ReviewdetailsComponent },  
     { path: 'resultpage', component: ResultpageComponent },
     {path: 'approvalresult', component: ApprovalResultPageComponent},

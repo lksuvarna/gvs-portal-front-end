@@ -27,14 +27,14 @@
           <tr valign="top">
             <td colspan="2" width="46%">
               <label for="IdentifierId" class="ds-text-capitalize">Jabber Number</label>
-              <span class="ds-text-contextual-red-2">*</span>
+              <span class="ds-text-contextual-red-2"> *</span>
             </td>
             <td width="54%" height="10">
               <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                <select ngModel #jabberNumberVal (change)="getjabberNumberVal(jabberNumberVal.value)"
+                <select [(ngModel)]='itn_sel' #jabberNumberVal (change)="getjabberNumberVal(jabberNumberVal.value)"
                   name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left"
                   style="width:300px !important; text-transform: uppercase;" title="Extension Number">
-                  <option value="">SELECT ONE</option>
+                  <option value="">Select Jabber Number</option>
                   <option *ngFor="let jab of jabberNumber" [value]="jab">{{jab}}</option>
                 </select>
               </div>
@@ -43,13 +43,13 @@
           <tr valign="top">
             <td colspan="2" width="46%">
               <label for="IdentifierId" class="ds-text-capitalize">Location Moving To</label>
-              <span class="ds-text-contextual-red-2">*</span>
+              <span class="ds-text-contextual-red-2"> *</span>
             </td>
             <td width="54%" height="10">
               <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                 <select [(ngModel)] = "loc_sel"
                   name="Location_Selected" id="LocationId" class="ds-title ds-align-text-left"
-                  style="width:300px !important; text-transform: uppercase;" title="Location">
+                  style="width:300px !important; text-transform: uppercase;" title="Location" #loc (change)="getlocation(loc.value)">
                   <option value="Select Location">Select Location</option>
                   <option *ngFor="let loc of locations" [ngValue]="loc">{{loc}}</option>
                 </select>
@@ -67,12 +67,12 @@
           <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                 >
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="Next"><br>
+                value="NEXT"><br>
             </span>
           </div>
         </div>
@@ -96,7 +96,7 @@
 
         <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Jabber Request Details</h2>
 
-        <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <table id="t2" width="100%" cellspacing="8" cellpadding="0" border="0">
             <tbody>
                 <tr valign="top">
                     <td colspan="2" width="46%" height="10">
@@ -112,7 +112,6 @@
                 </tr>
             </tbody>
         </table>
-        <br><br>
 
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
           <p>Opps! Some thing went worng.Please try again latter.</p><p>
@@ -130,12 +129,12 @@
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                 (click)='BackButton()' *ngIf="this.isButtonVisible  && !errorinfo">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible  && !errorinfo">
+                value="SUBMIT" (click)="submit_snow()" *ngIf="this.isButtonVisible  && !errorinfo">
             </span>
             <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
                         
