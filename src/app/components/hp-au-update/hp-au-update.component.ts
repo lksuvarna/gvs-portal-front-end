@@ -34,7 +34,7 @@ export class HpAuUpdateComponent implements OnInit {
   locationlist: any;	
   pcode: any;	
   service: any;
-
+  errorinfo=false;
   currentMac: string = '20BBC0DD14DB';
   currentPhone: Number = 3413073;
   currentdesc: any = 'testing 123';
@@ -223,6 +223,8 @@ export class HpAuUpdateComponent implements OnInit {
 
     this.isButtonVisible=false;
     this.isSpinnerVisible=true;	
+
+    //MAKE SURE THE ERROR HANDLE CODE IS ADDED WHEN YOU SUBMIT TO SNOW>
 
   }
 

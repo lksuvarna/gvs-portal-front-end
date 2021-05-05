@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';	
+import { Component, Input, OnInit } from '@angular/core';	
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { CookieHandlerService } from '../../_services/cookie-handler.service';	
 import { NgForm } from '@angular/forms';	
 import {Router,RouterEvent, NavigationEnd} from  '@angular/router';	
 import { ActivatedRoute } from '@angular/router';	
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {Jabber_New} from '../../../../config/payload';	
+import {Create_Cache_jabber, Jabber_New} from '../../../../config/payload';	
 import { analyzeAndValidateNgModules } from '@angular/compiler';	
 import {Location} from '@angular/common';	
+
   
   
 @Component({	
@@ -35,18 +36,18 @@ export class VoipInNewComponent implements OnInit {
   errorinfo=false;
   isEntryForm = false;	
   isReviewForm = true;	
-  Voice_Type = "No";	
-   
-    
-   
-      
+  Voice_Type = "No";	    
   hideDeptCode = true;	
   hideBuilding = true;	
   fixedPhoneIdentifier = false;	
+  identifier_hardphone: any;
   cloudantData: any = []	
   servicesData: any = []	
   Locations: any;	
+  identifier_hp="";
   locationlist: any;	
+  selected_location ="";
+  selected_campus="";
   previousUrl:any
   pcode: any;	
   service: any;	
@@ -59,6 +60,9 @@ export class VoipInNewComponent implements OnInit {
   reqFor: any;
   chargeDeptValue:any = '';
   projectIdValue:any = '';
+  cache_tmp:  any = [];
+  index: any;
+  
     
       
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	
@@ -86,6 +90,9 @@ export class VoipInNewComponent implements OnInit {
   // Submit to Snow Jabber new code added by Swarnava	
   
   payload : Jabber_New = new Jabber_New();	
+  cache : Create_Cache_jabber = new Create_Cache_jabber();
+  cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
+
   
   reviewDetailsIndia = {	
   
@@ -103,16 +110,20 @@ export class VoipInNewComponent implements OnInit {
     reqno:""	
   }	
  // Submit to Snow Jabber new code added by Swarnava ends	
- backClick(): void{	
+
+ backClick(formData:NgForm){	
   sessionStorage.setItem('backbutton','yes');	
   sessionStorage.setItem('step','step1');	
-  //this.location.back();	
+  //this.location.back();
+  this.create_cache(formData);	
   if(sessionStorage.getItem('radioAction')=='myself'){
     this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
   }
   else{
   this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
-}	}
+}	
+}	
+
   selectedLocation(loc:String) {	
     this.build = [];	
     this.campus = '';	
@@ -172,6 +183,7 @@ export class VoipInNewComponent implements OnInit {
       this.projectIdValue = '';
       return;	
     }	
+  
     if(formData.value.identifier_hp.trim() == '') {
       this.fixedPhoneIdentifier = true;	
     } else {
@@ -180,7 +192,8 @@ export class VoipInNewComponent implements OnInit {
       alert('Please enter the correct Identifier for Fixed Phone');
       return;
     }
-  }
+  
+}
     this.isEntryForm = true;	
     this.isReviewForm = false;	
   
@@ -191,8 +204,25 @@ export class VoipInNewComponent implements OnInit {
     this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
     this.reviewDetailsIndia.projectId = formData.value.Projectid;	
     this.reviewDetailsIndia.fixPhoneIdentifier = formData.value.identifier_hp;	
-  
+
+    //set up the cache for form values.
+     this.create_cache(formData);
   }	
+
+  create_cache(formData:NgForm){
+
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.officeLocation =  formData.value.Location_1;		
+    this.cache.campus = formData.value.Buildings;		
+    this.cache.funded = this.Voice_Type;
+    this.cache.chargeDepartmentCode=formData.value.Department_number;	
+    this.cache.projectId=formData.value.Projectid;	
+    this.cache.fixPhoneIdentifier= formData.value.identifier_hp;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached");
+  }
   
   BackButton() {	
     this.isEntryForm = false;	
@@ -251,6 +281,8 @@ export class VoipInNewComponent implements OnInit {
      );	
      }	
    
+  
+ 
  // Submit to Snow Jabber new code added by Swarnava ends	
   
   ngOnInit(): void {	
@@ -305,6 +337,42 @@ export class VoipInNewComponent implements OnInit {
     if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
       this.hideProjectId = true;
       }
+
+    //load cache data for entry details form. -- START
+    this.cache_tmp=sessionStorage.getItem('cache')	
+    console.log(this.cache_tmp);
+    this.cache_disp=JSON.parse(this.cache_tmp);
+    if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_new')){
+      this.selected_location=String(this.cache_disp.officeLocation) ;
+      this.selectedLocation(this.cache_disp.officeLocation);
+      if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION') || (this.cache_disp.officeLocation=='') )
+      this.hideBuilding=true;
+      else
+      this.hideBuilding=false;
+      this.campus = String(this.cache_disp.campus);	
+      this.Voice_Type= String(this.cache_disp.funded);
+      this.projectIdValue = this.cache_disp.projectId;
+      if(this.cache_disp.funded=='Yes'){
+        this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
+        this.showChargeDepartmentCode();
+      }
+        else
+        {
+        this.chargeDeptValue= '';
+        this.hideChargeDepartmentCode();
+        }
+        if(this.cache_disp.fixPhoneIdentifier.trim()=='')
+        this.identifier_hp ='';
+        else
+        this.identifier_hp = String(this.cache_disp.fixPhoneIdentifier);
+       
+        console.log("cache restored and deleted");
+    }else{
+      sessionStorage.removeItem('cache');
+    }
+
+    //load cache data for entry details form. -- START
+
   }	
 
   previousStep(event : any){
