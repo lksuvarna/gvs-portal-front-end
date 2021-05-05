@@ -17,7 +17,7 @@
       </div>
       <div class=" ds-panel ds-col-12 "></div>
 
-      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
+      <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
 
 
       <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>Jabberentrydetails.EmployeeEntryDetails</h2>
@@ -43,7 +43,7 @@
               <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                 <select ngModel #jabberNumberVal (change)="getjabberNumberVal(jabberNumberVal.value)"
                   name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left"
-                  style="width:300px !important; text-transform: uppercase;" title="Identifier to Move">
+                  style="width:300px !important; text-transform: uppercase;" title="Identifier to Move" [(ngModel)]='selected_jabber'>
                   <option value="">Select One</option>
                   <option *ngFor="let jab of Jabber" [value]="jab">{{jab}}</option>
                 </select>
@@ -64,10 +64,10 @@
                 <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                   <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"
                     style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1"
-                    #location (change)='selectedLocation(location.value)' ngModel>
+                    #location (change)='selectedLocation(location.value)' ngModel [(ngModel)]='selected_location'>
                     <option value="">Select Office Location</option>
-                    <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location'>
-                      {{ fl_location }}</option>
+                    <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' selected>
+                      {{ fl_location }} </option>
                   </select>
                 </div>
               </td>
@@ -116,7 +116,7 @@
                   <input name="Department_number" value="" maxlength='6' tabindex="4" id="d2" class="ds-input"
                     style="width: 300px !important;"
                     title="Contact FirstLine Manager\Project Manager for Charge Department Code" autocomplete="off"
-                    ngModel>
+                    ngModel [(ngModel)]='chargeDeptValue'>
                   <div id="Mentor1Div"></div>
                 </div>
               </td>
@@ -137,7 +137,7 @@
               <td width="54%">
                 <div class="ds-input-container">
                   <input ngModel name="Projectid" value="" rows="2" maxlength="11" cols="40" id="Projectid" class="ds-input"
-                    style="width:300px !important;" title="Project ID">
+                    style="width:300px !important;" title="Project ID" [(ngModel)]='projectIdValue'>
                 </div>
               </td>
             </tr>
@@ -157,7 +157,7 @@
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
-                (click)="backClick()">
+                (click)="backClick(formData)">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"

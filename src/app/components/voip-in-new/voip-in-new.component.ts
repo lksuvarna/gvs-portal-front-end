@@ -353,20 +353,21 @@ export class VoipInNewComponent implements OnInit {
       this.Voice_Type= String(this.cache_disp.funded);
       this.projectIdValue = this.cache_disp.projectId;
       if(this.cache_disp.funded=='Yes'){
-        this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
+       // this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
         this.showChargeDepartmentCode();
       }
         else
         {
-        this.chargeDeptValue= '';
+        //this.chargeDeptValue= '';
         this.hideChargeDepartmentCode();
         }
+        this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
         if(this.cache_disp.fixPhoneIdentifier.trim()=='')
         this.identifier_hp ='';
         else
         this.identifier_hp = String(this.cache_disp.fixPhoneIdentifier);
        
-        console.log("cache restored and deleted");
+        console.log("cache restored");
     }else{
       sessionStorage.removeItem('cache');
     }
