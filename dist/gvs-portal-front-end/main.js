@@ -18558,14 +18558,17 @@ class EmployeesearchComponent {
             this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
             this.fullName = this.fullName.replace(",", ", ");
             this.ccode = this.cookie.getCookie('ccode');
-            if (sessionStorage.getItem('countrydetails') == undefined) {
-                this.getTitle();
+            this.countryroute = sessionStorage.getItem('countryroute');
+            // alert(this.countryroute)
+            // alert(this.pcode)
+            //if(sessionStorage.getItem('countrydetails')==undefined ) {
+            if (this.pcode !== this.countryroute) {
                 this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
-                    console.log('Response received navigation', data.countrydetails.isspecial);
                     this.countryname = data.countrydetails;
                     sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
                     this.countrydetails = JSON.stringify(data.countrydetails);
                     this.countrydetails = JSON.parse(this.countrydetails);
+                    this.getTitle();
                     sessionStorage.setItem('countryroute', this.pcode);
                     if (this.countrydetails.testuser) {
                         this.ccode = this.countrydetails.testuser;
