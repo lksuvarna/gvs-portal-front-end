@@ -622,3 +622,36 @@ fixedphone_update(){
 }
 
 }
+
+//setting up cache class for data retention.
+
+export class Create_Cache_jabber
+{
+
+setflag !: boolean;
+cnum !:string;
+officeLocation	!: String;
+campus	!: String;
+funded	!: String;
+chargeDepartmentCode !: String;	
+businessUnit !: String;
+projectId	!: String;
+fixPhoneIdentifier !: String;
+selected_jabber !: String;
+
+Create_Cache_jabber(){
+
+       this.cnum='';
+       this.officeLocation	='';
+       this.campus	='';
+       this.funded	='';
+       this.chargeDepartmentCode ='';
+       this.businessUnit='';
+       this.projectId	='';
+       this.fixPhoneIdentifier ='';
+       this.setflag=false;
+       this.selected_jabber='';
+
+    }
+
+}

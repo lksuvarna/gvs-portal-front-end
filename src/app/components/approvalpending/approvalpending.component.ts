@@ -128,13 +128,11 @@ export class ApprovalpendingComponent implements OnInit {
       for (var i = 0; i < this.checkedList.length; i++) {
      await this.process2(this.checkedList[i].trim());
         }
-      console.log("exited for");
         if(this.flag)	{
-          console.log("I am here3");
         sessionStorage.setItem('approval_status','approved');	
-        this.router.navigate(['/approvalresult'],{ queryParams: { country: this.pcode, service:this.service}}) ;	
+        this.router.navigate(['/approvalresult'],{ skipLocationChange: true ,queryParams: { country: this.pcode, service:this.service}}) ;	
         }else{
-          console.log("I am here4");
+          console.log("Nothing");
         }
 
   }
@@ -178,7 +176,7 @@ openpage(req:any){
   sessionStorage.setItem('request_cnum',req['sysapproval.variables.requested_by.user_name'].replace('-',''));
   sessionStorage.setItem('request_name',req['sysapproval.variables.requested_by.name']);
   sessionStorage.setItem('request_sysid',req.sys_id);
-  this.router.navigate(['/approvalsingle'],{ queryParams: { country: this.pcode, service:this.service}}) ;
+  this.router.navigate(['/approvalsingle'],{ skipLocationChange: true, queryParams: { country: this.pcode, service:this.service}}) ;
   
 }
 

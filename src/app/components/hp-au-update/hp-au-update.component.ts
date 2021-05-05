@@ -39,6 +39,7 @@ export class HpAuUpdateComponent implements OnInit {
   currentPhone: any ;
   currentdesc: any ;
   currentloc: any;
+  errorinfo=false;
 
   showformodel: boolean = false;
   showformacadd: boolean = false;
@@ -58,7 +59,6 @@ export class HpAuUpdateComponent implements OnInit {
 
   hideBuilding = false;	
   reqno:any;
-  errorinfo=false;
   warninginfo=false;
   warninginfosnow=false;
   hideSteps = false;
@@ -163,11 +163,16 @@ export class HpAuUpdateComponent implements OnInit {
   }
 
     // Submit to Snow Jabber new code added by Swarnava ends	
-backClick(){	
-  sessionStorage.setItem('backbutton','yes');	
-  sessionStorage.setItem('step','step1');	
-  this.location.back();	
-  }	
+    backClick(): void{	
+      sessionStorage.setItem('backbutton','yes');	
+      sessionStorage.setItem('step','step1');	
+      //this.location.back();	
+      if(sessionStorage.getItem('radioAction')=='myself'){
+        this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+      }
+      else{
+      this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+    }	}
 
   selectedLocation(loc:String) {	
     this.build = [];	
@@ -200,35 +205,35 @@ backClick(){
       return;	
     }
 
-    // var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
-    // if(pat1.test(formData.value.MAC1)) {
-    //   alert('MAC field value to be in combination of 0 to 9 and A to F');
-    //   return;
-    // }
+    var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
+    if(pat1.test(formData.value.MAC1)) {
+      alert('MAC field value to be in combination of 0 to 9 and A to F');
+      return;
+    }
 
-    // if(formData.value.Location_1.toUpperCase() == 'SELECT STATE' || formData.value.Location_1 == '') {	
-    //   alert('Please select the State');	
-    //   return;	
-    // }	
-    // if(formData.value.Buildings.toUpperCase() == 'SELECT LOCATION' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT STATE' && formData.value.Buildings == '') {	
-    //   alert('Please select the Location');	
-    //   return;	
-    // }	
+    if(formData.value.Location_1.toUpperCase() == 'SELECT STATE' || formData.value.Location_1 == '') {	
+      alert('Please select the State');	
+      return;	
+    }	
+    if(formData.value.Buildings.toUpperCase() == 'SELECT LOCATION' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT STATE' && formData.value.Buildings == '') {	
+      alert('Please select the Location');	
+      return;	
+    }	
 
-    // if(formData.value.Newdesc.trim() == '') {	
-    //   alert('Please provide the New Description.');
-    //   return;
-    // }
+    if(formData.value.Newdesc.trim() == '') {	
+      alert('Please provide the New Description.');
+      return;
+    }
 
-    // if(formData.value.Newdesc.trim() == this.currentdesc) {
-    //   alert("Please choose a different Description as the current Description is already "+this.currentdesc+" for the provided number.");
-    //   return;
-    // }
+    if(formData.value.Newdesc.trim() == this.currentdesc) {
+      alert("Please choose a different Description as the current Description is already "+this.currentdesc+" for the provided number.");
+      return;
+    }
 
-    // if(formData.value.Comments.trim() == '') {	
-    //   alert('Please provide the reason for updation.');	
-    //   return;
-    // }
+    if(formData.value.Comments.trim() == '') {	
+      alert('Please provide the reason for updation.');	
+      return;
+    }
     
 
     this.isEntryForm = true;	
@@ -297,6 +302,8 @@ backClick(){
      this.errorinfo=true;
      this.isButtonVisible=true;
    });
+
+    //MAKE SURE THE ERROR HANDLE CODE IS ADDED WHEN YOU SUBMIT TO SNOW>
 
   }
 

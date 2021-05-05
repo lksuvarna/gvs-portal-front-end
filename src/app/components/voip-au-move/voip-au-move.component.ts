@@ -61,6 +61,17 @@ export class VoipAuMoveComponent implements OnInit {
   payload : Jabber_Move = new Jabber_Move();
   constructor(private router:Router,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private cookie: CookieHandlerService) { }
 
+  backClick(): void{	
+    sessionStorage.setItem('backbutton','yes');	
+    sessionStorage.setItem('step','step1');	
+    //this.location.back();	
+    if(sessionStorage.getItem('radioAction')=='myself'){
+      this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+    }
+    else{
+    this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }	}
+  
   getjabberNumberVal(jabberNumberVal: string) {
     this.loc_sel = 'Select Location';
 

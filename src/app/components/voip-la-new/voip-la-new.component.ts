@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
 import {Router} from  '@angular/router';	
 import { ActivatedRoute } from '@angular/router';	
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {Jabber_New} from '../../../../config/payload';	
+import {Create_Cache_jabber, Jabber_New} from '../../../../config/payload';	
 import { analyzeAndValidateNgModules } from '@angular/compiler';	
 import {Location} from '@angular/common';	
 
@@ -54,6 +54,11 @@ employeeInfo1: any;
 campus:any;	
 hideProjectId = false;
 reqFor: any;
+cache_tmp:  any = [];
+selected_location ="";
+
+cache : Create_Cache_jabber = new Create_Cache_jabber();
+cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
   
     
 constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	
@@ -98,10 +103,17 @@ reviewDetailsIndia = {
   reqno:""	
 }	
 // Submit to Snow Jabber new code added by Swarnava ends	
-backClick(){	
+backClick(formData:NgForm){	
 sessionStorage.setItem('backbutton','yes');	
 sessionStorage.setItem('step','step1');	
-this.location.back();	
+//this.location.back();	
+this.create_cache(formData);
+if(sessionStorage.getItem('radioAction')=='myself'){
+  this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+}
+else{
+this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+}	
 }	
 selectedLocation(loc:String) {	
   this.build = [];	
@@ -166,6 +178,7 @@ entryDetailsLA(formData: NgForm) {
   // this.reviewDetailsIndia.projectId = formData.value.Projectid;	
   // this.reviewDetailsIndia.fixPhoneIdentifier = formData.value.identifier_hp;	
 // alert("control here");
+this.create_cache(formData);
 }	
 
 BackButton() {	
@@ -231,6 +244,16 @@ submit_snow(){
  
 // Submit to Snow Jabber new code added by Swarnava ends	
 
+create_cache(formData:NgForm){
+  console.log("Starting Cache");
+  this.cache.setflag=true;
+  this.cache.cnum=this.cnum;
+  this.cache.officeLocation = formData.value.Location;		
+  sessionStorage.setItem('cache',JSON.stringify(this.cache));
+  console.log("cached");
+}
+
+
 ngOnInit(): void {	
 
    // Submit to Snow Jabber new code added by Swarnava	
@@ -283,6 +306,19 @@ ngOnInit(): void {
   if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
     this.hideProjectId = true;
     }
+
+    //load cache data for entry details form. -- START
+    this.cache_tmp=sessionStorage.getItem('cache')	
+    console.log(this.cache_tmp);
+    this.cache_disp=JSON.parse(this.cache_tmp);
+    if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_new')){
+    this.selected_location=String(this.cache_disp.officeLocation) ;    
+    console.log("cache restored");
+    }else{
+      sessionStorage.removeItem('cache');
+    }
+ 
+    //Load Cache ends. 
 }	
 
 previousStep(event : any){

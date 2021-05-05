@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
-import { Jabber_Move } from '../../../../config/payload';
+import { Create_Cache_jabber, Jabber_Move } from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { Location } from '@angular/common';
 
@@ -56,8 +56,16 @@ export class VoipInMoveComponent implements OnInit {
   currentLocations:any = [];
   currentPLocations:any = [];
   selectedjabber:any;
+  chargeDeptValue:any = '';
+  projectIdValue:any = '';
+  cache_tmp:  any = [];
+  selected_jabber ="";
+  selected_location="";
 
   payload: Jabber_Move = new Jabber_Move();
+  cache : Create_Cache_jabber = new Create_Cache_jabber();
+  cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
+  
   reviewDetailsIndia = {
     jabberNumbertoMove: "",
     officeLocation: "",
@@ -74,11 +82,17 @@ export class VoipInMoveComponent implements OnInit {
     reqno: "",
     currentLocation: ""
   }
-  backClick(){	
-    sessionStorage.setItem('backbutton','yes');	
-    sessionStorage.setItem('step','step1');	
-    this.location.back();	
+ backClick(formData: NgForm): void{	
+  sessionStorage.setItem('backbutton','yes');	
+  sessionStorage.setItem('step','step1');	
+  //this.location.back();	
+  this.create_cache(formData);
+  if(sessionStorage.getItem('radioAction')=='myself'){
+    this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
   }
+  else{
+  this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+}	}
 
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) {
    /* this.Locations = {
@@ -102,10 +116,12 @@ export class VoipInMoveComponent implements OnInit {
     if (jabberNumberVal != '') {
       this.displayDiv = true;
     }
-    else {
+    else{
       this.displayDiv = false;
+      this.selected_location='';
     }
-    
+
+    //alert(this.displayDiv + this.jabberNumberVal)
   }
 
   selectedLocation(loc: String) {
@@ -171,8 +187,31 @@ export class VoipInMoveComponent implements OnInit {
         this.reviewDetailsIndia.currentLocation = this.currentLocations[j];
       }
     }
+
+       //set up the cache for form values.
+       this.create_cache(formData);
     
 
+  }
+
+  create_cache(formData:NgForm){
+
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.selected_jabber = formData.value.Identifier_Selected;
+    if(formData.value.Identifier_Selected==''){
+    this.cache.officeLocation ='';
+    }else{
+    this.cache.officeLocation =  formData.value.Location_1;		
+    }
+    this.cache.campus = formData.value.Buildings;		
+    this.cache.funded = this.Voice_Type;
+    this.cache.chargeDepartmentCode=formData.value.Department_number;	
+    this.cache.projectId=formData.value.Projectid;	
+    this.cache.fixPhoneIdentifier= formData.value.identifier_hp;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached");
   }
 
   BackButton() {
@@ -315,6 +354,39 @@ this.identifier=sessionStorage.getItem('identifier')
        }
        this.reqFor = sessionStorage.getItem('radioAction')
       });   	
+
+          //load cache data for entry details form. -- START
+    this.cache_tmp=sessionStorage.getItem('cache')	
+    console.log(this.cache_tmp);
+    this.cache_disp=JSON.parse(this.cache_tmp);
+    if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_move')){
+      this.selected_jabber=String(this.cache_disp.selected_jabber);
+      this.getjabberNumberVal(String(this.cache_disp.selected_jabber));
+      this.selected_location=String(this.cache_disp.officeLocation) ;
+      this.selectedLocation(this.cache_disp.officeLocation);
+      if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION') || (this.cache_disp.officeLocation=='') )
+      this.hideBuilding=true;
+      else
+      this.hideBuilding=false;
+      this.campus = String(this.cache_disp.campus);	
+      this.Voice_Type= String(this.cache_disp.funded);
+      this.projectIdValue = this.cache_disp.projectId;
+      if(this.cache_disp.funded=='Yes'){
+        this.showChargeDepartmentCode();
+      }
+        else
+        {
+        //this.chargeDeptValue= '';
+        this.hideChargeDepartmentCode();
+        }
+        this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
+       
+        console.log("cache restored ");
+    }else{
+      sessionStorage.removeItem('cache');
+    }
+
+    //load cache data for entry details form. -- START
   } 
   previousStep(event : any){
     this.isEntryFormMove = false;	

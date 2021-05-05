@@ -16,7 +16,7 @@
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
+            <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>employeeinfotrans.EmployeeEntryDetails</h2>
             <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
@@ -37,7 +37,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" tabindex="1" ngModel>
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" tabindex="1" ngModel [(ngModel)]='selected_jabber'>
                   <option value ="" translate>Jabberupdate.SELECTONE</option>
                   <option name="Jabber_1" *ngFor='let fl_itn of Jabber' [value]='fl_itn' selected>
                     {{ fl_itn }}</option>
@@ -55,7 +55,7 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="{{'employeeinfotrans.BACK'|translate}}" (click)="backClick()">
+                value="{{'employeeinfotrans.BACK'|translate}}" (click)="backClick(formData)">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next"
