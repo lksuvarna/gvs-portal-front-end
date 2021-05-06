@@ -17,8 +17,7 @@
 
       <div class=" ds-panel ds-col-12 "></div>
 
-      <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)">
-      </app-steps>
+      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
       <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
@@ -42,7 +41,7 @@
                         <div>
                           <input type="button" class="ds-button ds-secondary ds-width-auto 
                                                 ds-margin-bottom-0 ds-pad-l-1 ds-pad-r-1" (click)='OnSearchClick()'
-                            name="back" value="SEARCH">
+                            name="SEARCH" value="SEARCH">
                         </div>
                       </div>
                     </div>
@@ -86,16 +85,16 @@
 
           <tr valign="top" *ngIf='showSearch'>
             <td width="50%"><br>
-              <label for="sear" class=""> Current Description </label>
+              <label for="sear" class=""> Current Location</label>
             </td>
-            <td width="50%"><br>{{currentdesc}}</td>
+            <td width="50%"><br>{{currentloc}}</td>
           </tr>
 
           <tr valign="top" *ngIf='showSearch'>
             <td width="50%"><br>
-              <label for="sear" class=""> Current Model</label>
+              <label for="sear" class=""> Current Description </label>
             </td>
-            <td width="50%"><br>{{currentmodel}}</td>
+            <td width="50%"><br>{{currentdesc}}</td>
           </tr>
 
           <tr valign="top" *ngIf='showSearch'>
@@ -106,10 +105,9 @@
             <td width="50%"><br>
               <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                 <select name="UpdateReq" id="voicetype" class="ds-title ds-align-text-left"
-                  style="width:300px !important;" title="Update Required For" #device (change)='updateFor(device.value)'
-                  [(ngModel)]='selected_device' ngModel>
+                  style="width:300px !important; text-transform: uppercase;" title="Update Required For" #device (change)='updateFor(device.value)' ngModel>
                   <option value="">Select One</option>
-                  <option *ngFor='let device of updateRequiredFor' [value]='device'>{{ device }}</option>
+                  <option *ngFor='let devices of updateRequiredFor' [value]='devices'>{{ devices }}</option>
                 </select>
               </div>
             </td>
@@ -117,53 +115,31 @@
         </tbody>
       </table>
 
-      <table id="t2" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
+      <table id="t2" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showLocation' border="0">
         <tbody>
-          <tr valign="top" *ngIf='showLocation'>
+          <tr valign="top">
             <td colspan="2" width="50%"><label for="LocationId" class="ds-text-capitalize">Select State </label>
               <span class="ds-text-contextual-red-2">*</span>
             </td>
-            <!--<td width="50%" class="ds-pad-t-1">
-              <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"
-                  style="width:300px !important; text-transform: uppercase;" title="Location" #location
-                  (change)='selectedLocation(location.value)' ngModel>
-                  <option value="">Select State</option>
-                  <option *ngFor='let fl_state of camp' [value]='fl_state'>
-                    {{ fl_state }}</option>
-                </select>
-              </div>
-            </td>-->
             <td width="54%" height="10">
-                <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                    <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel>
-                        <option value ="">Select State</option>
-                        <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
-        {{ fl_location }}</option>
-    </select>
-                </div>
-            </td>
+                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel>
+                                    <option value ="">Select State</option>
+                                    <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location'>{{ fl_location }}</option>
+                                </select>
+                            </div>
+              </td>
           </tr>
-          <tr valign="top" *ngIf='showLocation' class="ds-pad-t-1">
-            <td colspan="2" width="50%"><label for="builId" class="ds-text-capitalize">Select New Location </label>
+          <tr valign="top" class="ds-pad-t-1">
+            <td colspan="2" width="50%"><label for="LocationId_1_1" class="ds-text-capitalize">Select New Location </label>
               <span class="ds-text-contextual-red-2">*</span>
             </td>
-           <!-- <td width="54%">
-              <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                <select name="Buildings" rows="2" cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left"
-                  style="width:300px !important; text-transform: uppercase;" title="Location" [(ngModel)]='campus'
-                  ngModel>
-                  <option value="">Select Location</option>
-                  <option *ngFor="let fl_location of build" [value]='fl_location'>{{ fl_location }}</option>
-                </select>
-              </div>
-            </td>-->
             <td width="54%">
                 <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                     <select name="Buildings" rows="2" [(ngModel)]='campus' cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1">
-                        <option name="Buildings" value ="Select Location">Select Location</option>
+                        <option value ="Select Location">Select Location</option>
                         <option name="Buildings" *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
-    </select>
+                    </select>
                 </div>
             </td>
           </tr>
@@ -172,24 +148,6 @@
 
       <table id="t3" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
         <tbody>
-          <tr valign="top" *ngIf='showformodel'>
-            <td colspan="2" width="50%">
-              <span id="modelid"><br>
-                <label for="modelid" class="ds-text-capitalize"> Type Of Model</label>
-                <span class="ds-text-contextual-red-2"></span>
-              </span>
-            </td>
-            <td width="50%">
-              <div id="model1" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1"><br>
-                <!-- <input name="" type="hidden" value="1"> -->
-                <select name="NewModel" rows="2" cols="40" class="ds-title ds-align-text-left"
-                  style="width:300px !important;" title="Phone Model" ngModel>
-                  <option value="">Select Phone Model</option>
-                  <option name="NewModel" *ngFor='let model of models' [value]='model'>{{ model }}</option>
-                </select>
-              </div>
-            </td>
-          </tr>
 
           <tr valign="top" *ngIf='showformacadd'>
             <td colspan="2" width="50%" class="ds-pad-t-1 ds-pad-b-2">
@@ -197,7 +155,8 @@
             </td>
             <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
               <input name="MAC1" value="" class="ds-input ds-pad-b-1" style="width:300px !important;"
-                title="New MAC Address" maxlength="12;" ngModel>
+                title="New MAC Address" maxlength="12" ngModel>
+                <label>Note:Combination of (0 to 9 , A to F) and Length:12</label>
             </td>
           </tr>
 
@@ -232,12 +191,12 @@
           <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                 (click)="backClick()">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="Next">
+                value="NEXT">
             </span>
           </div>
         </div>
@@ -266,69 +225,63 @@
             <td colspan="2" width="46%">
               <label for="addId1">Current MAC Address</label>
             </td>
-            <td width="54%">{{reviewDetailsIndia.mac}</td>
+            <td width="54%">{{reviewDetailsIndia.mac}}</td>
                 </tr>
                 <tr valign="top">
                     <td colspan="2" width="46%">
                         <label for="addId1">Current Phone Number </label>
                     </td>
-                    <td width="54%">{{reviewDetailsIndia}</td>
+                    <td width="54%">{{reviewDetailsIndia.phoneNunmer}}</td>
                 </tr>
+                <tr valign="top">
+                  <td colspan="2" width="46%">
+                      <label for="addId1">Current Location</label>
+                  </td>
+                  <td width="54%">{{reviewDetailsIndia.location}}</td>
+              </tr>
                 <tr valign="top">
                     <td colspan="2" width="46%">
                         <label for="addId1">Current Description</label>
                     </td>
-                    <td width="54%">{{reviewDetailsIndia.description}</td>
-                </tr>
-                <tr valign="top">
-                    <td colspan="2" width="46%">
-                        <label for="addId1">Current Model</label>
-                    </td>
-                    <td width="54%">{{reviewDetailsIndia.model}</td>
+                    <td width="54%">{{reviewDetailsIndia.description}}</td>
                 </tr>
                 <tr valign="top">
                     <td colspan="2" width="46%">
                         <label for="addId1">Update Required for</label>
                     </td>
-                    <td width="54%">{{reviewDetailsIndia}</td>
+                    <td width="54%">{{reviewDetailsIndia.updatereq}}</td>
                 </tr>
-                <tr valign="top">
-                    <td colspan="2" width="46%">
-                        <label for="addId1">Type Of Model</label>
-                    </td>
-                    <td width="54%">{{reviewDetailsIndia}</td>
-                </tr>
-                <tr valign="top">
+                <tr valign="top" *ngIf='showformacadd'>
                     <td colspan="2" width="46%">
                         <label for="addId1">New MAC Address</label>
                     </td>
-                    <td width="54%">{{reviewDetailsIndia}</td>
+                    <td width="54%">{{reviewDetailsIndia.newMac}}</td>
                 </tr>
-                <tr valign="top">
-                    <td colspan="2" width="46%">
-                        <label for="addId1">Reason for Updation</label>
-                    </td>
-                    <td width="54%">{{reviewDetailsIndia}</td>
-                </tr>
-                <tr valign="top">
+                <tr valign="top" *ngIf='showforNewDesc'>
                     <td colspan="2" width="46%">
                         <label for="addId1">New Description to Update</label>
                     </td>
-                    <td width="54%">{{reviewDetailsIndia}</td>
+                    <td width="54%">{{reviewDetailsIndia.description}}</td>
                 </tr>
+                <tr valign="top">
+                  <td colspan="2" width="46%">
+                      <label for="addId1">Reason for Updation</label>
+                  </td>
+                  <td width="54%">{{reviewDetailsIndia.justification}}</td>
+              </tr>
                 
             </tbody>
         </table>
 
         <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
             <tbody>
-                <tr valign="top">
+                <tr valign="top" *ngIf='showLocation'>
                     <td colspan="2" width="46%" height="10">
                         <label for="addId1">Office Location</label>
                     </td>
                     <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
           </tr>
-          <tr valign="top">
+          <tr valign="top" *ngIf='hideBuilding'>
             <td colspan="2" width="46%">
               <label for="addId1">Campus</label>
             </td>

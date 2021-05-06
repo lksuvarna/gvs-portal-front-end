@@ -108,11 +108,11 @@ export class VoipInUpdateComponent implements OnInit {
       this.payload.cNum_payload=this.cnum;	
       // fields picked up from form -- begins	
       this.payload.Projectid_Disp = '';
-     // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+      this.payload.icano_Disp = '';	
       this.payload.Department_number_Disp = this.chargeDisp;
       this.payload.accid_Disp = '';
       this.payload.Identifier_Selected = this.jabberDisp;
-      this.payload.updated_for = '';
+      this.payload.updated_for = 'ChargeDepartment='+this.chargeDisp;
 
       this.payload.ReqNo=this.reqno;	
   

@@ -166,6 +166,28 @@ export class StepsComponent implements OnInit {
 
   }
 
+  if(this.service=='jabber_move'){
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.selected_jabber = this.formData.value.Identifier_Selected;	
+    if(this.cache.selected_jabber==''){
+    this.cache.officeLocation ='';
+    this.cache.funded ="No";
+    }
+    else{
+    this.cache.officeLocation =  this.formData.value.Location_1;
+    this.cache.funded = this.formData.value.Voice_Type;		
+    }
+    this.cache.campus = this.formData.value.Buildings;		
+    
+    this.cache.chargeDepartmentCode=this.formData.value.Department_number;	
+    this.cache.projectId=this.formData.value.Projectid;	
+    this.cache.fixPhoneIdentifier= this.formData.value.identifier_hp;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached");
+  }
+
 
 }
 
