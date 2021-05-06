@@ -77,6 +77,7 @@ export class EmployeesearchComponent implements OnInit {
   returnValue: any;
   validcnum = false;
   extracodes: any = [];
+  profile_location:any = [];
   ngOnInit(): void {
     this.showloader = false
     this.route.queryParams
@@ -450,6 +451,12 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfo', 'true1');
         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
+          if (this.service == 'jabber_move') {
+          if (data.message[i].ATTRIBUTE3 == null)
+          this.profile_location[i] = 'NA'
+            else
+            this.profile_location[i] = data.message[i].ATTRIBUTE3.trim();
+          }
           if (this.service == 'jabber_update') {
 
             if (data.message[i].VOICEMAIL == null)
@@ -483,6 +490,7 @@ export class EmployeesearchComponent implements OnInit {
           sessionStorage.setItem('identifier', this.itns);
           sessionStorage.setItem('voice_mail', this.voice_mail);
           sessionStorage.setItem('cos', this.cos);
+          sessionStorage.setItem('profile_location',this.profile_location);
 
           this.datadb = "yes";
         }
@@ -618,8 +626,12 @@ export class EmployeesearchComponent implements OnInit {
       case "jabber_move":
         this.title = "Move Jabber Request";
         this.exitrouting = 'jabberservices';
-        this.routingname = "/entrydetailsijm";
         this.reqname = "-MS-";
+        if (this.countrydetails.jnavpage == 'AP') {
+          this.routingname = "/entrydetailsijm";
+        } else if (this.countrydetails.jnavpage == 'EMEA') {
+          this.routingname = "/entrydetailsaumv";
+        }
         break;
       case "fixedphone_new":
         this.title = "Fixed Phone - New Request";
@@ -642,8 +654,12 @@ export class EmployeesearchComponent implements OnInit {
         break;
       case "fixedphone_update":
         this.title = "Fixed Phone - Update Request";
+        if(this.countrydetails.fnavpage == 'AP') {
         this.routingname = "/entrydetailsfup";
         this.exitrouting = 'fixedphoneservices';
+         } else if (this.countrydetails.fnavpage == 'AU') {
+          this.routingname = '/entrydetailsaufu';
+        }
         this.reqname = "-US-";
         break;
       case "fixedphone_delete":
