@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Create_Cache_jabber } from 'config/payload';
+import { Create_Cache_fac, Create_Cache_jabber } from 'config/payload';
 
 @Component({
   selector: 'app-steps',
@@ -123,6 +123,9 @@ export class StepsComponent implements OnInit {
   }
 
   cache : Create_Cache_jabber = new Create_Cache_jabber();
+  cache_fac : Create_Cache_fac = new Create_Cache_fac();
+
+
   cache_data(){
 
   if(this.service=='jabber_new'){
@@ -188,7 +191,40 @@ export class StepsComponent implements OnInit {
     console.log("cached");
   }
 
+if(this.service=='fac_new'){
+
+  console.log("Starting Cache");
+  this.cache_fac.setflag=true;
+  this.cache_fac.cnum=this.cnum;
+  this.cache_fac.officeLocation = this.formData.value.Location_1;	
+  this.cache_fac.campus = this.formData.value.Buildings;		
+  this.cache_fac.funded = this.formData.value.Voice_Type;
+  this.cache_fac.chargeDepartmentCode=this.formData.value.chargeDepartmentCode;	
+  this.cache_fac.authLevel=this.formData.value.authLevel;	
+  this.cache_fac.Fac_Type= this.formData.value.Fac_Type;
+  this.cache_fac.validity= this.formData.value.validity;
+  this.cache_fac.Comments= this.formData.value.Comments;
+  sessionStorage.setItem('cache',JSON.stringify(this.cache_fac));
+  console.log("cached");
 
 }
+
+// if(this.service=='fac_update'){
+//   this.cache.setflag=true;
+//   this.cache.cnum=this.cnum;
+//   this.cache.selected_jabber = this.formData.value.Jabber_1;
+//   if(this.formData.value.account_id==undefined)
+//   this.cache.projectId=this.formData.value.Charge_Dept;
+//   else			
+//   this.cache.projectId=this.formData.value.account_id;
+//   sessionStorage.setItem('cache',JSON.stringify(this.cache));
+//   console.log("cached"+JSON.stringify(this.cache));
+
+// }
+
+
+}
+
+
 
 } 

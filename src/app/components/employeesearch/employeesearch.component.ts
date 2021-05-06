@@ -77,8 +77,15 @@ export class EmployeesearchComponent implements OnInit {
   returnValue: any;
   validcnum = false;
   extracodes: any = [];
+  selectedCountry: any
+
   ngOnInit(): void {
     this.showloader = false
+    this.selectedCountry = sessionStorage.getItem('selectedCountry')
+    if(this.selectedCountry === null || this.selectedCountry === ''){
+      this.selectedCountry = 'Select One'
+    }
+    
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
@@ -240,13 +247,14 @@ export class EmployeesearchComponent implements OnInit {
       else if ((formData.value.employeeSerial.trim().length < 6 || formData.value.employeeSerial.includes(' ')) && this.hideDisTextBox == true) {
         alert("Employee Serial Number should be of 6 characters");
         return;
-      } else if (this.showCountryCode && this.hideDisTextBox && formData.value.selectedCountry === '') {
+      } else if (this.showCountryCode && this.hideDisTextBox && (formData.value.selectedCountry === '' || formData.value.selectedCountry === 'Select One')) {
         alert("Please select the Country Code");
         return;
       }
       else {
         sessionStorage.setItem('empserial', formData.value.employeeSerial)
         if (this.showCountryCode) {
+          sessionStorage.setItem('selectedCountry', formData.value.selectedCountry)
           this.employeeSerial = formData.value.employeeSerial + (formData.value.selectedCountry).substr(formData.value.selectedCountry.length - 3);
         } else {
           this.employeeSerial = formData.value.employeeSerial + this.pcode;
@@ -563,6 +571,7 @@ export class EmployeesearchComponent implements OnInit {
   }
   onRequestForChange() {
     this.empno = '';
+    this.selectedCountry = 'Select One';
     if (this.radioAction.toLowerCase() == "anotheremployee") {
       this.hideDisTextBox = true;
       this.hideDisserial = false;
