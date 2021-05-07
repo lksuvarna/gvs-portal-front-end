@@ -16,18 +16,33 @@ var myJsonfrench:any  = require('../../assets/i18n/fr_ca.json');
 })
 export class TranslateConfigService {
   languageType = '';
+  currentLang :any;
   //mainconfiguration ='';
 
-  constructor(private translateservice : TranslateService) { 
   
-     this.translateservice.use('en');
+
+  constructor(private translateservice : TranslateService) { 
+    this.currentLang=sessionStorage.getItem('currentLang')
+    if(sessionStorage.getItem('currentLang') == 'fr_ca' ) {
+     this.translateservice.use('fr_ca');
+    
+   }
+   else {
+   
+    translateservice.use('en');
+    
+}
        
   }
+ 
   changeLanguage(type :string){
     this.translateservice.use(type);
     this.languageType = type;
-     //this.readConfigFile();
+    sessionStorage.setItem("currentLang", type);
+    this.currentLang = sessionStorage.getItem("currentLang")
+    
   } 
+  
     
      readConfigFile() {
       
