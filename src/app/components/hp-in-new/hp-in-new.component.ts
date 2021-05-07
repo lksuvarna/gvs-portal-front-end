@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import { bpservices } from '../../_services/bp.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {fixedphone_new} from '../../../../config/payload';	
+import {fixedphone_new,Create_Cache_fixedphone_new} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
 
 @Component({
@@ -76,6 +76,16 @@ emailResult:any = false;
 hideEmpID:any;
 hideVoicemail:any;
 errorinfo=false;
+cache_tmp:  any = [];
+selected_location:any = '';
+chargeDeptValue:any = '';
+projectIdValue:any = '';
+accountIdValue:any = '';
+icaValue:any = '';
+MACValue:any = '';
+descValue:any = '';
+justificationValue:any = '';
+cacheGoValue: any = false;
   
     
 constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private bpservices:bpservices) { 	
@@ -102,6 +112,8 @@ constructor(private router:Router,private cookie: CookieHandlerService,private c
 // Submit to Fixed Phone New to Snow
 
 payload : fixedphone_new = new fixedphone_new();	
+cache : Create_Cache_fixedphone_new = new Create_Cache_fixedphone_new();
+cache_disp : Create_Cache_fixedphone_new = new Create_Cache_fixedphone_new();
 
 reviewDetailsIndia = {	
 
@@ -128,10 +140,11 @@ reviewDetailsIndia = {
   mac:"",
 }	
 // Submit to Snow Jabber new code added by Swarnava ends	
-backClick(): void{	
+backClick(formData:NgForm){	
   sessionStorage.setItem('backbutton','yes');	
   sessionStorage.setItem('step','step1');	
   //this.location.back();	
+  this.create_cache(formData);
   if(sessionStorage.getItem('radioAction')=='myself'){
     this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
   }
@@ -229,6 +242,7 @@ fetchEmployee() {
   this.employeeID = this.empID.concat(this.countryCode);
   this.bpservices.bpdetails(this.employeeID).subscribe(data => {
     this.goClick = false;
+    this.cacheGoValue = true;
     this.gggg = true;
     console.log(' BP Details', data.userdata);
     if (data.userdata) {
@@ -357,7 +371,36 @@ entryDetails(formData: NgForm) {
   } else {
     this.reviewDetailsIndia.cos = formData.value.cos;
   }
+  this.create_cache(formData);
 }	
+
+create_cache(formData:NgForm){
+
+  console.log("Starting Cache");
+  this.cache.setflag=true;
+  this.cache.cnum=this.cnum;
+  this.cache.officeLocation = formData.value.Location_1;	
+  this.cache.campus = formData.value.Buildings;
+  this.cache.funded = this.Voice_Type;	
+  this.cache.chargeDepartmentCode = formData.value.Department_number;	
+  this.cache.projectId = formData.value.Projectid;	
+  this.cache.accountId = formData.value.Accountid;
+  this.cache.icaCode = formData.value.ICAcode;
+  this.cache.device = formData.value.Device_Type;
+  this.cache.model = formData.value.Model_Type;
+  this.cache.employeeId = this.empID;
+  this.cache.voicemail = formData.value.Voicemail;
+  this.cache.justification = formData.value.Justification;
+  this.cache.description = formData.value.Description;
+  this.cache.mac = formData.value.MACAddress;
+  this.cache.goClick = this.goClick;
+  this.cache.emailClick = this.emailClick;
+  this.cache.emailResult = this.emailResult;
+  this.cache.showBusinessNeed = this.showBusinessNeed;
+  this.cache.cos = this.COS;
+  sessionStorage.setItem('cache',JSON.stringify(this.cache));
+  console.log("cached");
+}
 
 BackButton() {	
   this.isEntryForm = false;	
@@ -483,6 +526,59 @@ ngOnInit(): void {
   if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
     this.hideProjectId = true;
     }
+
+  //load cache data for entry details form. -- START
+  this.cache_tmp=sessionStorage.getItem('cache')	
+  console.log(this.cache_tmp);
+  this.cache_disp=JSON.parse(this.cache_tmp);
+  if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='fixedphone_new')){
+    this.selected_location=String(this.cache_disp.officeLocation) ;
+    this.selectedLocation(this.cache_disp.officeLocation);
+    if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION') || (this.cache_disp.officeLocation=='') )
+    this.hideBuilding=true;
+    else
+    this.hideBuilding=false;
+    this.campus = String(this.cache_disp.campus);	
+    this.Voice_Type= String(this.cache_disp.funded);
+    this.projectIdValue = String(this.cache_disp.projectId);
+    this.accountIdValue = String(this.cache_disp.accountId);
+    this.icaValue = String(this.cache_disp.icaCode);
+    this.selected_device = this.cache_disp.device;
+    this.selectedDevice(this.selected_device);
+    this.empID = String(this.cache_disp.employeeId);
+    this.voicemail = String(this.cache_disp.voicemail);
+    this.COS = String(this.cache_disp.cos);
+    this.classofservice(this.COS);
+    this.MACValue = String(this.cache_disp.mac);
+    this.descValue = String(this.cache_disp.description);
+    this.justificationValue = String(this.cache_disp.justification);
+    this.modelValue = this.cache_disp.model;
+    
+
+    // this.hideDeviceSection = Boolean(this.cache.hideDeviceSection)
+    // this.showforAnyDevice = Boolean(this.cache.showforAnyDevice);
+    // this.showforFixedPhone =Boolean(this.cache.showforFixedPhone);
+    this.goClick = this.cache_disp.goClick;
+    this.emailClick = this.cache_disp.emailClick;
+    this.emailResult = this.cache_disp.emailResult;
+    this.cacheGoValue = false;
+    this.showBusinessNeed = this.cache_disp.showBusinessNeed;
+    if(this.cache_disp.funded=='Yes'){
+     // this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
+      this.showChargeDepartmentCode();
+    }
+    else{
+      //this.chargeDeptValue= '';
+      this.hideChargeDepartmentCode();
+    }
+      this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
+     
+      console.log("cache restored");
+  }else{
+    sessionStorage.removeItem('cache');
+  }
+
+  //load cache data for entry details form. -- START
 }	
 
 previousStep(event : any){

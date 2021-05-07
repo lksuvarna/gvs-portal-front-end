@@ -95,6 +95,7 @@ export class HpInUpdateComponent implements OnInit {
     newModel: "",
     newMac:"",
     Currentdescription :"",
+    location_final:""
   }
   
   constructor(private db2:Db2Service, private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
@@ -243,6 +244,28 @@ export class HpInUpdateComponent implements OnInit {
 
     else
     {
+      if(formData.value.UpdateReq.toUpperCase() == 'DESCRIPTION ONLY') {
+        this.reviewDetailsIndia.officeLocation = "";
+        this.reviewDetailsIndia.campus = "";
+        this.reviewDetailsIndia.location_final = "";
+        this.reviewDetailsIndia.newModel = "";
+        this.reviewDetailsIndia.newMac = "";
+        this.reviewDetailsIndia.description = formData.value.Newdesc;
+      } else if(formData.value.UpdateReq.toUpperCase() == 'REPLACE THE HARDPHONE ONLY') {
+        this.reviewDetailsIndia.officeLocation = "";
+        this.reviewDetailsIndia.campus = "";
+        this.reviewDetailsIndia.location_final = "";
+        this.reviewDetailsIndia.newModel = formData.value.NewModel;
+        this.reviewDetailsIndia.newMac = formData.value.MAC1;
+        this.reviewDetailsIndia.description = "";
+      } else {
+        this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
+        this.reviewDetailsIndia.campus = this.campus;
+        this.reviewDetailsIndia.location_final = "HP"+this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+        this.reviewDetailsIndia.newModel = "";
+        this.reviewDetailsIndia.newMac = "";
+        this.reviewDetailsIndia.description = formData.value.Newdesc;
+      }
       this.isEntryForm = true;	
       this.isReviewForm = false;	
 
@@ -251,12 +274,12 @@ export class HpInUpdateComponent implements OnInit {
       this.reviewDetailsIndia.Currentdescription = this.currentdesc;
       this.reviewDetailsIndia.model = this.currentmodel;
       this.reviewDetailsIndia.device = this.selected_device;
-      this.reviewDetailsIndia.newModel = formData.value.NewModel;
-      this.reviewDetailsIndia.newMac = formData.value.MAC1;
+      // this.reviewDetailsIndia.newModel = formData.value.NewModel;
+      // this.reviewDetailsIndia.newMac = formData.value.MAC1;
       this.reviewDetailsIndia.justification = formData.value.Comments;
-      this.reviewDetailsIndia.description = formData.value.Newdesc;
-      this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
-      this.reviewDetailsIndia.campus = this.campus;
+      // this.reviewDetailsIndia.description = formData.value.Newdesc;
+      // this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
+      // this.reviewDetailsIndia.campus = this.campus;
     }
  
 
@@ -286,18 +309,19 @@ export class HpInUpdateComponent implements OnInit {
       this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
       this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
       this.payload.MAC = this.reviewDetailsIndia.newMac;
-      this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
-      this.payload.LocationCorrectnew = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.Location_final = "";
+      this.payload.LocationCorrectnew = this.reviewDetailsIndia.location_final;
+      this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation;
       this.payload.ReqNo=this.reqno;
-      this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.ccmail_1= this.countrydetails.ccmail;
+      this.payload.Location_Disp = this.reviewDetailsIndia.campus
 
 
       this.payload.gvs_approval_link="";
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
-      this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
-      this.payload.request_type='fixedphone_update';	
-      this.payload.ccmail= this.countrydetails.ccmail;
+      this.payload.evolution_instance=this.countrydetails.evolution_instance;	
+      this.payload.request_type='fixedphone_update';
 
 	
 

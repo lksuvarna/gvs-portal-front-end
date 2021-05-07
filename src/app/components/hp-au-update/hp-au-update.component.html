@@ -17,7 +17,7 @@
 
       <div class=" ds-panel ds-col-12 "></div>
 
-      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
 
       <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
@@ -35,7 +35,7 @@
                     <div class="ds-row">
                       <div class="ds-col-7">
                         <input name="IdNum1" [(ngModel)]="currentMacOrPhone" value="" class="ds-input"
-                          style="width:180px !important;" maxlength="15">
+                          style="width:180px !important;" maxlength="15" (click)='onSearch()'>
                       </div>
                       <div class="ds-col-5 ds-pad-l-1">
                         <div>
@@ -51,22 +51,16 @@
             </td>
           </tr>
 
-          <!-- <tr valign="top">
+          <tr valign="top" *ngIf='showerrormessage'>
                     <td colspan="2" width="100%">
                         <span id="err1" ><br><br>
-                            <div class="ds-col-xs-12 ds-alert ds-warning ds-pad-t-1">
+                            <div class="ds-col-xs-12 ds-alert ds-warning">
                                 <p>No record was found for the Mac Address or Phone Number you have entered. 
                                 Please check and try again.</p>
                             </div>
                         </span>
-                        <span id="err2"><br><br>
-                            <div class="ds-col-xs-12 ds-alert ds-warning ds-pad-t-1">
-                                <p>No record was found for the Mac Address or Phone Number you have entered. 
-                                    Please check and try again.</p>
-                            </div>
-                        </span>
                     </td>
-                </tr> -->
+          </tr>
           <tr valign="top" *ngIf='showSearch'>
             <td width="50%"><br>
               <label for="sear" class=""> Current MAC Address </label>
@@ -123,9 +117,9 @@
             </td>
             <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel>
+                                <select ngModel rows="2" name="Location_1_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' >
                                     <option value ="">Select State</option>
-                                    <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location'>{{ fl_location }}</option>
+                                    <option name="Location_1_1" *ngFor='let fl_location of camp' [value]='fl_location'>{{ fl_location }}</option>
                                 </select>
                             </div>
               </td>
@@ -154,22 +148,22 @@
               <label class="">New MAC Address<span class="ds-text-contextual-red-2"> *</span></label>
             </td>
             <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
-              <input name="MAC1" value="" class="ds-input ds-pad-b-1" style="width:300px !important;"
+              <input name="MAC1" value="" class="ds-input" style="width:300px !important;"
                 title="New MAC Address" maxlength="12" ngModel>
                 <label>Note:Combination of (0 to 9 , A to F) and Length:12</label>
             </td>
           </tr>
 
           <tr valign="top" *ngIf='showforNewDesc'>
-            <td colspan="2" width="50%" class="ds-pad-t-1 ds-pad-b-1">
-              <label for="descn" id="desc1" class="">New Description to Update
-                <span class="ds-text-contextual-red-2"> *</span></label>
+            <td colspan="2" width="50%" class="ds-pad-t-1 ds-pad-b-2">
+              <label class="">New Description to Update<span class="ds-text-contextual-red-2"> *</span></label>
             </td>
-            <td width="50%" class="ds-pad-t-1 ds-pad-b-1">
-              <input name="Newdesc" value="" id="desc" class="ds-input " style="width:300px !important;"
-                title="New Description" ngModel><br>
+            <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
+              <input name="Newdesc" value="" class="ds-input" style="width:300px !important;"
+                title="New Description" ngModel>
             </td>
           </tr>
+
 
           <tr valign="top" *ngIf='showforrsn'>
             <td colspan="2" width="50%">
@@ -194,7 +188,7 @@
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                 (click)="backClick()">
             </span>
-            <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+            <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='showerrormessage'>
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 value="NEXT">
             </span>
@@ -217,9 +211,9 @@
       </app-steps>
 
 
-      <!-- <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2> -->
+      <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2>
 
-      <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+      <table id="t2" width="100%" cellspacing="8" cellpadding="0" border="0">
         <tbody>
           <tr valign="top">
             <td colspan="2" width="46%">
@@ -243,13 +237,25 @@
                     <td colspan="2" width="46%">
                         <label for="addId1">Current Description</label>
                     </td>
-                    <td width="54%">{{reviewDetailsIndia.description}}</td>
+                    <td width="54%">{{reviewDetailsIndia.Currentdescription}}</td>
                 </tr>
                 <tr valign="top">
                     <td colspan="2" width="46%">
                         <label for="addId1">Update Required for</label>
                     </td>
                     <td width="54%">{{reviewDetailsIndia.updatereq}}</td>
+                </tr>
+                <tr valign="top" *ngIf='showLocation'>
+                  <td colspan="2" width="46%" height="10">
+                      <label for="addId1">Site</label>
+                  </td>
+                  <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
+                </tr>
+                <tr valign="top" *ngIf='showLocation'>
+                  <td colspan="2" width="46%">
+                    <label for="addId1">Location</label>
+                  </td>
+                  <td width="54%">{{reviewDetailsIndia.campus}}</td>
                 </tr>
                 <tr valign="top" *ngIf='showformacadd'>
                     <td colspan="2" width="46%">
@@ -259,7 +265,7 @@
                 </tr>
                 <tr valign="top" *ngIf='showforNewDesc'>
                     <td colspan="2" width="46%">
-                        <label for="addId1">New Description to Update</label>
+                        <label for="addId1">New Description</label>
                     </td>
                     <td width="54%">{{reviewDetailsIndia.description}}</td>
                 </tr>
@@ -273,22 +279,6 @@
             </tbody>
         </table>
 
-        <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
-            <tbody>
-                <tr valign="top" *ngIf='showLocation'>
-                    <td colspan="2" width="46%" height="10">
-                        <label for="addId1">Office Location</label>
-                    </td>
-                    <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
-          </tr>
-          <tr valign="top" *ngIf='hideBuilding'>
-            <td colspan="2" width="46%">
-              <label for="addId1">Campus</label>
-            </td>
-            <td width="54%">{{reviewDetailsIndia.campus}}</td>
-          </tr>
-        </tbody>
-      </table>
       <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
         <p></p>
         <p>Something seems to have gone wrong. Please try later.</p>
