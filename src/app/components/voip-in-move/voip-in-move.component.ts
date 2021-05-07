@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
-import { Jabber_Move } from '../../../../config/payload';
+import { Create_Cache_jabber, Jabber_Move } from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { Location } from '@angular/common';
 
@@ -52,9 +52,20 @@ export class VoipInMoveComponent implements OnInit {
   campus: any;
   reqFor: any;
   hideProjectId = false;
-  hideSteps = false
+  hideSteps = false;
+  currentLocations:any = [];
+  currentPLocations:any = [];
+  selectedjabber:any;
+  chargeDeptValue:any = '';
+  projectIdValue:any = '';
+  cache_tmp:  any = [];
+  selected_jabber ="";
+  selected_location="";
 
   payload: Jabber_Move = new Jabber_Move();
+  cache : Create_Cache_jabber = new Create_Cache_jabber();
+  cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
+  
   reviewDetailsIndia = {
     jabberNumbertoMove: "",
     officeLocation: "",
@@ -64,16 +75,18 @@ export class VoipInMoveComponent implements OnInit {
     businessUnit: "",
     projectId: "",
     fixPhoneIdentifier: " ",
-    Voice_Type_Disp: true,
+    Voice_Type_Disp: "",
     icano_Disp: "",
     Location_final: "",
     Identifier_Disp: "",
-    reqno: ""
+    reqno: "",
+    currentLocation: ""
   }
- backClick(): void{	
+ backClick(formData: NgForm): void{	
   sessionStorage.setItem('backbutton','yes');	
   sessionStorage.setItem('step','step1');	
   //this.location.back();	
+  this.create_cache(formData);
   if(sessionStorage.getItem('radioAction')=='myself'){
     this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
   }
@@ -103,8 +116,10 @@ export class VoipInMoveComponent implements OnInit {
     if (jabberNumberVal != '') {
       this.displayDiv = true;
     }
-    else
+    else{
       this.displayDiv = false;
+      this.selected_location='';
+    }
 
     //alert(this.displayDiv + this.jabberNumberVal)
   }
@@ -133,6 +148,7 @@ export class VoipInMoveComponent implements OnInit {
       alert('Please select the jabber number to move');
       return;
     }
+    this.selectedjabber = formData.value.Identifier_Selected;
     if (formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {
       alert('Please select the Office Location');
       return;
@@ -166,8 +182,36 @@ export class VoipInMoveComponent implements OnInit {
     this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;
     this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
     this.reviewDetailsIndia.projectId = formData.value.Projectid;
+    for(var j=0;j<this.Jabber.length;j++){
+      if(this.selectedjabber == this.Jabber[j]) {
+        this.reviewDetailsIndia.currentLocation = this.currentLocations[j];
+      }
+    }
+
+       //set up the cache for form values.
+       this.create_cache(formData);
     
 
+  }
+
+  create_cache(formData:NgForm){
+
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.selected_jabber = formData.value.Identifier_Selected;
+    if(formData.value.Identifier_Selected==''){
+    this.cache.officeLocation ='';
+    }else{
+    this.cache.officeLocation =  formData.value.Location_1;		
+    }
+    this.cache.campus = formData.value.Buildings;		
+    this.cache.funded = this.Voice_Type;
+    this.cache.chargeDepartmentCode=formData.value.Department_number;	
+    this.cache.projectId=formData.value.Projectid;	
+    this.cache.fixPhoneIdentifier= formData.value.identifier_hp;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached");
   }
 
   BackButton() {
@@ -186,14 +230,15 @@ export class VoipInMoveComponent implements OnInit {
     // fields picked up from form -- begins	
     //this.payload. = this.reviewDetailsIndia.campus;
     // by default set to true. below line can be removed if needed.	
-    //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
+    this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;
     this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;
-    // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+    this.payload.icano_Disp = '';	
     this.payload.Identifier_Disp = this.reviewDetailsIndia.jabberNumbertoMove;
     this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
     this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
-    //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
+    this.payload.correct_location = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    this.payload.accid_Disp='';
     this.payload.ReqNo = this.reqno;
 
     // fields to be picked up from form -- ends	
@@ -207,6 +252,8 @@ export class VoipInMoveComponent implements OnInit {
     this.payload.evolution_instance = this.countrydetails.evolution_instance;
     this.payload.qag = this.countrydetails.qag;
     this.payload.class_of_serice = this.countrydetails.class_of_serice;
+    this.payload.default_call_permission=this.countrydetails.default_call_permission;
+    this.payload.Site_location= this.reviewDetailsIndia.currentLocation;
     //this.payload.country_code = this.countrydetails.code;
     console.log('Payload');
     //console.log(this.payload);	
@@ -254,7 +301,10 @@ this.identifier=sessionStorage.getItem('identifier')
     else{
       this.identifier=sessionStorage.getItem('identifier') 
       this.identifier = this.identifier.split(',');
-      this.Jabber = [...this.identifier];     
+      this.Jabber = [...this.identifier];
+      this.currentPLocations= sessionStorage.getItem('profile_location');
+      this.currentPLocations = this.currentPLocations.split(',');
+      this.currentLocations = [...this.currentPLocations]; 
     }	
      this.route.queryParams	
      .subscribe(params => {	
@@ -304,6 +354,39 @@ this.identifier=sessionStorage.getItem('identifier')
        }
        this.reqFor = sessionStorage.getItem('radioAction')
       });   	
+
+          //load cache data for entry details form. -- START
+    this.cache_tmp=sessionStorage.getItem('cache')	
+    console.log(this.cache_tmp);
+    this.cache_disp=JSON.parse(this.cache_tmp);
+    if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_move')){
+      this.selected_jabber=String(this.cache_disp.selected_jabber);
+      this.getjabberNumberVal(String(this.cache_disp.selected_jabber));
+      this.selected_location=String(this.cache_disp.officeLocation) ;
+      this.selectedLocation(this.cache_disp.officeLocation);
+      if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION') || (this.cache_disp.officeLocation=='') )
+      this.hideBuilding=true;
+      else
+      this.hideBuilding=false;
+      this.campus = String(this.cache_disp.campus);	
+      this.Voice_Type= String(this.cache_disp.funded);
+      this.projectIdValue = this.cache_disp.projectId;
+      if(this.cache_disp.funded=='Yes'){
+        this.showChargeDepartmentCode();
+      }
+        else
+        {
+        //this.chargeDeptValue= '';
+        this.hideChargeDepartmentCode();
+        }
+        this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
+       
+        console.log("cache restored ");
+    }else{
+      sessionStorage.removeItem('cache');
+    }
+
+    //load cache data for entry details form. -- START
   } 
   previousStep(event : any){
     this.isEntryFormMove = false;	

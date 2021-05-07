@@ -106,7 +106,8 @@ export class VoipInDeleteComponent implements OnInit {
       this.payload.countryname=this.countrydetails.name;	
       this.payload.request_type='jabber_delete';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;    
-      this.payload.country_code = this.countrydetails.code ;	
+      this.payload.country_code = this.countrydetails.code ;
+      this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
     
       
      // console.log('Payload');	

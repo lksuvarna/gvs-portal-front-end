@@ -345,25 +345,29 @@ export class VoipInNewComponent implements OnInit {
     if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_new')){
       this.selected_location=String(this.cache_disp.officeLocation) ;
       this.selectedLocation(this.cache_disp.officeLocation);
+      if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION') || (this.cache_disp.officeLocation=='') )
+      this.hideBuilding=true;
+      else
       this.hideBuilding=false;
       this.campus = String(this.cache_disp.campus);	
       this.Voice_Type= String(this.cache_disp.funded);
       this.projectIdValue = this.cache_disp.projectId;
       if(this.cache_disp.funded=='Yes'){
-        this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
+       // this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
         this.showChargeDepartmentCode();
       }
         else
         {
-        this.chargeDeptValue= '';
+        //this.chargeDeptValue= '';
         this.hideChargeDepartmentCode();
         }
+        this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
         if(this.cache_disp.fixPhoneIdentifier.trim()=='')
         this.identifier_hp ='';
         else
         this.identifier_hp = String(this.cache_disp.fixPhoneIdentifier);
        
-        console.log("cache restored and deleted");
+        console.log("cache restored");
     }else{
       sessionStorage.removeItem('cache');
     }

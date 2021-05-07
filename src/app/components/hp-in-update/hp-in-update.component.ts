@@ -288,7 +288,7 @@ export class HpInUpdateComponent implements OnInit {
       this.payload.Newdesc_Disp = this.reviewDetailsIndia.description;
       this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
-      this.payload.updatereq_Disp = this.reviewDetailsIndia.device;
+      this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();
       this.payload.currmodel = this.reviewDetailsIndia.model;
       this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
       this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
@@ -299,11 +299,12 @@ export class HpInUpdateComponent implements OnInit {
       this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
 
 
-      this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+      this.payload.gvs_approval_link="";
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
       this.payload.request_type='fixedphone_update';	
+      this.payload.ccmail= this.countrydetails.ccmail;
 
 	
 

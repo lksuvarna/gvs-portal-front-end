@@ -31,6 +31,7 @@ export class EmployeesearchComponent implements OnInit {
   subCountries: any = []
   countryname: any;
   lookuploc: any;
+  countryroute:any;
   flocations: any;
   emmodels: any;
   cmmodels: any;
@@ -76,8 +77,19 @@ export class EmployeesearchComponent implements OnInit {
   returnValue: any;
   validcnum = false;
   extracodes: any = [];
+
+  selectedCountry: any
+
+
+  profile_location:any = [];
+
   ngOnInit(): void {
     this.showloader = false
+    this.selectedCountry = sessionStorage.getItem('selectedCountry')
+    if(this.selectedCountry === null || this.selectedCountry === ''){
+      this.selectedCountry = 'Select One'
+    }
+    
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
@@ -90,16 +102,20 @@ export class EmployeesearchComponent implements OnInit {
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
     this.fullName = this.fullName.replace(",", ", ");
     this.ccode = this.cookie.getCookie('ccode');
-if(sessionStorage.getItem('countrydetails')==undefined){
-  this.getTitle();
+    this.countryroute=sessionStorage.getItem('countryroute')
+  // alert(this.countryroute)
+  // alert(this.pcode)
+//if(sessionStorage.getItem('countrydetails')==undefined ) {
+  if (this.pcode!== this.countryroute) {
+    
   this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
     
-    console.log('Response received navigation', data.countrydetails.isspecial);
+    
     this.countryname = data.countrydetails;
     sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
     this.countrydetails=JSON.stringify(data.countrydetails);
     this.countrydetails = JSON.parse(this.countrydetails)
-   
+    this.getTitle();
     sessionStorage.setItem('countryroute', this.pcode);
     
     if (this.countrydetails.testuser) {
@@ -123,7 +139,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
    else { this.ccode = this.cookie.getCookie('ccode'); }
   }
     
-   
+ 
     
         console.log("navigation component" + this.pcode);
 
@@ -132,6 +148,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
         //to get the titles
 
         //this.radioAction = "mySelf"; 
+        
         if (sessionStorage.getItem('radioAction') === null || sessionStorage.getItem('radioAction') === '') {
 
           //if ("radioAction" in localStorage) {
@@ -234,13 +251,14 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       else if ((formData.value.employeeSerial.trim().length < 6 || formData.value.employeeSerial.includes(' ')) && this.hideDisTextBox == true) {
         alert("Employee Serial Number should be of 6 characters");
         return;
-      } else if (this.showCountryCode && this.hideDisTextBox && formData.value.selectedCountry === '') {
+      } else if (this.showCountryCode && this.hideDisTextBox && (formData.value.selectedCountry === '' || formData.value.selectedCountry === 'Select One')) {
         alert("Please select the Country Code");
         return;
       }
       else {
         sessionStorage.setItem('empserial', formData.value.employeeSerial)
         if (this.showCountryCode) {
+          sessionStorage.setItem('selectedCountry', formData.value.selectedCountry)
           this.employeeSerial = formData.value.employeeSerial + (formData.value.selectedCountry).substr(formData.value.selectedCountry.length - 3);
         } else {
           this.employeeSerial = formData.value.employeeSerial + this.pcode;
@@ -444,6 +462,12 @@ if(sessionStorage.getItem('countrydetails')==undefined){
         sessionStorage.setItem('warninginfo', 'true1');
         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
+          if (this.service == 'jabber_move') {
+          if (data.message[i].ATTRIBUTE3 == null)
+          this.profile_location[i] = 'NA'
+            else
+            this.profile_location[i] = data.message[i].ATTRIBUTE3.trim();
+          }
           if (this.service == 'jabber_update') {
 
             if (data.message[i].VOICEMAIL == null)
@@ -477,6 +501,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
           sessionStorage.setItem('identifier', this.itns);
           sessionStorage.setItem('voice_mail', this.voice_mail);
           sessionStorage.setItem('cos', this.cos);
+          sessionStorage.setItem('profile_location',this.profile_location);
 
           this.datadb = "yes";
         }
@@ -557,6 +582,7 @@ if(sessionStorage.getItem('countrydetails')==undefined){
   }
   onRequestForChange() {
     this.empno = '';
+    this.selectedCountry = 'Select One';
     if (this.radioAction.toLowerCase() == "anotheremployee") {
       this.hideDisTextBox = true;
       this.hideDisserial = false;
@@ -612,8 +638,12 @@ if(sessionStorage.getItem('countrydetails')==undefined){
       case "jabber_move":
         this.title = "Move Jabber Request";
         this.exitrouting = 'jabberservices';
-        this.routingname = "/entrydetailsijm";
         this.reqname = "-MS-";
+        if (this.countrydetails.jnavpage == 'AP') {
+          this.routingname = "/entrydetailsijm";
+        } else if (this.countrydetails.jnavpage == 'EMEA') {
+          this.routingname = "/entrydetailsaumv";
+        }
         break;
       case "fixedphone_new":
         this.title = "Fixed Phone - New Request";
@@ -636,8 +666,12 @@ if(sessionStorage.getItem('countrydetails')==undefined){
         break;
       case "fixedphone_update":
         this.title = "Fixed Phone - Update Request";
+        if(this.countrydetails.fnavpage == 'AP') {
         this.routingname = "/entrydetailsfup";
         this.exitrouting = 'fixedphoneservices';
+         } else if (this.countrydetails.fnavpage == 'AU') {
+          this.routingname = '/entrydetailsaufu';
+        }
         this.reqname = "-US-";
         break;
       case "fixedphone_delete":
