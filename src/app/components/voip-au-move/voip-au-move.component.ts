@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {Jabber_Move} from '../../../../config/payload';
+import {Create_Cache_jabber, Jabber_Move} from '../../../../config/payload';
 import { ActivatedRoute } from '@angular/router';	
 import {Router} from  '@angular/router';
 import { servicenowservice } from '../../_services/servicenow.service';
@@ -47,7 +47,9 @@ export class VoipAuMoveComponent implements OnInit {
   selectedlocation:any;
   employeeInfo: any;	
   employeeInfo1: any;	
-  selectedjabber:any;
+  cache_tmp:  any = [];
+  selectedjabber : any;
+ 
 
 
   reviewDetailsIndia = {	
@@ -59,12 +61,15 @@ export class VoipAuMoveComponent implements OnInit {
     currentLocation:""
   }	
   payload : Jabber_Move = new Jabber_Move();
+  cache : Create_Cache_jabber = new Create_Cache_jabber();
+  cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
   constructor(private router:Router,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private cookie: CookieHandlerService) { }
 
-  backClick(): void{	
+  backClick(formData: NgForm): void{	
     sessionStorage.setItem('backbutton','yes');	
     sessionStorage.setItem('step','step1');	
     //this.location.back();	
+    this.create_cache(formData);
     if(sessionStorage.getItem('radioAction')=='myself'){
       this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
     }
@@ -110,8 +115,26 @@ export class VoipAuMoveComponent implements OnInit {
         this.reviewDetailsIndia.currentLocation = this.profilelocationlists[j];
       }
     }
-
+       //set up the cache for form values.
+       this.create_cache(formData);
+    
   }
+
+  create_cache(formData:NgForm){
+
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.selected_jabber = formData.value.Identifier_Selected;
+    if(formData.value.Identifier_Selected==''){
+    this.cache.officeLocation ='';
+    }else{
+    this.cache.officeLocation =  formData.value.Location_Selected;		
+    }
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached");
+  }
+
   previousStep(event : any){
     this.isEntryForm = false;	
     this.isReviewForm = true;	
@@ -241,7 +264,27 @@ export class VoipAuMoveComponent implements OnInit {
      
      this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
      this.employeeInfo = JSON.parse(this.employeeInfo1);
+
+               //load cache data for entry details form. -- START
+    this.cache_tmp=sessionStorage.getItem('cache')	
+    console.log(this.cache_tmp);
+    this.cache_disp=JSON.parse(this.cache_tmp);
+    if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_move')){
+      this.itn_sel=String(this.cache_disp.selected_jabber);
+      if(this.cache_disp.selected_jabber=='')
+      this.loc_sel='Select Location';
+      else
+      this.loc_sel=String(this.cache_disp.officeLocation) ;  
+        console.log("cache restored ");
+    }else{
+      sessionStorage.removeItem('cache');
+    }
+
+    //load cache data for entry details form. -- START
+
   }
+
+  
 
 }
 function gettime() {	
