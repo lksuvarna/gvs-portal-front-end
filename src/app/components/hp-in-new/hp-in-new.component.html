@@ -16,7 +16,7 @@
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+            <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
@@ -281,7 +281,7 @@
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
-            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" (previousStep)="previousStep($event)"></app-steps>
 
 
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2>

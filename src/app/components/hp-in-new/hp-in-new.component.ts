@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import { bpservices } from '../../_services/bp.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {fixedphone_new,Create_Cache_fixedphone_new} from '../../../../config/payload';	
+import {fixedphone_new,Create_Cache_fixedphone} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
 
 @Component({
@@ -86,6 +86,7 @@ MACValue:any = '';
 descValue:any = '';
 justificationValue:any = '';
 cacheGoValue: any = false;
+FixedPhoneData: any = [];
   
     
 constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private bpservices:bpservices) { 	
@@ -112,8 +113,8 @@ constructor(private router:Router,private cookie: CookieHandlerService,private c
 // Submit to Fixed Phone New to Snow
 
 payload : fixedphone_new = new fixedphone_new();	
-cache : Create_Cache_fixedphone_new = new Create_Cache_fixedphone_new();
-cache_disp : Create_Cache_fixedphone_new = new Create_Cache_fixedphone_new();
+cache : Create_Cache_fixedphone = new Create_Cache_fixedphone();
+cache_disp : Create_Cache_fixedphone = new Create_Cache_fixedphone();
 
 reviewDetailsIndia = {	
 
@@ -213,11 +214,13 @@ selectedDevice(device:string) {
     this.hideVoicemail = true;
     this.showBusinessNeed = true;
   }
+  this.getFixedPhoneData();
 
 }
 onEmpIDChange() {
   this.go = false;
   this.empIDChanged(this.empID);
+  this.getFixedPhoneData();
 }
 empIDChanged(id:any) {
   if(this.empIDValue != id) {
@@ -256,6 +259,7 @@ fetchEmployee() {
         this.goResults = false;
     }
   });
+  this.getFixedPhoneData();
  return false;
 }
 }
@@ -265,6 +269,7 @@ onEmailClick() {
   this.empID = this.empIDEmail;
   this.emailClick = true;
   this.emailResult = true;
+  this.getFixedPhoneData();
 }
 
 classofservice(cos:string) {
@@ -272,6 +277,19 @@ classofservice(cos:string) {
     this.showBusinessNeed = false;
   } else {
     this.showBusinessNeed = true;
+  }
+  this.getFixedPhoneData();
+}
+
+getFixedPhoneData(){
+  this.FixedPhoneData = {
+    "goClick": this.goClick,
+    "emailClick": this.emailClick,
+    "emailResult": this.emailResult,
+    "showBusinessNeed": this.showBusinessNeed,
+    "COS": this.COS,
+    "empID": this.empID,
+    "employeeID": this.employeeID
   }
 }
 
@@ -398,6 +416,7 @@ create_cache(formData:NgForm){
   this.cache.emailResult = this.emailResult;
   this.cache.showBusinessNeed = this.showBusinessNeed;
   this.cache.cos = this.COS;
+  this.cache.employeeIDDisplay = this.employeeID;
   sessionStorage.setItem('cache',JSON.stringify(this.cache));
   console.log("cached");
 }
@@ -553,6 +572,12 @@ ngOnInit(): void {
     this.descValue = String(this.cache_disp.description);
     this.justificationValue = String(this.cache_disp.justification);
     this.modelValue = this.cache_disp.model;
+    if(this.cache_disp.employeeIDDisplay == undefined){
+      this.employeeID = '';
+    } else {
+      this.employeeID = String(this.cache_disp.employeeIDDisplay);
+    }
+    //this.employeeID = String(this.cache_disp.employeeIDDisplay);
     
 
     // this.hideDeviceSection = Boolean(this.cache.hideDeviceSection)

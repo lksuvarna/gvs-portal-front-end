@@ -658,7 +658,7 @@ Create_Cache_jabber(){
 
 }
 
-export class Create_Cache_fixedphone_new
+export class Create_Cache_fixedphone
 {
 
 setflag !: boolean;
@@ -683,8 +683,9 @@ emailClick!: boolean;
 emailResult!: boolean;
 showBusinessNeed!: boolean;
 cos!: String;
+employeeIDDisplay !: String;
 
-Create_Cache_fixedphone_new(){
+Create_Cache_fixedphone(){
     
     this.setflag=false;
     this.cnum='';
@@ -708,6 +709,7 @@ Create_Cache_fixedphone_new(){
     this.emailClick=false;
     this.emailResult=false;
     this.cos='National';
+    this.employeeIDDisplay='';
 
     }
 

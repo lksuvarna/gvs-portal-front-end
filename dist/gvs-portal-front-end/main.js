@@ -2389,6 +2389,7 @@ class StepsComponent {
         this.changeClass3 = false;
         this.changeClass4 = false;
         this.cache = new config_payload__WEBPACK_IMPORTED_MODULE_1__["Create_Cache_jabber"]();
+        this.cache_fixed = new config_payload__WEBPACK_IMPORTED_MODULE_1__["Create_Cache_fixedphone"]();
     }
     set onChange(isWarning) {
         this.isWarning = isWarning;
@@ -2522,10 +2523,37 @@ class StepsComponent {
             sessionStorage.setItem('cache', JSON.stringify(this.cache));
             console.log("cached");
         }
+        if (this.service == 'fixedphone_new') {
+            console.log("Starting Cache");
+            this.cache_fixed.setflag = true;
+            this.cache_fixed.cnum = this.cnum;
+            this.cache_fixed.officeLocation = this.formData.value.Location_1;
+            this.cache_fixed.campus = this.formData.value.Buildings;
+            this.cache_fixed.funded = this.formData.value.Voice_Type;
+            this.cache_fixed.chargeDepartmentCode = this.formData.value.Department_number;
+            this.cache_fixed.projectId = this.formData.value.Projectid;
+            this.cache_fixed.accountId = this.formData.value.Accountid;
+            this.cache_fixed.icaCode = this.formData.value.ICAcode;
+            this.cache_fixed.device = this.formData.value.Device_Type;
+            this.cache_fixed.model = this.formData.value.Model_Type;
+            this.cache_fixed.employeeId = this.FixedPhoneData.empID;
+            this.cache_fixed.voicemail = this.formData.value.Voicemail;
+            this.cache_fixed.justification = this.formData.value.Justification;
+            this.cache_fixed.description = this.formData.value.Description;
+            this.cache_fixed.mac = this.formData.value.MACAddress;
+            this.cache_fixed.goClick = this.FixedPhoneData.goClick;
+            this.cache_fixed.emailClick = this.FixedPhoneData.emailClick;
+            this.cache_fixed.emailResult = this.FixedPhoneData.emailResult;
+            this.cache_fixed.showBusinessNeed = this.FixedPhoneData.showBusinessNeed;
+            this.cache_fixed.cos = this.FixedPhoneData.COS;
+            this.cache_fixed.employeeIDDisplay = this.FixedPhoneData.employeeID;
+            sessionStorage.setItem('cache', JSON.stringify(this.cache_fixed));
+            console.log("cached");
+        }
     }
 }
 StepsComponent.ɵfac = function StepsComponent_Factory(t) { return new (t || StepsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"])); };
-StepsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: StepsComponent, selectors: [["app-steps"]], inputs: { cnum: "cnum", formData: "formData", step: "step", isSelf: "isSelf", onChange: ["hideSteps", "onChange"] }, outputs: { previousStep: "previousStep" }, decls: 13, vars: 12, consts: [[1, "ds-panel-row"], [4, "ngIf"], ["id", "tooltip-demo1", 3, "ngClass"], [3, "mouseenter", "mouseout"], ["aria-label", "help", "tabindex", "0", 3, "routerLink", "queryParams", "ngClass", "click"], ["translate", ""], ["id", "tooltip-demo1-content", "role", "tooltip", "translate", "", 1, "ds-tooltip-content", "ds-text-neutral-7", "text-style"], ["aria-label", "help", "tabindex", "0", 3, "ngClass", "click"], [3, "ngClass"], ["aria-label", "help", "tabindex", "0", 3, "ngClass"], ["aria-label", "help", "tabindex", "0", 3, "routerLink", "skipLocationChange", "queryParams", "ngClass"]], template: function StepsComponent_Template(rf, ctx) { if (rf & 1) {
+StepsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: StepsComponent, selectors: [["app-steps"]], inputs: { cnum: "cnum", FixedPhoneData: "FixedPhoneData", formData: "formData", step: "step", isSelf: "isSelf", onChange: ["hideSteps", "onChange"] }, outputs: { previousStep: "previousStep" }, decls: 13, vars: 12, consts: [[1, "ds-panel-row"], [4, "ngIf"], ["id", "tooltip-demo1", 3, "ngClass"], [3, "mouseenter", "mouseout"], ["aria-label", "help", "tabindex", "0", 3, "routerLink", "queryParams", "ngClass", "click"], ["translate", ""], ["id", "tooltip-demo1-content", "role", "tooltip", "translate", "", 1, "ds-tooltip-content", "ds-text-neutral-7", "text-style"], ["aria-label", "help", "tabindex", "0", 3, "ngClass", "click"], [3, "ngClass"], ["aria-label", "help", "tabindex", "0", 3, "ngClass"], ["aria-label", "help", "tabindex", "0", 3, "routerLink", "skipLocationChange", "queryParams", "ngClass"]], template: function StepsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, StepsComponent_span_1_Template, 8, 12, "span", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, StepsComponent_span_2_Template, 8, 6, "span", 1);
@@ -2576,6 +2604,9 @@ StepsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
     }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }]; }, { cnum: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
             args: ['cnum']
+        }], FixedPhoneData: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+            args: ['FixedPhoneData']
         }], formData: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
             args: ['formData']
@@ -16351,13 +16382,14 @@ class HpInNewComponent {
         this.descValue = '';
         this.justificationValue = '';
         this.cacheGoValue = false;
+        this.FixedPhoneData = [];
         // submit(){	
         //   this.router.navigate(['/reviewdetails']) 	
         // }	
         // Submit to Fixed Phone New to Snow
         this.payload = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["fixedphone_new"]();
-        this.cache = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["Create_Cache_fixedphone_new"]();
-        this.cache_disp = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["Create_Cache_fixedphone_new"]();
+        this.cache = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["Create_Cache_fixedphone"]();
+        this.cache_disp = new _config_payload__WEBPACK_IMPORTED_MODULE_1__["Create_Cache_fixedphone"]();
         this.reviewDetailsIndia = {
             officeLocation: "",
             campus: "",
@@ -16469,10 +16501,12 @@ class HpInNewComponent {
             this.hideVoicemail = true;
             this.showBusinessNeed = true;
         }
+        this.getFixedPhoneData();
     }
     onEmpIDChange() {
         this.go = false;
         this.empIDChanged(this.empID);
+        this.getFixedPhoneData();
     }
     empIDChanged(id) {
         if (this.empIDValue != id) {
@@ -16514,6 +16548,7 @@ class HpInNewComponent {
                     this.goResults = false;
                 }
             });
+            this.getFixedPhoneData();
             return false;
         }
     }
@@ -16522,6 +16557,7 @@ class HpInNewComponent {
         this.empID = this.empIDEmail;
         this.emailClick = true;
         this.emailResult = true;
+        this.getFixedPhoneData();
     }
     classofservice(cos) {
         if (cos == 'International') {
@@ -16530,6 +16566,18 @@ class HpInNewComponent {
         else {
             this.showBusinessNeed = true;
         }
+        this.getFixedPhoneData();
+    }
+    getFixedPhoneData() {
+        this.FixedPhoneData = {
+            "goClick": this.goClick,
+            "emailClick": this.emailClick,
+            "emailResult": this.emailResult,
+            "showBusinessNeed": this.showBusinessNeed,
+            "COS": this.COS,
+            "empID": this.empID,
+            "employeeID": this.employeeID
+        };
     }
     entryDetails(formData) {
         if (formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {
@@ -16650,6 +16698,7 @@ class HpInNewComponent {
         this.cache.emailResult = this.emailResult;
         this.cache.showBusinessNeed = this.showBusinessNeed;
         this.cache.cos = this.COS;
+        this.cache.employeeIDDisplay = this.employeeID;
         sessionStorage.setItem('cache', JSON.stringify(this.cache));
         console.log("cached");
     }
@@ -16790,6 +16839,13 @@ class HpInNewComponent {
             this.descValue = String(this.cache_disp.description);
             this.justificationValue = String(this.cache_disp.justification);
             this.modelValue = this.cache_disp.model;
+            if (this.cache_disp.employeeIDDisplay == undefined) {
+                this.employeeID = '';
+            }
+            else {
+                this.employeeID = String(this.cache_disp.employeeIDDisplay);
+            }
+            //this.employeeID = String(this.cache_disp.employeeIDDisplay);
             // this.hideDeviceSection = Boolean(this.cache.hideDeviceSection)
             // this.showforAnyDevice = Boolean(this.cache.showforAnyDevice);
             // this.showforFixedPhone =Boolean(this.cache.showforFixedPhone);
@@ -16821,7 +16877,7 @@ class HpInNewComponent {
     }
 }
 HpInNewComponent.ɵfac = function HpInNewComponent_Factory(t) { return new (t || HpInNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_bp_service__WEBPACK_IMPORTED_MODULE_7__["bpservices"])); };
-HpInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpInNewComponent, selectors: [["app-hp-in-new"]], decls: 334, vars: 69, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 3, "hidden"], ["colspan", "2", "width", "46%"], ["for", "builId", 1, "ds-text-capitalize"], ["width", "54%"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "Department_number", "value", "", "tabindex", "4", "id", "d2", "title", "Contact FirstLine Manager\\Project Manager for Charge Department Code", "maxlength", "6", "autocomplete", "off", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["id", "Mentor1Div"], ["for", "addId", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["name", "BusinessUnit", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["for", "Projectid", 1, "ds-text-capitalize", "ds-pad-t-1"], [1, "ds-input-container", "ds-pad-t-1"], ["name", "Projectid", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "Projectid", "title", "Project ID", "maxlength", "11", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["for", "Accountid", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Accountid", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "Accountid", "title", "Account ID", "maxlength", "8", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["for", "ICAcode", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "ICAcode", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "ICAcode", "title", "ICA Code", "maxlength", "100", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["for", "DeviceType", 1, "ds-text-capitalize"], ["rows", "2", "name", "Device_Type", "cols", "40", "id", "DeviceTypeId", "title", "Device Type", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["name", "Device_Type", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t3", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 3, "hidden"], ["rows", "2", "name", "Model_Type", "cols", "40", "id", "ModelTypeId", "title", "Model", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Model_Type", 3, "value", 4, "ngFor", "ngForOf"], ["for", "EmployeeID", 1, "ds-text-capitalize"], [2, "display", "inline-flex"], ["name", "StepMentor", "title", "Employee ID", 1, "ds-input", 2, "width", "250px !important", "display", "inline-block", 3, "ngModel", "ngModelChange", "change"], [1, "ds-button", "ds-small", "ds-width-auto", 2, "padding-right", "1rem", "padding-left", "1rem", "margin", "4px", 3, "click"], [3, "hidden", 4, "ngIf"], ["valign", "top", 1, "ds-mar-t-1_5", 3, "hidden"], ["for", "Voicemail", 1, "ds-text-capitalize", "ds-mar-t-1", 2, "display", "inline-block"], ["rows", "2", "name", "Voicemail", "cols", "40", "id", "VoicemailId", "title", "Voicemail", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", "ds-mar-t-1", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["value", "yes"], ["value", "no"], ["for", "cos", 1, "ds-text-capitalize"], ["rows", "2", "name", "cos", "cols", "40", "id", "COSId", "title", "Class of Service", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["cos", ""], ["value", "National"], ["value", "International"], ["for", "Justification", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Justification", "title", "Business Justification", "tabindex", "2", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["for", "Description", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Description", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "DescriptionId", "title", "Description", "maxlength", "30", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], [4, "ngIf"], ["for", "MACAddress", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["name", "MACAddress", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "MACAddressId", "title", "MAC Address", "maxlength", "12", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "8", "cellpadding", "0", "border", "0"], ["for", "addId1"], ["for", "Projectid"], ["for", "icano"], ["for", "device"], ["for", "model"], ["for", "employeeId"], ["for", "voiemail"], ["for", "cos"], ["for", "justification"], ["width", "54%", 2, "word-wrap", "anywhere"], ["for", "description"], ["for", "mac"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["name", "Location_1", 3, "value"], [3, "value"], ["name", "Device_Type", 3, "value"], ["name", "Model_Type", 3, "value"], ["id", "StepMentorDiv", "style", "font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;", 3, "hidden", 4, "ngIf", "ngIfElse"], ["elseBlock", ""], ["id", "StepMentorDiv", 2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px", 3, "hidden"], [3, "click"], [2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpInNewComponent_Template(rf, ctx) { if (rf & 1) {
+HpInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpInNewComponent, selectors: [["app-hp-in-new"]], decls: 334, vars: 75, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "formData", "cnum", "FixedPhoneData", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["tabindex", "0", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 3, "hidden"], ["colspan", "2", "width", "46%"], ["for", "builId", 1, "ds-text-capitalize"], ["width", "54%"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "Department_number", "value", "", "tabindex", "4", "id", "d2", "title", "Contact FirstLine Manager\\Project Manager for Charge Department Code", "maxlength", "6", "autocomplete", "off", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["id", "Mentor1Div"], ["for", "addId", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["name", "BusinessUnit", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["for", "Projectid", 1, "ds-text-capitalize", "ds-pad-t-1"], [1, "ds-input-container", "ds-pad-t-1"], ["name", "Projectid", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "Projectid", "title", "Project ID", "maxlength", "11", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["for", "Accountid", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Accountid", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "Accountid", "title", "Account ID", "maxlength", "8", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["for", "ICAcode", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "ICAcode", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "ICAcode", "title", "ICA Code", "maxlength", "100", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["for", "DeviceType", 1, "ds-text-capitalize"], ["rows", "2", "name", "Device_Type", "cols", "40", "id", "DeviceTypeId", "title", "Device Type", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["name", "Device_Type", 3, "value", 4, "ngFor", "ngForOf"], ["id", "t3", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 3, "hidden"], ["rows", "2", "name", "Model_Type", "cols", "40", "id", "ModelTypeId", "title", "Model", "tabindex", "1", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "Model_Type", 3, "value", 4, "ngFor", "ngForOf"], ["for", "EmployeeID", 1, "ds-text-capitalize"], [2, "display", "inline-flex"], ["name", "StepMentor", "title", "Employee ID", 1, "ds-input", 2, "width", "250px !important", "display", "inline-block", 3, "ngModel", "ngModelChange", "change"], [1, "ds-button", "ds-small", "ds-width-auto", 2, "padding-right", "1rem", "padding-left", "1rem", "margin", "4px", 3, "click"], [3, "hidden", 4, "ngIf"], ["valign", "top", 1, "ds-mar-t-1_5", 3, "hidden"], ["for", "Voicemail", 1, "ds-text-capitalize", "ds-mar-t-1", 2, "display", "inline-block"], ["rows", "2", "name", "Voicemail", "cols", "40", "id", "VoicemailId", "title", "Voicemail", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", "ds-mar-t-1", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["value", "yes"], ["value", "no"], ["for", "cos", 1, "ds-text-capitalize"], ["rows", "2", "name", "cos", "cols", "40", "id", "COSId", "title", "Class of Service", "tabindex", "1", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["cos", ""], ["value", "National"], ["value", "International"], ["for", "Justification", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Justification", "title", "Business Justification", "tabindex", "2", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["for", "Description", 1, "ds-text-capitalize", "ds-pad-t-1"], ["name", "Description", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "DescriptionId", "title", "Description", "maxlength", "30", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], [4, "ngIf"], ["for", "MACAddress", 1, "ds-text-capitalize"], [1, "ds-input-container"], ["name", "MACAddress", "value", "", "tabindex", "2", "rows", "2", "cols", "40", "id", "MACAddressId", "title", "MAC Address", "maxlength", "12", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "formData", "cnum", "FixedPhoneData", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "8", "cellpadding", "0", "border", "0"], ["for", "addId1"], ["for", "Projectid"], ["for", "icano"], ["for", "device"], ["for", "model"], ["for", "employeeId"], ["for", "voiemail"], ["for", "cos"], ["for", "justification"], ["width", "54%", 2, "word-wrap", "anywhere"], ["for", "description"], ["for", "mac"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["name", "Location_1", 3, "value"], [3, "value"], ["name", "Device_Type", 3, "value"], ["name", "Model_Type", 3, "value"], ["id", "StepMentorDiv", "style", "font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;", 3, "hidden", 4, "ngIf", "ngIfElse"], ["elseBlock", ""], ["id", "StepMentorDiv", 2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px", 3, "hidden"], [3, "click"], [2, "font-size", "14pt", "background", "rgb(238, 238, 238) none repeat scroll 0% 0%", "width", "300px"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpInNewComponent_Template(rf, ctx) { if (rf & 1) {
         const _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -17393,12 +17449,13 @@ HpInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
+        const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dataNav", ctx.servicesData)("cloudantData", ctx.cloudantData);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isEntryForm);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step)("formData", _r0)("cnum", ctx.cnum)("FixedPhoneData", ctx.FixedPhoneData)("isSelf", ctx.reqFor);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.selected_location);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
@@ -17472,7 +17529,7 @@ HpInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isReviewForm);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor)("formData", _r0)("cnum", ctx.cnum)("FixedPhoneData", ctx.FixedPhoneData);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.reviewDetailsIndia.officeLocation);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
@@ -18205,7 +18262,7 @@ PagenotfoundComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
 /*!***************************!*\
   !*** ./config/payload.ts ***!
   \***************************/
-/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Fac_New, Fac_Deactivate, Fac_Update, Fac_Reset, Special_Request, fixedphone_new, fixedphone_delete, fixedphone_update, Create_Cache_jabber, Create_Cache_fixedphone_new */
+/*! exports provided: db2search, snowsearch, Jabber_New, Jabber_Delete, Jabber_Move, Jabber_Update, Fac_New, Fac_Deactivate, Fac_Update, Fac_Reset, Special_Request, fixedphone_new, fixedphone_delete, fixedphone_update, Create_Cache_jabber, Create_Cache_fixedphone */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18225,7 +18282,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fixedphone_delete", function() { return fixedphone_delete; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fixedphone_update", function() { return fixedphone_update; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Create_Cache_jabber", function() { return Create_Cache_jabber; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Create_Cache_fixedphone_new", function() { return Create_Cache_fixedphone_new; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Create_Cache_fixedphone", function() { return Create_Cache_fixedphone; });
 // Class used to create the payload for Db2 search service.
 class db2search {
     db2search() {
@@ -18538,8 +18595,8 @@ class Create_Cache_jabber {
         this.selected_jabber = '';
     }
 }
-class Create_Cache_fixedphone_new {
-    Create_Cache_fixedphone_new() {
+class Create_Cache_fixedphone {
+    Create_Cache_fixedphone() {
         this.setflag = false;
         this.cnum = '';
         this.officeLocation = '';
@@ -18562,6 +18619,7 @@ class Create_Cache_fixedphone_new {
         this.emailClick = false;
         this.emailResult = false;
         this.cos = 'National';
+        this.employeeIDDisplay = '';
     }
 }
 
