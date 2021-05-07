@@ -638,6 +638,12 @@ businessUnit !: String;
 projectId	!: String;
 fixPhoneIdentifier !: String;
 selected_jabber !: String;
+update_vm!:String;
+update_cos!:String;
+voicemail!:String
+cos!:String
+businessjustification !: String;
+
 
 Create_Cache_jabber(){
 
@@ -651,6 +657,11 @@ Create_Cache_jabber(){
        this.fixPhoneIdentifier ='';
        this.setflag=false;
        this.selected_jabber='';
+       this.update_vm='';
+       this.update_cos='';
+       this.voicemail='';
+       this.cos='';
+       this.businessjustification='';
 
     }
 

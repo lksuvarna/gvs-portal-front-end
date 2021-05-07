@@ -17,7 +17,7 @@
       </div>
       <div class=" ds-panel ds-col-12 "></div>
 
-      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+      <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
 
       <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
@@ -33,7 +33,7 @@
               <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                 <select [(ngModel)]='itn_sel' #jabberNumberVal (change)="getjabberNumberVal(jabberNumberVal.value)"
                   name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left"
-                  style="width:300px !important; text-transform: uppercase;" title="Extension Number">
+                  style="width:300px !important; text-transform: uppercase;" title="Extension Number" >
                   <option value="">Select Jabber Number</option>
                   <option *ngFor="let jab of jabberNumber" [value]="jab">{{jab}}</option>
                 </select>
@@ -67,7 +67,7 @@
           <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK" (click)="backClick()">
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK" (click)="backClick(formData)">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
