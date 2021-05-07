@@ -636,8 +636,13 @@ if(sessionStorage.getItem('countrydetails')==undefined){
         break;
       case "fixedphone_update":
         this.title = "Fixed Phone - Update Request";
-        this.routingname = "/entrydetailsfup";
         this.exitrouting = 'fixedphoneservices';
+        if (this.countrydetails.fnavpage == 'AP') {
+          this.routingname = "/entrydetailsfup";
+        } else if (this.countrydetails.fnavpage == 'EMEA') {
+          this.routingname = '/entrydetailshpemea';
+          //Add routingname here for EMEA
+        } 
         this.reqname = "-US-";
         break;
       case "fixedphone_delete":
