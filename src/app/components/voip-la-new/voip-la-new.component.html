@@ -15,7 +15,7 @@
             </div>
             <div class=" ds-panel ds-col-12 "></div> 
 
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+            <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
             <!-- <div class="ds-col-12 ds-pad-t-0_5">
                 <div class="ds-row ">
@@ -66,7 +66,7 @@
                         <td width="160">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <input name="%%Surrogate_Location" type="hidden" value="1">
-                                <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Location" ngModel>
+                                <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Location" ngModel [(ngModel)]='selected_location'>
                                     <option value ="" translate>Jabberentrydetails.Select Location</option>
                                     <option name="Location" *ngFor='let fl_location of locationlist' [value]='fl_location'>
                                         {{ fl_location }}</option>
@@ -156,7 +156,7 @@
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                         <span class="ds-pad-l-4" id="button1">
                             <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 
-                            ds-pad-r-3" value="{{ 'employeeinfotrans.BACK'|translate}}" (click)="backClick()">
+                            ds-pad-r-3" value="{{ 'employeeinfotrans.BACK'|translate}}" (click)="backClick(formData)">
                         </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
                             <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"

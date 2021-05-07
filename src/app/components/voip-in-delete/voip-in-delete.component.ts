@@ -4,7 +4,7 @@ import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { NgForm } from '@angular/forms';
 import {Router} from  '@angular/router';
 import {Location} from '@angular/common';	
-import {Jabber_Delete} from '../../../../config/payload';	
+import {Create_Cache_jabber, Jabber_Delete} from '../../../../config/payload';	
 import { servicenowservice } from '../../_services/servicenow.service';
 import { ActivatedRoute } from '@angular/router';	
 import { TranslateConfigService} from '../../_services/translate-config.service';
@@ -42,16 +42,32 @@ export class VoipInDeleteComponent implements OnInit {
   isSpinnerVisible= false; 
   warninginfo=false;
   warninginfosnow=false;
+  cache_tmp:  any = [];
+  selected_jabber ="";
+
+  cache : Create_Cache_jabber = new Create_Cache_jabber();
+  cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
+
   constructor(private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice,private servicesd : TranslateConfigService) {
     if(this.Jabber[0]=='Select One'){
       this.selected = true;
     }}
     mainConfiguration :any;
-    backClick(){	
+
+    backClick(formData: NgForm){	
       sessionStorage.setItem('backbutton','yes');	
       sessionStorage.setItem('step','step1');	
-      this.location.back();	
+     // this.location.back();	
+       //set up the cache for form values.
+    this.create_cache(formData);
+    if(sessionStorage.getItem('radioAction')=='myself'){
+      this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+    }
+    else{
+    this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }	
     }	
+
     BackButton() {	
       this.isEntryForm = false;	
       this.isReviewForm = true;	
@@ -68,6 +84,8 @@ export class VoipInDeleteComponent implements OnInit {
     this.selectedJabber = formData.value.Jabber_1;
     this.isReviewForm = false;
     this.isEntryForm = true;
+     //set up the cache for form values.
+     this.create_cache(formData);
 
   }
   payload : Jabber_Delete = new Jabber_Delete();
@@ -88,7 +106,8 @@ export class VoipInDeleteComponent implements OnInit {
       this.payload.countryname=this.countrydetails.name;	
       this.payload.request_type='jabber_delete';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;    
-      this.payload.country_code = this.countrydetails.code ;	
+      this.payload.country_code = this.countrydetails.code ;
+      this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
     
       
      // console.log('Payload');	
@@ -106,7 +125,15 @@ export class VoipInDeleteComponent implements OnInit {
     });	
      }	
  
-  
+     create_cache(formData:NgForm){
+      console.log("Starting Cache");
+      this.cache.setflag=true;
+      this.cache.cnum=this.cnum;
+      this.cache.selected_jabber = formData.value.Jabber_1;		
+      sessionStorage.setItem('cache',JSON.stringify(this.cache));
+      console.log("cached" + JSON.stringify(this.cache));
+    }
+
 
   ngOnInit(): void {
     this.mainConfiguration = this.servicesd.readConfigFile();
@@ -161,6 +188,19 @@ this.identifier=sessionStorage.getItem('identifier')
     } else {
       this.hideSteps = false
     }
+
+     //load cache data for entry details form. -- START
+   this.cache_tmp=sessionStorage.getItem('cache')	
+   console.log(this.cache_tmp);
+   this.cache_disp=JSON.parse(this.cache_tmp);
+   if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_delete')){
+   this.selected_jabber=String(this.cache_disp.selected_jabber) ;    
+   console.log("cache restored");
+   }else{
+     sessionStorage.removeItem('cache');
+   }
+
+   //Load Cache ends.
   }
   previousStep(event : any){
     this.isEntryForm = false;	

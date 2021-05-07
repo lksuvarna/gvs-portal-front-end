@@ -16,7 +16,7 @@
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [formData]="formData" [cnum]="cnum" [hideSteps]=""></app-steps>
 
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
@@ -29,7 +29,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location (change)='selectedLocation(location.value)' ngModel>
+                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location (change)='selectedLocation(location.value)' [(ngModel)]='selected_location'>
                                     <option value ="">Select Office Location</option>
                                     <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
                     {{ fl_location }}</option>
@@ -80,7 +80,7 @@
                         </td>
                         <td width="54%">
                             <div id="d21" class="ds-input-container ">
-                                <input name="chargeDepartmentCode" value="" id="d2" class="ds-input" style="width: 300px !important;" title="Charge Department Code" autocomplete="off" ngModel>
+                                <input name="chargeDepartmentCode" value="" id="d2" class="ds-input" style="width: 300px !important;" title="Charge Department Code" autocomplete="off" [(ngModel)]="chargeDepartmentCode">
                                 <div id="Mentor1Div"></div>
                             </div>
                         </td>
@@ -105,7 +105,7 @@
                         </td>
                         <td width="50%"><br>
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select name="authLevel" rows="2" cols="40" id="authLevel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Authorization Level" #authLevel ngModel>
+                                <select name="authLevel" rows="2" cols="40" id="authLevel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Authorization Level" [(ngModel)]="authLevel">
                                  <option value ="">Select Authorization Level</option>
                                  <option>Local</option>
                                  <option>STD</option>
@@ -121,7 +121,7 @@
                         </td>
                         <td width="50%"><br>
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select name="Fac_Type" rows="2" cols="40" id="Fac_Type" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="FAC Code Type" #facType (change)="FacCodeType(facType.value)" ngModel>
+                                <select name="Fac_Type" rows="2" cols="40" id="Fac_Type" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="FAC Code Type" #facType (change)="FacCodeType(facType.value)" [(ngModel)]="Fac_Type">
                                     <option value="">Select FAC Code Type</option>
                                     <option>Temporary</option>
                                     <option>Permanent</option>
@@ -137,7 +137,7 @@
                         </td>
                         <td width="50%"><br>
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select name="validity" rows="2" cols="40" id="validity" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Validity" #validity ngModel>
+                                <select name="validity" rows="2" cols="40" id="validity" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Validity" [(ngModel)]="validity">
                                     <option value="">Select Validity</option>
                                     <option>7 days</option>
                                     <option>30 days</option>
@@ -151,7 +151,7 @@
                             <label for="comments" class="">Business Justification <span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%"><br>
-                            <textarea name="Comments" id="JustificationId" class="ds-input " style="width:300px !important;" title="Buisness Justification" rows="2" cols="40" ngModel></textarea>
+                            <textarea name="Comments" id="JustificationId" class="ds-input " style="width:300px !important;" title="Buisness Justification" rows="2" cols="40" [(ngModel)]="Comments"></textarea>
                         </td>
                     </tr>
                 </tbody>
@@ -165,7 +165,7 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="BACK" (click)="backClick()">
+                value="BACK" (click)="backClick(formData)">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
@@ -265,9 +265,9 @@
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p>Opps! Some thing went worng.Please try again latter.</p>
-                <p>
-                </p>
+                <p>Something seems to have gone wrong. Please try later. /p>
+                    <p>
+                    </p>
             </div>
 
             <div class="ds-hr-thick ds-mar-t-1_5"></div>

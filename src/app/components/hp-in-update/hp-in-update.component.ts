@@ -179,11 +179,16 @@ export class HpInUpdateComponent implements OnInit {
   }
 
     // Submit to Snow Jabber new code added by Swarnava ends	
-backClick(){	
-  sessionStorage.setItem('backbutton','yes');	
-  sessionStorage.setItem('step','step1');	
-  this.location.back();	
-  }	
+ backClick(): void{	
+    sessionStorage.setItem('backbutton','yes');	
+    sessionStorage.setItem('step','step1');	
+    //this.location.back();	
+    if(sessionStorage.getItem('radioAction')=='myself'){
+      this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+    }
+    else{
+    this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }	}	
 
   selectedLocation(loc:String) {	
     this.build = [];	
@@ -276,7 +281,7 @@ backClick(){
       this.payload.Newdesc_Disp = this.reviewDetailsIndia.description;
       this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
-      this.payload.updatereq_Disp = this.reviewDetailsIndia.device;
+      this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();
       this.payload.currmodel = this.reviewDetailsIndia.model;
       this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
       this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
@@ -287,11 +292,12 @@ backClick(){
       this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
 
 
-      this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+      this.payload.gvs_approval_link="";
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
       this.payload.request_type='fixedphone_update';	
+      this.payload.ccmail= this.countrydetails.ccmail;
 
 	
 

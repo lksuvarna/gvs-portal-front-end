@@ -112,6 +112,7 @@ export class Jabber_Delete
     request_type !: String;
     evolution_instance !: String;
     country_code !:String;
+    gvs_portal_link !:String;
 
 Jabber_Delete()
  {
@@ -122,6 +123,7 @@ Jabber_Delete()
     this.request_type ="";
     this.evolution_instance ="";
     this.country_code  ="";
+    this.gvs_portal_link = "";
  }
 
 }
@@ -152,6 +154,7 @@ export class Jabber_Move
     correct_location !: String;
     Identifier_Disp !: String;
     request_type !: String;
+    Site_location !: String;
 
 Jabber_Move()
  {
@@ -177,6 +180,7 @@ Jabber_Move()
     this.correct_location ="";
     this.Identifier_Disp ="";
     this.request_type="";
+    this.Site_location="";
  }
 
 }
@@ -492,6 +496,7 @@ gvs_portal_link!: String;
 gvs_approval_link!: String;
 SLA_type!: String;
 country_code!: String;
+LocationCorrectnew!: String;
 
 fixedphone_new()
 {
@@ -524,6 +529,7 @@ this.gvs_portal_link="";
 this.gvs_approval_link="";
 this.SLA_type="";
 this.country_code="";
+this.LocationCorrectnew="";
 }
 
 }
@@ -537,7 +543,7 @@ export class fixedphone_delete
     cNum_payload!: String;
     Identifier!: String;
     ReqNo!: String;
-    mac!: String;
+    macaddress!: String;
     olddesc!: String;
     ccmail!: String;
     countryname!: String;
@@ -550,7 +556,7 @@ export class fixedphone_delete
      this.cNum_payload="";
      this.Identifier="";
      this.ReqNo="";
-     this.mac="";
+     this.macaddress="";
      this.olddesc="";
      this.ccmail="";
      this.countryname="";
@@ -586,6 +592,7 @@ Location_Disp!: String;
 evolution_instance!: String;
 gvs_portal_link!: String;
 gvs_approval_link!: String;
+ccmail!: String;
 
 fixedphone_update(){
     this.request_type="";
@@ -608,9 +615,93 @@ fixedphone_update(){
     this.evolution_instance="";
     this.gvs_portal_link="";
     this.gvs_approval_link="";
+    this.ccmail="";
     
     
 
 }
+
+}
+
+//setting up cache class for data retention.
+
+export class Create_Cache_jabber
+{
+
+setflag !: boolean;
+cnum !:string;
+officeLocation	!: String;
+campus	!: String;
+funded	!: String;
+chargeDepartmentCode !: String;	
+businessUnit !: String;
+projectId	!: String;
+fixPhoneIdentifier !: String;
+selected_jabber !: String;
+update_vm!:String;
+update_cos!:String;
+voicemail!:String
+cos!:String
+businessjustification !: String;
+
+
+Create_Cache_jabber(){
+
+       this.cnum='';
+       this.officeLocation	='';
+       this.campus	='';
+       this.funded	='';
+       this.chargeDepartmentCode ='';
+       this.businessUnit='';
+       this.projectId	='';
+       this.fixPhoneIdentifier ='';
+       this.setflag=false;
+       this.selected_jabber='';
+       this.update_vm='';
+       this.update_cos='';
+       this.voicemail='';
+       this.cos='';
+       this.businessjustification='';
+
+    }
+
+}
+
+//setting up cache class for fac new data retention.
+
+export class Create_Cache_fac
+{
+
+setflag !: boolean;
+cnum !:string;
+officeLocation	!: String;
+campus	!: String;
+funded	!: String;
+chargeDepartmentCode !: String;	
+businessUnit !: String;
+projectId	!: String;
+fixPhoneIdentifier !: String;
+selected_jabber !: String;
+authLevel !: String;
+Fac_Type !: String;
+validity !: String;
+Comments !: String;
+
+Create_Cache_fac(){
+
+       this.cnum='';
+       this.officeLocation	='';
+       this.campus	='';
+       this.funded	='';
+       this.chargeDepartmentCode ='';
+       this.businessUnit='';
+       this.authLevel ='';	
+       this.Fac_Type ='';
+       this.validity ='';
+       this.Comments ='';
+       this.setflag=false;
+       this.selected_jabber='';
+
+    }
 
 }

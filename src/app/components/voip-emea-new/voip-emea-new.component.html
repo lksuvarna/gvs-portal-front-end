@@ -18,7 +18,7 @@
             <!-- <div class="ds-hr-thick ds-mar-b-1_5"></div> -->
             <div class="ds-panel ds-col-12"></div>
 
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+            <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-left-0_5 " translate>Jabberentrydetails.EmployeeEntryDetails</h2>
             <br>
@@ -33,7 +33,7 @@
                         <td width="53%">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                             <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left"
-                                style="width:300px !important; text-transform: uppercase;" title="Location" #location (change)='selectedLocation(location.value)' ngModel>
+                                style="width:300px !important; text-transform: uppercase;" title="Location" #location (change)='selectedLocation(location.value)' ngModel [(ngModel)]='selected_location'>
                                 <option value ="" >Select Location</option>
                                 <option name="Location" *ngFor='let fl_location of locationlist' [value]='fl_location'>
                                 {{ fl_location }} </option>
@@ -56,7 +56,7 @@
 
             <div class="ds-row ds-grid ds-mar-b-5 ds-pad-r-1">
                 <div class="ds-col-lg-2 ds-push-lg-8">
-                    <button type="button" (click)="backClick()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" translate>employeeinfotrans.BACK</button>
+                    <button type="button" (click)="backClick(formData)" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" translate>employeeinfotrans.BACK</button>
                 </div>
                 <div class="ds-col-lg-2 ds-push-lg-8">
                     <button type="submit" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" translate>employeeinfotrans.NEXT</button>

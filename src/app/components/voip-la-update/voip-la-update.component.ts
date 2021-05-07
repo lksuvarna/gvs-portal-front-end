@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
 import { Db2Service } from '../../_services/db2.service';
-import {Jabber_Update} from '../../../../config/payload';
+import {Create_Cache_jabber, Jabber_Update} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 
@@ -71,12 +71,16 @@ export class VoipLaUpdateComponent implements OnInit {
   Voice_Mail : any="";
   errorinfo=false;
   selectcos="";
+  cache_tmp:  any = [];
+  selected_jabber ="";
   
  
   businessjustification : any="";
 
 
   payload : Jabber_Update = new Jabber_Update();
+  cache : Create_Cache_jabber = new Create_Cache_jabber();
+  cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
 
   toggle_options(){
     if (this.checked){
@@ -90,18 +94,23 @@ export class VoipLaUpdateComponent implements OnInit {
 
     if (this.checked2){
     this.newcos=false;
-    this.toup_disp2="Class of Service (COS)";
+    this.toup_disp2=this.selectcos;
+    if(this.selectcos.toUpperCase() =="INTERNATIONAL")
+    this.businessJust=false;
+    else
+    this.businessJust=true;
      }
     else{
       this.newcos=true;
       this.businessJust=true;
       this.toup_disp2='';
-      this.selectcos="";
+      //this.selectcos="";
+     
     }
   }
 
   hidebusinessjust(e : any){
-    this.businessjustification='';
+    //this.businessjustification='';
    if((e.target.value != "") && (e.target.value.toUpperCase() =="INTERNATIONAL"))
    this.businessJust= false;
    else
@@ -114,12 +123,20 @@ export class VoipLaUpdateComponent implements OnInit {
      this.currentVoiceMail=false;
      this.currentcos=false;
      this.updaterequested=false;
+     this.newvoicemail= false;
+     this.newcos= false;
+     this.businessJust=false;
      this.index = this.Jabber.indexOf(jabber);
      console.log("Selected ITN index: "+this.index);
      this.cos_disp=this.cos[this.index];
      this.vm_disp=this.voice_mail[this.index];
+     if(this.selectcos.toUpperCase() =="INTERNATIONAL")
+           this.businessJust=false;
+           else
+           this.businessJust=true;
 
     } else {
+      
       this.currentcos=true;
       this.hideChargeDept = true;
       this.newvoicemail= true;
@@ -127,11 +144,11 @@ export class VoipLaUpdateComponent implements OnInit {
       this.businessJust=true;
       this.currentVoiceMail=true;
       this.updaterequested=true;
-      this.checked=false;
-      this.checked2=false;
-      this.Voice_Mail='';
-      this.selectcos="";
-      this.businessjustification='';
+     // this.checked=false;
+     // this.checked2=false;
+     // this.Voice_Mail='';
+     // this.selectcos="";
+     // this.businessjustification='';
 
    }
   }
@@ -144,7 +161,7 @@ export class VoipLaUpdateComponent implements OnInit {
     }
     
     if((this.checked==false)&&(this.checked2==false)) {
-      alert('Please select update requrired for');
+      alert('Please select update required for');
       return;
     }
       
@@ -155,32 +172,72 @@ export class VoipLaUpdateComponent implements OnInit {
       }
     }
 
+    if(formData.value.Voice_Mail==this.vm_disp){
+      alert('Current and New Voice Mail cannot be same');
+        return;
+    }
+
     if(this.checked2) {
       if(formData.value.select_cos.toUpperCase() == 'SELECT CLASS OF SERVICE' || formData.value.select_cos == '') {
         alert('Please select New Class of Service');
         return;
       }
     }
+
+
+    if(formData.value.select_cos.toUpperCase()==this.cos_disp.toUpperCase()){
+      alert('Current and New Class of Service cannot be same');
+        return;
+    }
+
+
     if((this.checked2)&&(formData.value.select_cos.toUpperCase() == 'INTERNATIONAL') ) {
       if(formData.value.businessjustification == ''){
       alert('Please enter Business Justification');
       return;
       }
     }
+
     this.jabberDisp = formData.value.Jabber_1;
     this.new_cos_disp=formData.value.select_cos;
     this.new_vm_disp=formData.value.Voice_Mail;
+    if(formData.value.select_cos.toUpperCase()=="INTERNATIONAL")
     this.bj_disp=formData.value.businessjustification;
+    else
+    this.bj_disp='';
     this.isReviewForm = false;
     this.isEntryForm = true;
+    this.create_cache(formData);
   }
+
+  create_cache(formData:NgForm){
+
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.selected_jabber = formData.value.Jabber_1;
+    this.cache.update_vm=this.checked;
+    this.cache.update_cos=this.checked2;
+    this.cache.voicemail=formData.value.Voice_Mail;
+    this.cache.cos=formData.value.select_cos;
+    this.cache.businessjustification=formData.value.businessjustification;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached");
+  }
+
+
   // Submit to Snow Jabber new code added by Swarnava ends	
-  backClick() {
-    sessionStorage.setItem('backbutton', 'yes');
-    sessionStorage.setItem('step', 'step1');
-    this.location.back();
-    
-  }
+  backClick(formData: NgForm): void{	
+    sessionStorage.setItem('backbutton','yes');	
+    sessionStorage.setItem('step','step1');	
+    //this.location.back();	
+    this.create_cache(formData);
+    if(sessionStorage.getItem('radioAction')=='myself'){
+      this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+    }
+    else{
+    this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }	}
 
   BackButton() {
     this.isReviewForm = true;
@@ -306,6 +363,38 @@ export class VoipLaUpdateComponent implements OnInit {
     } else {
       this.hideSteps = false
     }
+
+          //load cache data for entry details form. -- START
+          this.cache_tmp=sessionStorage.getItem('cache')	
+          console.log(this.cache_tmp);
+          this.cache_disp=JSON.parse(this.cache_tmp);
+          if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_update')){
+            this.selected_jabber=String(this.cache_disp.selected_jabber);
+            this.SelectedJabber(this.cache_disp.selected_jabber);
+            if(this.cache_disp.voicemail=='')
+            this.checked=false;
+            else
+            this.checked=true;
+            if(this.cache_disp.cos==''){
+            this.checked2=false;
+            this.businessJust=true;
+            }
+            else
+            this.checked2=true;
+            this.Voice_Mail=this.cache_disp.voicemail;
+            this.selectcos=String(this.cache_disp.cos);
+            this.businessjustification=this.cache_disp.businessjustification
+            if(this.cache_disp.cos.toUpperCase() =="INTERNATIONAL")
+            this.businessJust=false;
+            else
+            this.businessJust=true;
+              console.log("cache restored ");
+          }else{
+            sessionStorage.removeItem('cache');
+          }
+      
+          //load cache data for entry details form. -- START
+
   }
   previousStep(event : any){
     this.isEntryForm = false;	

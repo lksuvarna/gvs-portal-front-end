@@ -89,7 +89,7 @@ reviewDetailsIndia = {
   officeLocation:	"",	
   campus:	"",	
   funded:	"No",	
-  chargeDepartmentCode:	"NA",	
+  chargeDepartmentCode:	"",	
   businessUnit:	"",	
   projectId: "",	
   accountId: " ",	
@@ -107,13 +107,19 @@ reviewDetailsIndia = {
   justification:"NA",
   description:"",
   mac:"",
+  Locationcorrectnew:""
 }	
 // Submit to Snow Jabber new code added by Swarnava ends	
-backClick(){	
-sessionStorage.setItem('backbutton','yes');	
-sessionStorage.setItem('step','step1');	
-this.location.back();	
-}	
+backClick(): void{	
+  sessionStorage.setItem('backbutton','yes');	
+  sessionStorage.setItem('step','step1');	
+  //this.location.back();	
+  if(sessionStorage.getItem('radioAction')=='myself'){
+    this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }
+  else{
+  this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+}	}
 selectedLocation(loc:String) {	
   this.build = [];	
   this.campus = 'Select Location';	
@@ -303,10 +309,19 @@ entryDetails(formData: NgForm) {
   this.reviewDetailsIndia.model = formData.value.Model_Type;
   this.reviewDetailsIndia.employeeId = this.employeeID;
   this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
-  this.reviewDetailsIndia.cos = formData.value.cos;
   this.reviewDetailsIndia.justification = formData.value.Justification;
   this.reviewDetailsIndia.description = formData.value.Description;
   this.reviewDetailsIndia.mac = formData.value.MACAddress;
+  if(formData.value.Device_Type === 'Extension Mobility Station') {
+    this.reviewDetailsIndia.Locationcorrectnew = formData.value.Buildings;
+  } else {
+    this.reviewDetailsIndia.Locationcorrectnew = formData.value.Location_1+" - "+formData.value.Buildings;
+  }
+  if(formData.value.Device_Type !== 'Fixed Phone User') {
+    this.reviewDetailsIndia.cos = "";
+  } else {
+    this.reviewDetailsIndia.cos = formData.value.cos;
+  }
 }	
 
 BackButton() {	
@@ -326,20 +341,20 @@ submit_snow(){
     // fields picked up from form -- begins	
     this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
     // by default set to true. below line can be removed if needed.	
-    //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
-    //this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
-    //this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+    this.payload.Voice_Type_Disp = "No";	
+    this.payload.Projectid_Disp = "";
+    this.payload.icano_Disp = "";	
     this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
-    this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;	
-    //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
+    this.payload.Location_final =this.reviewDetailsIndia.Locationcorrectnew;	
+    this.payload.accid_Disp="";
     this.payload.ReqNo=this.reqno;
     this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
     this.payload.Model_Disp =  this.reviewDetailsIndia.model;
     this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
     this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
     this.payload.Desc_Disp = this.reviewDetailsIndia.description;
-    this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    this.payload.LocationCorrect = this.reviewDetailsIndia.Locationcorrectnew;
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
     this.payload.Justification_Disp = this.reviewDetailsIndia.justification;	
 
@@ -347,12 +362,13 @@ submit_snow(){
     this.payload.level1_japproval=this.countrydetails.level1_japproval;	
     this.payload.level2_japproval=this.countrydetails.level2_japproval;	
     this.payload.SLA_type=this.countrydetails.SLA_type;	
-    this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+    this.payload.gvs_approval_link="";	
     this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
     this.payload.countryname=this.countrydetails.name;	
     this.payload.request_type='fixedphone_new';	
     this.payload.evolution_instance=this.countrydetails.evolution_instance ;
     this.payload.country_code = this.countrydetails.code;
+    this.payload.LocationCorrectnew = this.reviewDetailsIndia.Locationcorrectnew;
     
    // console.log('Payload');	
    // console.log(this.payload);	

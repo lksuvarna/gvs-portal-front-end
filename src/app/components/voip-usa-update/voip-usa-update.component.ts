@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
 import { Db2Service } from '../../_services/db2.service';
-import {Jabber_Update} from '../../../../config/payload';
+import {Create_Cache_jabber, Jabber_Update} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 
 @Component({
@@ -47,8 +47,13 @@ export class VoipUsaUpdateComponent implements OnInit {
   warninginfosnow=false;
   identifier:any;
   accountid_Disp : any;
+  cache_tmp:  any = [];
+  selected_jabber ="";
+  account_id="";
 
   payload : Jabber_Update = new Jabber_Update();
+  cache : Create_Cache_jabber = new Create_Cache_jabber();
+  cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
 
   SelectedJabber(jabber:any) {
     if(jabber != ""){
@@ -64,16 +69,16 @@ export class VoipUsaUpdateComponent implements OnInit {
       return;
     }
     
-    if(formData.value.account_id.includes(" ")) {
-      alert('Please enter the correct Account ID');
-      return;
-    }
-    if(formData.value.account_id.toUpperCase() == '') {
-      alert('Please enter Account ID');
-      return;
-    }
+    // if(formData.value.account_id.includes(" ")) {
+    //   alert('Please enter the correct Account ID');
+    //   return;
+    // }
+    // if(formData.value.account_id.toUpperCase() == '') {
+    //   alert('Please enter Account ID');
+    //   return;
+    // }
 
-    if(formData.value.account_id.length<4) {
+    if(formData.value.account_id.trim().length<4) {
       alert('Account ID can not be less than 4 characters');
       return;
     }
@@ -82,13 +87,21 @@ export class VoipUsaUpdateComponent implements OnInit {
     this.accountid_Disp = formData.value.account_id;
     this.isReviewForm = false;
     this.isEntryForm = true;
+    //set up the cache for form values.
+    this.create_cache(formData);
   }
   // Submit to Snow Jabber new code added by Swarnava ends	
-  backClick() {
-    sessionStorage.setItem('backbutton', 'yes');
-    sessionStorage.setItem('step', 'step1');
-    this.location.back();
-  }
+  backClick(formData : NgForm){	
+    sessionStorage.setItem('backbutton','yes');	
+    sessionStorage.setItem('step','step1');	
+    //this.location.back();	
+    this.create_cache(formData);
+    if(sessionStorage.getItem('radioAction')=='myself'){
+      this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+    }
+    else{
+    this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }	}
 
   BackButton() {
     this.isReviewForm = true;
@@ -140,6 +153,17 @@ export class VoipUsaUpdateComponent implements OnInit {
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute) {
 
    }
+
+   create_cache(formData:NgForm){
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.selected_jabber = formData.value.Jabber_1;		
+    this.cache.projectId=formData.value.account_id;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached" + JSON.stringify(this.cache));
+  }
+
 
   ngOnInit(): void {
     // Submit to Snow Jabber Update code
@@ -204,12 +228,28 @@ export class VoipUsaUpdateComponent implements OnInit {
     } else {
       this.hideSteps = false
     }
+
+   //load cache data for entry details form. -- START
+   this.cache_tmp=sessionStorage.getItem('cache')	
+   console.log(this.cache_tmp);
+   this.cache_disp=JSON.parse(this.cache_tmp);
+   if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_update')){
+   this.selected_jabber=String(this.cache_disp.selected_jabber) ;    
+   this.account_id=String(this.cache_disp.projectId);
+   console.log("cache restored");
+   }else{
+     sessionStorage.removeItem('cache');
+   }
+
+   //Load Cache ends
+
   }
   previousStep(event : any){
     this.isEntryForm = false;	
     this.isReviewForm = true;	
     this.fixedPhoneIdentifier = false;	
   }
+  
   
 
 }

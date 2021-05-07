@@ -34,7 +34,7 @@ export class HpInDeleteComponent implements OnInit {
   showSearch: boolean = false;
   cnum : any;	
   countrydetails : any;
-  currentMac: string = "";
+  currentMac: any;
   currentPhone: any ;
   currentdesc: any ;
   isButtonVisible = true;
@@ -63,7 +63,6 @@ export class HpInDeleteComponent implements OnInit {
           this.showSearch = true;
           this.isReviewForm = false;
           this.isEntryForm = true;
-
         }
         else
         {
@@ -105,11 +104,16 @@ export class HpInDeleteComponent implements OnInit {
     this.fixedPhoneIdentifier = false;	
   }	
 
-  backClick(){	
-    sessionStorage.setItem('backbutton','yes');	
-    sessionStorage.setItem('step','step1');	
-    this.location.back();	
-  }	
+ backClick(): void{	
+  sessionStorage.setItem('backbutton','yes');	
+  sessionStorage.setItem('step','step1');	
+  //this.location.back();	
+  if(sessionStorage.getItem('radioAction')=='myself'){
+    this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }
+  else{
+  this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+}	}	
 
 
   submit_snow(){	
@@ -122,13 +126,14 @@ export class HpInDeleteComponent implements OnInit {
 
       this.payload.ReqNo=this.reqno;	
       this.payload.Identifier = this.currentPhone;
-      this.payload.mac = this.currentMac;
+      this.payload.macaddress = this.currentMac;
       this.payload.olddesc = this.currentdesc;
 
       this.payload.countryname=this.countrydetails.name;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.request_type='fixedphone_delete';	
-      this.payload.evolution_instance=this.countrydetails.evolution_instance ;    
+      this.payload.evolution_instance=this.countrydetails.evolution_instance ;
+      this.payload.ccmail= this.countrydetails.ccmail; 
 
 
     this.servicenowservice.submit_request_fixed_delete(this.payload).subscribe(data=> {	

@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {Fac_New} from '../../../../config/payload';
+import {Create_Cache_fac, Fac_New} from '../../../../config/payload';
 
 @Component({
   selector: 'app-fac-in-new',
@@ -35,6 +35,14 @@ export class FacInNewComponent implements OnInit {
   Voice_Type = "No";
   hideValidity = true;
   reqno:any;	
+  cache_tmp:  any = []
+  selected_location ="";
+  selected_campus="";
+  chargeDepartmentCode:any = '';
+  Comments = ''
+  Fac_Type = ''
+  authLevel = ''
+  validity = ''
 
   employeeInfo: any;
   employeeInfo1: any;
@@ -50,6 +58,9 @@ export class FacInNewComponent implements OnInit {
   j=0;
 
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
+
+  cache : Create_Cache_fac = new Create_Cache_fac();
+  cache_disp : Create_Cache_fac = new Create_Cache_fac();
 
   reviewDetailsIndia = {	
   
@@ -67,11 +78,17 @@ export class FacInNewComponent implements OnInit {
     authValue: ""	
   }	
 
-  backClick(){	
-    sessionStorage.setItem('backbutton','yes');	
-    sessionStorage.setItem('step','step1');	
-    this.location.back();	
+ backClick(formData:NgForm): void{	
+  sessionStorage.setItem('backbutton','yes');	
+  sessionStorage.setItem('step','step1');	
+  //this.location.back();	
+  this.create_cache(formData);
+  if(sessionStorage.getItem('radioAction')=='myself'){
+    this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
   }
+  else{
+  this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+}	}
 
   selectedLocation(loc:String) {	
     this.build = [];	
@@ -171,7 +188,27 @@ export class FacInNewComponent implements OnInit {
       this.reviewDetailsIndia.authValue = ''
     }
 
+    //set up the cache for form values.
+    this.create_cache(formData);
+
   }	
+
+  create_cache(formData:NgForm){
+
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.officeLocation =  formData.value.Location_1;		
+    this.cache.campus = formData.value.Buildings;		
+    this.cache.funded = formData.value.Voice_Type;
+    this.cache.chargeDepartmentCode=formData.value.chargeDepartmentCode;	
+    this.cache.authLevel=formData.value.authLevel;	
+    this.cache.Fac_Type= formData.value.Fac_Type;
+    this.cache.validity= formData.value.validity;
+    this.cache.Comments= formData.value.Comments;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached");
+  }
 
   BackButton() {	
     this.isEntryForm = false;	
@@ -230,6 +267,7 @@ export class FacInNewComponent implements OnInit {
       this.isButtonVisible=true;
     }
      );	
+
      }	
 
 
@@ -296,6 +334,42 @@ export class FacInNewComponent implements OnInit {
     if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
       this.hideProjectId = true;
       }
+
+  //load cache data for entry details form. -- START
+    this.cache_tmp=sessionStorage.getItem('cache')	
+    console.log(this.cache_tmp);
+    this.cache_disp=JSON.parse(this.cache_tmp);
+
+    if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='fac_new')){
+      this.selected_location=String(this.cache_disp.officeLocation) ;
+      this.selectedLocation(this.cache_disp.officeLocation);
+      if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION') || (this.cache_disp.officeLocation=='') )
+        this.hideBuilding=true;
+      else
+        this.hideBuilding=false;
+        this.campus = String(this.cache_disp.campus);	
+        this.Voice_Type= String(this.cache_disp.funded);
+        this.authLevel=String(this.cache_disp.authLevel);	
+        this.Fac_Type= String(this.cache_disp.Fac_Type);
+        this.validity= String(this.cache_disp.validity);
+        this.Comments= String(this.cache_disp.Comments);
+      if(this.cache_disp.funded=='Yes'){
+       // this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
+        this.showChargeDepartmentCode();
+      }
+        else
+        {
+        //this.chargeDeptValue= '';
+        this.hideChargeDepartmentCode();
+        }
+        this.chargeDepartmentCode=  String(this.cache_disp.chargeDepartmentCode);
+
+        console.log("cache restored");
+    }else{
+      sessionStorage.removeItem('cache');
+    }
+
+    //load cache data for entry details form. -- End
 
   }
 

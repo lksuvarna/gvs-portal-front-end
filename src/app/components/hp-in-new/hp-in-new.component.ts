@@ -33,7 +33,7 @@ isSpinnerVisible= false;
 
 isEntryForm = false;	
 isReviewForm = true;	
-Voice_Type = "no";	
+Voice_Type = "No";	
 hideDeptCode = true;	
 hideBuilding = true;	
 //fixedPhoneIdentifier = false;	
@@ -112,7 +112,7 @@ reviewDetailsIndia = {
   businessUnit:	"",	
   projectId: "",	
   accountId: " ",	
-  Voice_Type_Disp : true,	
+  Voice_Type_Disp : "",	
   icano_Disp : "",	
   Location_final :"",	
   accid_Disp: "",	
@@ -128,11 +128,16 @@ reviewDetailsIndia = {
   mac:"",
 }	
 // Submit to Snow Jabber new code added by Swarnava ends	
-backClick(){	
-sessionStorage.setItem('backbutton','yes');	
-sessionStorage.setItem('step','step1');	
-this.location.back();	
-}	
+backClick(): void{	
+  sessionStorage.setItem('backbutton','yes');	
+  sessionStorage.setItem('step','step1');	
+  //this.location.back();	
+  if(sessionStorage.getItem('radioAction')=='myself'){
+    this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  }
+  else{
+  this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+}	}
 selectedLocation(loc:String) {	
   this.build = [];	
   this.campus = '';	
@@ -344,10 +349,14 @@ entryDetails(formData: NgForm) {
   this.reviewDetailsIndia.model = formData.value.Model_Type;
   this.reviewDetailsIndia.employeeId = this.employeeID;
   this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
-  this.reviewDetailsIndia.cos = formData.value.cos;
   this.reviewDetailsIndia.justification = formData.value.Justification;
   this.reviewDetailsIndia.description = formData.value.Description;
   this.reviewDetailsIndia.mac = formData.value.MACAddress;
+  if(formData.value.Device_Type !== 'Fixed Phone User') {
+    this.reviewDetailsIndia.cos = "";
+  } else {
+    this.reviewDetailsIndia.cos = formData.value.cos;
+  }
 }	
 
 BackButton() {	
@@ -367,7 +376,7 @@ submit_snow(){
     // fields picked up from form -- begins	
     this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
     // by default set to true. below line can be removed if needed.	
-    //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
+    this.payload.Voice_Type_Disp = 	this.reviewDetailsIndia.funded;
     this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
     this.payload.icano_Disp = this.reviewDetailsIndia.icaCode;	
     this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
@@ -381,6 +390,7 @@ submit_snow(){
     this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
     this.payload.Desc_Disp = this.reviewDetailsIndia.description;
     this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    this.payload.LocationCorrectnew = "HP"+this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
     this.payload.Justification_Disp = this.reviewDetailsIndia.justification;	
 
@@ -388,7 +398,7 @@ submit_snow(){
     this.payload.level1_japproval=this.countrydetails.level1_japproval;	
     this.payload.level2_japproval=this.countrydetails.level2_japproval;	
     this.payload.SLA_type=this.countrydetails.SLA_type;	
-    this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+    this.payload.gvs_approval_link="";
     this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
     this.payload.countryname=this.countrydetails.name;	
     this.payload.request_type='fixedphone_new';	
