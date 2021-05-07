@@ -666,3 +666,42 @@ Create_Cache_jabber(){
     }
 
 }
+
+//setting up cache class for fac new data retention.
+
+export class Create_Cache_fac
+{
+
+setflag !: boolean;
+cnum !:string;
+officeLocation	!: String;
+campus	!: String;
+funded	!: String;
+chargeDepartmentCode !: String;	
+businessUnit !: String;
+projectId	!: String;
+fixPhoneIdentifier !: String;
+selected_jabber !: String;
+authLevel !: String;
+Fac_Type !: String;
+validity !: String;
+Comments !: String;
+
+Create_Cache_fac(){
+
+       this.cnum='';
+       this.officeLocation	='';
+       this.campus	='';
+       this.funded	='';
+       this.chargeDepartmentCode ='';
+       this.businessUnit='';
+       this.authLevel ='';	
+       this.Fac_Type ='';
+       this.validity ='';
+       this.Comments ='';
+       this.setflag=false;
+       this.selected_jabber='';
+
+    }
+
+}
