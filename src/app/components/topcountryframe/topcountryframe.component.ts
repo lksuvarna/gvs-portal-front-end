@@ -97,7 +97,7 @@ export class TopcountryframeComponent implements OnInit {
     }
   })
   
-  if((this.service!='jabber_new') && (this.service!='jabber_delete') && (this.service!='jabber_update') && (this.service!='jabber_move') && (this.service!='fac_new') && (this.service!='fac_update')){
+  if((this.service!='jabber_new') && (this.service!='jabber_delete') && (this.service!='jabber_update') && (this.service!='jabber_move') && (this.service!='fixedphone_new') && (this.service!='fac_new') && (this.service!='fac_update')){
     sessionStorage.removeItem('cache');
   }
 
