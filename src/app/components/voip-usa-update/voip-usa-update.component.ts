@@ -69,16 +69,16 @@ export class VoipUsaUpdateComponent implements OnInit {
       return;
     }
     
-    if(formData.value.account_id.includes(" ")) {
-      alert('Please enter the correct Account ID');
-      return;
-    }
-    if(formData.value.account_id.toUpperCase() == '') {
-      alert('Please enter Account ID');
-      return;
-    }
+    // if(formData.value.account_id.includes(" ")) {
+    //   alert('Please enter the correct Account ID');
+    //   return;
+    // }
+    // if(formData.value.account_id.toUpperCase() == '') {
+    //   alert('Please enter Account ID');
+    //   return;
+    // }
 
-    if(formData.value.account_id.length<4) {
+    if(formData.value.account_id.trim().length<4) {
       alert('Account ID can not be less than 4 characters');
       return;
     }

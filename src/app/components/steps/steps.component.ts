@@ -164,6 +164,11 @@ export class StepsComponent implements OnInit {
     this.cache.projectId=this.formData.value.Charge_Dept;
     else			
     this.cache.projectId=this.formData.value.account_id;
+    this.cache.update_vm=this.formData.value.checked;
+    this.cache.update_cos=this.formData.value.checked2;
+    this.cache.voicemail=this.formData.value.Voice_Mail;
+    this.cache.cos=this.formData.value.select_cos;
+    this.cache.businessjustification=this.formData.value.businessjustification;
     sessionStorage.setItem('cache',JSON.stringify(this.cache));
     console.log("cached"+JSON.stringify(this.cache));
 
@@ -179,7 +184,10 @@ export class StepsComponent implements OnInit {
     this.cache.funded ="No";
     }
     else{
-    this.cache.officeLocation =  this.formData.value.Location_1;
+    if(this.formData.value.Location_1!=undefined)
+    this.cache.officeLocation = this.formData.value.Location_1;
+    else
+    this.cache.officeLocation = this.formData.value.Location_Selected
     this.cache.funded = this.formData.value.Voice_Type;		
     }
     this.cache.campus = this.formData.value.Buildings;		

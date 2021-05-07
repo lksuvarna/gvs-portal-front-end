@@ -5,7 +5,8 @@ import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Location} from '@angular/common';	
-import { Jabber_New } from 'config/payload';
+import { fixedphone_update} from 'config/payload';
+import {Db2Service} from '../../_services/db2.service';
 
 @Component({
   selector: 'app-hp-au-update',
@@ -24,7 +25,6 @@ export class HpAuUpdateComponent implements OnInit {
   updateRequiredFor: any;
   hideDeviceSection = true;
   models:any;
-  selected_device:any = '';
   cloudantData: any = []	
   servicesData: any = []
   reqFor: any;
@@ -34,11 +34,12 @@ export class HpAuUpdateComponent implements OnInit {
   locationlist: any;	
   pcode: any;	
   service: any;
+
+  currentMac: string = "";
+  currentPhone: any ;
+  currentdesc: any ;
+  currentloc: any;
   errorinfo=false;
-  currentMac: string = '20BBC0DD14DB';
-  currentPhone: Number = 3413073;
-  currentdesc: any = 'testing 123';
-  currentmodel: Number= 6961;
 
   showformodel: boolean = false;
   showformacadd: boolean = false;
@@ -57,41 +58,58 @@ export class HpAuUpdateComponent implements OnInit {
   isReviewForm = true;
 
   hideBuilding = false;	
+  reqno:any;
+  warninginfo=false;
+  warninginfosnow=false;
+  hideSteps = false;
 
-  payload : Jabber_New = new Jabber_New();
+  payload : fixedphone_update = new fixedphone_update();
   
   reviewDetailsIndia = {	
 
     officeLocation:	"",	
     campus:	"",	
-    funded:	"",	
-    chargeDepartmentCode:	"",	
-    businessUnit:	"",	
-    projectId: "",	
-    accountId: " ",	
-    Voice_Type_Disp : true,	
-    icano_Disp : "",	
     Location_final :"",	
-    accid_Disp: "",	
     reqno:"",
     icaCode:"",
     device:"",
-    model:"",
+    location:"",
     employeeId:"",
     voicemail:"",
     cos:"",
     justification:"",
     description:"",
     mac:"",
+    phoneNunmer:"",
+    newModel: "",
+    newMac:"",
+    Currentdescription :"",
+    updatereq:""
   }
   
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
+  constructor(private db2:Db2Service,private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
 
   OnSearchClick(){
-    
     if(this.currentMacOrPhone != ''){
+      this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,"Australia").subscribe(data =>{
+        if(data != null)
+        {
+         console.log("data"+data); 
+         console.log("data message"+data.message[0]);
+          this.currentMac = data.message[0].ATTRIBUTE1;
+          this.currentPhone = data.message[0].IDENTIFIER;
+          this.currentdesc = data.message[0].ATTRIBUTE4;
+          this.currentloc = data.message[0].ATTRIBUTE3;
+          this.showSearch =true;
 
-      this.showSearch =true;
+        }
+        else
+        {
+          alert("something went wrong");
+
+        }
+        
+      });
 
     }
     else{
@@ -158,57 +176,79 @@ export class HpAuUpdateComponent implements OnInit {
 
   selectedLocation(loc:String) {	
     this.build = [];	
-    this.campus = '';	
-    if(loc != '') {	
-      this.hideBuilding = true;	
-      var k =0;	
-      for(var i=0;i<this.campA.length;i++) {	
-      if(loc == this.campA[i]) {        	
-      this.build[k] = this.buildA[i];
-      k = k+1;	
-      }	
-      }
-             
-    } else {	
-      this.hideBuilding = false;	
-      this.build = [];	
+  this.campus = 'Select Location';	
+  if(loc != '') {	
+    this.hideBuilding = false;	
+    var k =0;	
+    for(var i=0;i<this.campA.length;i++) {	
+    if(loc == this.campA[i]) {        	
+    this.build[k] = this.buildA[i];
+    k = k+1;	
     }	
+    }
+           
+  } else {	
+    this.hideBuilding = true;	
+    this.build = [];	
+  }	
   }
 
   entryDetails(formData: NgForm){
     
     if(formData.value.UpdateReq == '') {	
       alert('Please select update required for');	
+      return;
     }	
 
-    if(formData.value.MAC1 == '') {	
-      alert('Please enter 12 characters MAC address');	
-    }
-
-    if(formData.value.Comments == '') {	
-      alert('Please provide the reason for updation.');	
-      	
-    }
-
-    if(formData.value.Newdesc == '') {	
-      alert('Please provide the New Description. ');	
-      	
-    }
-
-    if(formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION') {	
-      alert('Please select a location');	
-      	
-    }
-
-    if(formData.value.Buildings.toUpperCase() == 'SELECT ONE') {	
-      alert('Please select a campus');	
+    if(formData.value.MAC1.trim() == '' || formData.value.MAC1.length != 12) {	
+      alert('Please enter 12 characters MAC address');
       return;	
+    }
+
+    var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
+    if(pat1.test(formData.value.MAC1)) {
+      alert('MAC field value to be in combination of 0 to 9 and A to F');
+      return;
+    }
+
+    if(formData.value.Location_1.toUpperCase() == 'SELECT STATE' || formData.value.Location_1 == '') {	
+      alert('Please select the State');	
+      return;	
+    }	
+    if(formData.value.Buildings.toUpperCase() == 'SELECT LOCATION' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT STATE' && formData.value.Buildings == '') {	
+      alert('Please select the Location');	
+      return;	
+    }	
+
+    if(formData.value.Newdesc.trim() == '') {	
+      alert('Please provide the New Description.');
+      return;
+    }
+
+    if(formData.value.Newdesc.trim() == this.currentdesc) {
+      alert("Please choose a different Description as the current Description is already "+this.currentdesc+" for the provided number.");
+      return;
+    }
+
+    if(formData.value.Comments.trim() == '') {	
+      alert('Please provide the reason for updation.');	
+      return;
     }
     
 
     this.isEntryForm = true;	
     this.isReviewForm = false;	
- 
+    this.reviewDetailsIndia.updatereq = formData.value.UpdateReq;
+    this.reviewDetailsIndia.mac = this.currentMac;
+      this.reviewDetailsIndia.phoneNunmer = this.currentPhone;
+      this.reviewDetailsIndia.Currentdescription = this.currentdesc;
+      this.reviewDetailsIndia.location = this.currentloc;
+      this.reviewDetailsIndia.newModel = formData.value.NewModel;
+      this.reviewDetailsIndia.newMac = formData.value.MAC1;
+      this.reviewDetailsIndia.justification = formData.value.Comments;
+      this.reviewDetailsIndia.description = formData.value.Newdesc;
+      this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
+      this.reviewDetailsIndia.campus = this.campus;
 
   }
 
@@ -220,51 +260,85 @@ export class HpAuUpdateComponent implements OnInit {
 
   // Submit to Snow Jabber new code added by Swarnava	
   submit_snow(){
+  this.reqno=this.countrydetails.isocode+"-US-"+this.cnum.substr(0,6)+"-"+gettime();	
+  sessionStorage.setItem('reqno',this.reqno)	
+  this.isButtonVisible=false;	
+  this.isSpinnerVisible=true;	
+    this.payload.orinator_payload=this.orgi;	
+    this.payload.cNum_payload=this.cnum;	
 
-    this.isButtonVisible=false;
-    this.isSpinnerVisible=true;	
+    this.payload.Comments_Disp = this.reviewDetailsIndia.justification;
+    this.payload.Newdesc_Disp = this.reviewDetailsIndia.description;
+    this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
+    this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
+    this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();
+    this.payload.currmodel = "";
+    this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
+    this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
+    this.payload.MAC = this.reviewDetailsIndia.newMac;
+    this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    this.payload.LocationCorrectnew = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    this.payload.ReqNo=this.reqno;
+    this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+
+
+    this.payload.gvs_approval_link="";
+    this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
+    this.payload.countryname=this.countrydetails.name;	
+    this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
+    this.payload.request_type='fixedphone_update';	
+    this.payload.ccmail= this.countrydetails.ccmail;
+
+
+
+  this.servicenowservice.submit_request_fixed_update(this.payload).subscribe(data=> {	
+    console.log('response', data);	
+    if(data)	
+    this.router.navigate(['/resultpage'],{ skipLocationChange: true , queryParams: { country: this.pcode,service:this.service }}) ;	
+    },
+    (error) => {                              //Error callback
+     console.error('error caught in component'+error);
+     this.isSpinnerVisible= false; 	
+     this.errorinfo=true;
+     this.isButtonVisible=true;
+   });
 
     //MAKE SURE THE ERROR HANDLE CODE IS ADDED WHEN YOU SUBMIT TO SNOW>
 
   }
 
   ngOnInit(): void {
+    
     this.updateRequiredFor = sessionStorage.getItem('updaterequired');
     this.updateRequiredFor = JSON.parse(this.updateRequiredFor).split(",");
-    this.models = sessionStorage.getItem('fpumodels');
-    this.models = JSON.parse(this.models).split(",");
-
-    // Submit to Snow Jabber new code added by Swarnava	
   this.orgi=this.cookie.getCookie('ccode');	
   this.cnum = sessionStorage.getItem('cnum') ;	
   this.countrydetails = sessionStorage.getItem('countrydetails');	
   this.countrydetails = JSON.parse(this.countrydetails);	
-   // Submit to Snow Jabber new code added by Swarnava ends	
 
-    
-    this.ccode=this.cookie.getCookie('ccode').substring(6,9);	
+  this.ccode=this.cookie.getCookie('ccode').substring(6,9);	
   this.route.queryParams	
   .subscribe(params => {	
     console.log(params);	
     this.service=params.service;	
     this.pcode = params.country;	
     console.log("navigation component" + this.pcode);	
-  })	
-  this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
-  this.locationlist=this.locationlist?.replace('"','').split(',');	
+  });
+
+  this.locationlist=sessionStorage.getItem('locationdetails')
+  this.locationlist=this.locationlist?.replaceAll('"','').split(',');
 
   for (var i = 0; i < this.locationlist.length; i++) {	
-    var n = this.locationlist[i].indexOf("~")	
-    this.campA[i] = this.locationlist[i].substr(1, n - 1);	
-    this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);	
+    var n = this.locationlist[i].indexOf("-")	
+    this.campA[i] = this.locationlist[i].substr(0, n);	
+    this.buildA[i] = this.locationlist[i].substring(n + 1, this.locationlist[i].length);	
+  }	
+  for (var i = 0; i < this.campA.length; i++) {	
+    if (this.campA[i] != this.campA[i + 1]) {	
+      this.camp[this.j] = this.campA[i];	
+      this.j++;	
+    }	
   }
-
-    for (var i = 0; i < this.campA.length; i++) {	
-      if (this.campA[i] != this.campA[i + 1]) {	
-        this.camp[this.j] = this.campA[i];	
-        this.j++;	
-      }	
-    }
 
     const servicesData = { 	
       "data": [	
@@ -279,10 +353,15 @@ export class HpAuUpdateComponent implements OnInit {
      
     }	
 
-    // this.reqFor = sessionStorage.getItem('radioAction')
+    this.reqFor = sessionStorage.getItem('radioAction');
+    this.servicesData = servicesData.data[0]
+
+    if(this.warninginfo || this.warninginfosnow){
+      this.hideSteps = true
+    } else {
+      this.hideSteps = false
+    }
     
-    // this.models = sessionStorage.getItem('fpumodels')
-    // this.servicesData = servicesData.data[0];
     
   }
   previousStep(event : any){
