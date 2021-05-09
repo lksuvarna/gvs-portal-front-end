@@ -182,12 +182,12 @@
     "Jabberupdate": {
         "SELECTONE": "SELECT ONE",
         "ReviewDetails": "Review Details",
-        "JabberNumber": "Jabber Number",
-        "SelectJabberNumber": "Select Jabber Number",
+        "JabberNumber": "Jabber / Phone Number",
+        "SelectJabberNumber": "Jabber / Phone Number",
         "Jabber/PhoneNumberLocation": "Select Jabber / Phone Number Location"
     },
     "Jabbermove": {
-        "JabbertoMove": "Jabber number to Move",
+        "JabbertoMove": "Jabber / Phone number to Move",
         "ProjectIId": "Project ID",
         "AccountId": "Account ID",
         "ICACode": "ICA Code",

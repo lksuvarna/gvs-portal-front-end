@@ -36,7 +36,7 @@
                                 style="width:300px !important; text-transform: uppercase;" title="Location" #location (change)='selectedLocation(location.value)' ngModel [(ngModel)]='selected_location'>
                                 <option value ="" >Select Location</option>
                                 <option name="Location" *ngFor='let fl_location of locationlist' [value]='fl_location'>
-                                {{ fl_location }}</option>
+                                {{ fl_location }} </option>
                             </select>
                             </div>
                         </td>
@@ -87,7 +87,7 @@
                         <td colspan="2" width="47%">
                             <label for="LocationId" translate>Jabbernewtrans.JabberLocation</label>
                         </td>
-                        <td width="53%">{{selectedLocationEmea}}<br></td>
+                        <td width="103%">{{selectedLocationEmea}}</td>
                     </tr>
                 </tbody>
             </table>

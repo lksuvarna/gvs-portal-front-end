@@ -666,10 +666,13 @@ export class EmployeesearchComponent implements OnInit {
         break;
       case "fixedphone_update":
         this.title = "Fixed Phone - Update Request";
+        this.exitrouting = 'fixedphoneservices';
+        
         if(this.countrydetails.fnavpage == 'AP') {
         this.routingname = "/entrydetailsfup";
-        this.exitrouting = 'fixedphoneservices';
-         } else if (this.countrydetails.fnavpage == 'AU') {
+        } else if (this.countrydetails.fnavpage == 'EMEA') {
+          this.routingname = '/entrydetailshpemea';
+        }else if (this.countrydetails.fnavpage == 'AU') {
           this.routingname = '/entrydetailsaufu';
         }
         this.reqname = "-US-";

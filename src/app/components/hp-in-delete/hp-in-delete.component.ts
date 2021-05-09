@@ -133,7 +133,7 @@ export class HpInDeleteComponent implements OnInit {
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.request_type='fixedphone_delete';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;
-      this.payload.ccmail= this.countrydetails.ccmail; 
+      this.payload.ccmail_1= this.countrydetails.ccmail; 
 
 
     this.servicenowservice.submit_request_fixed_delete(this.payload).subscribe(data=> {	
