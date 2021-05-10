@@ -22080,7 +22080,7 @@ class ApprovalpendingComponent {
             }
             this.empserial = this.ccode;
             this.ccode = this.ccode.substring(6, 9);
-            this.empserial = "467756744";
+            //this.empserial="467756744";
             if (this.pcode == this.ccode) {
                 this.servicenowservice.searchsnowcoments(this.empserial, "snow_approve", "", "").subscribe(data => {
                     console.log(' snow response', data.message);
