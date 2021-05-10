@@ -42,7 +42,7 @@
                                             <div>
                                                 <input type="button" class="ds-button ds-secondary ds-width-auto 
                                                 ds-margin-bottom-0 ds-pad-l-1 ds-pad-r-1"  
-                                                (click)='OnSearchClick()' name="back" value="SEARCH">
+                                                (click)='OnSearchClick()' name="SEARCH" value="SEARCH">
                                             </div>
                                         </div>
                                     </div>
@@ -52,25 +52,20 @@
                     </td>
                 </tr>
 
-                <!-- <tr valign="top">
+                <tr valign="top" *ngIf='showerrormessage'>
                     <td colspan="2" width="100%">
                         <span id="err1" ><br><br>
-                            <div class="ds-col-xs-12 ds-alert ds-warning ds-pad-t-1">
+                            <div class="ds-col-xs-12 ds-alert ds-warning">
                                 <p>No record was found for the Mac Address or Phone Number you have entered. 
                                 Please check and try again.</p>
                             </div>
                         </span>
-                        <span id="err2"><br><br>
-                            <div class="ds-col-xs-12 ds-alert ds-warning ds-pad-t-1">
-                                <p>No record was found for the Mac Address or Phone Number you have entered. 
-                                    Please check and try again.</p>
-                            </div>
-                        </span>
                     </td>
-                </tr> -->
+                </tr>
+
                 <tr valign="top" *ngIf='showSearch'>
                     <td width="50%"><br>
-                        <label for="sear" class=""> Current MAC Address </label>
+                        <label for="sear" class="">Current MAC Address </label>
                     </td>
                     <td width="50%"><br>{{currentMac}}
                     </td>
@@ -78,7 +73,7 @@
                 
                 <tr valign="top" *ngIf='showSearch'>
                     <td width="50%"><br>
-                        <label for="sear" class="">  Current  Phone Number </label>
+                        <label for="sear" class="">Current  Phone Number </label>
                     </td>
                     <td width="50%"><br>{{currentPhone}}
                     </td>
@@ -215,7 +210,7 @@
                     <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" 
                     value="BACK" (click)="backClick()">
                     </span>
-                    <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                    <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='showerrormessage'>
                     <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                     value="NEXT">
                     </span>

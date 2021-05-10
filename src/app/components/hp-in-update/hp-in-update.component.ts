@@ -63,7 +63,7 @@ export class HpInUpdateComponent implements OnInit {
   warninginfosnow=false;
   hideSteps = false;
   errorinfo=false;
-
+  showerrormessage = false
 
 
   payload : fixedphone_update = new fixedphone_update();
@@ -100,29 +100,35 @@ export class HpInUpdateComponent implements OnInit {
   
   constructor(private db2:Db2Service, private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
 
+  onSearch(){
+    this.showerrormessage = false;
+    this.hideSteps = false;
+  }
+
   OnSearchClick(){
     
     if(this.currentMacOrPhone != ''){
 
       this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
-        if(data != null)
+        if(data.message != '')
         {
           
           this.currentMac = data.message[0].ATTRIBUTE1;
           this.currentPhone = data.message[0].IDENTIFIER;
           this.currentdesc = data.message[0].ATTRIBUTE4;
           this.currentmodel = data.message[0].ATTRIBUTE2;
-          // console.log(data.message[0].COUNTRY);
-          // console.log(data.message[0].ATTRIBUTE1);
-          // console.log(data.message[0].IDENTIFIER);
-          // console.log( data.message[0].ATTRIBUTE2);
-          // console.log(data.message[0].ATTRIBUTE4);
+          this.currentMac = this.currentMac.substring(3,this.currentMac.length);
           this.showSearch =true;
+          this.showerrormessage = false;
+
 
         }
         else
         {
-          alert("something went wrong");
+          this.showerrormessage = true;
+          this.showSearch = false;
+          this.hideSteps = true;
+
 
         }
         
