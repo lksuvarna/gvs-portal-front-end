@@ -17,6 +17,7 @@ export class StepsComponent implements OnInit {
 
   @Input('cnum') cnum : any;
   @Input('formData') formData !:NgForm;
+  @Input('UpdatedFor') UpdatedFor : any;
   @Input ('step') step : any;
   @Input ('isSelf') isSelf : any;
   @Input('hideSteps') set onChange (isWarning: any) {
@@ -201,7 +202,7 @@ export class StepsComponent implements OnInit {
 
 if(this.service=='fac_new'){
 
-  console.log("Starting Cache");
+  console.log("Starting cache_fac");
   this.cache_fac.setflag=true;
   this.cache_fac.cnum=this.cnum;
   this.cache_fac.officeLocation = this.formData.value.Location_1;	
@@ -217,22 +218,21 @@ if(this.service=='fac_new'){
 
 }
 
-// if(this.service=='fac_update'){
-//   this.cache.setflag=true;
-//   this.cache.cnum=this.cnum;
-//   this.cache.selected_jabber = this.formData.value.Jabber_1;
-//   if(this.formData.value.account_id==undefined)
-//   this.cache.projectId=this.formData.value.Charge_Dept;
-//   else			
-//   this.cache.projectId=this.formData.value.account_id;
-//   sessionStorage.setItem('cache',JSON.stringify(this.cache));
-//   console.log("cached"+JSON.stringify(this.cache));
-
-// }
-
-
+if(this.service=='fac_update'){
+  console.log("Starting cache_fac");
+  this.cache_fac.setflag=true;
+  this.cache_fac.cnum=this.cnum;
+  this.cache_fac.updatefor = this.UpdatedFor;
+  this.cache_fac.officeLocation =  this.formData.value.Location_1;		
+  this.cache_fac.campus = this.formData.value.Buildings;		
+  this.cache_fac.funded = this.formData.value.Voice_Mail;
+  this.cache_fac.chargeDepartmentCode=this.formData.value.chargeDepartmentCode;	
+  this.cache_fac.authLevel=this.formData.value.authLevel;	
+  this.cache_fac.Comments= this.formData.value.businessjustification;
+  sessionStorage.setItem('cache',JSON.stringify(this.cache_fac));
+  console.log("cached");
 }
 
-
+}
 
 } 

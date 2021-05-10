@@ -176,6 +176,30 @@ export class FacInResetComponent implements OnInit {
     this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
     this.locationlist=this.locationlist?.replace('"','').split(',');	
 
+        
+    this.route.queryParams	
+    .subscribe(params => {	
+      console.log(params);	
+      this.service=params.service;	
+      this.pcode = params.country;	
+      console.log("navigation component" + this.pcode);	
+    })	
+    this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
+      console.log('Response received', data.countrydetails.name);
+      this.countryname=data.countrydetails;
+    
+    this.cloudantData  = {
+      "code": this.ccode,
+      "name": this.countryname.name,
+      "isocode": this.countryname.isocode,
+      "isjabber": this.countryname.isjabber,
+      "isfixedphone": this.countryname.isfixphone,
+      "isfac": this.countryname.isfac,
+      "isspecial": this.countryname.isspecial
+    }
+  });
+
+
     const servicesData = { 	
       "data": [	
         {    		
@@ -208,28 +232,6 @@ export class FacInResetComponent implements OnInit {
         this.j++;	
       }	
     }
-    
-    this.route.queryParams	
-    .subscribe(params => {	
-      console.log(params);	
-      this.service=params.service;	
-      this.pcode = params.country;	
-      console.log("navigation component" + this.pcode);	
-    })	
-    this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-      console.log('Response received', data.countrydetails.name);
-      this.countryname=data.countrydetails;
-    
-    this.cloudantData  = {
-      "code": this.ccode,
-      "name": this.countryname.name,
-      "isocode": this.countryname.isocode,
-      "isjabber": this.countryname.isjabber,
-      "isfixedphone": this.countryname.isfixphone,
-      "isfac": this.countryname.isfac,
-      "isspecial": this.countryname.isspecial
-    }
-  });
 
   }
   previousStep(event : any){
