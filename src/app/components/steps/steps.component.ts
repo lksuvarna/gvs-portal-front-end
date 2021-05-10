@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Create_Cache_fac, Create_Cache_jabber } from 'config/payload';
+import { Create_Cache_jabber,Create_Cache_fixedphone,Create_Cache_fac } from 'config/payload';
 
 @Component({
   selector: 'app-steps',
@@ -16,7 +16,9 @@ export class StepsComponent implements OnInit {
   isWarning3 = false
 
   @Input('cnum') cnum : any;
+  @Input('FixedPhoneData') FixedPhoneData : any;
   @Input('formData') formData !:NgForm;
+  @Input('UpdatedFor') UpdatedFor : any;
   @Input ('step') step : any;
   @Input ('isSelf') isSelf : any;
   @Input('hideSteps') set onChange (isWarning: any) {
@@ -123,6 +125,7 @@ export class StepsComponent implements OnInit {
   }
 
   cache : Create_Cache_jabber = new Create_Cache_jabber();
+  cache_fixed : Create_Cache_fixedphone = new Create_Cache_fixedphone();
   cache_fac : Create_Cache_fac = new Create_Cache_fac();
 
 
@@ -199,9 +202,36 @@ export class StepsComponent implements OnInit {
     console.log("cached");
   }
 
+  if(this.service == 'fixedphone_new') {
+    console.log("Starting Cache");
+  this.cache_fixed.setflag=true;
+  this.cache_fixed.cnum=this.cnum;
+  this.cache_fixed.officeLocation = this.formData.value.Location_1;	
+  this.cache_fixed.campus = this.formData.value.Buildings;
+  this.cache_fixed.funded = this.formData.value.Voice_Type;	
+  this.cache_fixed.chargeDepartmentCode = this.formData.value.Department_number;	
+  this.cache_fixed.projectId = this.formData.value.Projectid;	
+  this.cache_fixed.accountId = this.formData.value.Accountid;
+  this.cache_fixed.icaCode = this.formData.value.ICAcode;
+  this.cache_fixed.device = this.formData.value.Device_Type;
+  this.cache_fixed.model = this.formData.value.Model_Type;
+  this.cache_fixed.employeeId = this.FixedPhoneData.empID;
+  this.cache_fixed.voicemail = this.formData.value.Voicemail;
+  this.cache_fixed.justification = this.formData.value.Justification;
+  this.cache_fixed.description = this.formData.value.Description;
+  this.cache_fixed.mac = this.formData.value.MACAddress;
+  this.cache_fixed.goClick = this.FixedPhoneData.goClick;
+  this.cache_fixed.emailClick = this.FixedPhoneData.emailClick;
+  this.cache_fixed.emailResult = this.FixedPhoneData.emailResult;
+  this.cache_fixed.showBusinessNeed = this.FixedPhoneData.showBusinessNeed;
+  this.cache_fixed.cos = this.FixedPhoneData.COS;
+  this.cache_fixed.employeeIDDisplay = this.FixedPhoneData.employeeID;
+  sessionStorage.setItem('cache',JSON.stringify(this.cache_fixed));
+  console.log("cached");
+  }
 if(this.service=='fac_new'){
 
-  console.log("Starting Cache");
+  console.log("Starting cache_fac");
   this.cache_fac.setflag=true;
   this.cache_fac.cnum=this.cnum;
   this.cache_fac.officeLocation = this.formData.value.Location_1;	
@@ -217,22 +247,21 @@ if(this.service=='fac_new'){
 
 }
 
-// if(this.service=='fac_update'){
-//   this.cache.setflag=true;
-//   this.cache.cnum=this.cnum;
-//   this.cache.selected_jabber = this.formData.value.Jabber_1;
-//   if(this.formData.value.account_id==undefined)
-//   this.cache.projectId=this.formData.value.Charge_Dept;
-//   else			
-//   this.cache.projectId=this.formData.value.account_id;
-//   sessionStorage.setItem('cache',JSON.stringify(this.cache));
-//   console.log("cached"+JSON.stringify(this.cache));
-
-// }
-
-
+if(this.service=='fac_update'){
+  console.log("Starting cache_fac");
+  this.cache_fac.setflag=true;
+  this.cache_fac.cnum=this.cnum;
+  this.cache_fac.updatefor = this.UpdatedFor;
+  this.cache_fac.officeLocation =  this.formData.value.Location_1;		
+  this.cache_fac.campus = this.formData.value.Buildings;		
+  this.cache_fac.funded = this.formData.value.Voice_Mail;
+  this.cache_fac.chargeDepartmentCode=this.formData.value.chargeDepartmentCode;	
+  this.cache_fac.authLevel=this.formData.value.authLevel;	
+  this.cache_fac.Comments= this.formData.value.businessjustification;
+  sessionStorage.setItem('cache',JSON.stringify(this.cache_fac));
+  console.log("cached");
 }
 
-
+}
 
 } 

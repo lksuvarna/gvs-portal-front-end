@@ -545,7 +545,7 @@ export class fixedphone_delete
     ReqNo!: String;
     macaddress!: String;
     olddesc!: String;
-    ccmail!: String;
+    ccmail_1!: String;
     countryname!: String;
     evolution_instance!: String;
     gvs_portal_link!: String;
@@ -558,7 +558,7 @@ export class fixedphone_delete
      this.ReqNo="";
      this.macaddress="";
      this.olddesc="";
-     this.ccmail="";
+     this.ccmail_1="";
      this.countryname="";
      this.evolution_instance="";
      this.gvs_portal_link="";
@@ -592,7 +592,8 @@ Location_Disp!: String;
 evolution_instance!: String;
 gvs_portal_link!: String;
 gvs_approval_link!: String;
-ccmail!: String;
+ccmail_1!: String;
+LocationCorrect!: String;
 
 fixedphone_update(){
     this.request_type="";
@@ -615,7 +616,8 @@ fixedphone_update(){
     this.evolution_instance="";
     this.gvs_portal_link="";
     this.gvs_approval_link="";
-    this.ccmail="";
+    this.ccmail_1="";
+    this.LocationCorrect="";
     
     
 
@@ -686,6 +688,7 @@ authLevel !: String;
 Fac_Type !: String;
 validity !: String;
 Comments !: String;
+updatefor !: String;
 
 Create_Cache_fac(){
 
@@ -701,6 +704,64 @@ Create_Cache_fac(){
        this.Comments ='';
        this.setflag=false;
        this.selected_jabber='';
+       this.updatefor='';
+
+    }
+
+}
+
+export class Create_Cache_fixedphone
+{
+
+setflag !: boolean;
+cnum !:string;
+officeLocation !:string
+campus !:string
+funded !:string
+chargeDepartmentCode !:string
+businessUnit !:string
+projectId !:string	
+accountId !:string
+icaCode !:string
+device !:string
+model !:string
+employeeId !:string
+voicemail !:string
+justification !:string
+description !:string
+mac !:string;
+goClick!: boolean;
+emailClick!: boolean;
+emailResult!: boolean;
+showBusinessNeed!: boolean;
+cos!: String;
+employeeIDDisplay !: String;
+
+Create_Cache_fixedphone(){
+    
+    this.setflag=false;
+    this.cnum='';
+    this.officeLocation='';
+    this.campus='';
+    this.funded='';
+    this.chargeDepartmentCode='';
+    this.businessUnit='';
+    this.projectId='';
+    this.accountId='';
+    this.icaCode='';
+    this.device='';
+    this.model='';
+    this.employeeId='';
+    this.voicemail='';
+    this.justification='';
+    this.description='';
+    this.mac='';
+    this.showBusinessNeed=true;
+    this.goClick=true;
+    this.emailClick=false;
+    this.emailResult=false;
+    this.cos='National';
+    this.employeeIDDisplay='';
 
     }
 

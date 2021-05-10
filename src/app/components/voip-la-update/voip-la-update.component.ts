@@ -61,8 +61,8 @@ export class VoipLaUpdateComponent implements OnInit {
   vm_disp : any;
   bj_disp : any;
   classOfService : any =[];
-  checked : any=false;
-  checked2 : any=false;
+  checked =''
+  checked2 ='';
   newvoicemail = true;
   newcos = true;
   businessJust= true;
@@ -130,25 +130,40 @@ export class VoipLaUpdateComponent implements OnInit {
      console.log("Selected ITN index: "+this.index);
      this.cos_disp=this.cos[this.index];
      this.vm_disp=this.voice_mail[this.index];
+      
+     if(this.checked=='')
+     this.newvoicemail= true;
+     else
+     this.newvoicemail= false;
+     if(this.checked2==''){
+       this.newcos=true;
+       this.businessJust=true;
+      //  if(this.businessjustification=='')
+      //  this.businessJust=true;
+      //  else
+      //  this.businessJust=false;
+     }
+     else{
+       this.newcos=false;
+     //this.businessJust=false;
      if(this.selectcos.toUpperCase() =="INTERNATIONAL")
            this.businessJust=false;
            else
            this.businessJust=true;
+     }
+     
+     
 
     } else {
       
       this.currentcos=true;
       this.hideChargeDept = true;
-      this.newvoicemail= true;
       this.newcos= true;
-      this.businessJust=true;
       this.currentVoiceMail=true;
       this.updaterequested=true;
-     // this.checked=false;
-     // this.checked2=false;
-     // this.Voice_Mail='';
-     // this.selectcos="";
-     // this.businessjustification='';
+      this.newvoicemail= true 
+      this.newcos=true;
+      this.businessJust=true;
 
    }
   }
@@ -160,11 +175,13 @@ export class VoipLaUpdateComponent implements OnInit {
       return;
     }
     
-    if((this.checked==false)&&(this.checked2==false)) {
+    if((formData.value.checked=='')&&(formData.value.checked2=='')) {
       alert('Please select update required for');
       return;
     }
-      
+    
+
+
     if(this.checked) {
       if(formData.value.Voice_Mail =='') {
         alert('Please select New Voice Mail');
@@ -371,20 +388,27 @@ export class VoipLaUpdateComponent implements OnInit {
           if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_update')){
             this.selected_jabber=String(this.cache_disp.selected_jabber);
             this.SelectedJabber(this.cache_disp.selected_jabber);
-            if(this.cache_disp.voicemail=='')
-            this.checked=false;
-            else
-            this.checked=true;
-            if(this.cache_disp.cos==''){
-            this.checked2=false;
-            this.businessJust=true;
+            if((this.cache_disp.update_vm=='') || (this.cache_disp.update_vm=='false')){
+            this.checked='';
+            this.newvoicemail= true 
+          }
+            else{
+            this.checked=String(this.cache_disp.update_vm);
+            this.newvoicemail= false 
             }
-            else
-            this.checked2=true;
+            if((this.cache_disp.update_cos=='') || (this.cache_disp.update_cos=='false')){
+            this.checked2='';
+            this.newcos=true;
+            this.businessJust=true;
+          }
+            else{
+            this.checked2=String(this.cache_disp.update_cos);
+            this.newcos=false;
+            }
             this.Voice_Mail=this.cache_disp.voicemail;
             this.selectcos=String(this.cache_disp.cos);
             this.businessjustification=this.cache_disp.businessjustification
-            if(this.cache_disp.cos.toUpperCase() =="INTERNATIONAL")
+            if( (!this.businessJust) && (this.cache_disp.cos.toUpperCase() =="INTERNATIONAL"))
             this.businessJust=false;
             else
             this.businessJust=true;

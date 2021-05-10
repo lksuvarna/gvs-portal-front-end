@@ -16,7 +16,7 @@
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+            <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
@@ -30,7 +30,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel>
+                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel [(ngModel)]='selected_location'>
                                     <option value ="">Select Office Location</option>
                                     <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
                     {{ fl_location }}</option>
@@ -83,7 +83,7 @@
                         </td>
                         <td width="54%">
                             <div id="d21" class="ds-input-container ">
-                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" maxlength='6' autocomplete="off" ngModel>
+                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" maxlength='6' autocomplete="off" ngModel [(ngModel)]='chargeDeptValue'>
                                 <div id="Mentor1Div"></div>
                             </div>
                         </td>
@@ -102,7 +102,7 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container ds-pad-t-1">
-                                <input name="Projectid" value="" tabindex="2" rows="2" cols="40" id="Projectid" class="ds-input" style="width:300px !important;" title="Project ID" maxlength="11" ngModel> </div>
+                                <input name="Projectid" value="" tabindex="2" rows="2" cols="40" id="Projectid" class="ds-input" style="width:300px !important;" title="Project ID" maxlength="11" ngModel [(ngModel)]='projectIdValue'> </div>
                         </td>
                     </tr>
 
@@ -111,7 +111,7 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container ds-pad-t-1">
-                                <input name="Accountid" value="" tabindex="2" rows="2" cols="40" id="Accountid" class="ds-input" style="width:300px !important;" title="Account ID" maxlength="8" ngModel> </div>
+                                <input name="Accountid" value="" tabindex="2" rows="2" cols="40" id="Accountid" class="ds-input" style="width:300px !important;" title="Account ID" maxlength="8" ngModel [(ngModel)]='accountIdValue'> </div>
                         </td>
                     </tr>
 
@@ -120,7 +120,7 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container ds-pad-t-1">
-                                <input name="ICAcode" value="" tabindex="2" rows="2" cols="40" id="ICAcode" class="ds-input" style="width:300px !important;" title="ICA Code" maxlength="100" ngModel> </div>
+                                <input name="ICAcode" value="" tabindex="2" rows="2" cols="40" id="ICAcode" class="ds-input" style="width:300px !important;" title="ICA Code" maxlength="100" ngModel [(ngModel)]='icaValue'> </div>
                         </td>
                     </tr>
 
@@ -171,7 +171,7 @@
                                 <input name="StepMentor" class="ds-input" style="width:250px !important;display: inline-block;" title="Employee ID" [(ngModel)]='empID' (change)='onEmpIDChange()'>
                                 <button class="ds-button ds-small ds-width-auto" style="padding-right: 1rem;padding-left: 1rem;margin: 4px;" (click)='fetchEmployee()'>Go</button>
                             </label>
-                                <div [hidden]='goClick'>
+                                <div [hidden]='goClick' *ngIf='cacheGoValue'>
                                 <div [hidden]='emailResult' id="StepMentorDiv" *ngIf="goResults; else elseBlock" style="font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;">
                                     Search result: <br>
                                     <a (click)='onEmailClick()'>{{ this.email }}</a><br>
@@ -223,7 +223,7 @@
                         <td colspan="2" width="46%"><br><label for="Justification" class="ds-text-capitalize ds-pad-t-1">Business Need (Why is international required?) </label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
-                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" ngModel></textarea>
+                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" ngModel [(ngModel)]="justificationValue"></textarea>
                         </td>
                     </tr>
 
@@ -232,7 +232,7 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container ds-pad-t-1">
-                                <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" style="width:300px !important;" title="Description" maxlength="30" ngModel>
+                                <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" style="width:300px !important;" title="Description" maxlength="30" ngModel [(ngModel)]='descValue'>
                                 <label *ngIf="selected_device == 'Extension Mobility Station'">e.g. IBMC Lv21 EM desk </label>
                                 <label *ngIf="selected_device == 'Conference / Meeting Room Phone'">e.g. IBMC Lv21 conference room 3 </label>
                             </div>
@@ -244,7 +244,7 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container">
-                                <input name="MACAddress" value="" tabindex="2" rows="2" cols="40" id="MACAddressId" class="ds-input" style="width:300px !important;" title="MAC Address" maxlength="12" ngModel>
+                                <input name="MACAddress" value="" tabindex="2" rows="2" cols="40" id="MACAddressId" class="ds-input" style="width:300px !important;" title="MAC Address" maxlength="12" ngModel [(ngModel)]='MACValue'>
                                 <label>Note:Combination of (0 to 9 , A to F) and Length:12</label>
                             </div>
                         </td>
@@ -261,7 +261,7 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="BACK" (click)="backClick()">
+                value="BACK" (click)="backClick(formData)">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
@@ -281,7 +281,7 @@
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
-            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" (previousStep)="previousStep($event)"></app-steps>
 
 
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2>

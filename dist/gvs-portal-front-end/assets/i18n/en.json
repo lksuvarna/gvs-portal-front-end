@@ -140,7 +140,7 @@
         "ITNexistsforthisuser": "The IBM Telephone Number (ITN) that exists for this users jabber account is",
         "jabberconfiguration": "Related to Jabber configuration can be found at",
         "furtherassistance": "For any further assistance, please contact",
-        "alreadyone": "Serial number that you have entered has already one",
+        "alreadyone": "The serial number that you have entered has already one",
         "inprogess": "request in progress and request number is",
         "ongoingrequestsbyclickonrequestpage": "You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.",
         "nooutstandingreq": "No outstanding requests were found for the serial number.",
@@ -182,12 +182,12 @@
     "Jabberupdate": {
         "SELECTONE": "SELECT ONE",
         "ReviewDetails": "Review Details",
-        "JabberNumber": "Jabber Number",
-        "SelectJabberNumber": "Select Jabber Number",
+        "JabberNumber": "Jabber / Phone Number",
+        "SelectJabberNumber": "Jabber / Phone Number",
         "Jabber/PhoneNumberLocation": "Select Jabber / Phone Number Location"
     },
     "Jabbermove": {
-        "JabbertoMove": "Jabber number to Move",
+        "JabbertoMove": "Jabber / Phone number to Move",
         "ProjectIId": "Project ID",
         "AccountId": "Account ID",
         "ICACode": "ICA Code",
