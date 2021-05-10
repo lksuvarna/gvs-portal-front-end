@@ -44,17 +44,22 @@ export class HpInDeleteComponent implements OnInit {
   orgi:any;	
   errorinfo=false;
   reqno:any;
-
+  showerrormessage = false
 
 
   payload : fixedphone_delete = new fixedphone_delete();
+
+  onSearch(){
+    this.showerrormessage = false;
+    this.hideSteps = false;
+  }
 
   OnSearchClick(){
     
     if(this.currentMacOrPhone != ''){
 
       this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
-        if(data != null)
+        if(data.message != '')
         {
           
           this.currentMac = data.message[0].ATTRIBUTE1;
@@ -63,10 +68,13 @@ export class HpInDeleteComponent implements OnInit {
           this.showSearch = true;
           this.isReviewForm = false;
           this.isEntryForm = true;
+          this.showerrormessage = false;
         }
         else
         {
-          alert("something went wrong");
+          this.showerrormessage = true;
+          this.showSearch = false;
+          this.hideSteps = true;
 
         }
         
