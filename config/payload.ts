@@ -734,6 +734,17 @@ emailResult!: boolean;
 showBusinessNeed!: boolean;
 cos!: String;
 employeeIDDisplay !: String;
+currentMacOrPhone !: String;
+currentMac !: String;
+currentPhone !: String;
+currentLocation !: String;
+currentDescription !: String;
+currentmodel !: String;
+updateRequired !: String;
+newMac !: String;
+newModel !: String
+showSearch !: boolean;
+showerrormessage !: boolean;
 
 Create_Cache_fixedphone(){
     
@@ -760,6 +771,17 @@ Create_Cache_fixedphone(){
     this.emailResult=false;
     this.cos='National';
     this.employeeIDDisplay='';
+    this.currentMacOrPhone='';
+    this.currentMac='';
+    this.currentPhone='';
+    this.currentLocation='';
+    this.currentDescription='';
+    this.currentmodel='';
+    this.updateRequired='';
+    this.newMac='';
+    this.newModel='';
+    this.showSearch=false;
+    this.showerrormessage=false;
 
     }
 

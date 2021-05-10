@@ -564,10 +564,13 @@ ngOnInit(): void {
     this.icaValue = String(this.cache_disp.icaCode);
     this.selected_device = this.cache_disp.device;
     this.selectedDevice(this.selected_device);
+    if(this.cache_disp.employeeId != undefined)
     this.empID = String(this.cache_disp.employeeId);
     this.voicemail = String(this.cache_disp.voicemail);
+    if(this.cache_disp.cos != undefined){
     this.COS = String(this.cache_disp.cos);
     this.classofservice(this.COS);
+    }
     this.MACValue = String(this.cache_disp.mac);
     this.descValue = String(this.cache_disp.description);
     this.justificationValue = String(this.cache_disp.justification);
@@ -603,7 +606,7 @@ ngOnInit(): void {
     sessionStorage.removeItem('cache');
   }
 
-  //load cache data for entry details form. -- START
+  //load cache data for entry details form. -- END
 }	
 
 previousStep(event : any){

@@ -17,7 +17,7 @@
 
         <div class=" ds-panel ds-col-12 "></div> 
     
-        <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+        <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" (previousStep)="previousStep($event)"></app-steps>
 
         <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
@@ -123,9 +123,9 @@
                     </td>
                     <td width="50%" class="ds-pad-t-1">
                         <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                            <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  
+                            <select rows="2" name="Location_1_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  
                             style="width:300px !important; text-transform: uppercase;" title="Office Location"
-                            #location (change)='selectedLocation(location.value)' ngModel>
+                            #location (change)='selectedLocation(location.value)' ngModel [(ngModel)]='state'>
                                 <option value ="">Select Office Location</option>
                                 <option *ngFor='let fl_location of camp' [value]='fl_location' >
                                 {{ fl_location }}</option>
@@ -162,7 +162,7 @@
                     <td width="50%">
                         <div id="model1" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1"><br>
                             <!-- <input name="" type="hidden" value="1"> -->
-                            <select name="NewModel" rows="2" cols="40"class="ds-title ds-align-text-left" style="width:300px !important;" title="Phone Model" ngModel>
+                            <select name="NewModel" rows="2" cols="40"class="ds-title ds-align-text-left" style="width:300px !important;" title="Phone Model" ngModel [(ngModel)]='newModel'>
                                 <option value="">Select Phone Model</option>
                                 <option name="NewModel" *ngFor='let model of models' [value]='model'>{{ model }}</option>
                             </select>
@@ -175,7 +175,7 @@
                         <label class="">New MAC Address<span class="ds-text-contextual-red-2"> *</span></label>
                     </td>
                     <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
-                        <input name="MAC1" value="" class="ds-input ds-pad-b-1" style="width:300px !important;" title="New MAC Address" maxlength="12;" ngModel>
+                        <input name="MAC1" value="" class="ds-input ds-pad-b-1" style="width:300px !important;" title="New MAC Address" maxlength="12;" ngModel [(ngModel)]='newMacAddress'>
                     </td>
                 </tr>
 
@@ -186,7 +186,7 @@
                     </td>
                     <td width="50%" class="ds-pad-t-1 ds-pad-b-1">
                         <input name="Newdesc" value="" id="desc" class="ds-input " style="width:300px !important;" 
-                        title="New Description" ngModel><br>
+                        title="New Description" ngModel [(ngModel)]='newDescription'><br>
                     </td>
                 </tr>
 
@@ -196,7 +196,7 @@
                     </td>
                     <td width="50%">
                         <textarea name="Comments" class="ds-input " style="width:300px !important;" 
-                        title="Reason for Update" rows="2" cols="40" ngModel>
+                        title="Reason for Update" rows="2" cols="40" ngModel [(ngModel)]='reasonForUpdate'>
                         </textarea><br>
                     </td>
                 </tr>
@@ -210,7 +210,7 @@
                 <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                     <span class="ds-pad-l-4" id="button1">
                     <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" 
-                    value="Back" (click)="backClick()">
+                    value="Back" (click)="backClick(formData)">
                     </span>
                     <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
                     <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
@@ -230,7 +230,7 @@
         </div>
         <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
-        <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+        <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" (previousStep)="previousStep($event)"></app-steps>
 
 
         <!-- <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2> -->

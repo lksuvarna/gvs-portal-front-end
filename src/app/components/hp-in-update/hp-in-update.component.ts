@@ -5,7 +5,7 @@ import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Location} from '@angular/common';	
-import { fixedphone_update} from 'config/payload';
+import { fixedphone_update,Create_Cache_fixedphone} from 'config/payload';
 import {Db2Service} from '../../_services/db2.service'
 
 @Component({
@@ -63,10 +63,19 @@ export class HpInUpdateComponent implements OnInit {
   warninginfosnow=false;
   hideSteps = false;
   errorinfo=false;
+  cache_tmp:  any = [];
+  newModel: any = "";
+  newMacAddress: any = "";
+  newDescription: any = "";
+  reasonForUpdate: any = "";
+  FixedPhoneData: any = [];
+  state: any = "";
 
 
 
   payload : fixedphone_update = new fixedphone_update();
+  cache : Create_Cache_fixedphone = new Create_Cache_fixedphone();
+  cache_disp : Create_Cache_fixedphone = new Create_Cache_fixedphone();
   
   reviewDetailsIndia = {	
 
@@ -125,7 +134,7 @@ export class HpInUpdateComponent implements OnInit {
           alert("something went wrong");
 
         }
-        
+        this.getFixedPhoneData()
       });
 
     }
@@ -174,16 +183,20 @@ export class HpInUpdateComponent implements OnInit {
       this.showforrsn = true;
       this.showformodel = false;
       this.showformacadd = false;
+      if(this.state != '') {
+        this.hideBuilding = true;
+      }
     }
-    
+    this.getFixedPhoneData();
   
   }
 
     // Submit to Snow Jabber new code added by Swarnava ends	
- backClick(): void{	
+ backClick(formData: NgForm){	
     sessionStorage.setItem('backbutton','yes');	
     sessionStorage.setItem('step','step1');	
     //this.location.back();	
+    this.create_cache(formData);
     if(sessionStorage.getItem('radioAction')=='myself'){
       this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
     }
@@ -208,6 +221,19 @@ export class HpInUpdateComponent implements OnInit {
       this.hideBuilding = false;	
       this.build = [];	
     }	
+    this.getFixedPhoneData()
+  }
+
+  getFixedPhoneData(){
+    this.FixedPhoneData = {
+      "showSearch": this.showSearch,
+      //"showerrormessage": this.showerrormessage,
+      "currentMac": this.currentMac,
+      "currentPhone": this.currentPhone,
+      "currentmodel": this.currentmodel,
+      "currentdesc": this.currentdesc,
+      "hideBuilding": this.hideBuilding
+    }
   }
 
   entryDetails(formData: NgForm){
@@ -281,8 +307,32 @@ export class HpInUpdateComponent implements OnInit {
       // this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
       // this.reviewDetailsIndia.campus = this.campus;
     }
+    this.create_cache(formData);
  
 
+  }
+
+  create_cache(formData:NgForm){
+
+    console.log("Starting Cache");
+    this.cache.setflag = true;
+    this.cache.cnum = this.cnum;
+    this.cache.currentMacOrPhone = formData.value.IdNum1;
+    this.cache.currentMac = this.currentMac?.trim();
+    this.cache.currentPhone = this.currentPhone?.trim();
+    this.cache.currentmodel = this.currentmodel?.trim();
+    this.cache.currentDescription = this.currentdesc?.trim();
+    this.cache.updateRequired = formData.value.UpdateReq;
+    this.cache.officeLocation = formData.value.Location_1_1;
+    this.cache.campus = formData.value.Buildings;
+    this.cache.newModel = formData.value.NewModel;
+    this.cache.newMac = formData.value.MAC1;
+    this.cache.description = formData.value.Newdesc;
+    this.cache.justification = formData.value.Comments;
+    this.cache.showSearch = this.showSearch;
+    //this.cache.showerrormessage = this.showerrormessage;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached");
   }
 
   BackButton() {	
@@ -402,6 +452,43 @@ export class HpInUpdateComponent implements OnInit {
     } else {
       this.hideSteps = false
     }
+
+
+     //load cache data for entry details form. -- START
+     this.cache_tmp=sessionStorage.getItem('cache')	
+     console.log(this.cache_tmp);
+     this.cache_disp=JSON.parse(this.cache_tmp);
+     if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='fixedphone_update')){
+       this.currentMacOrPhone = String(this.cache_disp.currentMacOrPhone);
+       this.showSearch = Boolean(this.cache_disp.showSearch);
+       //this.showerrormessage = Boolean(this.cache_disp.showerrormessage);
+       this.currentMac = String(this.cache_disp.currentMac);
+       this.currentPhone = String(this.cache_disp.currentPhone);
+       this.currentmodel = String(this.cache_disp.currentmodel);
+       this.currentdesc = String(this.cache_disp.currentDescription);
+       this.selected_device = String(this.cache_disp.updateRequired);
+       this.updateFor(this.selected_device);
+       if(this.cache_disp.officeLocation != undefined)
+       this.state = String(this.cache_disp.officeLocation);
+       this.selectedLocation(this.state);
+       if((this.cache_disp.officeLocation == undefined) || (this.cache_disp.officeLocation=='') || (this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION')) {
+        this.hideBuilding=false;
+      }
+      else {
+        this.hideBuilding=true;
+      }
+       this.campus = String(this.cache_disp.campus);
+       if(this.cache_disp.newModel != undefined)
+       this.newModel = this.cache_disp.newModel;
+       if(this.cache_disp.newMac != undefined)
+       this.newMacAddress = this.cache_disp.newMac;
+       if(this.cache_disp.description != undefined)
+       this.newDescription = String(this.cache_disp.description);
+       if(this.cache_disp.justification != undefined)
+       this.reasonForUpdate = String(this.cache_disp.justification);
+     }else{
+       sessionStorage.removeItem('cache');
+     }
     
   }
   previousStep(event : any){
