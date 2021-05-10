@@ -76,8 +76,8 @@
         "SelectOne":"Sélectionnez-en un",
         "norecord":"Il n'y a pas d'enregistrement d'un employé IBM avec le numéro de série " ,
         "availablefromBluePages" :"disponible auprès de BluePages",
-        "opps":"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard.",
-        "JabberLocation" : "Emplacement de Jabber / Emplacement du numéro de téléphone",
+        "opps":"Opps! Quelque chose s'est usé Veuillez réessayer plus tard.",
+        "JabberLocation" : "Emplacement du Jabber / Numéro de téléphone",
         "Voicemail" : "Messagerie vocale",
         "ClassofService" : "Classe de service",
         "pleasesubmittostart":"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning."
@@ -175,13 +175,13 @@
      "Jabberupdate":{
         "SELECTONE":"CHOISISSEZ UNE",
         "ReviewDetails" : "revoir les détails",
-        "JabberNumber" : "Numéro Jabber",
-        "SelectJabberNumber" : "Sélectionnez le numéro Jabber",
+        "JabberNumber" : "Jabber / Numéro de téléphone",
+        "SelectJabberNumber" : "Jabber / Numéro de téléphone",
         "Jabber/PhoneNumberLocation" :"Sélectionnez Emplacement du numéro de téléphone / Jabber"
     },
 
     "Jabbermove":{
-        "JabbertoMove":"Numéro Jabber à déplacer",
+        "JabbertoMove":"Jabber / Numéro de téléphone à déplacer",
         "ProjectIId" : "Id du projet",
         "AccountId" : "Identifiant de compte",
         "ICA Code" : "Code ICA",

@@ -28,7 +28,7 @@ export class HpAuUpdateComponent implements OnInit {
   cloudantData: any = []	
   servicesData: any = []
   reqFor: any;
-  campus:any;
+  campus:any = 'Select Location';
   j = 0;	
   ccode='';	
   locationlist: any;	
@@ -62,6 +62,7 @@ export class HpAuUpdateComponent implements OnInit {
   warninginfo=false;
   warninginfosnow=false;
   hideSteps = false;
+  showerrormessage = false
 
   payload : fixedphone_update = new fixedphone_update();
   
@@ -84,15 +85,21 @@ export class HpAuUpdateComponent implements OnInit {
     newModel: "",
     newMac:"",
     Currentdescription :"",
-    updatereq:""
+    updatereq:"",
+    location_final:""
   }
   
   constructor(private db2:Db2Service,private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
+  
+  onSearch(){
+    this.showerrormessage = false;
+    this.hideSteps = false;
+  }
 
   OnSearchClick(){
     if(this.currentMacOrPhone != ''){
       this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,"Australia").subscribe(data =>{
-        if(data != null)
+        if(data.message != '')
         {
          console.log("data"+data); 
          console.log("data message"+data.message[0]);
@@ -100,12 +107,15 @@ export class HpAuUpdateComponent implements OnInit {
           this.currentPhone = data.message[0].IDENTIFIER;
           this.currentdesc = data.message[0].ATTRIBUTE4;
           this.currentloc = data.message[0].ATTRIBUTE3;
+          this.currentMac = this.currentMac.substring(3,this.currentMac.length);
           this.showSearch =true;
+          this.showerrormessage = false;
 
-        }
-        else
+        }else
         {
-          alert("something went wrong");
+          this.showerrormessage = true;
+          this.showSearch = false;
+          this.hideSteps = true;
 
         }
         
@@ -194,61 +204,75 @@ export class HpAuUpdateComponent implements OnInit {
   }
 
   entryDetails(formData: NgForm){
-    
+
     if(formData.value.UpdateReq == '') {	
       alert('Please select update required for');	
       return;
     }	
-
-    if(formData.value.MAC1.trim() == '' || formData.value.MAC1.length != 12) {	
+    if(this.showformacadd ==true && (formData.value.MAC1.trim() == '' || formData.value.MAC1.length != 12)) {	
       alert('Please enter 12 characters MAC address');
       return;	
     }
-
+    if(this.showformacadd == true && formData.value.MAC1 == this.currentMac) {
+      alert('Please enter a new MAC address');
+      return;
+    }
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
-    if(pat1.test(formData.value.MAC1)) {
+    if(this.showformacadd == true && (pat1.test(formData.value.MAC1))) {
       alert('MAC field value to be in combination of 0 to 9 and A to F');
       return;
     }
-
-    if(formData.value.Location_1.toUpperCase() == 'SELECT STATE' || formData.value.Location_1 == '') {	
+    if(this.showLocation == true && formData.value.Location_1_1 == '') {	
       alert('Please select the State');	
       return;	
     }	
-    if(formData.value.Buildings.toUpperCase() == 'SELECT LOCATION' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT STATE' && formData.value.Buildings == '') {	
+    if(this.showLocation == true && (formData.value.Buildings.toUpperCase() == 'SELECT LOCATION' || formData.value.Buildings == '' || formData.value.Location_1_1.toUpperCase() != 'SELECT STATE' && formData.value.Buildings == '')) {	
       alert('Please select the Location');	
       return;	
     }	
-
-    if(formData.value.Newdesc.trim() == '') {	
+    if(this.showforNewDesc == true && formData.value.Newdesc.trim() == '') {	
       alert('Please provide the New Description.');
       return;
     }
 
-    if(formData.value.Newdesc.trim() == this.currentdesc) {
+    if(this.showforNewDesc == true && formData.value.Newdesc == this.currentdesc) {
       alert("Please choose a different Description as the current Description is already "+this.currentdesc+" for the provided number.");
       return;
     }
-
-    if(formData.value.Comments.trim() == '') {	
+    if(this.showforrsn == true && (formData.value.Comments.trim() == '')) {	
       alert('Please provide the reason for updation.');	
       return;
     }
-    
+
+
+    if(formData.value.UpdateReq.toUpperCase() == 'DESCRIPTION ONLY') {
+      this.reviewDetailsIndia.officeLocation = "";
+      this.reviewDetailsIndia.campus = "";
+      this.reviewDetailsIndia.location_final = "";
+      this.reviewDetailsIndia.newMac = "";
+      this.reviewDetailsIndia.description = formData.value.Newdesc;
+    } else if(formData.value.UpdateReq.toUpperCase() == 'REPLACE THE HARDPHONE ONLY') {
+      this.reviewDetailsIndia.officeLocation = "";
+      this.reviewDetailsIndia.campus = "";
+      this.reviewDetailsIndia.location_final = "";
+      this.reviewDetailsIndia.newMac = formData.value.MAC1;
+      this.reviewDetailsIndia.description = "";
+    } else {
+      this.reviewDetailsIndia.officeLocation = formData.value.Location_1_1;
+      this.reviewDetailsIndia.campus = this.campus;
+      this.reviewDetailsIndia.location_final = this.reviewDetailsIndia.officeLocation+" - "+this.reviewDetailsIndia.campus;
+      this.reviewDetailsIndia.newMac = "";
+      this.reviewDetailsIndia.description = formData.value.Newdesc;
+    }
 
     this.isEntryForm = true;	
     this.isReviewForm = false;	
     this.reviewDetailsIndia.updatereq = formData.value.UpdateReq;
     this.reviewDetailsIndia.mac = this.currentMac;
-      this.reviewDetailsIndia.phoneNunmer = this.currentPhone;
-      this.reviewDetailsIndia.Currentdescription = this.currentdesc;
-      this.reviewDetailsIndia.location = this.currentloc;
-      this.reviewDetailsIndia.newModel = formData.value.NewModel;
-      this.reviewDetailsIndia.newMac = formData.value.MAC1;
-      this.reviewDetailsIndia.justification = formData.value.Comments;
-      this.reviewDetailsIndia.description = formData.value.Newdesc;
-      this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
-      this.reviewDetailsIndia.campus = this.campus;
+    this.reviewDetailsIndia.phoneNunmer = this.currentPhone;
+    this.reviewDetailsIndia.Currentdescription = this.currentdesc;
+    this.reviewDetailsIndia.location = this.currentloc;
+    this.reviewDetailsIndia.justification = formData.value.Comments;
 
   }
 
@@ -270,16 +294,17 @@ export class HpAuUpdateComponent implements OnInit {
     this.payload.Comments_Disp = this.reviewDetailsIndia.justification;
     this.payload.Newdesc_Disp = this.reviewDetailsIndia.description;
     this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
-    this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
-    this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();
+    this.payload.MAC_Disp = this.reviewDetailsIndia.newMac;
+    this.payload.updatereq_Disp = this.reviewDetailsIndia.updatereq.toLowerCase();
     this.payload.currmodel = "";
     this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
     this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
-    this.payload.MAC = this.reviewDetailsIndia.newMac;
-    this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
-    this.payload.LocationCorrectnew = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    this.payload.MAC = this.reviewDetailsIndia.mac;
+    this.payload.Location_final = this.reviewDetailsIndia.location;
+    this.payload.LocationCorrectnew = this.reviewDetailsIndia.location_final;
+    this.payload.LocationCorrect = this.reviewDetailsIndia.location_final;
     this.payload.ReqNo=this.reqno;
-    this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    this.payload.Location_Disp = "";
 
 
     this.payload.gvs_approval_link="";
@@ -287,7 +312,7 @@ export class HpAuUpdateComponent implements OnInit {
     this.payload.countryname=this.countrydetails.name;	
     this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
     this.payload.request_type='fixedphone_update';	
-    this.payload.ccmail= this.countrydetails.ccmail;
+    this.payload.ccmail_1= this.countrydetails.ccmail;
 
 
 

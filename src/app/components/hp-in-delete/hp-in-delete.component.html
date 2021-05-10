@@ -21,7 +21,8 @@
             <div class=" ds-panel ds-col-12 "></div> 
 
 
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
+            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+
             
         
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
@@ -46,13 +47,23 @@
                                                 <div>
                                                     <input type="button" class="ds-button ds-secondary ds-width-auto 
                                                     ds-margin-bottom-0 ds-pad-l-1 ds-pad-r-1"  
-                                                    (click)='OnSearchClick()' name="back" value="Search">
+                                                    (click)='OnSearchClick()' name="SEARCH" value="SEARCH">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </td>
+                    </tr>
+                    <tr valign="top" *ngIf='showerrormessage'>
+                        <td colspan="2" width="100%">
+                            <span id="err1" ><br><br>
+                                <div class="ds-col-xs-12 ds-alert ds-warning">
+                                    <p>No record was found for the Mac Address or Phone Number you have entered. 
+                                    Please check and try again.</p>
+                                </div>
+                            </span>
                         </td>
                     </tr>
                 </tbody>
@@ -67,10 +78,9 @@
                                 <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 
                                 ds-pad-l-3 ds-pad-r-3" value="BACK" (click)="backClick()">
                             </span>
-                            <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
-                                <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 
-                                ds-pad-r-3" tabindex="32767" value="NEXT" 
-                                *ngIf="warninginfo==false && warninginfosnow==false">
+                            <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='showerrormessage'>
+                                <input type="submit" name="NEXT" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 
+                                ds-pad-r-3"  value="NEXT" *ngIf="warninginfo==false && warninginfosnow==false">
                             </span>
 
                         </div>
@@ -103,14 +113,14 @@
                     <br>
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Current Phone Number </label>
+                            <label for="addId1">Phone Number </label>
                         </td>
                         <td width="54%">{{currentPhone}}</td>
                     </tr>
                     <br>
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Current Description</label>
+                            <label for="addId1">Description</label>
                         </td>
                         <td width="54%">{{currentdesc}}</td>
                     </tr>
@@ -134,12 +144,12 @@
                 <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                     <span class="ds-pad-l-4" id="button1">
                     <input type="button" name="back"
-                    class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                    class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                     (click)='BackButton()' *ngIf="this.isButtonVisible">
                     </span>
                     <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
                     <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                        value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+                        value="SUBMIT" (click)="submit_snow()" *ngIf="this.isButtonVisible">
                     </span>
                     
                 </div>

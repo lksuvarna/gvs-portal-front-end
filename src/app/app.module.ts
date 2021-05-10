@@ -72,6 +72,7 @@ import { FacInResetComponent } from './components/fac-in-reset/fac-in-reset.comp
 import { ApprovalResultPageComponent } from './components/approval-result-page/approval-result-page.component';
 import { ApprovalSinglePageComponent } from './components/approval-single-page/approval-single-page.component';
 import { EnExtensionAuSummaryComponent } from './components/en-extension-au-summary/en-extension-au-summary.component';
+import { HpEmeaUpdateComponent } from './components/hp-emea-update/hp-emea-update.component';
 
 
 
@@ -154,7 +155,8 @@ handleError(error: Error){
 
     ApprovalResultPageComponent,
     ApprovalSinglePageComponent,
-    EnExtensionAuSummaryComponent
+    EnExtensionAuSummaryComponent,
+    HpEmeaUpdateComponent
 
 
 
