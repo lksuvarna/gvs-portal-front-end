@@ -8,7 +8,7 @@
 
 
     <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
-
+        <form #formData='ngForm'>
         <h3><b>Approvals</b></h3>
         <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
         <div class=" ds-panel ds-col-12 "></div> 
@@ -18,7 +18,7 @@
                 <table>
                     <tbody valign="top">
                         <tr valign="top" >
-                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">CNUM</label>
+                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Serial Number</label>
     
                             </td>
                             <td width="54%" height="10">
@@ -55,11 +55,12 @@
         <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right" *ngIf="this.isButtonVisible && !errorinfo">
             <div class="ds-tray-fit-content ds-mar-b-0">
                 <span class="ds-pad-l-4" id="button1">
-                <input type="button" (click)="process('approve')" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="APPOVE">
+                <input type="button" (click)="process('approve',formData)" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="APPROVE">
                 </span>
                 <span class="ds-pad-l-1" id="button2">
-                <input type="button" (click)="process('reject')" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="REJECT">
+                <input type="button" (click)="process('reject',formData)" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="REJECT">
                 </span>
     </div>
 
 </div>
+        </form>
