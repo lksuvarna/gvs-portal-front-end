@@ -235,6 +235,39 @@ export class StepsComponent implements OnInit {
   sessionStorage.setItem('cache',JSON.stringify(this.cache_fixed));
   console.log("cached");
   }
+
+  if(this.service == 'fixedphone_delete') {
+    console.log("Starting Cache");
+  this.cache_fixed.setflag=true;
+  this.cache_fixed.cnum=this.cnum;
+  this.cache_fixed.currentMacOrPhone = this.formData.value.IdNum1;
+  sessionStorage.setItem('cache',JSON.stringify(this.cache_fixed));
+  console.log("cached");
+  }
+
+  if(this.service == 'fixedphone_update') {
+    console.log("Starting Cache");
+    this.cache_fixed.setflag = true;
+    this.cache_fixed.cnum = this.cnum;
+    this.cache_fixed.currentMacOrPhone = this.formData.value.IdNum1;
+    this.cache_fixed.showSearch = this.FixedPhoneData.showSearch;
+    this.cache_fixed.showerrormessage = this.FixedPhoneData.showerrormessage;
+    this.cache_fixed.currentMac = this.FixedPhoneData.currentMac?.trim();
+    this.cache_fixed.currentPhone = this.FixedPhoneData.currentPhone?.trim();
+    this.cache_fixed.currentLocation = this.FixedPhoneData.currentloc?.trim();
+    this.cache_fixed.currentDescription = this.FixedPhoneData.currentdesc?.trim();
+    this.cache_fixed.currentmodel = this.FixedPhoneData.currentmodel?.trim();
+    this.cache_fixed.updateRequired = this.formData.value.UpdateReq;
+    this.cache_fixed.officeLocation = this.formData.value.Location_1_1;
+    this.cache_fixed.campus = this.formData.value.Buildings;
+    this.cache_fixed.newMac = this.formData.value.MAC1;
+    this.cache_fixed.newModel = this.formData.value.NewModel;
+    this.cache_fixed.description = this.formData.value.Newdesc;
+    this.cache_fixed.justification = this.formData.value.Comments;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache_fixed));
+    console.log("cached");
+  }
+
 if(this.service=='fac_new'){
 
   console.log("Starting cache_fac");

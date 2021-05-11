@@ -17,7 +17,7 @@
 
       <div class=" ds-panel ds-col-12 "></div>
 
-      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
+      <app-steps [step]="servicesData.step" [isSelf]="reqFor" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" [hideSteps]="hideSteps"></app-steps>
 
       <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
@@ -99,9 +99,9 @@
             <td width="50%"><br>
               <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                 <select name="UpdateReq" id="voicetype" class="ds-title ds-align-text-left"
-                  style="width:300px !important; text-transform: uppercase;" title="Update Required For" #device (change)='updateFor(device.value)' ngModel>
+                  style="width:300px !important; text-transform: uppercase;" title="Update Required For" #device (change)='updateFor(device.value)' ngModel [(ngModel)]='updateRequired'>
                   <option value="">Select One</option>
-                  <option *ngFor='let devices of updateRequiredFor' [value]='devices'>{{ devices }}</option>
+                  <option name="UpdateReq" *ngFor='let devices of updateRequiredFor' [value]='devices'>{{ devices }}</option>
                 </select>
               </div>
             </td>
@@ -109,7 +109,7 @@
         </tbody>
       </table>
 
-      <table id="t2" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showLocation' border="0">
+      <table id="t2" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showLocation && showSearch' border="0">
         <tbody>
           <tr valign="top">
             <td colspan="2" width="50%"><label for="LocationId" class="ds-text-capitalize">Select State </label>
@@ -117,7 +117,7 @@
             </td>
             <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select ngModel rows="2" name="Location_1_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' >
+                                <select ngModel rows="2" name="Location_1_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' [(ngModel)]='state'>
                                     <option value ="">Select State</option>
                                     <option name="Location_1_1" *ngFor='let fl_location of camp' [value]='fl_location'>{{ fl_location }}</option>
                                 </select>
@@ -130,7 +130,7 @@
             </td>
             <td width="54%">
                 <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                    <select name="Buildings" rows="2" [(ngModel)]='campus' cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1">
+                    <select ngModel name="Buildings" rows="2" [(ngModel)]='campus' cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1">
                         <option value ="Select Location">Select Location</option>
                         <option name="Buildings" *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
                     </select>
@@ -149,7 +149,7 @@
             </td>
             <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
               <input name="MAC1" value="" class="ds-input" style="width:300px !important;"
-                title="New MAC Address" maxlength="12" ngModel>
+                title="New MAC Address" maxlength="12" ngModel [(ngModel)]='newMacAddress'>
                 <label>Note:Combination of (0 to 9 , A to F) and Length:12</label>
             </td>
           </tr>
@@ -160,7 +160,7 @@
             </td>
             <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
               <input name="Newdesc" value="" class="ds-input" style="width:300px !important;"
-                title="New Description" ngModel>
+                title="New Description" ngModel [(ngModel)]='newDescription'>
             </td>
           </tr>
 
@@ -171,7 +171,7 @@
             </td>
             <td width="50%">
               <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update"
-                rows="2" cols="40" ngModel>
+                rows="2" cols="40" ngModel [(ngModel)]='reasonForUpdate'>
                         </textarea><br>
             </td>
           </tr>
@@ -186,7 +186,7 @@
             <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
-                (click)="backClick()">
+                (click)="backClick(formData)">
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='showerrormessage'>
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
@@ -207,7 +207,7 @@
       </div>
       <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
-      <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)">
+      <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" (previousStep)="previousStep($event)">
       </app-steps>
 
 
