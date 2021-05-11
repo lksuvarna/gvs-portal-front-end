@@ -5,6 +5,7 @@ import { servicenowservice } from '../../_services/servicenow.service';
 import {Router} from  '@angular/router';	
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-approval-single-page',
@@ -30,10 +31,11 @@ export class ApprovalSinglePageComponent implements OnInit {
   isButtonVisible = true;	
   isSpinnerVisible= false; 	
   errorinfo=false;
-  rejectioncomments:any;
+  rejectioncomments='';
   request_cnum: any;
   request_name: any;
   request_sysid: any;
+  flag: boolean = true;
    
 
   submit(){
@@ -69,19 +71,39 @@ export class ApprovalSinglePageComponent implements OnInit {
     this.servicesData = servicesData.data[0]
   }
 
-  process(action:string)
+  EntryDetails(formData: NgForm) {
+
+    if(formData.value.rejectioncomments==''){
+      alert('Enter rejection comments');
+      return;
+
+    }
+    alert('Enter rejection comments');
+    return
+  }
+
+  process(action:string, formData : NgForm)
   {
-    
-    this.isButtonVisible=false;	
-    this.isSpinnerVisible=true;	
+     
     if(action=='approve')
     {
       sessionStorage.setItem('approval_status','approved');	
       this.rejectioncomments='';
+      this.flag=true;
     }else{
+      if(formData.value.rejectioncomments.trim()==''){
+        alert('Enter rejection comments');
+        this.flag=false;
+      }else
+      this.flag=true;
       sessionStorage.setItem('approval_status','rejected');	
     }
-    
+
+
+
+    if(this.flag){
+      this.isButtonVisible=false;	
+      this.isSpinnerVisible=true;	
     this.servicenowservice.approvesnow(this.request_sysid,action,this.rejectioncomments).subscribe(data=> {
       console.log('response', data);
       if(data){		
@@ -95,7 +117,7 @@ export class ApprovalSinglePageComponent implements OnInit {
        this.isButtonVisible=true;
      });
 
-    
+    }
   }
 
   }

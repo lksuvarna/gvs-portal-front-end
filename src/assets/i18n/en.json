@@ -140,7 +140,7 @@
         "ITNexistsforthisuser": "The IBM Telephone Number (ITN) that exists for this users jabber account is",
         "jabberconfiguration": "Related to Jabber configuration can be found at",
         "furtherassistance": "For any further assistance, please contact",
-        "alreadyone": "Serial number that you have entered has already one",
+        "alreadyone": "The serial number that you have entered has already one",
         "inprogess": "request in progress and request number is",
         "ongoingrequestsbyclickonrequestpage": "You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.",
         "nooutstandingreq": "No outstanding requests were found for the serial number.",
