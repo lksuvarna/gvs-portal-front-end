@@ -444,8 +444,10 @@ export class HpAuUpdateComponent implements OnInit {
       this.currentPhone = String(this.cache_disp.currentPhone);
       this.currentloc = String(this.cache_disp.currentLocation);
       this.currentdesc = String(this.cache_disp.currentDescription);
-      this.updateRequired = String(this.cache_disp.updateRequired);
-      this.updateFor(this.updateRequired);
+      if(this.cache_disp.officeLocation != undefined){
+        this.updateRequired = String(this.cache_disp.updateRequired);
+        this.updateFor(this.updateRequired);
+      }
       if(this.cache_disp.officeLocation != undefined) {
         this.state = String(this.cache_disp.officeLocation);
         this.selectedLocation(this.state)

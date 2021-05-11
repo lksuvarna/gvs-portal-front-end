@@ -46,6 +46,7 @@ export class HpInDeleteComponent implements OnInit {
   reqno:any;
   cache_tmp:  any = [];
 
+  showerrormessage = false
 
   constructor(private db2:Db2Service, private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice) { }
   
@@ -53,12 +54,17 @@ export class HpInDeleteComponent implements OnInit {
   cache : Create_Cache_fixedphone = new Create_Cache_fixedphone();
   cache_disp : Create_Cache_fixedphone = new Create_Cache_fixedphone();
 
+  onSearch(){
+    this.showerrormessage = false;
+    this.hideSteps = false;
+  }
+
   OnSearchClick(){
     
     if(this.currentMacOrPhone != ''){
 
       this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
-        if(data != null)
+        if(data.message != '')
         {
           
           this.currentMac = data.message[0].ATTRIBUTE1;
@@ -67,10 +73,13 @@ export class HpInDeleteComponent implements OnInit {
           this.showSearch = true;
           this.isReviewForm = false;
           this.isEntryForm = true;
+          this.showerrormessage = false;
         }
         else
         {
-          alert("something went wrong");
+          this.showerrormessage = true;
+          this.showSearch = false;
+          this.hideSteps = true;
 
         }
         

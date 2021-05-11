@@ -36,7 +36,7 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber/Phone Number </label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber / Phone Number </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
@@ -113,7 +113,7 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber/Phone Number </label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber / Phone Number </label>
 
                         </td>
                         <td width="54%" height="10">
@@ -149,7 +149,7 @@
                 value="BACK" (click)='BackButton()' *ngIf="this.isButtonVisible && !errorinfo">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
-              <input type="submit" name="next"
+              <input type="SUBMIT" name="next"
                 class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
             </span>
             <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">

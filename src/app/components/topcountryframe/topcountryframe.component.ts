@@ -21,12 +21,14 @@ export class TopcountryframeComponent implements OnInit {
   countryroute:any
   service:any;
   pagedisplay:any;
+  currentLang :any;
   translatecountryname :any;
   translatecountryname1 :boolean =false;
   routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_deactivate','requests','resources','approvalpending','revalidationpending','phone_search']
 
   changeLanguage(type :string){
     this.translateconfigservice.changeLanguage(type);
+    //this.currentLang = localStorage.setItem("currentLang", type);
   }
   ngOnInit(): void {
    
@@ -66,7 +68,7 @@ export class TopcountryframeComponent implements OnInit {
       this.translatecountryname = this.countryname.name;
       if (this.translatecountryname == 'Canada/Caribbean'){
           this.translatecountryname1 = true;
-        }
+        } 
       
         
     }
@@ -88,10 +90,10 @@ export class TopcountryframeComponent implements OnInit {
       this.countryname=data.countrydetails;
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.pcode);}
-       this.translatecountryname = this.countryname.name;
+        this.translatecountryname = this.countryname.name;
       if (this.translatecountryname == 'Canada/Caribbean'){
           this.translatecountryname1 = true;
-        } 
+        }  
       
      });
     }

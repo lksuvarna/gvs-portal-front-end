@@ -688,6 +688,7 @@ authLevel !: String;
 Fac_Type !: String;
 validity !: String;
 Comments !: String;
+updatefor !: String;
 
 Create_Cache_fac(){
 
@@ -703,6 +704,7 @@ Create_Cache_fac(){
        this.Comments ='';
        this.setflag=false;
        this.selected_jabber='';
+       this.updatefor='';
 
     }
 

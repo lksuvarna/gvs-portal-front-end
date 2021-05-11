@@ -5,16 +5,15 @@ import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Location} from '@angular/common';	
-import { fixedphone_update,Create_Cache_fixedphone} from 'config/payload';
+import { fixedphone_update} from 'config/payload';
 import {Db2Service} from '../../_services/db2.service'
 
 @Component({
-  selector: 'app-hp-in-update',
-  templateUrl: './hp-in-update.component.html',
-  styleUrls: ['./hp-in-update.component.css']
+  selector: 'app-hp-emea-update',
+  templateUrl: './hp-emea-update.component.html',
+  styleUrls: ['./hp-emea-update.component.css']
 })
-export class HpInUpdateComponent implements OnInit {
-
+export class HpEmeaUpdateComponent implements OnInit {
   campA: any = [];	
   camp: any = [];	
   buildA: any = [];	
@@ -63,20 +62,10 @@ export class HpInUpdateComponent implements OnInit {
   warninginfosnow=false;
   hideSteps = false;
   errorinfo=false;
-  cache_tmp:  any = [];
-  newModel: any = "";
-  newMacAddress: any = "";
-  newDescription: any = "";
-  reasonForUpdate: any = "";
-  FixedPhoneData: any = [];
-  state: any = "";
 
-  showerrormessage = false
 
 
   payload : fixedphone_update = new fixedphone_update();
-  cache : Create_Cache_fixedphone = new Create_Cache_fixedphone();
-  cache_disp : Create_Cache_fixedphone = new Create_Cache_fixedphone();
   
   reviewDetailsIndia = {	
 
@@ -105,43 +94,36 @@ export class HpInUpdateComponent implements OnInit {
     newModel: "",
     newMac:"",
     Currentdescription :"",
-    location_final:""
   }
   
   constructor(private db2:Db2Service, private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
 
-  onSearch(){
-    this.showerrormessage = false;
-    this.hideSteps = false;
-  }
-
   OnSearchClick(){
-    
+    //alert("ok" + this.currentMacOrPhone )
     if(this.currentMacOrPhone != ''){
 
       this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
-        if(data.message != '')
+        if(data != null)
         {
           
           this.currentMac = data.message[0].ATTRIBUTE1;
           this.currentPhone = data.message[0].IDENTIFIER;
           this.currentdesc = data.message[0].ATTRIBUTE4;
           this.currentmodel = data.message[0].ATTRIBUTE2;
-          this.currentMac = this.currentMac.substring(3,this.currentMac.length);
+          // console.log(data.message[0].COUNTRY);
+          // console.log(data.message[0].ATTRIBUTE1);
+          // console.log(data.message[0].IDENTIFIER);
+          // console.log( data.message[0].ATTRIBUTE2);
+          // console.log(data.message[0].ATTRIBUTE4);
           this.showSearch =true;
-          this.showerrormessage = false;
-
 
         }
         else
         {
-          this.showerrormessage = true;
-          this.showSearch = false;
-          this.hideSteps = true;
-
+          alert("something went wrong");
 
         }
-        this.getFixedPhoneData()
+        
       });
 
     }
@@ -190,26 +172,17 @@ export class HpInUpdateComponent implements OnInit {
       this.showforrsn = true;
       this.showformodel = false;
       this.showformacadd = false;
-      if(this.state != '') {
-        this.hideBuilding = true;
-      }
     }
-    this.getFixedPhoneData();
+    
   
   }
 
     // Submit to Snow Jabber new code added by Swarnava ends	
- backClick(formData: NgForm){	
-    sessionStorage.setItem('backbutton','yes');	
-    sessionStorage.setItem('step','step1');	
-    //this.location.back();	
-    this.create_cache(formData);
-    if(sessionStorage.getItem('radioAction')=='myself'){
-      this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
-    }
-    else{
-    this.router.navigate(['employeeinfo'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
-  }	}	
+backClick(){	
+  sessionStorage.setItem('backbutton','yes');	
+  sessionStorage.setItem('step','step1');	
+  this.location.back();	
+  }	
 
   selectedLocation(loc:String) {	
     this.build = [];	
@@ -228,19 +201,6 @@ export class HpInUpdateComponent implements OnInit {
       this.hideBuilding = false;	
       this.build = [];	
     }	
-    this.getFixedPhoneData()
-  }
-
-  getFixedPhoneData(){
-    this.FixedPhoneData = {
-      "showSearch": this.showSearch,
-      //"showerrormessage": this.showerrormessage,
-      "currentMac": this.currentMac,
-      "currentPhone": this.currentPhone,
-      "currentmodel": this.currentmodel,
-      "currentdesc": this.currentdesc,
-      "hideBuilding": this.hideBuilding
-    }
   }
 
   entryDetails(formData: NgForm){
@@ -257,55 +217,26 @@ export class HpInUpdateComponent implements OnInit {
       alert('Please enter 12 characters MAC address');
     }
 
-   else if(formData.value.Comments.trim() == '' || formData.value.Comments == '/\s/') {	
+   else if(formData.value.Comments == '') {	
       alert('Please provide the reason for updation.');	
     }
 
-    else if(formData.value.Newdesc == '' || formData.value.Comments == '/\s/') {	
-      alert('Please provide the New Description.');	
+    else if(formData.value.Newdesc == '') {	
+      alert('Please provide the New Description. ');	
       	
     }
 
-    else if(formData.value.Newdesc == this.currentdesc){
-      alert('Please choose a different Description as the current Description is already '+this.currentdesc +' for the selected Jabber number.');
-    }
-  
-
-    else if(formData.value.Location_1_1 == '' && this.showLocation == true) {	
+    else if(formData.value.Location_1 == '' && this.showLocation == true) {	
       alert('Please select a location');	
     }
 
     else if(formData.value.Buildings == '' && this.showLocation == true) {	
       alert('Please select a campus');	
     }
-
-   
     
 
     else
     {
-      if(formData.value.UpdateReq.toUpperCase() == 'DESCRIPTION ONLY') {
-        this.reviewDetailsIndia.officeLocation = "";
-        this.reviewDetailsIndia.campus = "";
-        this.reviewDetailsIndia.location_final = "";
-        this.reviewDetailsIndia.newModel = "";
-        this.reviewDetailsIndia.newMac = "";
-        this.reviewDetailsIndia.description = formData.value.Newdesc;
-      } else if(formData.value.UpdateReq.toUpperCase() == 'REPLACE THE HARDPHONE ONLY') {
-        this.reviewDetailsIndia.officeLocation = "";
-        this.reviewDetailsIndia.campus = "";
-        this.reviewDetailsIndia.location_final = "";
-        this.reviewDetailsIndia.newModel = formData.value.NewModel;
-        this.reviewDetailsIndia.newMac = formData.value.MAC1;
-        this.reviewDetailsIndia.description = "";
-      } else {
-        this.reviewDetailsIndia.officeLocation = formData.value.Location_1_1;
-        this.reviewDetailsIndia.campus = this.campus;
-        this.reviewDetailsIndia.location_final = "HP"+this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
-        this.reviewDetailsIndia.newModel = "";
-        this.reviewDetailsIndia.newMac = "";
-        this.reviewDetailsIndia.description = formData.value.Newdesc;
-      }
       this.isEntryForm = true;	
       this.isReviewForm = false;	
 
@@ -314,39 +245,15 @@ export class HpInUpdateComponent implements OnInit {
       this.reviewDetailsIndia.Currentdescription = this.currentdesc;
       this.reviewDetailsIndia.model = this.currentmodel;
       this.reviewDetailsIndia.device = this.selected_device;
-      // this.reviewDetailsIndia.newModel = formData.value.NewModel;
-      // this.reviewDetailsIndia.newMac = formData.value.MAC1;
+      this.reviewDetailsIndia.newModel = formData.value.NewModel;
+      this.reviewDetailsIndia.newMac = formData.value.MAC1;
       this.reviewDetailsIndia.justification = formData.value.Comments;
-      // this.reviewDetailsIndia.description = formData.value.Newdesc;
-      // this.reviewDetailsIndia.officeLocation = formData.value.Location_1_1;
-      // this.reviewDetailsIndia.campus = this.campus;
+      this.reviewDetailsIndia.description = formData.value.Newdesc;
+      this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
+      this.reviewDetailsIndia.campus = this.campus;
     }
-    this.create_cache(formData);
  
 
-  }
-
-  create_cache(formData:NgForm){
-
-    console.log("Starting Cache");
-    this.cache.setflag = true;
-    this.cache.cnum = this.cnum;
-    this.cache.currentMacOrPhone = formData.value.IdNum1;
-    this.cache.currentMac = this.currentMac?.trim();
-    this.cache.currentPhone = this.currentPhone?.trim();
-    this.cache.currentmodel = this.currentmodel?.trim();
-    this.cache.currentDescription = this.currentdesc?.trim();
-    this.cache.updateRequired = formData.value.UpdateReq;
-    this.cache.officeLocation = formData.value.Location_1_1;
-    this.cache.campus = formData.value.Buildings;
-    this.cache.newModel = formData.value.NewModel;
-    this.cache.newMac = formData.value.MAC1;
-    this.cache.description = formData.value.Newdesc;
-    this.cache.justification = formData.value.Comments;
-    this.cache.showSearch = this.showSearch;
-    //this.cache.showerrormessage = this.showerrormessage;
-    sessionStorage.setItem('cache',JSON.stringify(this.cache));
-    console.log("cached");
   }
 
   BackButton() {	
@@ -368,24 +275,22 @@ export class HpInUpdateComponent implements OnInit {
       this.payload.Newdesc_Disp = this.reviewDetailsIndia.description;
       this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
-      this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();
+      this.payload.updatereq_Disp = this.reviewDetailsIndia.device;
       this.payload.currmodel = this.reviewDetailsIndia.model;
       this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
       this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
       this.payload.MAC = this.reviewDetailsIndia.newMac;
-      this.payload.Location_final = "";
-      this.payload.LocationCorrectnew = this.reviewDetailsIndia.location_final;
-      this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation;
+      this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.LocationCorrectnew = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
       this.payload.ReqNo=this.reqno;
-      this.payload.ccmail_1= this.countrydetails.ccmail;
-      this.payload.Location_Disp = this.reviewDetailsIndia.campus
+      this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
 
 
-      this.payload.gvs_approval_link="";
+      this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
-      this.payload.evolution_instance=this.countrydetails.evolution_instance;	
-      this.payload.request_type='fixedphone_update';
+      this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
+      this.payload.request_type='fixedphone_update';	
 
 	
 
@@ -466,45 +371,6 @@ export class HpInUpdateComponent implements OnInit {
     } else {
       this.hideSteps = false
     }
-
-
-     //load cache data for entry details form. -- START
-     this.cache_tmp=sessionStorage.getItem('cache')	
-     console.log(this.cache_tmp);
-     this.cache_disp=JSON.parse(this.cache_tmp);
-     if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='fixedphone_update')){
-       this.currentMacOrPhone = String(this.cache_disp.currentMacOrPhone);
-       this.showSearch = Boolean(this.cache_disp.showSearch);
-       //this.showerrormessage = Boolean(this.cache_disp.showerrormessage);
-       this.currentMac = String(this.cache_disp.currentMac);
-       this.currentPhone = String(this.cache_disp.currentPhone);
-       this.currentmodel = String(this.cache_disp.currentmodel);
-       this.currentdesc = String(this.cache_disp.currentDescription);
-       if(this.cache_disp.updateRequired != undefined) {
-        this.selected_device = String(this.cache_disp.updateRequired);
-        this.updateFor(this.selected_device);
-       }
-       if(this.cache_disp.officeLocation != undefined)
-       this.state = String(this.cache_disp.officeLocation);
-       this.selectedLocation(this.state);
-       if((this.cache_disp.officeLocation == undefined) || (this.cache_disp.officeLocation=='') || (this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION')) {
-        this.hideBuilding=false;
-      }
-      else {
-        this.hideBuilding=true;
-      }
-       this.campus = String(this.cache_disp.campus);
-       if(this.cache_disp.newModel != undefined)
-       this.newModel = this.cache_disp.newModel;
-       if(this.cache_disp.newMac != undefined)
-       this.newMacAddress = this.cache_disp.newMac;
-       if(this.cache_disp.description != undefined)
-       this.newDescription = String(this.cache_disp.description);
-       if(this.cache_disp.justification != undefined)
-       this.reasonForUpdate = String(this.cache_disp.justification);
-     }else{
-       sessionStorage.removeItem('cache');
-     }
     
   }
   previousStep(event : any){
@@ -528,3 +394,4 @@ function gettime() {
     console.log(minutes1+seconds1)	
   return minutes1+seconds1;	
   } 
+

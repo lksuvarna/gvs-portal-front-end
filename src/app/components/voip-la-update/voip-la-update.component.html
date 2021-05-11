@@ -38,7 +38,7 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Select Jabber Number </label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber / Phone Number </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
@@ -83,12 +83,12 @@
                             <div class="ds-input-container ds-mar-b-2">
                                 <div class="ds-input-checkbox-group" role="group" aria-labelledby="basic-checkboxes-example">
                                     <div class="ds-input-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="checked" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">
+                                        <input type="checkbox" id="checkbox1" name="checked" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked" >
                                         <div class="ds-input-control"></div>
                                         <label for="checkbox1">Voice Mail</label>
                                     </div>
                                     <div class="ds-input-checkbox">
-                                        <input type="checkbox" id="checkbox2" name="checked1" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked2" [ngModelOptions]="{standalone: true}">
+                                        <input type="checkbox" id="checkbox2" name="checked2" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked2">
                                         <div class="ds-input-control"></div>
                                         <label for="checkbox2">Class of Service (COS)</label>
                                     </div>
@@ -159,11 +159,11 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="Back" (click)="backClick(formData)">
+                value="BACK" (click)="backClick(formData)">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2" *ngIf="warninginfo==false && warninginfosnow==false">
               <input type="submit" name="next"
-                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Next">
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="NEXT">
             </span>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top" >
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber Number </label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber / Phone Number </label>
 
                         </td>
                         <td width="54%" height="10">
