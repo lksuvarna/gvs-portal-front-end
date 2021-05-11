@@ -45,8 +45,8 @@ export class HpInDeleteComponent implements OnInit {
   errorinfo=false;
   reqno:any;
   cache_tmp:  any = [];
-
-  showerrormessage = false
+  showerrormessage = false;
+  HideBack :boolean = false;
 
   constructor(private db2:Db2Service, private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice) { }
   
@@ -124,6 +124,7 @@ export class HpInDeleteComponent implements OnInit {
     this.isEntryForm = false;	
     this.isReviewForm = true;	
     this.fixedPhoneIdentifier = false;	
+    this.showerrormessage = false;
   }	
 
  backClick(formData: NgForm){	
