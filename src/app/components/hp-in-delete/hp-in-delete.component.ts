@@ -45,7 +45,7 @@ export class HpInDeleteComponent implements OnInit {
   errorinfo=false;
   reqno:any;
   showerrormessage = false
-
+  HideBack :boolean = false;
 
   payload : fixedphone_delete = new fixedphone_delete();
 
@@ -110,6 +110,7 @@ export class HpInDeleteComponent implements OnInit {
     this.isEntryForm = false;	
     this.isReviewForm = true;	
     this.fixedPhoneIdentifier = false;	
+    this.showerrormessage = false;
   }	
 
  backClick(): void{	
