@@ -54,6 +54,9 @@ export class RequestsComponent implements OnInit {
     this.DisplayModel = 'none';
   }
   ngOnInit(): void {
+    window.addEventListener("keyup", disableF5);
+
+    window.addEventListener("keydown", disableF5);
     this.display = false
     this.snowdata = sessionStorage.getItem('identifier');
     this.empserial = sessionStorage.getItem('empserial');
@@ -73,18 +76,21 @@ export class RequestsComponent implements OnInit {
      this.stage='';
      this.stage=this.snowdata[this.i].stage.toLowerCase();
      
-      if ((this.stage==="waiting for approval" || this.stage==="rejected") && this.stage!=="closed incomplete") {
-        this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
+    //  if ((this.stage==="waiting for approval" || this.stage==="rejected") && this.stage!=="closed incomplete") {
+        this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver_requests", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
          
           this.approver.push("("+data.message[0]['approver.name']+")");
+        
+          
         },
         (error) => {                              //Error callback
          console.error('error caught in component'+error);
          this.errorinfo=true;
-       })}
-        else{
-          //this.approver.push([])
-        }
+       })
+      //}
+     //   else{
+         // this.approver.push();
+     //   }
         this.servicenowservice.searchsnowcoments(this.empserial, "snow_comments", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
           console.log(' snow response', data);
           console.log(' snow response', data.message.results.length);
@@ -121,7 +127,13 @@ export class RequestsComponent implements OnInit {
       ]
     }
     this.servicesData = servicesData.data[0];
+    function disableF5(e:any) {
 
+      if (((e.which || e.keyCode) == 116)|| ((e.which || e.keyCode) == 17) || ((e.which || e.keyCode) == 82)|| ((e.which || e.keyCode) == 123)|| ((e.which || e.key) == 'ctrl+R')|| (e.which || e.keyCode) == 82 ) e.preventDefault(); 
+
+    
+
+   };
 
 
   }
