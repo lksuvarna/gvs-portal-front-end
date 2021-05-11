@@ -1135,7 +1135,9 @@ class JabberservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            if (sessionStorage.getItem('countrydetails') == undefined) {
+            this.countryroute = sessionStorage.getItem('countryroute');
+            // if(sessionStorage.getItem('countrydetails')==undefined){
+            if (this.pcode !== this.countryroute) {
                 this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
                     console.log('Response received navigation', data.countrydetails.isspecial);
                     this.countryname = data.countrydetails;
@@ -15885,7 +15887,9 @@ class FixedphoneservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            if (sessionStorage.getItem('countrydetails') == undefined) {
+            this.countryroute = sessionStorage.getItem('countryroute');
+            //  if(sessionStorage.getItem('countrydetails')==undefined){
+            if (this.pcode !== this.countryroute) {
                 this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
                     console.log('Response received navigation', data.countrydetails.isspecial);
                     this.countryname = data.countrydetails;
@@ -16880,6 +16884,63 @@ class TopcountryframeComponent {
                 if (this.translatecountryname == 'Canada/Caribbean') {
                     this.translatecountryname1 = true;
                 }
+                if (this.service.includes('jabberservices')) {
+                    if (this.countryname.jservices) { }
+                    else {
+                        sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                        this.router.navigate(['**'], {
+                        //   queryParams: {}
+                        });
+                    }
+                }
+                if (this.service.includes('fixedphoneservices')) {
+                    if (this.countryname.fservices) { }
+                    else {
+                        sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                        this.router.navigate(['**'], {
+                        //   queryParams: {}
+                        });
+                    }
+                }
+                if (this.service.includes('facservices')) {
+                    if (this.countryname.facservices) { }
+                    else {
+                        sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                        this.router.navigate(['**'], {
+                        //   queryParams: {}
+                        });
+                    }
+                }
+                if (this.service.includes('jabber_')) {
+                    if (this.countryname.jservices && this.countryname.jservices.includes(this.service.replace('jabber_', ''))) {
+                    }
+                    else {
+                        sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                        this.router.navigate(['**'], {
+                        //   queryParams: {}
+                        });
+                    }
+                }
+                if (this.service.includes('fixedphone_')) {
+                    if (this.countryname.fservices && this.countryname.fservices.includes(this.service.replace('fixedphone_', ''))) {
+                    }
+                    else {
+                        sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                        this.router.navigate(['**'], {
+                        //   queryParams: {}
+                        });
+                    }
+                }
+                if (this.service.includes('fac_')) {
+                    if (this.countryname.facservices && this.countryname.facservices.includes(this.service.replace('fac_', ''))) {
+                    }
+                    else {
+                        sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                        this.router.navigate(['**'], {
+                        //   queryParams: {}
+                        });
+                    }
+                }
             }
             else {
                 console.log("topcountrysession storageelse" + this.pcode);
@@ -16900,6 +16961,63 @@ class TopcountryframeComponent {
                     this.translatecountryname = this.countryname.name;
                     if (this.translatecountryname == 'Canada/Caribbean') {
                         this.translatecountryname1 = true;
+                    }
+                    if (this.service.includes('jabberservices')) {
+                        if (this.countryname.jservices) { }
+                        else {
+                            sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                            this.router.navigate(['**'], {
+                            //   queryParams: {}
+                            });
+                        }
+                    }
+                    if (this.service.includes('fixedphoneservices')) {
+                        if (this.countryname.fservices) { }
+                        else {
+                            sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                            this.router.navigate(['**'], {
+                            //   queryParams: {}
+                            });
+                        }
+                    }
+                    if (this.service.includes('facservices')) {
+                        if (this.countryname.facservices) { }
+                        else {
+                            sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                            this.router.navigate(['**'], {
+                            //   queryParams: {}
+                            });
+                        }
+                    }
+                    if (this.service.includes('jabber_')) {
+                        if (this.countryname.jservices && this.countryname.jservices.includes(this.service.replace('jabber_', ''))) {
+                        }
+                        else {
+                            sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                            this.router.navigate(['**'], {
+                            //   queryParams: {}
+                            });
+                        }
+                    }
+                    if (this.service.includes('fixedphone_')) {
+                        if (this.countryname.fservices && this.countryname.fservices.includes(this.service.replace('fixedphone_', ''))) {
+                        }
+                        else {
+                            sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                            this.router.navigate(['**'], {
+                            //   queryParams: {}
+                            });
+                        }
+                    }
+                    if (this.service.includes('fac_')) {
+                        if (this.countryname.facservices && this.countryname.facservices && this.countryname.facservices.includes(this.service.replace('fac_', ''))) {
+                        }
+                        else {
+                            sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                            this.router.navigate(['**'], {
+                            //   queryParams: {}
+                            });
+                        }
                     }
                 });
             }
@@ -23498,7 +23616,9 @@ class FacservicesComponent {
             console.log(params);
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            if (sessionStorage.getItem('countrydetails') == undefined) {
+            this.countryroute = sessionStorage.getItem('countryroute');
+            // if(sessionStorage.getItem('countrydetails')==undefined){
+            if (this.pcode !== this.countryroute) {
                 this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
                     this.countryname = data.countrydetails;
                     sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
