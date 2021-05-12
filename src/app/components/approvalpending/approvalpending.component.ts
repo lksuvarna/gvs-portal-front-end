@@ -32,8 +32,10 @@ export class ApprovalpendingComponent implements OnInit {
   checked: any=[];
   checkedList:any;
   errorinfo=true;
+  reval=true;
   flag =true;
   search='';
+  snowaction:any;
 
   submit(){
     this.router.navigate(['/employeeinfo']) 
@@ -79,11 +81,19 @@ export class ApprovalpendingComponent implements OnInit {
  
     this.empserial = this.ccode; 
     this.ccode=this.ccode.substring(6,9);
+   if(this.service.includes('revalidationpending')){
+     this.snowaction='snow_revalidation'
+     this.empserial="467756744";
+     this.reval=false;
+    }
+     else{
+      this.snowaction='snow_approve'
+     }
    
     
    //this.empserial="467756744";
    if(this.pcode == this.ccode){
-      this.servicenowservice.searchsnowcoments(this.empserial, "snow_approve","","").subscribe(data => {
+      this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction,"","").subscribe(data => {
         console.log(' snow response', data.message);
         console.log(' snow response', data.message.length);
         
