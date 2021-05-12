@@ -6,7 +6,8 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { servicenowservice } from '../../_services/servicenow.service';
 import {fixedphone_delete} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
-import {Db2Service} from '../../_services/db2.service'
+import {Db2Service} from '../../_services/db2.service';
+import { TranslateConfigService } from '../../_services/translate-config.service';
 
 
 @Component({
@@ -44,7 +45,8 @@ export class HpInDeleteComponent implements OnInit {
   orgi:any;	
   errorinfo=false;
   reqno:any;
-  showerrormessage = false
+  showerrormessage = false;
+  mainConfiguration :any;
 
 
   payload : fixedphone_delete = new fixedphone_delete();
@@ -82,7 +84,7 @@ export class HpInDeleteComponent implements OnInit {
 
     }
     else{
-      alert("Please enter a number to search");
+      alert(this.mainConfiguration.fixedphonenew.Pleaseenternumber);
     }
     
 
@@ -104,8 +106,7 @@ export class HpInDeleteComponent implements OnInit {
 
   }
 
-  constructor(private db2:Db2Service, private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice) { }
-
+  constructor(private db2:Db2Service, private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice,private servicesd : TranslateConfigService) { }
   BackButton() {	
     this.isEntryForm = false;	
     this.isReviewForm = true;	
@@ -158,7 +159,7 @@ export class HpInDeleteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.mainConfiguration = this.servicesd.readConfigFile();
     // Submit to Snow Jabber new code added by Swarnava	
   this.orgi=this.cookie.getCookie('ccode');	
   this.cnum = sessionStorage.getItem('cnum') ;	
