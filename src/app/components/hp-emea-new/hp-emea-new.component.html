@@ -9,22 +9,22 @@
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <form [hidden]="isEntryForm" (submit)='entryDetails(formData)' #formData='ngForm'>
 
-            <b>Fixed Phone - New Request</b>
+            <b translate>servicestitle.Fixed Phone - New Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
-                Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.
+                <span translate>Jabberentrydetails.Fieldsasterisk</span> (<span class="ds-text-contextual-red-2">*</span>)<span translate>Jabberentrydetails.arerequired</span>
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
 
-            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>employeeinfotrans.EmployeeEntryDetails</h2>
 
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Location</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>fixedphonenew.Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
@@ -32,7 +32,7 @@
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  
                                 style="width:300px !important; text-transform: uppercase;" title="Office Location" 
                                 #location  ngModel>
-                                    <option value ="">Select Location</option>
+                                    <option value =""> <span translate> Jabberentrydetails.Select Location </span></option>
                                     <option name="Location_1" *ngFor='let fl_location of locationlist' [value]='fl_location' >
                                         {{ fl_location }}</option>
                                 </select>
@@ -48,7 +48,7 @@
                     
 
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize">Type of Device </label>
+                        <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize" translate>fixedphonenew.TypeofDevice</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
@@ -56,7 +56,7 @@
                                 <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left"  
                                 style="width:300px !important; text-transform: uppercase;" title="Device Type" 
                                 #device (change)='selectedDevice(device.value)' ngModel [(ngModel)]='selected_device'>
-                                    <option value ="">Select Device</option>
+                                    <option value ="" translate>fixedphonenew.SelectDevice</option>
                                     <option name="Device_Type" *ngFor='let device of devices' [value]='device' >{{ device }}</option>
                                 </select>
                             </div>
@@ -71,14 +71,14 @@
            <table id="t3" width="100%" cellspacing="0" cellpadding="0" border="0" [hidden]='hideDeviceSection'>
                 <tbody>
                     <tr valign="top" [hidden]='showforAnyDevice'>
-                        <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize">Type of Model </label>
+                        <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize" translate>fixedphonenew.TypeofModel </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left"  
                                 style="width:300px !important; text-transform: uppercase;" title="Model" [(ngModel)]='modelValue'>
-                                    <option value ="">Select Model</option>
+                                    <option value ="" translate>fixedphonenew.SelectModel</option>
                                     <option name="Model_Type" *ngFor='let model of models' [value]='model'>{{ model }}</option>
                                 </select>
                             </div>
@@ -105,7 +105,7 @@
 
                     <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%" height="10"><label for="cos"
-                            class="ds-text-capitalize">Select Class of Service (COS)</label>
+                            class="ds-text-capitalize" translate>fixedphonenew.SelectClassofService(COS)</label>
                         </td>
                         <td width="54%" height="10">
                           <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
@@ -113,15 +113,15 @@
                               class="ds-title ds-align-text-left"
                               style="width:300px !important; text-transform: uppercase;" title="Class of Service" [(ngModel)]='COS' #cos (change)='classofservice(cos.value)'
                               ngModel>
-                              <option value="national">National</option>
-                              <option value="international">International</option>
+                              <option value="national" translate>fixedphonenew.National</option>
+                              <option value="international" translate>fixedphonenew.International</option>
                             </select>
                           </div>
                         </td>
                       </tr>
 
                       <tr valign="top" [hidden]='showBusinessNeed'>
-                        <td colspan="2" width="46%"><br><label for="Justification" class="ds-text-capitalize ds-pad-t-1">Business Need (Why is international required?) </label>
+                        <td colspan="2" width="46%"><br><label for="Justification" class="ds-text-capitalize ds-pad-t-1" translate>fixedphonenew.BusinessNeed(Whyisinternationalrequired?)</label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" ngModel></textarea>
@@ -129,24 +129,24 @@
                     </tr>
 
                       <tr valign="top" [hidden]='showforAnyDevice'>
-                        <td colspan="2" width="46%"><br><label for="Description" class="ds-text-capitalize ds-pad-t-1">Description of the Device </label>
+                        <td colspan="2" width="46%"><br><label for="Description" class="ds-text-capitalize ds-pad-t-1" translate>fixedphonenew.DescriptionoftheDevice</label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container ds-pad-t-1">
                                 <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" style="width:300px !important;" title="Description" maxlength="30" ngModel>
-                                <label *ngIf="selected_device == 'Extension Mobility Station'">e.g. IBMC Lv21 EM desk </label>
-                                <label *ngIf="selected_device == 'Conference / Meeting Room Phone'">e.g. IBMC Lv21 conference room 3 </label>
+                                <label *ngIf="selected_device == 'Extension Mobility Station'" translate>fixedphonenew.IBMCLv21EMdesk</label>
+                                <label *ngIf="selected_device == 'Conference / Meeting Room Phone'" translate>fixedphonenew.IBMCLv21conferenceroom3</label>
                             </div>
                         </td>
                     </tr>
 
                     <tr valign="top" [hidden]='showforAnyDevice'>
-                        <td colspan="2" width="46%"><br><label for="MACAddress" class="ds-text-capitalize">MAC Address of the Device </label>
+                        <td colspan="2" width="46%"><br><label for="MACAddress" class="ds-text-capitalize" translate>fixedphonenew.MACAddressoftheDevice</label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container">
                                 <input name="MACAddress" value="" tabindex="2" rows="2" cols="40" id="MACAddressId" class="ds-input" style="width:300px !important;" title="MAC Address" maxlength="12" ngModel>
-                                <label>Note:Combination of (0 to 9 , A to F) and Length:12</label>
+                                <label translate>fixedphonenew.NoteCombinationofandLength12</label>
                             </div>
                         </td>
                     </tr>
@@ -162,11 +162,11 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" 
-                value="Back" (click)="backClick()">
+                value= "{{ 'Jabberentrydetails.Back' | translate}}" (click)="backClick()">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-               value="Next">
+               value="{{ 'Jabberentrydetails.Next' | translate}}">
             </span>
                     </div>
                 </div>
@@ -175,23 +175,23 @@
 
         <form [hidden]="isReviewForm">
             
-            <b>Fixed Phone - New Request</b>
+            <b translate>servicestitle.Fixed Phone - New Request</b>
 
             
-            <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+            <div class="ds-pad-b-1" translate>Jabberentrydetails.toprocessPI
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
             <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
 
 
-            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2>
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 " translate>Jabberupdate.ReviewDetails</h2>
 
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10">
-                            <label for="addId1">Office Location</label>
+                            <label for="addId1" translate>Jabberentrydetails.OfficeLocation</label>
                         </td>
                         <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
                     </tr>
@@ -204,14 +204,14 @@
                                         
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="device">Type of Device</label>
+                            <label for="device" translate>fixedphonenew.TypeofDevice</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.device}}</td>
                     </tr>
                     
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="model">Type of Model</label>
+                            <label for="model" translate>fixedphonenew.TypeofModel</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.model}}</td>
                     </tr>
@@ -226,28 +226,28 @@
                     
                     <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%">
-                            <label for="cos">Class of Service</label>
+                            <label for="cos" translate>Jabbernewtrans.ClassofService</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.cos}}</td>
                     </tr>
                     
                     <tr valign="top" [hidden]='showBusinessNeed'>
                         <td colspan="2" width="46%">
-                            <label for="justification">Business Justification</label>
+                            <label for="justification" translate>fixedphonenew.BusinessJustification</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.justification}}</td>
                     </tr>
                     
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="description">Description of Device</label>
+                            <label for="description" translate>fixedphonenew.DescriptionofDevice</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.description}}</td>
                     </tr>
                     
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="mac">MAC Address of the Device</label>
+                            <label for="mac" translate>fixedphonenew.MACAddressoftheDevice</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.mac}}</td>
                     </tr>
@@ -255,14 +255,14 @@
             </table>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p>Something seems to have gone wrong. Please try later.</p>
+                <p translate>fixedphonenew.Somethingseemswrong</p>
                 <p>
                 </p>
             </div>
             <div class="ds-hr-thick ds-mar-t-1_5"></div>
             <!-- Dark Background -->
             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
-                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+                <div class="ds-loader-header" translate>Jabberentrydetails.Submissioninprogress</div>
                 <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
             </div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
@@ -270,12 +270,12 @@
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
-                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="{{ 'Jabberentrydetails.Back' | translate}}"
                 (click)='BackButton()' *ngIf="this.isButtonVisible">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+                value="{{ 'employeeinfotrans.SUBMIT1' | translate}}" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
                         
 

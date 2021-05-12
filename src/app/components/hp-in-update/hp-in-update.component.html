@@ -7,6 +7,7 @@
     </div>
 
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
+
         <form [hidden]="isEntryForm" (submit)='entryDetails(formData)' #formData='ngForm'>
 
             <b>Fixed Phone - Update Request</b><br>
@@ -40,6 +41,7 @@
                                                     <input type="button" class="ds-button ds-secondary ds-width-auto 
                                                 ds-margin-bottom-0 ds-pad-l-1 ds-pad-r-1" (click)='OnSearchClick()' name="SEARCH" value="SEARCH">
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -206,6 +208,7 @@
                     </div>
                 </div>
             </div>
+
         </form>
 
         <form [hidden]="isReviewForm">
@@ -275,6 +278,7 @@
 
 
                     <!-- <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
+
                     <tbody> -->
                     <tr valign="top" *ngIf='showLocation'>
                         <td colspan="2" width="46%" height="10">
