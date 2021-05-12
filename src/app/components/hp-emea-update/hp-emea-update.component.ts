@@ -6,7 +6,8 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Location} from '@angular/common';	
 import { fixedphone_update} from 'config/payload';
-import {Db2Service} from '../../_services/db2.service'
+import {Db2Service} from '../../_services/db2.service';
+import { TranslateConfigService } from '../../_services/translate-config.service';
 
 @Component({
   selector: 'app-hp-emea-update',
@@ -34,6 +35,7 @@ export class HpEmeaUpdateComponent implements OnInit {
   locationlist: any;	
   pcode: any;	
   service: any;
+  mainConfiguration :any;
 
   currentMac: string = "";
   currentPhone: any ;
@@ -62,7 +64,7 @@ export class HpEmeaUpdateComponent implements OnInit {
   warninginfosnow=false;
   hideSteps = false;
   errorinfo=false;
-
+  showerrormessage = false
 
 
   payload : fixedphone_update = new fixedphone_update();
@@ -96,10 +98,12 @@ export class HpEmeaUpdateComponent implements OnInit {
     Currentdescription :"",
   }
   
-  constructor(private db2:Db2Service, private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
-
+  constructor(private db2:Db2Service, private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private servicesd : TranslateConfigService) { }
+  onSearch(){
+    this.showerrormessage = false;
+    this.hideSteps = false;
+  }
   OnSearchClick(){
-    //alert("ok" + this.currentMacOrPhone )
     if(this.currentMacOrPhone != ''){
 
       this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
@@ -108,19 +112,17 @@ export class HpEmeaUpdateComponent implements OnInit {
           
           this.currentMac = data.message[0].ATTRIBUTE1;
           this.currentPhone = data.message[0].IDENTIFIER;
-          this.currentdesc = data.message[0].ATTRIBUTE4;
-          this.currentmodel = data.message[0].ATTRIBUTE2;
-          // console.log(data.message[0].COUNTRY);
-          // console.log(data.message[0].ATTRIBUTE1);
-          // console.log(data.message[0].IDENTIFIER);
-          // console.log( data.message[0].ATTRIBUTE2);
-          // console.log(data.message[0].ATTRIBUTE4);
+          this.currentdesc = data.message[0].ATTRIBUTE2;
+          this.currentmodel = data.message[0].ATTRIBUTE4;
+          this.currentMac = this.currentMac.substring(3,this.currentMac.length);
           this.showSearch =true;
+          this.showerrormessage = false;
 
-        }
-        else
+        }else
         {
-          alert("something went wrong");
+          this.showerrormessage = true;
+          this.showSearch = false;
+          this.hideSteps = true;
 
         }
         
@@ -128,7 +130,7 @@ export class HpEmeaUpdateComponent implements OnInit {
 
     }
     else{
-      alert("Please enter a MAC Address or Phone number to search");
+      alert(this.mainConfiguration.fixedphonenew.MACAddresssearch);
     }
     
 
@@ -205,33 +207,47 @@ backClick(){
 
   entryDetails(formData: NgForm){
     
-    if(this.currentMacOrPhone == '')
+    /* if(this.currentMacOrPhone == '')
     {
       // alert("Please give some ");
     }
-   else if(formData.value.UpdateReq == '') {	
-      alert('Please select update required for');	
+   else */ if(formData.value.UpdateReq == '') {	
+      alert(this.mainConfiguration.fixedphonenew.updaterequiredfor);	
+      return;
     }	
 
-    else if(formData.value.MAC1 == '') {	
-      alert('Please enter 12 characters MAC address');
+    if(this.showformacadd ==true && (formData.value.MAC1.trim() == '' || formData.value.MAC1.length != 12)) {	
+	
+      alert(this.mainConfiguration.fixedphonenew.entermacadd);
+      return;	
+    }
+    if(this.showformacadd == true && formData.value.MAC1 == this.currentMac) {
+      alert(this.mainConfiguration.fixedphonenew.enternewMACaddress);
+      return;
+    }
+    var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
+
+    if(this.showformacadd == true && (pat1.test(formData.value.MAC1))) {
+      alert(this.mainConfiguration.fixedphonenew.MACfieldAtoF);
+      return;
+    }
+    if(this.showformodel == true && formData.value.newModel == this.currentmodel) {
+      alert(this.mainConfiguration.fixedphonenew.enteranewModel);
+      return;
     }
 
-   else if(formData.value.Comments == '') {	
-      alert('Please provide the reason for updation.');	
-    }
-
-    else if(formData.value.Newdesc == '') {	
-      alert('Please provide the New Description. ');	
+    if(this.showforNewDesc == true && formData.value.Newdesc.trim() == '') {	
+      alert(this.mainConfiguration.fixedphonenew.provideNewDescription);	
+      return;
       	
     }
-
-    else if(formData.value.Location_1 == '' && this.showLocation == true) {	
-      alert('Please select a location');	
+    if(this.showforNewDesc == true && formData.value.Newdesc == this.currentdesc) {
+      alert(this.mainConfiguration.fixedphonenew.differentDescriptionasisalready +" "+this.currentdesc+" " +this.mainConfiguration.fixedphonenew.fortheprovidednumber);
+      return;
     }
-
-    else if(formData.value.Buildings == '' && this.showLocation == true) {	
-      alert('Please select a campus');	
+    if(this.showforrsn == true && (formData.value.Comments.trim() == '')) {	
+      alert(this.mainConfiguration.fixedphonenew.providethereasonforupdation);	
+      return;
     }
     
 
@@ -309,6 +325,7 @@ backClick(){
   }
 
   ngOnInit(): void {
+    this.mainConfiguration = this.servicesd.readConfigFile();
     this.updateRequiredFor = sessionStorage.getItem('updaterequired');
     this.updateRequiredFor = JSON.parse(this.updateRequiredFor).split(",");
     this.models = sessionStorage.getItem('fpumodels');
@@ -358,11 +375,6 @@ backClick(){
   
      
     }	
-
-    // this.reqFor = sessionStorage.getItem('radioAction')
-    
-    // this.models = sessionStorage.getItem('fpumodels')
-    // this.servicesData = servicesData.data[0];
     this.reqFor = sessionStorage.getItem('radioAction');
     this.servicesData = servicesData.data[0]
 
@@ -376,7 +388,6 @@ backClick(){
   previousStep(event : any){
     this.isEntryForm = false;	
     this.isReviewForm = true;	
-   // this.fixedPhoneIdentifier = false;	
   }
 
 }

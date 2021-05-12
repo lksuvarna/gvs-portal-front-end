@@ -1,4 +1,3 @@
-<p>hp-emea-update works!</p>
 <app-topcountryframe></app-topcountryframe>
 
 <div class=" ds-panel ds-col-12"></div>
@@ -10,23 +9,23 @@
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
     <form [hidden]="isEntryForm" (submit)='entryDetails(formData)' #formData='ngForm'> 
 
-        <b>Fixed Phone - Update Request</b>
+        <b translate>servicestitle.Fixed Phone - Update Request</b>
 
         <div class="ds-pad-t-0_5 ds-pad-b-1">
-        Fields marked with an asterick (<span class="ds-text-contextual-red-2">*</span>) are required.
+        <span translate>Jabberentrydetails.Fieldsasterisk</span> (<span class="ds-text-contextual-red-2">*</span>) <span translate>Jabberentrydetails.arerequired</span>
         </div>
 
         <div class=" ds-panel ds-col-12 "></div> 
     
         <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
 
-        <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
+        <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>employeeinfotrans.EmployeeEntryDetails</h2>
 
         <table id="t1" width="100%" height="10" cellspacing="0" cellpadding="0" border="0">
             <tbody>
                 <tr valign="top">
                     <td width="50%">
-                        <label for="Sear class=">Enter Current MAC Address or Phone Number</label>
+                        <label for="Sear class=" translate>fixedphonenew.MACAddressorPhoneNumber</label>
                         <span class="ds-text-contextual-red-2"> *</span>
                     </td>
                     <td width="50%">
@@ -35,13 +34,13 @@
                                 <div class="ds-col-12">
                                     <div class="ds-row">
                                         <div class="ds-col-7">
-                                            <input name="IdNum1" [(ngModel)]="currentMacOrPhone" value="" maxlength="15;" class="ds-input" style="width:180px !important;">
+                                            <input name="IdNum1" [(ngModel)]="currentMacOrPhone" value="" class="ds-input" style="width:180px !important;" maxlength="15" (click)='onSearch()'>
                                         </div>
                                         <div class="ds-col-5 ds-pad-l-1">
                                             <div>
                                                 <input type="button" class="ds-button ds-secondary ds-width-auto 
                                                 ds-margin-bottom-0 ds-pad-l-1 ds-pad-r-1"  
-                                                (click)='OnSearchClick()' name="back" value="Search">
+                                                (click)='OnSearchClick()' name="SEARCH" value="{{ 'fixedphonenew.SEARCH' | translate}}">
                                             </div>
                                         </div>
                                     </div>
@@ -51,25 +50,18 @@
                     </td>
                 </tr>
 
-                <!-- <tr valign="top">
+                <tr valign="top" *ngIf='showerrormessage'>
                     <td colspan="2" width="100%">
                         <span id="err1" ><br><br>
-                            <div class="ds-col-xs-12 ds-alert ds-warning ds-pad-t-1">
-                                <p>No record was found for the Mac Address or Phone Number you have entered. 
-                                Please check and try again.</p>
-                            </div>
-                        </span>
-                        <span id="err2"><br><br>
-                            <div class="ds-col-xs-12 ds-alert ds-warning ds-pad-t-1">
-                                <p>No record was found for the Mac Address or Phone Number you have entered. 
-                                    Please check and try again.</p>
+                            <div class="ds-col-xs-12 ds-alert ds-warning">
+                                <p translate>fixedphonenew.norecordfoundformac</p>
                             </div>
                         </span>
                     </td>
-                </tr> -->
+                </tr>
                 <tr valign="top" *ngIf='showSearch'>
                     <td width="50%"><br>
-                        <label for="sear" class=""> Current MAC Address </label>
+                        <label for="sear" class="" translate>fixedphonenew.CurrentMACAddress </label>
                     </td>
                     <td width="50%"><br>{{currentMac}}
                     </td>
@@ -77,7 +69,7 @@
                 
                 <tr valign="top" *ngIf='showSearch'>
                     <td width="50%"><br>
-                        <label for="sear" class="">  Current  Phone Number </label>
+                        <label for="sear" class="" translate>fixedphonenew.CurrentPhoneNumber</label>
                     </td>
                     <td width="50%"><br>{{currentPhone}}
                     </td>
@@ -85,28 +77,28 @@
                 
                 <tr valign="top" *ngIf='showSearch'>
                     <td width="50%"><br>
-                        <label for="sear" class="">  Current  Description </label>
+                        <label for="sear" class="" translate>fixedphonenew.CurrentDescription</label>
                     </td>
                     <td width="50%"><br>{{currentdesc}}</td>
                 </tr>
                 
                 <tr valign="top" *ngIf='showSearch'>
                     <td width="50%"><br>
-                        <label for="sear" class="">  Current Model</label>
+                        <label for="sear" class="" translate>fixedphonenew.CurrentModel</label>
                     </td>
                     <td width="50%"><br>{{currentmodel}}</td>
                 </tr>
 
                 <tr valign="top" *ngIf='showSearch'>
                     <td width="50%"><br>
-                        <label for="up" class=""> Update Required for</label>
+                        <label for="up" class="" translate>fixedphonenew.UpdateRequiredfor</label>
                         <span class="ds-text-contextual-red-2"> *</span>
                     </td>
                     <td width="50%"><br>
                         <div class="ds-dropdown ds-secondary"  role="menu" aria-label="w3DS Dropdown1"> 
                             <select name="UpdateReq" id="voicetype" class="ds-title ds-align-text-left" style="width:300px !important;" 
                             title="Update Required For" #device (change)='updateFor(device.value)' [(ngModel)]='selected_device' ngModel>
-                                <option value="">Select One</option>
+                                <option value="" translate>Jabbernewtrans.SelectOne</option>
                                 <option *ngFor='let device of updateRequiredFor' [value]='device'>{{ device }}</option>
                             </select>
                         </div>
@@ -115,56 +107,21 @@
             </tbody>
         </table>
 
-        <table id="t2" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
-            <tbody>
-                <tr valign="top" *ngIf='showLocation'>
-                    <td colspan="2" width="50%"><label for="LocationId" class="ds-text-capitalize"> Office
-                        Location</label>
-                        <span class="ds-text-contextual-red-2">*</span>
-                    </td>
-                    <td width="50%" class="ds-pad-t-1">
-                        <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                            <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  
-                            style="width:300px !important; text-transform: uppercase;" title="Office Location"
-                            #location (change)='selectedLocation(location.value)' ngModel>
-                                <option value ="">Select Office Location</option>
-                                <option *ngFor='let fl_location of camp' [value]='fl_location' >
-                                {{ fl_location }}</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-                <tr valign="top" *ngIf='hideBuilding' class="ds-pad-t-1">
-                    <td colspan="2" width="50%"><label for="builId" class="ds-text-capitalize"> Campus</label>
-                        <span class="ds-text-contextual-red-2">*</span>
-                    </td>
-                    <td width="54%">
-                        <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                            <select name="Buildings" rows="2" cols="40" class="ds-title ds-align-text-left" 
-                            style="width:300px !important; text-transform: uppercase;" title="Campus" [(ngModel)]='campus' ngModel>
-                                <option value ="">Select One</option>
-                                <option *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
-                            </select>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        
 
         <table id="t3"  width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
             <tbody>
                 <tr valign="top" *ngIf='showformodel'>
                     <td colspan="2" width="50%">
                         <span id="modelid"><br>
-                            <label for="modelid" class="ds-text-capitalize"> Type Of Model</label>
+                            <label for="modelid" class="ds-text-capitalize" translate>fixedphonenew.TypeOfModel</label>
                             <span class="ds-text-contextual-red-2"></span>
                         </span>
                     </td>
                     <td width="50%">
                         <div id="model1" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1"><br>
-                            <!-- <input name="" type="hidden" value="1"> -->
                             <select name="NewModel" rows="2" cols="40"class="ds-title ds-align-text-left" style="width:300px !important;" title="Phone Model" ngModel>
-                                <option value="">Select Phone Model</option>
+                                <option value="" translate>fixedphonenew.SelectPhoneModel</option>
                                 <option name="NewModel" *ngFor='let model of models' [value]='model'>{{ model }}</option>
                             </select>
                         </div>
@@ -173,7 +130,7 @@
 
                 <tr valign="top" *ngIf='showformacadd'>
                     <td colspan="2" width="50%" class="ds-pad-t-1 ds-pad-b-2">
-                        <label class="">New MAC Address<span class="ds-text-contextual-red-2"> *</span></label>
+                        <label class="" translate>fixedphonenew.NewMACAddress<span class="ds-text-contextual-red-2"> *</span></label>
                     </td>
                     <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
                         <input name="MAC1" value="" class="ds-input ds-pad-b-1" style="width:300px !important;" title="New MAC Address" maxlength="12;" ngModel>
@@ -182,7 +139,7 @@
 
                 <tr valign="top" *ngIf='showforNewDesc'>
                     <td colspan="2" width="50%" class="ds-pad-t-1 ds-pad-b-1">
-                        <label for="descn" id="desc1" class="">New Description to Update
+                        <label for="descn" id="desc1" class="" translate>fixedphonenew.NewDescriptiontoUpdate
                             <span class="ds-text-contextual-red-2"> *</span></label>
                     </td>
                     <td width="50%" class="ds-pad-t-1 ds-pad-b-1">
@@ -193,7 +150,7 @@
 
                 <tr valign="top" *ngIf='showforrsn'>
                     <td colspan="2" width="50%">
-                        <label class="">Reason for Updation<span class="ds-text-contextual-red-2"> *</span></label>
+                        <label class="" translate>fixedphonenew.ReasonforUpdation<span class="ds-text-contextual-red-2"> *</span></label>
                     </td>
                     <td width="50%">
                         <textarea name="Comments" class="ds-input " style="width:300px !important;" 
@@ -211,11 +168,11 @@
                 <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                     <span class="ds-pad-l-4" id="button1">
                     <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" 
-                    value="Back" (click)="backClick()">
+                    value="{{ 'Jabberentrydetails.Back' | translate}}" (click)="backClick()">
                     </span>
-                    <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                    <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='showerrormessage'>
                     <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                    value="Next">
+                    value="{{ 'Jabberentrydetails.Next' | translate}}" >
                     </span>
                 </div>
             </div>
@@ -224,99 +181,87 @@
 
     <form [hidden]="isReviewForm">
             
-        <b>Fixed Phone - Update Request</b>
+        <b translate>servicestitle.Fixed Phone - Update Request</b>
 
         
-        <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+        <div class="ds-pad-b-1" translate>Jabberentrydetails.toprocessPI
         </div>
         <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
         <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
 
 
-        <!-- <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2> -->
+         <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 " translate>Jabberupdate.ReviewDetails</h2> 
 
-        <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+        <table id="t2" width="100%" cellspacing="8" cellpadding="0" border="0">
             <tbody>
                 <tr valign="top">
                     <td colspan="2" width="46%">
-                        <label for="addId1">Current MAC Address</label>
+                        <label for="addId1" translate>fixedphonenew.CurrentMACAddress</label>
                     </td>
                     <td width="54%">{{reviewDetailsIndia.mac}}</td>
                 </tr>
                 <tr valign="top">
                     <td colspan="2" width="46%">
-                        <label for="addId1">Current Phone Number </label>
+                        <label for="addId1" translate>fixedphonenew.CurrentPhoneNumber</label>
                     </td>
                     <td width="54%">{{reviewDetailsIndia.phoneNunmer}}</td>
                 </tr>
                 <tr valign="top" *ngIf='showSearch'>
                     <td colspan="2" width="46%">
-                        <label for="addId1">Current Description</label>
+                        <label for="addId1" translate>fixedphonenew.CurrentDescription</label>
                     </td>
                     <td width="54%">{{reviewDetailsIndia.Currentdescription}}</td>
                 </tr>
                 <tr valign="top">
                     <td colspan="2" width="46%">
-                        <label for="addId1">Current Model</label>
+                        <label for="addId1" translate>fixedphonenew.CurrentModel</label>
                     </td>
                     <td width="54%">{{reviewDetailsIndia.model}}</td>
                 </tr>
                 <tr valign="top">
                     <td colspan="2" width="46%">
-                        <label for="addId1">Update Required for</label>
+                        <label for="addId1" translate>fixedphonenew.UpdateRequiredfor</label>
                     </td>
                     <td width="54%">{{reviewDetailsIndia.device}}</td>
                 </tr>
                 <tr valign="top" *ngIf='showformodel'>
                     <td colspan="2" width="46%">
-                        <label for="addId1">Type Of Model</label>
+                        <label for="addId1" translate>fixedphonenew.TypeOfModel</label>
                     </td>
                     <td width="54%">{{reviewDetailsIndia.newModel}}</td>
                 </tr>
                 <tr valign="top" *ngIf='showformacadd'>
                     <td colspan="2" width="46%">
-                        <label for="addId1">New MAC Address</label>
+                        <label for="addId1" translate>fixedphonenew.NewMACAddress</label>
                     </td>
                     <td width="54%">{{reviewDetailsIndia.newMac}}</td>
                 </tr>
                 <tr valign="top">
                     <td colspan="2" width="46%">
-                        <label for="addId1">Reason for Updation</label>
+                        <label for="addId1" translate>fixedphonenew.ReasonforUpdation</label>
                     </td>
                     <td width="54%">{{reviewDetailsIndia.justification}}</td>
                 </tr>
                 <tr valign="top" *ngIf='showforNewDesc'>
                     <td colspan="2" width="46%">
-                        <label for="addId1">New Description to Update</label>
+                        <label for="addId1" translate>fixedphonenew.NewDescriptiontoUpdate</label>
                     </td>
                     <td width="54%">{{reviewDetailsIndia.description}}</td>
                 </tr>
                 
             </tbody>
         </table>
-
-        <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
-            <tbody>
-                <tr valign="top" *ngIf='showLocation'>
-                    <td colspan="2" width="46%" height="10">
-                        <label for="addId1">Office Location</label>
-                    </td>
-                    <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
-                </tr>
-                <tr valign="top" *ngIf='hideBuilding'>
-                    <td colspan="2" width="46%">
-                        <label for="addId1">Campus</label>
-                    </td>
-                    <td width="54%">{{reviewDetailsIndia.campus}}</td>
-                </tr>
-            </tbody>
-        </table>
-
+        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
+	        <p></p>
+	        <p translate>fixedphonenew.Somethingseemswrong</p>
+	        <p>
+	        </p>
+	    </div>
         <div class="ds-hr-thick ds-mar-t-1_5"></div>
         <!-- Dark Background -->
         <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
-            <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+            <div class="ds-loader-header" translate>Jabberentrydetails.Submissioninprogress</div>
             <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
         </div>
         <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
@@ -324,12 +269,12 @@
                 <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                     <span class="ds-pad-l-4" id="button1">
           <input type="button" name="back"
-            class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="Back"
+            class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="{{ 'Jabberentrydetails.Back' | translate}}"
             (click)='BackButton()' *ngIf="this.isButtonVisible">
         </span>
                     <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
           <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-            value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
+            value="{{ 'employeeinfotrans.SUBMIT1' | translate}}" (click)="submit_snow()" *ngIf="this.isButtonVisible">
         </span>
                     
 

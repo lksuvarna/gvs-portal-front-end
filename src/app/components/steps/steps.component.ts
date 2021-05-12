@@ -24,6 +24,7 @@ export class StepsComponent implements OnInit {
   @Input ('isSelf') isSelf : any;
   @Input('hideSteps') set onChange (isWarning: any) {
     this.isWarning = isWarning
+
     if (this.step === 1 ){
       if(isWarning === true){
             this.isWarning1 = true
@@ -35,6 +36,16 @@ export class StepsComponent implements OnInit {
             this.isWarning3 = false
            }
         }
+    if ((this.service == 'fixedphone_update' || this.service == 'fixedphone_delete') && this.step === 2 && this.isSelf ===true && this.isWarning === true){
+      this.isWarning2 = true
+    } else {
+      this.isWarning2 = false
+    }
+    if ((this.service == 'fixedphone_update' || this.service == 'fixedphone_delete') && this.step === 3 && this.isSelf === false && this.isWarning === true){  
+      this.isWarning3 = true
+    } else {
+      this.isWarning3 = false
+    } 
   }
   
 
