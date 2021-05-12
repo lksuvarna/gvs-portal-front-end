@@ -7,6 +7,7 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
 import { bpservices } from '../../_services/bp.service';
 import {Location} from '@angular/common';	
+import { TranslateConfigService } from '../../_services/translate-config.service';
 
 @Component({
   selector: 'app-hp-emea-new',
@@ -50,6 +51,7 @@ hideProjectId = false;
 locationlist: any;	
 selected_device:any = '';
 voicemail = 'no';
+mainConfiguration :any;
 
 
 
@@ -142,7 +144,7 @@ classofservice(cos:string) {
   entryDetails(formData: NgForm) {	
     
     if(formData.value.Location_1.toUpperCase() == 'SELECT LOCATION' || formData.value.Location_1 == '') {	
-      alert('Please select the Location');	
+      alert(this.mainConfiguration.alerttranslation.selectlocation);	
       return;	
     }	
     // if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
@@ -151,29 +153,29 @@ classofservice(cos:string) {
     // }	
 
     if(formData.value.Device_Type == '') {
-        alert('Please select a device type');
+        alert(this.mainConfiguration.fixedphonenew.selectdevice);
         return;
       }
       if(formData.value.Model_Type == '') {
-        alert('Please select a type of model');
+        alert(this.mainConfiguration.fixedphonenew.selectmodel);
         return;
       }
       
       if(formData.value.Justification == '' && this.showBusinessNeed == false) {
-        alert('Please enter the business need for Class of Service.');
+        alert(this.mainConfiguration.fixedphonenew.businesscos);
         return;
       }
       if(formData.value.Description == '') {
-        alert('Please Enter a description and it should not be more than 30 characters');
+        alert(this.mainConfiguration.fixedphonenew.descriptioncharacters);
         return;
       }
       if(formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
-        alert('Please enter 12 characters MAC address');
+        alert(this.mainConfiguration.fixedphonenew.enterMAC);
         return;
       }
       var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
       if(pat1.test(formData.value.MACAddress)) {
-        alert('MAC field value to be in combination of 0 to 9 and A to F');
+        alert(this.mainConfiguration.fixedphonenew.MACfieldAtoF);
         return
       }
   
@@ -205,7 +207,7 @@ classofservice(cos:string) {
   }	
 
 
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private bpservices:bpservices) { }
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private bpservices:bpservices,private servicesd : TranslateConfigService) { }
 
   submit_snow(){	
     this.reqno=this.countrydetails.isocode+"-NS-"+this.cnum.substr(0,6)+"-"+gettime();	
@@ -254,6 +256,7 @@ classofservice(cos:string) {
   }
   
   ngOnInit(): void {
+    this.mainConfiguration = this.servicesd.readConfigFile();
     // Submit to Snow Jabber new code added by Swarnava	
   this.orgi=this.cookie.getCookie('ccode');	
   this.cnum = sessionStorage.getItem('cnum') ;	
