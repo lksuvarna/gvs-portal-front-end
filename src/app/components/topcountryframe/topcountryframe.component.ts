@@ -69,7 +69,60 @@ export class TopcountryframeComponent implements OnInit {
       if (this.translatecountryname == 'Canada/Caribbean'){
           this.translatecountryname1 = true;
         } 
-      
+        if(this.service.includes('jabberservices')){
+          if ( this.countryname.jservices){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
+        if(this.service.includes('fixedphoneservices')){
+          if ( this.countryname.fservices){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
+        if(this.service.includes('facservices')){
+          if ( this.countryname.facservices){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
+        if(this.service.includes('jabber_')){
+           
+          if ( this.countryname.jservices &&this.countryname.jservices.includes(this.service.replace('jabber_','')) ){    
+          }
+         
+        else{
+          sessionStorage.setItem('pagedisplay','pagenotfound')
+        this.router.navigate(['**'], {
+       //   queryParams: {}
+       });
+        }}
+        if(this.service.includes('fixedphone_')){
+         
+          if ( this.countryname.fservices &&this.countryname.fservices.includes(this.service.replace('fixedphone_','')) ){    
+          }
+         
+        else{
+          sessionStorage.setItem('pagedisplay','pagenotfound')
+        this.router.navigate(['**'], {
+       //   queryParams: {}
+       });
+        }}
+        if(this.service.includes('fac_')){
+         
+          if ( this.countryname.facservices && this.countryname.facservices.includes(this.service.replace('fac_','')) ){    
+          }
+         
+        else{
+          sessionStorage.setItem('pagedisplay','pagenotfound')
+        this.router.navigate(['**'], {
+       //   queryParams: {}
+       });
+        }}
         
     }
     else{
@@ -94,12 +147,66 @@ export class TopcountryframeComponent implements OnInit {
       if (this.translatecountryname == 'Canada/Caribbean'){
           this.translatecountryname1 = true;
         }  
-      
+        if(this.service.includes('jabberservices')){
+          if ( this.countryname.jservices){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
+        if(this.service.includes('fixedphoneservices')){
+          if ( this.countryname.fservices){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
+        if(this.service.includes('facservices')){
+          if ( this.countryname.facservices){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
+        
+          if(this.service.includes('jabber_')){
+           
+            if ( this.countryname.jservices &&this.countryname.jservices.includes(this.service.replace('jabber_','')) ){    
+            }
+           
+          else{
+            sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });
+          }}
+          if(this.service.includes('fixedphone_')){
+           
+            if ( this.countryname.fservices &&this.countryname.fservices.includes(this.service.replace('fixedphone_','')) ){    
+            }
+           
+          else{
+            sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });
+          }}
+          if(this.service.includes('fac_')){
+           
+            if (this.countryname.facservices && this.countryname.facservices && this.countryname.facservices.includes(this.service.replace('fac_','')) ){    
+            }
+           
+          else{
+            sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });
+          }}
      });
     }
   })
   
-  if((this.service!='jabber_new') && (this.service!='jabber_delete') && (this.service!='jabber_update') && (this.service!='jabber_move') && (this.service!='fixedphone_new') && (this.service!='fac_new') && (this.service!='fac_update')){
+  if((this.service!='jabber_new') && (this.service!='jabber_delete') && (this.service!='jabber_update') && (this.service!='jabber_move') && (this.service!='fixedphone_new') && (this.service!='fixedphone_delete') &&  (this.service!='fixedphone_update') && (this.service!='fac_new') && (this.service!='fac_update')){
     sessionStorage.removeItem('cache');
   }
 

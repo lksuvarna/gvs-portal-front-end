@@ -16,7 +16,7 @@
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+            <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
@@ -30,7 +30,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel>
+                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' [(ngModel)]='selected_location' ngModel>
                                     <option value ="">Select State</option>
                                     <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
                     {{ fl_location }}</option>
@@ -103,7 +103,7 @@
                                 <input name="StepMentor" class="ds-input" style="width:250px !important;display: inline-block;" title="Employee ID" [(ngModel)]='empID' (change)='onEmpIDChange()'>
                                 <button class="ds-button ds-small ds-width-auto" style="padding-right: 1rem;padding-left: 1rem;margin: 4px;" (click)='fetchEmployee()'>Go</button>
                             </label>
-                                <div [hidden]='goClick'>
+                                <div [hidden]='goClick' *ngIf='cacheGoValue'>
                                 <div [hidden]='emailResult' id="StepMentorDiv" *ngIf="goResults; else elseBlock" style="font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;">
                                     Search result: <br>
                                     <a (click)='onEmailClick()'>{{ this.email }}</a><br>
@@ -117,7 +117,7 @@
                         </td>
                     </tr>
 
-                    <tr class='ds-mar-t-1_5' valign="top" [hidden]='showforFixedPhone'>
+                    <!-- <tr class='ds-mar-t-1_5' valign="top" [hidden]='showforFixedPhone'>
                       <td colspan="2" width="46%" height="10"><label for="Voicemail"
                           class="ds-text-capitalize ds-mar-t-1" style="display: inline-block;">Voicemail Required</label>
                       </td>
@@ -132,16 +132,16 @@
                           </select>
                         </div>
                       </td>
-                    </tr>
-
-                    <tr valign="top" [hidden]='showforFixedPhone'>
+                    </tr> -->
+                    <br [hidden]='showforFixedPhone'>
+                    <tr class='ds-mar-t-1_5' valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%" height="10"><label for="cos"
-                            class="ds-text-capitalize">Select Class of Service (COS)</label>
+                            class="ds-text-capitalize ds-mar-t-1">Select Class of Service (COS)</label>
                         </td>
                         <td width="54%" height="10">
                           <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                             <select rows="2" name="cos" cols="40" id="COSId"
-                              class="ds-title ds-align-text-left"
+                              class="ds-title ds-align-text-left ds-mar-t-1"
                               style="width:300px !important; text-transform: uppercase;" title="Class of Service" tabindex="1" [(ngModel)]='COS' #cos (change)='classofservice(cos.value)'
                               ngModel>
                               <option value="National">National</option>
@@ -149,13 +149,13 @@
                             </select>
                           </div>
                         </td>
-                      </tr>
+                    </tr>
 
                       <tr valign="top" [hidden]='showBusinessNeed'>
                         <td colspan="2" width="46%"><br><label for="Justification" class="ds-text-capitalize ds-pad-t-1">Business Need (Why is international required?) </label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
-                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" ngModel></textarea>
+                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" ngModel [(ngModel)]="justificationValue"></textarea>
                         </td>
                     </tr>
 
@@ -164,7 +164,7 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container ds-pad-t-1">
-                                <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" style="width:300px !important;" title="Description" maxlength="30" ngModel>
+                                <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" style="width:300px !important;" title="Description" maxlength="30" ngModel [(ngModel)]='descValue'>
                                 <label *ngIf="selected_device == 'Extension Mobility Station'">e.g. IBMC Lv21 EM desk </label>
                                 <label *ngIf="selected_device == 'Conference / Meeting Room Phone'">e.g. IBMC Lv21 conference room 3 </label>
                             </div>
@@ -176,7 +176,7 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container">
-                                <input name="MACAddress" value="" tabindex="2" rows="2" cols="40" id="MACAddressId" class="ds-input" style="width:300px !important;" title="MAC Address" maxlength="12" ngModel>
+                                <input name="MACAddress" value="" tabindex="2" rows="2" cols="40" id="MACAddressId" class="ds-input" style="width:300px !important;" title="MAC Address" maxlength="12" ngModel [(ngModel)]='MACValue'>
                                 <label>Note:Combination of (0 to 9 , A to F) and Length:12</label>
                             </div>
                         </td>
@@ -193,7 +193,7 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="BACK" (click)="backClick()">
+                value="BACK" (click)="backClick(formData)">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
@@ -213,7 +213,7 @@
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
-            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" (previousStep)="previousStep($event)"></app-steps>
 
 
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2>
@@ -254,12 +254,12 @@
                         <td width="54%">{{reviewDetailsIndia.employeeId}}</td>
                     </tr>
                     
-                    <tr valign="top" [hidden]='hideVoicemail'>
+                    <!-- <tr valign="top" [hidden]='hideVoicemail'>
                         <td colspan="2" width="46%">
                             <label for="voiemail">Voicemail Required</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.voicemail}}</td>
-                    </tr>
+                    </tr> -->
                     
                     <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%">

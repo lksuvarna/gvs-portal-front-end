@@ -18,6 +18,7 @@ export class JabberservicesComponent implements OnInit {
   countrydetails:any;
   ccode='';
   pcode = '';
+  countryroute:any
   linkv:any;
     ngOnInit(): void {
       this.route.queryParams
@@ -26,7 +27,9 @@ export class JabberservicesComponent implements OnInit {
 
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
-        if(sessionStorage.getItem('countrydetails')==undefined){
+        this.countryroute=sessionStorage.getItem('countryroute')
+       // if(sessionStorage.getItem('countrydetails')==undefined){
+        if (this.pcode!== this.countryroute){
   
           this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
             

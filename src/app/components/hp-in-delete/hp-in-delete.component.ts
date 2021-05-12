@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { servicenowservice } from '../../_services/servicenow.service';
-import {fixedphone_delete} from '../../../../config/payload';	
+import {fixedphone_delete, Create_Cache_fixedphone} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
 import {Db2Service} from '../../_services/db2.service';
 import { TranslateConfigService } from '../../_services/translate-config.service';
@@ -48,8 +48,15 @@ export class HpInDeleteComponent implements OnInit {
   showerrormessage = false;
   mainConfiguration :any;
 
+  cache_tmp:  any = [];
+  
+  HideBack :boolean = false;
 
+  constructor(private db2:Db2Service, private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice,private servicesd : TranslateConfigService) { }
+  
   payload : fixedphone_delete = new fixedphone_delete();
+  cache : Create_Cache_fixedphone = new Create_Cache_fixedphone();
+  cache_disp : Create_Cache_fixedphone = new Create_Cache_fixedphone();
 
   onSearch(){
     this.showerrormessage = false;
@@ -103,20 +110,32 @@ export class HpInDeleteComponent implements OnInit {
     // this.selectedJabber = formData.value.Jabber_1;
     this.isReviewForm = false;
     this.isEntryForm = true;
+    this.create_cache(formData);
 
   }
 
-  constructor(private db2:Db2Service, private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice,private servicesd : TranslateConfigService) { }
+  create_cache(formData:NgForm){
+
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.currentMacOrPhone = formData.value.IdNum1;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached");
+  }
+
   BackButton() {	
     this.isEntryForm = false;	
     this.isReviewForm = true;	
     this.fixedPhoneIdentifier = false;	
+    this.showerrormessage = false;
   }	
 
- backClick(): void{	
+ backClick(formData: NgForm){	
   sessionStorage.setItem('backbutton','yes');	
   sessionStorage.setItem('step','step1');	
   //this.location.back();	
+  this.create_cache(formData);
   if(sessionStorage.getItem('radioAction')=='myself'){
     this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
   }
@@ -212,6 +231,17 @@ this.identifier=sessionStorage.getItem('identifier')
     } else {
       this.hideSteps = false
     }
+
+    //load cache data for entry details form. -- START
+    this.cache_tmp=sessionStorage.getItem('cache')	
+    console.log(this.cache_tmp);
+    this.cache_disp=JSON.parse(this.cache_tmp);
+    if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='fixedphone_delete')){
+      this.currentMacOrPhone = String(this.cache_disp.currentMacOrPhone);
+    }else{
+      sessionStorage.removeItem('cache');
+    }
+    //load cache data for entry details form. -- END
     
   }
 

@@ -18,6 +18,7 @@ export class FacservicesComponent implements OnInit {
   ccode='';
   pcode = '';
   linkv:any;
+  countryroute:any
     ngOnInit(): void {
       this.route.queryParams
       .subscribe(params => {
@@ -25,8 +26,9 @@ export class FacservicesComponent implements OnInit {
 
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
-        if(sessionStorage.getItem('countrydetails')==undefined){
-  
+        this.countryroute=sessionStorage.getItem('countryroute')
+       // if(sessionStorage.getItem('countrydetails')==undefined){
+        if (this.pcode!== this.countryroute){
           this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {            
             
             this.countryname = data.countrydetails;
