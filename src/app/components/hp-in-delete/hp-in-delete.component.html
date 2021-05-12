@@ -16,15 +16,15 @@
             </div>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
-            Fields marked with an asterick (<span class="ds-text-contextual-red-2">*</span>) are required.
+                Fields marked with an asterick (<span class="ds-text-contextual-red-2">*</span>) are required.
             </div>
-            <div class=" ds-panel ds-col-12 "></div> 
+            <div class=" ds-panel ds-col-12 "></div>
 
 
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [formData]="formData" [cnum]="cnum" [hideSteps]=""></app-steps>
+            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [formData]="formData" [cnum]="cnum" [hideSteps]="hideSteps"></app-steps>
 
-            
-        
+
+
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
 
@@ -41,13 +41,12 @@
                                     <div class="ds-col-12">
                                         <div class="ds-row">
                                             <div class="ds-col-7">
-                                                <input name="IdNum1" [(ngModel)]="currentMacOrPhone" value="" maxlength="15;" class="ds-input" style="width:180px !important;">
+                                                <input name="IdNum1" [(ngModel)]="currentMacOrPhone" value="" maxlength="15;" (click)='onMacClick()' class="ds-input" style="width:180px !important;">
                                             </div>
                                             <div class="ds-col-5 ds-pad-l-1">
                                                 <div>
                                                     <input type="button" class="ds-button ds-secondary ds-width-auto 
-                                                    ds-margin-bottom-0 ds-pad-l-1 ds-pad-r-1"  
-                                                    (click)='OnSearchClick()' name="SEARCH" value="SEARCH">
+                                                    ds-margin-bottom-0 ds-pad-l-1 ds-pad-r-1" (click)='OnSearchClick()' name="SEARCH" value="SEARCH">
                                                 </div>
                                             </div>
                                         </div>
@@ -58,7 +57,7 @@
                     </tr>
                     <tr valign="top" *ngIf='showerrormessage'>
                         <td colspan="2" width="100%">
-                            <span id="err1" ><br><br>
+                            <span id="err1"><br><br>
                                 <div class="ds-col-xs-12 ds-alert ds-warning">
                                     <p>No record was found for the Mac Address or Phone Number you have entered. 
                                     Please check and try again.</p>
@@ -71,30 +70,30 @@
             <br>
 
             <div class=" ds-panel ds-col-12 "></div>
-                <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
-                    <div class="ds-tray-fit-content ds-mar-b-0">
-                        <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
-                            <span class="ds-pad-l-4" id="button1">
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
                                 <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 
                                 ds-pad-l-3 ds-pad-r-3" value="BACK" (click)="backClick(formData)">
                             </span>
-                            <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='showerrormessage'>
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='hideNextButton'>
                                 <input type="submit" name="NEXT" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 
                                 ds-pad-r-3"  value="NEXT" >
                             </span>
 
-                        </div>
                     </div>
-                </div> 
-        </form>   
-        
+                </div>
+            </div>
+        </form>
+
         <form [hidden]='isReviewForm'>
 
             <b>Fixed Phone - Delete Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
                 By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
-                </div>
+            </div>
             <div class=" ds-panel ds-col-12 "></div>
 
             <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" [formData]="formData" [cnum]="cnum" (previousStep)="previousStep($event)"></app-steps>
@@ -141,23 +140,23 @@
             </div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
                 <div class="ds-tray-fit-content ds-mar-b-0">
-                <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
-                    <span class="ds-pad-l-4" id="button1">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
                     <input type="button" name="back"
                     class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                     (click)='BackButton()' *ngIf="this.isButtonVisible">
                     </span>
-                    <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
                     <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                         value="SUBMIT" (click)="submit_snow()" *ngIf="this.isButtonVisible">
                     </span>
-                    
+
+                    </div>
                 </div>
             </div>
-        </div>
 
 
         </form>
-        
+
     </div>
 </div>

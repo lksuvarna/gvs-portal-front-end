@@ -72,7 +72,7 @@ export class HpInUpdateComponent implements OnInit {
   state: any = "";
 
   showerrormessage = false
-
+  hideNextButton = true
 
   payload : fixedphone_update = new fixedphone_update();
   cache : Create_Cache_fixedphone = new Create_Cache_fixedphone();
@@ -115,8 +115,13 @@ export class HpInUpdateComponent implements OnInit {
     this.hideSteps = false;
   }
 
+  onMacClick(){
+    this.showerrormessage = false;
+    this.hideSteps = false;
+  }
+
   OnSearchClick(){
-    
+
     if(this.currentMacOrPhone != ''){
 
       this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
@@ -130,7 +135,8 @@ export class HpInUpdateComponent implements OnInit {
           this.currentMac = this.currentMac.substring(3,this.currentMac.length);
           this.showSearch =true;
           this.showerrormessage = false;
-
+          this.hideNextButton = false
+          this.hideSteps = false;
 
         }
         else
@@ -138,7 +144,7 @@ export class HpInUpdateComponent implements OnInit {
           this.showerrormessage = true;
           this.showSearch = false;
           this.hideSteps = true;
-
+          this.hideNextButton = true
 
         }
         this.getFixedPhoneData()
@@ -243,8 +249,26 @@ export class HpInUpdateComponent implements OnInit {
     }
   }
 
+  checkModel(model : string){
+
+    if(model === this.currentmodel){
+      alert('Please provide a different Model as the current Model is already '+this.currentmodel );
+      this.newModel = ""
+    }
+  }
+
+  // checkModel(e : any){
+  //   alert(e)
+  //   alert(this.newModel)
+  //   if(e.target.value == this.currentmodel){
+  //     alert('Please provide a different Model as the current Model is already '+this.currentmodel );
+  //     this.newModel.value = ""
+  //     e.target.value = "Select One"
+  //   }
+  // }
+
   entryDetails(formData: NgForm){
-    
+
     if(this.currentMacOrPhone == '')
     {
       // alert("Please give some ");
@@ -253,34 +277,35 @@ export class HpInUpdateComponent implements OnInit {
       alert('Please select update required for');	
     }	
 
-    else if(formData.value.MAC1 == '') {	
+    else if( formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && formData.value.MAC1 == '' ) {	
       alert('Please enter 12 characters MAC address');
     }
 
-   else if(formData.value.Comments.trim() == '' || formData.value.Comments == '/\s/') {	
-      alert('Please provide the reason for updation.');	
+    else if(formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && formData.value.MAC1 == this.currentMac){
+      alert('Please provide a different MAC Address as the current MAC Address is already '+this.currentMac );
     }
 
-    else if(formData.value.Newdesc == '' || formData.value.Comments == '/\s/') {	
+    else if(formData.value.UpdateReq.toLowerCase() != 'replace the hardphone only' && (formData.value.Newdesc.trim() == '' || formData.value.Comments == '/\s/')) {	
       alert('Please provide the New Description.');	
       	
     }
 
-    else if(formData.value.Newdesc == this.currentdesc){
-      alert('Please choose a different Description as the current Description is already '+this.currentdesc +' for the selected Jabber number.');
+    else if(formData.value.UpdateReq.toLowerCase() !== 'replace the hardphone only' && formData.value.Newdesc.trim() == this.currentdesc){
+      alert('Please choose a different Description as the current Description is already '+this.currentdesc );
     }
-  
 
-    else if(formData.value.Location_1_1 == '' && this.showLocation == true) {	
+    else if(formData.value.UpdateReq.toLowerCase() == 'change phone location' && formData.value.Location_1_1 == '' && this.showLocation == true) {	
       alert('Please select a location');	
     }
 
-    else if(formData.value.Buildings == '' && this.showLocation == true) {	
+    else if(formData.value.UpdateReq.toLowerCase() == 'change phone location' && formData.value.Buildings == '' && this.showLocation == true) {	
       alert('Please select a campus');	
     }
 
-   
-    
+    else if(formData.value.Comments.trim() == '' || formData.value.Comments == '/\s/') {	
+      alert('Please provide the reason for updation.');	
+    }
+
 
     else
     {
@@ -408,6 +433,7 @@ export class HpInUpdateComponent implements OnInit {
     this.updateRequiredFor = JSON.parse(this.updateRequiredFor).split(",");
     this.models = sessionStorage.getItem('fpumodels');
     this.models = JSON.parse(this.models).split(",");
+    //this.models.unshift('Select One')
 
     // Submit to Snow Jabber new code added by Swarnava	
   this.orgi=this.cookie.getCookie('ccode');	
@@ -461,7 +487,7 @@ export class HpInUpdateComponent implements OnInit {
     this.reqFor = sessionStorage.getItem('radioAction');
     this.servicesData = servicesData.data[0]
 
-    if(this.warninginfo || this.warninginfosnow){
+    if(this.showerrormessage){
       this.hideSteps = true
     } else {
       this.hideSteps = false
