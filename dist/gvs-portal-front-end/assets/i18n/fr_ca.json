@@ -85,29 +85,30 @@
     },
 
     "servicestitle":{
-        "Request new Jabber service" :"Demander un nouveau service Jabber",
+
+        "Request new Jabber service": "Jabber - Nouvelle demande",
+        "Update Jabber Request": "Jabber - Demande de mise à jour",
+        "Move Jabber Request": "Jabber - Demande de déplacement",
+        "Delete Jabber Request": "Jabber - Demande de déplacement",
+        "FAC Code New Request": "Code FAC - Nouvelle demande",
+        "FAC Code Update Request": "Code FAC - Demande de mise à jour",
+        "FAC Code Reset Request": "Code FAC - Demande de réinitialisation",
+        "FAC Code Deactivate Request" :"Code FAC - Demande de désactivation",
+        "Request Move Jabber service" :"Jabber - Demande de déplacement",
+        "Update Existing Jabber Request" :"Jabber - Demande de mise à jour",
         "Delete an existing service" : "Supprimer un service existant",
         "Request a new service" :"Demander un nouveau service",
         "Update an existing service" : "Mettre à jour un service existant",
-        "Request Move Jabber service" :"Demander le service Move Jabber",
         "Requests" : "Demandes",
         "Resources" : "Ressources",
-        "Update Jabber Request" : "Mettre à jour la demande Jabber",
-        "Delete Jabber Request" : "Supprimer la demande Jabber",
-        "Move Jabber Request" : "Déplacer la demande Jabber",
         "Fixed Phone - New Request" : "Téléphone fixe - Nouvelle demande",
         "New Fixed Phone Request" : "Nouvelle demande de téléphone fixe",
         "Fixed Phone - Update Request" : "Téléphone fixe - Demande de mise à jour",
         "Fixed Phone - Delete Request"  : "Téléphone fixe - Demande de suppression",
-
         "Deactivate an existing FAC Code" :"Désactiver un code FAC existant",
-        "FAC Code Deactivate Request" : "Demande de désactivation du code FAC",
         "Request a new FAC Code" : "Demander un nouveau code FAC",
-        "Fac Code New Request" : "Nouvelle demande de code FAC",
         "Update an existing FAC code" : "Mettre à jour un code FAC existant",
-        "FAC Code Update Request":"Demande de mise à jour du code FAC",
         "Reset an existing FAC code" : "Réinitialiser un code FAC existant",
-        "FAC Code Reset Request": "Demande de mise à jour du code FAC",
         "Phone Number Search": "Recherche par numéro de téléphone"
 
     },
@@ -170,7 +171,7 @@
         "Submissionbeinginprogress":"Votre demande est en cours d'envoi. Ne pas actualiser ni revenir en arrière.",
          "Back" : "DOS",
          "Next" : "SUIVANTE",
-         "SelectLocation" : "Sélectionnez l'emplacement"
+         "Select Location" : "Sélectionnez l'emplacement"
      },
      "Jabberupdate":{
         "SELECTONE":"CHOISISSEZ UNE",
@@ -255,6 +256,67 @@
         "STEP 2" : "MARCHER 2",
         "STEP 3" : "MARCHER 3",
         "STEP 4" :  "MARCHER 4"
+       },
+       "fixedphonenew":{
+           "Location" : "Emplacement",
+           "TypeofDevice":"Type d'appareil ",
+           "SelectDevice":"Choisir un appareil",
+           "TypeofModel":"Type de modèle ",
+           "SelectModel" :"Sélectionnez un modèle",
+           "SelectClassofService (COS)" :"Sélectionnez la classe de service (COS)",
+           "National" :"Nationale",
+           "International" :"Internationale",
+           "BusinessNeed(Whyisinternationalrequired?)" :"Besoin commercial (pourquoi l'international est-il requis?) ",
+           "DescriptionoftheDevice" :"Description de l'appareil ",
+           "IBMCLv21EMdesk" :"par exemple. Bureau EM IBMC Lv21 ", 
+           "IBMCLv21conferenceroom3" :"par exemple. IBMC Lv21 salle de conférence 3 ",
+           "MACAddressoftheDevice" :"Adresse MAC de l'appareil ",   
+           "NoteCombinationofandLength12" :"Remarque: combinaison de (0 à 9, A à F) et longueur: 12",
+           "BusinessJustification" :"Justification de l'entreprise",
+           "DescriptionofDevice" : "Description de l'appareil",
+           "Somethingseemswrong" :"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard.",
+           "selectdevice" :"Veuillez sélectionner un type d'appareil",
+           "selectmodel" :"Veuillez sélectionner un type de modèle",
+           "businesscos" :"Veuillez saisir le besoin professionnel pour la classe de service.",
+           "descriptioncharacters" :"Veuillez saisir une description et elle ne doit pas dépasser 30 caractères",
+           "entermacadd":"Veuillez saisir une adresse MAC de 12 caractères",
+           "MACfieldAtoF" :"La valeur du champ MAC doit être en combinaison de 0 à 9 et de A à F",
+           "initiateFixedPhoneservice" :"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service de téléphonie fixe.",
+           "MACAddressorPhoneNumber" :"Entrez l'adresse MAC ou le numéro de téléphone actuel",
+            "norecordfoundformac":"Aucun enregistrement n'a été trouvé pour l'adresse Mac ou le numéro de téléphone que vous avez entré. Veuillez vérifier et réessayer.",
+           "Pleaseenternumber" :"Veuillez saisir un numéro à rechercher",
+            "MACAddress" :"Adresse Mac ",
+            "PhoneNumber" :"Numéro de téléphone ", 
+            "Description" :"La description ", 
+              "SEARCH" :"RECHERCHER",
+            "CurrentMACAddress" :"Adresse MAC actuelle ",
+        "CurrentPhoneNumber" :"Numéro de téléphone actuel ", 
+        "CurrentDescription" :"Description actuelle ",
+        "CurrentModel" :"Modèle actuel",
+        "UpdateRequiredfor" :"Mise à jour requise pour",
+        "TypeOfModel" :"Type de modèle",
+        "SelectPhoneModel" :"Sélectionnez le modèle de téléphone",
+        "NewMACAddress" :"Nouvelle adresse MAC",
+        "NewDescriptiontoUpdate" :"Nouvelle description à mettre à jour",
+        "ReasonforUpdation" :"Raison de la mise à jour",
+        "MACAddresssearch"  :"Veuillez saisir une adresse MAC ou un numéro de téléphone pour rechercher",
+        "updaterequiredfor" :"Veuillez sélectionner la mise à jour requise pour",
+        "enternewMACaddress" :"Veuillez saisir une nouvelle adresse MAC",
+        "enteranewModel" :"Veuillez saisir un nouveau modèle",
+        "providethereasonforupdation" :"Veuillez indiquer la raison de la mise à jour.",
+        "provideNewDescription" :"Veuillez fournir la nouvelle description. ", 
+        "differentDescriptionasisalready" :"Veuillez choisir une description différente car la description actuelle est déjà",
+        "fortheprovidednumber" :"pour le numéro fourni."
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
        }
     
  

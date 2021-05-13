@@ -86,27 +86,28 @@
     },
 
     "servicestitle": {
-        "Request new Jabber service": "Request new Jabber service",
+        "Request new Jabber service": "Jabber - New Request",
+        "Update Jabber Request": "Jabber - Update Request",
+        "Move Jabber Request": "Jabber - Move Request",
+        "Delete Jabber Request": "Jabber - Delete Request",
+        "FAC Code New Request": "FAC Code - New Request",
+        "FAC Code Update Request": "FAC Code - Update Request",
+        "FAC Code Reset Request": "FAC Code - Reset Request",
+        "FAC Code Deactivate Request" :"FAC Code - Deactivate Request",
+        "Request Move Jabber service": "Jabber - Move Request",
+        "Update Existing Jabber Request" :"Jabber - Update Request",
         "Delete an existing service": "Delete an existing service",
         "Request a new service": "Request a new service",
         "Update an existing service": "Update an existing service",
-        "Request Move Jabber service": "Request Move Jabber service",
         "Requests": "Requests",
         "Resources": "Resources",
-        "Update Jabber Request": "Update Jabber Request",
-        "Delete Jabber Request": "Delete Jabber Request",
         "Deactivate an existing FAC Code": "Deactivate an existing FAC Code",
-        "FAC Code Deactivate Request": "FAC Code Deactivate Request",
-        "Move Jabber Request": "Move Jabber Request",
         "Fixed Phone - New Request": "Fixed Phone - New Request",
         "New Fixed Phone Request": "New Fixed Phone Request",
         "Fixed Phone - Update Request": "Fixed Phone - Update Request",
         "Fixed Phone - Delete Request": "Fixed Phone - Delete Request",
         "Request a new FAC Code": "Request a new FAC Code",
-        "FAC Code New Request": "FAC Code New Request",
         "Update an existing FAC code": "Update an existing FAC code",
-        "FAC Code Update Request": "FAC Code Update Request",
-        "FAC Code Reset Request": "FAC Code Reset Request",
         "Reset an existing FAC code": "Reset an existing FAC code",
         "Phone Number Search": "Phone Number Search"
 
@@ -260,6 +261,72 @@
         "STEP 2": "STEP 2",
         "STEP 3": "STEP 3",
         "STEP 4": "STEP 4"
+
+    },
+    "fixedphonenew":{
+        "Location" : "Location",
+        "TypeofDevice":"Type of Device ",
+        "SelectDevice":"Select Device",
+        "TypeofModel":"Type of Model ",
+        "SelectModel" :"Select Model",
+        "SelectClassofService (COS)" :"Select Class of Service (COS)",
+        "National" :"National",
+        "International" :"International",
+        "BusinessNeed(Whyisinternationalrequired?)" :"Business Need (Why is international required?) ",
+        "DescriptionoftheDevice" :"Description of the Device ",
+        "IBMCLv21EMdesk" :"e.g. IBMC Lv21 EM desk ", 
+        "IBMCLv21conferenceroom3" :"e.g. IBMC Lv21 conference room 3 ",
+        "MACAddressoftheDevice" :"MAC Address of the Device ",   
+        "NoteCombinationofandLength12" :"Note:Combination of (0 to 9 , A to F) and Length:12",
+        "BusinessJustification" :"Business Justification",
+        "DescriptionofDevice" : "Description of Device",
+        "Somethingseemswrong" :"Something seems to have gone wrong. Please try later.",
+        "selectdevice" :"Please select a device type",
+        "selectmodel" :"Please select a type of model",
+        "businesscos" :"Please enter the business need for Class of Service.",
+        "descriptioncharacters" :"Please Enter a description and it should not be more than 30 characters",
+        "entermacadd":"Please enter 12 characters MAC address",
+        "MACfieldAtoF" :"MAC field value to be in combination of 0 to 9 and A to F",
+        "initiateFixedPhoneservice" :"Please click on a request type below to initiate a Fixed Phone service request. ", 
+        "MACAddressorPhoneNumber" :"Enter Current MAC Address or Phone Number",
+        "norecordfoundformac":"No record was found for the Mac Address or Phone Number you have entered.Please check and try again.",
+        "Pleaseenternumber" :"Please enter a number to search",
+        "MACAddress" :"MAC Address ",
+        "PhoneNumber" :"Phone Number ", 
+        "Description" :"Description",
+        "SEARCH" :"SEARCH",
+        "CurrentMACAddress" :"Current MAC Address ",
+        "CurrentPhoneNumber" :"Current Phone Number ", 
+        "CurrentDescription" :"Current Description ",
+        "CurrentModel" :"Current Model",
+        "UpdateRequiredfor" :"Update Required for",
+        "TypeOfModel" :"Type Of Model",
+        "SelectPhoneModel" :"Select Phone Model",
+        "NewMACAddress" :"New MAC Address",
+        "NewDescriptiontoUpdate" :"New Description to Update",
+        "ReasonforUpdation" :"Reason for Updation",
+        "MACAddresssearch"  :"Please enter a MAC Address or Phone number to search",
+        "updaterequiredfor" :"Please select update required for",
+        "enternewMACaddress" :"Please enter a new MAC address",
+        "enteranewModel" :"Please enter a new Model",
+        "providethereasonforupdation" :"Please provide the reason for updation.",
+        "provideNewDescription" :"Please provide the New Description. ", 
+        "differentDescriptionasisalready" :"Please choose a different Description as the current Description is already",
+        "fortheprovidednumber" :"for the provided number."
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 

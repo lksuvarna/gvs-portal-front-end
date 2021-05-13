@@ -11,7 +11,7 @@
         <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
            
                 <form [hidden]="isEntryForm" (submit)='entryDetailsUSA(formData)' #formData='ngForm' >
-                <b>Request new Jabber service</b>
+                <b translate>servicestitle.Request new Jabber service</b>
 
                 <div class="ds-pad-t-0_5 ds-pad-b-1">
                     By submitting this provisioning request, you are providing express written consent for IBM to process the Personal 
@@ -19,7 +19,7 @@
                 </div>
                 <div class=" ds-panel ds-col-12 "></div> 
 
-                <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+                <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [locationselected]="locationselected" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
                 
                 <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Employee Entry Details</h2><br>
@@ -77,7 +77,7 @@
                 </div>
             </form>
             <form [hidden]="isReviewForm">
-            <b>Request new Jabber service</b>
+            <b translate>servicestitle.Request new Jabber service</b>
 
             
             <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.

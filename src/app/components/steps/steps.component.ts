@@ -16,6 +16,7 @@ export class StepsComponent implements OnInit {
   isWarning3 = false
 
   @Input('cnum') cnum : any;
+  @Input('locationselected') locationselected : any;
   @Input('FixedPhoneData') FixedPhoneData : any;
   @Input('formData') formData !:NgForm;
   @Input('UpdatedFor') UpdatedFor : any;
@@ -23,6 +24,7 @@ export class StepsComponent implements OnInit {
   @Input ('isSelf') isSelf : any;
   @Input('hideSteps') set onChange (isWarning: any) {
     this.isWarning = isWarning
+
     if (this.step === 1 ){
       if(isWarning === true){
             this.isWarning1 = true
@@ -33,6 +35,18 @@ export class StepsComponent implements OnInit {
             this.isWarning2 = false
             this.isWarning3 = false
            }
+        }
+        if (this.service == 'fixedphone_update' || this.service == 'fixedphone_delete') {
+            if (this.step === 2 && this.isSelf ===true && this.isWarning === true){
+              this.isWarning2 = true
+            } else {
+              this.isWarning2 = false
+            }
+            if (this.step === 3 && this.isSelf === false && this.isWarning === true){  
+              this.isWarning3 = true
+            } else {
+              this.isWarning3 = false
+            } 
         }
   }
   
@@ -135,8 +149,13 @@ export class StepsComponent implements OnInit {
     console.log("Starting Cache");
     this.cache.setflag=true;
     this.cache.cnum=this.cnum;
-    if(this.formData.value.Location!=undefined)
+    if((this.formData.value.Location!=undefined)){
+    if(this.locationselected!=undefined)
+    this.cache.officeLocation = this.locationselected;		
+    else
     this.cache.officeLocation = this.formData.value.Location;		
+
+    }
     else
     this.cache.officeLocation = this.formData.value.Location_1;	
     this.cache.campus = this.formData.value.Buildings;		

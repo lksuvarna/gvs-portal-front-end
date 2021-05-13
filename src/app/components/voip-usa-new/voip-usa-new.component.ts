@@ -56,6 +56,7 @@ campus:any;
 hideProjectId = false;
 reqFor: any;
 belongsTo:any;
+index!: number;
   //locations:any[] = ["Select Office Location","Home and Mobile","AZ-Phoenix","AZ-Tucson","CA-Costa Mesa-Anton Blvd"];
 
   cache : Create_Cache_jabber = new Create_Cache_jabber();
@@ -150,18 +151,19 @@ belongsTo:any;
   }
 
   onLocationSelect(e:any){
-    let index:number = e.target["selectedIndex"] ;
+    this.index = e.target["selectedIndex"] ;
     
-    if(this.countrycodes[index] !== this.employeeInfo.workloc && e.target.value !== "Home and Mobile") {	
+    if(this.countrycodes[this.index] !== this.employeeInfo.workloc && e.target.value !== "Home and Mobile") {	
       
       alert('The serial number that you have entered does not belong to the selected location. Please choose your correct location or choose Home and Mobile location.');	
       e.target.value = "Home and Mobile";
       this.locationselected="Home and Mobile";
       this.msgdis=true
     }  else {
+      
       this.belongsTo = this.locationselected;
     }
-   
+  
     
  }
  onLocSelect(){
@@ -204,7 +206,7 @@ this.msgdis=true
   console.log("Starting Cache");
   this.cache.setflag=true;
   this.cache.cnum=this.cnum;
-  this.cache.officeLocation = formData.value.Location;		
+  this.cache.officeLocation = this.locationselected;		
   sessionStorage.setItem('cache',JSON.stringify(this.cache));
   console.log("cached");
 }
@@ -274,7 +276,8 @@ this.cache_tmp=sessionStorage.getItem('cache')
 console.log(this.cache_tmp);
 this.cache_disp=JSON.parse(this.cache_tmp);
 if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_new')){
-this.locationselected=String(this.cache_disp.officeLocation) ;    
+//this.locationselected=String(this.cache_disp.officeLocation) ;  
+this.locationselected=String(this.cache_disp.officeLocation) ; 
 console.log("cache restored");
 }else{
   sessionStorage.removeItem('cache');

@@ -16,6 +16,7 @@ export class FixedphoneservicesComponent implements OnInit {
   ccode='';
   pcode = '';
   linkv:any;
+  countryroute:any
 
   constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice, private route: ActivatedRoute) { }
 
@@ -26,8 +27,9 @@ export class FixedphoneservicesComponent implements OnInit {
 
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
-        if(sessionStorage.getItem('countrydetails')==undefined){
-  
+        this.countryroute=sessionStorage.getItem('countryroute')
+      //  if(sessionStorage.getItem('countrydetails')==undefined){
+        if (this.pcode!== this.countryroute){
           this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
             
             console.log('Response received navigation', data.countrydetails.isspecial);
