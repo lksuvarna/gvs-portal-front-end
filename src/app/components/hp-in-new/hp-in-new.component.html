@@ -31,7 +31,7 @@
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel [(ngModel)]='selected_location'>
-                                    <option value ="">Select Office Location</option>
+                                    <option value ="">Select One</option>
                                     <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
                     {{ fl_location }}</option>
                 </select>
@@ -83,7 +83,7 @@
                         </td>
                         <td width="54%">
                             <div id="d21" class="ds-input-container ">
-                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" maxlength='6' autocomplete="off" ngModel [(ngModel)]='chargeDeptValue'>
+                                <input name="Department_number" value="" tabindex="4" id="d2" class="ds-input" style="width: 300px !important;" title="Contact FirstLine Manager\Project Manager for Charge Department Code" maxlength='6' ngModel [(ngModel)]='chargeDeptValue'>
                                 <div id="Mentor1Div"></div>
                             </div>
                         </td>
@@ -106,7 +106,7 @@
                         </td>
                     </tr>
 
-                    <tr valign="top">
+                    <!-- <tr valign="top">
                         <td colspan="2" width="46%"><br><label for="Accountid" class="ds-text-capitalize ds-pad-t-1">Account ID </label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
@@ -122,7 +122,7 @@
                             <div class="ds-input-container ds-pad-t-1">
                                 <input name="ICAcode" value="" tabindex="2" rows="2" cols="40" id="ICAcode" class="ds-input" style="width:300px !important;" title="ICA Code" maxlength="100" ngModel [(ngModel)]='icaValue'> </div>
                         </td>
-                    </tr>
+                    </tr> -->
 
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10"><label for="DeviceType">Type of Device </label>
@@ -131,7 +131,7 @@
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Device Type" tabindex="1" #device (change)='selectedDevice(device.value)' ngModel [(ngModel)]='selected_device'>
-                                    <option value ="">Select Device</option>
+                                    <option value ="">Select One</option>
                                     <option name="Device_Type" *ngFor='let device of devices' [value]='device' >
                     {{ device }}</option>
                 </select>
@@ -153,7 +153,7 @@
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Model" tabindex="1" [(ngModel)]='modelValue'>
-                                    <option value ="">Select Model</option>
+                                    <option value ="">Select One</option>
                                     <option name="Model_Type" *ngFor='let model of models' [value]='model'>
                     {{ model }}</option>
                 </select>
@@ -161,7 +161,7 @@
                         </td>
                     </tr>
 
-                    <tr valign="top" [hidden]='showforFixedPhone'>
+                    <!-- <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%" height="10"><label for="EmployeeID" class="ds-text-capitalize">Employee ID </label>
                             <span class="ds-text-contextual-red-2">*</span>
                             
@@ -183,7 +183,7 @@
                             </ng-template>
                         </div>
                         </td>
-                    </tr>
+                    </tr> -->
 
                     <tr class='ds-mar-t-1_5' valign="top" [hidden]='showforFixedPhone'>
                       <td colspan="2" width="46%" height="10"><label for="Voicemail"
@@ -219,7 +219,7 @@
                       </tr>
 
                       <tr valign="top" [hidden]='showBusinessNeed'>
-                        <td colspan="2" width="46%"><br><label for="Justification" class="ds-pad-t-1">Business Need (Why is international required?) </label>
+                        <td colspan="2" width="46%"><br><label for="Justification" class="ds-pad-t-1">Business Justification (Why is international required?) </label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" ngModel [(ngModel)]="justificationValue"></textarea>
@@ -327,7 +327,7 @@
                         <td width="54%">{{reviewDetailsIndia.projectId}}</td>
                     </tr>
 
-                    <tr valign="top">
+                    <!-- <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="icano">Account ID</label>
                         </td>
@@ -339,7 +339,7 @@
                             <label for="icano">ICA Code</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.icaCode}}</td>
-                    </tr>
+                    </tr> -->
                     
                     <tr valign="top">
                         <td colspan="2" width="46%">
@@ -355,12 +355,12 @@
                         <td width="54%">{{reviewDetailsIndia.model}}</td>
                     </tr>
                     
-                    <tr valign="top" [hidden]='hideEmpID'>
+                    <!-- <tr valign="top" [hidden]='hideEmpID'>
                         <td colspan="2" width="46%">
                             <label for="employeeId">Employee ID</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.employeeId}}</td>
-                    </tr>
+                    </tr> -->
                     
                     <tr valign="top" [hidden]='hideVoicemail'>
                         <td colspan="2" width="46%">
@@ -385,7 +385,7 @@
                     
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="description">Description of Device</label>
+                            <label for="description">Description of the Device</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.description}}</td>
                     </tr>

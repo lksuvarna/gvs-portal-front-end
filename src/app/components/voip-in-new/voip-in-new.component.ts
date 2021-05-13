@@ -157,11 +157,11 @@ export class VoipInNewComponent implements OnInit {
   
   entryDetails(formData: NgForm) {	
       
-    if(formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {	
+    if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
       alert('Please select the Office Location');	
       return;	
     }	
-    if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
+    if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	
       alert('Please select the Campus');	
       return;	
     }	
@@ -345,7 +345,7 @@ export class VoipInNewComponent implements OnInit {
     if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_new')){
       this.selected_location=String(this.cache_disp.officeLocation) ;
       this.selectedLocation(this.cache_disp.officeLocation);
-      if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION') || (this.cache_disp.officeLocation=='') )
+      if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT ONE') || (this.cache_disp.officeLocation=='') )
       this.hideBuilding=true;
       else
       this.hideBuilding=false;
