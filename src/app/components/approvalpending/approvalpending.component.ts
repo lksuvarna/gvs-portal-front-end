@@ -50,6 +50,7 @@ export class ApprovalpendingComponent implements OnInit {
       this.service=params.service;	
       this.pcode = params.country;	
       console.log("navigation component" + this.pcode);	
+      sessionStorage.setItem('serviceName', this.service);
 
       if(sessionStorage.getItem('countrydetails')==undefined){
   

@@ -161,27 +161,31 @@ export class NavigationComponent implements OnInit {
       if ((this.service).includes("requests"))
       {        
         this.reqhl=true
+        this.fin=true
         
       }
       if ((this.service).includes("resources"))
       {        
         this.reshl=true
+        this.fin=true
         
       }
 
       if ((this.service).includes("approvalpending"))
       {        
         this.apphl=true
+        this.fin=true
         
       }
       if ((this.service).includes("phone_search"))
       {        
         this.pnshl=true
+        this.fin=true
         
       }
 
 
-      if (this.service=="services"||this.service=="requests"||this.service=="resources" || this.service=="approvalpending" || this.service=='phone_search')
+      if (this.service=="services")
       {
         this.dataNav123 = { 
           "data": [
@@ -257,6 +261,7 @@ export class NavigationComponent implements OnInit {
     }
     else {
       console.log("navigation componentelse" + this.ccode);
+      this.loggedinuser = this.cookie.getCookie('ccode');
       this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
         console.log('Response received navigation', data.countrydetails.isspecial);
         this.countryname = data.countrydetails;

@@ -14,10 +14,12 @@ import {TranslateConfigService} from '../../_services/translate-config.service';
 })
 export class HomepageComponent implements OnInit {
   searchText = '';
-  searchItems = [
-    {"name" : "India Jabber", "flag" : "././assets/flags/744.png", "code": "744"},
+  searchItems:any;
+  // searchItems = [
+  //   {"name" : "India Jabber", "flag" : "././assets/flags/744.png", "code": "744", "path": "/jabberservices"},
+  //   {"name" : "India Fixed Phone", "flag" : "././assets/flags/744.png", "code": "744", "path": "/fixedphoneservices"},
     
-  ]
+  // ]
   constructor(private Service: ConnectCucdmService,private cookie: CookieHandlerService,private bpservice :bpservices,private cloudantservice:cloudantservice, private translateconfigservice : TranslateConfigService) { }
   res_rec ='';
   fullName:any
@@ -27,6 +29,8 @@ export class HomepageComponent implements OnInit {
   translatecountryname :any;
   translatecountryname1 :boolean =false;
   ccode='';
+  fixphoneVisibility:any;
+  loggedinuser:any;
   
 
   generate(cnum : string): void{
@@ -59,6 +63,7 @@ export class HomepageComponent implements OnInit {
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
     this.fullName = this.fullName.replace(","," ");
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
+    this.loggedinuser = this.cookie.getCookie('ccode');
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);
       this.countryname=data.countrydetails;
@@ -72,6 +77,22 @@ export class HomepageComponent implements OnInit {
           this.translatecountryname1 = true;
           
       }
+
+      if(this.countryname.fixphone_visibility == false) {
+        if(this.countryname.auth_fixphone.includes(this.loggedinuser)) {
+        this.fixphoneVisibility = true;
+        } else {
+          this.fixphoneVisibility = false;
+        }
+      } else {
+        this.fixphoneVisibility = this.countryname.isfixphone;
+      }
+ 
+      this.searchItems = [
+       {"name" : "India : Jabber", "flag" : "././assets/flags/744.png", "code": "744", "path": "jabberservices", "visibility":true},
+       {"name" : "India : Fixed Phone", "flag" : "././assets/flags/744.png", "code": "744", "path": "fixedphoneservices", "visibility": this.fixphoneVisibility},
+       {"name" : "India : FAC", "flag" : "././assets/flags/744.png", "code": "744", "path": "facservices", "visibility": true},
+     ]
       
       
      });
