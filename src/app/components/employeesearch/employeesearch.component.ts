@@ -373,9 +373,11 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('cnum', this.employeeSerial)
         this.warninginfo = false
         this.warninginfosnow = false
-        sessionStorage.setItem('warninginfo', 'false1')
-        sessionStorage.setItem('warninginfosnow', 'false1')
-        sessionStorage.setItem('identifier', '')
+        sessionStorage.setItem('warninginfo', 'false1');
+        sessionStorage.setItem('warninginfosnow', 'false1');
+        sessionStorage.setItem('identifier', '');
+        sessionStorage.setItem('voice_mail', '');
+        sessionStorage.setItem('cos', '');
         //Data and routing 
         if (this.service == "jabber_new" || this.service == "fac_new" ) {
           this.getDBdata()

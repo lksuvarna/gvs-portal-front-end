@@ -12,7 +12,7 @@
             <br><b translate>servicestitle.{{title}}</b>
 
 
-            <div class="ds-pad-t-0_5 ds-pad-b-1" *ngIf="!notvalid" translate>Jabbernewtrans.Reqnewservice <span>(<span class="ds-text-contextual-red-2">*</span>)</span> <span translate> Jabbernewtrans.arerequired</span></div>
+            <div class="ds-pad-t-0_5 ds-pad-b-1" translate>Jabbernewtrans.Reqnewservice <span>(<span class="ds-text-contextual-red-2">*</span>)</span> <span translate> Jabbernewtrans.arerequired</span></div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="hideDisserial" [hideSteps]="notvalid" [ngClass]="{'disabled':showloader==true}"></app-steps>
