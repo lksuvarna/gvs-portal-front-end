@@ -131,11 +131,11 @@ export class FacInNewComponent implements OnInit {
 
   entryDetailsFac(formData: NgForm) {	
       
-    if(formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {	
+    if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
       alert('Please select the Office Location');	
       return;	
     }	
-    if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
+    if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	
       alert('Please select the Campus');	
       return;	
     }	
@@ -144,17 +144,17 @@ export class FacInNewComponent implements OnInit {
       return;	
     }	
 
-    if(formData.value.authLevel.toLowerCase() === 'select authorization level' || formData.value.authLevel === '') {	
+    if(formData.value.authLevel.toLowerCase() === 'select one' || formData.value.authLevel === '') {	
       alert('Please select an authorization level');	
       return;	
     }	
 
-    if(formData.value.Fac_Type.toLowerCase() === 'select fac code type' || formData.value.Fac_Type === '') {	
+    if(formData.value.Fac_Type.toLowerCase() === 'select one' || formData.value.Fac_Type === '') {	
       alert('Please select a FAC code type');	
       return;	
     }	
 
-    if((formData.value.validity.toLowerCase() === 'select validity' || formData.value.validity === '' ) && this.hideValidity === false) {	
+    if((formData.value.validity.toLowerCase() === 'select one' || formData.value.validity === '' ) && this.hideValidity === false) {	
       alert('Please select a validity');	
       return;	
     }	
@@ -343,7 +343,7 @@ export class FacInNewComponent implements OnInit {
     if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='fac_new')){
       this.selected_location=String(this.cache_disp.officeLocation) ;
       this.selectedLocation(this.cache_disp.officeLocation);
-      if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION') || (this.cache_disp.officeLocation=='') )
+      if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT ONE') || (this.cache_disp.officeLocation=='') )
         this.hideBuilding=true;
       else
         this.hideBuilding=false;
@@ -353,14 +353,15 @@ export class FacInNewComponent implements OnInit {
         this.Fac_Type= String(this.cache_disp.Fac_Type);
         this.validity= String(this.cache_disp.validity);
         this.Comments= String(this.cache_disp.Comments);
-      if(this.cache_disp.funded=='Yes'){
-       // this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;
-        this.showChargeDepartmentCode();
-      }
-        else
-        {
-        //this.chargeDeptValue= '';
-        this.hideChargeDepartmentCode();
+        if(this.cache_disp.funded=='Yes'){
+          this.showChargeDepartmentCode();
+        }else{
+          this.hideChargeDepartmentCode();
+        }
+        if(this.cache_disp.Fac_Type.toUpperCase()== 'SELECT ONE' || this.cache_disp.Fac_Type == ''){
+          this.hideValidity = true;	
+        }else{
+          this.hideValidity = false;	
         }
         this.chargeDepartmentCode=  String(this.cache_disp.chargeDepartmentCode);
 
