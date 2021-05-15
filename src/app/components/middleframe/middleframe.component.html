@@ -31,7 +31,7 @@
             </a>
         </div>
         <div *ngIf="cloudantData.isspecial" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
-            <a [routerLink]="['/inprogress']" [queryParams]="{country:pcode}">
+            <a [routerLink]="['/employeesearch']" [queryParams]="{country:pcode,service:'specialrequest'}">
                 <div class="ds-panel">
                     <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
                         <img src="././assets/ss.png">

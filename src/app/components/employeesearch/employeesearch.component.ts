@@ -73,11 +73,14 @@ export class EmployeesearchComponent implements OnInit {
   itns: any = [];
   voice_mail: any = [];
   cos: any = [];
+  Resource_Type : any =[];
+  Resource_Location : any=[];
+  Hard_Phone: any=[];
   serviceName: any;
   returnValue: any;
   validcnum = false;
   extracodes: any = [];
-
+  
   selectedCountry: any
 
 
@@ -375,6 +378,8 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('warninginfo', 'false1')
         sessionStorage.setItem('warninginfosnow', 'false1')
         sessionStorage.setItem('identifier', '')
+        sessionStorage.setItem('voice_mail', '');
+        sessionStorage.setItem('cos', '');
         //Data and routing 
         if (this.service == "jabber_new" || this.service == "fac_new" ) {
           this.getDBdata()
@@ -383,12 +388,12 @@ export class EmployeesearchComponent implements OnInit {
           this.getSNOWdata();
 
         }
-        if (this.service.includes("fixedphone")) {
+        if (this.service.includes("fixedphone") || this.service == "specialrequest" ) {
           this.getLocationdata();
 
         }
 
-        if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' || this.service == 'fac_deactivate') {
+        if (this.service == "resources" || this.service == "specialrequest" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' || this.service == 'fac_deactivate') {
           this.getDBdata();
 
         }
@@ -457,10 +462,9 @@ export class EmployeesearchComponent implements OnInit {
       console.log(' db2 response', data);
       console.log(' db2 response', data.message.length);
       if (data.message.length > 0) {
-
-        this.warninginfo = true
-        sessionStorage.setItem('warninginfo', 'true1');
-        for (var i = 0; i < data.message.length; i++) {
+         this.warninginfo = true
+         sessionStorage.setItem('warninginfo', 'true1');
+         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
           if (this.service == 'jabber_move') {
           if (data.message[i].ATTRIBUTE3 == null)
@@ -479,17 +483,21 @@ export class EmployeesearchComponent implements OnInit {
             else
               this.cos[i] = data.message[i].ATTRIBUTE5.trim();
           }
-        }
-        // this.identifier = data.message[0].IDENTIFIER
-        if (this.service == "resources") {
+         
+         }
+         // this.identifier = data.message[0].IDENTIFIER
+         if (this.service == "resources") {
           sessionStorage.setItem('identifier', JSON.stringify(data.message))
           this.datadb = "yes";
 
-        } else if (this.service == "fac_new") {
+         } else if(this.service == 'specialrequest'){
+          sessionStorage.setItem('identifier', JSON.stringify(data.message))
+          this.datadb = "yes";    
+        }else if (this.service == "fac_new") {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";
 
-        } else if (this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_deactivate") {
+         } else if (this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_deactivate") {
 
           sessionStorage.setItem('db2data', JSON.stringify(data.message)) ; 
           if((JSON.stringify(data.message[0].IDENTIFIER)).trim() !== ""){
@@ -501,7 +509,7 @@ export class EmployeesearchComponent implements OnInit {
           sessionStorage.setItem('identifier', this.itns);
           sessionStorage.setItem('voice_mail', this.voice_mail);
           sessionStorage.setItem('cos', this.cos);
-          sessionStorage.setItem('profile_location',this.profile_location);
+           sessionStorage.setItem('profile_location',this.profile_location);
 
           this.datadb = "yes";
         }
@@ -566,7 +574,7 @@ export class EmployeesearchComponent implements OnInit {
       else if (this.service.includes('fac')) {
         this.lookuploc = JSON.stringify(data.locationdetails.faclocations)
       }
-      else if (this.service.includes('special')) {
+      else if (this.service.includes('specialrequest')) {
         this.lookuploc = JSON.stringify(data.locationdetails.slocations)
       }
       // sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
@@ -723,6 +731,13 @@ export class EmployeesearchComponent implements OnInit {
         this.title = "Approvals";
         this.exitrouting = 'services';
         break;
+
+        case "specialrequest":
+          this.title = "Special Request";
+          this.routingname = '/specialrequest';
+          this.exitrouting = 'services';
+          break;
+       
     }
   }
   hidedata() {

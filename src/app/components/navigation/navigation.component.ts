@@ -34,8 +34,8 @@ export class NavigationComponent implements OnInit {
   parcountrydetails:any
   fixphoneVisibility:any;
   loggedinuser:any
-  serhl:any;jhl:any;fhl:any;fachl:any;reqhl:any;reshl:any;apphl:any;pnshl:any;
-  serin:any;jin:any;fin:any;facin:any;reqin:any;resin:any;appin:any;pnsin:any;
+  serhl:any;jhl:any;fhl:any;fachl:any;reqhl:any;reshl:any;apphl:any;pnshl:any;sphl:any;
+  serin:any;jin:any;fin:any;facin:any;reqin:any;resin:any;appin:any;pnsin:any;spin :any;
   @Input('dataNav') dataNavParent1: any
   @Input('cloudantData') cloudantData1: any
    
@@ -130,8 +130,8 @@ export class NavigationComponent implements OnInit {
             this.fixphoneVisibility = this.parcountrydetails.isfixphone;
           }
         }
-      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;this.apphl=false;this.pnshl=false;
-      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;this.appin=false;this.pnsin=false;
+      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;this.apphl=false;this.pnshl=false,this.sphl=false;
+      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;this.appin=false;this.pnsin=false,this.spin=false;
       
       if (this.service=="services")
       {
@@ -157,6 +157,14 @@ export class NavigationComponent implements OnInit {
         this.fachl=true
         this.fin=true;
       }
+
+
+      if (this.service.includes("specialrequest"))
+      {        
+        this.facin=true
+        this.fin=true;
+        this.sphl=true;
+      }
       
       if ((this.service).includes("requests"))
       {        
@@ -179,6 +187,7 @@ export class NavigationComponent implements OnInit {
         this.pnshl=true
         
       }
+
 
 
       if (this.service=="services"||this.service=="requests"||this.service=="resources" || this.service=="approvalpending" || this.service=='phone_search')
@@ -211,7 +220,7 @@ export class NavigationComponent implements OnInit {
               {"name" : "FAC Code","routingname":"/facservices", "indented" : true, "highlighted": this.fachl,"param":"facservices"},             
 
                {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : this.fin, "highlighted": this.fhl,"param":"fixedphoneservices"},            
-
+               {"name" : "Special Request","routingname":"/employeesearch", "indented" : true, "highlighted": this.sphl,"param":"specialrequest"},            
               {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
               {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search"},

@@ -46,7 +46,7 @@
         "Jabber": "Jabber",
         "FAC Code": "FAC Code",
         "Fixed Phone": "Fixed Phone",
-        "Special Request": "Jabber",
+        "Special Request": "Special Request",
         "Approvals Pending": "Approvals Pending",
         "Revalidation Pending": "Revalidation Pending",
         "Phone Number Search": "Phone Number Search",
@@ -108,7 +108,8 @@
         "FAC Code Update Request": "FAC Code Update Request",
         "FAC Code Reset Request": "FAC Code Reset Request",
         "Reset an existing FAC code": "Reset an existing FAC code",
-        "Phone Number Search": "Phone Number Search"
+        "Phone Number Search": "Phone Number Search",
+        "Special Request": "Special Request for an existing service" 
 
 
 

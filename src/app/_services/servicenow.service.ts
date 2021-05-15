@@ -6,7 +6,7 @@ import { createOfflineCompileUrlResolver } from '@angular/compiler';
 
 
 
-import { Jabber_New,Jabber_Delete,Jabber_Update,Jabber_Move, snowsearch, fixedphone_new, fixedphone_delete, fixedphone_update, Fac_New, Fac_Update, Fac_Reset,Fac_Deactivate  } from '../../../config/payload';
+import { Jabber_New,Jabber_Delete,Jabber_Update,Jabber_Move, snowsearch, fixedphone_new, fixedphone_delete, fixedphone_update, Fac_New, Fac_Update, Fac_Reset,Fac_Deactivate, Special_Request  } from '../../../config/payload';
 
 
 
@@ -17,6 +17,7 @@ export class servicenowservice {
   private submitUrl = '/api/submit_snow';
   private searchUrl ='/api/search_snow';
   private approveUrl='/api/approve_snow';
+  
   payload: snowsearch = new snowsearch();
   constructor(private http: HttpClient) { }
   submit_request(Jabber_new_payload : Jabber_New): Observable<any> {
@@ -43,6 +44,12 @@ export class servicenowservice {
   submit_request_move(Jabber_move_payload : Jabber_Move): Observable<any> {
     console.log('calling snow');
     return this.http.post(this.submitUrl,Jabber_move_payload)
+      .pipe(catchError(this.errorhandler))
+  }
+
+  submit_request_special_request(Special_Request : Special_Request): Observable<any> {
+    console.log('calling snow');
+    return this.http.post(this.submitUrl,Special_Request)
       .pipe(catchError(this.errorhandler))
   }
 

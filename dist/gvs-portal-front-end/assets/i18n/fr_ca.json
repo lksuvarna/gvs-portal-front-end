@@ -108,7 +108,8 @@
         "FAC Code Update Request":"Demande de mise à jour du code FAC",
         "Reset an existing FAC code" : "Réinitialiser un code FAC existant",
         "FAC Code Reset Request": "Demande de mise à jour du code FAC",
-        "Phone Number Search": "Recherche par numéro de téléphone"
+        "Phone Number Search": "Recherche par numéro de téléphone",
+        "Special Request": "Demande spéciale pour un service existant" 
 
     },
     "employeeinfotrans":{

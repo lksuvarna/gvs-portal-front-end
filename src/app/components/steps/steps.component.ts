@@ -208,6 +208,21 @@ export class StepsComponent implements OnInit {
     console.log("cached");
   }
 
+  if(this.service=='specialrequest'){
+    console.log("Starting special Request cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    if(this.formData.value.Jabber_1==undefined)
+    this.cache.selected_jabber='';
+    else
+    this.cache.selected_jabber = this.formData.value.Jabber_1.trim();
+    this.cache.officeLocation =  this.formData.value.Location
+    this.cache.campus=this.formData.value.default_location;	
+    this.cache.businessjustification= this.formData.value.requirement;
+    sessionStorage.setItem('cachesp',JSON.stringify(this.cache));
+    console.log("special Request cached "+sessionStorage.getItem('cache'));
+  }
+
   if(this.service == 'fixedphone_new') {
     console.log("Starting Cache");
   this.cache_fixed.setflag=true;
@@ -300,6 +315,7 @@ if(this.service=='fac_update'){
   sessionStorage.setItem('cache',JSON.stringify(this.cache_fac));
   console.log("cached");
 }
+
 
 }
 

@@ -463,6 +463,18 @@ Special_Request()
 
 }
 
+export class specialRequest_data { 	
+    identifier !: String;
+    type !: String;
+    device !: String;
+    specialRequest_data()
+    {
+      this.identifier='';
+      this.device='';
+      this.type='';
+    }
+    
+   }	
 
 // // class used to create the payload for snow fixed phone new service
 export class fixedphone_new
