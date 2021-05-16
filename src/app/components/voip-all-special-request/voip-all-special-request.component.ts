@@ -68,6 +68,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
   others=false;
   defaultlocation=false;
   default_location='';
+  la=false;
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
   payload : Special_Request = new Special_Request();
@@ -130,7 +131,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
   
   entryDetails(formData: NgForm) {
      
-    if(this.defaultlocation==false){
+    if((this.defaultlocation==false) && (this.la==false)){
     if((formData.value.Location.toUpperCase() == 'SELECT ONE' || formData.value.Location == '') && (this.defaultlocation==false)) {
       alert(this.mainConfiguration.alerttranslation.selectlocation);
       return;
@@ -151,14 +152,19 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.msgdis=true
     }
     
-  
+    if (this.la==false){
     if(this.defaultlocation==false)
     this.fl_location_disp = formData.value.Location;
     else
     this.fl_location_disp=formData.value.default_location;
+    }else{
+      this.locationselected='';
+     this.default_location='';
+    }
     this.requirements_disp = formData.value.requirement;
     this.isReviewForm = false;
     this.isEntryForm = true;
+    
      //set up the cache for form values.
      this.create_cache(formData);
 
@@ -238,6 +244,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
 
      this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
      this.locationlist=this.locationlist?.replace('"','').split(',');
+  
     //   for (var i = 0; i < this.locationlist.length; i++) {	
     //    var n = this.locationlist[i].indexOf("~")	
     //    this.campA[i] = this.locationlist[i].substr(1, n - 1);	
@@ -250,9 +257,9 @@ export class VoipAllSpecialRequestComponent implements OnInit {
     //    }	
     //  }
 
-    if(this.cnum.substring(6,9)=='897'){
-      this.locationlist[this.locationlist.length]='Others';
-    }
+    // if(this.cnum.substring(6,9)=='897'){
+    //   this.locationlist[this.locationlist.length]='Others';
+    // }
     	
   
     this.dbdata=sessionStorage.getItem('identifier');
@@ -326,11 +333,14 @@ export class VoipAllSpecialRequestComponent implements OnInit {
    }
 
    //Load Cache ends.
-  //  if(this.countrydetails.name.toUpperCase()=='LATIN AMERICA'){
-  //   this.la=true;
-  //   this.locationselected='';
-  //   this.default_location='';
-  //  }
+   
+  // if(this.countrydetails.name.toUpperCase().trim()=='LATIN AMERICA'){
+  //    this.la=false;
+  //    this.locationselected='';
+  //    this.default_location='';
+  //   }else{
+  //     this.la=true;
+  //   }
   }
   previousStep(event : any){
     this.isEntryForm = false;	
