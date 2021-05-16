@@ -9,12 +9,13 @@
 
     <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
 
-        <h3><b>Approvals</b></h3>
+        <h3 *ngIf="reval"><b>Approvals</b></h3>
+        <h3 *ngIf="!reval"><b>Revalidation</b></h3>
         <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
         <div class=" ds-panel ds-col-12 "></div> 
         <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " ></h2>
-            <table  cellspacing="0" cellpadding="0" border="0" *ngIf="errorinfo">
+            <table  cellspacing="0" cellpadding="0" border="0" *ngIf="errorinfo && reval">
             <tbody>
             <tr valign="top" >
                 <td width="783"> 
@@ -36,7 +37,7 @@
         </table>
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5">Pending Requests</h2>
             <div class="ds-table-container">
-                <table class="ds-table">
+                <table class="ds-table" *ngIf="reval">
                     <tbody valign="top" *ngFor = "let req of pendingRequest, let i = index">
                         <tr>
                             <td width="59">
@@ -48,6 +49,33 @@
                             <td width="194">{{req['sysapproval.variables.requested_by.name']}}<font color="#808080"> </font></td>
                             <td width="213">{{req['sysapproval.short_description']}}</td>
                             <td width="213">{{req['sysapproval.variables.id']}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table style="width:100%; border-collapse: collapse; padding:2px"  *ngIf="errorinfo && !reval">
+                    <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">
+                        <tr>
+                            <td width="59" ></td>
+                          <td width="175">CNUM</td>
+                          <td width="194" >Employee Name</td>
+                          <td width="213">Revalidation Date</td>
+                          <td width="175" >Identifier</td>
+                          <td width="213">Changed</td>
+                        </tr>
+                      </thead>
+                    <tbody valign="top" *ngFor = "let req of pendingRequest, let i = index">
+                        <tr>
+                            <td width="59">
+                                <font color="#ffffff">
+                                    <input  name="req.sys_id" id="req.sys_id" type="checkbox" [(ngModel)]="checked[i]">
+                                </font>
+                            </td>
+                            <td width="175"><a (click)='openpage(req)'>{{req['sysapproval.variables.requested_by.user_name'].replace('-','')}}</a></td>
+                            <td width="194">{{req['sysapproval.variables.requested_by.name']}}<font color="#808080"> </font></td>                 
+                                        
+                            <td width="213">{{req['sysapproval.variables.call_permission']}}</td>
+                            <td width="175">{{req['sysapproval.variables.itn']}}</td>   
+                            <td width="213">{{req['sysapproval.variables.ica_code']}}</td>    
                     </tr>
                     </tbody>
                 </table>

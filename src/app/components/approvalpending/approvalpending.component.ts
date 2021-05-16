@@ -32,8 +32,10 @@ export class ApprovalpendingComponent implements OnInit {
   checked: any=[];
   checkedList:any;
   errorinfo=true;
+  reval=true;
   flag =true;
   search='';
+  snowaction:any;
 
   submit(){
     this.router.navigate(['/employeeinfo']) 
@@ -48,6 +50,7 @@ export class ApprovalpendingComponent implements OnInit {
       this.service=params.service;	
       this.pcode = params.country;	
       console.log("navigation component" + this.pcode);	
+      sessionStorage.setItem('serviceName', this.service);
 
       if(sessionStorage.getItem('countrydetails')==undefined){
   
@@ -79,11 +82,21 @@ export class ApprovalpendingComponent implements OnInit {
  
     this.empserial = this.ccode; 
     this.ccode=this.ccode.substring(6,9);
+   if(this.service.includes('revalidationpending')){
+     this.snowaction='snow_revalidation'
+     this.empserial="467756744";
+     this.reval=false;
+     sessionStorage.setItem('reval','reval');
+    }
+     else{
+      this.snowaction='snow_approve'
+      sessionStorage.setItem('reval','approval');
+     }
    
     
    //this.empserial="467756744";
    if(this.pcode == this.ccode){
-      this.servicenowservice.searchsnowcoments(this.empserial, "snow_approve","","").subscribe(data => {
+      this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction,"","").subscribe(data => {
         console.log(' snow response', data.message);
         console.log(' snow response', data.message.length);
         
@@ -182,6 +195,14 @@ openpage(req:any){
   sessionStorage.setItem('request_cnum',req['sysapproval.variables.requested_by.user_name'].replace('-',''));
   sessionStorage.setItem('request_name',req['sysapproval.variables.requested_by.name']);
   sessionStorage.setItem('request_sysid',req.sys_id);
+  sessionStorage.setItem('revaldate',req['sysapproval.variables.call_permission']);
+  sessionStorage.setItem('revalitn',req['sysapproval.variables.itn']);
+  sessionStorage.setItem('revalchanged',req['sysapproval.variables.ica_code']);
+  sessionStorage.setItem('revalolddept',req['sysapproval.variables.Funded']);
+  sessionStorage.setItem('revalnewdept',req['sysapproval.variables.charge_dep_code']);
+  sessionStorage.setItem('revaloldmgr',req['sysapproval.variables.ITN_Status']);
+  sessionStorage.setItem('revalnewmgr',req['sysapproval.variables.account_id']);
+  
   this.router.navigate(['/approvalsingle'],{ skipLocationChange: true, queryParams: { country: this.pcode, service:this.service}}) ;
   
 }

@@ -6,7 +6,8 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { servicenowservice } from '../../_services/servicenow.service';
 import {fixedphone_delete, Create_Cache_fixedphone} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
-import {Db2Service} from '../../_services/db2.service'
+import {Db2Service} from '../../_services/db2.service';
+import { TranslateConfigService } from '../../_services/translate-config.service';
 
 
 @Component({
@@ -44,17 +45,29 @@ export class HpInDeleteComponent implements OnInit {
   orgi:any;	
   errorinfo=false;
   reqno:any;
-  cache_tmp:  any = [];
   showerrormessage = false;
+
+  hideNextButton = true;
+
+  mainConfiguration :any;
+
+  cache_tmp:  any = [];
+  
+
   HideBack :boolean = false;
 
-  constructor(private db2:Db2Service, private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice) { }
+  constructor(private db2:Db2Service, private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice,private servicesd : TranslateConfigService) { }
   
   payload : fixedphone_delete = new fixedphone_delete();
   cache : Create_Cache_fixedphone = new Create_Cache_fixedphone();
   cache_disp : Create_Cache_fixedphone = new Create_Cache_fixedphone();
 
   onSearch(){
+    this.showerrormessage = false;
+    this.hideSteps = false;
+  }
+
+  onMacClick(){
     this.showerrormessage = false;
     this.hideSteps = false;
   }
@@ -74,12 +87,15 @@ export class HpInDeleteComponent implements OnInit {
           this.isReviewForm = false;
           this.isEntryForm = true;
           this.showerrormessage = false;
+          this.hideNextButton = false;
+          this.hideSteps = false;
         }
         else
         {
           this.showerrormessage = true;
           this.showSearch = false;
           this.hideSteps = true;
+          this.hideNextButton = true
 
         }
         
@@ -87,7 +103,7 @@ export class HpInDeleteComponent implements OnInit {
 
     }
     else{
-      alert("Please enter a number to search");
+      alert(this.mainConfiguration.fixedphonenew.Pleaseenternumber);
     }
     
 
@@ -174,7 +190,7 @@ export class HpInDeleteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.mainConfiguration = this.servicesd.readConfigFile();
     // Submit to Snow Jabber new code added by Swarnava	
   this.orgi=this.cookie.getCookie('ccode');	
   this.cnum = sessionStorage.getItem('cnum') ;	
@@ -222,7 +238,7 @@ this.identifier=sessionStorage.getItem('identifier')
     this.servicesData = servicesData.data[0]
     this.reqFor = sessionStorage.getItem('radioAction')
 
-    if(this.warninginfo || this.warninginfosnow){
+    if(this.showerrormessage){
       this.hideSteps = true
     } else {
       this.hideSteps = false
