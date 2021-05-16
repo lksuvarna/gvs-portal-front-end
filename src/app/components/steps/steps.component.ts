@@ -232,7 +232,7 @@ export class StepsComponent implements OnInit {
     this.cache.officeLocation =  this.formData.value.Location
     this.cache.campus=this.formData.value.default_location;	
     this.cache.businessjustification= this.formData.value.requirement;
-    sessionStorage.setItem('cachesp',JSON.stringify(this.cache));
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
     console.log("special Request cached "+sessionStorage.getItem('cache'));
   }
 
