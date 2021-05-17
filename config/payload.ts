@@ -298,38 +298,40 @@ Fac_New()
  }
 
 }
-// class used to create the payload for snow deactivate fac service
+// class used to create the payload for snow delete fac service
 
-export class Fac_Deactivate
+export class Fac_Delete
 {
     orinator_payload !: String;
     cNum_payload !: String;
     ReqNo !: String;
     countryname !: String;
-    Identifier_Disp !: String;
-    site_address !: String;
-    request_type !: String;
     evolution_instance !: String;
-    country_code !:String;
-    authLevel_final !:String;
-    BusinessUnit_Disp!:String;
-    authValue !:String;
     gvs_portal_link !: String;
+    gvs_approval_link !: String;
+    Curr_Location !: String;
+    authLevel_final !: String;
+    request_type !: String;
+    business_unit !: String;
+    siteaddress !: String;
+    authLevel !: String
 
-
-Fac_Deactivate()
+Fac_Delete()
  {
+    
     this.orinator_payload ="";
-    this.cNum_payload ="";
-    this.authLevel_final="";
-    this.BusinessUnit_Disp="";
-    this.ReqNo ="";
-    this.authValue="";
-    this.gvs_portal_link=""
-    this.countryname ="";
-    this.request_type ="";
-    this.evolution_instance ="";
-    this.country_code  ="";
+    this.cNum_payload  ="";
+    this.ReqNo  ="";
+    this.countryname  ="";
+    this.evolution_instance  ="";
+    this.gvs_portal_link ="";
+    this.gvs_approval_link  ="";
+    this.Curr_Location  ="";
+    this.authLevel_final ="";
+    this.request_type  ="";  
+    this.business_unit = "";
+    this.siteaddress = "";
+    this.authLevel = ""
  }
 
 }

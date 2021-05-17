@@ -24,7 +24,8 @@ export class TopcountryframeComponent implements OnInit {
   currentLang :any;
   translatecountryname :any;
   translatecountryname1 :boolean =false;
-  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_deactivate','requests','resources','approvalpending','revalidationpending','phone_search', 'specialrequest']
+  
+  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_delete','requests','resources','approvalpending','revalidationpending','phone_search', 'specialrequest']
 
   changeLanguage(type :string){
     this.translateconfigservice.changeLanguage(type);

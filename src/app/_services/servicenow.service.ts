@@ -6,7 +6,8 @@ import { createOfflineCompileUrlResolver } from '@angular/compiler';
 
 
 
-import { Jabber_New,Jabber_Delete,Jabber_Update,Jabber_Move, snowsearch, fixedphone_new, fixedphone_delete, fixedphone_update, Fac_New, Fac_Update, Fac_Reset,Fac_Deactivate, Special_Request  } from '../../../config/payload';
+
+import { Jabber_New,Jabber_Delete,Jabber_Update,Jabber_Move, snowsearch, fixedphone_new, fixedphone_delete, fixedphone_update, Fac_New, Fac_Update, Fac_Reset,Fac_Delete, Special_Request  } from '../../../config/payload';
 
 
 
@@ -77,9 +78,9 @@ export class servicenowservice {
     return this.http.post(this.submitUrl,fac_new_payload)
     .pipe(catchError(this.errorhandler));
   }
-  submit_request_fac_deactivate (fac_deactivate_payload : Fac_Deactivate): Observable<any> {
+  submit_request_fac_delete (fac_delete_payload : Fac_Delete): Observable<any> {
     console.log('calling snow');
-    return this.http.post(this.submitUrl,fac_deactivate_payload)
+    return this.http.post(this.submitUrl,fac_delete_payload)
     .pipe(catchError(this.errorhandler));
   }
   
