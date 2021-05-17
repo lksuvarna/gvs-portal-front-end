@@ -80,10 +80,10 @@ if(this.service=='fixedphone_delete'){
   this.page='delete Fixed Phone';
   return this.page;
 }
-if(this.service=='fac_deactivate'){
-  this.page='deactivate Fac';
+ if(this.service=='fac_delete'){
+  this.page='delete Fac';
   return this.page;
-}
+} 
 
     }
   }

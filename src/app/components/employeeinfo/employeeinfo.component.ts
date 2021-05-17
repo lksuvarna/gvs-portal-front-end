@@ -44,8 +44,8 @@ export class EmployeeinfoComponent implements OnInit {
   warninginfosnowothersfac = false
   warninginfofac = false;
 
-  warninginfofacdeactivate = false;
-  warninginfofacdeactivatesnow=false;
+  warninginfofacdelete = false;
+  warninginfofacdeletesnow=false;
 
   warninginfofacu = false;
   warninginfofacr = false;
@@ -134,8 +134,8 @@ export class EmployeeinfoComponent implements OnInit {
     this.isDataLoaded=true
    }
 
-   else if (this.sessionwarninginfo =='false1'&& this.service=="fac_deactivate"){
-    this.warninginfofacdeactivate = true
+   else if (this.sessionwarninginfo =='false1'&& this.service=="fac_delete"){
+    this.warninginfofacdelete = true
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
@@ -149,11 +149,11 @@ export class EmployeeinfoComponent implements OnInit {
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
-   else if (this.sessionwarninginfosnow =='true1' && (this.service==="fac_reset" || this.service==="fac_update" ||this.service == "fac_deactivate" )){
+   else if (this.sessionwarninginfosnow =='true1' && (this.service==="fac_reset" || this.service==="fac_update" ||this.service == "fac_delete" )){
     this.identifier1=sessionStorage.getItem('identifier1')
     this.warninginfosnowothersfac = true;   
     this.isDataLoaded=true;
-    if(this.service == "fac_deactivate") {
+    if(this.service == "fac_delete") {
       this.page = 'FAC delete';
     } else if(this.service == "fac_update"){
       this.page = 'FAC update';
@@ -199,7 +199,7 @@ export class EmployeeinfoComponent implements OnInit {
 
 
     
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdeactivate ||this.warninginfofacdeactivatesnow || this.warninginfosnowfac){
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdelete ||this.warninginfofacdeletesnow || this.warninginfosnowfac){
 
       this.hideSteps = true;
       this.warn = true;

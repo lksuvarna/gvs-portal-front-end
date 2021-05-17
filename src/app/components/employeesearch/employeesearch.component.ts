@@ -391,7 +391,7 @@ export class EmployeesearchComponent implements OnInit {
 
         }
 
-        if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' || this.service == 'fac_deactivate') {
+        if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' || this.service == 'fac_delete') {
           this.getDBdata();
 
         }
@@ -433,7 +433,7 @@ export class EmployeesearchComponent implements OnInit {
 
       else {
         this.datasnow = "nodata";
-        if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_deactivate") {
+        if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_delete") {
           this.getLocationdata()
         }
 
@@ -492,7 +492,7 @@ export class EmployeesearchComponent implements OnInit {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";
 
-        } else if (this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_deactivate") {
+        } else if (this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_delete") {
 
           sessionStorage.setItem('db2data', JSON.stringify(data.message)) ; 
           if((JSON.stringify(data.message[0].IDENTIFIER)).trim() !== ""){
@@ -508,7 +508,7 @@ export class EmployeesearchComponent implements OnInit {
 
           this.datadb = "yes";
         }
-        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' ||this.service == 'fac_deactivate' ) {
+        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' ||this.service == 'fac_delete' ) {
           console.log("insidesnowdelete")
           this.getSNOWdata();
           this.datadb = "yes";
@@ -693,8 +693,8 @@ export class EmployeesearchComponent implements OnInit {
       this.reqname="-NS-";
       break;
 
-      case "fac_deactivate":
-      this.title="FAC Code Deactivate Request";
+      case "fac_delete":
+      this.title="FAC Code Delete Request";
       this.routingname="/entrydetailsfacdeactive";
       this.exitrouting='facservices';
       this.reqname="-DS-";
