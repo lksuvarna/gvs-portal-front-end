@@ -24,6 +24,9 @@ export class EmployeesearchComponent implements OnInit {
   radioAction: string = "";
   hideDisTextBox: boolean = false;
   hideDisserial: boolean = true;
+  algMobile: boolean = false
+  ackMobileAlg: boolean = false
+  checked : any=false;
 
   constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private bpservices: bpservices, private Db2Service: Db2Service, private servicenowservice: servicenowservice,private servicesd : TranslateConfigService) { }
   cloudantData: any = []
@@ -107,9 +110,14 @@ export class EmployeesearchComponent implements OnInit {
     this.fullName = this.fullName.replace(",", ", ");
     this.ccode = this.cookie.getCookie('ccode');
     this.countryroute=sessionStorage.getItem('countryroute')
-  // alert(this.countryroute)
+  //  alert(this.countryroute)
   // alert(this.pcode)
 //if(sessionStorage.getItem('countrydetails')==undefined ) {
+
+  if (this.countryroute === '612' && this.service === 'mobile_new') {
+    this.algMobile = true
+  }
+
   if (this.pcode!== this.countryroute) {
     
   this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
@@ -188,7 +196,7 @@ export class EmployeesearchComponent implements OnInit {
         const servicesData = {
           "data": [
             {
-              "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+              "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request", "Mobile"],
               "step": 1,
             }
           ]
@@ -218,6 +226,8 @@ export class EmployeesearchComponent implements OnInit {
         }
       }
     }, 200);
+
+
   }
 
   onSubmit(formData: NgForm) {
@@ -246,6 +256,11 @@ export class EmployeesearchComponent implements OnInit {
         alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name +  " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" " + this.countrydetails.name);
         return;
       }
+
+      if(this.checked===false) {
+        alert('Please read the Algeria Mobility Policy');
+        return;
+      }
     }
     if (this.radioAction.toLowerCase() == "anotheremployee") {
       if (formData.value.employeeSerial.trim().length == 0 && this.hideDisTextBox == true) {
@@ -267,6 +282,11 @@ export class EmployeesearchComponent implements OnInit {
         } else {
           this.employeeSerial = formData.value.employeeSerial + this.pcode;
         }
+      }
+
+      if(this.checked===false) {
+        alert('Please read the Algeria Mobility Policy');
+        return;
       }
     }
     //for self
@@ -351,6 +371,15 @@ export class EmployeesearchComponent implements OnInit {
     
   
   }
+
+  ackMobile(){
+    if (this.checked){
+      this.ackMobileAlg = true
+    } else {
+      this.ackMobileAlg = false
+    }
+  }
+
   getBPData(): any {
     console.log(' this.employeeSerial', this.employeeSerial);
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
@@ -387,12 +416,12 @@ export class EmployeesearchComponent implements OnInit {
           this.getLocationdata();
         }
 
-        if (this.service == "jabber_new" || this.service == "fac_new" || this.service == "specialrequest") {
+        if (this.service == "jabber_new" || this.service == "fac_new" || this.service == "specialrequest" || this.service == "mobile_new") {
           this.getDBdata()
         }
         if (this.service == "requests") {
           this.getSNOWdata();
-
+          
         }
         if (this.service.includes("fixedphone")) {
           this.getLocationdata();
@@ -520,7 +549,7 @@ export class EmployeesearchComponent implements OnInit {
           this.datadb = "yes";
         }
 
-        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' ||this.service == 'fac_deactivate' ) {
+        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' ||this.service == 'fac_deactivate' ||this.service == 'mobile_new' ) {
           console.log("insidesnowdelete")
           this.getSNOWdata();
           this.datadb = "yes";
@@ -699,6 +728,12 @@ export class EmployeesearchComponent implements OnInit {
         this.exitrouting = 'fixedphoneservices';
         this.reqname = "-DS-";
         break;
+      case "mobile_new":
+          this.title="Mobile New Request";
+          this.routingname="/entrydetailsmobile";
+          this.exitrouting='mobileservices';
+          this.reqname="-NS-";
+          break;
       case "fac_new":
       this.title="FAC Code New Request";
       this.routingname="/entrydetailsfac";

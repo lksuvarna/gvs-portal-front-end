@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Create_Cache_jabber,Create_Cache_fixedphone,Create_Cache_fac } from 'config/payload';
+import { Create_Cache_jabber,Create_Cache_fixedphone,Create_Cache_fac, Create_Cache_mobile } from 'config/payload';
 
 @Component({
   selector: 'app-steps',
@@ -141,7 +141,7 @@ export class StepsComponent implements OnInit {
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_fixed : Create_Cache_fixedphone = new Create_Cache_fixedphone();
   cache_fac : Create_Cache_fac = new Create_Cache_fac();
-
+  cache_mobile : Create_Cache_mobile = new Create_Cache_mobile();
 
   cache_data(){
 
@@ -327,6 +327,17 @@ if(this.service=='fac_update'){
   this.cache_fac.Comments= this.formData.value.businessjustification;
   sessionStorage.setItem('cache',JSON.stringify(this.cache_fac));
   console.log("cached");
+}
+
+if(this.service=='mobile_new'){
+
+  console.log("Starting cache_fac");
+  this.cache_mobile.setflag=true;
+  this.cache_mobile.cnum=this.cnum;
+  this.cache_mobile.Comments= this.formData.value.Comments;
+  sessionStorage.setItem('cache',JSON.stringify(this.cache_mobile));
+  console.log("cached");
+
 }
 
 

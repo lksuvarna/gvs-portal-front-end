@@ -18,6 +18,11 @@ export class cloudantservice {
     return this.http.post(this.Url, {ccode})
       .pipe(catchError(this.errorhandler))
   }
+  getcountrysearchdetails(ccode:string): Observable<any> {
+    console.log("getcountrysearchdetails"+ccode);
+    return this.http.post('/api/countrysearchdetails', {ccode})
+      .pipe(catchError(this.errorhandler))
+  }
   getlocationdetails(ccode:string): Observable<any> {
     console.log("getlocationdetails"+ccode);
     return this.http.post('/api/locationdetails', {ccode})
