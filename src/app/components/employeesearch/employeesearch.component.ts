@@ -269,7 +269,7 @@ export class EmployeesearchComponent implements OnInit {
         return;
       }
 
-      if(this.checked===false) {
+      if(this.algMobile && this.checked===false) {
         alert('Please read the Algeria Mobility Policy');
         return;
       }
@@ -296,7 +296,7 @@ export class EmployeesearchComponent implements OnInit {
         }
       }
 
-      if(this.checked===false) {
+      if(this.algMobile && this.checked===false) {
         alert('Please read the Algeria Mobility Policy');
         return;
       }
