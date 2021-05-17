@@ -14,6 +14,11 @@
             <div class="ds-pad-t-0_5 ds-pad-b-1">
 
             </div>
+
+            <div class="ds-pad-t-0_5">
+                <span translate>Jabberentrydetails.Fieldsasterisk </span>(<span class="ds-text-contextual-red-2">*</span>) <span translate>Jabberentrydetails.arerequired</span>
+            </div><br>
+
             <div class=" ds-panel ds-col-12 "></div>
 
             <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
@@ -41,12 +46,12 @@
                                  (change)='toggleOptions($event)' ngModel [(ngModel)]='selected_jabber'>
                   <option value ="" translate>Jabberupdate.SELECTONE</option>
                   <option name="Jabber_1" *ngFor='let fl of data'  [value]='fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?fl.IDENTIFIER.trim()+"-SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?fl.IDENTIFIER.trim()+"-P":fl.IDENTIFIER.trim()' selected>
-                    {{ fl.IDENTIFIER.trim()}}{{fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?"-SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?"-P":''}}</option>
+                    {{ fl.IDENTIFIER.trim()}}{{fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?" - SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?" - P":''}}</option>
                 </select>
                             </div>
                         </td>
                     </tr>
-                    <tr valign="top" *ngIf='defaultlocation==false'>
+                    <tr valign="top" *ngIf='defaultlocation==false && la==false'>
                         <td colspan="2" width="47%" height="10">
                             <label for="LocationId" class="ds-text-capitalize" translate>Jabbernewtrans.JabberLocation</label>
                             <span class="ds-text-contextual-red-2">*</span>
@@ -64,7 +69,7 @@
                         </td>
                     </tr>
                    
-                    <tr valign="top" *ngIf='defaultlocation==true'>
+                    <tr valign="top" *ngIf='defaultlocation==true && la==false'>
                         <td colspan="2" width="46%" height="10">
                             <label for="default_location" translate>Jabbernewtrans.JabberLocation</label>
                         </td>
@@ -142,18 +147,18 @@
                             <div class="ds-margin-bottom-2">{{selectedJabber}}</div>
                         </td>
                     </tr>
-                    <tr valign="top" >
+                    <tr valign="top" [hidden]='la'>
                         <td colspan="2" width="46%" height="10">
                             <label for="addId1" translate>Jabbernewtrans.JabberLocation</label>
                         </td>
                         <td width="54%" height="10">{{fl_location_disp}}</td>
                     </tr>
     
-                    <tr valign="top">
+                    <tr valign="top"> 
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Description of Requirement</label>
                         </td>
                         <td width="54%" height="10">
-                            <label>{{requirements_disp}}</label>
+                            <label><span style="word-break:break-all;">{{requirements_disp}}</span></label>
                         </td>
                     </tr>
 

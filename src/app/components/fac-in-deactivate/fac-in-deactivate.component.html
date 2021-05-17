@@ -13,9 +13,9 @@
         <form #formData='ngForm'>
             
 
-            <b translate>servicestitle.FAC Code Deactivate Request</b>
+            <b translate>servicestitle.FAC Code Delete Request</b>
 
-            <div class="ds-pad-t-0_5 ds-pad-b-1">
+            <div class="ds-pad-t-0_5 ds-pad-b-1" *ngIf="warninginfo !=true && warninginfosnow != true">
                 By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. </div>
             <div class=" ds-panel ds-col-12 "></div>
 
@@ -27,7 +27,7 @@
                 <p>There is no FAC code for this serial number.</p>
             </div>
             <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
-                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Deactivate FAC request
+                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Delete FAC request
             is in progress and request number is {{identifier}}.<br>
 
             You can view the status of the on-going request by clicking on the Requests link on the left side navigation
@@ -46,7 +46,7 @@
                             <span>{{currAuthorizationLevel}}</span>
                         </td>
                     </tr><br>
-                    <p>Click on submit to Deactivate the FAC code.</p>
+                    <p>Click on submit to Delete the FAC code.</p>
 
                 </tbody>
             </table>

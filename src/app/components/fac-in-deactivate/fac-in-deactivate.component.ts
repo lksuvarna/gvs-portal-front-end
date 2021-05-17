@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
 import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
-import {Fac_Deactivate} from '../../../../config/payload';
+import {Fac_Delete} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { Db2Service } from '../../_services/db2.service';
@@ -77,7 +77,7 @@ export class FacInDeactivateComponent implements OnInit {
   business_unit = ''
   authValue = ''
 
-  payload : Fac_Deactivate = new Fac_Deactivate();
+  payload : Fac_Delete = new Fac_Delete();
   db2data: any
 
   
@@ -118,21 +118,25 @@ export class FacInDeactivateComponent implements OnInit {
     this.isSpinnerVisible=true;	
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
-      this.payload.site_address ='';
+      
       this.payload.ReqNo=this.reqno;
       this.payload.authLevel_final = this.authValue;
-      this.payload.authValue = this.currAuthorizationLevel
+      
+      this.payload.authLevel = this.currAuthorizationLevel
+	      this.payload.business_unit = this.business_unit;
+	      this.payload.siteaddress = ''
+
+	      this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
-      this.payload.request_type='fac_deactivate';	
+      this.payload.request_type='fac_delete';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
-      this.payload.BusinessUnit_Disp = this.business_unit;
 
      
       
      
       	
-     this.servicenowservice.submit_request_fac_deactivate(this.payload).subscribe(data=> {	
+     this.servicenowservice.submit_request_fac_delete(this.payload).subscribe(data=> {	
      console.log('response', data);	
      if(data)	
      this.router.navigate(['/resultpage'],{ skipLocationChange: true , queryParams: { country: this.pcode,service:this.service }}) ;	
@@ -150,7 +154,7 @@ export class FacInDeactivateComponent implements OnInit {
     }
     ngOnInit(): void {
   
-        // Submit to Snow Fac Deactivate code
+        // Submit to Snow Fac Delete code
     this.cnum = sessionStorage.getItem('cnum');
     this.orgi = this.cookie.getCookie('ccode');
     this.countrydetails = sessionStorage.getItem('countrydetails');
@@ -183,6 +187,28 @@ export class FacInDeactivateComponent implements OnInit {
     }
     this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
 	    this.locationlist=this.locationlist?.replace('"','').split(',');	
+           
+	    this.route.queryParams	
+	    .subscribe(params => {	
+	      console.log(params);	
+	      this.service=params.service;	
+	      this.pcode = params.country;	
+	      console.log("navigation component" + this.pcode);	
+	    })	
+	    this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
+	      console.log('Response received', data.countrydetails.name);
+	      this.countryname=data.countrydetails;
+	    
+	    this.cloudantData  = {
+	      "code": this.ccode,
+	      "name": this.countryname.name,
+	      "isocode": this.countryname.isocode,
+	      "isjabber": this.countryname.isjabber,
+	      "isfixedphone": this.countryname.isfixphone,
+	      "isfac": this.countryname.isfac,
+	      "isspecial": this.countryname.isspecial
+	    }
+	  });
     const servicesData = { 	
       "data": [	
         {    		
@@ -215,28 +241,6 @@ export class FacInDeactivateComponent implements OnInit {
         this.j++;	
       }	
     }
-    
-    this.route.queryParams	
-    .subscribe(params => {	
-      console.log(params);	
-      this.service=params.service;	
-      this.pcode = params.country;	
-      console.log("navigation component" + this.pcode);	
-    })	
-    this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
-      console.log('Response received', data.countrydetails.name);
-      this.countryname=data.countrydetails;
-    
-    this.cloudantData  = {
-      "code": this.ccode,
-      "name": this.countryname.name,
-      "isocode": this.countryname.isocode,
-      "isjabber": this.countryname.isjabber,
-      "isfixedphone": this.countryname.isfixphone,
-      "isfac": this.countryname.isfac,
-      "isspecial": this.countryname.isspecial
-    }
-  });
   
   }
   previousStep(event : any){

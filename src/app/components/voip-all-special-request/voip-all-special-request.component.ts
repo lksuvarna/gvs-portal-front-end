@@ -213,7 +213,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.cache.officeLocation =  formData.value.Location;	
       this.cache.campus=formData.value.default_location;
       this.cache.businessjustification = formData.value.requirement;
-      sessionStorage.setItem('cachesp',JSON.stringify(this.cache));
+      sessionStorage.setItem('cache',JSON.stringify(this.cache));
       console.log("cached" + JSON.stringify(this.cache));
     }
 
@@ -298,8 +298,15 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.hideSteps = false
     }
 
+
+    if(this.countrydetails.name.toUpperCase().trim()=='LATIN AMERICA'){
+        this.la=true;
+       }else{
+         this.la=false;
+       }
+
      //load cache data for entry details form. -- START
-   this.cache_tmp=sessionStorage.getItem('cachesp')	
+   this.cache_tmp=sessionStorage.getItem('cache')	
    console.log("cached items "+this.cache_tmp);
    this.cache_disp=JSON.parse(this.cache_tmp);
    if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='specialrequest')){
@@ -324,23 +331,13 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.default_location=String(this.cache_disp.campus);
       this.locationselected='';
     }
-    
-   
    this.requirement=String(this.cache_disp.businessjustification);
    console.log("cache restored");
    }else{
      //sessionStorage.removeItem('cache');
    }
-
    //Load Cache ends.
-   
-  // if(this.countrydetails.name.toUpperCase().trim()=='LATIN AMERICA'){
-  //    this.la=false;
-  //    this.locationselected='';
-  //    this.default_location='';
-  //   }else{
-  //     this.la=true;
-  //   }
+ 
   }
   previousStep(event : any){
     this.isEntryForm = false;	
