@@ -90,6 +90,15 @@ export class TopcountryframeComponent implements OnInit {
          //   queryParams: {}
          });}
         }
+
+        if(this.service.includes('specialrequest')){
+          if ( this.countryname.isspecial){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
+
         if(this.service.includes('jabber_')){
            
           if ( this.countryname.jservices &&this.countryname.jservices.includes(this.service.replace('jabber_','')) ){    
@@ -169,6 +178,13 @@ export class TopcountryframeComponent implements OnInit {
          });}
         }
         
+        if(this.service.includes('specialrequest')){
+          if ( this.countryname.isspecial){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
           if(this.service.includes('jabber_')){
            
             if ( this.countryname.jservices &&this.countryname.jservices.includes(this.service.replace('jabber_','')) ){    

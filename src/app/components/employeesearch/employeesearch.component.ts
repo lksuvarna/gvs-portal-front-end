@@ -142,7 +142,7 @@ export class EmployeesearchComponent implements OnInit {
    }
    else { this.ccode = this.cookie.getCookie('ccode'); }
   }
-    
+  
  
     
         console.log("navigation component" + this.pcode);
@@ -218,6 +218,18 @@ export class EmployeesearchComponent implements OnInit {
         }
       }
     }, 200);
+
+    setTimeout(() => {
+    if(this.service='specialrequest'){
+      if(this.countrydetails.special_request_power_users!=undefined){
+        if(!(this.countrydetails.special_request_power_users.includes(this.ccode))){
+          alert(this.countrydetails.special_request_alert_message);
+            this.router.navigate(['services'], { skipLocationChange: true ,queryParams: { country: this.pcode, service:'services' } });
+        }
+      }
+    }
+  }, 200);
+
   }
 
   onSubmit(formData: NgForm) {
