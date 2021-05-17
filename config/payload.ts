@@ -725,17 +725,17 @@ accountId !:string
 icaCode !:string
 device !:string
 model !:string
-employeeId !:string
+// employeeId !:string
 voicemail !:string
 justification !:string
 description !:string
 mac !:string;
-goClick!: boolean;
-emailClick!: boolean;
-emailResult!: boolean;
+// goClick!: boolean;
+// emailClick!: boolean;
+// emailResult!: boolean;
 showBusinessNeed!: boolean;
 cos!: String;
-employeeIDDisplay !: String;
+// employeeIDDisplay !: String;
 currentMacOrPhone !: String;
 currentMac !: String;
 currentPhone !: String;
@@ -747,6 +747,8 @@ newMac !: String;
 newModel !: String
 showSearch !: boolean;
 showerrormessage !: boolean;
+hideNext !: boolean;
+hideSteps !: boolean;
 
 Create_Cache_fixedphone(){
     
@@ -762,17 +764,17 @@ Create_Cache_fixedphone(){
     this.icaCode='';
     this.device='';
     this.model='';
-    this.employeeId='';
+    // this.employeeId='';
     this.voicemail='';
     this.justification='';
     this.description='';
     this.mac='';
     this.showBusinessNeed=true;
-    this.goClick=true;
-    this.emailClick=false;
-    this.emailResult=false;
+    // this.goClick=true;
+    // this.emailClick=false;
+    // this.emailResult=false;
     this.cos='National';
-    this.employeeIDDisplay='';
+    // this.employeeIDDisplay='';
     this.currentMacOrPhone='';
     this.currentMac='';
     this.currentPhone='';
@@ -784,7 +786,8 @@ Create_Cache_fixedphone(){
     this.newModel='';
     this.showSearch=false;
     this.showerrormessage=false;
-
+    this.hideNext=true;
+    this.hideSteps=false;
     }
 
 }

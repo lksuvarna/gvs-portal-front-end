@@ -182,7 +182,7 @@
     },
 
     "Jabbermove":{
-        "JabbertoMove":"Jabber / Numéro de téléphone à déplacer",
+        "JabbertoMove":"Jabber / Numéro de téléphone",
         "ProjectIId" : "Id du projet",
         "AccountId" : "Identifiant de compte",
         "ICA Code" : "Code ICA",
@@ -229,8 +229,8 @@
         "selectcountrycode":"Veuillez sélectionner le code du pays",
         "Only" : "Seule",
         "serialnumbersareallowed":"Les numéros de série sont autorisés à créer une demande de",
-        "selectlocation":"Veuillez sélectionner l'emplacement",
-        "selectjabbernumber":"Veuillez sélectionner le numéro Jabber"
+        "selectlocation":"Veuillez sélectionner un emplacement",
+        "selectjabbernumber":"Veuillez sélectionner le Jabber / Numéro de téléphone"
 
 
     },
@@ -306,7 +306,10 @@
         "providethereasonforupdation" :"Veuillez indiquer la raison de la mise à jour.",
         "provideNewDescription" :"Veuillez fournir la nouvelle description. ", 
         "differentDescriptionasisalready" :"Veuillez choisir une description différente car la description actuelle est déjà",
-        "fortheprovidednumber" :"pour le numéro fourni."
+        "fortheprovidednumber" :"pour le numéro fourni.",
+        "FixedPhoneLocation" :"Emplacement du téléphone fixe",
+        "SelectOne" :"Sélectionnez-en un",
+        "cos" :"Veuillez sélectionner une classe de service."
    
    
    

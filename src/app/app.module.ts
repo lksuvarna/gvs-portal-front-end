@@ -74,6 +74,7 @@ import { ApprovalSinglePageComponent } from './components/approval-single-page/a
 import { EnExtensionAuSummaryComponent } from './components/en-extension-au-summary/en-extension-au-summary.component';
 import { HpEmeaUpdateComponent } from './components/hp-emea-update/hp-emea-update.component';
 import { VoipAllSpecialRequestComponent } from './voip-all-special-request/voip-all-special-request.component';
+import { HpIndonesiaUpdateComponent } from './components/hp-indonesia-update/hp-indonesia-update.component';
 
 
 
@@ -158,7 +159,8 @@ handleError(error: Error){
     ApprovalSinglePageComponent,
     EnExtensionAuSummaryComponent,
     HpEmeaUpdateComponent,
-    VoipAllSpecialRequestComponent
+    VoipAllSpecialRequestComponent,
+    HpIndonesiaUpdateComponent
 
 
 

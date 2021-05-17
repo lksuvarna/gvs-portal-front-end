@@ -50,6 +50,7 @@ import { FacInDeactivateComponent } from './components/fac-in-deactivate/fac-in-
 import { EnExtensionAuSummaryComponent } from './components/en-extension-au-summary/en-extension-au-summary.component'
 import { HpEmeaUpdateComponent } from './components/hp-emea-update/hp-emea-update.component';
 import { VoipAuMoveComponent } from './components/voip-au-move/voip-au-move.component';
+import { HpIndonesiaUpdateComponent } from './components/hp-indonesia-update/hp-indonesia-update.component';
 
 
 
@@ -97,6 +98,7 @@ const appRoutes: Routes = [
 
     { path: 'entrydetailsaufn', component: HpAuNewComponent},
     { path: 'entrydetailsaufu', component: HpAuUpdateComponent},
+    { path: 'entrydetailsidfu', component: HpIndonesiaUpdateComponent},
     { path: 'entrydetailsfac', component: FacInNewComponent},
     { path: 'entrydetailsfacu', component: FacInUpdateComponent},
     { path: 'entrydetailsfacr', component: FacInResetComponent},

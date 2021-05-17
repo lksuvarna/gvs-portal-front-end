@@ -188,7 +188,7 @@
         "Jabber/PhoneNumberLocation": "Select Jabber / Phone Number Location"
     },
     "Jabbermove": {
-        "JabbertoMove": "Jabber / Phone number to Move",
+        "JabbertoMove": "Jabber / Phone number",
         "ProjectIId": "Project ID",
         "AccountId": "Account ID",
         "ICACode": "ICA Code",
@@ -235,8 +235,8 @@
         "selectcountrycode": "Please select the Country Code",
         "Only": "Only",
         "serialnumbersareallowed": "Serial numbers are allowed to create a request for",
-        "selectlocation": "Please select the Location",
-        "selectjabbernumber": "Please select the Jabber Number"
+        "selectlocation": "Please select a Location",
+        "selectjabbernumber": "Please select the Jabber / Phone Number"
 
     },
     "topui": {
@@ -282,7 +282,7 @@
         "DescriptionofDevice" : "Description of Device",
         "Somethingseemswrong" :"Something seems to have gone wrong. Please try later.",
         "selectdevice" :"Please select a device type",
-        "selectmodel" :"Please select a type of model",
+        "selectmodel" :"Please select a model type",
         "businesscos" :"Please enter the business need for Class of Service.",
         "descriptioncharacters" :"Please Enter a description and it should not be more than 30 characters",
         "entermacadd":"Please enter 12 characters MAC address",
@@ -312,7 +312,10 @@
         "providethereasonforupdation" :"Please provide the reason for updation.",
         "provideNewDescription" :"Please provide the New Description. ", 
         "differentDescriptionasisalready" :"Please choose a different Description as the current Description is already",
-        "fortheprovidednumber" :"for the provided number."
+        "fortheprovidednumber" :"for the provided number.",
+        "FixedPhoneLocation" :"Fixed Phone Location",
+        "SelectOne" :"Select One",
+        "cos":"Please select a class of service."
 
         
 

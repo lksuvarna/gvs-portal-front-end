@@ -12,7 +12,7 @@
             <b translate>servicestitle.Delete Jabber Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
-
+                <span translate>Jabberentrydetails.Fieldsasterisk</span> (<span class="ds-text-contextual-red-2">*</span>) <span translate>Jabberentrydetails.arerequired</span>
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
@@ -37,7 +37,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" tabindex="1" ngModel [(ngModel)]='selected_jabber'>
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Jabber / Phone Number" tabindex="1" ngModel [(ngModel)]='selected_jabber'>
                   <option value ="" translate>Jabberupdate.SELECTONE</option>
                   <option name="Jabber_1" *ngFor='let fl_itn of Jabber' [value]='fl_itn' selected>
                     {{ fl_itn }}</option>
