@@ -49,20 +49,20 @@
                     </a>
                 </div>
             </div><br *ngIf="linkv.includes('reset')">
-            <div class="ds-panel" *ngIf="linkv.includes('deactivate')">
+            <div class="ds-panel" *ngIf="linkv.includes('delete')">
                 <div class="ds-panel-container">
-                    <a [routerLink]="['/employeesearch']" [queryParams]="{country:pcode,service:'fac_deactivate'}" style="text-decoration: none;">
+                    <a [routerLink]="['/employeesearch']" [queryParams]="{country:pcode,service:'fac_delete'}" style="text-decoration: none;">
                         <table>
                             <tbody>
                                 <tr>
                                     <td><img src="././assets/arr.png"></td>
-                                    <td><span class="ds-padding-left-1 ds-text-blue-6 ds-pad-l-1"><b>Deactivate an existing FAC code</b></span></td>
+                                    <td><span class="ds-padding-left-1 ds-text-blue-6 ds-pad-l-1"><b>Delete an existing FAC code</b></span></td>
                                 </tr>
                             </tbody>
                         </table>
                     </a>
                 </div>
-            </div><br *ngIf="linkv.includes('deactivate')">
+            </div><br *ngIf="linkv.includes('delete')">
         </div>
     </div>
 </div>
