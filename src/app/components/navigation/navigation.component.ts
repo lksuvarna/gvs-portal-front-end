@@ -34,8 +34,8 @@ export class NavigationComponent implements OnInit {
   parcountrydetails:any
   fixphoneVisibility:any;
   loggedinuser:any
-  serhl:any;jhl:any;fhl:any;fachl:any;reqhl:any;reshl:any;apphl:any;pnshl:any;sphl:any;
-  serin:any;jin:any;fin:any;facin:any;reqin:any;resin:any;appin:any;pnsin:any;spin :any;
+  serhl:any;jhl:any;fhl:any;fachl:any;mhl:any;reqhl:any;reshl:any;apphl:any;pnshl:any;sphl:any;
+  serin:any;jin:any;fin:any;facin:any;min:any;reqin:any;resin:any;appin:any;pnsin:any;spin :any;
   @Input('dataNav') dataNavParent1: any
   @Input('cloudantData') cloudantData1: any
    
@@ -90,6 +90,9 @@ export class NavigationComponent implements OnInit {
     if (!this.cloudantData.isfac) {
       this.removeService('FAC Code')
     }
+    if (!this.cloudantData.ismobile) {
+      this.removeService('Mobile')
+    }
     if (!this.cloudantData.isapproval) {
       this.removeService('Approvals Pending')
     }
@@ -130,8 +133,8 @@ export class NavigationComponent implements OnInit {
             this.fixphoneVisibility = this.parcountrydetails.isfixphone;
           }
         }
-      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.reqhl=false;this.reshl=false;this.apphl=false;this.pnshl=false,this.sphl=false;
-      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.reqin=false;this.resin=false;this.appin=false;this.pnsin=false,this.spin=false;
+      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.mhl=false;this.reqhl=false;this.reshl=false;this.apphl=false;this.pnshl=false,this.sphl=false;
+      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.min=false;this.reqin=false;this.resin=false;this.appin=false;this.pnsin=false,this.spin=false;
       
       if (this.service=="services")
       {
@@ -158,10 +161,18 @@ export class NavigationComponent implements OnInit {
         this.fin=true;
       }
 
+      if (this.service.includes("mobile"))
+      {        
+        this.min=true
+        this.mhl=true
+        this.fin=true;
+      }
+
 
       if (this.service.includes("specialrequest"))
       {        
         this.facin=true
+        this.min=true
         this.fin=true;
         this.sphl=true;
       }
@@ -207,7 +218,7 @@ export class NavigationComponent implements OnInit {
                 {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
                 {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
               ],
-              "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+              "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request","Mobile"], 
               "step" : 1,
             }
           ]
@@ -220,7 +231,8 @@ export class NavigationComponent implements OnInit {
               {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
 
               {"name" : "Jabber","routingname":"/jabberservices", "indented" : true, "highlighted": this.jhl,"param":"jabberservices"}, 
-              {"name" : "FAC Code","routingname":"/facservices", "indented" : true, "highlighted": this.fachl,"param":"facservices"},             
+              {"name" : "FAC Code","routingname":"/facservices", "indented" : true, "highlighted": this.fachl,"param":"facservices"},  
+              {"name" : "Mobile","routingname":"/mobileservices", "indented" : true, "highlighted": this.mhl,"param":"mobileservices"},                        
 
                {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : this.fin, "highlighted": this.fhl,"param":"fixedphoneservices"},            
                {"name" : "Special Request","routingname":"/employeesearch", "indented" : true, "highlighted": this.sphl,"param":"specialrequest"},            
@@ -230,7 +242,7 @@ export class NavigationComponent implements OnInit {
               {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
               {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
             ],
-            "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+            "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request","Mobile"], 
             "step" : 1,
           }
         ]
@@ -248,6 +260,7 @@ export class NavigationComponent implements OnInit {
         "isjabber": this.countryname.isjabber,
         "isfixedphone": this.fixphoneVisibility,
         "isfac": this.countryname.isfac,
+        "ismobile": this.countryname.ismobile,
         "isspecial": this.countryname.isspecial,
         "isreval": this.countryname.isreval,
         "isapproval":this.countryname.isapproval,
@@ -285,14 +298,15 @@ export class NavigationComponent implements OnInit {
           this.fixphoneVisibility = this.parcountrydetails.isfixphone;
         }
         this.cloudantData = {
-          "code": this.pcode,
-          "name": this.countryname.name,
-          "isocode": this.countryname.isocode,
-          "isjabber": this.countryname.isjabber,
-          "isfixedphone": this.fixphoneVisibility,
-          "isfac": this.countryname.isfac,
-          "isspecial": this.countryname.isspecial,          
-          "isreval": this.countryname.isreval,
+        "code": this.pcode,
+        "name": this.countryname.name,
+        "isocode": this.countryname.isocode,
+        "isjabber": this.countryname.isjabber,
+        "isfixedphone": this.fixphoneVisibility,
+        "isfac": this.countryname.isfac,
+        "ismobile": this.countryname.ismobile, 
+        "isspecial": this.countryname.isspecial,          
+        "isreval": this.countryname.isreval,
         "isapproval":this.countryname.isapproval,
         "isjabbernew":this.countryname.isjabbernew,
         "isjabberdelete":this.countryname.isjabberdelete,

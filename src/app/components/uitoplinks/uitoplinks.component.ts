@@ -2,6 +2,7 @@ import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { ActivatedRoute } from '@angular/router';
+import { cloudantservice } from '../../_services/cloudant.service';
 
 @Component({
   selector: 'app-uitoplinks',
@@ -11,20 +12,29 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UitoplinksComponent implements OnInit {
   searchText = '';
+  searchItems : any = []
   ccode='';
   routerPath = ''
-  searchItems = [    
-    {"name" : "India","code":"744","path":"././assets/flags/744.png"},
-    {"name" : "France","code":"706","path":"././assets/flags/706.png"},
-    {"name" : "Canada/Caribbean","code":"649","path":""},
-    {"name" : "Latin America","code":"631","path":"././assets/flags/631.png"},
-    {"name" : "USA","code":"897","path":"././assets/flags/897.png"},
-    {"name" : "Australia","code":"616","path":"././assets/flags/616.png"},
-    {"name" : "China","code":"672","path":"././assets/flags/672.png"},
-    
-  ]
+  searchData:any = [];
+  searchObj =  {
+    name: '',
+    path: '',
+    code:''
+  }
 
-  constructor(private _eref: ElementRef,private cookie: CookieHandlerService,private route: ActivatedRoute) {
+  // searchItems = [  
+  //   {"name" : "Algeria","code":"612","path":"././assets/flags/612.png"},  
+  //   {"name" : "India","code":"744","path":"././assets/flags/744.png"},
+  //   {"name" : "France","code":"706","path":"././assets/flags/706.png"},
+  //   {"name" : "Canada/Caribbean","code":"649","path":""},
+  //   {"name" : "Latin America","code":"631","path":"././assets/flags/631.png"},
+  //   {"name" : "USA","code":"897","path":"././assets/flags/897.png"},
+  //   {"name" : "Australia","code":"616","path":"././assets/flags/616.png"},
+  //   {"name" : "China","code":"672","path":"././assets/flags/672.png"},
+    
+  // ]
+
+  constructor(private _eref: ElementRef,private cookie: CookieHandlerService,private route: ActivatedRoute, private cloudantservice: cloudantservice ) {
    }
 
   ngOnInit(): void {
@@ -43,8 +53,25 @@ export class UitoplinksComponent implements OnInit {
     }
     
   })
-  }
-  
+
+  this.cloudantservice.getcountrysearchdetails(this.ccode).subscribe(data =>{
+    this.searchData = data;
+    console.log('Response received for search', this.searchData );
+
+    // sessionStorage.setItem('Allcountrydetails', this.searchData.countrydetails);
+    // sessionStorage.setItem('Allcountrydetails1', JSON.stringify(this.searchData.countrydetails));
+
+    this.searchData.countrydetails.filter((element: any)=> {
+        this.searchObj =  Object.create(this.searchObj)
+        this.searchObj.name = element.name
+        this.searchObj.path = element.flagname
+        this.searchObj.code = element.code
+        this.searchItems.push(this.searchObj)
+    });
+      // alert(JSON.stringify(this.searchItems))
+  })
+
+  } 
 
   onClick(event:Event) {
     if (!this._eref.nativeElement.contains(event.target))

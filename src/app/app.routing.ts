@@ -51,6 +51,8 @@ import { EnExtensionAuSummaryComponent } from './components/en-extension-au-summ
 import { HpEmeaUpdateComponent } from './components/hp-emea-update/hp-emea-update.component';
 import { VoipAuMoveComponent } from './components/voip-au-move/voip-au-move.component';
 import { VoipAllSpecialRequestComponent } from './components/voip-all-special-request/voip-all-special-request.component';
+import { MobileservicesComponent } from './components/mobileservices/mobileservices.component';
+import { MobileDzNewComponent } from './components/mobile-dz-new/mobile-dz-new.component';
 
 
 
@@ -63,7 +65,8 @@ const appRoutes: Routes = [
   // { path: 'services' , loadChildren: () => import('./components/navigation/navigation.component').then(m => m.ServicesComponent)}  
     { path: 'jabberservices', component: JabberservicesComponent },   
     { path: 'fixedphoneservices', component: FixedphoneservicesComponent }, 
-    { path: 'facservices', component: FacservicesComponent },   
+    { path: 'facservices', component: FacservicesComponent }, 
+    { path: 'mobileservices', component: MobileservicesComponent },   
     { path: 'employeesearch', component: EmployeesearchComponent },    
     { path: 'employeeinfo', component: EmployeeinfoComponent },
     { path: 'resultpage', component: ResultpageComponent },
@@ -101,6 +104,7 @@ const appRoutes: Routes = [
     { path: 'entrydetailsfac', component: FacInNewComponent},
     { path: 'entrydetailsfacu', component: FacInUpdateComponent},
     { path: 'entrydetailsfacr', component: FacInResetComponent},
+    { path: 'entrydetailsmobile', component: MobileDzNewComponent},
     { path: 'entrydetails_update_la', component: VoipLaUpdateComponent},
     { path: 'entrydetails_update_us', component: VoipUsaUpdateComponent},
     { path: 'extensionsummaryau', component: EnExtensionAuSummaryComponent}, 

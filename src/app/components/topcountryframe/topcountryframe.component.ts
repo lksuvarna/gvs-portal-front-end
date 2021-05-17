@@ -24,8 +24,10 @@ export class TopcountryframeComponent implements OnInit {
   currentLang :any;
   translatecountryname :any;
   translatecountryname1 :boolean =false;
+
   
-  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_delete','requests','resources','approvalpending','revalidationpending','phone_search', 'specialrequest']
+  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','mobileservices','mobile_new','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_delete','requests','resources','approvalpending','revalidationpending','phone_search', 'specialrequest']
+
 
   changeLanguage(type :string){
     this.translateconfigservice.changeLanguage(type);
@@ -92,8 +94,17 @@ export class TopcountryframeComponent implements OnInit {
          });}
         }
 
+        if(this.service.includes('mobileservices')){
+          if ( this.countryname.mobileservices){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
+
         if(this.service.includes('specialrequest')){
           if ( this.countryname.isspecial){}
+
           else{sessionStorage.setItem('pagedisplay','pagenotfound')
           this.router.navigate(['**'], {
          //   queryParams: {}
@@ -125,6 +136,17 @@ export class TopcountryframeComponent implements OnInit {
         if(this.service.includes('fac_')){
          
           if ( this.countryname.facservices && this.countryname.facservices.includes(this.service.replace('fac_','')) ){    
+          }
+         
+        else{
+          sessionStorage.setItem('pagedisplay','pagenotfound')
+        this.router.navigate(['**'], {
+       //   queryParams: {}
+       });
+        }}
+        if(this.service.includes('mobile_')){
+         
+          if ( this.countryname.mobileservices && this.countryname.mobileservices.includes(this.service.replace('mobile_','')) ){    
           }
          
         else{
@@ -178,6 +200,14 @@ export class TopcountryframeComponent implements OnInit {
          //   queryParams: {}
          });}
         }
+
+        if(this.service.includes('mobileservices')){
+          if ( this.countryname.mobileservices){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
         
         if(this.service.includes('specialrequest')){
           if ( this.countryname.isspecial){}
@@ -219,11 +249,24 @@ export class TopcountryframeComponent implements OnInit {
          //   queryParams: {}
          });
           }}
+          if(this.service.includes('mobile_')){
+           
+            if (this.countryname.mobileservices && this.countryname.mobileservices && this.countryname.mobileservices.includes(this.service.replace('mobile_','')) ){    
+            }
+           
+          else{
+            sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });
+          }}
      });
     }
   })
   
-  if((this.service!='jabber_new') && (this.service!='jabber_delete') && (this.service!='jabber_update') && (this.service!='jabber_move') && (this.service!='fixedphone_new') && (this.service!='fixedphone_delete') &&  (this.service!='fixedphone_update') && (this.service!='fac_new') && (this.service!='fac_update') && (this.service!='specialrequest')){
+
+  if((this.service!='jabber_new') && (this.service!='jabber_delete') && (this.service!='jabber_update') && (this.service!='jabber_move') && (this.service!='fixedphone_new') && (this.service!='fixedphone_delete') &&  (this.service!='fixedphone_update') && (this.service!='fac_new') && (this.service!='fac_update') && (this.service!='specialrequest')&& (this.service!='mobile_new')){
+
     sessionStorage.removeItem('cache');
   }
 

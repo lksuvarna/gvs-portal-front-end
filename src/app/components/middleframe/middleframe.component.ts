@@ -58,6 +58,7 @@ export class MiddleframeComponent implements OnInit {
         "isjabber": this.countryname.isjabber,
         "isfixedphone": this.fixphoneVisibility,
         "isfac": this.countryname.isfac,
+        "ismobile": this.countryname.ismobile,
         "isspecial": this.countryname.isspecial,
         "isreval": this.countryname.isreval,
         "isapproval":this.countryname.isapproval,
@@ -93,6 +94,7 @@ export class MiddleframeComponent implements OnInit {
           "isjabber": this.countryname.isjabber,
           "isfixedphone": this.fixphoneVisibility,
           "isfac": this.countryname.isfac,
+          "ismobile": this.countryname.ismobile,
           "isspecial": this.countryname.isspecial,
           "isreval": this.countryname.isreval,
         "isapproval":this.countryname.isapproval,
@@ -114,7 +116,7 @@ export class MiddleframeComponent implements OnInit {
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
          ],
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request","Mobile"], 
           "titles": [
             "Terms of use",
             "Useful Information",
