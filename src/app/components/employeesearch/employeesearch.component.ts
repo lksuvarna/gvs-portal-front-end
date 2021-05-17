@@ -220,15 +220,16 @@ export class EmployeesearchComponent implements OnInit {
     }, 200);
 
     setTimeout(() => {
-    if(this.service='specialrequest'){
-      if(this.countrydetails.special_request_power_users!=undefined){
-        if(!(this.countrydetails.special_request_power_users.includes(this.ccode))){
-          alert(this.countrydetails.special_request_alert_message);
-            this.router.navigate(['services'], { skipLocationChange: true ,queryParams: { country: this.pcode, service:'services' } });
+      if(this.service=='specialrequest'){
+        if(this.countrydetails.special_request_power_users!=undefined){
+          if(!(this.countrydetails.special_request_power_users.includes(this.ccode))){
+            alert(this.countrydetails.special_request_alert_message);
+              this.router.navigate(['services'], { skipLocationChange: true ,queryParams: { country: this.pcode, service:'services' } });
+          }
         }
       }
-    }
-  }, 200);
+    }, 200);
+   
 
   }
 
@@ -780,4 +781,3 @@ export class EmployeesearchComponent implements OnInit {
 
   }
 }
-

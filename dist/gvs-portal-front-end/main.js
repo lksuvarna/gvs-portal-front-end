@@ -21926,7 +21926,7 @@ class EmployeesearchComponent {
             }
         }, 200);
         setTimeout(() => {
-            if (this.service = 'specialrequest') {
+            if (this.service == 'specialrequest') {
                 if (this.countrydetails.special_request_power_users != undefined) {
                     if (!(this.countrydetails.special_request_power_users.includes(this.ccode))) {
                         alert(this.countrydetails.special_request_alert_message);
