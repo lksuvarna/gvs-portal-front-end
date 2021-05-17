@@ -76,7 +76,7 @@
         "SelectOne":"Sélectionnez-en un",
         "norecord":"Il n'y a pas d'enregistrement d'un employé IBM avec le numéro de série " ,
         "availablefromBluePages" :"disponible auprès de BluePages",
-        "opps":"Opps! Quelque chose s'est usé Veuillez réessayer plus tard.",
+        "opps":"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard",
         "JabberLocation" : "Emplacement du Jabber / Numéro de téléphone",
         "Voicemail" : "Messagerie vocale",
         "ClassofService" : "Classe de service",

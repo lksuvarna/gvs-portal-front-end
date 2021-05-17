@@ -73,7 +73,7 @@ import { ApprovalResultPageComponent } from './components/approval-result-page/a
 import { ApprovalSinglePageComponent } from './components/approval-single-page/approval-single-page.component';
 import { EnExtensionAuSummaryComponent } from './components/en-extension-au-summary/en-extension-au-summary.component';
 import { HpEmeaUpdateComponent } from './components/hp-emea-update/hp-emea-update.component';
-import { VoipAllSpecialRequestComponent } from './voip-all-special-request/voip-all-special-request.component';
+import { VoipAllSpecialRequestComponent } from './components/voip-all-special-request/voip-all-special-request.component';
 
 
 

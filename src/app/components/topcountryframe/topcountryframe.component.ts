@@ -24,7 +24,8 @@ export class TopcountryframeComponent implements OnInit {
   currentLang :any;
   translatecountryname :any;
   translatecountryname1 :boolean =false;
-  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_delete','requests','resources','approvalpending','revalidationpending','phone_search']
+  
+  routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_delete','requests','resources','approvalpending','revalidationpending','phone_search', 'specialrequest']
 
   changeLanguage(type :string){
     this.translateconfigservice.changeLanguage(type);
@@ -206,9 +207,11 @@ export class TopcountryframeComponent implements OnInit {
     }
   })
   
-  if((this.service!='jabber_new') && (this.service!='jabber_delete') && (this.service!='jabber_update') && (this.service!='jabber_move') && (this.service!='fixedphone_new') && (this.service!='fixedphone_delete') &&  (this.service!='fixedphone_update') && (this.service!='fac_new') && (this.service!='fac_update')){
+  if((this.service!='jabber_new') && (this.service!='jabber_delete') && (this.service!='jabber_update') && (this.service!='jabber_move') && (this.service!='fixedphone_new') && (this.service!='fixedphone_delete') &&  (this.service!='fixedphone_update') && (this.service!='fac_new') && (this.service!='fac_update') && (this.service!='specialrequest')){
     sessionStorage.removeItem('cache');
   }
+
+  
 
   }
 

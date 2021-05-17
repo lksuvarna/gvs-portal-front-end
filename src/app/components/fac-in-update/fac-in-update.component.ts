@@ -114,7 +114,7 @@ export class FacInUpdateComponent implements OnInit {
   toggle_options(){
     if (this.checked){
     this.newLocation=false;
-    this.toup_disp="Location";
+    this.toup_disp="Office Location";
     }
     else{
     this.newLocation=true;
@@ -157,7 +157,7 @@ export class FacInUpdateComponent implements OnInit {
     }
       
     if(this.checked) {
-      if(formData.value.Location_1 ==='' || formData.value.Location_1.toLowerCase() ==='select office location' ) {
+      if(formData.value.Location_1 ==='' || formData.value.Location_1.toLowerCase() ==='select one' ) {
         alert('Please select office location');
         return;
       }
@@ -185,7 +185,7 @@ export class FacInUpdateComponent implements OnInit {
     }
 
     if(this.checked3) {
-      if(formData.value.authLevel ==='' || formData.value.authLevel.toLowerCase() ==='select authorization level' ) {
+      if(formData.value.authLevel ==='' || formData.value.authLevel.toLowerCase() ==='select one' ) {
         alert('Please select an authorization level');
         return;
       }
@@ -444,7 +444,7 @@ export class FacInUpdateComponent implements OnInit {
     this.Location_1=String(this.cache_disp.officeLocation) ;
     this.selectedLocation(this.cache_disp.officeLocation);
 
-    if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION') || (this.cache_disp.officeLocation=='') )
+    if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT ONE') || (this.cache_disp.officeLocation=='') )
       this.hideBuilding=true;
     else
       this.hideBuilding=false;
@@ -481,7 +481,7 @@ export class FacInUpdateComponent implements OnInit {
   }
 
   updateRequiredFor(updatefor: String){
-    if(updatefor.includes('Location')){
+    if(updatefor.includes('Office Location')){
       this.checked = true
     } else {
       this.checked = false

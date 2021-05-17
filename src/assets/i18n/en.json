@@ -46,7 +46,7 @@
         "Jabber": "Jabber",
         "FAC Code": "FAC Code",
         "Fixed Phone": "Fixed Phone",
-        "Special Request": "Jabber",
+        "Special Request": "Special Request",
         "Approvals Pending": "Approvals Pending",
         "Revalidation Pending": "Revalidation Pending",
         "Phone Number Search": "Phone Number Search",
@@ -77,7 +77,7 @@
         "SelectOne": "Select One",
         "norecord": "There is no record of an IBM employee with the serial number ",
         "availablefromBluePages": "available from BluePages",
-        "opps": "Opps! Some thing went worng.Please try again latter.",
+        "opps": "Something seems to have gone wrong. Please try later.",
         "JabberLocation": "Jabber / Phone Number location",
         "Voicemail": "Voicemail",
         "ClassofService": "Class of Service",
@@ -109,7 +109,8 @@
         "Request a new FAC Code": "Request a new FAC Code",
         "Update an existing FAC code": "Update an existing FAC code",
         "Reset an existing FAC code": "Reset an existing FAC code",
-        "Phone Number Search": "Phone Number Search"
+        "Phone Number Search": "Phone Number Search",
+        "Special Request": "Special Request for an existing service" 
 
 
 

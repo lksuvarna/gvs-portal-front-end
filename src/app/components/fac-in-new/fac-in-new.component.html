@@ -24,13 +24,13 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Location</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location (change)='selectedLocation(location.value)' [(ngModel)]='selected_location'>
-                                    <option value ="">Select Office Location</option>
+                                    <option value ="">Select One</option>
                                     <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
                     {{ fl_location }}</option>
                 </select>
@@ -80,7 +80,7 @@
                         </td>
                         <td width="54%">
                             <div id="d21" class="ds-input-container ">
-                                <input name="chargeDepartmentCode" value="" id="d2" class="ds-input" style="width: 300px !important;" title="Charge Department Code" autocomplete="off" [(ngModel)]="chargeDepartmentCode">
+                                <input name="chargeDepartmentCode" value="" id="d2" maxlength='6' class="ds-input" style="width: 300px !important;" title="Charge Department Code" [(ngModel)]="chargeDepartmentCode">
                                 <div id="Mentor1Div"></div>
                             </div>
                         </td>
@@ -106,7 +106,7 @@
                         <td width="50%"><br>
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="authLevel" rows="2" cols="40" id="authLevel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Authorization Level" [(ngModel)]="authLevel">
-                                 <option value ="">Select Authorization Level</option>
+                                 <option value ="">Select One</option>
                                  <option>Local</option>
                                  <option>STD</option>
                                  <option>ISD</option>
@@ -122,7 +122,7 @@
                         <td width="50%"><br>
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="Fac_Type" rows="2" cols="40" id="Fac_Type" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="FAC Code Type" #facType (change)="FacCodeType(facType.value)" [(ngModel)]="Fac_Type">
-                                    <option value="">Select FAC Code Type</option>
+                                    <option value="">Select One</option>
                                     <option>Temporary</option>
                                     <option>Permanent</option>
                                 </select>
@@ -138,7 +138,7 @@
                         <td width="50%"><br>
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="validity" rows="2" cols="40" id="validity" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Validity" [(ngModel)]="validity">
-                                    <option value="">Select Validity</option>
+                                    <option value="">Select One</option>
                                     <option>7 days</option>
                                     <option>30 days</option>
                                 </select>
@@ -151,7 +151,7 @@
                             <label for="comments" class="">Business Justification <span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%"><br>
-                            <textarea name="Comments" id="JustificationId" class="ds-input " style="width:300px !important;" title="Buisness Justification" rows="2" cols="40" [(ngModel)]="Comments"></textarea>
+                            <textarea name="Comments" id="JustificationId" class="ds-input " style="width:300px !important;" maxlength='200' title="Buisness Justification" rows="2" cols="40" [(ngModel)]="Comments"></textarea>
                         </td>
                     </tr>
                 </tbody>
@@ -194,7 +194,7 @@
                 <tbody>
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10">
-                            <label for="addId1">Location</label>
+                            <label for="addId1">Office Location</label>
                         </td>
                         <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
                     </tr>

@@ -36,6 +36,9 @@ export class ApprovalSinglePageComponent implements OnInit {
   request_name: any;
   request_sysid: any;
   flag: boolean = true;
+  reval=false;
+  revaldate:any;revalitn:any;revalchanged:any;revalolddept:any;revalnewdept:any
+  revaloldmgr:any;revalnewmgr:any;
    
 
   submit(){
@@ -57,7 +60,16 @@ export class ApprovalSinglePageComponent implements OnInit {
    this.request_cnum= sessionStorage.getItem('request_cnum');
    this.request_name= sessionStorage.getItem('request_name');
    this.request_sysid= sessionStorage.getItem('request_sysid');
-   
+   if(sessionStorage.getItem('reval')=="reval"){
+     this.reval=true ; 
+   this.revaldate= sessionStorage.getItem('revaldate');
+   this.revalitn= sessionStorage.getItem('revalitn');
+   this.revalchanged= sessionStorage.getItem('revalchanged');
+   this.revalolddept= sessionStorage.getItem('revalolddept');
+   this.revalnewdept= sessionStorage.getItem('revalnewdept');
+   this.revaloldmgr= sessionStorage.getItem('revaloldmgr');
+   this.revalnewmgr= sessionStorage.getItem('revalnewmgr');
+  } 
     this.empserial = this.ccode; 
     this.ccode=this.ccode.substring(6,9);
   const servicesData = {

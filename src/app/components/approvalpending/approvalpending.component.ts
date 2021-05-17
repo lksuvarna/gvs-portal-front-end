@@ -86,9 +86,11 @@ export class ApprovalpendingComponent implements OnInit {
      this.snowaction='snow_revalidation'
      this.empserial="467756744";
      this.reval=false;
+     sessionStorage.setItem('reval','reval');
     }
      else{
       this.snowaction='snow_approve'
+      sessionStorage.setItem('reval','approval');
      }
    
     
@@ -193,6 +195,14 @@ openpage(req:any){
   sessionStorage.setItem('request_cnum',req['sysapproval.variables.requested_by.user_name'].replace('-',''));
   sessionStorage.setItem('request_name',req['sysapproval.variables.requested_by.name']);
   sessionStorage.setItem('request_sysid',req.sys_id);
+  sessionStorage.setItem('revaldate',req['sysapproval.variables.call_permission']);
+  sessionStorage.setItem('revalitn',req['sysapproval.variables.itn']);
+  sessionStorage.setItem('revalchanged',req['sysapproval.variables.ica_code']);
+  sessionStorage.setItem('revalolddept',req['sysapproval.variables.Funded']);
+  sessionStorage.setItem('revalnewdept',req['sysapproval.variables.charge_dep_code']);
+  sessionStorage.setItem('revaloldmgr',req['sysapproval.variables.ITN_Status']);
+  sessionStorage.setItem('revalnewmgr',req['sysapproval.variables.account_id']);
+  
   this.router.navigate(['/approvalsingle'],{ skipLocationChange: true, queryParams: { country: this.pcode, service:this.service}}) ;
   
 }

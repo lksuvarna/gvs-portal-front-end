@@ -1,0 +1,195 @@
+<app-topcountryframe></app-topcountryframe>
+
+
+<div class=" ds-panel ds-col-12"></div>
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+    <div class="ds-col-md-4 ds-col-xl-4">
+        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
+    </div>
+    <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
+        <form [hidden]='isEntryForm' (submit)='entryDetails(formData)' #formData='ngForm'>
+
+            <b translate>servicestitle.Delete Jabber Request</b>
+
+            <div class="ds-pad-t-0_5 ds-pad-b-1">
+
+            </div>
+            <div class=" ds-panel ds-col-12 "></div>
+
+            <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
+
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>employeeinfotrans.EmployeeEntryDetails</h2>
+            <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
+                <p translate>employeeinfotrans.nojabber </p>
+            </div>
+            <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
+                <p><span style="font-size: 1rem;"><span translate>employeeinfotrans.alreadyonedeleterequestinprogress</span> {{identifier}}.<br>
+    
+    <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>              
+    
+    <span translate>employeeinfotrans.furtherassistance</span> <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+            </div>
+            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false ">
+                <tbody>
+                    <tr valign="top" *ngIf="warninginfosnowres==false" [hidden]='others' >
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>Jabberupdate.JabberNumber</label>
+                            <span class="ds-text-contextual-red-2"></span>
+                        </td>
+                        <td width="54%" height="10">
+                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" tabindex="1" 
+                                 (change)='toggleOptions($event)' ngModel [(ngModel)]='selected_jabber'>
+                  <option value ="" translate>Jabberupdate.SELECTONE</option>
+                  <option name="Jabber_1" *ngFor='let fl of data'  [value]='fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?fl.IDENTIFIER.trim()+"-SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?fl.IDENTIFIER.trim()+"-P":fl.IDENTIFIER.trim()' selected>
+                    {{ fl.IDENTIFIER.trim()}}{{fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?"-SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?"-P":''}}</option>
+                </select>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr valign="top" *ngIf='defaultlocation==false && la==false'>
+                        <td colspan="2" width="47%" height="10">
+                            <label for="LocationId" class="ds-text-capitalize" translate>Jabbernewtrans.JabberLocation</label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="53%" height="10">
+                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
+                                
+                            <select name="Location" rows="2" (change)='checkOthers($event)' [(ngModel)]="locationselected" cols="40" id="LocationId"  
+                            class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;"  title="Location" >
+                            <option value ="" selected translate>Jabberupdate.SELECTONE</option>
+                                <option name="Location" *ngFor="let fl_location of locationlist"  [value]="fl_location">
+                                    {{ fl_location }}</option>
+                            </select>
+                            </div>
+                        </td>
+                    </tr>
+                   
+                    <tr valign="top" *ngIf='defaultlocation==true && la==false'>
+                        <td colspan="2" width="46%" height="10">
+                            <label for="default_location" translate>Jabbernewtrans.JabberLocation</label>
+                        </td>
+                        <td width="54%" height="10">
+                            <div class="ds-input-container">
+                                <input name="default_location" value="" autocomplete="off" tabindex="2" id="ch" class="ds-input ds-disabled" style="width:300px !important;"  [(ngModel)]='default_location'></div>
+                        </td>
+                    </tr>
+                    <tr valign="top" [hidden]='others'>
+                        <td colspan="2" width="46%" height="10"><label for="requirement_id" class="ds-text-capitalize">Description of Requirement</label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="54%" height="10">
+                            <div class="ds-input-container">
+                                <textarea name="requirement" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Description of Requirement" maxlength="200" rows="2" cols="40" [(ngModel)]="requirement"></textarea>
+                                 <p>Note:Length should not exceed 200</p>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <br>
+            <label class='ds-text-'><b>Note: <br></b></label>
+            <p [hidden]='others'>
+                Only use the Special Request for any special operation, such as a second office number, a hotline for a support group, a shared line setup for functional groups, or to indicate a need for telephony-related consultancy.<br><br>
+                If you need standard service such as Jabber or Fixed Phone , do not submit a Special Request as it will be rejected. Standard services can be requested from the menu on the left of this page.
+            </p>
+            <p [hidden]='!others'>Please note , Special Request related to voice services can be submitted only for HCS migrated site.  Special Request related to voice services for a non-HCS site should be submitted in the  
+                <a href="Notes://d03dbl04.boulder.ibm.com/87257BD700355107/" target="_blank"> TMAC tool.</a><br>Help related to TMAC tool can be found <a href="https://w3.ibm.com/help/#/article/11834" target="_blank">here.</a> 
+            </p> 
+                <label class='ds-text-' [hidden]='!others'>Only use the Special Request for any special operation, such as a second office number, a hotline for a support group, a shared line setup for functional groups, or to indicate a need for telephony-related consultancy. 
+                <br><br>If you need standard service such as Jabber or Fixed Phone , do not submit a Special Request as it will be rejected. Standard services can be requested from the menu on the left of this page.</label>
+            <br>
+            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
+              <input type="button" name="back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
+                value="{{'employeeinfotrans.BACK'|translate}}" (click)="backClick(formData)">
+            </span>
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='others'>
+              <input type="submit" name="next"
+                class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="{{'employeeinfotrans.NEXT'|translate}}" *ngIf="warninginfo==false && warninginfosnow==false">
+            </span>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+
+        <form [hidden]='isReviewForm'>
+
+            <b translate>servicestitle.Delete Jabber Request</b>
+
+            <div class="ds-pad-t-0_5 ds-pad-b-1" translate>
+                Jabberentrydetails.toprocessPI
+            </div>
+            <div class=" ds-panel ds-col-12 "></div>
+
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+
+
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>Jabberupdate.ReviewDetails</h2>
+
+            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top" [hidden]='msgdis'>
+                        <td colspan="2" width="43%" translate>Jabberupdate.JabberNumber</td>
+                        <td width="57%">
+                            <div class="ds-margin-bottom-2">{{selectedJabber}}</div>
+                        </td>
+                    </tr>
+                    <tr valign="top" [hidden]='la'>
+                        <td colspan="2" width="46%" height="10">
+                            <label for="addId1" translate>Jabbernewtrans.JabberLocation</label>
+                        </td>
+                        <td width="54%" height="10">{{fl_location_disp}}</td>
+                    </tr>
+    
+                    <tr valign="top"> 
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Description of Requirement</label>
+                        </td>
+                        <td width="54%" height="10">
+                            <label>{{requirements_disp}}</label>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <br>
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
+                <p></p>
+                <p translate>Jabbernewtrans.opps</p>
+                <p>
+                </p>
+            </div>
+            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+                <div class="ds-loader-header" translate>Jabberentrydetails.Submissioninprogress</div>
+                <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
+            </div>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
+
+              <input type="button" name="back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
+                value="BACK" (click)='BackButton()' *ngIf="this.isButtonVisible  && !errorinfo">
+            </span>
+
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2" *ngIf="warninginfo==false">
+              <input type="submit" name="next"  (click)="submit_snow()" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="SUBMIT" *ngIf="this.isButtonVisible  && !errorinfo" >
+            </span>
+                        <input type="button" name="exit" *ngIf="errorinfo" type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="{{'alerttranslation.EXITREQUEST'|translate}}">
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>
