@@ -941,7 +941,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -23358,7 +23358,7 @@ class EmployeesearchComponent {
                 alert("" + this.mainConfiguration.alerttranslation.Only + " " + this.countrydetails.name + " " + this.mainConfiguration.alerttranslation.serialnumbersareallowed + " " + this.countrydetails.name);
                 return;
             }
-            if (this.checked === false) {
+            if (this.countryroute === '612' && this.service === 'mobile_new' && this.checked === false) {
                 alert('Please read the Algeria Mobility Policy');
                 return;
             }
@@ -23386,7 +23386,7 @@ class EmployeesearchComponent {
                     this.employeeSerial = formData.value.employeeSerial + this.pcode;
                 }
             }
-            if (this.checked === false) {
+            if (this.countryroute === '612' && this.service === 'mobile_new' && this.checked === false) {
                 alert('Please read the Algeria Mobility Policy');
                 return;
             }
