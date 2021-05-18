@@ -11,7 +11,8 @@
 
         <b translate>servicestitle.{{this.title}}</b>
         <div class="ds-pad-t-0_5 ds-pad-b-0_4">
-            <p *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfosnowothersfac==false && warninginfofacr== false  && warninginfofacu== false && warninginfofacdeactivate== false"
+            
+            <p *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfosnowothersfac==false && warninginfofac== false && warninginfofacr== false  && warninginfofacu== false && warninginfofacdelete== false"
                 translate>employeeinfotrans.ifinfoiscorrect <a translate href="https://w3.ibm.com/bluepages/" target="_blank">employeeinfotrans.BluePagesrecord </a> <span translate>employeeinfotrans.beforecontinuing </span></p>
 
         </div>
@@ -119,10 +120,10 @@
             </p>
         </div>
 
-        <div id="fac_deactivate" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacdeactivate">
+        <div id="fac_delete" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacdelete">
             <p><span style="font-size: 1rem;">There is no FAC code for this serial number.</span></p>
         </div>
-       
+
 
 
 
@@ -180,7 +181,7 @@
             </div>
             <div class="ds-col-lg-2 ds-push-lg-8">
 
-                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfosnowothersfac==false && warninginfosnowfac==false && warninginfofac== false && warninginfofacr== false  && warninginfofacu== false && warninginfofacdeactivate== false"
+                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfosnowothersfac==false && warninginfosnowfac==false && warninginfofac== false && warninginfofacr== false  && warninginfofacu== false && warninginfofacdelete== false"
                     translate>employeeinfotrans.NEXT</button>
 
             </div>

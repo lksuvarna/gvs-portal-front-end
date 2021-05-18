@@ -30,8 +30,10 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' ngModel [(ngModel)]='selected_location'>
                                     <option value ="">Select One</option>
+
                                     <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' selected>
                     {{ fl_location }}</option>
                 </select>
@@ -102,7 +104,7 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container ds-pad-t-1">
-                                <input name="Projectid" value="" tabindex="2" rows="2" cols="40" id="Projectid" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager\Project Manager for Project ID" maxlength="11" ngModel [(ngModel)]='projectIdValue'> </div>
+                                <input name="Projectid" value="" tabindex="2" rows="2" cols="40" id="Projectid" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager\Project Manager for Project ID" maxlength="11" ngModel [(ngModel)]='projectIdValue'>                                </div>
                         </td>
                     </tr>
 
@@ -137,10 +139,10 @@
         </form>
 
         <form [hidden]="isReviewForm">
-            
+
             <b translate>servicestitle.Request new Jabber service</b>
 
-            
+
             <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
@@ -206,9 +208,12 @@
                 </tbody>
             </table>
 
-            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
-                <p>Something seems to have gone wrong. Please try later.</p><p>
-            </p></div>
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
+                <p></p>
+                <p>Something seems to have gone wrong. Please try later.</p>
+                <p>
+                </p>
+            </div>
 
             <div class="ds-hr-thick ds-mar-t-1_5"></div>
 
@@ -229,10 +234,10 @@
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 value="SUBMIT" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
             </span>
-                <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
-        
-           
-                        
+                        <input type="button" name="exit" *ngIf="errorinfo" type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
+
+
+
 
 
                     </div>

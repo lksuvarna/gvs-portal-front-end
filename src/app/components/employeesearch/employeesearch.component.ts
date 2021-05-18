@@ -24,6 +24,9 @@ export class EmployeesearchComponent implements OnInit {
   radioAction: string = "";
   hideDisTextBox: boolean = false;
   hideDisserial: boolean = true;
+  algMobile: boolean = false
+  ackMobileAlg: boolean = false
+  checked : any=false;
 
   constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private bpservices: bpservices, private Db2Service: Db2Service, private servicenowservice: servicenowservice,private servicesd : TranslateConfigService) { }
   cloudantData: any = []
@@ -73,6 +76,9 @@ export class EmployeesearchComponent implements OnInit {
   itns: any = [];
   voice_mail: any = [];
   cos: any = [];
+  Resource_Type : any =[];
+  Resource_Location : any=[];
+  Hard_Phone: any=[];
   serviceName: any;
   returnValue: any;
   validcnum = false;
@@ -104,9 +110,14 @@ export class EmployeesearchComponent implements OnInit {
     this.fullName = this.fullName.replace(",", ", ");
     this.ccode = this.cookie.getCookie('ccode');
     this.countryroute=sessionStorage.getItem('countryroute')
-  // alert(this.countryroute)
+  //  alert(this.countryroute)
   // alert(this.pcode)
 //if(sessionStorage.getItem('countrydetails')==undefined ) {
+
+  if (this.countryroute === '612' && this.service === 'mobile_new') {
+    this.algMobile = true
+  }
+
   if (this.pcode!== this.countryroute) {
     
   this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
@@ -139,7 +150,7 @@ export class EmployeesearchComponent implements OnInit {
    }
    else { this.ccode = this.cookie.getCookie('ccode'); }
   }
-    
+  
  
     
         console.log("navigation component" + this.pcode);
@@ -185,7 +196,7 @@ export class EmployeesearchComponent implements OnInit {
         const servicesData = {
           "data": [
             {
-              "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+              "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request", "Mobile"],
               "step": 1,
             }
           ]
@@ -215,6 +226,21 @@ export class EmployeesearchComponent implements OnInit {
         }
       }
     }, 200);
+
+
+    setTimeout(() => {
+      if(this.service=='specialrequest'){
+        if(this.countrydetails.special_request_power_users!=undefined){
+          if(!(this.countrydetails.special_request_power_users.includes(this.ccode))){
+            alert(this.countrydetails.special_request_alert_message);
+              this.router.navigate(['services'], { skipLocationChange: true ,queryParams: { country: this.pcode, service:'services' } });
+          }
+        }
+      }
+    }, 200);
+   
+
+
   }
 
   onSubmit(formData: NgForm) {
@@ -243,6 +269,11 @@ export class EmployeesearchComponent implements OnInit {
         alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name +  " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" " + this.countrydetails.name);
         return;
       }
+
+      if(this.countryroute === '612' && this.service === 'mobile_new' && this.checked===false) {
+        alert('Please read the Algeria Mobility Policy');
+        return;
+      }
     }
     if (this.radioAction.toLowerCase() == "anotheremployee") {
       if (formData.value.employeeSerial.trim().length == 0 && this.hideDisTextBox == true) {
@@ -264,6 +295,11 @@ export class EmployeesearchComponent implements OnInit {
         } else {
           this.employeeSerial = formData.value.employeeSerial + this.pcode;
         }
+      }
+
+      if(this.countryroute === '612' && this.service === 'mobile_new' && this.checked===false) {
+        alert('Please read the Algeria Mobility Policy');
+        return;
       }
     }
     //for self
@@ -348,6 +384,15 @@ export class EmployeesearchComponent implements OnInit {
     
   
   }
+
+  ackMobile(){
+    if (this.checked){
+      this.ackMobileAlg = true
+    } else {
+      this.ackMobileAlg = false
+    }
+  }
+
   getBPData(): any {
     console.log(' this.employeeSerial', this.employeeSerial);
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
@@ -379,19 +424,24 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('voice_mail', '');
         sessionStorage.setItem('cos', '');
         //Data and routing 
-        if (this.service == "jabber_new" || this.service == "fac_new" ) {
+
+        if (this.service.includes("specialrequest")) {
+          this.getLocationdata();
+        }
+
+        if (this.service == "jabber_new" || this.service == "fac_new" || this.service == "specialrequest" || this.service == "mobile_new") {
           this.getDBdata()
         }
         if (this.service == "requests") {
           this.getSNOWdata();
-
+          
         }
         if (this.service.includes("fixedphone")) {
           this.getLocationdata();
 
         }
 
-        if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' || this.service == 'fac_deactivate') {
+        if (this.service == "resources" || this.service == "jabber_delete" || this.service == "jabber_update" || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' || this.service == 'fac_delete') {
           this.getDBdata();
 
         }
@@ -433,7 +483,7 @@ export class EmployeesearchComponent implements OnInit {
 
       else {
         this.datasnow = "nodata";
-        if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_deactivate") {
+        if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_delete") {
           this.getLocationdata()
         }
 
@@ -455,15 +505,15 @@ export class EmployeesearchComponent implements OnInit {
     )
     return this.datasnow;
   }
+
   getDBdata() {
     this.Db2Service.search_db2(this.employeeSerial, this.service, this.fixedphone, this.itn, this.countryname).subscribe(data => {
       console.log(' db2 response', data);
       console.log(' db2 response', data.message.length);
       if (data.message.length > 0) {
-
-        this.warninginfo = true
-        sessionStorage.setItem('warninginfo', 'true1');
-        for (var i = 0; i < data.message.length; i++) {
+         this.warninginfo = true
+         sessionStorage.setItem('warninginfo', 'true1');
+         for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
           if (this.service == 'jabber_move') {
           if (data.message[i].ATTRIBUTE3 == null)
@@ -482,17 +532,21 @@ export class EmployeesearchComponent implements OnInit {
             else
               this.cos[i] = data.message[i].ATTRIBUTE5.trim();
           }
-        }
-        // this.identifier = data.message[0].IDENTIFIER
-        if (this.service == "resources") {
+         
+         }
+         // this.identifier = data.message[0].IDENTIFIER
+         if (this.service == "resources") {
           sessionStorage.setItem('identifier', JSON.stringify(data.message))
           this.datadb = "yes";
 
-        } else if (this.service == "fac_new") {
+         } else if(this.service == 'specialrequest'){
+          sessionStorage.setItem('identifier', JSON.stringify(data.message));
+          this.datadb = "yes";    
+        }else if (this.service == "fac_new") {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";
 
-        } else if (this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_deactivate") {
+        } else if (this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_delete") {
 
           sessionStorage.setItem('db2data', JSON.stringify(data.message)) ; 
           if((JSON.stringify(data.message[0].IDENTIFIER)).trim() !== ""){
@@ -504,11 +558,12 @@ export class EmployeesearchComponent implements OnInit {
           sessionStorage.setItem('identifier', this.itns);
           sessionStorage.setItem('voice_mail', this.voice_mail);
           sessionStorage.setItem('cos', this.cos);
-          sessionStorage.setItem('profile_location',this.profile_location);
-
+           sessionStorage.setItem('profile_location',this.profile_location);
           this.datadb = "yes";
         }
-        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' ||this.service == 'fac_deactivate' ) {
+
+        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' ||this.service == 'fac_delete' ||this.service == 'mobile_new'  ) {
+
           console.log("insidesnowdelete")
           this.getSNOWdata();
           this.datadb = "yes";
@@ -525,6 +580,7 @@ export class EmployeesearchComponent implements OnInit {
           this.getSNOWdata()
         }
         else {
+          
           if (this.radioAction.toLowerCase() == "anotheremployee") {
             this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
           }
@@ -569,7 +625,7 @@ export class EmployeesearchComponent implements OnInit {
       else if (this.service.includes('fac')) {
         this.lookuploc = JSON.stringify(data.locationdetails.faclocations)
       }
-      else if (this.service.includes('special')) {
+      else if (this.service.includes('specialrequest')) {
         this.lookuploc = JSON.stringify(data.locationdetails.slocations)
       }
       // sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
@@ -688,6 +744,12 @@ export class EmployeesearchComponent implements OnInit {
         this.exitrouting = 'fixedphoneservices';
         this.reqname = "-DS-";
         break;
+      case "mobile_new":
+          this.title="Mobile New Request";
+          this.routingname="/entrydetailsmobile";
+          this.exitrouting='mobileservices';
+          this.reqname="-NS-";
+          break;
       case "fac_new":
       this.title="FAC Code New Request";
       this.routingname="/entrydetailsfac";
@@ -695,8 +757,8 @@ export class EmployeesearchComponent implements OnInit {
       this.reqname="-NS-";
       break;
 
-      case "fac_deactivate":
-      this.title="FAC Code Deactivate Request";
+      case "fac_delete":
+      this.title="FAC Code Delete Request";
       this.routingname="/entrydetailsfacdeactive";
       this.exitrouting='facservices';
       this.reqname="-DS-";
@@ -728,6 +790,13 @@ export class EmployeesearchComponent implements OnInit {
         this.title = "Approvals";
         this.exitrouting = 'services';
         break;
+
+        case "specialrequest":
+          this.title = "Special Request";
+          this.routingname = '/specialrequest';
+          this.exitrouting = 'services';
+          break;
+       
     }
   }
   hidedata() {
@@ -750,4 +819,3 @@ export class EmployeesearchComponent implements OnInit {
 
   }
 }
-

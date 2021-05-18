@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Create_Cache_jabber,Create_Cache_fixedphone,Create_Cache_fac } from 'config/payload';
+import { Create_Cache_jabber,Create_Cache_fixedphone,Create_Cache_fac, Create_Cache_mobile } from 'config/payload';
 
 @Component({
   selector: 'app-steps',
@@ -141,7 +141,7 @@ export class StepsComponent implements OnInit {
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_fixed : Create_Cache_fixedphone = new Create_Cache_fixedphone();
   cache_fac : Create_Cache_fac = new Create_Cache_fac();
-
+  cache_mobile : Create_Cache_mobile = new Create_Cache_mobile();
 
   cache_data(){
 
@@ -219,6 +219,21 @@ export class StepsComponent implements OnInit {
     this.cache.fixPhoneIdentifier= this.formData.value.identifier_hp;
     sessionStorage.setItem('cache',JSON.stringify(this.cache));
     console.log("cached");
+  }
+
+  if(this.service=='specialrequest'){
+    console.log("Starting special Request cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    if(this.formData.value.Jabber_1==undefined)
+    this.cache.selected_jabber='';
+    else
+    this.cache.selected_jabber = this.formData.value.Jabber_1.trim();
+    this.cache.officeLocation =  this.formData.value.Location
+    this.cache.campus=this.formData.value.default_location;	
+    this.cache.businessjustification= this.formData.value.requirement;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("special Request cached "+sessionStorage.getItem('cache'));
   }
 
   if(this.service == 'fixedphone_new') {
@@ -315,6 +330,18 @@ if(this.service=='fac_update'){
   sessionStorage.setItem('cache',JSON.stringify(this.cache_fac));
   console.log("cached");
 }
+
+if(this.service=='mobile_new'){
+
+  console.log("Starting cache_fac");
+  this.cache_mobile.setflag=true;
+  this.cache_mobile.cnum=this.cnum;
+  this.cache_mobile.Comments= this.formData.value.Comments;
+  sessionStorage.setItem('cache',JSON.stringify(this.cache_mobile));
+  console.log("cached");
+
+}
+
 
 }
 

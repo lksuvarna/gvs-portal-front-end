@@ -11,6 +11,30 @@
 
             <br><b translate>servicestitle.{{title}}</b>
 
+            <div class="ds-pad-t-0_5 ds-padding-bottom-1" *ngIf="algMobile">
+                <div class="ds-col-xs-12 ds-alert ds-warning">
+                    <p>Avis de confidentialité</p>
+                </div>
+                <p>En vous inscrivant au programme géré par l'entreprise pour les services mobiles (CMP), vous autorisez le bureau IBM CMP, le fournisseur de services mobiles et d'autres fournisseurs de services mobiles sous contrat avec IBM à saisir des
+                    informations sur votre téléphone mobile. services mobiles que vous utilisez. Ces informations sont utilisées dans l'intérêt légitime d'IBM, telles que la gestion des services et des coûts d'IBM, le respect des conditions contractuelles
+                    d'IBM et des opérateurs mobiles et la projection de la demande de terminaux et de services mobiles pour mieux répondre aux besoins des employés. Pour des raisons techniques et commerciales, ces informations peuvent être transférées
+                    dans n'importe quel pays où IBM est présent et aux fournisseurs de services si nécessaire. IBM a mis en place des politiques et des procédures destinées à protéger les informations sur ses employés dans le pays où ils sont stockés
+                    ou traités, conformément aux Directives pour la protection des informations sur les employés d'IBM.
+
+                    <br><br>Vous reconnaissez également qu'IBM et ses fournisseurs de services peuvent:
+                    <br>• collectez les données d'identification de votre appareil mobile, telles que le numéro de série de l'appareil, l'identifiant de la carte SIM et le numéro de téléphone, pour permettre à IBM d'identifier de manière unique l'appareil
+                    et la ligne de service
+                    <br>• collecter vos informations de coûts mobiles pour gérer les coûts
+                    <br>• collectez vos informations de consommation de services vocaux et de données, y compris SMS et MMS, pour valider les coûts et permettre à IBM de négocier avec les fournisseurs de services pour modifier la demande
+                    <br>• vous contacter directement au sujet du service et de votre utilisation du service, au besoin
+                    <br>• recueillir des renseignements détaillés sur les appels aux fins de facturation fractionnée et de conformité aux exigences de la vérification fiscale. Les détails de l'appel comprennent des données telles que la date et l'heure
+                    de l'appel, la durée de l'appel, les frais de communication, le type d'appel (national ou international), les numéros de téléphone des tiers (appelant ou destinataire)
+
+                    <br><br>IBM ne va pas:
+                    <br>• capturer les détails des conversations vocales ou textuelles sur votre appareil mobile
+                    <br>• suivre l'emplacement géographique de votre appareil mobile
+                </p>
+            </div>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1" translate>Jabbernewtrans.Reqnewservice <span>(<span class="ds-text-contextual-red-2">*</span>)</span> <span translate> Jabbernewtrans.arerequired</span></div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
@@ -98,6 +122,21 @@
                     </tr>
                 </tbody>
             </table>
+
+            <h2 *ngIf="algMobile" class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 " translate>Jabbernewtrans.Declaration</h2>
+
+            <div class="ds-input-container" *ngIf="algMobile">
+                <div class="ds-input-checkbox-group" role="group" aria-labelledby="basic-checkboxes-example">
+                    <div class="ds-input-checkbox">
+                        <input type="checkbox" id="checkbox1" name="checked" class="ds-input" title="Update requested for" (change)='ackMobile()' [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">
+                        <div class="ds-input-control"></div>
+                        <label for="checkbox1"></label>
+                        <span><span class="ds-text-contextual-red-2">*</span></span> <span translate>I have read and comply with the Algeria Mobility Policy, available <a href="https://apps.na.collabserv.com/wikis/home?lang=en-us#!/wiki/W8d573d8543f3_4106_b81c_623774d0a823/page/Getting%20Started" target="_blank">here</a> and I  acknowledge reading the Privacy Notice.</span>
+                    </div>
+
+                </div>
+            </div>
+
 
             <p class="ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning" id="error" *ngIf=notvalid>
                 <font color="black" translate>Jabbernewtrans.norecord <span>{{employeeSerial.substr(0,6)}}</span><span translate=""> Jabbernewtrans.availablefromBluePages</span></font>

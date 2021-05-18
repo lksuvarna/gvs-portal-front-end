@@ -1,0 +1,559 @@
+<app-topcountryframe></app-topcountryframe>
+
+<div class=" ds-panel ds-col-12"></div>
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+    <div class="ds-col-md-4 ds-col-xl-4">
+        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData" [ngClass]="{'disabled':isSpinnerVisible==true}"></app-navigation>
+    </div>
+    <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
+        <form [hidden]="isEntryForm" (submit)='entryDetailsMobile(formData)' #formData='ngForm'>
+
+            <b translate>servicestitle.Mobile New Request</b>
+
+            <div class="ds-pad-t-0_5 ds-pad-b-1">
+                Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.
+            </div>
+            <div class=" ds-panel ds-col-12 "></div>
+
+            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [formData]="formData" [cnum]="cnum" [hideSteps]=""></app-steps>
+
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
+
+            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize " style="display: inline-block;padding-bottom: 1rem;">Local Voice Package</label>
+                        </td>
+                        <td width="54%"><label name='BusinessUnit' style="display: inline-block;padding-bottom: 1rem;" ngModel> Business 3500 </label>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="2" width="50%"><br>
+                            <label for="comments" class="">Business Justification <span class="ds-text-contextual-red-2"> *</span></label>
+                        </td>
+                        <td width="50%"><br>
+                            <textarea name="Comments" id="JustificationId" class="ds-input " style="width:300px !important;" maxlength='200' title="Buisness Justification" rows="2" cols="40" [(ngModel)]="Comments"></textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Local Voice Package Details</h2>
+
+            <table width="100%" border="1">
+                <tbody>
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center"><b><font size="2">Nouvelles offres Business</font></b></div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center"><b><font size="2">Business 3500</font></b></div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Abonnement mensuel </font>
+                                <font size="2">​</font>
+                                <font size="2"> </font>
+                                <font size="2">​</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">3 500 DA</font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">National </font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">20h</font>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Packge </font>
+                                <font size="2">​</font>
+                                <font size="2"> (non cumulable) </font>
+                            </div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">International </font>
+                                <font size="2">​</font>
+                                <font size="2">(activation àla demande du client)</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">60 mn</font>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">DATA </font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">3 Go</font>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">SMS vers Djezzy </font>
+                                <font size="2">​</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">200 SMS</font>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Prix de la minute en national hors forfait </font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">3,5 DA/Min</font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Prix SMS </font>
+                            </div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Vers Djezzy </font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">3,5 </font>
+                                <font size="2">​</font>
+                                <font size="2">DA</font>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Vers autre opérateurs nationaux</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">5 DA</font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Vers international </font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">14 DA</font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">International Plus : Top10 des pays* à10DA/min fixe et mobile (activation àla demande du client</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">abonnement gratuit </font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Prix Vidéo Call</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">12 DA</font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Forfaits Mensuel 3G**</font>
+                            </div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">35 Go 10000 DA</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center"><u><font size="2">- 50% sur le prix Djezzy Speed</font></u></div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">avec engagement </font>
+                            </div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">Tarifs en vigueur </font>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <br>
+            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
+              <input type="button" name="back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                value="BACK" (click)="backClick(formData)">
+            </span>
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+              <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                value="NEXT">
+            </span>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form [hidden]="isReviewForm">
+
+            <b translate>servicestitle.Mobile New Request</b>
+
+
+            <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+            </div>
+            <div class="ds-hr-thick ds-mar-b-1_5"></div>
+
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Review Details</h2>
+
+            <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">Local Voice Package</label>
+                        </td>
+                        <td width="54%">Business 3500</td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1">Business Justification</label>
+                        </td>
+                        <td width="54%"><span style="word-break:break-all;">{{reviewDetailsIndia.Comments}}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Local Voice Package Details</h2>
+
+            <table width="100%" border="1">
+                <tbody>
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center"><b><font size="2">Nouvelles offres Business</font></b></div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center"><b><font size="2">Business 3500</font></b></div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Abonnement mensuel </font>
+                                <font size="2">​</font>
+                                <font size="2"> </font>
+                                <font size="2">​</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">3 500 DA</font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">National </font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">20h</font>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Packge </font>
+                                <font size="2">​</font>
+                                <font size="2"> (non cumulable) </font>
+                            </div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">International </font>
+                                <font size="2">​</font>
+                                <font size="2">(activation àla demande du client)</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">60 mn</font>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">DATA </font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">3 Go</font>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">SMS vers Djezzy </font>
+                                <font size="2">​</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">200 SMS</font>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Prix de la minute en national hors forfait </font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">3,5 DA/Min</font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Prix SMS </font>
+                            </div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Vers Djezzy </font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">3,5 </font>
+                                <font size="2">​</font>
+                                <font size="2">DA</font>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Vers autre opérateurs nationaux</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">5 DA</font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Vers international </font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">14 DA</font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">International Plus : Top10 des pays* à10DA/min fixe et mobile (activation àla demande du client</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">abonnement gratuit </font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Prix Vidéo Call</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">12 DA</font>
+                            </div>
+                        </td>
+                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">Forfaits Mensuel 3G**</font>
+                            </div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">35 Go 10000 DA</font>
+                            </div>
+                        </td>
+                        <td width="33%">
+                            <div align="center"><u><font size="2">- 50% sur le prix Djezzy Speed</font></u></div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top">
+                        <td width="33%" bgcolor="#C0C0C0">
+                            <div align="center">
+                                <font size="2">avec engagement </font>
+                            </div>
+                        </td>
+                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                        <td width="33%">
+                            <div align="center">
+                                <font size="2">Tarifs en vigueur </font>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
+                <p></p>
+                <p>Something seems to have gone wrong. Please try later. /p>
+                    <p>
+                    </p>
+            </div>
+
+            <div class="ds-hr-thick ds-mar-t-1_5"></div>
+
+            <!-- Dark Background -->
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+                <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.</div>
+                <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
+            </div>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
+              <input type="button" name="back"
+                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
+                (click)='BackButton()' *ngIf="this.isButtonVisible && !errorinfo">
+            </span>
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+              <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                value="SUBMIT" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
+            </span>
+                        <input type="button" name="exit" *ngIf="errorinfo" type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

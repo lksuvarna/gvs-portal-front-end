@@ -45,8 +45,9 @@
         "Services": "Services",
         "Jabber": "Jabber",
         "FAC Code": "FAC Code",
+        "Mobile": "Mobile",
         "Fixed Phone": "Fixed Phone",
-        "Special Request": "Jabber",
+        "Special Request": "Special Request",
         "Approvals Pending": "Approvals Pending",
         "Revalidation Pending": "Revalidation Pending",
         "Phone Number Search": "Phone Number Search",
@@ -66,6 +67,8 @@
         "Reqnewservice": "This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk",
         "arerequired": "are required.",
         "EmployeeSearch": "Employee Search",
+        "Declaration": "Declaration",
+        "DeclarationAck": "I have read and comply with the Algeria Mobility Policy, available here and I acknowledge reading the Privacy Notice.",
         "requestfor": "Who is this request for",
         "Myself": "Myself",
         "AnotherEmployee": "Another Employee",
@@ -77,7 +80,7 @@
         "SelectOne": "Select One",
         "norecord": "There is no record of an IBM employee with the serial number ",
         "availablefromBluePages": "available from BluePages",
-        "opps": "Opps! Some thing went worng.Please try again latter.",
+        "opps": "Something seems to have gone wrong. Please try later.",
         "JabberLocation": "Jabber / Phone Number location",
         "Voicemail": "Voicemail",
         "ClassofService": "Class of Service",
@@ -93,15 +96,20 @@
         "FAC Code New Request": "FAC Code - New Request",
         "FAC Code Update Request": "FAC Code - Update Request",
         "FAC Code Reset Request": "FAC Code - Reset Request",
-        "FAC Code Deactivate Request" :"FAC Code - Deactivate Request",
+        "SpecialRequestentryandreview" :"Special Request",
+
+        "Mobile New Request": "Mobile - New Request",
+
+        "FAC Code Delete Request" :"FAC Code - Delete Request",
+
         "Request Move Jabber service": "Jabber - Move Request",
-        "Update Existing Jabber Request" :"Jabber - Update Request",
+        "Update Existing Jabber Request": "Jabber - Update Request",
         "Delete an existing service": "Delete an existing service",
         "Request a new service": "Request a new service",
         "Update an existing service": "Update an existing service",
         "Requests": "Requests",
         "Resources": "Resources",
-        "Deactivate an existing FAC Code": "Deactivate an existing FAC Code",
+        "Delete an existing FAC Code": "Delete an existing FAC Code",
         "Fixed Phone - New Request": "Fixed Phone - New Request",
         "New Fixed Phone Request": "New Fixed Phone Request",
         "Fixed Phone - Update Request": "Fixed Phone - Update Request",
@@ -109,7 +117,8 @@
         "Request a new FAC Code": "Request a new FAC Code",
         "Update an existing FAC code": "Update an existing FAC code",
         "Reset an existing FAC code": "Reset an existing FAC code",
-        "Phone Number Search": "Phone Number Search"
+        "Phone Number Search": "Phone Number Search",
+        "Special Request": "Special Request"
 
 
 
@@ -219,13 +228,13 @@
         "Innumber": "In number",
         "AdditionalInformation": "Additional Information"
     },
-    "phonenumber" :{
-        "PhoneNumberSearch":"Phone Number Search",
-        "PhoneNumberDetails":"Phone Number Details",
-        "EnterITNNumber":"Enter ITN Number",
-        "EmpID":"EmpID",
-        "UserName":"User Name",
-        "ServiceDetails":"Service Details"
+    "phonenumber": {
+        "PhoneNumberSearch": "Phone Number Search",
+        "PhoneNumberDetails": "Phone Number Details",
+        "EnterITNNumber": "Enter ITN Number",
+        "EmpID": "EmpID",
+        "UserName": "User Name",
+        "ServiceDetails": "Service Details"
     },
     "alerttranslation": {
         "EXITREQUEST": "EXIT REQUEST",
@@ -316,21 +325,20 @@
         "FixedPhoneLocation" :"Fixed Phone Location",
         "SelectOne" :"Select One",
         "cos":"Please select a class of service."
+    },
+     "specialrequest" :{
+     "OnlyusetheSpecialRequest":"Only use the Special Request for any special operation, such as a second office number, a hotline for a support group, a shared line setup for functional groups, or to indicate a need for telephony-related consultancy. " ,
+     "needstandardservice":"If you need standard service such as Jabber or Fixed Phone , do not submit a Special Request as it will be rejected. Standard services can be requested from the menu on the left of this page.",
+     "SpecialRequestHCSmigratedsite":"Please note , Special Request related to voice services can be submitted only for HCS migrated site.  Special Request related to voice services for a non-HCS site should be submitted in the  ",
+     "TMAC tool":"TMAC tool.",
+     "HelpTMACtool ":"Help related to TMAC tool can be found ",
+     "here" :"here.",
+     "JabberNumberoptional": "Jabber / Phone Number (Optional)",
+     "JabberLocationspecial": "Jabber / Phone Number location",
+     "Description of Requirement" :"Description of Requirement",
+     "notexceed200":"Note:Length should not exceed 200",
+     "Note": "Note:"
 
-        
 
-
-
-
-
-
-
-
-
-
-
-
-
-    }
-
+     }
 }

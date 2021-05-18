@@ -9,7 +9,8 @@
 
     <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
         <form #formData='ngForm'>
-        <h3><b>Approvals</b></h3>
+        <h3 *ngIf="!reval"><b>Approvals</b></h3>
+        <h3 *ngIf="reval"><b>Reactivate Process</b></h3>
         <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
         <div class=" ds-panel ds-col-12 "></div> 
         <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
@@ -33,7 +34,55 @@
                                 <label>{{request_name}}</label>
                             </td>
                         </tr>
-                        <tr valign="top">
+                        <tr valign="top" *ngIf="reval">
+                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Identifier</label>
+    
+                            </td>
+                            <td width="54%" height="10">
+                                <label>{{revalitn}}</label>
+                            </td>
+                        </tr>
+                        <tr valign="top" *ngIf="reval">
+                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Revalidation Date</label>
+    
+                            </td>
+                            <td width="54%" height="10">
+                                <label>{{revaldate}}</label>
+                            </td>
+                        </tr>
+                        <tr valign="top" *ngIf="reval">
+                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Old Manager CNUM</label>
+    
+                            </td>
+                            <td width="54%" height="10">
+                                <label>{{revaloldmgr}}</label>
+                            </td>
+                        </tr>
+                        <tr valign="top" *ngIf="reval">
+                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">New Manager CNUM</label>
+    
+                            </td>
+                            <td width="54%" height="10">
+                                <label>{{revalnewmgr}}</label>
+                            </td>
+                        </tr>
+                        <tr valign="top" *ngIf="reval">
+                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Old Department Code</label>
+    
+                            </td>
+                            <td width="54%" height="10">
+                                <label>{{revalolddept}}</label>
+                            </td>
+                        </tr>
+                        <tr valign="top" *ngIf="reval">
+                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">New Department Code</label>
+    
+                            </td>
+                            <td width="54%" height="10">
+                                <label>{{revalnewdept}}</label>
+                            </td>
+                        </tr>
+                        <tr valign="top" >
                             <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Rejection Comments</label>
                                 <span class="ds-text-contextual-red-2"></span>
                             </td>
