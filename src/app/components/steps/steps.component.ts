@@ -249,17 +249,17 @@ export class StepsComponent implements OnInit {
   this.cache_fixed.icaCode = this.formData.value.ICAcode;
   this.cache_fixed.device = this.formData.value.Device_Type;
   this.cache_fixed.model = this.formData.value.Model_Type;
-  this.cache_fixed.employeeId = this.FixedPhoneData.empID;
+  //this.cache_fixed.employeeId = this.FixedPhoneData.empID;
   this.cache_fixed.voicemail = this.formData.value.Voicemail;
   this.cache_fixed.justification = this.formData.value.Justification;
   this.cache_fixed.description = this.formData.value.Description;
   this.cache_fixed.mac = this.formData.value.MACAddress;
-  this.cache_fixed.goClick = this.FixedPhoneData.goClick;
-  this.cache_fixed.emailClick = this.FixedPhoneData.emailClick;
-  this.cache_fixed.emailResult = this.FixedPhoneData.emailResult;
+  // this.cache_fixed.goClick = this.FixedPhoneData.goClick;
+  // this.cache_fixed.emailClick = this.FixedPhoneData.emailClick;
+  // this.cache_fixed.emailResult = this.FixedPhoneData.emailResult;
   this.cache_fixed.showBusinessNeed = this.FixedPhoneData.showBusinessNeed;
   this.cache_fixed.cos = this.FixedPhoneData.COS;
-  this.cache_fixed.employeeIDDisplay = this.FixedPhoneData.employeeID;
+  //this.cache_fixed.employeeIDDisplay = this.FixedPhoneData.employeeID;
   sessionStorage.setItem('cache',JSON.stringify(this.cache_fixed));
   console.log("cached");
   }
@@ -280,6 +280,8 @@ export class StepsComponent implements OnInit {
     this.cache_fixed.currentMacOrPhone = this.formData.value.IdNum1;
     this.cache_fixed.showSearch = this.FixedPhoneData.showSearch;
     this.cache_fixed.showerrormessage = this.FixedPhoneData.showerrormessage;
+    this.cache_fixed.hideNext =  this.FixedPhoneData.hideNext;
+    //this.cache_fixed.hideSteps = this.FixedPhoneData.hideSteps;
     this.cache_fixed.currentMac = this.FixedPhoneData.currentMac?.trim();
     this.cache_fixed.currentPhone = this.FixedPhoneData.currentPhone?.trim();
     this.cache_fixed.currentLocation = this.FixedPhoneData.currentloc?.trim();
