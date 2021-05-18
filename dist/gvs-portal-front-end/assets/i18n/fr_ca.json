@@ -324,7 +324,9 @@
     "JabberLocationspecial": "Emplacement du Jabber / Numéro de téléphone",
     "Description of Requirement" :"Description de l'exigence",
     "notexceed200":"Remarque: la longueur ne doit pas dépasser 200",
-    "Note": "Noter:"
+    "Note": "Noter:",
+    "Fieldsasteriskspl":"Champs marqués d'un astérisque",
+     "arerequiredspl":"sont requis."
 
 
     }
