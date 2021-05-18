@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { ActivatedRoute } from '@angular/router';
 import { cloudantservice } from '../../_services/cloudant.service';
+import {TranslateConfigService} from '../../_services/translate-config.service';
 
 @Component({
   selector: 'app-uitoplinks',
@@ -14,7 +15,10 @@ export class UitoplinksComponent implements OnInit {
   searchText = '';
   searchItems : any = []
   ccode='';
-  routerPath = ''
+  langType :any;
+  routerPath = '';
+  service:any;
+  pcode = '';
   searchData:any = [];
   searchObj =  {
     name: '',
@@ -34,14 +38,28 @@ export class UitoplinksComponent implements OnInit {
     
   // ]
 
-  constructor(private _eref: ElementRef,private cookie: CookieHandlerService,private route: ActivatedRoute, private cloudantservice: cloudantservice ) {
+  constructor(private _eref: ElementRef,private cookie: CookieHandlerService,private route: ActivatedRoute, private cloudantservice: cloudantservice,private translateconfigservice : TranslateConfigService ) {
    }
+   changeLanguage(type :string){
+    this.translateconfigservice.changeLanguage(type);
+  }
 
   ngOnInit(): void {
+
+    
+   
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.route.queryParams	
     .subscribe(params => {
-
+      this.service=params.service;
+      this.pcode = params.country;
+      if (this.pcode == '649'){
+      this.langType=localStorage.getItem("currentLang")
+      this.translateconfigservice.changeLanguage1(this.langType);
+      }
+      else{
+        this.translateconfigservice.changeLanguage1('en');
+      }
     this.routerPath = window.location.pathname
 
     if (this.routerPath === '/'){
@@ -83,10 +101,18 @@ export class UitoplinksComponent implements OnInit {
     this.searchText = ''
   }
 
-  closeDropdown(id: any) {
+  closeDropdown(id: any,ccode: any) {
     document.getElementById('countrydropdown')?.classList.remove('show');
     this.searchText = ''
-    this.toggleHighlight(id)
+    this.toggleHighlight(id);
+    if (ccode != '649' ){
+     this.translateconfigservice.changeLanguage1('en');
+      }  
+     /*  else{
+        this.langType=localStorage.getItem("currentLang")
+        this.translateconfigservice.changeLanguage1(this.langType);
+      } */
+      
     }
 
   toggleHighlight(id : any){

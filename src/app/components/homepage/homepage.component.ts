@@ -79,8 +79,10 @@ export class HomepageComponent implements OnInit {
       this.translatecountryname = this.countryname.name;
       if (this.translatecountryname == 'Canada/Caribbean'){
           this.translatecountryname1 = true;
-          
-      }
+          }
+        else{
+          this.translatecountryname1 = false;
+        }
 
   
     //   this.searchItems = [
