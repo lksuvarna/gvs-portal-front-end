@@ -44,6 +44,7 @@ export class VoipInDeleteComponent implements OnInit {
   warninginfosnow=false;
   cache_tmp:  any = [];
   selected_jabber ="";
+  textSuggetion: any;
 
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
@@ -184,10 +185,12 @@ this.identifier=sessionStorage.getItem('identifier')
     this.reqFor = sessionStorage.getItem('radioAction')
 
     if(this.warninginfo || this.warninginfosnow){
-      this.hideSteps = true
-    } else {
-      this.hideSteps = false
-    }
+      this.hideSteps = true;
+      this.textSuggetion = false;
+      } else {
+      this.hideSteps = false;
+      this.textSuggetion = true;
+      }
 
      //load cache data for entry details form. -- START
    this.cache_tmp=sessionStorage.getItem('cache')	
