@@ -145,7 +145,7 @@ export class VoipInMoveComponent implements OnInit {
   }
   entryDetailsMove(formData: NgForm) {
     if (formData.value.Identifier_Selected == '') {
-      alert('Please select the jabber number to move');
+      alert('Please select the Jabber / Phone number to move');
       return;
     }
     this.selectedjabber = formData.value.Identifier_Selected;

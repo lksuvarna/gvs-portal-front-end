@@ -211,7 +211,7 @@ export class EmployeesearchComponent implements OnInit {
         }
       })
     setTimeout(() => {
-      if (sessionStorage.getItem('serviceName') == 'jabber_move' && this.step == null || sessionStorage.getItem('serviceName') == 'jabber_move' && sessionStorage.getItem('empserial') == '') {
+      if (this.countrydetails.jservices.includes('move') &&sessionStorage.getItem('serviceName') == 'jabber_move' && this.step == null || sessionStorage.getItem('serviceName') == 'jabber_move' && sessionStorage.getItem('empserial') == '') {
         this.returnValue = confirm(this.mainConfiguration.alerttranslation.moverequest);
         if (this.returnValue == false) {
           this.router.navigate(['/jabberservices'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
@@ -740,6 +740,8 @@ export class EmployeesearchComponent implements OnInit {
           this.routingname = '/entrydetailshpemea';
         }else if (this.countrydetails.fnavpage == 'AU') {
           this.routingname = '/entrydetailsaufu';
+        }else if (this.countrydetails.fnavpage == 'ID') {
+          this.routingname = '/entrydetailsidfu';
         }
         this.reqname = "-US-";
         break;
