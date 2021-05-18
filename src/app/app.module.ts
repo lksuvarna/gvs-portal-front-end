@@ -73,6 +73,7 @@ import { ApprovalResultPageComponent } from './components/approval-result-page/a
 import { ApprovalSinglePageComponent } from './components/approval-single-page/approval-single-page.component';
 import { EnExtensionAuSummaryComponent } from './components/en-extension-au-summary/en-extension-au-summary.component';
 import { HpEmeaUpdateComponent } from './components/hp-emea-update/hp-emea-update.component';
+import { HpIndonesiaUpdateComponent } from './components/hp-indonesia-update/hp-indonesia-update.component';
 import { VoipAllSpecialRequestComponent } from './components/voip-all-special-request/voip-all-special-request.component';
 import { MobileservicesComponent } from './components/mobileservices/mobileservices.component';
 import { MobileDzNewComponent } from './components/mobile-dz-new/mobile-dz-new.component';
@@ -161,6 +162,7 @@ handleError(error: Error){
     EnExtensionAuSummaryComponent,
     HpEmeaUpdateComponent,
     VoipAllSpecialRequestComponent,
+    HpIndonesiaUpdateComponent,
     MobileservicesComponent,
     MobileDzNewComponent
 
