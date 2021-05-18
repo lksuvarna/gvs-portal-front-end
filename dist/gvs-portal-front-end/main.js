@@ -24826,6 +24826,7 @@ class ApprovalpendingComponent {
                     this.ccode = this.cookie.getCookie('ccode');
                 }
             }
+            this.ccode = this.cookie.getCookie('ccode');
             this.empserial = this.ccode;
             this.ccode = this.ccode.substring(6, 9);
             if (this.service.includes('revalidationpending')) {
@@ -24838,6 +24839,7 @@ class ApprovalpendingComponent {
                 this.snowaction = 'snow_approve';
                 sessionStorage.setItem('reval', 'approval');
             }
+            console.log("CCCODE VALUE= " + this.ccode);
             this.empserial = "467756744";
             if (this.pcode == this.ccode) {
                 this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction, "", "").subscribe(data => {
