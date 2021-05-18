@@ -96,6 +96,8 @@
         "FAC Code Delete Request" :"Code FAC - Demande de suppression",
         "Request Move Jabber service" :"Jabber - Demande de déplacement",
         "Update Existing Jabber Request" :"Jabber - Demande de mise à jour",
+        "SpecialRequestentryandreview" :"Demande spéciale",
+        "Special Request": "Demande spéciale",
         "Delete an existing service" : "Supprimer un service existant",
         "Request a new service" :"Demander un nouveau service",
         "Update an existing service" : "Mettre à jour un service existant",
@@ -307,17 +309,22 @@
         "provideNewDescription" :"Veuillez fournir la nouvelle description. ", 
         "differentDescriptionasisalready" :"Veuillez choisir une description différente car la description actuelle est déjà",
         "fortheprovidednumber" :"pour le numéro fourni."
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-       }
+    },
+    "specialrequest" :{
+    "OnlyusetheSpecialRequest":"N'utilisez la demande spéciale que pour toute opération spéciale, telle qu'un deuxième numéro de bureau, une hotline pour un groupe de support, une configuration de ligne partagée pour des groupes fonctionnels, ou pour indiquer un besoin de conseil en matière de téléphonie. " ,
+    "needstandardservice":"Si vous avez besoin d'un service standard tel que Jabber ou téléphone fixe, ne soumettez pas de demande spéciale car elle sera rejetée. Les services standard peuvent être demandés dans le menu à gauche de cette page.",
+    "SpecialRequestHCSmigratedsite":"Veuillez noter que les demandes spéciales liées aux services vocaux ne peuvent être soumises que pour le site migré HCS. Les demandes spéciales relatives aux services vocaux pour un site non HCS doivent être soumises ",
+    "TMAC tool":"TMAC outil.",
+    "HelpTMACtool ":"L'aide relative à l'outil TMAC peut être trouvée ",
+    "here" :"ici.",
+    "JabberNumberoptional": "Jabber / numéro de téléphone (facultatif)",
+    "JabberLocationspecial": "Emplacement du Jabber / Numéro de téléphone",
+    "Description of Requirement" :"Description de l'exigence",
+    "notexceed200":"Remarque: la longueur ne doit pas dépasser 200",
+    "Note": "Noter:"
+
+
+    }
     
  
 }
