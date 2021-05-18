@@ -23451,9 +23451,9 @@ class EmployeesearchComponent {
                 sessionStorage.setItem('voice_mail', '');
                 sessionStorage.setItem('cos', '');
                 //Data and routing 
-                if (this.service.includes("specialrequest")) {
-                    this.getLocationdata();
-                }
+                // if (this.service.includes("specialrequest")) {
+                // this.getLocationdata();
+                //}
                 if (this.service == "jabber_new" || this.service == "fac_new" || this.service == "specialrequest" || this.service == "mobile_new") {
                     this.getDBdata();
                 }
@@ -23478,39 +23478,44 @@ class EmployeesearchComponent {
         });
     }
     getSNOWdata() {
-        this.servicenowservice.searchsnow(this.employeeSerial, this.service, this.countrydetails.isocode + this.reqname + this.employeeSerial.substr(0, 6)).subscribe(data => {
-            console.log(' snow response', data);
-            console.log(' snow response', data.message.length);
-            if (data.message.length > 0) {
-                console.log(' snow response1', data.message.length);
-                this.warninginfosnow = true;
-                sessionStorage.setItem('warninginfosnow', 'true1');
-                this.identifier = data.message;
-                sessionStorage.setItem('identifier', JSON.stringify(this.identifier));
-                sessionStorage.setItem('identifier1', JSON.stringify(this.identifier));
-                this.datasnow = "yes";
-                this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
-            }
-            else {
-                this.datasnow = "nodata";
-                if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new" || this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_delete") {
-                    this.getLocationdata();
+        if (this.service.includes("specialrequest")) {
+            this.getLocationdata();
+        }
+        else {
+            this.servicenowservice.searchsnow(this.employeeSerial, this.service, this.countrydetails.isocode + this.reqname + this.employeeSerial.substr(0, 6)).subscribe(data => {
+                console.log(' snow response', data);
+                console.log(' snow response', data.message.length);
+                if (data.message.length > 0) {
+                    console.log(' snow response1', data.message.length);
+                    this.warninginfosnow = true;
+                    sessionStorage.setItem('warninginfosnow', 'true1');
+                    this.identifier = data.message;
+                    sessionStorage.setItem('identifier', JSON.stringify(this.identifier));
+                    sessionStorage.setItem('identifier1', JSON.stringify(this.identifier));
+                    this.datasnow = "yes";
+                    this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                 }
                 else {
-                    if (this.radioAction.toLowerCase() == "anotheremployee") {
-                        this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+                    this.datasnow = "nodata";
+                    if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new" || this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_delete") {
+                        this.getLocationdata();
                     }
                     else {
-                        this.router.navigate([this.navpage], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+                        if (this.radioAction.toLowerCase() == "anotheremployee") {
+                            this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+                        }
+                        else {
+                            this.router.navigate([this.navpage], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+                        }
                     }
                 }
-            }
-        }, (error) => {
-            console.error('error caught in component' + error);
-            this.errorinfo = true;
-            this.showloader = false;
-        });
-        return this.datasnow;
+            }, (error) => {
+                console.error('error caught in component' + error);
+                this.errorinfo = true;
+                this.showloader = false;
+            });
+            return this.datasnow;
+        }
     }
     getDBdata() {
         this.Db2Service.search_db2(this.employeeSerial, this.service, this.fixedphone, this.itn, this.countryname).subscribe(data => {
@@ -23565,7 +23570,7 @@ class EmployeesearchComponent {
                     sessionStorage.setItem('profile_location', this.profile_location);
                     this.datadb = "yes";
                 }
-                if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' || this.service == 'fac_delete' || this.service == 'mobile_new') {
+                if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' || this.service == 'fac_delete' || this.service == 'mobile_new' || this.service == 'specialrequest') {
                     console.log("insidesnowdelete");
                     this.getSNOWdata();
                     this.datadb = "yes";
@@ -23577,7 +23582,7 @@ class EmployeesearchComponent {
             else {
                 console.log("nodb2data");
                 this.datadb = "nodata";
-                if (this.service == "jabber_new" || this.service == "fac_new") {
+                if (this.service == "jabber_new" || this.service == "fac_new" || this.service == "specialrequest") {
                     this.getSNOWdata();
                 }
                 else {
