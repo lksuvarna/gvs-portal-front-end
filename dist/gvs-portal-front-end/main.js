@@ -24840,7 +24840,7 @@ class ApprovalpendingComponent {
                 sessionStorage.setItem('reval', 'approval');
             }
             console.log("CCCODE VALUE= " + this.ccode);
-            this.empserial = "467756744";
+            // this.empserial="467756744";
             if (this.pcode == this.ccode) {
                 this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction, "", "").subscribe(data => {
                     console.log(' snow response', data.message);
