@@ -425,9 +425,9 @@ export class EmployeesearchComponent implements OnInit {
         sessionStorage.setItem('cos', '');
         //Data and routing 
 
-        if (this.service.includes("specialrequest")) {
-          this.getLocationdata();
-        }
+       // if (this.service.includes("specialrequest")) {
+         // this.getLocationdata();
+        //}
 
         if (this.service == "jabber_new" || this.service == "fac_new" || this.service == "specialrequest" || this.service == "mobile_new") {
           this.getDBdata()
@@ -463,47 +463,54 @@ export class EmployeesearchComponent implements OnInit {
 
 
   getSNOWdata(): any {
-    this.servicenowservice.searchsnow(this.employeeSerial, this.service, this.countrydetails.isocode + this.reqname + this.employeeSerial.substr(0, 6)).subscribe(data => {
-      console.log(' snow response', data);
-      console.log(' snow response', data.message.length);
-      if (data.message.length > 0) {
-        console.log(' snow response1', data.message.length);
-        this.warninginfosnow = true
-        sessionStorage.setItem('warninginfosnow', 'true1')
-        this.identifier = data.message
 
-        sessionStorage.setItem('identifier', JSON.stringify(this.identifier))
-        sessionStorage.setItem('identifier1', JSON.stringify(this.identifier))
+    if (this.service.includes("specialrequest")) {
+      this.getLocationdata();
+    }else{
 
-        this.datasnow = "yes"
-
-        this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
-
-      }
-
-      else {
-        this.datasnow = "nodata";
-        if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_delete") {
-          this.getLocationdata()
+      this.servicenowservice.searchsnow(this.employeeSerial, this.service, this.countrydetails.isocode + this.reqname + this.employeeSerial.substr(0, 6)).subscribe(data => {
+        console.log(' snow response', data);
+        console.log(' snow response', data.message.length);
+        if (data.message.length > 0) {
+          console.log(' snow response1', data.message.length);
+          this.warninginfosnow = true
+          sessionStorage.setItem('warninginfosnow', 'true1')
+          this.identifier = data.message
+  
+          sessionStorage.setItem('identifier', JSON.stringify(this.identifier))
+          sessionStorage.setItem('identifier1', JSON.stringify(this.identifier))
+  
+          this.datasnow = "yes"
+  
+          this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+  
         }
-
+  
         else {
-          if (this.radioAction.toLowerCase() == "anotheremployee") {
-            this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+          this.datasnow = "nodata";
+          if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_delete") {
+            this.getLocationdata()
           }
+  
           else {
-            this.router.navigate([this.navpage], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+            if (this.radioAction.toLowerCase() == "anotheremployee") {
+              this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+            }
+            else {
+              this.router.navigate([this.navpage], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+            }
           }
         }
-      }
-    },
-      (error) => {                              //Error callback
-        console.error('error caught in component' + error);
-        this.errorinfo = true;
-        this.showloader = false;
-      }
-    )
-    return this.datasnow;
+      },
+        (error) => {                              //Error callback
+          console.error('error caught in component' + error);
+          this.errorinfo = true;
+          this.showloader = false;
+        }
+      )
+      return this.datasnow;
+
+    }
   }
 
   getDBdata() {
@@ -541,7 +548,7 @@ export class EmployeesearchComponent implements OnInit {
 
          } else if(this.service == 'specialrequest'){
           sessionStorage.setItem('identifier', JSON.stringify(data.message));
-          this.datadb = "yes";    
+          this.datadb = "yes";     
         }else if (this.service == "fac_new") {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";
@@ -562,7 +569,7 @@ export class EmployeesearchComponent implements OnInit {
           this.datadb = "yes";
         }
 
-        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' ||this.service == 'fac_delete' ||this.service == 'mobile_new'  ) {
+        if (this.service == "jabber_delete" || this.service == 'jabber_update' || this.service == 'jabber_move' || this.service == 'fac_update' || this.service == 'fac_reset' ||this.service == 'fac_delete' ||this.service == 'mobile_new' || this.service == 'specialrequest' ) {
 
           console.log("insidesnowdelete")
           this.getSNOWdata();
@@ -576,7 +583,7 @@ export class EmployeesearchComponent implements OnInit {
       else {
         console.log("nodb2data");
         this.datadb = "nodata";
-        if (this.service == "jabber_new" || this.service == "fac_new" ) {
+        if (this.service == "jabber_new" || this.service == "fac_new" || this.service=="specialrequest") {
           this.getSNOWdata()
         }
         else {
@@ -733,6 +740,8 @@ export class EmployeesearchComponent implements OnInit {
           this.routingname = '/entrydetailshpemea';
         }else if (this.countrydetails.fnavpage == 'AU') {
           this.routingname = '/entrydetailsaufu';
+        }else if (this.countrydetails.fnavpage == 'ID') {
+          this.routingname = '/entrydetailsidfu';
         }
         this.reqname = "-US-";
         break;

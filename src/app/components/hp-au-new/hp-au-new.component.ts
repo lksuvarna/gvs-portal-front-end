@@ -45,7 +45,7 @@ pcode: any;
 service: any;	
 employeeInfo: any;	
 employeeInfo1: any;	
-campus:any = 'Select Location';	
+campus:any = '';	
 // hideProjectId = false;
 reqFor: any;
 models:any = [];
@@ -60,20 +60,20 @@ showBusinessNeed = true;
 COS = 'National';
 selected_device:any = '';
 modelValue:any;
-empID:any='';
-employeeID:any;
-email:any;
-go = false;
-goClick = true;
-goResults:any;
-countryCode:any;
-emailClick = false;
-empIDEmail:any = '';
-empIDValue:any = '';
-changed:any;
-gggg:any;
-emailResult:any = false;
-hideEmpID:any;
+// empID:any='';
+// employeeID:any;
+// email:any;
+// go = false;
+// goClick = true;
+// goResults:any;
+//countryCode:any;
+// emailClick = false;
+// empIDEmail:any = '';
+// empIDValue:any = '';
+// changed:any;
+// gggg:any;
+// emailResult:any = false;
+// hideEmpID:any;
 //hideVoicemail:any;
 errorinfo=false;
 cache_tmp:  any = [];
@@ -85,7 +85,7 @@ chargeDeptValue:any = '';
 MACValue:any = '';
 descValue:any = '';
 justificationValue:any = '';
-cacheGoValue: any = false;
+//cacheGoValue: any = false;
 FixedPhoneData: any = [];
   
     
@@ -135,7 +135,7 @@ backClick(formData:NgForm){
 }	}
 selectedLocation(loc:String) {	
   this.build = [];	
-  this.campus = 'Select Location';	
+  this.campus = '';	
   if(loc != '') {	
     this.hideBuilding = false;	
     var k =0;	
@@ -173,7 +173,7 @@ selectedDevice(device:string) {
     this.showforAnyDevice = false;
     this.showforFixedPhone = false;
     this.models = [...this.fpModels];
-    this.hideEmpID = false;
+    //this.hideEmpID = false;
     //this.hideVoicemail = false;
     if(this.COS == 'International') {
       this.showBusinessNeed = false;
@@ -183,7 +183,7 @@ selectedDevice(device:string) {
     this.showforAnyDevice = false;
     this.showforFixedPhone = true;
     this.models = [...this.emModels];
-    this.hideEmpID = true;
+    //this.hideEmpID = true;
     //this.hideVoicemail = true;
     this.showBusinessNeed = true;
   }
@@ -191,67 +191,67 @@ selectedDevice(device:string) {
     this.showforAnyDevice = false;
     this.showforFixedPhone = true;
     this.models = [...this.cModels];
-    this.hideEmpID = true;
+    //this.hideEmpID = true;
     //this.hideVoicemail = true;
     this.showBusinessNeed = true;
   }
   this.getFixedPhoneData();
 
 }
-onEmpIDChange() {
-  this.go = false;
-  this.empIDChanged(this.empID);
-  this.getFixedPhoneData();
-}
-empIDChanged(id:any) {
-  if(this.empIDValue != id) {
-    this.empIDValue = id;
-    this.changed = true;
-    this.gggg = false;
-  } else {
-    this.changed = false;
-    this.gggg = true;
-  }
-}
-fetchEmployee() {
-  if(this.empID == '') {
-    alert('Please enter the Employee ID');
-    return false;
-  } else if(this.empID.length != 6) {
-    alert('Please enter 6 digit Employee ID');
-    return false;
-  }
-  else {
-  this.countryCode = sessionStorage.getItem('countryroute');
-  this.employeeID = this.empID.concat(this.countryCode);
-  this.bpservices.bpdetails(this.employeeID).subscribe(data => {
-    this.goClick = false;
-    this.cacheGoValue = true;
-    this.gggg = true;
-    console.log(' BP Details', data.userdata);
-    if (data.userdata) {
-        this.email =  data.username.preferredidentity;
-        this.go = true;
-        this.goResults = true;
-        this.emailClick = false;
-        this.emailResult = false;
-    } else {
-        this.go = false;
-        this.goResults = false;
-    }
-  });
-  this.getFixedPhoneData();
- return false;
-}
-}
+// onEmpIDChange() {
+//   this.go = false;
+//   this.empIDChanged(this.empID);
+//   this.getFixedPhoneData();
+// }
+// empIDChanged(id:any) {
+//   if(this.empIDValue != id) {
+//     this.empIDValue = id;
+//     this.changed = true;
+//     this.gggg = false;
+//   } else {
+//     this.changed = false;
+//     this.gggg = true;
+//   }
+// }
+// fetchEmployee() {
+//   if(this.empID == '') {
+//     alert('Please enter the Employee ID');
+//     return false;
+//   } else if(this.empID.length != 6) {
+//     alert('Please enter 6 digit Employee ID');
+//     return false;
+//   }
+//   else {
+//   this.countryCode = sessionStorage.getItem('countryroute');
+//   this.employeeID = this.empID.concat(this.countryCode);
+//   this.bpservices.bpdetails(this.employeeID).subscribe(data => {
+//     this.goClick = false;
+//     this.cacheGoValue = true;
+//     this.gggg = true;
+//     console.log(' BP Details', data.userdata);
+//     if (data.userdata) {
+//         this.email =  data.username.preferredidentity;
+//         this.go = true;
+//         this.goResults = true;
+//         this.emailClick = false;
+//         this.emailResult = false;
+//     } else {
+//         this.go = false;
+//         this.goResults = false;
+//     }
+//   });
+//   this.getFixedPhoneData();
+//  return false;
+// }
+// }
 
-onEmailClick() {
-  this.empIDEmail = this.employeeID+"--"+this.email;
-  this.empID = this.empIDEmail;
-  this.emailClick = true;
-  this.emailResult = true;
-  this.getFixedPhoneData();
-}
+// onEmailClick() {
+//   this.empIDEmail = this.employeeID+"--"+this.email;
+//   this.empID = this.empIDEmail;
+//   this.emailClick = true;
+//   this.emailResult = true;
+//   this.getFixedPhoneData();
+// }
 
 classofservice(cos:string) {
   if(cos == 'International') {
@@ -264,23 +264,23 @@ classofservice(cos:string) {
 
 getFixedPhoneData(){
   this.FixedPhoneData = {
-    "goClick": this.goClick,
-    "emailClick": this.emailClick,
-    "emailResult": this.emailResult,
+    // "goClick": this.goClick,
+    // "emailClick": this.emailClick,
+    // "emailResult": this.emailResult,
     "showBusinessNeed": this.showBusinessNeed,
     "COS": this.COS,
-    "empID": this.empID,
-    "employeeID": this.employeeID
+    // "empID": this.empID,
+    // "employeeID": this.employeeID
   }
 }
 
 entryDetails(formData: NgForm) {	
     
-  if(formData.value.Location_1.toUpperCase() == 'SELECT STATE' || formData.value.Location_1 == '') {	
+  if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
     alert('Please select the State');	
     return;	
   }	
-  if(formData.value.Buildings.toUpperCase() == 'SELECT LOCATION' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT STATE' && formData.value.Buildings == '') {	
+  if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	
     alert('Please select the Location');	
     return;	
   }	
@@ -292,27 +292,27 @@ entryDetails(formData: NgForm) {
       alert('Please select a type of model');
       return;
     }
-    if(this.goResults == false && formData.value.StepMentor != '' && this.gggg == true && this.showforFixedPhone == false) {
-      alert('No match was found for the employee ID. Please provide the correct employee ID');
-      this.empID = '';
-      return;
-    }
-    if(formData.value.StepMentor == '' && this.showforFixedPhone == false && this.showforFixedPhone == false) {
-      alert('Please enter the employee ID');
-      return;
-    }
-    if(formData.value.StepMentor.length != 6 && this.empIDEmail == '' && this.goClick == true &&this.showforFixedPhone == false) {
-      alert('Please enter 6 digit Employee ID');
-      return;
-    }
-    if(this.go == false && this.changed == true && this.showforFixedPhone == false) {
-      alert('Please click Go to fetch employee details');
-      return;
-    }
-    if(this.emailClick == false && this.showforFixedPhone == false) {
-      alert('Please click search result to fetch Employee details');
-      return;
-    }
+    // if(this.goResults == false && formData.value.StepMentor != '' && this.gggg == true && this.showforFixedPhone == false) {
+    //   alert('No match was found for the employee ID. Please provide the correct employee ID');
+    //   this.empID = '';
+    //   return;
+    // }
+    // if(formData.value.StepMentor == '' && this.showforFixedPhone == false && this.showforFixedPhone == false) {
+    //   alert('Please enter the employee ID');
+    //   return;
+    // }
+    // if(formData.value.StepMentor.length != 6 && this.empIDEmail == '' && this.goClick == true &&this.showforFixedPhone == false) {
+    //   alert('Please enter 6 digit Employee ID');
+    //   return;
+    // }
+    // if(this.go == false && this.changed == true && this.showforFixedPhone == false) {
+    //   alert('Please click Go to fetch employee details');
+    //   return;
+    // }
+    // if(this.emailClick == false && this.showforFixedPhone == false) {
+    //   alert('Please click search result to fetch Employee details');
+    //   return;
+    // }
     if(formData.value.Justification.trim() == '' && this.showBusinessNeed == false) {
       alert('Please enter the business need for Class of Service.');
       return;
@@ -321,7 +321,7 @@ entryDetails(formData: NgForm) {
       alert('Please Enter a description and it should not be more than 30 characters');
       return;
     }
-    if(formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
+    if(formData.value.MACAddress.trim() == '' || formData.value.MACAddress.length != 12) {
       alert('Please enter 12 characters MAC address');
       return;
     }
@@ -338,7 +338,7 @@ entryDetails(formData: NgForm) {
   this.reviewDetailsIndia.campus = formData.value.Buildings;
   this.reviewDetailsIndia.device = formData.value.Device_Type;
   this.reviewDetailsIndia.model = formData.value.Model_Type;
-  this.reviewDetailsIndia.employeeId = this.employeeID;
+  //this.reviewDetailsIndia.employeeId = this.employeeID;
   //this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
   this.reviewDetailsIndia.justification = formData.value.Justification;
   this.reviewDetailsIndia.description = formData.value.Description;
@@ -370,17 +370,17 @@ create_cache(formData:NgForm){
   // this.cache.icaCode = formData.value.ICAcode;
   this.cache.device = formData.value.Device_Type;
   this.cache.model = formData.value.Model_Type;
-  this.cache.employeeId = this.empID;
+  //this.cache.employeeId = this.empID;
   //this.cache.voicemail = formData.value.Voicemail;
   this.cache.justification = formData.value.Justification;
   this.cache.description = formData.value.Description;
   this.cache.mac = formData.value.MACAddress;
-  this.cache.goClick = this.goClick;
-  this.cache.emailClick = this.emailClick;
-  this.cache.emailResult = this.emailResult;
+  // this.cache.goClick = this.goClick;
+  // this.cache.emailClick = this.emailClick;
+  // this.cache.emailResult = this.emailResult;
   this.cache.showBusinessNeed = this.showBusinessNeed;
   this.cache.cos = this.COS;
-  this.cache.employeeIDDisplay = this.employeeID;
+  //this.cache.employeeIDDisplay = this.employeeID;
   sessionStorage.setItem('cache',JSON.stringify(this.cache));
   console.log("cached");
 }
@@ -511,7 +511,7 @@ ngOnInit(): void {
   if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='fixedphone_new')){
     this.selected_location=String(this.cache_disp.officeLocation) ;
     this.selectedLocation(this.cache_disp.officeLocation);
-    if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT OFFICE LOCATION') || (this.cache_disp.officeLocation=='') )
+    if((this.cache_disp.officeLocation.toUpperCase()== 'SELECT ONE') || (this.cache_disp.officeLocation=='') )
     this.hideBuilding=true;
     else
     this.hideBuilding=false;
@@ -522,7 +522,7 @@ ngOnInit(): void {
     // this.icaValue = String(this.cache_disp.icaCode);
     this.selected_device = this.cache_disp.device;
     this.selectedDevice(this.selected_device);
-    this.empID = String(this.cache_disp.employeeId);
+    //this.empID = String(this.cache_disp.employeeId);
     //this.voicemail = String(this.cache_disp.voicemail);
     this.COS = String(this.cache_disp.cos);
     this.classofservice(this.COS);
@@ -530,21 +530,21 @@ ngOnInit(): void {
     this.descValue = String(this.cache_disp.description);
     this.justificationValue = String(this.cache_disp.justification);
     this.modelValue = this.cache_disp.model;
-    if(this.cache_disp.employeeIDDisplay == undefined){
-      this.employeeID = '';
-    } else {
-      this.employeeID = String(this.cache_disp.employeeIDDisplay);
-    }
+    // if(this.cache_disp.employeeIDDisplay == undefined){
+    //   this.employeeID = '';
+    // } else {
+    //   this.employeeID = String(this.cache_disp.employeeIDDisplay);
+    // }
     //this.employeeID = String(this.cache_disp.employeeIDDisplay);
     
 
     // this.hideDeviceSection = Boolean(this.cache.hideDeviceSection)
     // this.showforAnyDevice = Boolean(this.cache.showforAnyDevice);
     // this.showforFixedPhone =Boolean(this.cache.showforFixedPhone);
-    this.goClick = this.cache_disp.goClick;
-    this.emailClick = this.cache_disp.emailClick;
-    this.emailResult = this.cache_disp.emailResult;
-    this.cacheGoValue = false;
+    // this.goClick = this.cache_disp.goClick;
+    // this.emailClick = this.cache_disp.emailClick;
+    // this.emailResult = this.cache_disp.emailResult;
+    // this.cacheGoValue = false;
     this.showBusinessNeed = this.cache_disp.showBusinessNeed;
     if(this.cache_disp.funded=='Yes'){
      // this.chargeDeptValue=  this.cache_disp.chargeDepartmentCode;

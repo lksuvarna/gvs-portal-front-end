@@ -32,7 +32,7 @@ fpModels:any;
 hideEmpID:any;
 hideVoicemail:any;
 errorinfo=false;
-COS = 'national';
+COS = '';
 emModels:any;
 cModels:any;
 orgi:any;	
@@ -136,6 +136,8 @@ selectedDevice(device:string) {
 classofservice(cos:string) {
   if(cos == 'international') {
     this.showBusinessNeed = false;
+  } else if(cos == 'national') {
+    this.showBusinessNeed = true;
   } else {
     this.showBusinessNeed = true;
   }
@@ -160,17 +162,21 @@ classofservice(cos:string) {
         alert(this.mainConfiguration.fixedphonenew.selectmodel);
         return;
       }
+      if(formData.value.cos == '') {
+        alert(this.mainConfiguration.fixedphonenew.cos);
+        return;
+      }
       
-      if(formData.value.Justification == '' && this.showBusinessNeed == false) {
+      if(formData.value.Justification.trim() == '' && this.showBusinessNeed == false) {
         alert(this.mainConfiguration.fixedphonenew.businesscos);
         return;
       }
-      if(formData.value.Description == '') {
+      if(formData.value.Description.trim() == '') {
         alert(this.mainConfiguration.fixedphonenew.descriptioncharacters);
         return;
       }
-      if(formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
-        alert(this.mainConfiguration.fixedphonenew.enterMAC);
+      if(formData.value.MACAddress.trim() == '' || formData.value.MACAddress.length != 12) {
+        alert(this.mainConfiguration.fixedphonenew.entermacadd);
         return;
       }
       var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
@@ -274,13 +280,13 @@ classofservice(cos:string) {
   })
 
   this.devices = sessionStorage.getItem('fdevices')?.replace('"','');
-  this.devices = this.devices.replace('"','').split(',');
+  this.devices = this.devices?.replace('"','').split(',');
   this.emModels = sessionStorage.getItem('emmodels')?.replace('"','');
-  this.emModels = this.emModels.replace('"','').split(',');
+  this.emModels = this.emModels?.replace('"','').split(',');
   this.fpModels = sessionStorage.getItem('fpmodels')?.replace('"','');
-  this.fpModels = this.fpModels.split(',');
+  this.fpModels = this.fpModels?.replace('"','').split(',');
   this.cModels = sessionStorage.getItem('cmmodels')?.replace('"','');
-  this.cModels = this.cModels.split(',');
+  this.cModels = this.cModels?.replace('"','').split(',');
   this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
   this.locationlist=this.locationlist?.replace('"','').split(',');
 
