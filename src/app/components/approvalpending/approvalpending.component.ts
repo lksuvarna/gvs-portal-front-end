@@ -107,7 +107,8 @@ export class ApprovalpendingComponent implements OnInit {
         this.pendingRequest=this.pendingRequest_original;
         }
 
-      });}
+      });
+    }
       else{
         this.errorinfo=false;
       }

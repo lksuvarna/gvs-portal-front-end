@@ -24823,18 +24823,20 @@ class ApprovalpendingComponent {
                 this.snowaction = 'snow_approve';
                 sessionStorage.setItem('reval', 'approval');
             }
-            //this.empserial="467756744";
+            this.empserial = "467756744";
             if (this.pcode == this.ccode) {
-                this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction, "", "").subscribe(data => {
-                    console.log(' snow response', data.message);
-                    console.log(' snow response', data.message.length);
-                    if (data.message.length == 0)
-                        this.errorinfo = false;
-                    else {
-                        this.pendingRequest_original = data.message;
-                        this.pendingRequest = this.pendingRequest_original;
-                    }
-                });
+                setTimeout(() => {
+                    this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction, "", "").subscribe(data => {
+                        console.log(' snow response', data.message);
+                        console.log(' snow response', data.message.length);
+                        if (data.message.length == 0)
+                            this.errorinfo = false;
+                        else {
+                            this.pendingRequest_original = data.message;
+                            this.pendingRequest = this.pendingRequest_original;
+                        }
+                    });
+                }, 400);
             }
             else {
                 this.errorinfo = false;
