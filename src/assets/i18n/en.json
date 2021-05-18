@@ -337,7 +337,9 @@
      "JabberLocationspecial": "Jabber / Phone Number location",
      "Description of Requirement" :"Description of Requirement",
      "notexceed200":"Note:Length should not exceed 200",
-     "Note": "Note:"
+     "Note": "Note:",
+     "Fieldsasteriskspl": "Fields marked with an asterisk",
+     "arerequiredspl": "are required."
 
 
      }
