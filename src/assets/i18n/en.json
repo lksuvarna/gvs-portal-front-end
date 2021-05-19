@@ -342,5 +342,12 @@
      "arerequiredspl": "are required."
 
 
+     },
+
+     "Requests":{
+        "approved":"Processing",
+        "Approved":"Processing",
+        "_approval":"Processing"
+
      }
 }
