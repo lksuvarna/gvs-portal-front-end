@@ -12,9 +12,11 @@
 
       <b translate>servicestitle.Request Move Jabber service</b>
 
-      <div class="ds-pad-t-0_5 ds-pad-b-1" >
+      <div class="ds-pad-t-0_5 ds-pad-b-1" *ngIf="warninginfo==false && warninginfosnow==false">
         <span translate>Jabberentrydetails.Fieldsasterisk</span> (<span class="ds-text-contextual-red-2">*</span>) <span translate>Jabberentrydetails.arerequired</span>
       </div>
+      <br *ngIf="!(warninginfo==false && warninginfosnow==false)">
+      <br *ngIf="!(warninginfo==false && warninginfosnow==false)">
       <div class=" ds-panel ds-col-12 "></div>
 
       <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]="hideSteps" (previousStep)="previousStep($event)"></app-steps>
@@ -161,7 +163,7 @@
             </span>
             <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                value="NEXT" *ngIf="warninginfo==false && warninginfosnow==false "><br>
+                value="NEXT" *ngIf="warninginfo==false && warninginfosnow==false"><br>
             </span>
           </div>
         </div>
