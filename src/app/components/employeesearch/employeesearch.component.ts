@@ -139,6 +139,14 @@ export class EmployeesearchComponent implements OnInit {
           this.showCountryCode = true
           this.subCountries = this.countrydetails.scountries
         }
+        setTimeout(() => {
+          if (this.countrydetails.jservices.includes('move') &&this.service == 'jabber_move' && this.step == null || this.service == 'jabber_move' && sessionStorage.getItem('empserial') == '') {
+            this.returnValue = confirm(this.mainConfiguration.alerttranslation.moverequest);
+            if (this.returnValue == false) {
+              this.router.navigate(['/jabberservices'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+            }
+          }
+        }, 200);
   });
   
 }
@@ -209,15 +217,16 @@ export class EmployeesearchComponent implements OnInit {
           this.showCountryCode = true
           this.subCountries = this.countrydetails.scountries
         }
+        setTimeout(() => {
+          if (this.countrydetails.jservices.includes('move') && this.service == 'jabber_move' && this.step == null || this.service == 'jabber_move' && sessionStorage.getItem('empserial') == '') {
+            this.returnValue = confirm(this.mainConfiguration.alerttranslation.moverequest);
+            if (this.returnValue == false) {
+              this.router.navigate(['/jabberservices'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+            }
+          }
+        }, 200);
       })
-    setTimeout(() => {
-      if (sessionStorage.getItem('serviceName') == 'jabber_move' && this.step == null || sessionStorage.getItem('serviceName') == 'jabber_move' && sessionStorage.getItem('empserial') == '') {
-        this.returnValue = confirm(this.mainConfiguration.alerttranslation.moverequest);
-        if (this.returnValue == false) {
-          this.router.navigate(['/jabberservices'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
-        }
-      }
-    }, 200);
+    
     setTimeout(() => {
       if (this.service.includes('fixed')) {
         if (!(this.countrydetails.power_users.includes(this.ccode))) {
