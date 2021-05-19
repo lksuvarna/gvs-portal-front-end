@@ -145,7 +145,7 @@ export class VoipInMoveComponent implements OnInit {
   }
   entryDetailsMove(formData: NgForm) {
     if (formData.value.Identifier_Selected == '') {
-      alert('Please select the jabber number to move');
+      alert('Please select the Jabber / Phone number to move');
       return;
     }
     this.selectedjabber = formData.value.Identifier_Selected;
@@ -243,7 +243,7 @@ export class VoipInMoveComponent implements OnInit {
 
     // fields to be picked up from form -- ends	
     this.payload.level1_japproval = this.countrydetails.level1_japproval;
-    this.payload.level2_japproval = this.countrydetails.level2_japproval;
+    this.payload.level2_japproval = "";
     //this.payload.SLA_type = this.countrydetails.SLA_type;
     this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
     this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
