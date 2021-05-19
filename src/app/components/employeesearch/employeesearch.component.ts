@@ -27,6 +27,7 @@ export class EmployeesearchComponent implements OnInit {
   algMobile: boolean = false
   ackMobileAlg: boolean = false
   checked : any=false;
+  facIn: boolean= false;
 
   constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private bpservices: bpservices, private Db2Service: Db2Service, private servicenowservice: servicenowservice,private servicesd : TranslateConfigService) { }
   cloudantData: any = []
@@ -116,6 +117,12 @@ export class EmployeesearchComponent implements OnInit {
 
   if (this.countryroute === '612' && this.service === 'mobile_new') {
     this.algMobile = true
+  }
+
+  if (this.countryroute === '744' || this.countryroute === '652' ) {
+    this.facIn = true
+  } else {
+    this.facIn = false
   }
 
   if (this.pcode!== this.countryroute) {
@@ -767,7 +774,11 @@ export class EmployeesearchComponent implements OnInit {
           this.reqname="-NS-";
           break;
       case "fac_new":
-      this.title="FAC Code New Request";
+      if(this.facIn){
+        this.title="FAC Code New Request";
+      } else {
+        this.title="FAC Code / IDD Pin - New Request";
+      }
       this.routingname="/entrydetailsfac";
       this.exitrouting='facservices';
       this.reqname="-NS-";
@@ -781,13 +792,21 @@ export class EmployeesearchComponent implements OnInit {
       break;
 
       case "fac_update":
-        this.title = "FAC Code Update Request";
+        if(this.facIn){
+          this.title="FAC Code Update Request";
+        } else {
+          this.title="FAC Code / IDD Pin - Update Request";
+        }
         this.routingname = "/entrydetailsfacu";
         this.exitrouting='facservices';
         this.reqname = "-US-";
         break;
       case "fac_reset":
-        this.title="FAC Code Reset Request";
+        if(this.facIn){
+          this.title="FAC Code Reset Request";
+        } else {
+          this.title="FAC Code / IDD Pin - Reset Request";
+        }
         this.routingname="/entrydetailsfacr";
         this.exitrouting='facservices';
         this.reqname="-RS-";

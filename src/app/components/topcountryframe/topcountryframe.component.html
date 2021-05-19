@@ -1,20 +1,20 @@
 <div class="ds-panel ds-row ds-pad-t-2">
-        <div class="ds-col-12 ds-text-align-center">
-            <div class="ds-col-2">
-                <img  [src]='countryname.flagname'>
-                <h2><b>{{countryname.name}}</b></h2>
-            </div>
-        <div class="ds-row" *ngIf = translatecountryname1>
+    <div class="ds-col-12 ds-text-align-center">
+        <div class="ds-col-2">
+            <img class="ds-border-neutral-5" [src]='countryname.flagname'>
+            <h2><b>{{countryname.name}}</b></h2>
+        </div>
+        <div class="ds-row" *ngIf=translatecountryname1>
             <div class="ds-col-12">
                 <p class="ds-text-small ds-text-align-right ds-font-weight-light">
-                    
-         <b><span translate style="color: black">home.select-language</span></b><br>          
-        <a (click)="changeLanguage('en')"  style="color: black" ><span class="ds-font-weight-light"> English </span></a><span>|</span>
-        <a (click)="changeLanguage('fr_ca')"  style="color: black" ><span class="ds-font-weight-light"> Français </span></a>
-                    
+
+                    <b><span translate style="color: black">home.select-language</span></b><br>
+                    <a (click)="changeLanguage('en')" style="color: black"><span class="ds-font-weight-light"> English </span></a><span>|</span>
+                    <a (click)="changeLanguage('fr_ca')" style="color: black"><span class="ds-font-weight-light"> Français </span></a>
+
                 </p>
             </div>
         </div>
-    
-</div>
+
+    </div>
 </div>
