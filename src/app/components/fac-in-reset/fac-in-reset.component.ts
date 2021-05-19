@@ -36,6 +36,7 @@ export class FacInResetComponent implements OnInit {
   service = '';
   cnum: any;
   countrydetails : any;
+  countryroute:any;
   orgi:any;	
   reqno:any;
   hideSteps = false
@@ -75,6 +76,7 @@ export class FacInResetComponent implements OnInit {
 
   payload : Fac_Reset = new Fac_Reset();
   db2data: any
+  facIn: boolean = false;
 
   
 
@@ -210,7 +212,13 @@ export class FacInResetComponent implements OnInit {
       ]	
   
      
-    }	
+    }
+    this.countryroute=sessionStorage.getItem('countryroute')
+    if (this.countryroute === '744' || this.countryroute === '652' ) {
+      this.facIn = true
+    } else {
+      this.facIn = false
+    }
     
     this.reqFor = sessionStorage.getItem('radioAction');
       this.servicesData = servicesData.data[0]
