@@ -48,6 +48,7 @@
         "Mobile": "Mobile",
         "Fixed Phone": "Fixed Phone",
         "Special Request": "Special Request",
+        "FAC Code / IDD Pin": "FAC Code / IDD Pin",
         "Approvals Pending": "Approvals Pending",
         "Revalidation Pending": "Revalidation Pending",
         "Phone Number Search": "Phone Number Search",
@@ -95,12 +96,16 @@
         "Delete Jabber Request": "Jabber - Delete Request",
         "FAC Code New Request": "FAC Code - New Request",
         "FAC Code Update Request": "FAC Code - Update Request",
+        "FAC Code / IDD Pin - New Request": "FAC Code / IDD Pin - New Request",
+        "FAC Code / IDD Pin - Reset Request": "FAC Code / IDD Pin - Reset Request",
+        "FAC Code / IDD Pin - Update Request": "FAC Code / IDD Pin - Update Request",
+        "FAC Code / IDD Pin - Delete Request": "FAC Code / IDD Pin - Delete Request",
         "FAC Code Reset Request": "FAC Code - Reset Request",
-        "SpecialRequestentryandreview" :"Special Request",
+        "SpecialRequestentryandreview": "Special Request",
 
         "Mobile New Request": "Mobile - New Request",
 
-        "FAC Code Delete Request" :"FAC Code - Delete Request",
+        "FAC Code Delete Request": "FAC Code - Delete Request",
 
         "Request Move Jabber service": "Jabber - Move Request",
         "Update Existing Jabber Request": "Jabber - Update Request",
@@ -272,6 +277,8 @@
         "STEP 4": "STEP 4"
 
     },
+
+   
     "fixedphonenew":{
         "Location" : "Location",
         "TypeofDevice":"Type of Device ",
@@ -342,6 +349,7 @@
      "arerequiredspl": "are required."
 
 
+<<<<<<< HEAD
      },
 
      "Requests":{
@@ -350,4 +358,7 @@
         "_approval":"Processing"
 
      }
+=======
+    }
+>>>>>>> ae61c6887afda62e849eedbf3bcb3b5c0898b434
 }

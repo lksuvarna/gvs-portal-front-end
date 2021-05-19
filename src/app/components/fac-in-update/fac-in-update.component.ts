@@ -110,6 +110,8 @@ export class FacInUpdateComponent implements OnInit {
 
   cache : Create_Cache_fac = new Create_Cache_fac();
   cache_disp : Create_Cache_fac = new Create_Cache_fac();
+  countryroute: any;
+  facIn: boolean = false;
 
   toggle_options(){
     if (this.checked){
@@ -385,6 +387,14 @@ export class FacInUpdateComponent implements OnInit {
       this.pcode = params.country;	
       console.log("navigation component" + this.pcode);	
     })	
+    
+    this.countryroute=sessionStorage.getItem('countryroute')
+    if (this.countryroute === '744' || this.countryroute === '652' ) {
+      this.facIn = true
+    } else {
+      this.facIn = false
+    }
+
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);
       this.countryname=data.countrydetails;

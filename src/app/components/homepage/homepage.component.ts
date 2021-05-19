@@ -79,8 +79,10 @@ export class HomepageComponent implements OnInit {
       this.translatecountryname = this.countryname.name;
       if (this.translatecountryname == 'Canada/Caribbean'){
           this.translatecountryname1 = true;
-          
-      }
+          }
+        else{
+          this.translatecountryname1 = false;
+        }
 
   
     //   this.searchItems = [
@@ -131,6 +133,7 @@ export class HomepageComponent implements OnInit {
         // alert(JSON.stringify(this.searchItems))
       });
       
+      this.searchItems.sort((a: any,b: any): any => b.name.toLowerCase() < a.name.toLowerCase());
     })
 
   } 

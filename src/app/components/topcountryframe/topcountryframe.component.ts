@@ -33,6 +33,8 @@ export class TopcountryframeComponent implements OnInit {
     this.translateconfigservice.changeLanguage(type);
     //this.currentLang = localStorage.setItem("currentLang", type);
   }
+
+  
   ngOnInit(): void {
    
     this.route.queryParams
@@ -65,13 +67,17 @@ export class TopcountryframeComponent implements OnInit {
        }
       }   
     if (this.pcode== this.countryroute) {
+        
       this.pcountrydetails=sessionStorage.getItem('countrydetails')
             console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code)
       this.countryname = JSON.parse(this.pcountrydetails)
-      this.translatecountryname = this.countryname.name;
-      if (this.translatecountryname == 'Canada/Caribbean'){
+       this.translatecountryname = this.pcode;
+      if (this.translatecountryname == '649'){
           this.translatecountryname1 = true;
-        } 
+        }  
+        else{
+          this.translatecountryname1 = false;
+        }
         if(this.service.includes('jabberservices')){
           if ( this.countryname.jservices){}
           else{sessionStorage.setItem('pagedisplay','pagenotfound')
@@ -175,10 +181,14 @@ export class TopcountryframeComponent implements OnInit {
       this.countryname=data.countrydetails;
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.pcode);}
-        this.translatecountryname = this.countryname.name;
-      if (this.translatecountryname == 'Canada/Caribbean'){
+      
+        this.translatecountryname = this.pcode;
+      if (this.translatecountryname == '649'){
           this.translatecountryname1 = true;
         }  
+        else{
+          this.translatecountryname1 = false;
+        }
         if(this.service.includes('jabberservices')){
           if ( this.countryname.jservices){}
           else{sessionStorage.setItem('pagedisplay','pagenotfound')

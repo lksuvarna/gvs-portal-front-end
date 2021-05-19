@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./facservices.component.css']
 })
 export class FacservicesComponent implements OnInit {
+  facIn: boolean = false;
 
   constructor(private cookie: CookieHandlerService,private cloudantservice:cloudantservice, private route: ActivatedRoute) { }
   
@@ -39,8 +40,14 @@ export class FacservicesComponent implements OnInit {
        else{
         this.countrydetails = sessionStorage.getItem('countrydetails');	
         this.countrydetails = JSON.parse(this.countrydetails);
-        this.linkv=this.countrydetails.facservices}      
+        this.linkv=this.countrydetails.facservices
+      }      
    
+      if (this.countryroute === '744' || this.countryroute === '652' ) {
+        this.facIn = true
+      } else {
+        this.facIn = false
+      }
     
       const servicesData = { 
       "data": [
