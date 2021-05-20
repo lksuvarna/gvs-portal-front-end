@@ -80,8 +80,11 @@
                     </tbody>
                 </table>
                 </div>
-        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo"><p></p>
-            <p>No pending approvals for entered serial number.</p><p>
+        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo && reval"><p></p>
+            <p>No pending approvals.</p><p>
+        </p></div>
+        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo && !reval"><p></p>
+            <p>No pending revalidation documents.</p><p>
         </p></div>
 
         <div class="ds-panel ds-col-12" ></div> 

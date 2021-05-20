@@ -102,7 +102,7 @@ reviewDetailsIndia = {
   accid_Disp: "",	
   reqno:""	
 }	
-// Submit to Snow Jabber new code added by Swarnava ends	
+
 backClick(formData:NgForm){	
 sessionStorage.setItem('backbutton','yes');	
 sessionStorage.setItem('step','step1');	

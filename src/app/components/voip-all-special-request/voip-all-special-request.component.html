@@ -51,7 +51,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr valign="top" *ngIf='defaultlocation==false && la==false'>
+                    <tr valign="top" *ngIf='defaultlocation==false'>
                         <td colspan="2" width="47%" height="10">
                             <label for="LocationId" class="ds-text-capitalize" translate>Jabbernewtrans.JabberLocation</label>
                             <span class="ds-text-contextual-red-2">*</span>
@@ -69,7 +69,7 @@
                         </td>
                     </tr>
                    
-                    <tr valign="top" *ngIf='defaultlocation==true && la==false'>
+                    <tr valign="top" *ngIf='defaultlocation==true'>
                         <td colspan="2" width="46%" height="10">
                             <label for="default_location" translate>Jabbernewtrans.JabberLocation</label>
                         </td>
@@ -79,12 +79,12 @@
                         </td>
                     </tr>
                     <tr valign="top" [hidden]='others'>
-                        <td colspan="2" width="46%" height="10"><label for="requirement_id" class="ds-text-capitalize" translate>specialrequest.Description of Requirement</label>
+                        <td colspan="2" width="46%" height="10"><label for="requirement_id" translate>specialrequest.Description of Requirement</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <textarea name="requirement" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="{{ 'specialrequest.Description of Requirement' | translate}}" maxlength="200" rows="2" cols="40" [(ngModel)]="requirement"></textarea>
+                                <textarea name="requirement" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="{{ 'specialrequest.Description of Requirement' | translate}}" maxlength="500" rows="2" cols="40" [(ngModel)]="requirement"></textarea>
                                  <p translate>specialrequest.notexceed200</p>
                             </div>
                         </td>
@@ -147,7 +147,7 @@
                             <div class="ds-margin-bottom-2">{{selectedJabber}}</div>
                         </td>
                     </tr>
-                    <tr valign="top" [hidden]='la'>
+                    <tr valign="top">
                         <td colspan="2" width="46%" height="10">
                             <label for="addId1" translate>specialrequest.JabberLocationspecial</label>
                         </td>
@@ -155,7 +155,7 @@
                     </tr>
     
                     <tr valign="top"> 
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>specialrequest.Description of Requirement</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" translate>specialrequest.Description of Requirement</label>
                         </td>
                         <td width="54%" height="10">
                             <label><span style="word-break:break-all;">{{requirements_disp}}</span></label>

@@ -16,12 +16,13 @@ export class FilterPipe implements PipeTransform {
     if (!items) {
       return [];
     }
-    if (!searchText) {
+    if (searchText.trim() === '') {
       return [];
     }
+
     searchText = searchText.toLocaleLowerCase();
     this.result = items.filter(it => {
-      return it.name.toLocaleLowerCase().includes(searchText);
+      return it.name.toLocaleLowerCase().includes(searchText.trim());
     });
 
     return this.result

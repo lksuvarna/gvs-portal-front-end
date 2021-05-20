@@ -95,9 +95,13 @@
         "Delete Jabber Request": "Jabber - Delete Request",
         "FAC Code New Request": "FAC Code - New Request",
         "FAC Code Update Request": "FAC Code - Update Request",
+        
+        "FAC Code / IDD Pin - New Request": "FAC Code / IDD Pin - New Request",
+        "FAC Code / IDD Pin - Reset Request": "FAC Code / IDD Pin - Reset Request",
+        "FAC Code / IDD Pin - Update Request": "FAC Code / IDD Pin - Update Request",
         "FAC Code Reset Request": "FAC Code - Reset Request",
         "SpecialRequestentryandreview" :"Special Request",
-        "FAC Code / IDD Pin - Reset Request" :"FAC Code / IDD Pin - Reset Request",
+        "FAC Code / IDD Pin - Delete Request" :"FAC Code / IDD Pin - Delete Request",
         "Mobile New Request": "Mobile - New Request",
 
         "FAC Code Delete Request" :"FAC Code - Delete Request",
@@ -335,8 +339,8 @@
      "here" :"here.",
      "JabberNumberoptional": "Jabber / Phone Number (Optional)",
      "JabberLocationspecial": "Jabber / Phone Number location",
-     "Description of Requirement" :"Description of Requirement",
-     "notexceed200":"Note:Length should not exceed 200",
+     "Description of Requirement" :"Description of requirement",
+     "notexceed200":"Note:Length should not exceed 500",
      "Note": "Note:",
      "Fieldsasteriskspl": "Fields marked with an asterisk",
      "arerequiredspl": "are required.",
@@ -352,5 +356,9 @@
         "Device Description" :"Device Description"
         
         
-     }
-}
+     },
+     "Requests":{
+        "approved":"Processing",
+        "Approved":"Processing",
+        "_approval":"Processing"
+}}

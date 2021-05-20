@@ -43,6 +43,7 @@ export class FacInNewComponent implements OnInit {
   Fac_Type = ''
   authLevel = ''
   validity = ''
+  countryroute:any;
 
   employeeInfo: any;
   employeeInfo1: any;
@@ -56,6 +57,7 @@ export class FacInNewComponent implements OnInit {
   ccode: any;
   locationlist: any;
   j=0;
+  facIn: boolean = false
 
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
 
@@ -130,40 +132,50 @@ export class FacInNewComponent implements OnInit {
   }	
 
   entryDetailsFac(formData: NgForm) {	
-      
-    if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
-      alert('Please select the Office Location');	
-      return;	
-    }	
-    if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	
-      alert('Please select the Campus');	
-      return;	
-    }	
-    if(formData.value.chargeDepartmentCode.trim() === '' && this.hideDeptCode == false) {	
-      alert('Please enter the Charge Department Code');	
-      return;	
-    }	
+    if (this.facIn) {    
+      if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
+        alert('Please select the Office Location');	
+        return;	
+      }	
+      if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	
+        alert('Please select the Campus');	
+        return;	
+      }	
+      if(formData.value.chargeDepartmentCode.trim() === '' && this.hideDeptCode == false) {	
+        alert('Please enter the Charge Department Code');	
+        return;	
+      }	
 
-    if(formData.value.authLevel.toLowerCase() === 'select one' || formData.value.authLevel === '') {	
-      alert('Please select an authorization level');	
-      return;	
-    }	
+      if(formData.value.authLevel.toLowerCase() === 'select one' || formData.value.authLevel === '') {	
+        alert('Please select an authorization level');	
+        return;	
+      }	
 
-    if(formData.value.Fac_Type.toLowerCase() === 'select one' || formData.value.Fac_Type === '') {	
-      alert('Please select a FAC code type');	
-      return;	
-    }	
+      if(formData.value.Fac_Type.toLowerCase() === 'select one' || formData.value.Fac_Type === '') {	
+        alert('Please select a FAC code type');	
+        return;	
+      }	
 
-    if((formData.value.validity.toLowerCase() === 'select one' || formData.value.validity === '' ) && this.hideValidity === false) {	
-      alert('Please select a validity');	
-      return;	
-    }	
+      if((formData.value.validity.toLowerCase() === 'select one' || formData.value.validity === '' ) && this.hideValidity === false) {	
+        alert('Please select a validity');	
+        return;	
+      }	
 
-    if( formData.value.Comments.trim() === '') {	
-      alert('Please provide business justification');	
-      return;	
-    }	
-  
+      if( formData.value.Comments.trim() === '') {	
+        alert('Please provide business justification');	
+        return;	
+      }	
+    } else {
+      if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
+        alert('Please select the FAC Code / IDD Pin Office Location');	
+        return;	
+      }	
+
+      if( formData.value.Comments.trim() === '') {	
+        alert('Please provide business justification');	
+        return;	
+      }	
+    }
     this.isEntryForm = true;	
     this.isReviewForm = false;	
   
@@ -295,9 +307,11 @@ export class FacInNewComponent implements OnInit {
       this.pcode = params.country;	
       console.log("navigation component" + this.pcode);	
     })	
+
+    this.countryroute=sessionStorage.getItem('countryroute')
     this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
     this.locationlist=this.locationlist?.replace('"','').split(',');	
-  
+
     for (var i = 0; i < this.locationlist.length; i++) {	
       var n = this.locationlist[i].indexOf("~")	
       this.campA[i] = this.locationlist[i].substr(1, n - 1);	
@@ -308,6 +322,14 @@ export class FacInNewComponent implements OnInit {
         this.camp[this.j] = this.campA[i];	
         this.j++;	
       }	
+    }
+
+    if (this.countryroute === '744' || this.countryroute === '652' ) {
+      this.facIn = true
+    } else {
+      this.facIn = false
+      this.authLevel = 'International'
+      this.camp = this.locationlist
     }
       this.route.queryParams
     .subscribe(params => {	
