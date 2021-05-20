@@ -86,6 +86,7 @@ export class EmployeesearchComponent implements OnInit {
   extracodes: any = [];
   mainConfiguration :any;
   selectedCountry: any
+  emailblank=false;
 
 
   profile_location:any = [];
@@ -414,7 +415,13 @@ export class EmployeesearchComponent implements OnInit {
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
       console.log(' this.employeeSerial', this.employeeSerial);
       console.log(' BP Details', data.userdata);
-      if (data.userdata) {
+      if (data.userdata)
+      { }else{this.emailblank=false;}
+      if (data.userdata && data.username.preferredidentity==undefined) {
+        this.emailblank=true;
+        
+      }
+      if (data.userdata && data.username.preferredidentity!==undefined) {
         var ename = data.username.preferredlastname + ", " + data.username.preferredfirstname
         if (data.username.preferredlastname == undefined || data.username.preferredfirstname == undefined) {
           ename = data.username.callupname
@@ -837,6 +844,7 @@ export class EmployeesearchComponent implements OnInit {
   hidedata() {
     this.notvalid = false;
     this.errorinfo = false;
+    this.emailblank = false;
 
   }
   onRequestForChangesession() {

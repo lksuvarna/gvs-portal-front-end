@@ -138,8 +138,11 @@
             </div>
 
 
-            <p class="ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning" id="error" *ngIf=notvalid>
+            <p class="ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning" id="error" *ngIf="notvalid && !emailblank">
                 <font color="black" translate>Jabbernewtrans.norecord <span>{{employeeSerial.substr(0,6)}}</span><span translate=""> Jabbernewtrans.availablefromBluePages</span></font>
+            </p>
+            <p class="ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning" id="emailblankid" *ngIf="notvalid && emailblank">
+                <font color="black" ><span>The E-mail address could not be found in Bluepages for the entered serial number and cannot proceed further. Please try later.</span></font>
             </p>
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
@@ -165,7 +168,7 @@
                             ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" [routerLink]="['/'+this.exitrouting]" [queryParams]="{country:pcode,service:exitrouting}"
                             value="{{ 'alerttranslation.EXITREQUEST' | translate}}">
                         </span>
-                        <span *ngIf="!showloader && !notvalid && !errorinfo" class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                        <span *ngIf="!showloader && !notvalid && !errorinfo && !emailblank" class="ds-pad-l-1 ds-pad-r-1" id="button2">
                             <input type="submit" 
                             name="NEXT" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 
 
