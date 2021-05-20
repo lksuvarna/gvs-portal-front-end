@@ -69,6 +69,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
   defaultlocation=false;
   default_location='';
   la=false;
+  laloc !: String;
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
   payload : Special_Request = new Special_Request();
@@ -113,9 +114,17 @@ export class VoipAllSpecialRequestComponent implements OnInit {
         this.defaultlocation=false;
       }else{
         if(this.data[this.index].ATTRIBUTE7=='' || this.data[this.index].ATTRIBUTE7==null)
-        this.default_location=''
+        this.default_location='NA'
+        else{
+
+        if(this.pcode == '631')  {
+        this.laloc=this.data[this.index].ATTRIBUTE7;
+        this.default_location=this.laloc.substr(this.laloc.lastIndexOf('~')+1,this.laloc.length);
+        }
         else
         this.default_location=this.data[this.index].ATTRIBUTE7;
+        
+       }
         this.defaultlocation=true;
       }
 
@@ -131,7 +140,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
   
   entryDetails(formData: NgForm) {
      
-    if((this.defaultlocation==false) && (this.la==false)){
+    if((this.defaultlocation==false)){
     if((formData.value.Location.toUpperCase() == 'SELECT ONE' || formData.value.Location == '') && (this.defaultlocation==false)) {
       alert(this.mainConfiguration.alerttranslation.selectlocation);
       return;
@@ -152,15 +161,11 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.msgdis=true
     }
     
-    if (this.la==false){
     if(this.defaultlocation==false)
     this.fl_location_disp = formData.value.Location;
     else
     this.fl_location_disp=formData.value.default_location;
-    }else{
-      this.locationselected='';
-     this.default_location='';
-    }
+ 
     this.requirements_disp = formData.value.requirement;
     this.isReviewForm = false;
     this.isEntryForm = true;
@@ -299,11 +304,11 @@ export class VoipAllSpecialRequestComponent implements OnInit {
     }
 
 
-    if(this.countrydetails.name.toUpperCase().trim()=='LATIN AMERICA'){
-        this.la=true;
-       }else{
-         this.la=false;
-       }
+    // if(this.countrydetails.name.toUpperCase().trim()=='LATIN AMERICA'){
+    //     this.la=true;
+    //    }else{
+    //      this.la=false;
+    //    }
 
      //load cache data for entry details form. -- START
    this.cache_tmp=sessionStorage.getItem('cache')	
