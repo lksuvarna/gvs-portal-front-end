@@ -35,8 +35,8 @@ export class NavigationComponent implements OnInit {
   parcountrydetails:any
   fixphoneVisibility:any;
   loggedinuser:any
-  serhl:any;jhl:any;fhl:any;fachl:any;mhl:any;reqhl:any;reshl:any;apphl:any;pnshl:any;sphl:any;
-  serin:any;jin:any;fin:any;facin:any;min:any;reqin:any;resin:any;appin:any;pnsin:any;spin :any;
+  serhl:any;jhl:any;fhl:any;fachl:any;mhl:any;reqhl:any;reshl:any;apphl:any;pnshl:any;sphl:any;revalhl:any;
+  serin:any;jin:any;fin:any;facin:any;min:any;reqin:any;resin:any;appin:any;pnsin:any;spin :any;revalin:any;
   @Input('dataNav') dataNavParent1: any
   @Input('cloudantData') cloudantData1: any
    
@@ -134,8 +134,8 @@ export class NavigationComponent implements OnInit {
             this.fixphoneVisibility = this.parcountrydetails.isfixphone;
           }
         }
-      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.mhl=false;this.reqhl=false;this.reshl=false;this.apphl=false;this.pnshl=false,this.sphl=false;
-      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.min=false;this.reqin=false;this.resin=false;this.appin=false;this.pnsin=false,this.spin=false;
+      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.mhl=false;this.reqhl=false;this.reshl=false;this.apphl=false;this.pnshl=false,this.sphl=false,this.revalhl=false;
+      this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.min=false;this.reqin=false;this.resin=false;this.appin=false;this.pnsin=false,this.spin=false,this.revalin=false;
       
       if (this.service=="services")
       {
@@ -197,6 +197,12 @@ export class NavigationComponent implements OnInit {
         this.fin=true
         
       }
+      if ((this.service).includes("revalidationpending"))
+      {        
+        this.revalhl=true
+        this.fin=true
+        
+      }
       if ((this.service).includes("phone_search"))
       {        
         this.pnshl=true
@@ -214,7 +220,7 @@ export class NavigationComponent implements OnInit {
                 {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
                // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
                 {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
-                {"name" : "Revalidation Pending","routingname":"/revalidationpending", "indented" : false, "highlighted": false,"param":"revalidationpending"},
+                {"name" : "Revalidation Pending","routingname":"/revalidationpending", "indented" : this.revalin, "highlighted": this.revalhl,"param":"revalidationpending"},
                 {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search"},
                 {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
                 {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
@@ -238,7 +244,7 @@ export class NavigationComponent implements OnInit {
               {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : this.fin, "highlighted": this.fhl,"param":"fixedphoneservices"},            
               {"name" : "Special Request","routingname":"/employeesearch", "indented" : true, "highlighted": this.sphl,"param":"specialrequest"},            
               {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
-              {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
+              {"name" : "Revalidation Pending","routingname":"/revalidationpending", "indented" : this.revalin, "highlighted": this.revalhl,"param":"revalidationpending"},
               {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search"},
               {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
               {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
