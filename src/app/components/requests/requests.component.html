@@ -38,7 +38,7 @@
         <tr  *ngFor='let no of snowdata; let i=index'>
           <td style="padding-top:13px; padding-left:15px">{{ no.cat_item.display_value }}</td>
           <td style="padding-top:13px; padding-left:15px">{{ no.sys_created_on|date:'MM/dd/yyyy' }}</td>
-          <td style="padding-top:13px; padding-left:15px">{{no.stage.includes("approved")?"Processing":no.stage.includes("Approved")?"Processing":no.stage.includes("_approval")?"Processing":no.stage}}<span *ngIf="no.stage=='Waiting for Approval'">{{approver[i]}}</span></td>
+          <td style="padding-top:13px; padding-left:15px">{{no.stage.includes("approved")?"Processing":no.stage.includes("Approved")?"Processing":no.stage.includes("_approval")?"Processing":no.stage.includes("Request Rejected")?"Rejected":no.stage}}<span *ngIf="no.stage=='Waiting for Approval'">{{approver[i]}}</span></td>
           <td style="width:30%; padding-top:13px; padding-left:15px">{{ no['variables.6b7d0e981b3f84d08476dc26bc4bcb75']}}</td>
           <td style="width:30%; padding-top:13px; padding-left:15px"><span *ngIf="!snowdataarray[i].includes('none' || '')"><a (click)='openNav(snowdataarray[i])' style="color:blue">{{lastcomment[i] }}</a></span>
             <span *ngIf="snowdataarray[i].includes('none' || '')">{{lastcomment[i]}}</span>            
