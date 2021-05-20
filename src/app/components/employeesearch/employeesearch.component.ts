@@ -633,7 +633,13 @@ export class EmployeesearchComponent implements OnInit {
         this.lookuploc = JSON.stringify(data.locationdetails.faclocations)
       }
       else if (this.service.includes('specialrequest')) {
+        if (this.pcode == '631') {
+          var loc = this.employeeSerial.substr(6, 9) + "jlocations"
+          console.log(loc)
+          this.lookuploc = JSON.stringify((data.locationdetails[loc]))
+        }else{
         this.lookuploc = JSON.stringify(data.locationdetails.slocations)
+        }
       }
       // sessionStorage.setItem('locationdetails', JSON.stringify(data.locationdetails.jlocations));
       sessionStorage.setItem('locationdetails', this.lookuploc)
