@@ -97,7 +97,7 @@
         "FAC Code Update Request": "FAC Code - Update Request",
         "FAC Code Reset Request": "FAC Code - Reset Request",
         "SpecialRequestentryandreview" :"Special Request",
-
+        "FAC Code / IDD Pin - Reset Request" :"FAC Code / IDD Pin - Reset Request",
         "Mobile New Request": "Mobile - New Request",
 
         "FAC Code Delete Request" :"FAC Code - Delete Request",
@@ -339,8 +339,18 @@
      "notexceed200":"Note:Length should not exceed 200",
      "Note": "Note:",
      "Fieldsasteriskspl": "Fields marked with an asterisk",
-     "arerequiredspl": "are required."
+     "arerequiredspl": "are required.",
+     "selectjabbernumberwishtoupdate":"Select the Jabber / Phone Number you wish to update"
 
 
+     },
+     "otheralerts":{
+        "selectthejabber":"Please select the Jabber / Phone number to update",
+        "selectthejabbertomove":"Select the Jabber / Phone Number  you wish to move",
+        "Model" :"Model",
+        "MAC Address" :"MAC Address",
+        "Device Description" :"Device Description"
+        
+        
      }
 }

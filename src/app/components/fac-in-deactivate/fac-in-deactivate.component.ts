@@ -37,6 +37,7 @@ export class FacInDeactivateComponent implements OnInit {
   reqFor: any;
   employeeSerial = '';
   service = '';
+  countryroute:any;
   cnum: any;
   countrydetails : any;
   orgi:any;	
@@ -79,6 +80,7 @@ export class FacInDeactivateComponent implements OnInit {
 
   payload : Fac_Delete = new Fac_Delete();
   db2data: any
+  facIn: boolean = false;
 
   
   // Submit to Snow Jabber new code added by Swarnava ends	
@@ -220,6 +222,12 @@ export class FacInDeactivateComponent implements OnInit {
   
      
     }	
+    this.countryroute=sessionStorage.getItem('countryroute')
+    if (this.countryroute === '744' || this.countryroute === '652' ) {
+      this.facIn = true
+    } else {
+      this.facIn = false
+    }
     
     this.reqFor = sessionStorage.getItem('radioAction');
       this.servicesData = servicesData.data[0]

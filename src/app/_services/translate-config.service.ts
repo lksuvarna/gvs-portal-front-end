@@ -17,7 +17,7 @@ var myJsonfrench:any  = require('../../assets/i18n/fr_ca.json');
   providedIn: 'root'
 })
 export class TranslateConfigService {
-  languageType = '';
+  languageType :any;
   currentLang :any;
   pcode = '';
   countryroute:any;
@@ -31,20 +31,19 @@ export class TranslateConfigService {
    
 
   this.currentLang = localStorage.getItem("currentLang")
-  this.currentlang1 = localStorage.getItem("currentlang1")
+  this.currentlang1 = sessionStorage.getItem("currentlang1")
 this.countryroute =sessionStorage.getItem("countryroute")
-this.countryname11=localStorage.getItem("countryroute")
+
 
 if ( sessionStorage.getItem('countryroute') == '649'){
   
-  if(localStorage.getItem('currentLang') == 'en') {
-    
-    this.translateservice.use('en');
+  //if(localStorage.getItem('currentLang') == 'en') {
+    if(sessionStorage.getItem('currentLang1') == 'fr_ca') {
+    this.translateservice.use('fr_ca');
     
    }
    else {
-   
-    this.translateservice.use('fr_ca');
+    this.translateservice.use('en');
     }
 }
 
@@ -54,17 +53,20 @@ this.translateservice.use('en');
 } 
  
   changeLanguage(type :string){
+    
     this.translateservice.use(type);
-    this.languageType = type;
      localStorage.setItem("currentLang", type);
     this.currentLang = localStorage.getItem("currentLang")
-    /* sessionStorage.setItem("currentlang1",type);
-    this.currentLang = sessionStorage.getItem("currentlang1") */
+     sessionStorage.setItem("currentlang1",type);
+    this.currentLang = sessionStorage.getItem("currentlang1") 
+    this.languageType = sessionStorage.getItem("currentlang1") 
      
   } 
   changeLanguage1(type :string){
     this.translateservice.use(type);
-    this.languageType = type;
+    sessionStorage.setItem("languageType",type);
+    this.languageType = sessionStorage.getItem("languageType") 
+    
      
   } 
 
@@ -74,12 +76,13 @@ this.translateservice.use('en');
      readConfigFile() {
       
       if (this.languageType === "fr_ca") {
-
       return myJsonfrench;
 
       }
-    //} 
+    else{
+ 
      return myJsonenglish;
+    }
      }
  
 }

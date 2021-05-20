@@ -53,13 +53,13 @@ export class UitoplinksComponent implements OnInit {
     .subscribe(params => {
       this.service=params.service;
       this.pcode = params.country;
-      if (this.pcode == '649'){
+       if (this.pcode == '649'){
       this.langType=localStorage.getItem("currentLang")
       this.translateconfigservice.changeLanguage1(this.langType);
       }
       else{
         this.translateconfigservice.changeLanguage1('en');
-      }
+      }  
     this.routerPath = window.location.pathname
 
     if (this.routerPath === '/'){
@@ -105,13 +105,13 @@ export class UitoplinksComponent implements OnInit {
     document.getElementById('countrydropdown')?.classList.remove('show');
     this.searchText = ''
     this.toggleHighlight(id);
-    if (ccode != '649' ){
+      if (ccode != '649' ){
      this.translateconfigservice.changeLanguage1('en');
       }  
-     /*  else{
+       else{
         this.langType=localStorage.getItem("currentLang")
         this.translateconfigservice.changeLanguage1(this.langType);
-      } */
+      }   
       
     }
 

@@ -97,6 +97,7 @@
         "Request Move Jabber service" :"Jabber - Demande de déplacement",
         "Update Existing Jabber Request" :"Jabber - Demande de mise à jour",
         "SpecialRequestentryandreview" :"Demande spéciale",
+        "FAC Code / IDD Pin - Delete Request" :"Code FAC / Pin IDD - Demande de suppression",
         "Special Request": "Demande spéciale",
         "Delete an existing service" : "Supprimer un service existant",
         "Request a new service" :"Demander un nouveau service",
@@ -326,9 +327,18 @@
     "notexceed200":"Remarque: la longueur ne doit pas dépasser 200",
     "Note": "Noter:",
     "Fieldsasteriskspl":"Champs marqués d'un astérisque",
-     "arerequiredspl":"sont requis."
+     "arerequiredspl":"sont requis.",
+     "selectjabbernumberwishtoupdate":"Sélectionnez le numéro Jabber que vous souhaitez mettre à jour"
 
-
+    },
+    "otheralerts":{
+       "selectthejabber":"Veuillez sélectionner le jabber / numéro de téléphone à mettre à jour",
+       "selectthejabbertomove":"Sélectionnez le Jabber / numéro de téléphone que vous souhaitez déplacer",
+       "Model" :"Modèle",
+       "MAC Address" :"Adresse Mac",
+       "Device Description" :"Description de l'appareil"
+       
+       
     }
     
  
