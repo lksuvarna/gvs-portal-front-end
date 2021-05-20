@@ -113,13 +113,19 @@ export class VoipInMoveComponent implements OnInit {
   }
 
   getjabberNumberVal(jabberNumberVal: string) {
-    if (jabberNumberVal != '') {
-      this.displayDiv = true;
-    }
-    else{
+    if(jabberNumberVal == '' || jabberNumberVal == 'undefined'){
       this.displayDiv = false;
       this.selected_location='';
+    } else {
+      this.displayDiv = true;
     }
+    // if (jabberNumberVal != '' || jabberNumberVal != undefined) {
+    //   this.displayDiv = true;
+    // }
+    // else{
+    //   this.displayDiv = false;
+    //   this.selected_location='';
+    // }
 
     //alert(this.displayDiv + this.jabberNumberVal)
   }
@@ -243,7 +249,7 @@ export class VoipInMoveComponent implements OnInit {
 
     // fields to be picked up from form -- ends	
     this.payload.level1_japproval = this.countrydetails.level1_japproval;
-    this.payload.level2_japproval = this.countrydetails.level2_japproval;
+    this.payload.level2_japproval = "";
     //this.payload.SLA_type = this.countrydetails.SLA_type;
     this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
     this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
@@ -314,6 +320,7 @@ this.identifier=sessionStorage.getItem('identifier')
        console.log("navigation component" + this.pcode);	
      
      this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','');
+     if(this.locationlist != undefined) {
      this.locationlist=this.locationlist?.replace('"','').split(',');	
    
      for (var i = 0; i < this.locationlist.length; i++) {	
@@ -327,6 +334,7 @@ this.identifier=sessionStorage.getItem('identifier')
          this.j++;	
        }	
      }
+    }
      const servicesData = { 	
        "data": [	
          {    	

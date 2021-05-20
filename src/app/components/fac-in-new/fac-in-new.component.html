@@ -9,7 +9,8 @@
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <form [hidden]="isEntryForm" (submit)='entryDetailsFac(formData)' #formData='ngForm'>
 
-            <b translate>servicestitle.FAC Code New Request</b>
+            <b *ngIf="facIn" translate>servicestitle.FAC Code New Request</b>
+            <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD Pin - New Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
                 Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.
@@ -24,12 +25,22 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
+                        <td colspan="2" width="46%" height="10">
+                            <label for="LocationId" *ngIf="facIn" class="ds-text-capitalize">Office Location</label>
+                            <label for="LocationId" *ngIf="!facIn" class="ds-text-capitalize">FAC Code / IDD Pin Office Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
-                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
+                            <div *ngIf="facIn" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location (change)='selectedLocation(location.value)' [(ngModel)]='selected_location'>
+                                    <option value ="">Select One</option>
+                                    <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
+                    {{ fl_location }}</option>
+                </select>
+                            </div>
+                            <div *ngIf="!facIn" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="FAC Code / IDD Pin Office Location" #location (change)='selectedLocation(location.value)'
+                                    [(ngModel)]='selected_location'>
                                     <option value ="">Select One</option>
                                     <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
                     {{ fl_location }}</option>
@@ -38,7 +49,7 @@
                         </td>
                     </tr>
 
-                    <tr valign="top" [hidden]='hideBuilding'>
+                    <tr valign="top" *ngIf="facIn" [hidden]='hideBuilding'>
                         <td colspan="2" width="46%"><label for="builId" class="ds-text-capitalize"> Campus</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
@@ -53,7 +64,7 @@
                     </tr><br>
 
 
-                    <tr valign="top">
+                    <tr valign="top" *ngIf="facIn">
                         <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize ds-padding-top-2">Funded</label>
                         </td>
                         <td width="54%">
@@ -73,7 +84,7 @@
                         </td>
                     </tr>
 
-                    <tr valign="top" [hidden]='hideDeptCode'>
+                    <tr valign="top" *ngIf="facIn" [hidden]='hideDeptCode'>
                         <td colspan="2" width="46%">
                             <div id="d1"><label for="addId" class="ds-text-capitalize ds-pad-t-1">Charge Department
                   Code</label> <span class="ds-text-contextual-red-2">*</span></div>
@@ -99,22 +110,28 @@
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td colspan="2" width="50%"><br>
+                        <td *ngIf="facIn" colspan="2" width="50%"><br>
                             <label for="LocationId" class=""> Authorization Level</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
+                        <td *ngIf="!facIn" colspan="2" width="50%"><br>
+                            <label for="LocationId" class=""> Authorization Level</label>
+                        </td>
                         <td width="50%"><br>
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select name="authLevel" rows="2" cols="40" id="authLevel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Authorization Level" [(ngModel)]="authLevel">
-                                 <option value ="">Select One</option>
-                                 <option>Local</option>
-                                 <option>STD</option>
-                                 <option>ISD</option>
+                                <select *ngIf="facIn" name="authLevel" rows="2" cols="40" id="authLevel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Authorization Level" [(ngModel)]="authLevel">
+                                    <option value ="">Select One</option>
+                                    <option>Local</option>
+                                    <option>STD</option>
+                                    <option>ISD</option>
+                                </select>
+                                <select *ngIf="!facIn" name="authLevel" rows="2" cols="40" id="authLevel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Authorization Level" [(ngModel)]="authLevel">
+                                    <option value="International">International</option>
                                 </select>
                             </div>
                         </td>
                     </tr>
-                    <tr valign="top">
+                    <tr valign="top" *ngIf="facIn">
                         <td colspan="2" width="50%"><br>
                             <label for="LocationId" class=""> FAC Code Type</label>
                             <span class="ds-text-contextual-red-2">*</span>
@@ -130,7 +147,7 @@
                         </td>
                     </tr>
 
-                    <tr valign="top" [hidden]="hideValidity">
+                    <tr valign="top" *ngIf="facIn" [hidden]="hideValidity">
                         <td colspan="2" width="50%"><br>
                             <label for="LocationId" class=""> Validity</label>
                             <span class="ds-text-contextual-red-2">*</span>
@@ -178,15 +195,14 @@
 
         <form [hidden]="isReviewForm">
 
-            <b translate>servicestitle.FAC Code New Request</b>
-
+            <b *ngIf="facIn" translate>servicestitle.FAC Code New Request</b>
+            <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD Pin - New Request</b>
 
             <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
             <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
-
 
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Review Details</h2>
 
@@ -198,7 +214,7 @@
                         </td>
                         <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
                     </tr>
-                    <tr valign="top">
+                    <tr valign="top" *ngIf="facIn">
                         <td colspan="2" width="46%">
                             <label for="addId1">Campus</label>
                         </td>
@@ -209,14 +225,14 @@
 
             <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
-                    <tr valign="top">
+                    <tr valign="top" *ngIf="facIn">
                         <td colspan="2" width="46%">
                             <label for="addId1">Funded</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.funded}}</td>
                     </tr>
 
-                    <tr valign="top">
+                    <tr valign="top" *ngIf="facIn">
                         <td colspan="2" width="46%">
                             <label [hidden]="hideDeptCode" for="addId1">Charge Department Code</label>
                         </td>
@@ -242,13 +258,13 @@
                         </td>
                         <td width="54%">{{reviewDetailsIndia.authLevel}}</td>
                     </tr>
-                    <tr valign="top">
+                    <tr valign="top" *ngIf="facIn">
                         <td colspan="2" width="46%">
                             <label for="addId1">FAC Code Type</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.Fac_Type}}</td>
                     </tr>
-                    <tr [hidden]="hideValidity" valign="top">
+                    <tr *ngIf="facIn" [hidden]="hideValidity" valign="top">
                         <td colspan="2" width="46%">
                             <label for="addId1">Validity</label>
                         </td>

@@ -20,12 +20,22 @@
                 </div>
             </a>
         </div>
-        <div *ngIf="cloudantData.isfac" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
+        <div *ngIf="cloudantData.isfac && facIn" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
             <a [routerLink]="['/facservices']" [queryParams]="{country:pcode,service:'facservices'}">
                 <div class="ds-panel">
                     <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
                         <img src="././assets/fixedphone.png">
                         <p class="ds-text-small  ds-padding-t-3">{{servicesData.services[2]}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div *ngIf="cloudantData.isfac && !facIn" class="ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4">
+            <a [routerLink]="['/facservices']" [queryParams]="{country:pcode,service:'facservices'}">
+                <div class="ds-panel">
+                    <div class="ds-panel-container ds-text-align-center" style="max-height: 215px">
+                        <img src="././assets/fixedphone.png">
+                        <p class="ds-text-small  ds-padding-t-3">{{servicesData.services[5]}}</p>
                     </div>
                 </div>
             </a>

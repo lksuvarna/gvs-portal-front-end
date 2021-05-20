@@ -18,6 +18,7 @@ export class NavigationComponent implements OnInit {
   cloudantData: any = []
   servicesData: any = []
   pcountrydetails:any
+
   constructor(private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private translateconfigservice : TranslateConfigService) { }
 
   defaultNavClass = 'ds-panel-segment ds-text-uppercase'
@@ -234,8 +235,8 @@ export class NavigationComponent implements OnInit {
               {"name" : "FAC Code","routingname":"/facservices", "indented" : true, "highlighted": this.fachl,"param":"facservices"},  
               {"name" : "Mobile","routingname":"/mobileservices", "indented" : true, "highlighted": this.mhl,"param":"mobileservices"},                        
 
-               {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : this.fin, "highlighted": this.fhl,"param":"fixedphoneservices"},            
-               {"name" : "Special Request","routingname":"/employeesearch", "indented" : true, "highlighted": this.sphl,"param":"specialrequest"},            
+              {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : this.fin, "highlighted": this.fhl,"param":"fixedphoneservices"},            
+              {"name" : "Special Request","routingname":"/employeesearch", "indented" : true, "highlighted": this.sphl,"param":"specialrequest"},            
               {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
               {"name" : "Revalidation Pending","routingname":"/inprogress", "indented" : false, "highlighted": false,"param":"services"},
               {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search"},
@@ -247,8 +248,24 @@ export class NavigationComponent implements OnInit {
           }
         ]
       }}
+    
     this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
     this.countryroute=sessionStorage.getItem('countryroute')
+
+    if (this.countryroute === '744' || this.countryroute === '652' ) {
+      this.dataNav123.data[0].lhs.map((obj: { name: string; }) => {
+        if(obj.name === 'FAC Code / IDD Pin'){
+          obj.name = 'FAC Code'
+        }
+      })
+    } else {
+      this.dataNav123.data[0].lhs.map((obj: { name: string; }) => {
+        if(obj.name === 'FAC Code'){
+          obj.name = 'FAC Code / IDD Pin'
+        }
+      })
+    }
+    
     if (this.pcode== this.countryroute) {
       this.pcountrydetails=sessionStorage.getItem('countrydetails')
             console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code)
