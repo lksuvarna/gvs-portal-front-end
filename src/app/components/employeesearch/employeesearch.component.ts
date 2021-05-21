@@ -212,7 +212,7 @@ export class EmployeesearchComponent implements OnInit {
         const servicesData = {
           "data": [
             {
-              "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request", "Mobile"],
+              "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request", "Mobile"],
               "step": 1,
             }
           ]
@@ -788,9 +788,9 @@ export class EmployeesearchComponent implements OnInit {
           break;
       case "fac_new":
       if(this.facIn){
-        this.title="FAC Code New Request";
+        this.title="FAC Code / IDD PIN New Request";
       } else {
-        this.title="FAC Code / IDD Pin - New Request";
+        this.title="FAC Code / IDD PIN - New Request";
       }
       this.routingname="/entrydetailsfac";
       this.exitrouting='facservices';
@@ -798,7 +798,7 @@ export class EmployeesearchComponent implements OnInit {
       break;
 
       case "fac_delete":
-      this.title="FAC Code Delete Request";
+      this.title="FAC Code / IDD PIN Delete Request";
       this.routingname="/entrydetailsfacdeactive";
       this.exitrouting='facservices';
       this.reqname="-DS-";
@@ -806,9 +806,9 @@ export class EmployeesearchComponent implements OnInit {
 
       case "fac_update":
         if(this.facIn){
-          this.title="FAC Code Update Request";
+          this.title="FAC Code / IDD PIN Update Request";
         } else {
-          this.title="FAC Code / IDD Pin - Update Request";
+          this.title="FAC Code / IDD PIN - Update Request";
         }
         this.routingname = "/entrydetailsfacu";
         this.exitrouting='facservices';
@@ -816,9 +816,9 @@ export class EmployeesearchComponent implements OnInit {
         break;
       case "fac_reset":
         if(this.facIn){
-          this.title="FAC Code Reset Request";
+          this.title="FAC Code / IDD PIN Reset Request";
         } else {
-          this.title="FAC Code / IDD Pin - Reset Request";
+          this.title="FAC Code / IDD PIN - Reset Request";
         }
         this.routingname="/entrydetailsfacr";
         this.exitrouting='facservices';

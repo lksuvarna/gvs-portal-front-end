@@ -30,7 +30,7 @@
     "footnote": {
         "Jabber": "Jabber",
         "Fixed Phone": "Fixed Phone",
-        "FAC Code": "FAC Code",
+        "FAC Code / IDD PIN": "FAC Code / IDD PIN",
         "Special Request": "Special Request",
         "Terms of use": "Terms of use",
         "Useful Information": "Useful Information",
@@ -44,11 +44,10 @@
     "lhs": {
         "Services": "Services",
         "Jabber": "Jabber",
-        "FAC Code": "FAC Code",
+        "FAC Code / IDD PIN": "FAC Code / IDD PIN",
         "Mobile": "Mobile",
         "Fixed Phone": "Fixed Phone",
         "Special Request": "Special Request",
-        "FAC Code / IDD Pin": "FAC Code / IDD Pin",
         "Approvals Pending": "Approvals Pending",
         "Revalidation Pending": "Revalidation Pending",
         "Phone Number Search": "Phone Number Search",
@@ -94,23 +93,18 @@
         "Update Jabber Request": "Jabber - Update Request",
         "Move Jabber Request": "Jabber - Move Request",
         "Delete Jabber Request": "Jabber - Delete Request",
-        "FAC Code New Request": "FAC Code - New Request",
-        "FAC Code Update Request": "FAC Code - Update Request",
-        "FAC Code / IDD Pin - New Request": "FAC Code / IDD Pin - New Request",
-        "FAC Code / IDD Pin - Reset Request": "FAC Code / IDD Pin - Reset Request",
-        "FAC Code / IDD Pin - Update Request": "FAC Code / IDD Pin - Update Request",
-        "FAC Code / IDD Pin - Delete Request": "FAC Code / IDD Pin - Delete Request",
-        "FAC Code Reset Request": "FAC Code - Reset Request",
-<<<<<<< HEAD
+        "FAC Code / IDD PIN New Request": "FAC Code / IDD PIN - New Request",
+        "FAC Code / IDD PIN Update Request": "FAC Code / IDD PIN - Update Request",
+        
+        "FAC Code / IDD PIN - New Request": "FAC Code / IDD PIN - New Request",
+        "FAC Code / IDD PIN - Reset Request": "FAC Code / IDD PIN - Reset Request",
+        "FAC Code / IDD PIN - Update Request": "FAC Code / IDD PIN - Update Request",
+        "FAC Code / IDD PIN Reset Request": "FAC Code / IDD PIN - Reset Request",
         "SpecialRequestentryandreview" :"Special Request",
-        "FAC Code / IDD Pin - Reset Request" :"FAC Code / IDD Pin - Reset Request",
-=======
-        "SpecialRequestentryandreview": "Special Request",
-
->>>>>>> ba5ea284bf61dcb976bc8df45426246454e0e618
+        "FAC Code / IDD PIN - Delete Request" :"FAC Code / IDD PIN - Delete Request",
         "Mobile New Request": "Mobile - New Request",
 
-        "FAC Code Delete Request": "FAC Code - Delete Request",
+        "FAC Code / IDD PIN Delete Request" :"FAC Code / IDD PIN - Delete Request",
 
         "Request Move Jabber service": "Jabber - Move Request",
         "Update Existing Jabber Request": "Jabber - Update Request",
@@ -119,14 +113,14 @@
         "Update an existing service": "Update an existing service",
         "Requests": "Requests",
         "Resources": "Resources",
-        "Delete an existing FAC Code": "Delete an existing FAC Code",
+        "Delete an existing FAC Code / IDD PIN": "Delete an existing FAC Code / IDD PIN",
         "Fixed Phone - New Request": "Fixed Phone - New Request",
         "New Fixed Phone Request": "New Fixed Phone Request",
         "Fixed Phone - Update Request": "Fixed Phone - Update Request",
         "Fixed Phone - Delete Request": "Fixed Phone - Delete Request",
-        "Request a new FAC Code": "Request a new FAC Code",
-        "Update an existing FAC code": "Update an existing FAC code",
-        "Reset an existing FAC code": "Reset an existing FAC code",
+        "Request a new FAC Code / IDD PIN": "Request a new FAC Code / IDD PIN",
+        "Update an existing FAC Code / IDD PIN": "Update an existing FAC Code / IDD PIN",
+        "Reset an existing FAC Code / IDD PIN": "Reset an existing FAC Code / IDD PIN",
         "Phone Number Search": "Phone Number Search",
         "Special Request": "Special Request"
 
@@ -175,7 +169,7 @@
         "alreadyonedeleterequestinprogress": "The serial number that you have entered has already one delete Jabber request is in progress and request number is",
         "alreadyonefacdeleterequestinprogress": "The serial number that you have entered has already one delete FAC request is in progress and request number is",
         "enterserialnumber": "Please enter a serial number",
-        "alreadyonerequestinprogressfac": "The serial number that you have entered has already one new FAC Code request is in progress and request number is"
+        "alreadyonerequestinprogressfac": "The serial number that you have entered has already one new FAC Code / IDD PIN request is in progress and request number is"
 
     },
     "Jabberentrydetails": {
@@ -282,8 +276,6 @@
         "STEP 4": "STEP 4"
 
     },
-
-   
     "fixedphonenew":{
         "Location" : "Location",
         "TypeofDevice":"Type of Device ",
@@ -356,7 +348,6 @@
 
 
      },
-<<<<<<< HEAD
      "otheralerts":{
         "selectthejabber":"Please select the Jabber / Phone number to update",
         "selectthejabbertomove":"Select the Jabber / Phone Number  you wish to move",
@@ -365,13 +356,9 @@
         "Device Description" :"Device Description"
         
         
-=======
-
+     },
      "Requests":{
         "approved":"Processing",
         "Approved":"Processing",
         "_approval":"Processing"
-
->>>>>>> ba5ea284bf61dcb976bc8df45426246454e0e618
-     }
-}
+}}

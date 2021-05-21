@@ -26,7 +26,7 @@ export class MiddlecountryframeComponent implements OnInit {
     const servicesData = { 
       "data": [
         {    
-          "servicestitle" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "servicestitle" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"], 
           "titles": [
             "Terms of use",
             "Useful Information",

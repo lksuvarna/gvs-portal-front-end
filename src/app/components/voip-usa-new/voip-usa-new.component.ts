@@ -252,7 +252,7 @@ this.msgdis=true
    "data": [	
      {    	
          
-       "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+       "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"], 
        "step" : 3,	
        
      }	

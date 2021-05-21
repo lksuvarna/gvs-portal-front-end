@@ -9,8 +9,8 @@
     <div class="ds-col-md-8 ds-col-xl-7 ds-pad-l-2_5">
         <form [hidden]='isEntryForm' (submit)='EntryDetails(formData)' #formData='ngForm'>
 
-            <b *ngIf="facIn" translate>servicestitle.FAC Code Update Request</b>
-            <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD Pin - Update Request</b>
+            <b *ngIf="facIn" translate>servicestitle.FAC Code / IDD PIN Update Request</b>
+            <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD PIN - Update Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
                 <label *ngIf="warninginfo==false">Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</label>
@@ -23,10 +23,10 @@
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
             <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
-                <p>There is no FAC code for this serial number.</p>
+                <p>There is no FAC Code / IDD PIN for this serial number.</p>
             </div>
             <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
-                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Update FAC Code request
+                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Update FAC Code / IDD PIN request
             is in progress and request number is {{identifier}}.<br>
 
             You can view the status of the on-going request by clicking on the Requests link on the left side navigation
@@ -64,7 +64,7 @@
                     </tr>
 
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current FAC Code Type </label>
+                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current FAC Code / IDD PIN Type </label>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
@@ -220,8 +220,8 @@
 
         <form [hidden]='isReviewForm' #formData='ngForm'>
 
-            <b *ngIf="facIn" translate>servicestitle.FAC Code Update Request</b>
-            <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD Pin - Update Request</b>
+            <b *ngIf="facIn" translate>servicestitle.FAC Code / IDD PIN Update Request</b>
+            <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD PIN - Update Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
                 By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. </div>
@@ -258,7 +258,7 @@
                     </tr><br *ngIf="this.currAuthorizationLevel">
 
                     <tr valign="top" *ngIf="this.currFACCodeType">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Current FAC Code Type</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Current FAC Code / IDD PIN Type</label>
                         </td>
                         <td width="54%" height="10">
                             <label>{{currFACCodeType}}</label>

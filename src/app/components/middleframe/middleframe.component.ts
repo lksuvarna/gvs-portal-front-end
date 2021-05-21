@@ -37,11 +37,7 @@ export class MiddleframeComponent implements OnInit {
       this.countryroute = sessionStorage.getItem('countryroute');
       console.log("navigation component country route" + this.countryroute );
 
-      if (this.pcode === '744' || this.pcode === '652' ) {
-        this.facIn = true
-      } else {
-        this.facIn = false
-      }
+      
     if (this.pcode== this.countryroute) {
       this.pcountrydetails = sessionStorage.getItem('countrydetails')
       console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code)
@@ -122,7 +118,7 @@ export class MiddleframeComponent implements OnInit {
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
          ],
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request","Mobile", "FAC Code / IDD Pin"], 
+          "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request","Mobile"], 
           "titles": [
             "Terms of use",
             "Useful Information",

@@ -31,7 +31,7 @@ export class DummyComponent implements OnInit {
           {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
           {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
         ],
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"]        
+        "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"]        
         
       }
     ]
