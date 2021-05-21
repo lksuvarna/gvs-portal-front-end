@@ -279,6 +279,7 @@ export class StepsComponent implements OnInit {
     this.cache_fixed.cnum = this.cnum;
     this.cache_fixed.currentMacOrPhone = this.formData.value.IdNum1;
     this.cache_fixed.showSearch = this.FixedPhoneData.showSearch;
+    this.cache_fixed.hideNextButton = this.FixedPhoneData.hideNextButton;
     this.cache_fixed.showerrormessage = this.FixedPhoneData.showerrormessage;
     this.cache_fixed.hideNext =  this.FixedPhoneData.hideNext;
     //this.cache_fixed.hideSteps = this.FixedPhoneData.hideSteps;

@@ -79,7 +79,7 @@
         "opps":"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard",
         "JabberLocation" : "Emplacement du Jabber / Numéro de téléphone",
         "Voicemail" : "Messagerie vocale",
-        "ClassofService" : "Classe de service",
+        "ClassofService" : "Classe de service (COS)",
         "pleasesubmittostart":"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning."
 
     },
@@ -265,7 +265,7 @@
            "SelectDevice":"Choisir un appareil",
            "TypeofModel":"Type de modèle ",
            "SelectModel" :"Sélectionnez un modèle",
-           "SelectClassofService (COS)" :"Sélectionnez la classe de service (COS)",
+           "SelectClassofService (COS)" :"Classe de service (COS)",
            "National" :"Nationale",
            "International" :"Internationale",
            "BusinessNeed(Whyisinternationalrequired?)" :"Besoin commercial (pourquoi l'international est-il requis?) ",

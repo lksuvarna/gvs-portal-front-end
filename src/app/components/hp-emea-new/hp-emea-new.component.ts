@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { fixedphone_new } from 'config/payload';
+import { fixedphone_new,Create_Cache_fixedphone } from 'config/payload';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { servicenowservice } from '../../_services/servicenow.service';	
@@ -52,10 +52,18 @@ locationlist: any;
 selected_device:any = '';
 voicemail = 'no';
 mainConfiguration :any;
+cache_tmp:  any = [];
+selected_location:any = '';
+MACValue:any = '';
+descValue:any = '';
+justificationValue:any = '';
+FixedPhoneData: any = [];
 
 
 
 payload : fixedphone_new = new fixedphone_new();	
+cache : Create_Cache_fixedphone = new Create_Cache_fixedphone();
+cache_disp : Create_Cache_fixedphone = new Create_Cache_fixedphone();
 
 reviewDetailsIndia = {	
 
@@ -83,10 +91,11 @@ reviewDetailsIndia = {
 }	
 
 
- backClick(): void{	
+ backClick(formData: NgForm): void{	
     sessionStorage.setItem('backbutton','yes');	
     sessionStorage.setItem('step','step1');	
     //this.location.back();	
+    this.create_cache(formData);
     if(sessionStorage.getItem('radioAction')=='myself'){
       this.router.navigate(['employeesearch'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
     }
@@ -129,6 +138,7 @@ selectedDevice(device:string) {
     this.hideVoicemail = true;
     this.showBusinessNeed = true;
   }
+  this.getFixedPhoneData();
 
 }
 
@@ -140,6 +150,14 @@ classofservice(cos:string) {
     this.showBusinessNeed = true;
   } else {
     this.showBusinessNeed = true;
+  }
+  this.getFixedPhoneData();
+}
+
+getFixedPhoneData(){
+  this.FixedPhoneData = {
+    "showBusinessNeed": this.showBusinessNeed,
+    "COS": this.COS,
   }
 }
 
@@ -162,7 +180,7 @@ classofservice(cos:string) {
         alert(this.mainConfiguration.fixedphonenew.selectmodel);
         return;
       }
-      if(formData.value.cos == '') {
+      if(formData.value.cos == '' && this.selected_device?.toUpperCase() == 'FIXED PHONE USER') {
         alert(this.mainConfiguration.fixedphonenew.cos);
         return;
       }
@@ -204,7 +222,27 @@ classofservice(cos:string) {
     this.reviewDetailsIndia.justification = formData.value.Justification;
     this.reviewDetailsIndia.description = formData.value.Description;
     this.reviewDetailsIndia.mac = formData.value.MACAddress;
+    this.create_cache(formData);
   }	
+
+  create_cache(formData:NgForm){
+
+    console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
+    this.cache.officeLocation = formData.value.Location_1;
+    this.cache.device = formData.value.Device_Type;
+    this.cache.model = formData.value.Model_Type;
+    this.cache.voicemail = formData.value.Voicemail;
+    this.cache.justification = formData.value.Justification;
+    this.cache.description = formData.value.Description;
+    this.cache.mac = formData.value.MACAddress;
+    this.cache.showBusinessNeed = this.showBusinessNeed;
+    this.cache.cos = this.COS;
+    // this.cache.employeeIDDisplay = this.employeeID;
+    sessionStorage.setItem('cache',JSON.stringify(this.cache));
+    console.log("cached");
+  }
 
   BackButton() {	
     this.isEntryForm = false;	
@@ -311,6 +349,33 @@ classofservice(cos:string) {
   if(this.employeeInfo.businessUnit.toUpperCase().trim() != 'GBS' || this.employeeInfo.businessUnit == null){
     this.hideProjectId = true;
     }
+
+
+   //load cache data for entry details form. -- START
+   this.cache_tmp=sessionStorage.getItem('cache')	
+   console.log(this.cache_tmp);
+   this.cache_disp=JSON.parse(this.cache_tmp);
+   if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='fixedphone_new')){
+     this.selected_location=String(this.cache_disp.officeLocation) ;
+     this.selected_device = this.cache_disp.device;
+     this.selectedDevice(this.selected_device);
+     this.voicemail = String(this.cache_disp.voicemail);
+     if(this.cache_disp.cos != undefined){
+     this.COS = String(this.cache_disp.cos);
+     this.classofservice(this.COS);
+     }
+     this.MACValue = String(this.cache_disp.mac);
+     this.descValue = String(this.cache_disp.description);
+     this.justificationValue = String(this.cache_disp.justification);
+     this.modelValue = this.cache_disp.model;
+     this.showBusinessNeed = this.cache_disp.showBusinessNeed;
+      
+       console.log("cache restored");
+   }else{
+     sessionStorage.removeItem('cache');
+   }
+ 
+   //load cache data for entry details form. -- END
 
   
   }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { ActivatedRoute } from '@angular/router';
@@ -17,7 +17,8 @@ export class NavigationComponent implements OnInit {
   service : any;
   cloudantData: any = []
   servicesData: any = []
-  pcountrydetails:any
+  pcountrydetails:any;
+  @Output() previousStep = new EventEmitter<string>()
 
   constructor(private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private translateconfigservice : TranslateConfigService) { }
 
@@ -69,7 +70,10 @@ export class NavigationComponent implements OnInit {
 
   clickEvent(i: any) {
     this.onLoad = false
-    this.selectedItem = i
+    this.selectedItem = i 
+    if(this.service == 'phone_search') {
+      this.previousStep.emit('true');
+    }
   }
 
   removeService(service: string) {
