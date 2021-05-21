@@ -48,7 +48,6 @@
         "Mobile": "Mobile",
         "Fixed Phone": "Fixed Phone",
         "Special Request": "Special Request",
-        "FAC Code / IDD Pin": "FAC Code / IDD Pin",
         "Approvals Pending": "Approvals Pending",
         "Revalidation Pending": "Revalidation Pending",
         "Phone Number Search": "Phone Number Search",
@@ -96,21 +95,16 @@
         "Delete Jabber Request": "Jabber - Delete Request",
         "FAC Code New Request": "FAC Code - New Request",
         "FAC Code Update Request": "FAC Code - Update Request",
+        
         "FAC Code / IDD Pin - New Request": "FAC Code / IDD Pin - New Request",
         "FAC Code / IDD Pin - Reset Request": "FAC Code / IDD Pin - Reset Request",
         "FAC Code / IDD Pin - Update Request": "FAC Code / IDD Pin - Update Request",
-        "FAC Code / IDD Pin - Delete Request": "FAC Code / IDD Pin - Delete Request",
         "FAC Code Reset Request": "FAC Code - Reset Request",
-<<<<<<< HEAD
         "SpecialRequestentryandreview" :"Special Request",
-        "FAC Code / IDD Pin - Reset Request" :"FAC Code / IDD Pin - Reset Request",
-=======
-        "SpecialRequestentryandreview": "Special Request",
-
->>>>>>> ba5ea284bf61dcb976bc8df45426246454e0e618
+        "FAC Code / IDD Pin - Delete Request" :"FAC Code / IDD Pin - Delete Request",
         "Mobile New Request": "Mobile - New Request",
 
-        "FAC Code Delete Request": "FAC Code - Delete Request",
+        "FAC Code Delete Request" :"FAC Code - Delete Request",
 
         "Request Move Jabber service": "Jabber - Move Request",
         "Update Existing Jabber Request": "Jabber - Update Request",
@@ -282,8 +276,6 @@
         "STEP 4": "STEP 4"
 
     },
-
-   
     "fixedphonenew":{
         "Location" : "Location",
         "TypeofDevice":"Type of Device ",
@@ -336,7 +328,8 @@
         "fortheprovidednumber" :"for the provided number.",
         "FixedPhoneLocation" :"Fixed Phone Location",
         "SelectOne" :"Select One",
-        "cos":"Please select a class of service."
+        "cos":"Please select a class of service.",
+        "NoteCombination":"Note: Combination of (0 to 9 , A to F) and Length:12"
     },
      "specialrequest" :{
      "OnlyusetheSpecialRequest":"Only use the Special Request for any special operation, such as a second office number, a hotline for a support group, a shared line setup for functional groups, or to indicate a need for telephony-related consultancy. " ,
@@ -356,7 +349,6 @@
 
 
      },
-<<<<<<< HEAD
      "otheralerts":{
         "selectthejabber":"Please select the Jabber / Phone number to update",
         "selectthejabbertomove":"Select the Jabber / Phone Number  you wish to move",
@@ -365,13 +357,9 @@
         "Device Description" :"Device Description"
         
         
-=======
-
+     },
      "Requests":{
         "approved":"Processing",
         "Approved":"Processing",
         "_approval":"Processing"
-
->>>>>>> ba5ea284bf61dcb976bc8df45426246454e0e618
-     }
-}
+}}
