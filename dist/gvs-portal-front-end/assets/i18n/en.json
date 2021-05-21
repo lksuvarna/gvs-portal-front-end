@@ -93,7 +93,6 @@
         "Update Jabber Request": "Jabber - Update Request",
         "Move Jabber Request": "Jabber - Move Request",
         "Delete Jabber Request": "Jabber - Delete Request",
-<<<<<<< HEAD
         "FAC Code / IDD PIN New Request": "FAC Code / IDD PIN - New Request",
         "FAC Code / IDD PIN Update Request": "FAC Code / IDD PIN - Update Request",
         
@@ -106,20 +105,6 @@
         "Mobile New Request": "Mobile - New Request",
 
         "FAC Code / IDD PIN Delete Request" :"FAC Code / IDD PIN - Delete Request",
-=======
-        "FAC Code New Request": "FAC Code - New Request",
-        "FAC Code Update Request": "FAC Code - Update Request",
-        
-        "FAC Code / IDD Pin - New Request": "FAC Code / IDD Pin - New Request",
-        "FAC Code / IDD Pin - Reset Request": "FAC Code / IDD Pin - Reset Request",
-        "FAC Code / IDD Pin - Update Request": "FAC Code / IDD Pin - Update Request",
-        "FAC Code Reset Request": "FAC Code - Reset Request",
-        "SpecialRequestentryandreview" :"Special Request",
-        "FAC Code / IDD Pin - Delete Request" :"FAC Code / IDD Pin - Delete Request",
-        "Mobile New Request": "Mobile - New Request",
-
-        "FAC Code Delete Request" :"FAC Code - Delete Request",
->>>>>>> 38b05d1645a4c2963314a891d43822e230e28635
 
         "Request Move Jabber service": "Jabber - Move Request",
         "Update Existing Jabber Request": "Jabber - Update Request",
