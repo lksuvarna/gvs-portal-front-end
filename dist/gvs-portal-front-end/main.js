@@ -9296,10 +9296,10 @@ function VoipInDeleteComponent_table_17_option_13_Template(rf, ctx) { if (rf & 1
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const fl_itn_r12 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_itn_r12);
+    const fl_r12 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_r12.ATTRIBUTE1 != null && fl_r12.ATTRIBUTE1.toUpperCase().trim().includes("SEP") ? fl_r12.IDENTIFIER.trim() + "-SEP" : fl_r12.ATTRIBUTE8 != null && fl_r12.ATTRIBUTE8.trim().toUpperCase().includes("CHCS") ? fl_r12.IDENTIFIER.trim() + "-P" : fl_r12.IDENTIFIER.trim());
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_itn_r12, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" ", fl_r12.IDENTIFIER.trim(), "", fl_r12.ATTRIBUTE1 != null && fl_r12.ATTRIBUTE1.toUpperCase().trim().includes("SEP") ? " - SEP" : fl_r12.ATTRIBUTE8 != null && fl_r12.ATTRIBUTE8.trim().toUpperCase().includes("CHCS") ? " - P" : "", "");
 } }
 function VoipInDeleteComponent_table_17_Template(rf, ctx) { if (rf & 1) {
     const _r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
@@ -9321,7 +9321,7 @@ function VoipInDeleteComponent_table_17_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "option", 45);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Jabberupdate.SELECTONE");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, VoipInDeleteComponent_table_17_option_13_Template, 2, 2, "option", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, VoipInDeleteComponent_table_17_option_13_Template, 2, 3, "option", 46);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -9333,7 +9333,7 @@ function VoipInDeleteComponent_table_17_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r4.selected_jabber);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r4.Jabber);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r4.data);
 } }
 function VoipInDeleteComponent_input_27_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "input", 48);
@@ -9461,7 +9461,7 @@ class VoipInDeleteComponent {
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends	
-        this.payload.Identifier_Disp = this.selectedJabber;
+        this.payload.Identifier_Disp = this.selectedJabber.substring(0, 8);
         this.payload.countryname = this.countrydetails.name;
         this.payload.request_type = 'jabber_delete';
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
@@ -9514,10 +9514,15 @@ class VoipInDeleteComponent {
             this.identifier = sessionStorage.getItem('identifier');
         }
         else {
-            this.identifier = sessionStorage.getItem('identifier');
-            this.identifier = this.identifier.split(',');
-            this.Jabber = [...this.identifier];
-            //this.Jabber.push(this.identifier)
+            //  this.identifier=sessionStorage.getItem('identifier');
+            //this.identifier = this.identifier.split(',');
+            //this.Jabber = [...this.identifier];
+            this.dbdata = sessionStorage.getItem('identifier');
+            console.log(JSON.parse(this.dbdata).identifier);
+            var parsed = JSON.parse(JSON.stringify(JSON.parse(this.dbdata)));
+            this.data = parsed;
+            console.log("data of display");
+            console.log(this.data);
         }
         const servicesData = {
             "data": [
@@ -23928,6 +23933,10 @@ class EmployeesearchComponent {
                     this.datadb = "yes";
                 }
                 else if (this.service == 'specialrequest') {
+                    sessionStorage.setItem('identifier', JSON.stringify(data.message));
+                    this.datadb = "yes";
+                }
+                else if (this.service == 'jabber_delete') {
                     sessionStorage.setItem('identifier', JSON.stringify(data.message));
                     this.datadb = "yes";
                 }

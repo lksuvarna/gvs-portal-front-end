@@ -565,6 +565,9 @@ export class EmployeesearchComponent implements OnInit {
          } else if(this.service == 'specialrequest'){
           sessionStorage.setItem('identifier', JSON.stringify(data.message));
           this.datadb = "yes";     
+        } else if(this.service == 'jabber_delete'){
+          sessionStorage.setItem('identifier', JSON.stringify(data.message));
+          this.datadb = "yes";     
         }else if (this.service == "fac_new") {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";

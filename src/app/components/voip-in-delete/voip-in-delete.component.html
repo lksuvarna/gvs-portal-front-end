@@ -38,9 +38,12 @@
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Jabber / Phone Number" tabindex="1" ngModel [(ngModel)]='selected_jabber'>
-                  <option value ="" translate>Jabberupdate.SELECTONE</option>
+                <!--  <option value ="" translate>Jabberupdate.SELECTONE</option>
                   <option name="Jabber_1" *ngFor='let fl_itn of Jabber' [value]='fl_itn' selected>
-                    {{ fl_itn }}</option>
+                    {{ fl_itn }}</option> -->
+                    <option value ="" translate>Jabberupdate.SELECTONE</option>
+                  <option name="Jabber_1" *ngFor='let fl of data'  [value]='fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?fl.IDENTIFIER.trim()+"-SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?fl.IDENTIFIER.trim()+"-P":fl.IDENTIFIER.trim()' selected>
+                    {{ fl.IDENTIFIER.trim()}}{{fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?" - SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?" - P":''}}</option>
                 </select>
                             </div>
                         </td>
