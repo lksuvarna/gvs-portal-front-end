@@ -46,7 +46,8 @@ export class EnExtensionAuSummaryComponent implements OnInit {
   serviceDetails:any;
   userName:any;
   type:any;
-  showloader = false
+  showloader = false;
+  itn_number = '';
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute) {
 
    }
@@ -96,7 +97,7 @@ export class EnExtensionAuSummaryComponent implements OnInit {
   backClick() {
     sessionStorage.setItem('backbutton', 'yes');
     sessionStorage.setItem('step', 'step1');
-    this.location.back();
+    this.router.navigate(['services'], { skipLocationChange: true ,queryParams: { country: this.pcode, service:'services' } });
   }
 
   BackButton() {
@@ -113,6 +114,7 @@ export class EnExtensionAuSummaryComponent implements OnInit {
       this.service=params.service;	
       this.pcode = params.country;	
       console.log("navigation component" + this.pcode);	
+      sessionStorage.setItem('serviceName', this.service);
     })	
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);
@@ -132,7 +134,7 @@ export class EnExtensionAuSummaryComponent implements OnInit {
   const servicesData = { 	
     "data": [	
       {    		
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+        "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"], 
         "step" : 1,	
         
       }	
@@ -146,8 +148,10 @@ export class EnExtensionAuSummaryComponent implements OnInit {
     this.showloader = false;
   }
   previousStep(event : any){
+    
     this.isEntryForm = false;	
     this.isReviewForm = true;	
+    this.itn_number = '';
     // this.fixedPhoneIdentifier = false;	
   }
   

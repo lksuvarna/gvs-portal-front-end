@@ -42,7 +42,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" tabindex="1" 
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" tabindex="1" 
                                  (change)='toggleOptions($event)' ngModel [(ngModel)]='selected_jabber'>
                   <option value ="" translate>Jabberupdate.SELECTONE</option>
                   <option name="Jabber_1" *ngFor='let fl of data'  [value]='fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?fl.IDENTIFIER.trim()+"-SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?fl.IDENTIFIER.trim()+"-P":fl.IDENTIFIER.trim()' selected>
@@ -60,7 +60,7 @@
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 
                             <select name="Location" rows="2" (change)='checkOthers($event)' [(ngModel)]="locationselected" cols="40" id="LocationId"  
-                            class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;"  title="Location" >
+                            class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;"  title="{{ 'fixedphonenew.Location' | translate}}" >
                             <option value ="" selected translate>Jabberupdate.SELECTONE</option>
                                 <option name="Location" *ngFor="let fl_location of locationlist"  [value]="fl_location">
                                     {{ fl_location }}</option>
@@ -84,7 +84,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <textarea name="requirement" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Description of Requirement" maxlength="500" rows="2" cols="40" [(ngModel)]="requirement"></textarea>
+                                <textarea name="requirement" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="{{ 'specialrequest.Description of Requirement' | translate}}" maxlength="500" rows="2" cols="40" [(ngModel)]="requirement"></textarea>
                                  <p translate>specialrequest.notexceed200</p>
                             </div>
                         </td>
@@ -155,7 +155,7 @@
                     </tr>
     
                     <tr valign="top"> 
-                        <td colspan="2" width="46%" height="10"><label for="LocationId">Description of requirement</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" translate>specialrequest.Description of Requirement</label>
                         </td>
                         <td width="54%" height="10">
                             <label><span style="word-break:break-all;">{{requirements_disp}}</span></label>

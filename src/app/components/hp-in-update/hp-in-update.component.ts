@@ -245,7 +245,8 @@ export class HpInUpdateComponent implements OnInit {
       "currentPhone": this.currentPhone,
       "currentmodel": this.currentmodel,
       "currentdesc": this.currentdesc,
-      "hideBuilding": this.hideBuilding
+      "hideBuilding": this.hideBuilding,
+      "hideNextButton":this.hideNextButton
     }
   }
 
@@ -369,6 +370,7 @@ export class HpInUpdateComponent implements OnInit {
     this.cache.description = formData.value.Newdesc;
     this.cache.justification = formData.value.Comments;
     this.cache.showSearch = this.showSearch;
+    this.cache.hideNextButton = this.hideNextButton;
     //this.cache.showerrormessage = this.showerrormessage;
     sessionStorage.setItem('cache',JSON.stringify(this.cache));
     console.log("cached");
@@ -471,7 +473,7 @@ export class HpInUpdateComponent implements OnInit {
       "data": [	
         {    	
             
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"], 
           "step" : 3,	
           
         }	
@@ -501,6 +503,7 @@ export class HpInUpdateComponent implements OnInit {
      if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='fixedphone_update')){
        this.currentMacOrPhone = String(this.cache_disp.currentMacOrPhone);
        this.showSearch = Boolean(this.cache_disp.showSearch);
+       this.hideNextButton = Boolean(this.cache_disp.hideNextButton);
        //this.showerrormessage = Boolean(this.cache_disp.showerrormessage);
        this.currentMac = String(this.cache_disp.currentMac);
        this.currentPhone = String(this.cache_disp.currentPhone);

@@ -21,7 +21,7 @@ export class RequestsComponent implements OnInit {
   servicesData: any = [];
   requests: any = [];
   // requests = [
-  //  {fl_typesnow:"GVS FAC Code - Create",fl_date_submittedsnow:"01/06/2021",fl_statussnow:"Completed",fl_ReqNumbersnow:"IN-NS-06685M-5121",fl_reqcomments:"none"},
+  //  {fl_typesnow:"GVS FAC Code / IDD PIN - Create",fl_date_submittedsnow:"01/06/2021",fl_statussnow:"Completed",fl_ReqNumbersnow:"IN-NS-06685M-5121",fl_reqcomments:"none"},
   // ];
   countryname: any;
   countrydetails: any;
@@ -121,7 +121,7 @@ export class RequestsComponent implements OnInit {
     const servicesData = {
       "data": [
         {          
-          "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+          "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
           "step" : 3,
         }
       ]

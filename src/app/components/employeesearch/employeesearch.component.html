@@ -111,7 +111,7 @@
                             <div class=" row ds-pad-t-2">
                                 <div class="ds-col-4">
                                     <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                        <select name="selectedCountry" rows="2" cols="40" id="sub-Countries" class="ds-title ds-align-text-left" (click)="hidedata()" style="width:230px !important; text-transform: uppercase;" title="CountryCode" tabindex="1" [(ngModel)]="selectedCountry">	
+                                        <select name="selectedCountry" rows="2" cols="40" id="sub-Countries" class="ds-title ds-align-text-left" (click)="hidedata()" style="width:230px !important; text-transform: uppercase;" title="{{ 'Jabbernewtrans.CountryCode' | translate}}" tabindex="1" [(ngModel)]="selectedCountry">	
                                             <option value ="Select One" translate>Jabbernewtrans.SelectOne</option>	
                                             <option *ngFor="let subCountry of subCountries" [value]='subCountry'>{{ subCountry }}</option>	
                                         </select>
@@ -138,8 +138,11 @@
             </div>
 
 
-            <p class="ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning" id="error" *ngIf=notvalid>
+            <p class="ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning" id="error" *ngIf="notvalid && !emailblank">
                 <font color="black" translate>Jabbernewtrans.norecord <span>{{employeeSerial.substr(0,6)}}</span><span translate=""> Jabbernewtrans.availablefromBluePages</span></font>
+            </p>
+            <p class="ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning" id="emailblankid" *ngIf="notvalid && emailblank">
+                <font color="black" ><span>The E-mail address could not be found in Bluepages for the entered serial number and cannot proceed further. Please try later.</span></font>
             </p>
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
@@ -165,7 +168,7 @@
                             ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" [routerLink]="['/'+this.exitrouting]" [queryParams]="{country:pcode,service:exitrouting}"
                             value="{{ 'alerttranslation.EXITREQUEST' | translate}}">
                         </span>
-                        <span *ngIf="!showloader && !notvalid && !errorinfo" class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                        <span *ngIf="!showloader && !notvalid && !errorinfo && !emailblank" class="ds-pad-l-1 ds-pad-r-1" id="button2">
                             <input type="submit" 
                             name="NEXT" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 
 

@@ -57,7 +57,7 @@ export class MobileservicesComponent implements OnInit {
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
           ],
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request","Mobile"], 
+          "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request","Mobile"], 
         }]
     }
       

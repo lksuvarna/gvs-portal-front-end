@@ -31,7 +31,7 @@
     "footnote":{
         "Jabber":"Jabber",
         "Fixed Phone":"Fixed Phone",
-        "FAC Code":"FAC Code",
+        "FAC Code / IDD PIN":"FAC Code / IDD PIN",
         "Special Request":"Special Request",
         "Terms of use":"Conditions d'utilisation",
         "Useful Information":"Informations utiles",
@@ -45,7 +45,7 @@
     "lhs": {
         "Services": "Prestations de service",
         "Jabber": "Jabber",
-        "FAC Code": "FAC Code",
+        "FAC Code / IDD PIN": "FAC Code / IDD PIN",
         "Fixed Phone": "Fixed Phone",
         "Special Request": "Special Request",
         "Approvals Pending": "Approbations en attente",
@@ -79,7 +79,7 @@
         "opps":"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard",
         "JabberLocation" : "Emplacement du Jabber / Numéro de téléphone",
         "Voicemail" : "Messagerie vocale",
-        "ClassofService" : "Classe de service",
+        "ClassofService" : "Classe de service (COS)",
         "pleasesubmittostart":"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning."
 
     },
@@ -90,13 +90,14 @@
         "Update Jabber Request": "Jabber - Demande de mise à jour",
         "Move Jabber Request": "Jabber - Demande de déplacement",
         "Delete Jabber Request": "Jabber - Demande de déplacement",
-        "FAC Code New Request": "Code FAC - Nouvelle demande",
-        "FAC Code Update Request": "Code FAC - Demande de mise à jour",
-        "FAC Code Reset Request": "Code FAC - Demande de réinitialisation",
-        "FAC Code Delete Request" :"Code FAC - Demande de suppression",
+        "FAC Code / IDD PIN New Request": "Code FAC - Nouvelle demande",
+        "FAC Code / IDD PIN Update Request": "Code FAC - Demande de mise à jour",
+        "FAC Code / IDD PIN Reset Request": "Code FAC - Demande de réinitialisation",
+        "FAC Code / IDD PIN Delete Request" :"Code FAC - Demande de suppression",
         "Request Move Jabber service" :"Jabber - Demande de déplacement",
         "Update Existing Jabber Request" :"Jabber - Demande de mise à jour",
         "SpecialRequestentryandreview" :"Demande spéciale",
+        "FAC Code / IDD PIN - Delete Request" :"Code FAC / Pin IDD - Demande de suppression",
         "Special Request": "Demande spéciale",
         "Delete an existing service" : "Supprimer un service existant",
         "Request a new service" :"Demander un nouveau service",
@@ -107,10 +108,10 @@
         "New Fixed Phone Request" : "Nouvelle demande de téléphone fixe",
         "Fixed Phone - Update Request" : "Téléphone fixe - Demande de mise à jour",
         "Fixed Phone - Delete Request"  : "Téléphone fixe - Demande de suppression",
-        "Delete an existing FAC Code" :"Supprimer un code FAC existant",
-        "Request a new FAC Code" : "Demander un nouveau code FAC",
-        "Update an existing FAC code" : "Mettre à jour un code FAC existant",
-        "Reset an existing FAC code" : "Réinitialiser un code FAC existant",
+        "Delete an existing FAC Code / IDD PIN" :"Supprimer un code FAC existant",
+        "Request a new FAC Code / IDD PIN" : "Demander un nouveau code FAC",
+        "Update an existing FAC Code / IDD PIN" : "Mettre à jour un code FAC existant",
+        "Reset an existing FAC Code / IDD PIN" : "Réinitialiser un code FAC existant",
         "Phone Number Search": "Recherche par numéro de téléphone"
 
     },
@@ -265,7 +266,7 @@
            "SelectDevice":"Choisir un appareil",
            "TypeofModel":"Type de modèle ",
            "SelectModel" :"Sélectionnez un modèle",
-           "SelectClassofService (COS)" :"Sélectionnez la classe de service (COS)",
+           "SelectClassofService (COS)" :"Classe de service (COS)",
            "National" :"Nationale",
            "International" :"Internationale",
            "BusinessNeed(Whyisinternationalrequired?)" :"Besoin commercial (pourquoi l'international est-il requis?) ",
@@ -311,7 +312,8 @@
         "fortheprovidednumber" :"pour le numéro fourni.",
         "FixedPhoneLocation" :"Emplacement du téléphone fixe",
         "SelectOne" :"Sélectionnez-en un",
-        "cos" :"Veuillez sélectionner une classe de service."
+        "cos" :"Veuillez sélectionner une classe de service.",
+        "NoteCombination":"Remarque: combinaison de (0 à 9, A à F) et longueur: 12"
     },
     "specialrequest" :{
     "OnlyusetheSpecialRequest":"N'utilisez la demande spéciale que pour toute opération spéciale, telle qu'un deuxième numéro de bureau, une hotline pour un groupe de support, une configuration de ligne partagée pour des groupes fonctionnels, ou pour indiquer un besoin de conseil en matière de téléphonie. " ,
@@ -326,9 +328,18 @@
     "notexceed200":"Remarque: la longueur ne doit pas dépasser 500",
     "Note": "Noter:",
     "Fieldsasteriskspl":"Champs marqués d'un astérisque",
-     "arerequiredspl":"sont requis."
+     "arerequiredspl":"sont requis.",
+     "selectjabbernumberwishtoupdate":"Sélectionnez le numéro Jabber que vous souhaitez mettre à jour"
 
-
+    },
+    "otheralerts":{
+       "selectthejabber":"Veuillez sélectionner le jabber / numéro de téléphone à mettre à jour",
+       "selectthejabbertomove":"Sélectionnez le Jabber / numéro de téléphone que vous souhaitez déplacer",
+       "Model" :"Modèle",
+       "MAC Address" :"Adresse Mac",
+       "Device Description" :"Description de l'appareil"
+       
+       
     }
     
  

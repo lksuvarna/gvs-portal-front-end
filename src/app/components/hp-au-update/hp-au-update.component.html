@@ -167,7 +167,7 @@
 
           <tr valign="top" *ngIf='showforrsn'>
             <td colspan="2" width="50%">
-              <label class="">Reason for Updation<span class="ds-text-contextual-red-2"> *</span></label>
+              <label class="">Reason for Update<span class="ds-text-contextual-red-2"> *</span></label>
             </td>
             <td width="50%">
               <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update"
@@ -188,7 +188,7 @@
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                 (click)="backClick(formData)">
             </span>
-            <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='showerrormessage'>
+            <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='hideNextButton'>
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 value="NEXT">
             </span>
@@ -247,7 +247,7 @@
                 </tr>
                 <tr valign="top" *ngIf='showLocation'>
                   <td colspan="2" width="46%" height="10">
-                      <label for="addId1">Site</label>
+                      <label for="addId1">State</label>
                   </td>
                   <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
                 </tr>
@@ -271,7 +271,7 @@
                 </tr>
                 <tr valign="top">
                   <td colspan="2" width="46%">
-                      <label for="addId1">Reason for Updation</label>
+                      <label for="addId1">Reason for Update</label>
                   </td>
                   <td width="54%">{{reviewDetailsIndia.justification}}</td>
               </tr>

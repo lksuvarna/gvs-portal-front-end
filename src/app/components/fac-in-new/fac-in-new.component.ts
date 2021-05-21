@@ -152,7 +152,7 @@ export class FacInNewComponent implements OnInit {
       }	
 
       if(formData.value.Fac_Type.toLowerCase() === 'select one' || formData.value.Fac_Type === '') {	
-        alert('Please select a FAC code type');	
+        alert('Please select a FAC Code / IDD PIN type');	
         return;	
       }	
 
@@ -167,7 +167,7 @@ export class FacInNewComponent implements OnInit {
       }	
     } else {
       if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
-        alert('Please select the FAC Code / IDD Pin Office Location');	
+        alert('Please select the FAC Code / IDD PIN Office Location');	
         return;	
       }	
 
@@ -342,7 +342,7 @@ export class FacInNewComponent implements OnInit {
     const servicesData = { 	
       "data": [	
         {    	       	
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"], 
           "step" : 3,	 
         }	
       ]	

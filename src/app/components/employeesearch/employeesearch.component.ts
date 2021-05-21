@@ -86,6 +86,7 @@ export class EmployeesearchComponent implements OnInit {
   extracodes: any = [];
   mainConfiguration :any;
   selectedCountry: any
+  emailblank=false;
 
 
   profile_location:any = [];
@@ -211,7 +212,7 @@ export class EmployeesearchComponent implements OnInit {
         const servicesData = {
           "data": [
             {
-              "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request", "Mobile"],
+              "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request", "Mobile"],
               "step": 1,
             }
           ]
@@ -414,7 +415,13 @@ export class EmployeesearchComponent implements OnInit {
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
       console.log(' this.employeeSerial', this.employeeSerial);
       console.log(' BP Details', data.userdata);
-      if (data.userdata) {
+      if (data.userdata)
+      { }else{this.emailblank=false;}
+      if (data.userdata && data.username.preferredidentity==undefined) {
+        this.emailblank=true;
+        
+      }
+      if (data.userdata && data.username.preferredidentity!==undefined) {
         var ename = data.username.preferredlastname + ", " + data.username.preferredfirstname
         if (data.username.preferredlastname == undefined || data.username.preferredfirstname == undefined) {
           ename = data.username.callupname
@@ -784,9 +791,9 @@ export class EmployeesearchComponent implements OnInit {
           break;
       case "fac_new":
       if(this.facIn){
-        this.title="FAC Code New Request";
+        this.title="FAC Code / IDD PIN New Request";
       } else {
-        this.title="FAC Code / IDD Pin - New Request";
+        this.title="FAC Code / IDD PIN - New Request";
       }
       this.routingname="/entrydetailsfac";
       this.exitrouting='facservices';
@@ -794,7 +801,7 @@ export class EmployeesearchComponent implements OnInit {
       break;
 
       case "fac_delete":
-      this.title="FAC Code Delete Request";
+      this.title="FAC Code / IDD PIN Delete Request";
       this.routingname="/entrydetailsfacdeactive";
       this.exitrouting='facservices';
       this.reqname="-DS-";
@@ -802,9 +809,9 @@ export class EmployeesearchComponent implements OnInit {
 
       case "fac_update":
         if(this.facIn){
-          this.title="FAC Code Update Request";
+          this.title="FAC Code / IDD PIN Update Request";
         } else {
-          this.title="FAC Code / IDD Pin - Update Request";
+          this.title="FAC Code / IDD PIN - Update Request";
         }
         this.routingname = "/entrydetailsfacu";
         this.exitrouting='facservices';
@@ -812,9 +819,9 @@ export class EmployeesearchComponent implements OnInit {
         break;
       case "fac_reset":
         if(this.facIn){
-          this.title="FAC Code Reset Request";
+          this.title="FAC Code / IDD PIN Reset Request";
         } else {
-          this.title="FAC Code / IDD Pin - Reset Request";
+          this.title="FAC Code / IDD PIN - Reset Request";
         }
         this.routingname="/entrydetailsfacr";
         this.exitrouting='facservices';
@@ -846,6 +853,7 @@ export class EmployeesearchComponent implements OnInit {
   hidedata() {
     this.notvalid = false;
     this.errorinfo = false;
+    this.emailblank = false;
 
   }
   onRequestForChangesession() {

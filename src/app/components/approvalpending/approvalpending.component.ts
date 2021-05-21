@@ -84,7 +84,7 @@ export class ApprovalpendingComponent implements OnInit {
     this.ccode=this.ccode.substring(6,9);
    if(this.service.includes('revalidationpending')){
      this.snowaction='snow_revalidation'
-     this.empserial="467756744";
+    // this.empserial="467756744";
      this.reval=false;
      sessionStorage.setItem('reval','reval');
     }
@@ -94,7 +94,7 @@ export class ApprovalpendingComponent implements OnInit {
      }
    
   console.log("CCCODE VALUE= "+ this.ccode) ;
-  // this.empserial="467756744";
+ 
    if(this.pcode == this.ccode){
       this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction,"","").subscribe(data => {
         console.log(' snow response', data.message);
@@ -117,7 +117,7 @@ export class ApprovalpendingComponent implements OnInit {
   const servicesData = {
     "data": [
       {          
-        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
         "step" : 3,
       }
     ]

@@ -10,8 +10,8 @@
 
         <form #formData='ngForm'>
 
-            <b *ngIf="facIn" translate>servicestitle.FAC Code Reset Request</b>
-            <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD Pin - Reset Request</b>
+            <b *ngIf="facIn" translate>servicestitle.FAC Code / IDD PIN Reset Request</b>
+            <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD PIN - Reset Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1" *ngIf="warninginfo !=true && warninginfosnow != true">
                 By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. </div>
@@ -22,7 +22,7 @@
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
             <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
-                <p>There is no FAC code for this serial number.</p>
+                <p>There is no FAC Code / IDD PIN for this serial number.</p>
             </div>
             <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
                 <p><span style="font-size: 1rem;">The serial number that you have entered has already one Reset FAC request
@@ -44,8 +44,8 @@
                             <span>{{currAuthorizationLevel}}</span>
                         </td>
                     </tr><br>
-                    <p *ngIf="facIn">Click on submit to reset the FAC code.</p>
-                    <p *ngIf="!facIn">Click on submit to reset the FAC Code / IDD Pin.</p>
+                    <p *ngIf="facIn">Click on submit to reset the FAC Code / IDD PIN.</p>
+                    <p *ngIf="!facIn">Click on submit to reset the FAC Code / IDD PIN.</p>
 
                 </tbody>
             </table>

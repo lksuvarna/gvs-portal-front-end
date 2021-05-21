@@ -8,6 +8,7 @@ import {Location} from '@angular/common';
 import { Db2Service } from '../../_services/db2.service';
 import {Create_Cache_jabber, Jabber_Update} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
+import { TranslateConfigService } from '../../_services/translate-config.service';
 
 @Component({
   selector: 'app-voip-in-update',
@@ -49,6 +50,7 @@ export class VoipInUpdateComponent implements OnInit {
   cache_tmp:  any = [];
   selected_jabber ="";
   account_id="NA";
+  mainConfiguration :any;
 
 
   payload : Jabber_Update = new Jabber_Update();
@@ -65,7 +67,7 @@ export class VoipInUpdateComponent implements OnInit {
  
   EntryDetails(formData: NgForm) {
     if(formData.value.Jabber_1.toUpperCase() == 'SELECT ONE' || formData.value.Jabber_1 == '') {
-      alert('Please select the jabber number to update');
+      alert(this.mainConfiguration.otheralerts.selectthejabber);
       return;
     }
     if(formData.value.Charge_Dept.toUpperCase() == 'NA') {
@@ -142,7 +144,7 @@ export class VoipInUpdateComponent implements OnInit {
     });	
      }	
    
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute) {
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute,private servicesd : TranslateConfigService) {
 
    }
 
@@ -157,6 +159,7 @@ export class VoipInUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mainConfiguration = this.servicesd.readConfigFile();
     // Submit to Snow Jabber Update code
     this.cnum = sessionStorage.getItem('cnum');
     this.orgi = this.cookie.getCookie('ccode');
@@ -202,7 +205,7 @@ export class VoipInUpdateComponent implements OnInit {
   const servicesData = { 	
     "data": [	
       {    		
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+        "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"], 
         "step" : 3,	
         
       }	
