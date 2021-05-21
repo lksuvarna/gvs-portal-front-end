@@ -41,7 +41,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" tabindex="1"
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" tabindex="1"
                                     #number ngModel [(ngModel)]='selected_jabber'>
                   <option value="">SELECT ONE</option>
                   <option name="Jabber_1" *ngFor='let fl_itn of Jabber' [value]='fl_itn' selected>
@@ -72,7 +72,7 @@
                 </tbody>
             </table>
             <br>
-            <p>Standard internal billing for a Jabber account uses the Employee's Department as the Account ID.<br>
+            <p *ngif="warninginfo==false || warninginfosnow==false">Standard internal billing for a Jabber account uses the Employee's Department as the Account ID.<br>
                 If you wish to modify internal billing to utilize a different Account ID, please provide the Account ID and click Next.</p>
             <br>
             <div class=" ds-panel ds-col-12 "></div>

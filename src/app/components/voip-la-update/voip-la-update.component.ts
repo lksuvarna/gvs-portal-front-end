@@ -9,6 +9,7 @@ import { Db2Service } from '../../_services/db2.service';
 import {Create_Cache_jabber, Jabber_Update} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
+import { TranslateConfigService } from '../../_services/translate-config.service';
 
 
 @Component({
@@ -74,7 +75,7 @@ export class VoipLaUpdateComponent implements OnInit {
   cache_tmp:  any = [];
   selected_jabber ="";
   
- 
+  mainConfiguration :any;
   businessjustification : any="";
 
 
@@ -88,13 +89,14 @@ export class VoipLaUpdateComponent implements OnInit {
     this.toup_disp="Voice Mail";
     }
     else{
+      this.toup_disp='';
     this.newvoicemail=true;
     this.toup_disp='';
     }
 
     if (this.checked2){
     this.newcos=false;
-    this.toup_disp2=this.selectcos;
+    this.toup_disp2="Class of Service";
     if(this.selectcos.toUpperCase() =="INTERNATIONAL")
     this.businessJust=false;
     else
@@ -171,7 +173,7 @@ export class VoipLaUpdateComponent implements OnInit {
  
   EntryDetails(formData: NgForm) {
     if(formData.value.Jabber_1.toUpperCase() == 'SELECT ONE' || formData.value.Jabber_1 == '') {
-      alert('Please select the jabber number to update');
+      alert(this.mainConfiguration.otheralerts.selectthejabber);
       return;
     }
     
@@ -195,14 +197,14 @@ export class VoipLaUpdateComponent implements OnInit {
     }
 
     if(this.checked2) {
-      if(formData.value.select_cos.toUpperCase() == 'SELECT CLASS OF SERVICE' || formData.value.select_cos == '') {
+      if(formData.value.select_cos.toUpperCase() == 'SELECT ONE' || formData.value.select_cos == '') {
         alert('Please select New Class of Service');
         return;
       }
     }
 
 
-    if(formData.value.select_cos.toUpperCase()==this.cos_disp.toUpperCase()){
+    if((formData.value.select_cos.toUpperCase()==this.cos_disp.toUpperCase())&&(this.checked2)){
       alert('Current and New Class of Service cannot be same');
         return;
     }
@@ -216,9 +218,15 @@ export class VoipLaUpdateComponent implements OnInit {
     }
 
     this.jabberDisp = formData.value.Jabber_1;
+    if(this.checked2)
     this.new_cos_disp=formData.value.select_cos;
+    else
+    this.new_cos_disp='';
+    if(this.checked)
     this.new_vm_disp=formData.value.Voice_Mail;
-    if(formData.value.select_cos.toUpperCase()=="INTERNATIONAL")
+    else
+    this.new_vm_disp='';
+    if((this.checked2)&&(formData.value.select_cos.toUpperCase()=="INTERNATIONAL"))
     this.bj_disp=formData.value.businessjustification;
     else
     this.bj_disp='';
@@ -303,11 +311,12 @@ export class VoipLaUpdateComponent implements OnInit {
     });	
      }	
    
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute) {
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute,private servicesd : TranslateConfigService) {
 
    }
 
   ngOnInit(): void {
+    this.mainConfiguration = this.servicesd.readConfigFile();
     // Submit to Snow Jabber Update code
     this.cnum = sessionStorage.getItem('cnum');
     this.orgi = this.cookie.getCookie('ccode');
@@ -408,7 +417,7 @@ export class VoipLaUpdateComponent implements OnInit {
             this.Voice_Mail=this.cache_disp.voicemail;
             this.selectcos=String(this.cache_disp.cos);
             this.businessjustification=this.cache_disp.businessjustification
-            if( (!this.businessJust) && (this.cache_disp.cos.toUpperCase() =="INTERNATIONAL"))
+            if( (this.checked2) && (this.cache_disp.cos.toUpperCase() =="INTERNATIONAL"))
             this.businessJust=false;
             else
             this.businessJust=true;

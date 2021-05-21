@@ -14,6 +14,7 @@
       <div class="ds-pad-t-0_5 ds-pad-b-1">
         <label *ngIf="warninginfo==false">Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</label>
       </div>
+      
       <div class=" ds-panel ds-col-12 "></div>
 
             <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
@@ -43,7 +44,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" (change)='SelectedJabber(number.value)' tabindex="1"
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" (change)='SelectedJabber(number.value)' tabindex="1"
                                     #number ngModel [(ngModel)]='selected_jabber'>
                   <option value="">SELECT ONE</option>
                   <option name="Jabber_1" *ngFor='let fl_itn of Jabber; let i = index' [value]='fl_itn' selected>
@@ -64,7 +65,7 @@
                     </tr>
 
                     <tr valign="top" [hidden]='currentcos'>
-                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current Class of Service (COS) </label>
+                        <td colspan="2" width="46%" height="10"><label for="current_cos"> Current Class of Service (COS) </label>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
@@ -76,7 +77,7 @@
                     
                     <tr valign="top" [hidden]='updaterequested'> 
                         <td colspan="2" width="46%" height="10">
-                            <label for="updaterequested" class="ds-text-capitalize"> Update Required for </label>
+                            <label for="updaterequested" > Update required for </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">         
@@ -121,14 +122,14 @@
 
 
                             <tr valign="top" [hidden]="newcos">
-                                <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> New Class of Service</label>
+                                <td colspan="2" width="46%" height="10"><label for="LocationId"> New Class of Service</label>
                                     <span class="ds-text-contextual-red-2">*</span>
                                 </td>
                                 <td width="54%" height="10">
                                     <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                        <select rows="2" name="select_cos" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" (change)='hidebusinessjust($event)' tabindex="1"
+                                        <select rows="2" name="select_cos" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select new class of service" (change)='hidebusinessjust($event)' tabindex="1"
                                         [(ngModel)]="selectcos">
-                          <option value="">Select Class of Service</option>
+                          <option value="">SELECT ONE</option>
                           <option name="select_cos" *ngFor='let cos of classOfService' [value]='cos' selected>
                             {{ cos }}</option>
                         </select>
@@ -145,7 +146,7 @@
                                 </td>
                                 <td width="54%" height="10">
                                     <div class="ds-input-container">
-                                        <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager for Charge Department Code" rows="2" cols="40" [(ngModel)]="businessjustification"></textarea></div>
+                                        <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="business Justification" maxlength="200" rows="2" cols="40" [(ngModel)]="businessjustification"></textarea></div>
                                 </td>
                             </tr>
 

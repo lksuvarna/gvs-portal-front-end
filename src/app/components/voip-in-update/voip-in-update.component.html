@@ -41,7 +41,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select the Jabber number you wish to update" (change)='SelectedJabber(number.value)' tabindex="1"
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" (change)='SelectedJabber(number.value)' tabindex="1"
                                     #number ngModel [(ngModel)]='selected_jabber'>
                   <option value="">Select One</option>
                   <option name="Jabber_1" *ngFor='let fl_itn of Jabber' [value]='fl_itn' selected>
@@ -56,7 +56,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <input name="Charge_Dept" value="NA" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager for Charge Department Code" ngModel="NA" [(ngModel)]='account_id'></div>
+                                <input name="Charge_Dept" value="NA" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Contact FirstLine Manager for Charge Department Code" maxlength='6' ngModel="NA" [(ngModel)]='account_id'></div>
                         </td>
                     </tr>
                 </tbody>
