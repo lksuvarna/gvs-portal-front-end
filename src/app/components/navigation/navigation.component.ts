@@ -93,7 +93,7 @@ export class NavigationComponent implements OnInit {
       this.removeService('Special Request')
     }
     if (!this.cloudantData.isfac) {
-      this.removeService('FAC Code')
+      this.removeService('FAC Code / IDD PIN')
     }
     if (!this.cloudantData.ismobile) {
       this.removeService('Mobile')
@@ -229,7 +229,7 @@ export class NavigationComponent implements OnInit {
                 {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
                 {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
               ],
-              "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request","Mobile"], 
+              "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request","Mobile"], 
               "step" : 1,
             }
           ]
@@ -242,7 +242,7 @@ export class NavigationComponent implements OnInit {
               {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
 
               {"name" : "Jabber","routingname":"/jabberservices", "indented" : true, "highlighted": this.jhl,"param":"jabberservices"}, 
-              {"name" : "FAC Code","routingname":"/facservices", "indented" : true, "highlighted": this.fachl,"param":"facservices"},  
+              {"name" : "FAC Code / IDD PIN","routingname":"/facservices", "indented" : true, "highlighted": this.fachl,"param":"facservices"},  
               {"name" : "Mobile","routingname":"/mobileservices", "indented" : true, "highlighted": this.mhl,"param":"mobileservices"},                        
 
               {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : this.fin, "highlighted": this.fhl,"param":"fixedphoneservices"},            
@@ -253,7 +253,7 @@ export class NavigationComponent implements OnInit {
               {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
               {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
             ],
-            "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request","Mobile"], 
+            "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request","Mobile"], 
             "step" : 1,
           }
         ]
@@ -262,19 +262,7 @@ export class NavigationComponent implements OnInit {
     this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
     this.countryroute=sessionStorage.getItem('countryroute')
 
-    if (this.countryroute === '744' || this.countryroute === '652' ) {
-      this.dataNav123.data[0].lhs.map((obj: { name: string; }) => {
-        if(obj.name === 'FAC Code / IDD Pin'){
-          obj.name = 'FAC Code'
-        }
-      })
-    } else {
-      this.dataNav123.data[0].lhs.map((obj: { name: string; }) => {
-        if(obj.name === 'FAC Code'){
-          obj.name = 'FAC Code / IDD Pin'
-        }
-      })
-    }
+    
     
     if (this.pcode== this.countryroute) {
       this.pcountrydetails=sessionStorage.getItem('countrydetails')

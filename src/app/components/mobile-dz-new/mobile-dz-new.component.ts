@@ -183,7 +183,7 @@ export class MobileDzNewComponent implements OnInit {
     const servicesData = { 	
       "data": [	
         {    	       	
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request","Mobile"], 
+          "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request","Mobile"], 
           "step" : 3,	 
         }	
       ]	

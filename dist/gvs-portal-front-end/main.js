@@ -37,12 +37,12 @@ __webpack_require__.r(__webpack_exports__);
 
 function FacInNewComponent_b_8_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code New Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN New Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInNewComponent_b_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD Pin - New Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN - New Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInNewComponent_label_23_Template(rf, ctx) { if (rf & 1) {
@@ -52,7 +52,7 @@ function FacInNewComponent_label_23_Template(rf, ctx) { if (rf & 1) {
 } }
 function FacInNewComponent_label_24_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label", 55);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "FAC Code / IDD Pin Office Location");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "FAC Code / IDD PIN Office Location");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInNewComponent_div_28_option_5_Template(rf, ctx) { if (rf & 1) {
@@ -278,7 +278,7 @@ function FacInNewComponent_tr_56_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 81);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " FAC Code Type");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " FAC Code / IDD PIN Type");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "*");
@@ -345,12 +345,12 @@ function FacInNewComponent_tr_57_Template(rf, ctx) { if (rf & 1) {
 } }
 function FacInNewComponent_b_78_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code New Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN New Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInNewComponent_b_79_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD Pin - New Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN - New Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInNewComponent_tr_94_Template(rf, ctx) { if (rf & 1) {
@@ -409,7 +409,7 @@ function FacInNewComponent_tr_117_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 20);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 45);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "FAC Code Type");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "FAC Code / IDD PIN Type");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 22);
@@ -595,7 +595,7 @@ class FacInNewComponent {
                 return;
             }
             if (formData.value.Fac_Type.toLowerCase() === 'select one' || formData.value.Fac_Type === '') {
-                alert('Please select a FAC code type');
+                alert('Please select a FAC Code / IDD PIN type');
                 return;
             }
             if ((formData.value.validity.toLowerCase() === 'select one' || formData.value.validity === '') && this.hideValidity === false) {
@@ -609,7 +609,7 @@ class FacInNewComponent {
         }
         else {
             if (formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {
-                alert('Please select the FAC Code / IDD Pin Office Location');
+                alert('Please select the FAC Code / IDD PIN Office Location');
                 return;
             }
             if (formData.value.Comments.trim() === '') {
@@ -762,7 +762,7 @@ class FacInNewComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -813,7 +813,7 @@ class FacInNewComponent {
     }
 }
 FacInNewComponent.ɵfac = function FacInNewComponent_Factory(t) { return new (t || FacInNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"])); };
-FacInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FacInNewComponent, selectors: [["app-fac-in-new"]], decls: 137, vars: 48, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData", "ngClass"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", "", 4, "ngIf"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "formData", "cnum", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", "class", "ds-text-capitalize", 4, "ngIf"], ["width", "54%", "height", "10"], ["class", "ds-dropdown ds-secondary", "role", "menu", "aria-label", "w3DS Dropdown1", 4, "ngIf"], ["valign", "top", 3, "hidden", 4, "ngIf"], ["valign", "top", 4, "ngIf"], ["colspan", "2", "width", "46%"], ["for", "addId", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["width", "54%"], ["name", "BusinessUnit", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["for", "DeptID", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["name", "DeptID", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["colspan", "2", "width", "50%", 4, "ngIf"], ["width", "50%"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "authLevel", "rows", "2", "cols", "40", "id", "authLevel", "class", "ds-title ds-align-text-left", "style", "width:300px !important; text-transform: uppercase;", "title", "Authorization Level", 3, "ngModel", "ngModelChange", 4, "ngIf"], ["colspan", "2", "width", "50%"], ["for", "comments", 1, ""], ["name", "Comments", "id", "JustificationId", "maxlength", "200", "title", "Buisness Justification", "rows", "2", "cols", "40", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["for", "addId1"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], [2, "word-break", "break-all"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["translate", ""], ["for", "LocationId", 1, "ds-text-capitalize"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["name", "Location_1", 3, "value"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "FAC Code / IDD Pin Office Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["valign", "top", 3, "hidden"], ["for", "builId", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "chargeDepartmentCode", "value", "", "id", "d2", "maxlength", "6", "title", "Charge Department Code", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["id", "Mentor1Div"], ["for", "LocationId", 1, ""], ["name", "authLevel", "rows", "2", "cols", "40", "id", "authLevel", "title", "Authorization Level", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["value", "International"], ["name", "Fac_Type", "rows", "2", "cols", "40", "id", "Fac_Type", "title", "FAC Code Type", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["facType", ""], ["name", "validity", "rows", "2", "cols", "40", "id", "validity", "title", "Validity", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["for", "addId1", 3, "hidden"], ["width", "54%", 3, "hidden"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function FacInNewComponent_Template(rf, ctx) { if (rf & 1) {
+FacInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FacInNewComponent, selectors: [["app-fac-in-new"]], decls: 137, vars: 48, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData", "ngClass"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", "", 4, "ngIf"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "formData", "cnum", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "LocationId", "class", "ds-text-capitalize", 4, "ngIf"], ["width", "54%", "height", "10"], ["class", "ds-dropdown ds-secondary", "role", "menu", "aria-label", "w3DS Dropdown1", 4, "ngIf"], ["valign", "top", 3, "hidden", 4, "ngIf"], ["valign", "top", 4, "ngIf"], ["colspan", "2", "width", "46%"], ["for", "addId", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["width", "54%"], ["name", "BusinessUnit", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["for", "DeptID", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["name", "DeptID", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["colspan", "2", "width", "50%", 4, "ngIf"], ["width", "50%"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "authLevel", "rows", "2", "cols", "40", "id", "authLevel", "class", "ds-title ds-align-text-left", "style", "width:300px !important; text-transform: uppercase;", "title", "Authorization Level", 3, "ngModel", "ngModelChange", 4, "ngIf"], ["colspan", "2", "width", "50%"], ["for", "comments", 1, ""], ["name", "Comments", "id", "JustificationId", "maxlength", "200", "title", "Buisness Justification", "rows", "2", "cols", "40", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["for", "addId1"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], [2, "word-break", "break-all"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["translate", ""], ["for", "LocationId", 1, "ds-text-capitalize"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["name", "Location_1", 3, "value"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "FAC Code / IDD PIN Office Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["valign", "top", 3, "hidden"], ["for", "builId", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "chargeDepartmentCode", "value", "", "id", "d2", "maxlength", "6", "title", "Charge Department Code", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["id", "Mentor1Div"], ["for", "LocationId", 1, ""], ["name", "authLevel", "rows", "2", "cols", "40", "id", "authLevel", "title", "Authorization Level", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["value", "International"], ["name", "Fac_Type", "rows", "2", "cols", "40", "id", "Fac_Type", "title", "FAC Code / IDD PIN Type", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["facType", ""], ["name", "validity", "rows", "2", "cols", "40", "id", "validity", "title", "Validity", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["for", "addId1", 3, "hidden"], ["width", "54%", 3, "hidden"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function FacInNewComponent_Template(rf, ctx) { if (rf & 1) {
         const _r65 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -1381,7 +1381,7 @@ class JabberservicesComponent {
                             { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
                             { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
                         ],
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     }
                 ]
             };
@@ -1761,7 +1761,7 @@ class HpUsaNewComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -3599,7 +3599,7 @@ class HpAuNewComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -4221,7 +4221,7 @@ class ApprovalResultPageComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                 }
             ]
         };
@@ -4598,7 +4598,7 @@ class HpInDeleteComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -5230,7 +5230,7 @@ class VoipInUpdateComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -6512,7 +6512,7 @@ class HpEmeaUpdateComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -6939,7 +6939,7 @@ class ReviewdetailsComponent {
                         { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
                         { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
                     ],
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 4,
                 }
             ]
@@ -7152,7 +7152,7 @@ class ServicesComponent {
                             { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
                             { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
                         ],
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                         "titles": [
                             "Terms of use",
                             "Useful Information",
@@ -7895,7 +7895,7 @@ class VoipLaUpdateComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -8472,7 +8472,7 @@ class VoipLaNewComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -8867,7 +8867,7 @@ class EmployeesearchVoipDeleteComponent {
                         { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
                         { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
                     ],
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "titles": [
                         "Terms of use",
                         "Useful Information",
@@ -9173,7 +9173,7 @@ class MobileservicesComponent {
                             { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
                             { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
                         ],
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request", "Mobile"],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request", "Mobile"],
                     }
                 ]
             };
@@ -9541,7 +9541,7 @@ class VoipInDeleteComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -10030,7 +10030,7 @@ class VoipAuMoveComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -10340,12 +10340,12 @@ __webpack_require__.r(__webpack_exports__);
 
 function FacInUpdateComponent_b_8_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code Update Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN Update Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInUpdateComponent_b_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD Pin - Update Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN - Update Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInUpdateComponent_label_11_Template(rf, ctx) { if (rf & 1) {
@@ -10360,7 +10360,7 @@ function FacInUpdateComponent_label_11_Template(rf, ctx) { if (rf & 1) {
 function FacInUpdateComponent_div_16_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "There is no FAC code for this serial number.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "There is no FAC Code / IDD PIN for this serial number.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
@@ -10384,7 +10384,7 @@ function FacInUpdateComponent_div_17_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("The serial number that you have entered has already one Update FAC Code request is in progress and request number is ", ctx_r5.identifier, ".");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("The serial number that you have entered has already one Update FAC Code / IDD PIN request is in progress and request number is ", ctx_r5.identifier, ".");
 } }
 function FacInUpdateComponent_table_18_option_78_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 80);
@@ -10456,7 +10456,7 @@ function FacInUpdateComponent_table_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "tr", 36);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "td", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "label", 41);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, " Current FAC Code Type ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, " Current FAC Code / IDD PIN Type ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "td", 39);
@@ -10719,12 +10719,12 @@ function FacInUpdateComponent_span_26_Template(rf, ctx) { if (rf & 1) {
 } }
 function FacInUpdateComponent_b_29_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code Update Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN Update Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInUpdateComponent_b_30_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD Pin - Update Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN - Update Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInUpdateComponent_tr_39_Template(rf, ctx) { if (rf & 1) {
@@ -10794,7 +10794,7 @@ function FacInUpdateComponent_tr_45_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 53);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Current FAC Code Type");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Current FAC Code / IDD PIN Type");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
@@ -11334,7 +11334,7 @@ class FacInUpdateComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -11943,7 +11943,7 @@ class EnExtensionAuSummaryComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 1,
                 }
             ]
@@ -12331,7 +12331,7 @@ function EmployeeinfoComponent_div_2_div_46_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 53);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "The serial number that you have entered is not eligible to request more than one FAC code.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "The serial number that you have entered is not eligible to request more than one FAC Code / IDD PIN.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -12369,7 +12369,7 @@ function EmployeeinfoComponent_div_2_div_48_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 56);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "There is no FAC code for this serial number.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "There is no FAC Code / IDD PIN for this serial number.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -12378,7 +12378,7 @@ function EmployeeinfoComponent_div_2_div_49_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 57);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "There is no FAC code for this serial number.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "There is no FAC Code / IDD PIN for this serial number.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -12387,7 +12387,7 @@ function EmployeeinfoComponent_div_2_div_50_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 58);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "There is no FAC code for this serial number.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "There is no FAC Code / IDD PIN for this serial number.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -12716,7 +12716,7 @@ class EmployeeinfoComponent {
             const servicesData = {
                 "data": [
                     {
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                         "step": 2,
                     }
                 ]
@@ -13395,7 +13395,7 @@ class VoipAllSpecialRequestComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -13884,12 +13884,12 @@ __webpack_require__.r(__webpack_exports__);
 
 function FacInDeactivateComponent_b_8_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code Delete Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN Delete Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInDeactivateComponent_b_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD Pin - Delete Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN - Delete Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInDeactivateComponent_div_10_Template(rf, ctx) { if (rf & 1) {
@@ -13900,7 +13900,7 @@ function FacInDeactivateComponent_div_10_Template(rf, ctx) { if (rf & 1) {
 function FacInDeactivateComponent_div_15_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "There is no FAC code for this serial number.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "There is no FAC Code / IDD PIN for this serial number.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
@@ -13928,12 +13928,12 @@ function FacInDeactivateComponent_div_16_Template(rf, ctx) { if (rf & 1) {
 } }
 function FacInDeactivateComponent_table_17_p_10_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Click on submit to delete the FAC code.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Click on submit to delete the FAC Code / IDD PIN.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInDeactivateComponent_table_17_p_11_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Click on submit to delete the FAC Code / IDD Pin.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Click on submit to delete the FAC Code / IDD PIN.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInDeactivateComponent_table_17_Template(rf, ctx) { if (rf & 1) {
@@ -14156,7 +14156,7 @@ class FacInDeactivateComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -14321,7 +14321,7 @@ function gettime() {
 /*! exports provided: home, footer, footnote, lhs, Jabberservices, Jabbernewtrans, servicestitle, employeeinfotrans, Jabberentrydetails, Jabberupdate, Jabbermove, requesttrans, resultpagetrans, resourcespagetranslation, phonenumber, alerttranslation, topui, steps, fixedphonenew, specialrequest, otheralerts, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choisissez une langue: \",\"app-name\":\"Services téléphoniques mondiaux\",\"app-function\":\"Point d'entrée unique pour commander des services vocaux dans votre pays\",\"sponsor\":\"Basé sur le cloud hybride CIO optimisé par Red Hat OpenShift\",\"welcomemessage\":\"Bienvenue,\",\"question\":\"Quel service ou quel pays rechercherez-vous?\",\"search-placeholder\":\"Service de recherche ...\",\"search-text\":\"Cliquez ici pour voir tous les résultats de la recherche GVS\",\"my-country\":\"Mon pays\",\"click-here\":\"Cliquez ici\",\"available\":\"pour afficher tous les\",\"servicesonlyokay\":\"services pour\",\"most-viewed-services\":\"Services les plus consultés\",\"find-right-service\":\"Trouvez les bons services, vérifiez leur disponibilité,\",\"find-right-service2\":\"puis choisissez la façon dont vous vous connectez et travaillez ensemble.\",\"jabber-description\":\"Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.\",\"button-value\":\"Premiers pas\",\"Searchservice\":\"Service de recherche...\"},\"footer\":{\"aditional-question\":\"Vous avez des questions supplémentaires sur la commande de  Services téléphoniques mondiaux ?\",\"please consult\":\"Veuillez consulter\",\"consult\":\"* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE, Edge et Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code\":\"FAC Code\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Conditions d'utilisation\",\"Useful Information\":\"Informations utiles\",\"Please bear in mind the following points when making a request :\":\"Veuillez garder à l'esprit les points suivants lorsque vous faites une demande:\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"Pour faire une demande, l'Employé doit exister dans BluePages (sauf pour les demandes d'annulation).\",\"You must know the IBM serial Number of the person making the request.\":\"Vous devez connaître le numéro de série IBM de la personne qui fait la demande.\",\"Only one request per employee per request type is processed at a time.\":\"Une seule demande par employé et par type de demande est traitée à la fois.\"},\"lhs\":{\"Services\":\"Prestations de service\",\"Jabber\":\"Jabber\",\"FAC Code\":\"FAC Code\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approbations en attente\",\"Revalidation Pending\":\"Revalidation en attente\",\"Phone Number Search\":\"Recherche par numéro de téléphone\",\"Resources\":\"Ressources\",\"Requests\":\"Demandes\"},\"Jabberservices\":{\"initiateJabber\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service Jabber.\",\"jnew\":\"Demander un nouveau service\",\"jupdate\":\"Mettre à jour un service existant\",\"jmove\":\"Déplacer un service existant\",\"jdelete\":\"Supprimer un service existant\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"Cette demande peut être soumise pour vous-même ou au nom d'un autre employé. Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeSearch\":\"Recherche d'employés\",\"requestfor\":\"À qui s'adresse cette demande\",\"Myself\":\"Moi-même\",\"AnotherEmployee\":\"Un autre employé\",\"Name\":\"Nom\",\"SerialNumber\":\"Numéro de série\",\"EmployeeSerialNumber\":\"Numéro de série de l'employé\",\"forexample\":\"(par exemple 012789)\",\"CountryCode\":\"Code postal\",\"SelectOne\":\"Sélectionnez-en un\",\"norecord\":\"Il n'y a pas d'enregistrement d'un employé IBM avec le numéro de série \",\"availablefromBluePages\":\"disponible auprès de BluePages\",\"opps\":\"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard\",\"JabberLocation\":\"Emplacement du Jabber / Numéro de téléphone\",\"Voicemail\":\"Messagerie vocale\",\"ClassofService\":\"Classe de service (COS)\",\"pleasesubmittostart\":\"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\"},\"servicestitle\":{\"Request new Jabber service\":\"Jabber - Nouvelle demande\",\"Update Jabber Request\":\"Jabber - Demande de mise à jour\",\"Move Jabber Request\":\"Jabber - Demande de déplacement\",\"Delete Jabber Request\":\"Jabber - Demande de déplacement\",\"FAC Code New Request\":\"Code FAC - Nouvelle demande\",\"FAC Code Update Request\":\"Code FAC - Demande de mise à jour\",\"FAC Code Reset Request\":\"Code FAC - Demande de réinitialisation\",\"FAC Code Delete Request\":\"Code FAC - Demande de suppression\",\"Request Move Jabber service\":\"Jabber - Demande de déplacement\",\"Update Existing Jabber Request\":\"Jabber - Demande de mise à jour\",\"SpecialRequestentryandreview\":\"Demande spéciale\",\"FAC Code / IDD Pin - Delete Request\":\"Code FAC / Pin IDD - Demande de suppression\",\"Special Request\":\"Demande spéciale\",\"Delete an existing service\":\"Supprimer un service existant\",\"Request a new service\":\"Demander un nouveau service\",\"Update an existing service\":\"Mettre à jour un service existant\",\"Requests\":\"Demandes\",\"Resources\":\"Ressources\",\"Fixed Phone - New Request\":\"Téléphone fixe - Nouvelle demande\",\"New Fixed Phone Request\":\"Nouvelle demande de téléphone fixe\",\"Fixed Phone - Update Request\":\"Téléphone fixe - Demande de mise à jour\",\"Fixed Phone - Delete Request\":\"Téléphone fixe - Demande de suppression\",\"Delete an existing FAC Code\":\"Supprimer un code FAC existant\",\"Request a new FAC Code\":\"Demander un nouveau code FAC\",\"Update an existing FAC code\":\"Mettre à jour un code FAC existant\",\"Reset an existing FAC code\":\"Réinitialiser un code FAC existant\",\"Phone Number Search\":\"Recherche par numéro de téléphone\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"Si les informations suivantes sont correctes, cliquez sur Suivant. Toute erreur doit être corrigée dans le\",\"BluePagesrecord\":\"enregistrer BluePages\",\"beforecontinuing\":\"avant de continuer.\",\"EmployeeInformation\":\"Information sur les employés\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"Name\":\"Nom:\",\"SerialNumber\":\"Numéro de série:\",\"JobResponsibility\":\"Responsabilité du travail:\",\"BusinessUnit\":\"Unité commerciale:\",\"Department\":\"département:\",\"Country\":\"Pays:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander un compte Jabber.\",\"itnexistsforuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour cet utilisateur est .\",\"nojabber\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"nojabberusethislink\":\"Le numéro de série que vous avez entré ne possède pas de numéro de téléphone IP (ITN) et n'est donc pas éligible pour Jabber. Veuillez utiliser ce lien pour faire une demande d'ITN \",\"GlobalVoiceInfrastructure\":\"Infrastructure vocale mondiale.\",\"receiveITN\":\"vous avez reçu l'ITN, vous pouvez alors demander Jabber. Merci.\",\"notauthorizedtoaccessjabber\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter\",\"notauthorizedtoaccessip\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter\",\"noteligibletorequestmorethanonejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander plus d'un compte Jabber.\",\"ITNexistsforthisuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour ce compte jabber d'utilisateurs est\",\"jabberconfiguration\":\"lié à la configuration de Jabber peut être trouvé à\",\"furtherassistance\":\"Pour toute assistance supplémentaire, veuillez contacter\",\"alreadyone\":\"le numéro de série que vous avez entré en a déjà un\",\"inprogess\":\"est en cours et le numéro de la demande est\",\"ongoingrequestsbyclickonrequestpage\":\"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.\",\"nooutstandingreq\":\"Aucune demande en suspens n'a été trouvée pour le numéro de série.\",\"noresources\":\"Il n'y a pas de ressources pour ce numéro de série.\",\"nojabberforthisserial\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"BACK\":\"DOS\",\"NEXT\":\"SUIVANTE\",\"SUBMIT1\":\"NOUS FAIRE PARVENIR\",\"alreadyonerequestinprogress\":\"Le numéro de série que vous avez entré a déjà une nouvelle demande Jabber est en cours et le numéro de demande est\",\"alreadyoneupdaterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de mise à jour Jabber est en cours et le numéro de demande est\",\"alreadyonemoverequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de déplacement Jabber est en cours et le numéro de demande est\",\"alreadyonedeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est\",\"alreadyonefacdeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression FAC est en cours et le numéro de demande est\",\"enterserialnumber\":\"Please enter a serial number\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"OfficeLocation\":\"Emplacement du bureau\",\"Campus\":\"Campus\",\"Funded\":\"Financé\",\"ChargeDepartmentCode\":\"Code du département de facturation\",\"BusinessUnit\":\"Unité commerciale\",\"Projectid\":\"ID du projet (pour les employés de GBS uniquement)\",\"alreadyhaveFixedPhone\":\"Si vous avez déjà un téléphone fixe, veuillez fournir l'identifiant\",\"toprocessPI\":\"En soumettant cette demande de provisioning, vous consentez expressément par écrit à IBM pour traiter les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\",\"JabberRequestDetails\":\"Détails de la demande Jabber\",\"FixedPhoneIdentifier\":\"Identifiant de téléphone fixe\",\"Submissioninprogress\":\"La soumission de votre demande est en cours.Ne revenez pas en arrière ou n'actualisez pas la page.\",\"Submissionbeinginprogress\":\"Votre demande est en cours d'envoi. Ne pas actualiser ni revenir en arrière.\",\"Back\":\"DOS\",\"Next\":\"SUIVANTE\",\"Select Location\":\"Sélectionnez l'emplacement\"},\"Jabberupdate\":{\"SELECTONE\":\"CHOISISSEZ UNE\",\"ReviewDetails\":\"revoir les détails\",\"JabberNumber\":\"Jabber / Numéro de téléphone\",\"SelectJabberNumber\":\"Jabber / Numéro de téléphone\",\"Jabber/PhoneNumberLocation\":\"Sélectionnez Emplacement du numéro de téléphone / Jabber\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber / Numéro de téléphone\",\"ProjectIId\":\"Id du projet\",\"AccountId\":\"Identifiant de compte\",\"ICA Code\":\"Code ICA\",\"NewOfficeLocation\":\"Nouveau bureau\",\"Building\":\"Imeuble\"},\"requesttrans\":{\"Requests\":\"Demandes\",\"beingsubmitted\":\"Votre demande est en cours d'envoi.Ne pas actualiser ni revenir en arrière.\",\"EmployeeRequestsDetails\":\"Détails des demandes des employés\",\"ResourceType\":\"Type de ressource\",\"CreatedDate\":\"Date de création\",\"Status\":\"Statut\",\"TrackingNumber\":\"Numéro de suivi\",\"AdditionalComments\":\"Commentaires supplémentaires\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Votre demande de\",\"hasbeensubmitted\":\"a été soumis\",\"Trackingrequest\":\"Le numéro de suivi de la demande est :\",\"receiveemailnotification\":\"Vous recevrez une notification par e-mail, lorsque votre demande aura été traitée.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Détails des ressources des employés\",\"Supplier\":\"Fournisseuse\",\"Phone/Dial\":\"Téléphone / Numérotation\",\"Innumber\":\"En nombre\",\"AdditionalInformation\":\"Informations Complémentaires\"},\"phonenumber\":{\"PhoneNumberSearch\":\"Recherche par numéro de téléphone\",\"PhoneNumberDetails\":\"Détails du numéro de téléphone\",\"EnterITNNumber\":\"Entrez le numéro ITN\",\"EmpID\":\"EmpID\",\"UserName\":\"Nom d'utilisateur\",\"ServiceDetails\":\"Détails du service\"},\"alerttranslation\":{\"EXITREQUEST\":\"DEMANDE DE SORTIE\",\"digitserialnumber\":\"Le numéro de série de l'employé doit être composé de 6 caractères\",\"enterserialnumber\":\"Veuillez saisir un numéro de série\",\"moverequest\":\"La demande de déplacement supprimera l'ITN actuel et un nouvel ITN sera attribué. Cliquez sur OK pour continuer ou sur Annuler pour quitter\",\"selectcountrycode\":\"Veuillez sélectionner le code du pays\",\"Only\":\"Seule\",\"serialnumbersareallowed\":\"Les numéros de série sont autorisés à créer une demande de\",\"selectlocation\":\"Veuillez sélectionner un emplacement\",\"selectjabbernumber\":\"Veuillez sélectionner le Jabber / Numéro de téléphone\"},\"topui\":{\"HOME\":\"DOMICILE\",\"SERVICES\":\"PRESTATIONS DE SERVICE\",\"DATAPRIVACY\":\"CONFIDENTIALITÉ DES DONNÉES\",\"HELP\":\"AIDER\",\"FEEDBACK\":\"RÉTROACTION\",\"CHANGECOUNTRY\":\"CHANGER DE PAYS\"},\"steps\":{\"Employee Search\":\"Recherche d'employés\",\"Employee Information\":\"Information sur les employés\",\"Employee Entry Details\":\"Détails de l'entrée des employés\",\"Review Details\":\"Détails de l'examen\",\"Employee Resources Details\":\"Détails des ressources des employés\",\"Employee Requests Details\":\"Détails des demandes des employés\",\"Phone Number Search\":\"Recherche par numéro de téléphone\",\"Phone Number Details\":\"Détails du numéro de téléphone\",\"STEP 1\":\"MARCHER 1\",\"STEP 2\":\"MARCHER 2\",\"STEP 3\":\"MARCHER 3\",\"STEP 4\":\"MARCHER 4\"},\"fixedphonenew\":{\"Location\":\"Emplacement\",\"TypeofDevice\":\"Type d'appareil \",\"SelectDevice\":\"Choisir un appareil\",\"TypeofModel\":\"Type de modèle \",\"SelectModel\":\"Sélectionnez un modèle\",\"SelectClassofService (COS)\":\"Classe de service (COS)\",\"National\":\"Nationale\",\"International\":\"Internationale\",\"BusinessNeed(Whyisinternationalrequired?)\":\"Besoin commercial (pourquoi l'international est-il requis?) \",\"DescriptionoftheDevice\":\"Description de l'appareil \",\"IBMCLv21EMdesk\":\"par exemple. Bureau EM IBMC Lv21 \",\"IBMCLv21conferenceroom3\":\"par exemple. IBMC Lv21 salle de conférence 3 \",\"MACAddressoftheDevice\":\"Adresse MAC de l'appareil \",\"NoteCombinationofandLength12\":\"Remarque: combinaison de (0 à 9, A à F) et longueur: 12\",\"BusinessJustification\":\"Justification de l'entreprise\",\"DescriptionofDevice\":\"Description de l'appareil\",\"Somethingseemswrong\":\"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard.\",\"selectdevice\":\"Veuillez sélectionner un type d'appareil\",\"selectmodel\":\"Veuillez sélectionner un type de modèle\",\"businesscos\":\"Veuillez saisir le besoin professionnel pour la classe de service.\",\"descriptioncharacters\":\"Veuillez saisir une description et elle ne doit pas dépasser 30 caractères\",\"entermacadd\":\"Veuillez saisir une adresse MAC de 12 caractères\",\"MACfieldAtoF\":\"La valeur du champ MAC doit être en combinaison de 0 à 9 et de A à F\",\"initiateFixedPhoneservice\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service de téléphonie fixe.\",\"MACAddressorPhoneNumber\":\"Entrez l'adresse MAC ou le numéro de téléphone actuel\",\"norecordfoundformac\":\"Aucun enregistrement n'a été trouvé pour l'adresse Mac ou le numéro de téléphone que vous avez entré. Veuillez vérifier et réessayer.\",\"Pleaseenternumber\":\"Veuillez saisir un numéro à rechercher\",\"MACAddress\":\"Adresse Mac \",\"PhoneNumber\":\"Numéro de téléphone \",\"Description\":\"La description \",\"SEARCH\":\"RECHERCHER\",\"CurrentMACAddress\":\"Adresse MAC actuelle \",\"CurrentPhoneNumber\":\"Numéro de téléphone actuel \",\"CurrentDescription\":\"Description actuelle \",\"CurrentModel\":\"Modèle actuel\",\"UpdateRequiredfor\":\"Mise à jour requise pour\",\"TypeOfModel\":\"Type de modèle\",\"SelectPhoneModel\":\"Sélectionnez le modèle de téléphone\",\"NewMACAddress\":\"Nouvelle adresse MAC\",\"NewDescriptiontoUpdate\":\"Nouvelle description à mettre à jour\",\"ReasonforUpdation\":\"Raison de la mise à jour\",\"MACAddresssearch\":\"Veuillez saisir une adresse MAC ou un numéro de téléphone pour rechercher\",\"updaterequiredfor\":\"Veuillez sélectionner la mise à jour requise pour\",\"enternewMACaddress\":\"Veuillez saisir une nouvelle adresse MAC\",\"enteranewModel\":\"Veuillez saisir un nouveau modèle\",\"providethereasonforupdation\":\"Veuillez indiquer la raison de la mise à jour.\",\"provideNewDescription\":\"Veuillez fournir la nouvelle description. \",\"differentDescriptionasisalready\":\"Veuillez choisir une description différente car la description actuelle est déjà\",\"fortheprovidednumber\":\"pour le numéro fourni.\",\"FixedPhoneLocation\":\"Emplacement du téléphone fixe\",\"SelectOne\":\"Sélectionnez-en un\",\"cos\":\"Veuillez sélectionner une classe de service.\",\"NoteCombination\":\"Remarque: combinaison de (0 à 9, A à F) et longueur: 12\"},\"specialrequest\":{\"OnlyusetheSpecialRequest\":\"N'utilisez la demande spéciale que pour toute opération spéciale, telle qu'un deuxième numéro de bureau, une hotline pour un groupe de support, une configuration de ligne partagée pour des groupes fonctionnels, ou pour indiquer un besoin de conseil en matière de téléphonie. \",\"needstandardservice\":\"Si vous avez besoin d'un service standard tel que Jabber ou téléphone fixe, ne soumettez pas de demande spéciale car elle sera rejetée. Les services standard peuvent être demandés dans le menu à gauche de cette page.\",\"SpecialRequestHCSmigratedsite\":\"Veuillez noter que les demandes spéciales liées aux services vocaux ne peuvent être soumises que pour le site migré HCS. Les demandes spéciales relatives aux services vocaux pour un site non HCS doivent être soumises \",\"TMAC tool\":\"TMAC outil.\",\"HelpTMACtool \":\"L'aide relative à l'outil TMAC peut être trouvée \",\"here\":\"ici.\",\"JabberNumberoptional\":\"Jabber / numéro de téléphone (facultatif)\",\"JabberLocationspecial\":\"Emplacement du Jabber / Numéro de téléphone\",\"Description of Requirement\":\"Description de l'exigence\",\"notexceed200\":\"Remarque: la longueur ne doit pas dépasser 500\",\"Note\":\"Noter:\",\"Fieldsasteriskspl\":\"Champs marqués d'un astérisque\",\"arerequiredspl\":\"sont requis.\",\"selectjabbernumberwishtoupdate\":\"Sélectionnez le numéro Jabber que vous souhaitez mettre à jour\"},\"otheralerts\":{\"selectthejabber\":\"Veuillez sélectionner le jabber / numéro de téléphone à mettre à jour\",\"selectthejabbertomove\":\"Sélectionnez le Jabber / numéro de téléphone que vous souhaitez déplacer\",\"Model\":\"Modèle\",\"MAC Address\":\"Adresse Mac\",\"Device Description\":\"Description de l'appareil\"}}");
+module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choisissez une langue: \",\"app-name\":\"Services téléphoniques mondiaux\",\"app-function\":\"Point d'entrée unique pour commander des services vocaux dans votre pays\",\"sponsor\":\"Basé sur le cloud hybride CIO optimisé par Red Hat OpenShift\",\"welcomemessage\":\"Bienvenue,\",\"question\":\"Quel service ou quel pays rechercherez-vous?\",\"search-placeholder\":\"Service de recherche ...\",\"search-text\":\"Cliquez ici pour voir tous les résultats de la recherche GVS\",\"my-country\":\"Mon pays\",\"click-here\":\"Cliquez ici\",\"available\":\"pour afficher tous les\",\"servicesonlyokay\":\"services pour\",\"most-viewed-services\":\"Services les plus consultés\",\"find-right-service\":\"Trouvez les bons services, vérifiez leur disponibilité,\",\"find-right-service2\":\"puis choisissez la façon dont vous vous connectez et travaillez ensemble.\",\"jabber-description\":\"Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.\",\"button-value\":\"Premiers pas\",\"Searchservice\":\"Service de recherche...\"},\"footer\":{\"aditional-question\":\"Vous avez des questions supplémentaires sur la commande de  Services téléphoniques mondiaux ?\",\"please consult\":\"Veuillez consulter\",\"consult\":\"* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE, Edge et Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Conditions d'utilisation\",\"Useful Information\":\"Informations utiles\",\"Please bear in mind the following points when making a request :\":\"Veuillez garder à l'esprit les points suivants lorsque vous faites une demande:\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"Pour faire une demande, l'Employé doit exister dans BluePages (sauf pour les demandes d'annulation).\",\"You must know the IBM serial Number of the person making the request.\":\"Vous devez connaître le numéro de série IBM de la personne qui fait la demande.\",\"Only one request per employee per request type is processed at a time.\":\"Une seule demande par employé et par type de demande est traitée à la fois.\"},\"lhs\":{\"Services\":\"Prestations de service\",\"Jabber\":\"Jabber\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approbations en attente\",\"Revalidation Pending\":\"Revalidation en attente\",\"Phone Number Search\":\"Recherche par numéro de téléphone\",\"Resources\":\"Ressources\",\"Requests\":\"Demandes\"},\"Jabberservices\":{\"initiateJabber\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service Jabber.\",\"jnew\":\"Demander un nouveau service\",\"jupdate\":\"Mettre à jour un service existant\",\"jmove\":\"Déplacer un service existant\",\"jdelete\":\"Supprimer un service existant\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"Cette demande peut être soumise pour vous-même ou au nom d'un autre employé. Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeSearch\":\"Recherche d'employés\",\"requestfor\":\"À qui s'adresse cette demande\",\"Myself\":\"Moi-même\",\"AnotherEmployee\":\"Un autre employé\",\"Name\":\"Nom\",\"SerialNumber\":\"Numéro de série\",\"EmployeeSerialNumber\":\"Numéro de série de l'employé\",\"forexample\":\"(par exemple 012789)\",\"CountryCode\":\"Code postal\",\"SelectOne\":\"Sélectionnez-en un\",\"norecord\":\"Il n'y a pas d'enregistrement d'un employé IBM avec le numéro de série \",\"availablefromBluePages\":\"disponible auprès de BluePages\",\"opps\":\"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard\",\"JabberLocation\":\"Emplacement du Jabber / Numéro de téléphone\",\"Voicemail\":\"Messagerie vocale\",\"ClassofService\":\"Classe de service (COS)\",\"pleasesubmittostart\":\"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\"},\"servicestitle\":{\"Request new Jabber service\":\"Jabber - Nouvelle demande\",\"Update Jabber Request\":\"Jabber - Demande de mise à jour\",\"Move Jabber Request\":\"Jabber - Demande de déplacement\",\"Delete Jabber Request\":\"Jabber - Demande de déplacement\",\"FAC Code / IDD PIN New Request\":\"Code FAC - Nouvelle demande\",\"FAC Code / IDD PIN Update Request\":\"Code FAC - Demande de mise à jour\",\"FAC Code / IDD PIN Reset Request\":\"Code FAC - Demande de réinitialisation\",\"FAC Code / IDD PIN Delete Request\":\"Code FAC - Demande de suppression\",\"Request Move Jabber service\":\"Jabber - Demande de déplacement\",\"Update Existing Jabber Request\":\"Jabber - Demande de mise à jour\",\"SpecialRequestentryandreview\":\"Demande spéciale\",\"FAC Code / IDD PIN - Delete Request\":\"Code FAC / Pin IDD - Demande de suppression\",\"Special Request\":\"Demande spéciale\",\"Delete an existing service\":\"Supprimer un service existant\",\"Request a new service\":\"Demander un nouveau service\",\"Update an existing service\":\"Mettre à jour un service existant\",\"Requests\":\"Demandes\",\"Resources\":\"Ressources\",\"Fixed Phone - New Request\":\"Téléphone fixe - Nouvelle demande\",\"New Fixed Phone Request\":\"Nouvelle demande de téléphone fixe\",\"Fixed Phone - Update Request\":\"Téléphone fixe - Demande de mise à jour\",\"Fixed Phone - Delete Request\":\"Téléphone fixe - Demande de suppression\",\"Delete an existing FAC Code / IDD PIN\":\"Supprimer un code FAC existant\",\"Request a new FAC Code / IDD PIN\":\"Demander un nouveau code FAC\",\"Update an existing FAC Code / IDD PIN\":\"Mettre à jour un code FAC existant\",\"Reset an existing FAC Code / IDD PIN\":\"Réinitialiser un code FAC existant\",\"Phone Number Search\":\"Recherche par numéro de téléphone\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"Si les informations suivantes sont correctes, cliquez sur Suivant. Toute erreur doit être corrigée dans le\",\"BluePagesrecord\":\"enregistrer BluePages\",\"beforecontinuing\":\"avant de continuer.\",\"EmployeeInformation\":\"Information sur les employés\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"Name\":\"Nom:\",\"SerialNumber\":\"Numéro de série:\",\"JobResponsibility\":\"Responsabilité du travail:\",\"BusinessUnit\":\"Unité commerciale:\",\"Department\":\"département:\",\"Country\":\"Pays:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander un compte Jabber.\",\"itnexistsforuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour cet utilisateur est .\",\"nojabber\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"nojabberusethislink\":\"Le numéro de série que vous avez entré ne possède pas de numéro de téléphone IP (ITN) et n'est donc pas éligible pour Jabber. Veuillez utiliser ce lien pour faire une demande d'ITN \",\"GlobalVoiceInfrastructure\":\"Infrastructure vocale mondiale.\",\"receiveITN\":\"vous avez reçu l'ITN, vous pouvez alors demander Jabber. Merci.\",\"notauthorizedtoaccessjabber\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter\",\"notauthorizedtoaccessip\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter\",\"noteligibletorequestmorethanonejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander plus d'un compte Jabber.\",\"ITNexistsforthisuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour ce compte jabber d'utilisateurs est\",\"jabberconfiguration\":\"lié à la configuration de Jabber peut être trouvé à\",\"furtherassistance\":\"Pour toute assistance supplémentaire, veuillez contacter\",\"alreadyone\":\"le numéro de série que vous avez entré en a déjà un\",\"inprogess\":\"est en cours et le numéro de la demande est\",\"ongoingrequestsbyclickonrequestpage\":\"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.\",\"nooutstandingreq\":\"Aucune demande en suspens n'a été trouvée pour le numéro de série.\",\"noresources\":\"Il n'y a pas de ressources pour ce numéro de série.\",\"nojabberforthisserial\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"BACK\":\"DOS\",\"NEXT\":\"SUIVANTE\",\"SUBMIT1\":\"NOUS FAIRE PARVENIR\",\"alreadyonerequestinprogress\":\"Le numéro de série que vous avez entré a déjà une nouvelle demande Jabber est en cours et le numéro de demande est\",\"alreadyoneupdaterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de mise à jour Jabber est en cours et le numéro de demande est\",\"alreadyonemoverequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de déplacement Jabber est en cours et le numéro de demande est\",\"alreadyonedeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est\",\"alreadyonefacdeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression FAC est en cours et le numéro de demande est\",\"enterserialnumber\":\"Please enter a serial number\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"OfficeLocation\":\"Emplacement du bureau\",\"Campus\":\"Campus\",\"Funded\":\"Financé\",\"ChargeDepartmentCode\":\"Code du département de facturation\",\"BusinessUnit\":\"Unité commerciale\",\"Projectid\":\"ID du projet (pour les employés de GBS uniquement)\",\"alreadyhaveFixedPhone\":\"Si vous avez déjà un téléphone fixe, veuillez fournir l'identifiant\",\"toprocessPI\":\"En soumettant cette demande de provisioning, vous consentez expressément par écrit à IBM pour traiter les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\",\"JabberRequestDetails\":\"Détails de la demande Jabber\",\"FixedPhoneIdentifier\":\"Identifiant de téléphone fixe\",\"Submissioninprogress\":\"La soumission de votre demande est en cours.Ne revenez pas en arrière ou n'actualisez pas la page.\",\"Submissionbeinginprogress\":\"Votre demande est en cours d'envoi. Ne pas actualiser ni revenir en arrière.\",\"Back\":\"DOS\",\"Next\":\"SUIVANTE\",\"Select Location\":\"Sélectionnez l'emplacement\"},\"Jabberupdate\":{\"SELECTONE\":\"CHOISISSEZ UNE\",\"ReviewDetails\":\"revoir les détails\",\"JabberNumber\":\"Jabber / Numéro de téléphone\",\"SelectJabberNumber\":\"Jabber / Numéro de téléphone\",\"Jabber/PhoneNumberLocation\":\"Sélectionnez Emplacement du numéro de téléphone / Jabber\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber / Numéro de téléphone\",\"ProjectIId\":\"Id du projet\",\"AccountId\":\"Identifiant de compte\",\"ICA Code\":\"Code ICA\",\"NewOfficeLocation\":\"Nouveau bureau\",\"Building\":\"Imeuble\"},\"requesttrans\":{\"Requests\":\"Demandes\",\"beingsubmitted\":\"Votre demande est en cours d'envoi.Ne pas actualiser ni revenir en arrière.\",\"EmployeeRequestsDetails\":\"Détails des demandes des employés\",\"ResourceType\":\"Type de ressource\",\"CreatedDate\":\"Date de création\",\"Status\":\"Statut\",\"TrackingNumber\":\"Numéro de suivi\",\"AdditionalComments\":\"Commentaires supplémentaires\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Votre demande de\",\"hasbeensubmitted\":\"a été soumis\",\"Trackingrequest\":\"Le numéro de suivi de la demande est :\",\"receiveemailnotification\":\"Vous recevrez une notification par e-mail, lorsque votre demande aura été traitée.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Détails des ressources des employés\",\"Supplier\":\"Fournisseuse\",\"Phone/Dial\":\"Téléphone / Numérotation\",\"Innumber\":\"En nombre\",\"AdditionalInformation\":\"Informations Complémentaires\"},\"phonenumber\":{\"PhoneNumberSearch\":\"Recherche par numéro de téléphone\",\"PhoneNumberDetails\":\"Détails du numéro de téléphone\",\"EnterITNNumber\":\"Entrez le numéro ITN\",\"EmpID\":\"EmpID\",\"UserName\":\"Nom d'utilisateur\",\"ServiceDetails\":\"Détails du service\"},\"alerttranslation\":{\"EXITREQUEST\":\"DEMANDE DE SORTIE\",\"digitserialnumber\":\"Le numéro de série de l'employé doit être composé de 6 caractères\",\"enterserialnumber\":\"Veuillez saisir un numéro de série\",\"moverequest\":\"La demande de déplacement supprimera l'ITN actuel et un nouvel ITN sera attribué. Cliquez sur OK pour continuer ou sur Annuler pour quitter\",\"selectcountrycode\":\"Veuillez sélectionner le code du pays\",\"Only\":\"Seule\",\"serialnumbersareallowed\":\"Les numéros de série sont autorisés à créer une demande de\",\"selectlocation\":\"Veuillez sélectionner un emplacement\",\"selectjabbernumber\":\"Veuillez sélectionner le Jabber / Numéro de téléphone\"},\"topui\":{\"HOME\":\"DOMICILE\",\"SERVICES\":\"PRESTATIONS DE SERVICE\",\"DATAPRIVACY\":\"CONFIDENTIALITÉ DES DONNÉES\",\"HELP\":\"AIDER\",\"FEEDBACK\":\"RÉTROACTION\",\"CHANGECOUNTRY\":\"CHANGER DE PAYS\"},\"steps\":{\"Employee Search\":\"Recherche d'employés\",\"Employee Information\":\"Information sur les employés\",\"Employee Entry Details\":\"Détails de l'entrée des employés\",\"Review Details\":\"Détails de l'examen\",\"Employee Resources Details\":\"Détails des ressources des employés\",\"Employee Requests Details\":\"Détails des demandes des employés\",\"Phone Number Search\":\"Recherche par numéro de téléphone\",\"Phone Number Details\":\"Détails du numéro de téléphone\",\"STEP 1\":\"MARCHER 1\",\"STEP 2\":\"MARCHER 2\",\"STEP 3\":\"MARCHER 3\",\"STEP 4\":\"MARCHER 4\"},\"fixedphonenew\":{\"Location\":\"Emplacement\",\"TypeofDevice\":\"Type d'appareil \",\"SelectDevice\":\"Choisir un appareil\",\"TypeofModel\":\"Type de modèle \",\"SelectModel\":\"Sélectionnez un modèle\",\"SelectClassofService (COS)\":\"Classe de service (COS)\",\"National\":\"Nationale\",\"International\":\"Internationale\",\"BusinessNeed(Whyisinternationalrequired?)\":\"Besoin commercial (pourquoi l'international est-il requis?) \",\"DescriptionoftheDevice\":\"Description de l'appareil \",\"IBMCLv21EMdesk\":\"par exemple. Bureau EM IBMC Lv21 \",\"IBMCLv21conferenceroom3\":\"par exemple. IBMC Lv21 salle de conférence 3 \",\"MACAddressoftheDevice\":\"Adresse MAC de l'appareil \",\"NoteCombinationofandLength12\":\"Remarque: combinaison de (0 à 9, A à F) et longueur: 12\",\"BusinessJustification\":\"Justification de l'entreprise\",\"DescriptionofDevice\":\"Description de l'appareil\",\"Somethingseemswrong\":\"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard.\",\"selectdevice\":\"Veuillez sélectionner un type d'appareil\",\"selectmodel\":\"Veuillez sélectionner un type de modèle\",\"businesscos\":\"Veuillez saisir le besoin professionnel pour la classe de service.\",\"descriptioncharacters\":\"Veuillez saisir une description et elle ne doit pas dépasser 30 caractères\",\"entermacadd\":\"Veuillez saisir une adresse MAC de 12 caractères\",\"MACfieldAtoF\":\"La valeur du champ MAC doit être en combinaison de 0 à 9 et de A à F\",\"initiateFixedPhoneservice\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service de téléphonie fixe.\",\"MACAddressorPhoneNumber\":\"Entrez l'adresse MAC ou le numéro de téléphone actuel\",\"norecordfoundformac\":\"Aucun enregistrement n'a été trouvé pour l'adresse Mac ou le numéro de téléphone que vous avez entré. Veuillez vérifier et réessayer.\",\"Pleaseenternumber\":\"Veuillez saisir un numéro à rechercher\",\"MACAddress\":\"Adresse Mac \",\"PhoneNumber\":\"Numéro de téléphone \",\"Description\":\"La description \",\"SEARCH\":\"RECHERCHER\",\"CurrentMACAddress\":\"Adresse MAC actuelle \",\"CurrentPhoneNumber\":\"Numéro de téléphone actuel \",\"CurrentDescription\":\"Description actuelle \",\"CurrentModel\":\"Modèle actuel\",\"UpdateRequiredfor\":\"Mise à jour requise pour\",\"TypeOfModel\":\"Type de modèle\",\"SelectPhoneModel\":\"Sélectionnez le modèle de téléphone\",\"NewMACAddress\":\"Nouvelle adresse MAC\",\"NewDescriptiontoUpdate\":\"Nouvelle description à mettre à jour\",\"ReasonforUpdation\":\"Raison de la mise à jour\",\"MACAddresssearch\":\"Veuillez saisir une adresse MAC ou un numéro de téléphone pour rechercher\",\"updaterequiredfor\":\"Veuillez sélectionner la mise à jour requise pour\",\"enternewMACaddress\":\"Veuillez saisir une nouvelle adresse MAC\",\"enteranewModel\":\"Veuillez saisir un nouveau modèle\",\"providethereasonforupdation\":\"Veuillez indiquer la raison de la mise à jour.\",\"provideNewDescription\":\"Veuillez fournir la nouvelle description. \",\"differentDescriptionasisalready\":\"Veuillez choisir une description différente car la description actuelle est déjà\",\"fortheprovidednumber\":\"pour le numéro fourni.\",\"FixedPhoneLocation\":\"Emplacement du téléphone fixe\",\"SelectOne\":\"Sélectionnez-en un\",\"cos\":\"Veuillez sélectionner une classe de service.\",\"NoteCombination\":\"Remarque: combinaison de (0 à 9, A à F) et longueur: 12\"},\"specialrequest\":{\"OnlyusetheSpecialRequest\":\"N'utilisez la demande spéciale que pour toute opération spéciale, telle qu'un deuxième numéro de bureau, une hotline pour un groupe de support, une configuration de ligne partagée pour des groupes fonctionnels, ou pour indiquer un besoin de conseil en matière de téléphonie. \",\"needstandardservice\":\"Si vous avez besoin d'un service standard tel que Jabber ou téléphone fixe, ne soumettez pas de demande spéciale car elle sera rejetée. Les services standard peuvent être demandés dans le menu à gauche de cette page.\",\"SpecialRequestHCSmigratedsite\":\"Veuillez noter que les demandes spéciales liées aux services vocaux ne peuvent être soumises que pour le site migré HCS. Les demandes spéciales relatives aux services vocaux pour un site non HCS doivent être soumises \",\"TMAC tool\":\"TMAC outil.\",\"HelpTMACtool \":\"L'aide relative à l'outil TMAC peut être trouvée \",\"here\":\"ici.\",\"JabberNumberoptional\":\"Jabber / numéro de téléphone (facultatif)\",\"JabberLocationspecial\":\"Emplacement du Jabber / Numéro de téléphone\",\"Description of Requirement\":\"Description de l'exigence\",\"notexceed200\":\"Remarque: la longueur ne doit pas dépasser 500\",\"Note\":\"Noter:\",\"Fieldsasteriskspl\":\"Champs marqués d'un astérisque\",\"arerequiredspl\":\"sont requis.\",\"selectjabbernumberwishtoupdate\":\"Sélectionnez le numéro Jabber que vous souhaitez mettre à jour\"},\"otheralerts\":{\"selectthejabber\":\"Veuillez sélectionner le jabber / numéro de téléphone à mettre à jour\",\"selectthejabbertomove\":\"Sélectionnez le Jabber / numéro de téléphone que vous souhaitez déplacer\",\"Model\":\"Modèle\",\"MAC Address\":\"Adresse Mac\",\"Device Description\":\"Description de l'appareil\"}}");
 
 /***/ }),
 
@@ -14643,7 +14643,7 @@ class VoipEmeaNewComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -15433,7 +15433,7 @@ class HpIndonesiaNewComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -16544,7 +16544,7 @@ class VoipInMoveComponent {
             const servicesData = {
                 "data": [
                     {
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                         "step": 3,
                     }
                 ]
@@ -17055,7 +17055,7 @@ class MobileDzNewComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request", "Mobile"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request", "Mobile"],
                     "step": 3,
                 }
             ]
@@ -18312,7 +18312,7 @@ class FixedphoneservicesComponent {
                             { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
                             { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
                         ],
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     }
                 ]
             };
@@ -18983,7 +18983,7 @@ class VoipUsaNewComponent {
             const servicesData = {
                 "data": [
                     {
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                         "step": 3,
                     }
                 ]
@@ -19887,7 +19887,7 @@ class VoipInNewComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -20921,7 +20921,7 @@ class HpInNewComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -21641,7 +21641,7 @@ function gettime() {
 /*! exports provided: home, footer, footnote, lhs, Jabberservices, Jabbernewtrans, servicestitle, employeeinfotrans, Jabberentrydetails, Jabberupdate, Jabbermove, requesttrans, resultpagetrans, resourcespagetranslation, phonenumber, alerttranslation, topui, steps, fixedphonenew, specialrequest, otheralerts, Requests, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choose a language: \",\"app-name\":\"Global Voice Services\",\"app-function\":\"Single entry point for ordering voice services in your country\",\"sponsor\":\"Built on CIO Hybrid Cloud Powered by Red Hat OpenShift\",\"welcomemessage\":\"Welcome,\",\"question\":\"What service or country are you looking for?\",\"search-placeholder\":\"Search service...\",\"search-text\":\"Click here to see all results in GVS search\",\"my-country\":\"My Country\",\"click-here\":\"Click here\",\"available\":\"to view all available\",\"servicesonlyokay\":\"services for\",\"most-viewed-services\":\"Most Viewed Services\",\"find-right-service\":\"Find the right services, check their availability,\",\"find-right-service2\":\"and then choose the way you connect and work together.\",\"jabber-description\":\"Cisco Jabber is a multiple platform soft phone application to make and receive phone calls.\",\"button-value\":\"Get Started\",\"Searchservice\":\"Search service...\"},\"footer\":{\"aditional-question\":\"Have additional questions about ordering Global Voice Services ?\",\"please consult\":\"Please consult\",\"consult\":\"* This website supports Mozilla Firefox, Google Chrome, IE, Edge and Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code\":\"FAC Code\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Terms of use\",\"Useful Information\":\"Useful Information\",\"Please bear in mind the following points when making a request :\":\"Please bear in mind the following points when making a request :\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"To make a request the Employee must exist in BluePages (except for cancellation requests).\",\"You must know the IBM serial Number of the person making the request.\":\"You must know the IBM serial Number of the person making the request.\",\"Only one request per employee per request type is processed at a time.\":\"Only one request per employee per request type is processed at a time.\"},\"lhs\":{\"Services\":\"Services\",\"Jabber\":\"Jabber\",\"FAC Code\":\"FAC Code\",\"Mobile\":\"Mobile\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approvals Pending\",\"Revalidation Pending\":\"Revalidation Pending\",\"Phone Number Search\":\"Phone Number Search\",\"Requests\":\"Requests\",\"Resources\":\"Resources\"},\"Jabberservices\":{\"initiateJabber\":\" Please click on a request type below to initiate a Jabber service request.\",\"jnew\":\"Request a new service\",\"jupdate\":\"Update an existing service\",\"jmove\":\"Move an existing service\",\"jdelete\":\"Delete an existing service\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeSearch\":\"Employee Search\",\"Declaration\":\"Declaration\",\"DeclarationAck\":\"I have read and comply with the Algeria Mobility Policy, available here and I acknowledge reading the Privacy Notice.\",\"requestfor\":\"Who is this request for\",\"Myself\":\"Myself\",\"AnotherEmployee\":\"Another Employee\",\"Name\":\"Name\",\"SerialNumber\":\"Serial Number\",\"EmployeeSerialNumber\":\"Employee Serial Number\",\"forexample\":\"(eg 012789)\",\"CountryCode\":\"Country Code\",\"SelectOne\":\"Select One\",\"norecord\":\"There is no record of an IBM employee with the serial number \",\"availablefromBluePages\":\"available from BluePages\",\"opps\":\"Something seems to have gone wrong. Please try later.\",\"JabberLocation\":\"Jabber / Phone Number location\",\"Voicemail\":\"Voicemail\",\"ClassofService\":\"Class of Service (COS)\",\"pleasesubmittostart\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service.\"},\"servicestitle\":{\"Request new Jabber service\":\"Jabber - New Request\",\"Update Jabber Request\":\"Jabber - Update Request\",\"Move Jabber Request\":\"Jabber - Move Request\",\"Delete Jabber Request\":\"Jabber - Delete Request\",\"FAC Code New Request\":\"FAC Code - New Request\",\"FAC Code Update Request\":\"FAC Code - Update Request\",\"FAC Code / IDD Pin - New Request\":\"FAC Code / IDD Pin - New Request\",\"FAC Code / IDD Pin - Reset Request\":\"FAC Code / IDD Pin - Reset Request\",\"FAC Code / IDD Pin - Update Request\":\"FAC Code / IDD Pin - Update Request\",\"FAC Code Reset Request\":\"FAC Code - Reset Request\",\"SpecialRequestentryandreview\":\"Special Request\",\"FAC Code / IDD Pin - Delete Request\":\"FAC Code / IDD Pin - Delete Request\",\"Mobile New Request\":\"Mobile - New Request\",\"FAC Code Delete Request\":\"FAC Code - Delete Request\",\"Request Move Jabber service\":\"Jabber - Move Request\",\"Update Existing Jabber Request\":\"Jabber - Update Request\",\"Delete an existing service\":\"Delete an existing service\",\"Request a new service\":\"Request a new service\",\"Update an existing service\":\"Update an existing service\",\"Requests\":\"Requests\",\"Resources\":\"Resources\",\"Delete an existing FAC Code\":\"Delete an existing FAC Code\",\"Fixed Phone - New Request\":\"Fixed Phone - New Request\",\"New Fixed Phone Request\":\"New Fixed Phone Request\",\"Fixed Phone - Update Request\":\"Fixed Phone - Update Request\",\"Fixed Phone - Delete Request\":\"Fixed Phone - Delete Request\",\"Request a new FAC Code\":\"Request a new FAC Code\",\"Update an existing FAC code\":\"Update an existing FAC code\",\"Reset an existing FAC code\":\"Reset an existing FAC code\",\"Phone Number Search\":\"Phone Number Search\",\"Special Request\":\"Special Request\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"If the following information is correct, click Next. Any errors must be corrected in the employee's\",\"BluePagesrecord\":\"BluePages record\",\"beforecontinuing\":\"before continuing.\",\"EmployeeInformation\":\"Employee Information\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"Name\":\"Name:\",\"SerialNumber\":\"Serial Number:\",\"JobResponsibility\":\"Job Responsibility:\",\"BusinessUnit\":\"Business Unit:\",\"Department\":\"Department:\",\"Country\":\"Country:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"The serial number that you have entered is not eligible to request Jabber account.\",\"itnexistsforuser\":\"The IBM Telephone Number (ITN) that exists for this user is .\",\"nojabber\":\"There is no Jabber for this serial number.\",\"nojabberusethislink\":\"The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN \",\"GlobalVoiceInfrastructure\":\"Global Voice Infrastructure.\",\"receiveITN\":\"you have received the ITN you can then request Jabber.  Thank you.\",\"notauthorizedtoaccessjabber\":\"The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact\",\"notauthorizedtoaccessip\":\"The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact\",\"noteligibletorequestmorethanonejabber\":\"The serial number that you have entered is not eligible to request more than one Jabber account.\",\"ITNexistsforthisuser\":\"The IBM Telephone Number (ITN) that exists for this users jabber account is\",\"jabberconfiguration\":\"Help related to Jabber configuration can be found at\",\"furtherassistance\":\"For any further assistance, please contact\",\"alreadyone\":\"The serial number that you have entered has already one\",\"inprogess\":\"request in progress and request number is\",\"ongoingrequestsbyclickonrequestpage\":\"You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.\",\"nooutstandingreq\":\"No outstanding requests were found for the serial number.\",\"noresources\":\"There are no resources for this serial number.\",\"nojabberforthisserial\":\"There is no Jabber for this serial number.\",\"BACK\":\"BACK\",\"NEXT\":\"NEXT\",\"SUBMIT1\":\"SUBMIT\",\"alreadyonerequestinprogress\":\"The serial number that you have entered has already one new Jabber request is in progress and request number is\",\"alreadyoneupdaterequestinprogress\":\"The serial number that you have entered has already one Update Jabber request is in progress and request number is\",\"alreadyonemoverequestinprogress\":\"The serial number that you have entered has already one move Jabber request is in progress and request number is\",\"alreadyonedeleterequestinprogress\":\"The serial number that you have entered has already one delete Jabber request is in progress and request number is\",\"alreadyonefacdeleterequestinprogress\":\"The serial number that you have entered has already one delete FAC request is in progress and request number is\",\"enterserialnumber\":\"Please enter a serial number\",\"alreadyonerequestinprogressfac\":\"The serial number that you have entered has already one new FAC Code request is in progress and request number is\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"OfficeLocation\":\"Office Location\",\"Campus\":\"Campus\",\"Funded\":\"Funded\",\"ChargeDepartmentCode\":\"Charge Department Code\",\"BusinessUnit\":\"Business Unit\",\"Projectid\":\"Project ID (for GBS employee only)\",\"alreadyhaveFixedPhone\":\"If you already have Fixed Phone , please provide the identifier\",\"toprocessPI\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.\",\"JabberRequestDetails\":\"Jabber Request Details\",\"FixedPhoneIdentifier\":\"Fixed Phone Identifier\",\"Submissioninprogress\":\"Your request submission is in progress.Do not Go back or Refresh the page.\",\"Submissionbeinginprogress\":\"Your request is being submitted. Do not refresh or go back.\",\"Back\":\"BACK\",\"Next\":\"NEXT\",\"Select Location\":\"Select Location\"},\"Jabberupdate\":{\"SELECTONE\":\"SELECT ONE\",\"ReviewDetails\":\"Review Details\",\"JabberNumber\":\"Jabber / Phone Number\",\"SelectJabberNumber\":\"Jabber / Phone Number\",\"Jabber/PhoneNumberLocation\":\"Select Jabber / Phone Number Location\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber / Phone number\",\"ProjectIId\":\"Project ID\",\"AccountId\":\"Account ID\",\"ICACode\":\"ICA Code\",\"NewOfficeLocation\":\"New Office Location\",\"Building\":\"Building\"},\"requesttrans\":{\"Requests\":\"Requests\",\"beingsubmitted\":\"Your request is being submitted.Do not refresh or go back.\",\"EmployeeRequestsDetails\":\"Employee Requests Details\",\"ResourceType\":\"Resource Type\",\"CreatedDate\":\"Created Date\",\"Status\":\"Status\",\"TrackingNumber\":\"Tracking Number\",\"AdditionalComments\":\"Additional Comments\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Your request for\",\"hasbeensubmitted\":\"has been submitted\",\"Trackingrequest\":\"Tracking number for the request is :\",\"receiveemailnotification\":\"You will receive an email notification, when your request has been processed.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Employee Resources Details\",\"Supplier\":\"Supplier\",\"Phone/Dial\":\"Phone/Dial\",\"Innumber\":\"In number\",\"AdditionalInformation\":\"Additional Information\"},\"phonenumber\":{\"PhoneNumberSearch\":\"Phone Number Search\",\"PhoneNumberDetails\":\"Phone Number Details\",\"EnterITNNumber\":\"Enter ITN Number\",\"EmpID\":\"EmpID\",\"UserName\":\"User Name\",\"ServiceDetails\":\"Service Details\"},\"alerttranslation\":{\"EXITREQUEST\":\"EXIT REQUEST\",\"digitserialnumber\":\"Employee Serial Number should be of 6 characters\",\"enterserialnumber\":\"Please enter a serial number\",\"moverequest\":\"Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit\",\"selectcountrycode\":\"Please select the Country Code\",\"Only\":\"Only\",\"serialnumbersareallowed\":\"Serial numbers are allowed to create a request for\",\"selectlocation\":\"Please select a Location\",\"selectjabbernumber\":\"Please select the Jabber / Phone Number\"},\"topui\":{\"HOME\":\"HOME\",\"SERVICES\":\"SERVICES\",\"DATAPRIVACY\":\"DATA PRIVACY\",\"HELP\":\"HELP\",\"FEEDBACK\":\"FEEDBACK\",\"CHANGECOUNTRY\":\"CHANGE COUNTRY\"},\"steps\":{\"Employee Search\":\"Employee Search\",\"Employee Information\":\"Employee Information\",\"Employee Entry Details\":\"Employee Entry Details\",\"Review Details\":\"Review Details\",\"Employee Resources Details\":\"Employee Resources Details\",\"Employee Requests Details\":\"Employee Requests Details\",\"Phone Number Search\":\"Phone Number Search\",\"Phone Number Details\":\"Phone Number Details\",\"STEP 1\":\"STEP 1\",\"STEP 2\":\"STEP 2\",\"STEP 3\":\"STEP 3\",\"STEP 4\":\"STEP 4\"},\"fixedphonenew\":{\"Location\":\"Location\",\"TypeofDevice\":\"Type of Device \",\"SelectDevice\":\"Select Device\",\"TypeofModel\":\"Type of Model \",\"SelectModel\":\"Select Model\",\"SelectClassofService (COS)\":\"Class of Service (COS)\",\"National\":\"National\",\"International\":\"International\",\"BusinessNeed(Whyisinternationalrequired?)\":\"Business Need (Why is international required?) \",\"DescriptionoftheDevice\":\"Description of the Device \",\"IBMCLv21EMdesk\":\"e.g. IBMC Lv21 EM desk \",\"IBMCLv21conferenceroom3\":\"e.g. IBMC Lv21 conference room 3 \",\"MACAddressoftheDevice\":\"MAC Address of the Device \",\"NoteCombinationofandLength12\":\"Note:Combination of (0 to 9 , A to F) and Length:12\",\"BusinessJustification\":\"Business Justification\",\"DescriptionofDevice\":\"Description of Device\",\"Somethingseemswrong\":\"Something seems to have gone wrong. Please try later.\",\"selectdevice\":\"Please select a device type\",\"selectmodel\":\"Please select a model type\",\"businesscos\":\"Please enter the business need for Class of Service.\",\"descriptioncharacters\":\"Please Enter a description and it should not be more than 30 characters\",\"entermacadd\":\"Please enter 12 characters MAC address\",\"MACfieldAtoF\":\"MAC field value to be in combination of 0 to 9 and A to F\",\"initiateFixedPhoneservice\":\"Please click on a request type below to initiate a Fixed Phone service request. \",\"MACAddressorPhoneNumber\":\"Enter Current MAC Address or Phone Number\",\"norecordfoundformac\":\"No record was found for the Mac Address or Phone Number you have entered.Please check and try again.\",\"Pleaseenternumber\":\"Please enter a number to search\",\"MACAddress\":\"MAC Address \",\"PhoneNumber\":\"Phone Number \",\"Description\":\"Description\",\"SEARCH\":\"SEARCH\",\"CurrentMACAddress\":\"Current MAC Address \",\"CurrentPhoneNumber\":\"Current Phone Number \",\"CurrentDescription\":\"Current Description \",\"CurrentModel\":\"Current Model\",\"UpdateRequiredfor\":\"Update Required for\",\"TypeOfModel\":\"Type Of Model\",\"SelectPhoneModel\":\"Select Phone Model\",\"NewMACAddress\":\"New MAC Address\",\"NewDescriptiontoUpdate\":\"New Description to Update\",\"ReasonforUpdation\":\"Reason for Updation\",\"MACAddresssearch\":\"Please enter a MAC Address or Phone number to search\",\"updaterequiredfor\":\"Please select update required for\",\"enternewMACaddress\":\"Please enter a new MAC address\",\"enteranewModel\":\"Please enter a new Model\",\"providethereasonforupdation\":\"Please provide the reason for updation.\",\"provideNewDescription\":\"Please provide the New Description. \",\"differentDescriptionasisalready\":\"Please choose a different Description as the current Description is already\",\"fortheprovidednumber\":\"for the provided number.\",\"FixedPhoneLocation\":\"Fixed Phone Location\",\"SelectOne\":\"Select One\",\"cos\":\"Please select a class of service.\",\"NoteCombination\":\"Note: Combination of (0 to 9 , A to F) and Length:12\"},\"specialrequest\":{\"OnlyusetheSpecialRequest\":\"Only use the Special Request for any special operation, such as a second office number, a hotline for a support group, a shared line setup for functional groups, or to indicate a need for telephony-related consultancy. \",\"needstandardservice\":\"If you need standard service such as Jabber or Fixed Phone , do not submit a Special Request as it will be rejected. Standard services can be requested from the menu on the left of this page.\",\"SpecialRequestHCSmigratedsite\":\"Please note , Special Request related to voice services can be submitted only for HCS migrated site.  Special Request related to voice services for a non-HCS site should be submitted in the  \",\"TMAC tool\":\"TMAC tool.\",\"HelpTMACtool \":\"Help related to TMAC tool can be found \",\"here\":\"here.\",\"JabberNumberoptional\":\"Jabber / Phone Number (Optional)\",\"JabberLocationspecial\":\"Jabber / Phone Number location\",\"Description of Requirement\":\"Description of requirement\",\"notexceed200\":\"Note:Length should not exceed 500\",\"Note\":\"Note:\",\"Fieldsasteriskspl\":\"Fields marked with an asterisk\",\"arerequiredspl\":\"are required.\",\"selectjabbernumberwishtoupdate\":\"Select the Jabber / Phone Number you wish to update\"},\"otheralerts\":{\"selectthejabber\":\"Please select the Jabber / Phone number to update\",\"selectthejabbertomove\":\"Select the Jabber / Phone Number  you wish to move\",\"Model\":\"Model\",\"MAC Address\":\"MAC Address\",\"Device Description\":\"Device Description\"},\"Requests\":{\"approved\":\"Processing\",\"Approved\":\"Processing\",\"_approval\":\"Processing\"}}");
+module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choose a language: \",\"app-name\":\"Global Voice Services\",\"app-function\":\"Single entry point for ordering voice services in your country\",\"sponsor\":\"Built on CIO Hybrid Cloud Powered by Red Hat OpenShift\",\"welcomemessage\":\"Welcome,\",\"question\":\"What service or country are you looking for?\",\"search-placeholder\":\"Search service...\",\"search-text\":\"Click here to see all results in GVS search\",\"my-country\":\"My Country\",\"click-here\":\"Click here\",\"available\":\"to view all available\",\"servicesonlyokay\":\"services for\",\"most-viewed-services\":\"Most Viewed Services\",\"find-right-service\":\"Find the right services, check their availability,\",\"find-right-service2\":\"and then choose the way you connect and work together.\",\"jabber-description\":\"Cisco Jabber is a multiple platform soft phone application to make and receive phone calls.\",\"button-value\":\"Get Started\",\"Searchservice\":\"Search service...\"},\"footer\":{\"aditional-question\":\"Have additional questions about ordering Global Voice Services ?\",\"please consult\":\"Please consult\",\"consult\":\"* This website supports Mozilla Firefox, Google Chrome, IE, Edge and Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Terms of use\",\"Useful Information\":\"Useful Information\",\"Please bear in mind the following points when making a request :\":\"Please bear in mind the following points when making a request :\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"To make a request the Employee must exist in BluePages (except for cancellation requests).\",\"You must know the IBM serial Number of the person making the request.\":\"You must know the IBM serial Number of the person making the request.\",\"Only one request per employee per request type is processed at a time.\":\"Only one request per employee per request type is processed at a time.\"},\"lhs\":{\"Services\":\"Services\",\"Jabber\":\"Jabber\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Mobile\":\"Mobile\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approvals Pending\",\"Revalidation Pending\":\"Revalidation Pending\",\"Phone Number Search\":\"Phone Number Search\",\"Requests\":\"Requests\",\"Resources\":\"Resources\"},\"Jabberservices\":{\"initiateJabber\":\" Please click on a request type below to initiate a Jabber service request.\",\"jnew\":\"Request a new service\",\"jupdate\":\"Update an existing service\",\"jmove\":\"Move an existing service\",\"jdelete\":\"Delete an existing service\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeSearch\":\"Employee Search\",\"Declaration\":\"Declaration\",\"DeclarationAck\":\"I have read and comply with the Algeria Mobility Policy, available here and I acknowledge reading the Privacy Notice.\",\"requestfor\":\"Who is this request for\",\"Myself\":\"Myself\",\"AnotherEmployee\":\"Another Employee\",\"Name\":\"Name\",\"SerialNumber\":\"Serial Number\",\"EmployeeSerialNumber\":\"Employee Serial Number\",\"forexample\":\"(eg 012789)\",\"CountryCode\":\"Country Code\",\"SelectOne\":\"Select One\",\"norecord\":\"There is no record of an IBM employee with the serial number \",\"availablefromBluePages\":\"available from BluePages\",\"opps\":\"Something seems to have gone wrong. Please try later.\",\"JabberLocation\":\"Jabber / Phone Number location\",\"Voicemail\":\"Voicemail\",\"ClassofService\":\"Class of Service (COS)\",\"pleasesubmittostart\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service.\"},\"servicestitle\":{\"Request new Jabber service\":\"Jabber - New Request\",\"Update Jabber Request\":\"Jabber - Update Request\",\"Move Jabber Request\":\"Jabber - Move Request\",\"Delete Jabber Request\":\"Jabber - Delete Request\",\"FAC Code / IDD PIN New Request\":\"FAC Code / IDD PIN - New Request\",\"FAC Code / IDD PIN Update Request\":\"FAC Code / IDD PIN - Update Request\",\"FAC Code / IDD PIN - New Request\":\"FAC Code / IDD PIN - New Request\",\"FAC Code / IDD PIN - Reset Request\":\"FAC Code / IDD PIN - Reset Request\",\"FAC Code / IDD PIN - Update Request\":\"FAC Code / IDD PIN - Update Request\",\"FAC Code / IDD PIN Reset Request\":\"FAC Code / IDD PIN - Reset Request\",\"SpecialRequestentryandreview\":\"Special Request\",\"FAC Code / IDD PIN - Delete Request\":\"FAC Code / IDD PIN - Delete Request\",\"Mobile New Request\":\"Mobile - New Request\",\"FAC Code / IDD PIN Delete Request\":\"FAC Code / IDD PIN - Delete Request\",\"Request Move Jabber service\":\"Jabber - Move Request\",\"Update Existing Jabber Request\":\"Jabber - Update Request\",\"Delete an existing service\":\"Delete an existing service\",\"Request a new service\":\"Request a new service\",\"Update an existing service\":\"Update an existing service\",\"Requests\":\"Requests\",\"Resources\":\"Resources\",\"Delete an existing FAC Code / IDD PIN\":\"Delete an existing FAC Code / IDD PIN\",\"Fixed Phone - New Request\":\"Fixed Phone - New Request\",\"New Fixed Phone Request\":\"New Fixed Phone Request\",\"Fixed Phone - Update Request\":\"Fixed Phone - Update Request\",\"Fixed Phone - Delete Request\":\"Fixed Phone - Delete Request\",\"Request a new FAC Code / IDD PIN\":\"Request a new FAC Code / IDD PIN\",\"Update an existing FAC Code / IDD PIN\":\"Update an existing FAC Code / IDD PIN\",\"Reset an existing FAC Code / IDD PIN\":\"Reset an existing FAC Code / IDD PIN\",\"Phone Number Search\":\"Phone Number Search\",\"Special Request\":\"Special Request\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"If the following information is correct, click Next. Any errors must be corrected in the employee's\",\"BluePagesrecord\":\"BluePages record\",\"beforecontinuing\":\"before continuing.\",\"EmployeeInformation\":\"Employee Information\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"Name\":\"Name:\",\"SerialNumber\":\"Serial Number:\",\"JobResponsibility\":\"Job Responsibility:\",\"BusinessUnit\":\"Business Unit:\",\"Department\":\"Department:\",\"Country\":\"Country:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"The serial number that you have entered is not eligible to request Jabber account.\",\"itnexistsforuser\":\"The IBM Telephone Number (ITN) that exists for this user is .\",\"nojabber\":\"There is no Jabber for this serial number.\",\"nojabberusethislink\":\"The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN \",\"GlobalVoiceInfrastructure\":\"Global Voice Infrastructure.\",\"receiveITN\":\"you have received the ITN you can then request Jabber.  Thank you.\",\"notauthorizedtoaccessjabber\":\"The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact\",\"notauthorizedtoaccessip\":\"The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact\",\"noteligibletorequestmorethanonejabber\":\"The serial number that you have entered is not eligible to request more than one Jabber account.\",\"ITNexistsforthisuser\":\"The IBM Telephone Number (ITN) that exists for this users jabber account is\",\"jabberconfiguration\":\"Help related to Jabber configuration can be found at\",\"furtherassistance\":\"For any further assistance, please contact\",\"alreadyone\":\"The serial number that you have entered has already one\",\"inprogess\":\"request in progress and request number is\",\"ongoingrequestsbyclickonrequestpage\":\"You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.\",\"nooutstandingreq\":\"No outstanding requests were found for the serial number.\",\"noresources\":\"There are no resources for this serial number.\",\"nojabberforthisserial\":\"There is no Jabber for this serial number.\",\"BACK\":\"BACK\",\"NEXT\":\"NEXT\",\"SUBMIT1\":\"SUBMIT\",\"alreadyonerequestinprogress\":\"The serial number that you have entered has already one new Jabber request is in progress and request number is\",\"alreadyoneupdaterequestinprogress\":\"The serial number that you have entered has already one Update Jabber request is in progress and request number is\",\"alreadyonemoverequestinprogress\":\"The serial number that you have entered has already one move Jabber request is in progress and request number is\",\"alreadyonedeleterequestinprogress\":\"The serial number that you have entered has already one delete Jabber request is in progress and request number is\",\"alreadyonefacdeleterequestinprogress\":\"The serial number that you have entered has already one delete FAC request is in progress and request number is\",\"enterserialnumber\":\"Please enter a serial number\",\"alreadyonerequestinprogressfac\":\"The serial number that you have entered has already one new FAC Code / IDD PIN request is in progress and request number is\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"OfficeLocation\":\"Office Location\",\"Campus\":\"Campus\",\"Funded\":\"Funded\",\"ChargeDepartmentCode\":\"Charge Department Code\",\"BusinessUnit\":\"Business Unit\",\"Projectid\":\"Project ID (for GBS employee only)\",\"alreadyhaveFixedPhone\":\"If you already have Fixed Phone , please provide the identifier\",\"toprocessPI\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.\",\"JabberRequestDetails\":\"Jabber Request Details\",\"FixedPhoneIdentifier\":\"Fixed Phone Identifier\",\"Submissioninprogress\":\"Your request submission is in progress.Do not Go back or Refresh the page.\",\"Submissionbeinginprogress\":\"Your request is being submitted. Do not refresh or go back.\",\"Back\":\"BACK\",\"Next\":\"NEXT\",\"Select Location\":\"Select Location\"},\"Jabberupdate\":{\"SELECTONE\":\"SELECT ONE\",\"ReviewDetails\":\"Review Details\",\"JabberNumber\":\"Jabber / Phone Number\",\"SelectJabberNumber\":\"Jabber / Phone Number\",\"Jabber/PhoneNumberLocation\":\"Select Jabber / Phone Number Location\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber / Phone number\",\"ProjectIId\":\"Project ID\",\"AccountId\":\"Account ID\",\"ICACode\":\"ICA Code\",\"NewOfficeLocation\":\"New Office Location\",\"Building\":\"Building\"},\"requesttrans\":{\"Requests\":\"Requests\",\"beingsubmitted\":\"Your request is being submitted.Do not refresh or go back.\",\"EmployeeRequestsDetails\":\"Employee Requests Details\",\"ResourceType\":\"Resource Type\",\"CreatedDate\":\"Created Date\",\"Status\":\"Status\",\"TrackingNumber\":\"Tracking Number\",\"AdditionalComments\":\"Additional Comments\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Your request for\",\"hasbeensubmitted\":\"has been submitted\",\"Trackingrequest\":\"Tracking number for the request is :\",\"receiveemailnotification\":\"You will receive an email notification, when your request has been processed.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Employee Resources Details\",\"Supplier\":\"Supplier\",\"Phone/Dial\":\"Phone/Dial\",\"Innumber\":\"In number\",\"AdditionalInformation\":\"Additional Information\"},\"phonenumber\":{\"PhoneNumberSearch\":\"Phone Number Search\",\"PhoneNumberDetails\":\"Phone Number Details\",\"EnterITNNumber\":\"Enter ITN Number\",\"EmpID\":\"EmpID\",\"UserName\":\"User Name\",\"ServiceDetails\":\"Service Details\"},\"alerttranslation\":{\"EXITREQUEST\":\"EXIT REQUEST\",\"digitserialnumber\":\"Employee Serial Number should be of 6 characters\",\"enterserialnumber\":\"Please enter a serial number\",\"moverequest\":\"Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit\",\"selectcountrycode\":\"Please select the Country Code\",\"Only\":\"Only\",\"serialnumbersareallowed\":\"Serial numbers are allowed to create a request for\",\"selectlocation\":\"Please select a Location\",\"selectjabbernumber\":\"Please select the Jabber / Phone Number\"},\"topui\":{\"HOME\":\"HOME\",\"SERVICES\":\"SERVICES\",\"DATAPRIVACY\":\"DATA PRIVACY\",\"HELP\":\"HELP\",\"FEEDBACK\":\"FEEDBACK\",\"CHANGECOUNTRY\":\"CHANGE COUNTRY\"},\"steps\":{\"Employee Search\":\"Employee Search\",\"Employee Information\":\"Employee Information\",\"Employee Entry Details\":\"Employee Entry Details\",\"Review Details\":\"Review Details\",\"Employee Resources Details\":\"Employee Resources Details\",\"Employee Requests Details\":\"Employee Requests Details\",\"Phone Number Search\":\"Phone Number Search\",\"Phone Number Details\":\"Phone Number Details\",\"STEP 1\":\"STEP 1\",\"STEP 2\":\"STEP 2\",\"STEP 3\":\"STEP 3\",\"STEP 4\":\"STEP 4\"},\"fixedphonenew\":{\"Location\":\"Location\",\"TypeofDevice\":\"Type of Device \",\"SelectDevice\":\"Select Device\",\"TypeofModel\":\"Type of Model \",\"SelectModel\":\"Select Model\",\"SelectClassofService (COS)\":\"Class of Service (COS)\",\"National\":\"National\",\"International\":\"International\",\"BusinessNeed(Whyisinternationalrequired?)\":\"Business Need (Why is international required?) \",\"DescriptionoftheDevice\":\"Description of the Device \",\"IBMCLv21EMdesk\":\"e.g. IBMC Lv21 EM desk \",\"IBMCLv21conferenceroom3\":\"e.g. IBMC Lv21 conference room 3 \",\"MACAddressoftheDevice\":\"MAC Address of the Device \",\"NoteCombinationofandLength12\":\"Note:Combination of (0 to 9 , A to F) and Length:12\",\"BusinessJustification\":\"Business Justification\",\"DescriptionofDevice\":\"Description of Device\",\"Somethingseemswrong\":\"Something seems to have gone wrong. Please try later.\",\"selectdevice\":\"Please select a device type\",\"selectmodel\":\"Please select a model type\",\"businesscos\":\"Please enter the business need for Class of Service.\",\"descriptioncharacters\":\"Please Enter a description and it should not be more than 30 characters\",\"entermacadd\":\"Please enter 12 characters MAC address\",\"MACfieldAtoF\":\"MAC field value to be in combination of 0 to 9 and A to F\",\"initiateFixedPhoneservice\":\"Please click on a request type below to initiate a Fixed Phone service request. \",\"MACAddressorPhoneNumber\":\"Enter Current MAC Address or Phone Number\",\"norecordfoundformac\":\"No record was found for the Mac Address or Phone Number you have entered.Please check and try again.\",\"Pleaseenternumber\":\"Please enter a number to search\",\"MACAddress\":\"MAC Address \",\"PhoneNumber\":\"Phone Number \",\"Description\":\"Description\",\"SEARCH\":\"SEARCH\",\"CurrentMACAddress\":\"Current MAC Address \",\"CurrentPhoneNumber\":\"Current Phone Number \",\"CurrentDescription\":\"Current Description \",\"CurrentModel\":\"Current Model\",\"UpdateRequiredfor\":\"Update Required for\",\"TypeOfModel\":\"Type Of Model\",\"SelectPhoneModel\":\"Select Phone Model\",\"NewMACAddress\":\"New MAC Address\",\"NewDescriptiontoUpdate\":\"New Description to Update\",\"ReasonforUpdation\":\"Reason for Updation\",\"MACAddresssearch\":\"Please enter a MAC Address or Phone number to search\",\"updaterequiredfor\":\"Please select update required for\",\"enternewMACaddress\":\"Please enter a new MAC address\",\"enteranewModel\":\"Please enter a new Model\",\"providethereasonforupdation\":\"Please provide the reason for updation.\",\"provideNewDescription\":\"Please provide the New Description. \",\"differentDescriptionasisalready\":\"Please choose a different Description as the current Description is already\",\"fortheprovidednumber\":\"for the provided number.\",\"FixedPhoneLocation\":\"Fixed Phone Location\",\"SelectOne\":\"Select One\",\"cos\":\"Please select a class of service.\",\"NoteCombination\":\"Note: Combination of (0 to 9 , A to F) and Length:12\"},\"specialrequest\":{\"OnlyusetheSpecialRequest\":\"Only use the Special Request for any special operation, such as a second office number, a hotline for a support group, a shared line setup for functional groups, or to indicate a need for telephony-related consultancy. \",\"needstandardservice\":\"If you need standard service such as Jabber or Fixed Phone , do not submit a Special Request as it will be rejected. Standard services can be requested from the menu on the left of this page.\",\"SpecialRequestHCSmigratedsite\":\"Please note , Special Request related to voice services can be submitted only for HCS migrated site.  Special Request related to voice services for a non-HCS site should be submitted in the  \",\"TMAC tool\":\"TMAC tool.\",\"HelpTMACtool \":\"Help related to TMAC tool can be found \",\"here\":\"here.\",\"JabberNumberoptional\":\"Jabber / Phone Number (Optional)\",\"JabberLocationspecial\":\"Jabber / Phone Number location\",\"Description of Requirement\":\"Description of requirement\",\"notexceed200\":\"Note:Length should not exceed 500\",\"Note\":\"Note:\",\"Fieldsasteriskspl\":\"Fields marked with an asterisk\",\"arerequiredspl\":\"are required.\",\"selectjabbernumberwishtoupdate\":\"Select the Jabber / Phone Number you wish to update\"},\"otheralerts\":{\"selectthejabber\":\"Please select the Jabber / Phone number to update\",\"selectthejabbertomove\":\"Select the Jabber / Phone Number  you wish to move\",\"Model\":\"Model\",\"MAC Address\":\"MAC Address\",\"Device Description\":\"Device Description\"},\"Requests\":{\"approved\":\"Processing\",\"Approved\":\"Processing\",\"_approval\":\"Processing\"}}");
 
 /***/ }),
 
@@ -21858,12 +21858,12 @@ __webpack_require__.r(__webpack_exports__);
 
 function FacInResetComponent_b_8_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code Reset Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN Reset Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInResetComponent_b_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "b", 22);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD Pin - Reset Request");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "servicestitle.FAC Code / IDD PIN - Reset Request");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInResetComponent_div_10_Template(rf, ctx) { if (rf & 1) {
@@ -21874,7 +21874,7 @@ function FacInResetComponent_div_10_Template(rf, ctx) { if (rf & 1) {
 function FacInResetComponent_div_15_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "There is no FAC code for this serial number.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "There is no FAC Code / IDD PIN for this serial number.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
@@ -21902,12 +21902,12 @@ function FacInResetComponent_div_16_Template(rf, ctx) { if (rf & 1) {
 } }
 function FacInResetComponent_table_17_p_10_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Click on submit to reset the FAC code.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Click on submit to reset the FAC Code / IDD PIN.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInResetComponent_table_17_p_11_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Click on submit to reset the FAC Code / IDD Pin.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Click on submit to reset the FAC Code / IDD PIN.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInResetComponent_table_17_Template(rf, ctx) { if (rf & 1) {
@@ -22131,7 +22131,7 @@ class FacInResetComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -22844,7 +22844,7 @@ class ResultpageComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                 }
             ]
         };
@@ -23251,7 +23251,7 @@ class RequestsComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -23717,7 +23717,7 @@ class EmployeesearchComponent {
             const servicesData = {
                 "data": [
                     {
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request", "Mobile"],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request", "Mobile"],
                         "step": 1,
                     }
                 ]
@@ -24239,27 +24239,27 @@ class EmployeesearchComponent {
                 break;
             case "fac_new":
                 if (this.facIn) {
-                    this.title = "FAC Code New Request";
+                    this.title = "FAC Code / IDD PIN New Request";
                 }
                 else {
-                    this.title = "FAC Code / IDD Pin - New Request";
+                    this.title = "FAC Code / IDD PIN - New Request";
                 }
                 this.routingname = "/entrydetailsfac";
                 this.exitrouting = 'facservices';
                 this.reqname = "-NS-";
                 break;
             case "fac_delete":
-                this.title = "FAC Code Delete Request";
+                this.title = "FAC Code / IDD PIN Delete Request";
                 this.routingname = "/entrydetailsfacdeactive";
                 this.exitrouting = 'facservices';
                 this.reqname = "-DS-";
                 break;
             case "fac_update":
                 if (this.facIn) {
-                    this.title = "FAC Code Update Request";
+                    this.title = "FAC Code / IDD PIN Update Request";
                 }
                 else {
-                    this.title = "FAC Code / IDD Pin - Update Request";
+                    this.title = "FAC Code / IDD PIN - Update Request";
                 }
                 this.routingname = "/entrydetailsfacu";
                 this.exitrouting = 'facservices';
@@ -24267,10 +24267,10 @@ class EmployeesearchComponent {
                 break;
             case "fac_reset":
                 if (this.facIn) {
-                    this.title = "FAC Code Reset Request";
+                    this.title = "FAC Code / IDD PIN Reset Request";
                 }
                 else {
-                    this.title = "FAC Code / IDD Pin - Reset Request";
+                    this.title = "FAC Code / IDD PIN - Reset Request";
                 }
                 this.routingname = "/entrydetailsfacr";
                 this.exitrouting = 'facservices';
@@ -24792,7 +24792,7 @@ class ApprovalSinglePageComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -25315,7 +25315,7 @@ class ApprovalpendingComponent {
             const servicesData = {
                 "data": [
                     {
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                         "step": 3,
                     }
                 ]
@@ -25847,7 +25847,7 @@ class VoipUsaUpdateComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -26468,7 +26468,7 @@ function FacservicesComponent_div_5_div_3_div_14_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "span", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "b");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Update an existing FAC code");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Update an existing FAC Code / IDD PIN");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -26500,7 +26500,7 @@ function FacservicesComponent_div_5_div_3_div_16_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "span", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "b");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Reset an existing FAC code");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Reset an existing FAC Code / IDD PIN");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -26532,7 +26532,7 @@ function FacservicesComponent_div_5_div_3_div_18_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "span", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "b");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Delete an existing FAC code");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Delete an existing FAC Code / IDD PIN");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -26565,7 +26565,7 @@ function FacservicesComponent_div_5_div_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "span", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "b");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Request a new FAC code");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Request a new FAC Code / IDD PIN");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -26605,7 +26605,7 @@ function FacservicesComponent_div_5_div_3_Template(rf, ctx) { if (rf & 1) {
 function FacservicesComponent_div_5_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Please click on a request type below to initiate a FAC code request.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Please click on a request type below to initiate a FAC Code / IDD PIN request.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, FacservicesComponent_div_5_div_3_Template, 20, 12, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -26630,7 +26630,7 @@ function FacservicesComponent_div_6_div_3_div_14_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "span", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "b");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Update an existing FAC Code / IDD Pin");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Update an existing FAC Code / IDD PIN");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -26661,7 +26661,7 @@ function FacservicesComponent_div_6_div_3_div_16_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "span", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "b");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Reset an existing FAC Code / IDD Pin");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Reset an existing FAC Code / IDD PIN");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -26692,7 +26692,7 @@ function FacservicesComponent_div_6_div_3_div_18_Template(rf, ctx) { if (rf & 1)
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "span", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "b");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Delete an existing FAC Code / IDD Pin");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Delete an existing FAC Code / IDD PIN");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -26724,7 +26724,7 @@ function FacservicesComponent_div_6_div_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "span", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "b");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Request a new FAC Code / IDD Pin");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Request a new FAC Code / IDD PIN");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -26764,7 +26764,7 @@ function FacservicesComponent_div_6_div_3_Template(rf, ctx) { if (rf & 1) {
 function FacservicesComponent_div_6_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "p", 6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Please click on a request type below to initiate a FAC Code / IDD Pin request.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Please click on a request type below to initiate a FAC Code / IDD PIN request.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, FacservicesComponent_div_6_div_3_Template, 20, 12, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -26805,19 +26805,13 @@ class FacservicesComponent {
                 this.countrydetails = JSON.parse(this.countrydetails);
                 this.linkv = this.countrydetails.facservices;
             }
-            if (this.countryroute === '744' || this.countryroute === '652') {
-                this.facIn = true;
-            }
-            else {
-                this.facIn = false;
-            }
             const servicesData = {
                 "data": [
                     {
                         "lhs": [
                             { "name": "Services", "routingname": "/services", "indented": true, "highlighted": false },
                             { "name": "Jabber", "routingname": "/services", "indented": true, "highlighted": false },
-                            { "name": "FAC", "routingname": "/services", "indented": true, "highlighted": true },
+                            { "name": "FAC Code / IDD PIN", "routingname": "/services", "indented": true, "highlighted": true },
                             { "name": "Fixed Phone", "routingname": "/services", "indented": true, "highlighted": false },
                             { "name": "Special Request", "routingname": "/services", "indented": true, "highlighted": false },
                             { "name": "Approvals Pending", "routingname": "/inprogress", "indented": false, "highlighted": false },
@@ -26825,7 +26819,7 @@ class FacservicesComponent {
                             { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
                             { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
                         ],
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     }
                 ]
             };
@@ -26986,7 +26980,7 @@ class NavigationComponent {
             this.removeService('Special Request');
         }
         if (!this.cloudantData.isfac) {
-            this.removeService('FAC Code');
+            this.removeService('FAC Code / IDD PIN');
         }
         if (!this.cloudantData.ismobile) {
             this.removeService('Mobile');
@@ -27108,7 +27102,7 @@ class NavigationComponent {
                                 { "name": "Resources", "routingname": "/employeesearchres", "indented": this.resin, "highlighted": this.reshl, "param": "resources" },
                                 { "name": "Requests", "routingname": "/employeesearchreq", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests" }
                             ],
-                            "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request", "Mobile"],
+                            "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request", "Mobile"],
                             "step": 1,
                         }
                     ]
@@ -27121,7 +27115,7 @@ class NavigationComponent {
                             "lhs": [
                                 { "name": "Services", "routingname": "/services", "indented": this.serin, "highlighted": this.serhl, "param": "services" },
                                 { "name": "Jabber", "routingname": "/jabberservices", "indented": true, "highlighted": this.jhl, "param": "jabberservices" },
-                                { "name": "FAC Code", "routingname": "/facservices", "indented": true, "highlighted": this.fachl, "param": "facservices" },
+                                { "name": "FAC Code / IDD PIN", "routingname": "/facservices", "indented": true, "highlighted": this.fachl, "param": "facservices" },
                                 { "name": "Mobile", "routingname": "/mobileservices", "indented": true, "highlighted": this.mhl, "param": "mobileservices" },
                                 { "name": "Fixed Phone", "routingname": "/fixedphoneservices", "indented": this.fin, "highlighted": this.fhl, "param": "fixedphoneservices" },
                                 { "name": "Special Request", "routingname": "/employeesearch", "indented": true, "highlighted": this.sphl, "param": "specialrequest" },
@@ -27131,7 +27125,7 @@ class NavigationComponent {
                                 { "name": "Resources", "routingname": "/employeesearchres", "indented": this.resin, "highlighted": this.reshl, "param": "resources" },
                                 { "name": "Requests", "routingname": "/employeesearchreq", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests" }
                             ],
-                            "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request", "Mobile"],
+                            "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request", "Mobile"],
                             "step": 1,
                         }
                     ]
@@ -27139,20 +27133,6 @@ class NavigationComponent {
             }
             this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
             this.countryroute = sessionStorage.getItem('countryroute');
-            if (this.countryroute === '744' || this.countryroute === '652') {
-                this.dataNav123.data[0].lhs.map((obj) => {
-                    if (obj.name === 'FAC Code / IDD Pin') {
-                        obj.name = 'FAC Code';
-                    }
-                });
-            }
-            else {
-                this.dataNav123.data[0].lhs.map((obj) => {
-                    if (obj.name === 'FAC Code') {
-                        obj.name = 'FAC Code / IDD Pin';
-                    }
-                });
-            }
             if (this.pcode == this.countryroute) {
                 this.pcountrydetails = sessionStorage.getItem('countrydetails');
                 console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
@@ -27308,7 +27288,7 @@ class DummyComponent {
                         { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
                         { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
                     ],
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"]
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"]
                 }
             ]
         };
@@ -27836,7 +27816,7 @@ class HpEmeaNewComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -29105,7 +29085,7 @@ class HpAuUpdateComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -29500,7 +29480,7 @@ class RevalidationpendingComponent {
                         { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
                         { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
                     ],
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "titles": [
                         "Terms of use",
                         "Useful Information",
@@ -30845,7 +30825,7 @@ class HpIndonesiaUpdateComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -32085,7 +32065,7 @@ class HpInUpdateComponent {
         const servicesData = {
             "data": [
                 {
-                    "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request"],
+                    "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request"],
                     "step": 3,
                 }
             ]
@@ -32516,29 +32496,9 @@ function MiddleframeComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r2.servicesData.services[2]);
 } }
-function MiddleframeComponent_div_5_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "img", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "p", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c4))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c5, ctx_r3.pcode));
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r3.servicesData.services[5]);
-} }
 const _c6 = function () { return ["/mobileservices"]; };
 const _c7 = function (a0) { return { country: a0, service: "mobileservices" }; };
-function MiddleframeComponent_div_6_Template(rf, ctx) { if (rf & 1) {
+function MiddleframeComponent_div_5_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 9);
@@ -32552,15 +32512,15 @@ function MiddleframeComponent_div_6_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c6))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c7, ctx_r4.pcode));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c6))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c7, ctx_r3.pcode));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r4.servicesData.services[4]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r3.servicesData.services[4]);
 } }
 const _c8 = function () { return ["/employeesearch"]; };
 const _c9 = function (a0) { return { country: a0, service: "specialrequest" }; };
-function MiddleframeComponent_div_7_Template(rf, ctx) { if (rf & 1) {
+function MiddleframeComponent_div_6_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 9);
@@ -32574,20 +32534,20 @@ function MiddleframeComponent_div_7_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c8))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c9, ctx_r5.pcode));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c8))("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](4, _c9, ctx_r4.pcode));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r5.servicesData.services[3]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r4.servicesData.services[3]);
 } }
-function MiddleframeComponent_li_15_Template(rf, ctx) { if (rf & 1) {
+function MiddleframeComponent_li_14_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const usefulinfotext_r7 = ctx.$implicit;
+    const usefulinfotext_r6 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("footnote.", usefulinfotext_r7, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("footnote.", usefulinfotext_r6, "");
 } }
 class MiddleframeComponent {
     constructor(cookie, cloudantservice, route) {
@@ -32610,12 +32570,6 @@ class MiddleframeComponent {
             this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
             this.countryroute = sessionStorage.getItem('countryroute');
             console.log("navigation component country route" + this.countryroute);
-            if (this.pcode === '744' || this.pcode === '652') {
-                this.facIn = true;
-            }
-            else {
-                this.facIn = false;
-            }
             if (this.pcode == this.countryroute) {
                 this.pcountrydetails = sessionStorage.getItem('countrydetails');
                 console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
@@ -32696,7 +32650,7 @@ class MiddleframeComponent {
                             { "name": "Resources", "routingname": "/inprogress", "indented": false, "highlighted": false },
                             { "name": "Requests", "routingname": "/requests", "indented": false, "highlighted": false }
                         ],
-                        "services": ["Jabber", "Fixed Phone", "FAC Code", "Special Request", "Mobile", "FAC Code / IDD Pin"],
+                        "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request", "Mobile"],
                         "titles": [
                             "Terms of use",
                             "Useful Information",
@@ -32716,7 +32670,7 @@ class MiddleframeComponent {
     }
 }
 MiddleframeComponent.ɵfac = function MiddleframeComponent_Factory(t) { return new (t || MiddleframeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"])); };
-MiddleframeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MiddleframeComponent, selectors: [["app-middleframe"]], decls: 16, vars: 11, consts: [[1, "ds-pad-t-1"], [1, "ds-row", "ds-pad-b-1", "ds-pad-r-2"], ["class", "ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4", 4, "ngIf"], ["translate", "", "target", "_blank", 1, "ds-text-contextual-blue-5", "ds-link-unstyled", 3, "href"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["translate", ""], ["translate", "", 4, "ngFor", "ngForOf"], [1, "ds-pad-b-1", "ds-col-xs-12", "ds-col-sm-6", "ds-col-md-6", "ds-col-lg-4"], [3, "routerLink", "queryParams"], [1, "ds-panel"], [1, "ds-panel-container", "ds-text-align-center", 2, "max-height", "215px"], ["src", "././assets/Jabber.png"], [1, "ds-text-small", "ds-padding-t-3"], ["src", "././assets/fixedphone.png"], ["src", "././assets/mobile.png"], ["src", "././assets/ss.png"]], template: function MiddleframeComponent_Template(rf, ctx) { if (rf & 1) {
+MiddleframeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MiddleframeComponent, selectors: [["app-middleframe"]], decls: 15, vars: 10, consts: [[1, "ds-pad-t-1"], [1, "ds-row", "ds-pad-b-1", "ds-pad-r-2"], ["class", "ds-pad-b-1 ds-col-xs-12 ds-col-sm-6 ds-col-md-6 ds-col-lg-4", 4, "ngIf"], ["translate", "", "target", "_blank", 1, "ds-text-contextual-blue-5", "ds-link-unstyled", 3, "href"], ["translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["translate", ""], ["translate", "", 4, "ngFor", "ngForOf"], [1, "ds-pad-b-1", "ds-col-xs-12", "ds-col-sm-6", "ds-col-md-6", "ds-col-lg-4"], [3, "routerLink", "queryParams"], [1, "ds-panel"], [1, "ds-panel-container", "ds-text-align-center", 2, "max-height", "215px"], ["src", "././assets/Jabber.png"], [1, "ds-text-small", "ds-padding-t-3"], ["src", "././assets/fixedphone.png"], ["src", "././assets/mobile.png"], ["src", "././assets/ss.png"]], template: function MiddleframeComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, MiddleframeComponent_div_2_Template, 7, 6, "div", 2);
@@ -32724,19 +32678,18 @@ MiddleframeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, MiddleframeComponent_div_4_Template, 7, 6, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, MiddleframeComponent_div_5_Template, 7, 6, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, MiddleframeComponent_div_6_Template, 7, 6, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, MiddleframeComponent_div_7_Template, 7, 6, "div", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "a", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "a", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "h2", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "h2", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "p", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "p", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "ul");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, MiddleframeComponent_li_15_Template, 2, 1, "li", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "ul");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, MiddleframeComponent_li_14_Template, 2, 1, "li", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
@@ -32745,9 +32698,7 @@ MiddleframeComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.cloudantData.isfixedphone);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.cloudantData.isfac && ctx.facIn);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.cloudantData.isfac && !ctx.facIn);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.cloudantData.isfac);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.cloudantData.ismobile);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
