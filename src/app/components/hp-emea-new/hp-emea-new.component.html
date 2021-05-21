@@ -16,7 +16,7 @@
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+            <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" [isSelf]="reqFor" [hideSteps]=""></app-steps>
 
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>employeeinfotrans.EmployeeEntryDetails</h2>
@@ -25,13 +25,13 @@
                 <tbody>
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>fixedphonenew.FixedPhoneLocation</label>
-                            <span class="ds-text-contextual-red-2">*</span>
+                            <span class="ds-text-contextual-red-2"> *</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary"role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  
-                                style="width:300px !important; text-transform: uppercase;" title="{{ 'fixedphonenew.Location' | translate}}"
-                                #location  ngModel>
+                                style="width:300px !important; text-transform: uppercase;" title="{{ 'fixedphonenew.Location' | translate}}" 
+                                #location  ngModel [(ngModel)]='selected_location'>
                                     <option value =""> <span translate> fixedphonenew.SelectOne </span></option>
                                     <option name="Location_1" *ngFor='let fl_location of locationlist' [value]='fl_location' >
                                         {{ fl_location }}</option>
@@ -125,7 +125,7 @@
                         <td colspan="2" width="46%"><br><label for="Justification" class="ds-pad-t-1" translate>fixedphonenew.BusinessNeed(Whyisinternationalrequired?)</label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
-                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="{{ 'fixedphonenew.BusinessJustification' | translate}}" tabindex="2" rows="2" cols="40" ngModel></textarea>
+                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="{{ 'fixedphonenew.BusinessJustification' | translate}}" tabindex="2" rows="2" cols="40" maxlength="200" ngModel [(ngModel)]='justificationValue'></textarea>
                         </td>
                     </tr>
 
@@ -134,7 +134,7 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container ds-pad-t-1">
-                                <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" style="width:300px !important;" title="{{ 'otheralerts.Device Description' | translate}}" maxlength="30" ngModel>
+                                <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" style="width:300px !important;" title="{{ 'otheralerts.Device Description' | translate}}" maxlength="30" ngModel [(ngModel)]='descValue'>
                                 <label *ngIf="selected_device == 'Extension Mobility Station'" translate>fixedphonenew.IBMCLv21EMdesk</label>
                                 <label *ngIf="selected_device == 'Conference / Meeting Room Phone'" translate>fixedphonenew.IBMCLv21conferenceroom3</label>
                             </div>
@@ -146,7 +146,7 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container">
-                                <input name="MACAddress" value="" tabindex="2" rows="2" cols="40" id="MACAddressId" class="ds-input" style="width:300px !important;" title="{{ 'otheralerts.MAC Address' | translate}}" maxlength="12" ngModel>
+                                <input name="MACAddress" value="" tabindex="2" rows="2" cols="40" id="MACAddressId" class="ds-input" style="width:300px !important;" title="{{ 'otheralerts.MAC Address' | translate}}" maxlength="12" ngModel [(ngModel)]='MACValue'>
                                 <label translate>fixedphonenew.NoteCombinationofandLength12</label>
                             </div>
                         </td>
@@ -163,7 +163,7 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" 
-                value= "{{ 'Jabberentrydetails.Back' | translate}}" (click)="backClick()">
+                value= "{{ 'Jabberentrydetails.Back' | translate}}" (click)="backClick(formData)">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
@@ -183,7 +183,7 @@
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
-            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
+            <app-steps [step]="servicesData.step+1" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [FixedPhoneData]="FixedPhoneData" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
 
 
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 " translate>Jabberupdate.ReviewDetails</h2>
@@ -236,7 +236,7 @@
                         <td colspan="2" width="46%">
                             <label for="justification" translate>fixedphonenew.BusinessJustification</label>
                         </td>
-                        <td width="54%">{{reviewDetailsIndia.justification}}</td>
+                        <td width="54%" style='word-wrap: anywhere;'>{{reviewDetailsIndia.justification}}</td>
                     </tr>
                     
                     <tr valign="top">
