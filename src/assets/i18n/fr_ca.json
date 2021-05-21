@@ -312,7 +312,8 @@
         "fortheprovidednumber" :"pour le numéro fourni.",
         "FixedPhoneLocation" :"Emplacement du téléphone fixe",
         "SelectOne" :"Sélectionnez-en un",
-        "cos" :"Veuillez sélectionner une classe de service."
+        "cos" :"Veuillez sélectionner une classe de service.",
+        "NoteCombination":"Remarque: combinaison de (0 à 9, A à F) et longueur: 12"
     },
     "specialrequest" :{
     "OnlyusetheSpecialRequest":"N'utilisez la demande spéciale que pour toute opération spéciale, telle qu'un deuxième numéro de bureau, une hotline pour un groupe de support, une configuration de ligne partagée pour des groupes fonctionnels, ou pour indiquer un besoin de conseil en matière de téléphonie. " ,
