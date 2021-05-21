@@ -328,7 +328,8 @@
         "fortheprovidednumber" :"for the provided number.",
         "FixedPhoneLocation" :"Fixed Phone Location",
         "SelectOne" :"Select One",
-        "cos":"Please select a class of service."
+        "cos":"Please select a class of service.",
+        "NoteCombination":"Note: Combination of (0 to 9 , A to F) and Length:12"
     },
      "specialrequest" :{
      "OnlyusetheSpecialRequest":"Only use the Special Request for any special operation, such as a second office number, a hotline for a support group, a shared line setup for functional groups, or to indicate a need for telephony-related consultancy. " ,
