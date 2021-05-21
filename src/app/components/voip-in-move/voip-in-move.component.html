@@ -45,7 +45,7 @@
               <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                 <select ngModel #jabberNumberVal (change)="getjabberNumberVal(jabberNumberVal.value)"
                   name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left"
-                  style="width:300px !important; text-transform: uppercase;" title="Select the Jabber / Phone Number  you wish to move" [(ngModel)]='selected_jabber'>
+                  style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectthejabbertomove' | translate}}" [(ngModel)]='selected_jabber'>
                   <option value="">Select One</option>
                   <option *ngFor="let jab of Jabber" [value]="jab">{{jab}}</option>
                 </select>

@@ -9,6 +9,7 @@ import { Db2Service } from '../../_services/db2.service';
 import {Create_Cache_jabber, Jabber_Update} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
+import { TranslateConfigService } from '../../_services/translate-config.service';
 
 
 @Component({
@@ -74,7 +75,7 @@ export class VoipLaUpdateComponent implements OnInit {
   cache_tmp:  any = [];
   selected_jabber ="";
   
- 
+  mainConfiguration :any;
   businessjustification : any="";
 
 
@@ -172,7 +173,7 @@ export class VoipLaUpdateComponent implements OnInit {
  
   EntryDetails(formData: NgForm) {
     if(formData.value.Jabber_1.toUpperCase() == 'SELECT ONE' || formData.value.Jabber_1 == '') {
-      alert('Please select the jabber number to update');
+      alert(this.mainConfiguration.otheralerts.selectthejabber);
       return;
     }
     
@@ -310,11 +311,12 @@ export class VoipLaUpdateComponent implements OnInit {
     });	
      }	
    
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute) {
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute,private servicesd : TranslateConfigService) {
 
    }
 
   ngOnInit(): void {
+    this.mainConfiguration = this.servicesd.readConfigFile();
     // Submit to Snow Jabber Update code
     this.cnum = sessionStorage.getItem('cnum');
     this.orgi = this.cookie.getCookie('ccode');

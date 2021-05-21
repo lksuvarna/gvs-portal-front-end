@@ -71,13 +71,13 @@ export class TopcountryframeComponent implements OnInit {
       this.pcountrydetails=sessionStorage.getItem('countrydetails')
             console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code)
       this.countryname = JSON.parse(this.pcountrydetails)
-       this.translatecountryname = this.pcode;
-      if (this.translatecountryname == '649'){
+        this.translatecountryname = this.pcode;
+      if (this.translatecountryname == '649' && this.service == 'services'){
           this.translatecountryname1 = true;
         }  
         else{
           this.translatecountryname1 = false;
-        }
+        }  
         if(this.service.includes('jabberservices')){
           if ( this.countryname.jservices){}
           else{sessionStorage.setItem('pagedisplay','pagenotfound')
@@ -183,12 +183,12 @@ export class TopcountryframeComponent implements OnInit {
       sessionStorage.setItem('countryroute', this.pcode);}
       
         this.translatecountryname = this.pcode;
-      if (this.translatecountryname == '649'){
+      if (this.translatecountryname == '649' && this.service == 'services'){
           this.translatecountryname1 = true;
         }  
         else{
           this.translatecountryname1 = false;
-        }
+        } 
         if(this.service.includes('jabberservices')){
           if ( this.countryname.jservices){}
           else{sessionStorage.setItem('pagedisplay','pagenotfound')

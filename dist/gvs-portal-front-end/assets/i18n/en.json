@@ -101,8 +101,13 @@
         "FAC Code / IDD Pin - Update Request": "FAC Code / IDD Pin - Update Request",
         "FAC Code / IDD Pin - Delete Request": "FAC Code / IDD Pin - Delete Request",
         "FAC Code Reset Request": "FAC Code - Reset Request",
+<<<<<<< HEAD
+        "SpecialRequestentryandreview" :"Special Request",
+        "FAC Code / IDD Pin - Reset Request" :"FAC Code / IDD Pin - Reset Request",
+=======
         "SpecialRequestentryandreview": "Special Request",
 
+>>>>>>> ba5ea284bf61dcb976bc8df45426246454e0e618
         "Mobile New Request": "Mobile - New Request",
 
         "FAC Code Delete Request": "FAC Code - Delete Request",
@@ -346,15 +351,27 @@
      "notexceed200":"Note:Length should not exceed 500",
      "Note": "Note:",
      "Fieldsasteriskspl": "Fields marked with an asterisk",
-     "arerequiredspl": "are required."
+     "arerequiredspl": "are required.",
+     "selectjabbernumberwishtoupdate":"Select the Jabber / Phone Number you wish to update"
 
 
      },
+<<<<<<< HEAD
+     "otheralerts":{
+        "selectthejabber":"Please select the Jabber / Phone number to update",
+        "selectthejabbertomove":"Select the Jabber / Phone Number  you wish to move",
+        "Model" :"Model",
+        "MAC Address" :"MAC Address",
+        "Device Description" :"Device Description"
+        
+        
+=======
 
      "Requests":{
         "approved":"Processing",
         "Approved":"Processing",
         "_approval":"Processing"
 
+>>>>>>> ba5ea284bf61dcb976bc8df45426246454e0e618
      }
 }
