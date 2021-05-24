@@ -70,6 +70,7 @@ export class HpAuUpdateComponent implements OnInit {
   newDescription: any = "";
   reasonForUpdate: any = "";
   FixedPhoneData: any = [];
+  hideNextButton = true;
 
   payload : fixedphone_update = new fixedphone_update();
   cache : Create_Cache_fixedphone = new Create_Cache_fixedphone();
@@ -119,12 +120,14 @@ export class HpAuUpdateComponent implements OnInit {
           this.currentloc = data.message[0].ATTRIBUTE3;
           this.currentMac = this.currentMac.substring(3,this.currentMac.length);
           this.showSearch =true;
+          this.hideNextButton = false;
           this.showerrormessage = false;
 
         }else
         {
           this.showerrormessage = true;
           this.showSearch = false;
+          this.hideNextButton = true;
           this.hideSteps = true;
 
         }
@@ -221,7 +224,8 @@ export class HpAuUpdateComponent implements OnInit {
       "currentMac": this.currentMac,
       "currentPhone": this.currentPhone,
       "currentloc": this.currentloc,
-      "currentdesc": this.currentdesc
+      "currentdesc": this.currentdesc,
+      "hideNextButton":this.hideNextButton
     }
   }
 
@@ -317,6 +321,7 @@ export class HpAuUpdateComponent implements OnInit {
     this.cache.justification = formData.value.Comments;
     this.cache.showSearch = this.showSearch;
     this.cache.showerrormessage = this.showerrormessage;
+    this.cache.hideNextButton = this.hideNextButton;
     sessionStorage.setItem('cache',JSON.stringify(this.cache));
     console.log("cached");
   }
@@ -439,6 +444,7 @@ export class HpAuUpdateComponent implements OnInit {
     if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='fixedphone_update')){
       this.currentMacOrPhone = String(this.cache_disp.currentMacOrPhone);
       this.showSearch = Boolean(this.cache_disp.showSearch);
+      this.hideNextButton = Boolean(this.cache_disp.hideNextButton);
       this.showerrormessage = Boolean(this.cache_disp.showerrormessage);
       this.currentMac = String(this.cache_disp.currentMac);
       this.currentPhone = String(this.cache_disp.currentPhone);

@@ -83,7 +83,7 @@
         "opps": "Something seems to have gone wrong. Please try later.",
         "JabberLocation": "Jabber / Phone Number location",
         "Voicemail": "Voicemail",
-        "ClassofService": "Class of Service",
+        "ClassofService": "Class of Service (COS)",
         "pleasesubmittostart": "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service."
 
     },
@@ -282,7 +282,7 @@
         "SelectDevice":"Select Device",
         "TypeofModel":"Type of Model ",
         "SelectModel" :"Select Model",
-        "SelectClassofService (COS)" :"Select Class of Service (COS)",
+        "SelectClassofService (COS)" :"Class of Service (COS)",
         "National" :"National",
         "International" :"International",
         "BusinessNeed(Whyisinternationalrequired?)" :"Business Need (Why is international required?) ",
