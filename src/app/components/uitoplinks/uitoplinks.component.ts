@@ -87,8 +87,9 @@ export class UitoplinksComponent implements OnInit {
         this.searchItems.push(this.searchObj)
     });
 
-    this.searchItems.sort((a: any,b: any): any => b.name.toLowerCase() < a.name.toLowerCase());
-      // alert(JSON.stringify(this.searchItems))
+   this.searchItems.sort((a: any,b: any) : any => a.name.localeCompare(b.name));
+   //alert( JSON.stringify(this.searchItems))
+
   })
 
   } 

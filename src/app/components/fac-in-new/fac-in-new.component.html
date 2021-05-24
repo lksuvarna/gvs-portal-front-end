@@ -25,12 +25,12 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10">
+                        <td width="60%" height="10">
                             <label for="LocationId" *ngIf="facIn" class="ds-text-capitalize">Office Location</label>
                             <label for="LocationId" *ngIf="!facIn" class="ds-text-capitalize">FAC Code / IDD PIN Office Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="54%" height="10">
+                        <td height="10" width="40%" class="ds-pad-l-8">
                             <div *ngIf="facIn" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location (change)='selectedLocation(location.value)' [(ngModel)]='selected_location'>
                                     <option value ="">Select One</option>
@@ -50,10 +50,10 @@
                     </tr>
 
                     <tr valign="top" *ngIf="facIn" [hidden]='hideBuilding'>
-                        <td colspan="2" width="46%"><label for="builId" class="ds-text-capitalize"> Campus</label>
+                        <td><label for="builId" class="ds-text-capitalize"> Campus</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="54%">
+                        <td class="ds-pad-l-8">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="Buildings" rows="2" cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" [(ngModel)]='campus'>
                                     <option value ="">Select One</option>
@@ -65,9 +65,9 @@
 
 
                     <tr valign="top" *ngIf="facIn">
-                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize ds-padding-top-2">Funded</label>
+                        <td><label for="addId" class="ds-text-capitalize ds-padding-top-2">Funded</label>
                         </td>
-                        <td width="54%">
+                        <td class="ds-pad-l-8">
                             <div class="ds-mar-b-1">
                                 <div class="ds-input-radio-group">
                                     <label for="radio1" class="ds-input-radio ds-pad-r-1" style="display:inline">
@@ -85,11 +85,11 @@
                     </tr>
 
                     <tr valign="top" *ngIf="facIn" [hidden]='hideDeptCode'>
-                        <td colspan="2" width="46%">
+                        <td>
                             <div id="d1"><label for="addId" class="ds-text-capitalize ds-pad-t-1">Charge Department
                   Code</label> <span class="ds-text-contextual-red-2">*</span></div>
                         </td>
-                        <td width="54%">
+                        <td class="ds-pad-l-8">
                             <div id="d21" class="ds-input-container ">
                                 <input name="chargeDepartmentCode" value="" id="d2" maxlength='6' class="ds-input" style="width: 300px !important;" title="Charge Department Code" [(ngModel)]="chargeDepartmentCode">
                                 <div id="Mentor1Div"></div>
@@ -97,27 +97,27 @@
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize " style="display: inline-block;padding-bottom: 1rem;">Business Unit</label>
+                        <td><label for="addId" class="ds-text-capitalize " style="display: inline-block;padding-bottom: 1rem;">Business Unit</label>
                         </td>
-                        <td width="54%"><label name='BusinessUnit' style="display: inline-block;padding-bottom: 1rem;" ngModel> {{ employeeInfo.businessUnit}} </label>
+                        <td class="ds-pad-l-8"><label name='BusinessUnit' style="display: inline-block;padding-bottom: 1rem;" ngModel> {{ employeeInfo.businessUnit}} </label>
                         </td>
                     </tr>
 
                     <tr valign="top">
-                        <td colspan="2" width="46%"><label for="DeptID" class="ds-text-capitalize " style="display: inline-block;padding-bottom: 1rem;">Department</label>
+                        <td><label for="DeptID" class="ds-text-capitalize " style="display: inline-block;padding-bottom: 1rem;">Department</label>
                         </td>
-                        <td width="54%"><label name='DeptID' style="display: inline-block;padding-bottom: 1rem;" ngModel> {{ employeeInfo.department}} </label>
+                        <td class="ds-pad-l-8"><label name='DeptID' style="display: inline-block;padding-bottom: 1rem;" ngModel> {{ employeeInfo.department}} </label>
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td *ngIf="facIn" colspan="2" width="50%"><br>
+                        <td *ngIf="facIn"><br>
                             <label for="LocationId" class=""> Authorization Level</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td *ngIf="!facIn" colspan="2" width="50%"><br>
+                        <td *ngIf="!facIn" class="ds-pad-l-8"><br>
                             <label for="LocationId" class=""> Authorization Level</label>
                         </td>
-                        <td width="50%"><br>
+                        <td class="ds-pad-l-8"><br>
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select *ngIf="facIn" name="authLevel" rows="2" cols="40" id="authLevel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Authorization Level" [(ngModel)]="authLevel">
                                     <option value ="">Select One</option>
@@ -132,11 +132,11 @@
                         </td>
                     </tr>
                     <tr valign="top" *ngIf="facIn">
-                        <td colspan="2" width="50%"><br>
+                        <td><br>
                             <label for="LocationId" class=""> FAC Code / IDD PIN Type</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="50%"><br>
+                        <td class="ds-pad-l-8"><br>
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="Fac_Type" rows="2" cols="40" id="Fac_Type" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="FAC Code / IDD PIN Type" #facType (change)="FacCodeType(facType.value)" [(ngModel)]="Fac_Type">
                                     <option value="">Select One</option>
@@ -148,11 +148,11 @@
                     </tr>
 
                     <tr valign="top" *ngIf="facIn" [hidden]="hideValidity">
-                        <td colspan="2" width="50%"><br>
+                        <td><br>
                             <label for="LocationId" class=""> Validity</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="50%"><br>
+                        <td class="ds-pad-l-8"><br>
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="validity" rows="2" cols="40" id="validity" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Validity" [(ngModel)]="validity">
                                     <option value="">Select One</option>
@@ -164,10 +164,10 @@
                     </tr>
 
                     <tr valign="top">
-                        <td colspan="2" width="50%"><br>
+                        <td><br>
                             <label for="comments" class="">Business Justification <span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
-                        <td width="50%"><br>
+                        <td class="ds-pad-l-8"><br>
                             <textarea name="Comments" id="JustificationId" class="ds-input " style="width:300px !important;" maxlength='200' title="Buisness Justification" rows="2" cols="40" [(ngModel)]="Comments"></textarea>
                         </td>
                     </tr>
