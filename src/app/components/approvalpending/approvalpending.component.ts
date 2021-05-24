@@ -84,7 +84,7 @@ export class ApprovalpendingComponent implements OnInit {
     this.ccode=this.ccode.substring(6,9);
    if(this.service.includes('revalidationpending')){
      this.snowaction='snow_revalidation'
-    // this.empserial="467756744";
+   // this.empserial="467756744";
      this.reval=false;
      sessionStorage.setItem('reval','reval');
     }

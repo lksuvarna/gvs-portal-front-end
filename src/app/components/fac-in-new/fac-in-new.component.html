@@ -25,12 +25,12 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10">
+                        <td colspan="2" width="60%" >
                             <label for="LocationId" *ngIf="facIn" class="ds-text-capitalize">Office Location</label>
-                            <label for="LocationId" *ngIf="!facIn" class="ds-text-capitalize">FAC Code / IDD PIN Office Location</label>
+                            <label for="LocationId" *ngIf="!facIn" class="ds-text-capitalize">FAC Code / IDD PIN Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="54%" height="10">
+                        <td  width="46%" height="10">
                             <div *ngIf="facIn" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location (change)='selectedLocation(location.value)' [(ngModel)]='selected_location'>
                                     <option value ="">Select One</option>
