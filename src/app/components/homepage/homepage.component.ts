@@ -133,7 +133,7 @@ export class HomepageComponent implements OnInit {
         // alert(JSON.stringify(this.searchItems))
       });
       
-      this.searchItems.sort((a: any,b: any): any => b.name.toLowerCase() < a.name.toLowerCase());
+      this.searchItems.sort((a: any,b: any) : any => a.name.localeCompare(b.name));
     })
 
   } 
