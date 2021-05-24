@@ -42,8 +42,8 @@
                   <option name="Jabber_1" *ngFor='let fl_itn of Jabber' [value]='fl_itn' selected>
                     {{ fl_itn }}</option> -->
                     <option value ="" translate>Jabberupdate.SELECTONE</option>
-                  <option name="Jabber_1" *ngFor='let fl of data'  [value]='fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?fl.IDENTIFIER.trim()+"-SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?fl.IDENTIFIER.trim()+"-P":fl.IDENTIFIER.trim()' selected>
-                    {{ fl.IDENTIFIER.trim()}}{{fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?" - SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?" - P":''}}</option>
+                  <option name="Jabber_1" *ngFor='let fl of data'  [value]='fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?fl.IDENTIFIER.trim()+"-P":fl.IDENTIFIER.trim()' selected>
+                    {{ fl.IDENTIFIER.trim()}}{{fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?" - P":''}}</option>
                 </select>
                             </div>
                         </td>

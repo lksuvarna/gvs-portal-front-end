@@ -575,6 +575,12 @@ export class EmployeesearchComponent implements OnInit {
         } else if(this.service == 'jabber_delete'){
           sessionStorage.setItem('identifier', JSON.stringify(data.message));
           this.datadb = "yes";     
+        }else if(this.service == 'jabber_update'){
+          sessionStorage.setItem('identifier', JSON.stringify(data.message));
+          sessionStorage.setItem('update_itn', this.itns),
+          sessionStorage.setItem('voice_mail', this.voice_mail);
+          sessionStorage.setItem('cos', this.cos);
+          this.datadb = "yes";     
         }else if (this.service == "fac_new") {
           sessionStorage.setItem('identifier', 'xxxxxxxx') ;
           this.datadb= "yes";
@@ -589,8 +595,6 @@ export class EmployeesearchComponent implements OnInit {
         }
         else {
           sessionStorage.setItem('identifier', this.itns);
-          sessionStorage.setItem('voice_mail', this.voice_mail);
-          sessionStorage.setItem('cos', this.cos);
            sessionStorage.setItem('profile_location',this.profile_location);
           this.datadb = "yes";
         }

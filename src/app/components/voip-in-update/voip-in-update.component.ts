@@ -51,6 +51,8 @@ export class VoipInUpdateComponent implements OnInit {
   selected_jabber ="";
   account_id="NA";
   mainConfiguration :any;
+  dbdata : any;
+  data : any;
 
 
   payload : Jabber_Update = new Jabber_Update();
@@ -113,7 +115,7 @@ export class VoipInUpdateComponent implements OnInit {
       this.payload.icano_Disp = '';	
       this.payload.Department_number_Disp = this.chargeDisp;
       this.payload.accid_Disp = '';
-      this.payload.Identifier_Selected = this.jabberDisp;
+      this.payload.Identifier_Selected = this.jabberDisp.substring(0,8)	;
       this.payload.updated_for = 'ChargeDepartment='+this.chargeDisp;
 
       this.payload.ReqNo=this.reqno;	
@@ -177,9 +179,17 @@ export class VoipInUpdateComponent implements OnInit {
       this.identifier = sessionStorage.getItem('identifier')
     }
     else {
-      this.identifier = sessionStorage.getItem('identifier')
-      this.identifier = this.identifier.split(',');
-      this.Jabber = [...this.identifier];
+      // this.identifier = sessionStorage.getItem('identifier')
+      // this.identifier = this.identifier.split(',');
+      // this.Jabber = [...this.identifier];
+
+      this.dbdata=sessionStorage.getItem('identifier');
+      console.log(JSON.parse(this.dbdata).identifier);    
+      var parsed = JSON.parse(JSON.stringify(JSON.parse(this.dbdata)));
+      this.data = parsed;   
+      console.log("data of display");
+      console.log(this.data);
+
     }
     this.route.queryParams	
     .subscribe(params => {	
@@ -233,8 +243,8 @@ export class VoipInUpdateComponent implements OnInit {
    this.hideChargeDept=true
    else{
    this.hideChargeDept=false;
-   this.account_id=String(this.cache_disp.projectId);
    }
+   this.account_id=String(this.cache_disp.projectId);
    console.log("cache restored");
    }else{
      sessionStorage.removeItem('cache');
