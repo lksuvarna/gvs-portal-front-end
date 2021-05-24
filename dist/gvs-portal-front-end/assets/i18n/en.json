@@ -336,7 +336,7 @@
      "needstandardservice":"If you need standard service such as Jabber or Fixed Phone , do not submit a Special Request as it will be rejected. Standard services can be requested from the menu on the left of this page.",
      "SpecialRequestHCSmigratedsite":"Please note , Special Request related to voice services can be submitted only for HCS migrated site.  Special Request related to voice services for a non-HCS site should be submitted in the  ",
      "TMAC tool":"TMAC tool.",
-     "HelpTMACtool ":"Help related to TMAC tool can be found ",
+     "HelpTMACtool":"Help related to TMAC tool can be found ",
      "here" :"here.",
      "JabberNumberoptional": "Jabber / Phone Number (Optional)",
      "JabberLocationspecial": "Jabber / Phone Number location",
@@ -345,8 +345,8 @@
      "Note": "Note:",
      "Fieldsasteriskspl": "Fields marked with an asterisk",
      "arerequiredspl": "are required.",
-     "selectjabbernumberwishtoupdate":"Select the Jabber / Phone Number you wish to update"
-
+     "selectjabbernumberwishtoupdate":"Jabber / Phone Number",
+     "JabberLocationslect": "Jabber / Phone Number location"
 
      },
      "otheralerts":{

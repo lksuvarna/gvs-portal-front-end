@@ -112,6 +112,8 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       if(e.target.value.toUpperCase()=='SELECT ONE' || e.target.value.trim()==''){
         this.fl_location='';
         this.defaultlocation=false;
+        this.locationselected='';
+        
       }else{
         if(this.data[this.index].ATTRIBUTE7=='' || this.data[this.index].ATTRIBUTE7==null)
         this.default_location='NA'

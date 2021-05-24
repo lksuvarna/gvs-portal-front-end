@@ -74,6 +74,8 @@ export class VoipLaUpdateComponent implements OnInit {
   selectcos="";
   cache_tmp:  any = [];
   selected_jabber ="";
+  dbdata : any;
+  data : any;
   
   mainConfiguration :any;
   businessjustification : any="";
@@ -120,6 +122,7 @@ export class VoipLaUpdateComponent implements OnInit {
 
   }
  SelectedJabber(jabber:any) {
+   jabber=jabber.substring(0,8);
    if((jabber != "")){
      this.hideChargeDept = false;
      this.currentVoiceMail=false;
@@ -281,7 +284,7 @@ export class VoipLaUpdateComponent implements OnInit {
      // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
       this.payload.Department_number_Disp = '';
       this.payload.accid_Disp = '';
-      this.payload.Identifier_Selected = this.jabberDisp;
+      this.payload.Identifier_Selected = this.jabberDisp.substring(0,8);
       this.payload.updated_for = '';
       this.payload.ReqNo=this.reqno;
       this.payload.Current_COS=this.cos_disp;
@@ -334,9 +337,15 @@ export class VoipLaUpdateComponent implements OnInit {
       this.identifier = sessionStorage.getItem('identifier')?.replace(" ","");
     }
     else {
-      this.identifier = sessionStorage.getItem('identifier')
+      this.identifier = sessionStorage.getItem('update_itn')
       this.identifier = this.identifier.split(',');
       this.Jabber = [...this.identifier];
+      this.dbdata=sessionStorage.getItem('identifier');
+      console.log(JSON.parse(this.dbdata).identifier);    
+      var parsed = JSON.parse(JSON.stringify(JSON.parse(this.dbdata)));
+      this.data = parsed;   
+      console.log("data of display");
+      console.log(this.data);
       this.css=sessionStorage.getItem('cos');
       this.css=this.css.split(',');
       this.cos=[... this.css];
