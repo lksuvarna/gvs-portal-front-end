@@ -35,6 +35,7 @@ export class HomepageComponent implements OnInit {
   translatecountryname :any;
   translatecountryname1 :boolean =false;
   ccode='';
+  display=false
   fixphoneVisibility:any;
   loggedinuser:any;
   searchData:any = [];
@@ -68,6 +69,7 @@ export class HomepageComponent implements OnInit {
     this.fullName = this.fullName.replace(","," ");
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.loggedinuser = this.cookie.getCookie('ccode');
+    this.display=false;
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);
       this.countryname=data.countrydetails;
@@ -75,6 +77,7 @@ export class HomepageComponent implements OnInit {
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.ccode);
       sessionStorage.setItem('pagedisplay','homepage')
+      this.display=true;
       
       this.translatecountryname = this.countryname.name;
       if (this.translatecountryname == 'Canada/Caribbean'){
