@@ -7741,7 +7741,11 @@ class VoipLaUpdateComponent {
                 return;
             }
         }
-        if (formData.value.Voice_Mail == this.vm_disp) {
+        if (this.vm_disp.toUpperCase() == "YES" || this.vm_disp.toUpperCase() == "Y")
+            this.vm_actual = "Yes";
+        if (this.vm_disp.toUpperCase() == "NO" || this.vm_disp.toUpperCase() == "N")
+            this.vm_actual = "No";
+        if (formData.value.Voice_Mail == this.vm_actual) {
             alert('Current and New Voice Mail cannot be same');
             return;
         }
