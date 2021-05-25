@@ -1150,7 +1150,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -23703,6 +23703,7 @@ class EmployeesearchComponent {
                 this.countrydetails = JSON.parse(this.countrydetails);
                 if (this.countrydetails.testuser) {
                     this.ccode = this.countrydetails.testuser;
+                    this.fullName = sessionStorage.getItem('testusername');
                 }
                 else {
                     this.ccode = this.cookie.getCookie('ccode');
@@ -26185,10 +26186,10 @@ const _c3 = function (a0) { return { country: a0, service: "services" }; };
 const _c4 = function () { return ["/jabberservices"]; };
 const _c5 = function (a0) { return { country: a0, service: "jabberservices" }; };
 class HomepageComponent {
-    constructor(Service, cookie, bpservice, cloudantservice, translateconfigservice) {
+    constructor(Service, cookie, bpservices, cloudantservice, translateconfigservice) {
         this.Service = Service;
         this.cookie = cookie;
-        this.bpservice = bpservice;
+        this.bpservices = bpservices;
         this.cloudantservice = cloudantservice;
         this.translateconfigservice = translateconfigservice;
         this.searchText = '';
@@ -26229,16 +26230,47 @@ class HomepageComponent {
         this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
         this.fullName = this.fullName.replace(",", " ");
         this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+        this.employeeSerial = this.ccode;
         this.loggedinuser = this.cookie.getCookie('ccode');
         this.display = false;
+        this.cloudantservice.getcountrydetails('000').subscribe(data => {
+            this.countrynamehome = data.countrydetails;
+            if (data.countrydetailshome.homepagecodesCA.includes(this.ccode)) {
+                this.ccode = data.countrydetailshome.codeCA;
+            }
+        });
         this.cloudantservice.getcountrydetails(this.ccode).subscribe(data => {
             console.log('Response received', data.countrydetails.name);
             this.countryname = data.countrydetails;
-            let countrydetails = data.countrydetails;
+            this.countrydetails = JSON.stringify(data.countrydetails);
             sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
             sessionStorage.setItem('countryroute', this.ccode);
             sessionStorage.setItem('pagedisplay', 'homepage');
             this.display = true;
+            console.log("testuser" + data.countrydetails.testuser);
+            if (data.countrydetails.testuser) {
+                this.employeeSerial = data.countrydetails.testuser;
+                this.cloudantservice.getcountrydetails('000').subscribe(data => {
+                    this.countrynamehome = data.countrydetails;
+                    console.log("canada codes" + data.countrydetails.homepagecodesCA + data.countrydetails.codeCA);
+                    console.log("testusercod" + this.ccode);
+                    if (data.countrydetails.homepagecodesCA.includes(this.employeeSerial.substring(6, 9))) {
+                        this.testusercode = data.countrydetails.codeCA;
+                        console.log("testusercod1" + this.testusercode);
+                    }
+                    else {
+                        this.testusercode = this.employeeSerial.substring(6, 9);
+                        console.log("testusercod2" + this.testusercode);
+                    }
+                    this.cloudantservice.getcountrydetails(this.testusercode).subscribe(data => {
+                        if (data) {
+                            console.log('Response received', data.countrydetails.name);
+                            this.countryname = data.countrydetails;
+                            this.getBPData();
+                        }
+                    });
+                });
+            }
             this.translatecountryname = this.countryname.name;
             if (this.translatecountryname == 'Canada/Caribbean') {
                 this.translatecountryname1 = true;
@@ -26246,11 +26278,6 @@ class HomepageComponent {
             else {
                 this.translatecountryname1 = false;
             }
-            //   this.searchItems = [
-            //    {"name" : "India : Jabber", "flag" : "././assets/flags/744.png", "code": "744", "path": "jabberservices", "visibility":true},
-            //    {"name" : "India : Fixed Phone", "flag" : "././assets/flags/744.png", "code": "744", "path": "fixedphoneservices", "visibility": this.fixphoneVisibility},
-            //    {"name" : "India : FAC", "flag" : "././assets/flags/744.png", "code": "744", "path": "facservices", "visibility": true},
-            //  ]
         });
         this.cloudantservice.getcountrysearchdetails(this.ccode).subscribe(data => {
             this.searchData = data;
@@ -26288,6 +26315,23 @@ class HomepageComponent {
                 // alert(JSON.stringify(this.searchItems))
             });
             this.searchItems.sort((a, b) => a.name.localeCompare(b.name));
+        });
+    }
+    getBPData() {
+        console.log(' this.employeeSerial', this.fullName);
+        this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
+            console.log(' this.employeeSerial', this.employeeSerial);
+            console.log(' BP Details', data.userdata);
+            if (data.userdata) {
+                var ename = data.username.preferredfirstname + " " + data.username.preferredlastname;
+                var ename1 = data.username.preferredlastname + ", " + data.username.preferredfirstname;
+                if (data.username.preferredlastname == undefined || data.username.preferredfirstname == undefined) {
+                    ename = data.username.callupname;
+                    ename1 = data.username.callupname;
+                }
+                this.fullName = ename;
+                sessionStorage.setItem('testusername', ename1);
+            }
         });
     }
     getVisibility(data) {
@@ -26929,23 +26973,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const _c0 = function (a0, a1) { return { country: a0, service: a1 }; };
-function NavigationComponent_li_3_Template(rf, ctx) { if (rf & 1) {
-    const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function NavigationComponent_li_3_Template_a_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r4); const i_r2 = ctx.index; const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r3.clickEvent(i_r2); });
+function NavigationComponent_div_0_li_3_Template(rf, ctx) { if (rf & 1) {
+    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function NavigationComponent_div_0_li_3_Template_a_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const i_r3 = ctx.index; const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r4.clickEvent(i_r3); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const nav_r1 = ctx.$implicit;
-    const i_r2 = ctx.index;
+    const nav_r2 = ctx.$implicit;
+    const i_r3 = ctx.index;
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", i_r3 == ctx_r1.selectedItem ? ctx_r1.getNavActiveClass(i_r3) : ctx_r1.getNavClass(i_r3));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", nav_r2.routingname)("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](5, _c0, ctx_r1.pcode, nav_r2.param))("ngClass", i_r3 == ctx_r1.selectedItem ? "ds-text-contextual-blue-5" : "ds-text-neutral-7");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("lhs.", nav_r2.name, "");
+} }
+function NavigationComponent_div_0_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "ul", 3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, NavigationComponent_div_0_li_3_Template, 3, 8, "li", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", i_r2 == ctx_r0.selectedItem ? ctx_r0.getNavActiveClass(i_r2) : ctx_r0.getNavClass(i_r2));
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", nav_r1.routingname)("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](5, _c0, ctx_r0.pcode, nav_r1.param))("ngClass", i_r2 == ctx_r0.selectedItem ? "ds-text-contextual-blue-5" : "ds-text-neutral-7");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("lhs.", nav_r1.name, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.dataNav123.data[0].lhs);
 } }
 class NavigationComponent {
     constructor(cookie, cloudantservice, route, translateconfigservice) {
@@ -26957,6 +27014,7 @@ class NavigationComponent {
         this.pcode = '';
         this.cloudantData = [];
         this.servicesData = [];
+        this.display = false;
         this.previousStep = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         this.defaultNavClass = 'ds-panel-segment ds-text-uppercase';
         this.indentNavClass = ' ds-pad-l-2';
@@ -27041,25 +27099,8 @@ class NavigationComponent {
             this.service = params.service;
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
-            if (sessionStorage.getItem('countrydetails') == undefined) {
-            }
-            else {
-                this.countrydetails = sessionStorage.getItem('countrydetails');
-                this.parcountrydetails = JSON.parse(this.countrydetails);
-                this.loggedinuser = this.cookie.getCookie('ccode');
-                //ACL for Fixed Phone Services - starts
-                if (this.parcountrydetails.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
-                    if (this.parcountrydetails.auth_fixphone.includes(this.loggedinuser)) {
-                        this.fixphoneVisibility = true;
-                    }
-                    else {
-                        this.fixphoneVisibility = false;
-                    }
-                }
-                else {
-                    this.fixphoneVisibility = this.parcountrydetails.isfixphone;
-                }
-            }
+            this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+            this.countryroute = sessionStorage.getItem('countryroute');
             this.serhl = false;
             this.jhl = false;
             this.fhl = false;
@@ -27170,12 +27211,22 @@ class NavigationComponent {
                     ]
                 };
             }
-            this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-            this.countryroute = sessionStorage.getItem('countryroute');
+            this.loggedinuser = this.cookie.getCookie('ccode');
             if (this.pcode == this.countryroute) {
                 this.pcountrydetails = sessionStorage.getItem('countrydetails');
                 console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code);
                 this.countryname = JSON.parse(this.pcountrydetails);
+                if (this.countryname.fixphone_visibility !== undefined && this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+                    if (this.countryname.auth_fixphone.includes(this.loggedinuser)) {
+                        this.fixphoneVisibility = true;
+                    }
+                    else {
+                        this.fixphoneVisibility = false;
+                    }
+                }
+                else {
+                    this.fixphoneVisibility = this.countryname.isfixphone;
+                }
                 this.cloudantData = {
                     "code": this.ccode,
                     "name": this.countryname.name,
@@ -27199,16 +27250,18 @@ class NavigationComponent {
                 this.dataNav123 = this.dataNav123;
                 this.dataNavParent = this.dataNav123;
                 this.removeServices();
+                this.display = true;
             }
             else {
+                this.display = false;
                 console.log("navigation componentelse" + this.ccode);
                 this.loggedinuser = this.cookie.getCookie('ccode');
                 this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
-                    console.log('Response received navigation', data.countrydetails.isspecial);
                     this.countryname = data.countrydetails;
                     sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
                     sessionStorage.setItem('countryroute', this.pcode);
-                    if (this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+                    this.fixphoneVisibility = false;
+                    if (this.countryname.fixphone_visibility !== undefined && this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
                         if (this.countryname.auth_fixphone.includes(this.loggedinuser)) {
                             this.fixphoneVisibility = true;
                         }
@@ -27217,7 +27270,7 @@ class NavigationComponent {
                         }
                     }
                     else {
-                        this.fixphoneVisibility = this.parcountrydetails.isfixphone;
+                        this.fixphoneVisibility = this.countryname.isfixphone;
                     }
                     this.cloudantData = {
                         "code": this.pcode,
@@ -27241,6 +27294,7 @@ class NavigationComponent {
                     this.dataNav123 = this.dataNav123;
                     this.dataNavParent = this.dataNav123;
                     this.removeServices();
+                    this.display = true;
                 });
                 //for lhs
             }
@@ -27248,18 +27302,11 @@ class NavigationComponent {
     }
 }
 NavigationComponent.ɵfac = function NavigationComponent_Factory(t) { return new (t || NavigationComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_translate_config_service__WEBPACK_IMPORTED_MODULE_4__["TranslateConfigService"])); };
-NavigationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NavigationComponent, selectors: [["app-navigation"]], inputs: { dataNavParent1: ["dataNav", "dataNavParent1"], cloudantData1: ["cloudantData", "cloudantData1"] }, outputs: { previousStep: "previousStep" }, decls: 4, vars: 1, consts: [[1, "ds-row", "ds-pad-t-1", "ds-pad-b-2"], [1, "ds-panel", "ds-bg-neutral-warm-1", "ds-no-border"], [1, "ds-list-unstyled", "ds-hover"], [3, "ngClass", 4, "ngFor", "ngForOf"], [3, "ngClass"], ["translate", "", 3, "routerLink", "queryParams", "ngClass", "click"]], template: function NavigationComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "ul", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, NavigationComponent_li_3_Template, 3, 8, "li", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+NavigationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NavigationComponent, selectors: [["app-navigation"]], inputs: { dataNavParent1: ["dataNav", "dataNavParent1"], cloudantData1: ["cloudantData", "cloudantData1"] }, outputs: { previousStep: "previousStep" }, decls: 1, vars: 1, consts: [["class", "ds-row ds-pad-t-1 ds-pad-b-2", 4, "ngIf"], [1, "ds-row", "ds-pad-t-1", "ds-pad-b-2"], [1, "ds-panel", "ds-bg-neutral-warm-1", "ds-no-border"], [1, "ds-list-unstyled", "ds-hover"], [3, "ngClass", 4, "ngFor", "ngForOf"], [3, "ngClass"], ["translate", "", 3, "routerLink", "queryParams", "ngClass", "click"]], template: function NavigationComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, NavigationComponent_div_0_Template, 4, 1, "div", 0);
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.dataNav123.data[0].lhs);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgClass"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__["TranslateDirective"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJuYXZpZ2F0aW9uLmNvbXBvbmVudC5jc3MifQ== */"] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.display);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgClass"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__["TranslateDirective"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJuYXZpZ2F0aW9uLmNvbXBvbmVudC5jc3MifQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NavigationComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
