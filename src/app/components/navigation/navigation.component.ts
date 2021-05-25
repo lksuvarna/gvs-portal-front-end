@@ -18,6 +18,7 @@ export class NavigationComponent implements OnInit {
   cloudantData: any = []
   servicesData: any = []
   pcountrydetails:any;
+  display=false
   @Output() previousStep = new EventEmitter<string>()
 
   constructor(private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private route: ActivatedRoute, private translateconfigservice : TranslateConfigService) { }
@@ -77,11 +78,13 @@ export class NavigationComponent implements OnInit {
   }
 
   removeService(service: string) {
+    
     this.dataNav123.data[0].lhs = this.dataNav123.data[0].lhs.filter((item: any) => item.name !== service)
   }
 
   removeServices() {
     console.log("In navigation component" + this.cloudantData.isreval)
+    
     if (!this.cloudantData.isjabber) {
       this.removeService('Jabber')
     }
@@ -96,6 +99,7 @@ export class NavigationComponent implements OnInit {
       this.removeService('FAC Code / IDD PIN')
     }
     if (!this.cloudantData.ismobile) {
+      
       this.removeService('Mobile')
     }
     if (!this.cloudantData.isapproval) {
@@ -120,27 +124,13 @@ export class NavigationComponent implements OnInit {
         this.service = params.service;
         this.pcode = params.country;
         console.log("navigation component" + this.pcode);
-
-        if(sessionStorage.getItem('countrydetails')==undefined){
-  
-        } else {
-          this.countrydetails = sessionStorage.getItem('countrydetails')
-          this.parcountrydetails = JSON.parse(this.countrydetails);
-          this.loggedinuser = this.cookie.getCookie('ccode')
-          //ACL for Fixed Phone Services - starts
-          if(this.parcountrydetails.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
-            if(this.parcountrydetails.auth_fixphone.includes(this.loggedinuser)) {
-            this.fixphoneVisibility = true;
-            } else {
-              this.fixphoneVisibility = false;
-            }
-          } else {
-            this.fixphoneVisibility = this.parcountrydetails.isfixphone;
-          }
-        }
-      this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.mhl=false;this.reqhl=false;this.reshl=false;this.apphl=false;this.pnshl=false,this.sphl=false,this.revalhl=false;
+        this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
+        this.countryroute=sessionStorage.getItem('countryroute')
+        this.serhl=false;this.jhl=false;this.fhl=false;this.fachl=false;this.mhl=false;this.reqhl=false;this.reshl=false;this.apphl=false;this.pnshl=false,this.sphl=false,this.revalhl=false;
       this.serin=false;this.jin=false;this.fin=false;this.facin=false;this.min=false;this.reqin=false;this.resin=false;this.appin=false;this.pnsin=false,this.spin=false,this.revalin=false;
-      
+     
+        
+          
       if (this.service=="services")
       {
         this.serhl=true
@@ -213,9 +203,7 @@ export class NavigationComponent implements OnInit {
         this.fin=true
         
       }
-
-
-      if (this.service=="services")
+        if (this.service=="services")
       {
         this.dataNav123 = { 
           "data": [
@@ -259,87 +247,115 @@ export class NavigationComponent implements OnInit {
         ]
       }}
     
-    this.ccode = this.cookie.getCookie('ccode').substring(6, 9);
-    this.countryroute=sessionStorage.getItem('countryroute')
-
     
-    
-    if (this.pcode== this.countryroute) {
-      this.pcountrydetails=sessionStorage.getItem('countrydetails')
-            console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code)
-      this.countryname = JSON.parse(this.pcountrydetails)
-      this.cloudantData = {
-        "code": this.ccode,
-        "name": this.countryname.name,
-        "isocode": this.countryname.isocode,
-        "isjabber": this.countryname.isjabber,
-        "isfixedphone": this.fixphoneVisibility,
-        "isfac": this.countryname.isfac,
-        "ismobile": this.countryname.ismobile,
-        "isspecial": this.countryname.isspecial,
-        "isreval": this.countryname.isreval,
-        "isapproval":this.countryname.isapproval,
-        "isjabbernew":this.countryname.isjabbernew,
-        "isjabberdelete":this.countryname.isjabberdelete,
-        "isjabbermove":this.countryname.isjabbermove,
-        "isjabberupdate":this.countryname.isjabberupdate,
-        "isphonenumbersearch":this.countryname.isphonenumbersearch
-
-       
-      } 
-      //for lhs
-      this.dataNavParent=this.dataNav123
-      //end for lhs  
-      this.dataNav123 = this.dataNav123
-      this.dataNavParent=this.dataNav123
-      this.removeServices()
-      
-    }
-    else {
-      console.log("navigation componentelse" + this.ccode);
-      this.loggedinuser = this.cookie.getCookie('ccode');
-      this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
-        console.log('Response received navigation', data.countrydetails.isspecial);
-        this.countryname = data.countrydetails;
-        sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
-        sessionStorage.setItem('countryroute', this.pcode);
-        if(this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
-          if(this.countryname.auth_fixphone.includes(this.loggedinuser)) {
-          this.fixphoneVisibility = true;
+      this.loggedinuser = this.cookie.getCookie('ccode')
+        if (this.pcode== this.countryroute) {
+          this.pcountrydetails=sessionStorage.getItem('countrydetails')
+                console.log("navigationsession storageif" + JSON.parse(this.pcountrydetails).code)
+          this.countryname = JSON.parse(this.pcountrydetails)
+          if(this.countryname.fixphone_visibility !== undefined && this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+            if(this.countryname.auth_fixphone.includes(this.loggedinuser)) {
+            this.fixphoneVisibility = true;
+            } else {
+              this.fixphoneVisibility = false;
+            }
           } else {
-            this.fixphoneVisibility = false;
+            this.fixphoneVisibility = this.countryname.isfixphone;
+            
           }
-        } else {
-          this.fixphoneVisibility = this.parcountrydetails.isfixphone;
+        
+          this.cloudantData = {
+            "code": this.ccode,
+            "name": this.countryname.name,
+            "isocode": this.countryname.isocode,
+            "isjabber": this.countryname.isjabber,
+            "isfixedphone": this.fixphoneVisibility,
+            "isfac": this.countryname.isfac,
+            "ismobile": this.countryname.ismobile,
+            "isspecial": this.countryname.isspecial,
+            "isreval": this.countryname.isreval,
+            "isapproval":this.countryname.isapproval,
+            "isjabbernew":this.countryname.isjabbernew,
+            "isjabberdelete":this.countryname.isjabberdelete,
+            "isjabbermove":this.countryname.isjabbermove,
+            "isjabberupdate":this.countryname.isjabberupdate,
+            "isphonenumbersearch":this.countryname.isphonenumbersearch
+    
+           
+          } 
+          //for lhs
+          this.dataNavParent=this.dataNav123
+          //end for lhs  
+          
+          this.dataNav123 = this.dataNav123
+          this.dataNavParent=this.dataNav123
+          this.removeServices()
+          this.display=true
         }
-        this.cloudantData = {
-        "code": this.pcode,
-        "name": this.countryname.name,
-        "isocode": this.countryname.isocode,
-        "isjabber": this.countryname.isjabber,
-        "isfixedphone": this.fixphoneVisibility,
-        "isfac": this.countryname.isfac,
-        "ismobile": this.countryname.ismobile, 
-        "isspecial": this.countryname.isspecial,          
-        "isreval": this.countryname.isreval,
-        "isapproval":this.countryname.isapproval,
-        "isjabbernew":this.countryname.isjabbernew,
-        "isjabberdelete":this.countryname.isjabberdelete,
-        "isjabbermove":this.countryname.isjabbermove,
-        "isjabberupdate":this.countryname.isjabberupdate,
-        "isphonenumbersearch":this.countryname.isphonenumbersearch
-        }   
-        this.dataNavParent=this.dataNav123
-      //end for lhs
-      this.dataNav123 = this.dataNav123
-      this.dataNavParent=this.dataNav123
-      this.removeServices()     
-      });
-      //for lhs
-      
-      
-    }
+        else {
+         
+          this.display=false
+          console.log("navigation componentelse" + this.ccode);
+          this.loggedinuser = this.cookie.getCookie('ccode');
+          this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
+            
+            this.countryname = data.countrydetails;
+            sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
+            sessionStorage.setItem('countryroute', this.pcode);
+           
+            this.fixphoneVisibility = false;
+            if(this.countryname.fixphone_visibility !== undefined && this.countryname.fixphone_visibility == false) { //Add country pcode here if ACL Applicable
+              if(this.countryname.auth_fixphone.includes(this.loggedinuser)) {
+              this.fixphoneVisibility = true;
+              } else {
+                this.fixphoneVisibility = false;
+              }
+            } else {
+              
+              this.fixphoneVisibility = this.countryname.isfixphone;
+              
+            }
+            
+            this.cloudantData = {
+            "code": this.pcode,
+            "name": this.countryname.name,
+            "isocode": this.countryname.isocode,
+            "isjabber": this.countryname.isjabber,
+            "isfixedphone": this.fixphoneVisibility,
+            "isfac": this.countryname.isfac,
+            "ismobile": this.countryname.ismobile, 
+            "isspecial": this.countryname.isspecial,          
+            "isreval": this.countryname.isreval,
+            "isapproval":this.countryname.isapproval,
+            "isjabbernew":this.countryname.isjabbernew,
+            "isjabberdelete":this.countryname.isjabberdelete,
+            "isjabbermove":this.countryname.isjabbermove,
+            "isjabberupdate":this.countryname.isjabberupdate,
+            "isphonenumbersearch":this.countryname.isphonenumbersearch
+            }   
+            this.dataNavParent=this.dataNav123
+          //end for lhs
+          this.dataNav123 = this.dataNav123
+          this.dataNavParent=this.dataNav123
+          
+          this.removeServices() 
+         
+          this.display=true   
+          });
+          //for lhs
+          
+          
+        }
+    
+        
+        
+       
 
+
+      
+    
+    
+    
   })
   }
 
