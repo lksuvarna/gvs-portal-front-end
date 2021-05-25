@@ -144,7 +144,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
      
     if((this.defaultlocation==false)){
     if((formData.value.Location.toUpperCase() == 'SELECT ONE' || formData.value.Location == '') && (this.defaultlocation==false)) {
-      alert(this.mainConfiguration.alerttranslation.selectlocation);
+      alert(this.mainConfiguration.alerttranslation.selectlocationsp);
       return;
     }
   }
@@ -233,7 +233,9 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.service=params.service;	
       this.pcode = params.country;	
       console.log("navigation component" + this.pcode);	
+      sessionStorage.setItem('serviceName', this.service);
     })	
+
      // Submit to Snow Jabber new code added by Swarnava	
      this.orgi=this.cookie.getCookie('ccode');	
      this.cnum = sessionStorage.getItem('cnum') ;	
