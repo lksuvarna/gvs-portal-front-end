@@ -87,6 +87,7 @@ const appRoutes: Routes = [
     { path: 'employeesearchdelete', component: EmployeesearchVoipDeleteComponent},
     { path: 'employeesearchres', component: EmployeesearchComponent},
     { path: 'employeesearchreq', component: EmployeesearchComponent},
+    { path: 'employeesearchsp', component: EmployeesearchComponent},
     { path: 'revalidationpending', component: ApprovalpendingComponent},
     { path: 'approvalpending', component: ApprovalpendingComponent},
     { path: 'entrydetailsla', component: VoipLaNewComponent},
