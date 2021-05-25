@@ -52,6 +52,9 @@ export class VoipUsaUpdateComponent implements OnInit {
   selected_jabber ="";
   account_id="";
   mainConfiguration :any;
+  dbdata : any;
+  data : any;
+
 
   payload : Jabber_Update = new Jabber_Update();
   cache : Create_Cache_jabber = new Create_Cache_jabber();
@@ -122,7 +125,7 @@ export class VoipUsaUpdateComponent implements OnInit {
       this.payload.icano_Disp = '' ;	
       //this.payload.Department_number_Disp = this.chargeDisp;
       this.payload.accid_Disp = this.accountid_Disp;
-      this.payload.Identifier_Selected = this.jabberDisp;
+      this.payload.Identifier_Selected = this.jabberDisp.substring(0,8);
       this.payload.updated_for = '';
       this.payload.ReqNo=this.reqno;	
   
@@ -186,9 +189,15 @@ export class VoipUsaUpdateComponent implements OnInit {
       this.identifier = sessionStorage.getItem('identifier')?.replace(" ","");
     }
     else {
-      this.identifier = sessionStorage.getItem('identifier')
-      this.identifier = this.identifier.split(',');
-      this.Jabber = [...this.identifier];
+      // this.identifier = sessionStorage.getItem('identifier')
+      // this.identifier = this.identifier.split(',');
+      // this.Jabber = [...this.identifier];
+      this.dbdata=sessionStorage.getItem('identifier');
+      console.log(JSON.parse(this.dbdata).identifier);    
+      var parsed = JSON.parse(JSON.stringify(JSON.parse(this.dbdata)));
+      this.data = parsed;   
+      console.log("data of display");
+      console.log(this.data);
     }
     this.route.queryParams	
     .subscribe(params => {	
@@ -214,7 +223,7 @@ export class VoipUsaUpdateComponent implements OnInit {
   const servicesData = { 	
     "data": [	
       {    		
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+        "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"], 
         "step" : 3,	
         
       }	

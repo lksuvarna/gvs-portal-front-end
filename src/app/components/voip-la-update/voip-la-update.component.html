@@ -47,8 +47,10 @@
                                 <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" (change)='SelectedJabber(number.value)' tabindex="1"
                                     #number ngModel [(ngModel)]='selected_jabber'>
                   <option value="">SELECT ONE</option>
-                  <option name="Jabber_1" *ngFor='let fl_itn of Jabber; let i = index' [value]='fl_itn' selected>
-                    {{ fl_itn }}</option>
+                <!--  <option name="Jabber_1" *ngFor='let fl_itn of Jabber; let i = index' [value]='fl_itn' selected>
+                    {{ fl_itn }}</option>-->
+                    <option name="Jabber_1" *ngFor='let fl of data'  [value]='fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?fl.IDENTIFIER.trim()+"-P":fl.IDENTIFIER.trim()' selected>
+                        {{ fl.IDENTIFIER.trim()}}{{fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?" - P":''}}</option>
                 </select>
                             </div>
                         </td>

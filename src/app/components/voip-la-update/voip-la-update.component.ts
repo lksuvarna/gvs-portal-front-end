@@ -74,6 +74,9 @@ export class VoipLaUpdateComponent implements OnInit {
   selectcos="";
   cache_tmp:  any = [];
   selected_jabber ="";
+  dbdata : any;
+  data : any;
+  vm_actual: any;
   
   mainConfiguration :any;
   businessjustification : any="";
@@ -120,6 +123,7 @@ export class VoipLaUpdateComponent implements OnInit {
 
   }
  SelectedJabber(jabber:any) {
+   jabber=jabber.substring(0,8);
    if((jabber != "")){
      this.hideChargeDept = false;
      this.currentVoiceMail=false;
@@ -190,8 +194,14 @@ export class VoipLaUpdateComponent implements OnInit {
         return;
       }
     }
+    
+    if(this.vm_disp.toUpperCase()=="YES" ||this.vm_disp.toUpperCase()=="Y")
+    this.vm_actual="Yes"
 
-    if(formData.value.Voice_Mail==this.vm_disp){
+    if(this.vm_disp.toUpperCase()=="NO" ||this.vm_disp.toUpperCase()=="N")
+    this.vm_actual="No"
+
+    if(formData.value.Voice_Mail==this.vm_actual){
       alert('Current and New Voice Mail cannot be same');
         return;
     }
@@ -281,7 +291,7 @@ export class VoipLaUpdateComponent implements OnInit {
      // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
       this.payload.Department_number_Disp = '';
       this.payload.accid_Disp = '';
-      this.payload.Identifier_Selected = this.jabberDisp;
+      this.payload.Identifier_Selected = this.jabberDisp.substring(0,8);
       this.payload.updated_for = '';
       this.payload.ReqNo=this.reqno;
       this.payload.Current_COS=this.cos_disp;
@@ -334,9 +344,15 @@ export class VoipLaUpdateComponent implements OnInit {
       this.identifier = sessionStorage.getItem('identifier')?.replace(" ","");
     }
     else {
-      this.identifier = sessionStorage.getItem('identifier')
+      this.identifier = sessionStorage.getItem('update_itn')
       this.identifier = this.identifier.split(',');
       this.Jabber = [...this.identifier];
+      this.dbdata=sessionStorage.getItem('identifier');
+      console.log(JSON.parse(this.dbdata).identifier);    
+      var parsed = JSON.parse(JSON.stringify(JSON.parse(this.dbdata)));
+      this.data = parsed;   
+      console.log("data of display");
+      console.log(this.data);
       this.css=sessionStorage.getItem('cos');
       this.css=this.css.split(',');
       this.cos=[... this.css];
@@ -372,7 +388,7 @@ export class VoipLaUpdateComponent implements OnInit {
   const servicesData = { 	
     "data": [	
       {    		
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+        "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"], 
         "step" : 3,	
         
       }	

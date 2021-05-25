@@ -105,7 +105,7 @@ export class MiddleframeComponent implements OnInit {
         "isjabbermove":this.countryname.isjabbermove,
         "isjabberupdate":this.countryname.isjabberupdate
         }
- });
+      });
 
     }
       const servicesData = { 
@@ -135,7 +135,7 @@ export class MiddleframeComponent implements OnInit {
     }
       
       this.servicesData = servicesData.data[0]
-  })
+    })
       }
   
     }

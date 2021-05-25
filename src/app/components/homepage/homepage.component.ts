@@ -26,15 +26,24 @@ export class HomepageComponent implements OnInit {
     visibility: true
   }
 
-  constructor(private Service: ConnectCucdmService,private cookie: CookieHandlerService,private bpservice :bpservices,private cloudantservice:cloudantservice, private translateconfigservice : TranslateConfigService) { }
+  constructor(private Service: ConnectCucdmService,private cookie: CookieHandlerService,private bpservices :bpservices,private cloudantservice:cloudantservice, private translateconfigservice : TranslateConfigService) { }
   res_rec ='';
   fullName:any
   userDetails:any;
   uname='';
+  employeeSerial:any;
   countryname:any;
+  homepagecodesCA:any;
+  codeCA:any;
+  tscode:any
   translatecountryname :any;
   translatecountryname1 :boolean =false;
   ccode='';
+  testusercode:any
+  countrydetails:any;
+  countrynamehome:any;
+  employeeInfo:any
+  display=false
   fixphoneVisibility:any;
   loggedinuser:any;
   searchData:any = [];
@@ -67,14 +76,52 @@ export class HomepageComponent implements OnInit {
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
     this.fullName = this.fullName.replace(","," ");
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
+    this.employeeSerial=this.ccode;
     this.loggedinuser = this.cookie.getCookie('ccode');
+    this.display=false;
+    this.cloudantservice.getcountrydetails('000').subscribe(data=> {
+      this.countrynamehome=data.countrydetails;
+      if (data.countrydetailshome.homepagecodesCA.includes(this.ccode)){
+        this.ccode=data.countrydetailshome.codeCA
+      }
+    })
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       console.log('Response received', data.countrydetails.name);
       this.countryname=data.countrydetails;
-      let countrydetails=data.countrydetails;
+       this.countrydetails=JSON.stringify(data.countrydetails)
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.ccode);
       sessionStorage.setItem('pagedisplay','homepage')
+      this.display=true;
+      console.log("testuser"+data.countrydetails.testuser)
+      if (data.countrydetails.testuser){
+        this.employeeSerial=data.countrydetails.testuser;
+        this.cloudantservice.getcountrydetails('000').subscribe(data=> {
+          this.countrynamehome=data.countrydetails;
+          console.log("canada codes"+data.countrydetails.homepagecodesCA+data.countrydetails.codeCA)
+          console.log("testusercod"+this.ccode)
+          if (data.countrydetails.homepagecodesCA.includes(this.employeeSerial.substring(6,9))){
+            
+            this.testusercode=data.countrydetails.codeCA
+            console.log("testusercod1"+this.testusercode)
+          }
+          else{
+            this. testusercode=this.employeeSerial.substring(6,9)
+            console.log("testusercod2"+this.testusercode)
+          }
+          this.cloudantservice.getcountrydetails(this.testusercode).subscribe(data=> {
+            if(data){
+             console.log('Response received', data.countrydetails.name);
+             this.countryname=data.countrydetails;
+             this.getBPData();
+           }
+           })
+
+        }
+        
+        )
+        
+      }
       
       this.translatecountryname = this.countryname.name;
       if (this.translatecountryname == 'Canada/Caribbean'){
@@ -84,13 +131,6 @@ export class HomepageComponent implements OnInit {
           this.translatecountryname1 = false;
         }
 
-  
-    //   this.searchItems = [
-    //    {"name" : "India : Jabber", "flag" : "././assets/flags/744.png", "code": "744", "path": "jabberservices", "visibility":true},
-    //    {"name" : "India : Fixed Phone", "flag" : "././assets/flags/744.png", "code": "744", "path": "fixedphoneservices", "visibility": this.fixphoneVisibility},
-    //    {"name" : "India : FAC", "flag" : "././assets/flags/744.png", "code": "744", "path": "facservices", "visibility": true},
-    //  ]
-       
      }); 
 
      this.cloudantservice.getcountrysearchdetails(this.ccode).subscribe(data =>{
@@ -133,11 +173,28 @@ export class HomepageComponent implements OnInit {
         // alert(JSON.stringify(this.searchItems))
       });
       
-      this.searchItems.sort((a: any,b: any): any => b.name.toLowerCase() < a.name.toLowerCase());
+      this.searchItems.sort((a: any,b: any) : any => a.name.localeCompare(b.name));
     })
 
   } 
-
+  getBPData(): any {
+    console.log(' this.employeeSerial', this.fullName);
+    this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
+      console.log(' this.employeeSerial', this.employeeSerial);
+      console.log(' BP Details', data.userdata);
+      
+      if (data.userdata ) {
+        var ename =   data.username.preferredfirstname+" "+data.username.preferredlastname 
+        var ename1 =  data.username.preferredlastname+", "+data.username.preferredfirstname
+        if (data.username.preferredlastname == undefined || data.username.preferredfirstname == undefined) {
+          ename = data.username.callupname
+          ename1=data.username.callupname
+        }
+         this.fullName=ename;
+         sessionStorage.setItem('testusername',ename1)
+      }
+    });
+  }
   getVisibility (data : any){
     if(data.fixphone_visibility == false) {
       if(data.auth_fixphone.includes(this.loggedinuser)) {

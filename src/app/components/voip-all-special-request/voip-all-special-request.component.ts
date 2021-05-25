@@ -112,6 +112,8 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       if(e.target.value.toUpperCase()=='SELECT ONE' || e.target.value.trim()==''){
         this.fl_location='';
         this.defaultlocation=false;
+        this.locationselected='';
+        
       }else{
         if(this.data[this.index].ATTRIBUTE7=='' || this.data[this.index].ATTRIBUTE7==null)
         this.default_location='NA'
@@ -142,7 +144,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
      
     if((this.defaultlocation==false)){
     if((formData.value.Location.toUpperCase() == 'SELECT ONE' || formData.value.Location == '') && (this.defaultlocation==false)) {
-      alert(this.mainConfiguration.alerttranslation.selectlocation);
+      alert(this.mainConfiguration.alerttranslation.selectlocationsp);
       return;
     }
   }
@@ -231,7 +233,9 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.service=params.service;	
       this.pcode = params.country;	
       console.log("navigation component" + this.pcode);	
+      sessionStorage.setItem('serviceName', this.service);
     })	
+
      // Submit to Snow Jabber new code added by Swarnava	
      this.orgi=this.cookie.getCookie('ccode');	
      this.cnum = sessionStorage.getItem('cnum') ;	
@@ -285,7 +289,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
     "data": [	
       {    	
         
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+        "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"], 
         "step" : 3,	
         
       }	

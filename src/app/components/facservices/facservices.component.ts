@@ -43,19 +43,14 @@ export class FacservicesComponent implements OnInit {
         this.linkv=this.countrydetails.facservices
       }      
    
-      if (this.countryroute === '744' || this.countryroute === '652' ) {
-        this.facIn = true
-      } else {
-        this.facIn = false
-      }
-    
+      
       const servicesData = { 
       "data": [
         {    
           "lhs": [
             {"name" : "Services","routingname":"/services", "indented" : true, "highlighted": false},
             {"name" : "Jabber","routingname":"/services", "indented" : true, "highlighted": false}, 
-            {"name" : "FAC","routingname":"/services", "indented" : true, "highlighted": true}, 
+            {"name" : "FAC Code / IDD PIN","routingname":"/services", "indented" : true, "highlighted": true}, 
             {"name" : "Fixed Phone","routingname":"/services", "indented" : true, "highlighted": false},
             {"name" : "Special Request","routingname":"/services", "indented" : true, "highlighted": false},            
             {"name" : "Approvals Pending","routingname":"/inprogress", "indented" : false, "highlighted": false},
@@ -63,7 +58,7 @@ export class FacservicesComponent implements OnInit {
             {"name" : "Resources","routingname":"/inprogress", "indented" : false, "highlighted": false},
             {"name" : "Requests","routingname":"/requests", "indented" : false, "highlighted": false}
           ],
-          "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+          "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"], 
         }]
     }
       

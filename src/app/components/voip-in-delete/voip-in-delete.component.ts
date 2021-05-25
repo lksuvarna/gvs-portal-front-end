@@ -45,6 +45,8 @@ export class VoipInDeleteComponent implements OnInit {
   cache_tmp:  any = [];
   selected_jabber ="";
   textSuggetion: any;
+  dbdata : any;
+  data : any;
 
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
@@ -103,7 +105,7 @@ export class VoipInDeleteComponent implements OnInit {
       this.payload.ReqNo=this.reqno;	
   
       // fields to be picked up from form -- ends	
-      this.payload.Identifier_Disp=this.selectedJabber	      	
+      this.payload.Identifier_Disp=this.selectedJabber.substring(0,8)	      	
       this.payload.countryname=this.countrydetails.name;	
       this.payload.request_type='jabber_delete';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;    
@@ -163,16 +165,27 @@ this.warninginfosnow=true
 this.identifier=sessionStorage.getItem('identifier')
     }
     else{
-      this.identifier=sessionStorage.getItem('identifier');
-      this.identifier = this.identifier.split(',');
-      this.Jabber = [...this.identifier];
-      //this.Jabber.push(this.identifier)
+    //  this.identifier=sessionStorage.getItem('identifier');
+      //this.identifier = this.identifier.split(',');
+      //this.Jabber = [...this.identifier];
+    this.dbdata=sessionStorage.getItem('identifier');
+    console.log(JSON.parse(this.dbdata).identifier);    
+    var parsed = JSON.parse(JSON.stringify(JSON.parse(this.dbdata)));
+    this.data = parsed;   
+    console.log("data of display");
+    console.log(this.data);
     }
+
+  
+    
+    
+   
+
   const servicesData = { 	
     "data": [	
       {    	
         
-        "services" : ["Jabber", "Fixed Phone", "FAC Code","Special Request"], 
+        "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request"], 
         "step" : 3,	
         
       }	

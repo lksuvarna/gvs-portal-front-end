@@ -1,4 +1,4 @@
-<div class="ds-row ds-pad-t-1 ds-pad-b-2">
+<div class="ds-row ds-pad-t-1 ds-pad-b-2" *ngIf="display">
     <div class="ds-panel ds-bg-neutral-warm-1 ds-no-border ">
         <ul class="ds-list-unstyled ds-hover">
             <li *ngFor="let nav of dataNav123.data[0].lhs; let i=index" [ngClass]="i==selectedItem ? getNavActiveClass(i) : getNavClass(i) ">

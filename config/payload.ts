@@ -843,6 +843,7 @@ showSearch !: boolean;
 showerrormessage !: boolean;
 hideNext !: boolean;
 hideSteps !: boolean;
+hideNextButton !: boolean;
 
 Create_Cache_fixedphone(){
     
@@ -882,6 +883,7 @@ Create_Cache_fixedphone(){
     this.showerrormessage=false;
     this.hideNext=true;
     this.hideSteps=false;
+    this.hideNextButton = true;
     }
 
 }
