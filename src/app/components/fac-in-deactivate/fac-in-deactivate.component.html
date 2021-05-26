@@ -16,8 +16,8 @@
             <b *ngIf="facIn" translate>servicestitle.FAC Code / IDD PIN Delete Request</b>
             <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD PIN - Delete Request</b>
 
-            <div class="ds-pad-t-0_5 ds-pad-b-1" *ngIf="warninginfo !=true && warninginfosnow != true">
-                By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. </div>
+            <div class="ds-pad-t-0_5 ds-pad-b-1" >
+            <label *ngIf="warninginfo !=true && warninginfosnow != true"> By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.</label> </div>
             <div class=" ds-panel ds-col-12 "></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
