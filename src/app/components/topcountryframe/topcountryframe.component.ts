@@ -107,6 +107,13 @@ export class TopcountryframeComponent implements OnInit {
          //   queryParams: {}
          });}
         }
+        if(this.service.includes('revalidationpending')){
+          if ( this.countryname.isreval){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
 
         if(this.service.includes('specialrequest')){
           if ( this.countryname.isspecial){}
@@ -218,7 +225,13 @@ export class TopcountryframeComponent implements OnInit {
          //   queryParams: {}
          });}
         }
-        
+        if(this.service.includes('revalidationpending')){
+          if ( this.countryname.isreval){}
+          else{sessionStorage.setItem('pagedisplay','pagenotfound')
+          this.router.navigate(['**'], {
+         //   queryParams: {}
+         });}
+        }
         if(this.service.includes('specialrequest')){
           if ( this.countryname.isspecial){}
           else{sessionStorage.setItem('pagedisplay','pagenotfound')

@@ -47,6 +47,7 @@ export class HomepageComponent implements OnInit {
   fixphoneVisibility:any;
   loggedinuser:any;
   searchData:any = [];
+  list:any = [];
 
   generate(cnum : string): void{
     console.log(cnum);
@@ -81,8 +82,18 @@ export class HomepageComponent implements OnInit {
     this.display=false;
     this.cloudantservice.getcountrydetails('000').subscribe(data=> {
       this.countrynamehome=data.countrydetails;
-      if (data.countrydetailshome.homepagecodesCA.includes(this.ccode)){
+      
+      if (data.countrydetailshome.this.homepagecodesCA.includes(this.ccode)){
         this.ccode=data.countrydetailshome.codeCA
+      }
+      if (data.countrydetailshome.this.homepagecodesLA.includes(this.ccode)){
+        this.ccode=data.countrydetailshome.codeLA
+      }
+      if (data.countrydetailshome.this.homepagecodesPH.includes(this.ccode)){
+        this.ccode=data.countrydetailshome.codePH
+      }
+      if (data.countrydetailshome.this.homepagecodesCN.includes(this.ccode)){
+        this.ccode=data.countrydetailshome.codeCN
       }
     })
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
@@ -104,10 +115,24 @@ export class HomepageComponent implements OnInit {
             
             this.testusercode=data.countrydetails.codeCA
             console.log("testusercod1"+this.testusercode)
+            this.ccode=data.countrydetails.codeCA
+          }
+          else if (data.countrydetails.homepagecodesLA.includes(this.employeeSerial.substring(6,9))){
+            this.testusercode=data.countrydetails.codeLA
+            this.ccode=data.countrydetailshome.codeLA
+          }
+          else if (data.countrydetails.homepagecodesPH.includes(this.employeeSerial.substring(6,9))){
+            this.testusercode=data.countrydetails.codePH
+            this.ccode=data.countrydetailshome.codePH
+          }
+          else if (data.countrydetails.homepagecodesCN.includes(this.employeeSerial.substring(6,9))){
+            this.testusercode=data.countrydetails.codeCN
+            this.ccode=data.countrydetailshome.codeCN
           }
           else{
             this. testusercode=this.employeeSerial.substring(6,9)
             console.log("testusercod2"+this.testusercode)
+            this.ccode=this.employeeSerial.substring(6,9)
           }
           this.cloudantservice.getcountrydetails(this.testusercode).subscribe(data=> {
             if(data){
