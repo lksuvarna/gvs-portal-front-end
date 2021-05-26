@@ -1,7 +1,7 @@
 <app-topcountryframe></app-topcountryframe>
 
 
-<div class=" ds-panel ds-col-12"></div>
+
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
@@ -24,10 +24,11 @@
             </div>
             <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
                 <p><span style="font-size: 1rem;"><span translate>employeeinfotrans.alreadyonedeleterequestinprogress</span> {{identifier}}.<br>
-    
-    <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>              
-    
-    <span translate>employeeinfotrans.furtherassistance</span> <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+
+                    <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>
+
+                    <span translate>employeeinfotrans.furtherassistance</span> <a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span>
+                </p>
             </div>
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false ">
                 <tbody>

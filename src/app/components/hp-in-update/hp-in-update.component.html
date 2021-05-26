@@ -1,6 +1,6 @@
 <app-topcountryframe></app-topcountryframe>
 
-<div class=" ds-panel ds-col-12"></div>
+
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
@@ -116,7 +116,7 @@
                         <td width="50%">
                             <div id="model1" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1" (change)="checkModel(newModel)"><br>
                                 <!-- <input name="" type="hidden" value="1"> -->
-                                <select name="NewModel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;"  title="Phone Model" [(ngModel)]='newModel'>
+                                <select name="NewModel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Phone Model" [(ngModel)]='newModel'>
                                 <option value="" >Select One</option>
                                 <option name="NewModel" *ngFor='let model of models' [value]='model'>{{ model }}</option>
                             </select>
@@ -129,8 +129,7 @@
                             <label class="">New MAC address<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
-                            <input name="MAC1" value="" class="ds-input ds-pad-b-1" style="width:300px !important;" title="New MAC Address" 
-                            maxlength="12;" ngModel [(ngModel)]='newMacAddress'>
+                            <input name="MAC1" value="" class="ds-input ds-pad-b-1" style="width:300px !important;" title="New MAC Address" maxlength="12;" ngModel [(ngModel)]='newMacAddress'>
                             <label>Note:Combination of (0 to 9 , A to F) and Length:12</label>
                         </td>
                     </tr>
@@ -160,7 +159,7 @@
             <table id="t2" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
                 <tbody>
                     <tr valign="top" *ngIf='showLocation'>
-                        <td  width="50%"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
+                        <td width="50%"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="50%" class="ds-pad-t-1">
@@ -174,10 +173,10 @@
                         </td>
                     </tr>
 
-                    
+
 
                     <tr valign="top" *ngIf='hideBuilding' class="ds-pad-t-1">
-                        <td  width="50%"><label for="builId" class="ds-text-capitalize"> Campus</label>
+                        <td width="50%"><label for="builId" class="ds-text-capitalize"> Campus</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%">
