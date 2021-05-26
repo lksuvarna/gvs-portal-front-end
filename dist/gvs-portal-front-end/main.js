@@ -13409,11 +13409,11 @@ class VoipAllSpecialRequestComponent {
     checkOthers(e) {
         if (e.target.value.toUpperCase() == 'OTHERS') {
             this.others = true;
-            this.hideSteps = true;
+            //  this.hideSteps = true;
         }
         else {
             this.others = false;
-            this.hideSteps = false;
+            //  this.hideSteps = false;
         }
     }
     entryDetails(formData) {
@@ -13549,11 +13549,11 @@ class VoipAllSpecialRequestComponent {
                 this.selected_jabber = String(this.cache_disp.selected_jabber);
             if (this.cache_disp.officeLocation == 'Others') {
                 this.others = true;
-                this.hideSteps = true;
+                // this.hideSteps = true;
             }
             else {
                 this.others = false;
-                this.hideSteps = false;
+                //this.hideSteps = false;
             }
             if (this.cache_disp.campus == '' || this.cache_disp.campus == undefined) {
                 this.defaultlocation = false;
