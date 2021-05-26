@@ -19469,6 +19469,15 @@ class TopcountryframeComponent {
                         });
                     }
                 }
+                if (this.service.includes('revalidationpending')) {
+                    if (this.countryname.isreval) { }
+                    else {
+                        sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                        this.router.navigate(['**'], {
+                        //   queryParams: {}
+                        });
+                    }
+                }
                 if (this.service.includes('specialrequest')) {
                     if (this.countryname.isspecial) { }
                     else {
@@ -19571,6 +19580,15 @@ class TopcountryframeComponent {
                     }
                     if (this.service.includes('mobileservices')) {
                         if (this.countryname.mobileservices) { }
+                        else {
+                            sessionStorage.setItem('pagedisplay', 'pagenotfound');
+                            this.router.navigate(['**'], {
+                            //   queryParams: {}
+                            });
+                        }
+                    }
+                    if (this.service.includes('revalidationpending')) {
+                        if (this.countryname.isreval) { }
                         else {
                             sessionStorage.setItem('pagedisplay', 'pagenotfound');
                             this.router.navigate(['**'], {
