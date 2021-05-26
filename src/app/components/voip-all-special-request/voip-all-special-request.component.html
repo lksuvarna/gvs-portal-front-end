@@ -60,7 +60,7 @@
                         <td width="53%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="Location" rows="2" (change)='checkOthers($event)' [(ngModel)]="locationselected" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.JabberLocationslect' | translate}}">
-                            <option value ="" selected translate>Jabberupdate.SELECTONE</option>
+                            <option value ="" *ngIf="disable==false" selected translate>Jabberupdate.SELECTONE</option>
                                 <option name="Location" *ngFor="let fl_location of locationlist"  [value]="fl_location">
                                     {{ fl_location }}</option>
                             </select>
