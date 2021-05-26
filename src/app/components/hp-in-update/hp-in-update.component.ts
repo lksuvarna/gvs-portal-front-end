@@ -364,7 +364,6 @@ export class HpInUpdateComponent implements OnInit {
       // this.reviewDetailsIndia.campus = this.campus;
     }
     this.create_cache(formData);
-    alert("in cache");
     console.log(formData);
  
 
