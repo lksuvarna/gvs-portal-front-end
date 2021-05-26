@@ -36,57 +36,57 @@
               href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
             </div>
 
-            <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
+            <table id="t2" width="110%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_loc" class="ds-text-capitalize"> Current Office Location </label>
+                        <td height="10"><label for="current_loc" class="ds-text-capitalize"> Current Office Location </label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <div class="ds-input-container">
                                 <span>{{currLocation1}}-{{currBuilding}}</span></div>
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current Charge Dept Code </label>
+                        <td height="10"><label for="current_cos" class="ds-text-capitalize"> Current Charge Dept Code </label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <div class="ds-input-container">
                                 <span>{{currChargeDeptCode}}</span></div>
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current Authorization Level </label>
+                        <td height="10"><label for="current_cos" class="ds-text-capitalize"> Current Authorization Level </label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <div class="ds-input-container">
                                 <span>{{currAuthorizationLevel}}</span></div>
                         </td>
                     </tr>
 
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current FAC Code / IDD PIN Type </label>
+                        <td height="10"><label for="current_cos" class="ds-text-capitalize"> Current FAC Code / IDD PIN Type </label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <div class="ds-input-container">
                                 <span>{{currFACCodeType}}</span></div>
                         </td>
                     </tr>
 
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current Validity </label>
+                        <td height="10"><label for="current_cos" class="ds-text-capitalize"> Current Validity </label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <div class="ds-input-container">
                                 <span>{{currvalidity}}</span></div>
                         </td>
                     </tr>
 
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10">
+                        <td height="10">
                             <label for="updaterequested" class="ds-text-capitalize"> Update Required for </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <div class="ds-input-container">
                                 <div class="ds-input-checkbox-group" role="group" aria-labelledby="basic-checkboxes-example">
                                     <div class="ds-input-checkbox">
@@ -109,10 +109,10 @@
                         </td>
                     </tr>
                     <tr valign="top" [hidden]='newLocation'>
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
+                        <td height="10"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location (change)='selectedLocation(location.value)' [(ngModel)]='Location_1'>
                                     <option value ="">Select One</option>
@@ -125,10 +125,10 @@
 
 
                     <tr valign="top" [hidden]='newLocation || hideBuilding'>
-                        <td colspan="2" width="46%"><label for="builId" class="ds-text-capitalize"> Campus</label>
+                        <td><label for="builId" class="ds-text-capitalize"> Campus</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="54%">
+                        <td class="ds-pad-l-2">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="Buildings" rows="2" cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" [(ngModel)]='Buildings'>
                                     <option value ="">Select One</option>
@@ -139,9 +139,9 @@
                     </tr>
 
                     <tr valign="top" [hidden]='newFunded'>
-                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize ds-padding-top-2">Funded</label>
+                        <td><label for="addId" class="ds-text-capitalize ds-padding-top-2">Funded</label>
                         </td>
-                        <td width="54%">
+                        <td class="ds-pad-l-2">
                             <div class="ds-mar-b-1">
                                 <div class="ds-input-radio-group">
                                     <label for="radio1" class="ds-input-radio ds-pad-r-1" style="display:inline">
@@ -158,11 +158,11 @@
                         </td>
                     </tr>
                     <tr valign="top" [hidden]='newFunded || hideDeptCode'>
-                        <td colspan="2" width="46%">
+                        <td>
                             <div id="d1"><label for="addId" class="ds-text-capitalize ds-pad-t-1">Charge Department
                   Code</label> <span class="ds-text-contextual-red-2">*</span></div>
                         </td>
-                        <td width="54%">
+                        <td class="ds-pad-l-2">
                             <div id="d21" class="ds-input-container ">
                                 <input name="chargeDepartmentCode" value="" id="d2" class="ds-input" style="width: 300px !important;" maxlength='6' title="Charge Department Code" [(ngModel)]="chargeDepartmentCode">
                                 <div id="Mentor1Div"></div>
@@ -171,11 +171,11 @@
                     </tr>
 
                     <tr valign="top" [hidden]='newAuthorizationLevel'>
-                        <td colspan="2" width="46%">
+                        <td>
                             <label for="LocationId" class=""> Authorization Level</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="54%">
+                        <td class="ds-pad-l-2">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="authLevel" rows="2" cols="40" id="authLevel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Authorization Level" [(ngModel)]="authLevel">
                                  <option value ="">Select One</option>
@@ -188,10 +188,10 @@
                     </tr>
 
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">  Business Justification</label>
+                        <td height="10"><label for="LocationId" class="ds-text-capitalize">  Business Justification</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <div class="ds-input-container">
                                 <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" maxlength='200' title="Business Justification" rows="2" cols="40" [(ngModel)]="businessjustification"></textarea></div>
                         </td>
@@ -234,83 +234,83 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top" *ngIf="this.currLocation">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Current Office Location </label>
+                        <td height="10"><label for="LocationId" class="ds-text-capitalize"> Current Office Location </label>
 
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <label>{{currLocation1}}-{{currBuilding}}</label>
                         </td>
                     </tr><br *ngIf="this.currLocation">
                     <tr valign="top" *ngIf="this.currChargeDeptCode">
-                        <td colspan="2" width="46%" height="10"><label for="current_vm" class="ds-text-capitalize"> Current Charge Dept Code </label>
+                        <td height="10"><label for="current_vm" class="ds-text-capitalize"> Current Charge Dept Code </label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <span>{{currChargeDeptCode}}</span>
                         </td>
                     </tr><br *ngIf="this.currChargeDeptCode">
 
                     <tr valign="top" *ngIf="this.currAuthorizationLevel">
-                        <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text-capitalize"> Current Authorization Level </label>
+                        <td height="10"><label for="current_cos" class="ds-text-capitalize"> Current Authorization Level </label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <span>{{currAuthorizationLevel}}</span>
                         </td>
                     </tr><br *ngIf="this.currAuthorizationLevel">
 
                     <tr valign="top" *ngIf="this.currFACCodeType">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Current FAC Code / IDD PIN Type</label>
+                        <td height="10"><label for="LocationId" class="ds-text-capitalize">Current FAC Code / IDD PIN Type</label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <label>{{currFACCodeType}}</label>
                         </td>
                     </tr><br *ngIf="this.currFACCodeType">
 
                     <tr valign="top" *ngIf="this.currvalidity">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Current Validity</label>
+                        <td height="10"><label for="LocationId" class="ds-text-capitalize">Current Validity</label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <label>{{currvalidity}}</label>
                         </td>
                     </tr><br *ngIf="this.currvalidity">
                     <tr valign="top" *ngIf="this.Location_1 && checked">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
+                        <td height="10"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <label>{{Location_1}}</label>
                         </td>
                     </tr><br *ngIf="this.Location_1 && checked">
                     <tr valign="top" *ngIf="this.Buildings && checked">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Campus</label>
+                        <td height="10"><label for="LocationId" class="ds-text-capitalize">Campus</label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <label>{{Buildings}}</label>
                         </td>
                     </tr><br *ngIf="this.Buildings && checked">
                     <tr valign="top" *ngIf="this.Funded && checked2">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Funded</label>
+                        <td height="10"><label for="LocationId" class="ds-text-capitalize">Funded</label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <label>{{Funded}}</label>
                         </td>
                     </tr><br *ngIf="this.Funded && checked2">
                     <tr valign="top" *ngIf="this.chargeDepartmentCode && checked2 && !hideDeptCode">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Charge Department Code</label>
+                        <td height="10"><label for="LocationId" class="ds-text-capitalize">Charge Department Code</label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <label>{{chargeDepartmentCode}}</label>
                         </td>
                     </tr><br *ngIf="this.chargeDepartmentCode && checked2 && !hideDeptCode">
                     <tr valign="top" *ngIf="this.authLevel && checked3">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Authorization Level</label>
+                        <td height="10"><label for="LocationId" class="ds-text-capitalize">Authorization Level</label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <label>{{authLevel}}</label>
                         </td>
                     </tr><br *ngIf="this.authLevel && checked3">
                     <tr valign="top" *ngIf="this.bj_disp">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Business Justification</label>
+                        <td height="10"><label for="LocationId" class="ds-text-capitalize">Business Justification</label>
                         </td>
-                        <td width="54%" height="10">
+                        <td class="ds-pad-l-2" height="10">
                             <label><span style="word-break:break-all;">{{bj_disp}}</span></label>
                         </td>
                     </tr>
