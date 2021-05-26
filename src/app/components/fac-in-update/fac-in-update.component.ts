@@ -169,7 +169,7 @@ export class FacInUpdateComponent implements OnInit {
         return;
       }
 
-      if(formData.value.Location_1.toLowerCase() + '~~' + formData.value.Buildings.toLowerCase() === this.currLocation.toLocaleLowerCase() ) {
+      if(formData.value.Location_1.toLowerCase().trim() + '~~' + formData.value.Buildings.toLowerCase().trim() === this.currLocation1.toLowerCase().trim() + '~~' + this.currBuilding.toLowerCase().trim()) {
         alert('Please provide a new campus');
         return;
       }
@@ -512,6 +512,7 @@ export class FacInUpdateComponent implements OnInit {
   selectedLocation(loc:String) {	
     this.build = [];	
     this.campus = '';	
+    this.Buildings = ''	
     //alert("Location"+loc);
     if(loc != '') {	
       this.hideBuilding = false;	
