@@ -1,7 +1,7 @@
 <app-topcountryframe></app-topcountryframe>
 
 
-<div class=" ds-panel ds-col-12"></div>
+
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
@@ -11,11 +11,11 @@
 
             <b translate>servicestitle.Update Jabber Request</b>
 
-      <div class="ds-pad-t-0_5 ds-pad-b-1">
-        <label *ngIf="warninginfo==false">Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</label>
-      </div>
-      
-      <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-pad-t-0_5 ds-pad-b-1">
+                <label *ngIf="warninginfo==false">Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</label>
+            </div>
+
+            <div class=" ds-panel ds-col-12 "></div>
 
             <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
 
@@ -44,8 +44,8 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" (change)='SelectedJabber(number.value)' tabindex="1"
-                                    #number ngModel [(ngModel)]='selected_jabber'>
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" (change)='SelectedJabber(number.value)'
+                                    tabindex="1" #number ngModel [(ngModel)]='selected_jabber'>
                   <option value="">SELECT ONE</option>
                 <!--  <option name="Jabber_1" *ngFor='let fl_itn of Jabber; let i = index' [value]='fl_itn' selected>
                     {{ fl_itn }}</option>-->
@@ -55,14 +55,14 @@
                             </div>
                         </td>
                     </tr>
-                 
+
 
                     <tr valign="top" [hidden]='currentVoiceMail'>
                         <td colspan="2" width="46%" height="10"><label for="current_vm" class="ds-text-capitalize"> Current Voice Mail </label>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <span >{{vm_disp}}</span></div>
+                                <span>{{vm_disp}}</span></div>
                         </td>
                     </tr>
 
@@ -71,22 +71,22 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <span >{{cos_disp}}</span></div>
+                                <span>{{cos_disp}}</span></div>
                         </td>
                     </tr>
-                    
-        
-                    
-                    <tr valign="top" [hidden]='updaterequested'> 
+
+
+
+                    <tr valign="top" [hidden]='updaterequested'>
                         <td colspan="2" width="46%" height="10">
-                            <label for="updaterequested" > Update required for </label>
+                            <label for="updaterequested"> Update required for </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="54%" height="10">         
+                        <td width="54%" height="10">
                             <div class="ds-input-container ds-mar-b-2">
                                 <div class="ds-input-checkbox-group" role="group" aria-labelledby="basic-checkboxes-example">
                                     <div class="ds-input-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="checked" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked" >
+                                        <input type="checkbox" id="checkbox1" name="checked" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked">
                                         <div class="ds-input-control"></div>
                                         <label for="checkbox1">Voice Mail</label>
                                     </div>
@@ -97,18 +97,18 @@
                                     </div>
                                 </div>
                             </div>
-                            </td>    
-                        </tr>
+                        </td>
+                    </tr>
 
 
-                            <tr valign="top" [hidden]='newvoicemail'>
-                                <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize ds-padding-top-2">New Voice Mail</label>
-                                    <span class="ds-text-contextual-red-2">*</span>
-                                </td>
-                                <td width="54%">
-                                    <div class="ds-mar-b-1">
-                                        <div class="ds-input-radio-group">
-                                            <label for="radio1" class="ds-input-radio ds-pad-r-1" style="display:inline">
+                    <tr valign="top" [hidden]='newvoicemail'>
+                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize ds-padding-top-2">New Voice Mail</label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="54%">
+                            <div class="ds-mar-b-1">
+                                <div class="ds-input-radio-group">
+                                    <label for="radio1" class="ds-input-radio ds-pad-r-1" style="display:inline">
                             <input type="radio" [(ngModel)]="Voice_Mail" name="Voice_Mail" id="radio1" class="ds-input"
                               value="Yes">
                             <div class="ds-input-control"></div><span class="ds-pad-l-0_5">Yes</span>
@@ -117,40 +117,39 @@
                               value="No">
                             <div class="ds-input-control"></div><span class="ds-pad-l-0_5">No</span>
                           </label>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
 
 
-                            <tr valign="top" [hidden]="newcos">
-                                <td colspan="2" width="46%" height="10"><label for="LocationId"> New Class of Service</label>
-                                    <span class="ds-text-contextual-red-2">*</span>
-                                </td>
-                                <td width="54%" height="10">
-                                    <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                        <select rows="2" name="select_cos" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select new class of service" (change)='hidebusinessjust($event)' tabindex="1"
-                                        [(ngModel)]="selectcos">
+                    <tr valign="top" [hidden]="newcos">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId"> New Class of Service</label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="54%" height="10">
+                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="select_cos" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Select new class of service" (change)='hidebusinessjust($event)' tabindex="1" [(ngModel)]="selectcos">
                           <option value="">SELECT ONE</option>
                           <option name="select_cos" *ngFor='let cos of classOfService' [value]='cos' selected>
                             {{ cos }}</option>
                         </select>
-                                    </div>
-                                </td>
-                            </tr>
-                         
-                         
-                        
+                            </div>
+                        </td>
+                    </tr>
 
-                            <tr valign="top" [hidden]="businessJust">
-                                <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">  Business Justification</label>
-                                    <span class="ds-text-contextual-red-2">*</span>
-                                </td>
-                                <td width="54%" height="10">
-                                    <div class="ds-input-container">
-                                        <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="business Justification" maxlength="200" rows="2" cols="40" [(ngModel)]="businessjustification"></textarea></div>
-                                </td>
-                            </tr>
+
+
+
+                    <tr valign="top" [hidden]="businessJust">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">  Business Justification</label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="54%" height="10">
+                            <div class="ds-input-container">
+                                <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="business Justification" maxlength="200" rows="2" cols="40" [(ngModel)]="businessjustification"></textarea></div>
+                        </td>
+                    </tr>
 
                 </tbody>
             </table>
@@ -192,7 +191,7 @@
 
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
-                    <tr valign="top" >
+                    <tr valign="top">
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber / Phone Number </label>
 
                         </td>
@@ -204,7 +203,7 @@
                         <td colspan="2" width="46%" height="10"><label for="current_vm" class="ds-text-capitalize"> Current Voice Mail </label>
                         </td>
                         <td width="54%" height="10">
-                                <span >{{vm_disp}}</span>
+                            <span>{{vm_disp}}</span>
                         </td>
                     </tr>
 
@@ -212,7 +211,7 @@
                         <td colspan="2" width="46%" height="10"><label for="current_cos" class="ds-text"> Current Class of Service (COS) </label>
                         </td>
                         <td width="54%" height="10">
-                                <span >{{cos_disp}}</span>
+                            <span>{{cos_disp}}</span>
                         </td>
                     </tr>
 
@@ -243,9 +242,12 @@
                 </tbody>
             </table>
             <br>
-            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
-                <p>Something seems to have gone wrong. Please try later.</p><p>
-            </p></div>
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
+                <p></p>
+                <p>Something seems to have gone wrong. Please try later.</p>
+                <p>
+                </p>
+            </div>
 
             <div class=" ds-panel ds-col-12 "></div>
             <!-- Dark Background -->
@@ -267,7 +269,7 @@
       this.errorinfo=true;
                 class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
             </span>
-            <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
+                        <input type="button" name="exit" *ngIf="errorinfo" type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
                     </div>
                 </div>
             </div>

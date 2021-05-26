@@ -1,10 +1,11 @@
 <app-topcountryframe></app-topcountryframe>
 
-<div class=" ds-panel ds-col-12"></div>
+
 
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
-        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>    </div>
+        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
+    </div>
 
 
     <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
@@ -12,82 +13,96 @@
         <h3 *ngIf="reval"><b>Approvals</b></h3>
         <h3 *ngIf="!reval"><b>Revalidation</b></h3>
         <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
-        <div class=" ds-panel ds-col-12 "></div> 
+        <div class=" ds-panel ds-col-12 "></div>
         <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
-            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " ></h2>
-            <table  cellspacing="0" cellpadding="0" border="0" *ngIf="errorinfo && reval">
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 "></h2>
+        <table cellspacing="0" cellpadding="0" border="0" *ngIf="errorinfo && reval">
             <tbody>
-            <tr valign="top" >
-                <td width="783"> 
-                <div>Enter Serial Number or Request Number</div></td>
-                <td width="217"><div class="ds-pad-l-1">
-            <input  class="ds-input" name="search" id="search" style="width:220px !important;" maxlength="17" [(ngModel)]="search"></div>
-            </td><td width="169">
-                <div class="ds-float-lg-right">
-            <div class="ds-tray-fit-content ds-margin-bottom-0">
-            <div class="button-bar ds-tray-fit-content ds-float-lg-right ">
-                <span class="ds-pad-l-1 ds-pad-r-1">
+                <tr valign="top">
+                    <td width="783">
+                        <div>Enter Serial Number or Request Number</div>
+                    </td>
+                    <td width="217">
+                        <div class="ds-pad-l-1">
+                            <input class="ds-input" name="search" id="search" style="width:220px !important;" maxlength="17" [(ngModel)]="search"></div>
+                    </td>
+                    <td width="169">
+                        <div class="ds-float-lg-right">
+                            <div class="ds-tray-fit-content ds-margin-bottom-0">
+                                <div class="button-bar ds-tray-fit-content ds-float-lg-right ">
+                                    <span class="ds-pad-l-1 ds-pad-r-1">
                     <input type="button" class="ds-button ds-secondary ds-pad-l-1 ds-width-auto ds-pad-r-1"  value="SEARCH" (click)="performsearch()"></span>
-                    <input type="button"  class="ds-button ds-secondary  ds-pad-l-1 ds-width-auto ds-pad-r-1" value="CLEAR" (click)="clear()" >
-                </div></div>
-            </div>
-        </td>
-    </tr>
-       </tbody>
+                                    <input type="button" class="ds-button ds-secondary  ds-pad-l-1 ds-width-auto ds-pad-r-1" value="CLEAR" (click)="clear()">
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
         </table>
-            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5">Pending Requests</h2>
-            <div class="ds-table-container">
-                <table class="ds-table" *ngIf="reval">
-                    <tbody valign="top" *ngFor = "let req of pendingRequest, let i = index">
-                        <tr>
-                            <td width="59">
-                                <font color="#ffffff">
-                                    <input  name="req.sys_id" id="req.sys_id" type="checkbox" [(ngModel)]="checked[i]">
-                                </font>
-                            </td>
-                            <td width="175"><a (click)='openpage(req)'>{{req['sysapproval.variables.requested_by.user_name'].replace('-','')}}</a></td>
-                            <td width="194">{{req['sysapproval.variables.requested_by.name']}}<font color="#808080"> </font></td>
-                            <td width="213">{{req['sysapproval.short_description']}}</td>
-                            <td width="213">{{req['sysapproval.variables.id']}}</td>
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5">Pending Requests</h2>
+        <div class="ds-table-container">
+            <table class="ds-table" *ngIf="reval">
+                <tbody valign="top" *ngFor="let req of pendingRequest, let i = index">
+                    <tr>
+                        <td width="59">
+                            <font color="#ffffff">
+                                <input name="req.sys_id" id="req.sys_id" type="checkbox" [(ngModel)]="checked[i]">
+                            </font>
+                        </td>
+                        <td width="175"><a (click)='openpage(req)'>{{req['sysapproval.variables.requested_by.user_name'].replace('-','')}}</a></td>
+                        <td width="194">{{req['sysapproval.variables.requested_by.name']}}
+                            <font color="#808080"> </font>
+                        </td>
+                        <td width="213">{{req['sysapproval.short_description']}}</td>
+                        <td width="213">{{req['sysapproval.variables.id']}}</td>
                     </tr>
-                    </tbody>
-                </table>
-                <table style="width:100%; border-collapse: collapse; padding:2px"  *ngIf="errorinfo && !reval">
-                    <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">
-                        <tr>
-                            <td width="59" ></td>
-                          <td width="175">CNUM</td>
-                          <td width="194" >Employee Name</td>
-                          <td width="213">Revalidation Date</td>
-                          <td width="175" >Identifier</td>
-                          <td width="213">Changed</td>
-                        </tr>
-                      </thead>
-                    <tbody valign="top" *ngFor = "let req of pendingRequest, let i = index">
-                        <tr>
-                            <td width="59">
-                                <font color="#ffffff">
-                                    <input  name="req.sys_id" id="req.sys_id" type="checkbox" [(ngModel)]="checked[i]">
-                                </font>
-                            </td>
-                            <td width="175"><a (click)='openpage(req)'>{{req['sysapproval.variables.requested_by.user_name'].replace('-','')}}</a></td>
-                            <td width="194">{{req['sysapproval.variables.requested_by.name']}}<font color="#808080"> </font></td>                 
-                                        
-                            <td width="213">{{req['sysapproval.variables.call_permission']}}</td>
-                            <td width="175">{{req['sysapproval.variables.itn']}}</td>   
-                            <td width="213">{{req['sysapproval.variables.ica_code']}}</td>    
+                </tbody>
+            </table>
+            <table style="width:100%; border-collapse: collapse; padding:2px" *ngIf="errorinfo && !reval">
+                <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">
+                    <tr>
+                        <td width="59"></td>
+                        <td width="175">CNUM</td>
+                        <td width="194">Employee Name</td>
+                        <td width="213">Revalidation Date</td>
+                        <td width="175">Identifier</td>
+                        <td width="213">Changed</td>
                     </tr>
-                    </tbody>
-                </table>
-                </div>
-        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo && reval"><p></p>
-            <p>No pending approvals.</p><p>
-        </p></div>
-        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo && !reval"><p></p>
-            <p>No pending revalidation documents.</p><p>
-        </p></div>
+                </thead>
+                <tbody valign="top" *ngFor="let req of pendingRequest, let i = index">
+                    <tr>
+                        <td width="59">
+                            <font color="#ffffff">
+                                <input name="req.sys_id" id="req.sys_id" type="checkbox" [(ngModel)]="checked[i]">
+                            </font>
+                        </td>
+                        <td width="175"><a (click)='openpage(req)'>{{req['sysapproval.variables.requested_by.user_name'].replace('-','')}}</a></td>
+                        <td width="194">{{req['sysapproval.variables.requested_by.name']}}
+                            <font color="#808080"> </font>
+                        </td>
 
-        <div class="ds-panel ds-col-12" ></div> 
+                        <td width="213">{{req['sysapproval.variables.call_permission']}}</td>
+                        <td width="175">{{req['sysapproval.variables.itn']}}</td>
+                        <td width="213">{{req['sysapproval.variables.ica_code']}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo && reval">
+            <p></p>
+            <p>No pending approvals.</p>
+            <p>
+            </p>
+        </div>
+        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo && !reval">
+            <p></p>
+            <p>No pending revalidation documents.</p>
+            <p>
+            </p>
+        </div>
+
+        <div class="ds-panel ds-col-12"></div>
         <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
             <div class="ds-loader-header">Your request is being processed. Do not refresh or go back.</div>
             <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being processed. Do not refresh or go back."></div>
@@ -95,22 +110,22 @@
         <div class="ds-row ds-pad-t-2" style="margin-right:12px" *ngIf="this.isButtonVisible && errorinfo">
             <div class="ds-tray-fit-content ds-mar-b-0">
                 <div class="button-bar ds-tray-fit-content ds-pad-t-1 ds-float-lg-right">
-                <span class="ds-pad-l-4" id="button1">
+                    <span class="ds-pad-l-4" id="button1">
                 <input type="button" (click)="selectAllcheck()" class="ds-button ds-secondary
                 ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="SELECT ALL">
                 </span>
-                <span class="ds-pad-l-1" id="button2">
+                    <span class="ds-pad-l-1" id="button2">
                 <input type="button" (click)="unSelectAllcheck()" class="ds-button ds-secondary
                 ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="DESELECT ALL">
                 </span>
-                <span class="ds-pad-l-1 ds-pad-r-1" id="button3">
+                    <span class="ds-pad-l-1 ds-pad-r-1" id="button3">
                 <input type="button" name="NEXT" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" (click)="process()" value="APPROVE SELECTED ONE">
                 </span>
+                </div>
+
+
+
+
+            </div>
+
         </div>
-
-    
-          
-
-    </div>
-
-</div>

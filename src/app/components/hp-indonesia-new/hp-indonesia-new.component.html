@@ -1,7 +1,7 @@
 <app-topcountryframe></app-topcountryframe>
 
 
-<div class=" ds-panel ds-col-12"></div>
+
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
@@ -30,9 +30,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  
-                                style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" 
-                                #location  ngModel>
+                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location ngModel>
                                     <option value ="">Select Location</option>
                                     <option name="Location_1" *ngFor='let fl_location of locationlist' [value]='fl_location' >
                                          {{ fl_location }}</option>
@@ -40,20 +38,20 @@
                             </div>
                         </td>
                     </tr>
-                    
+
                 </tbody>
             </table>
 
             <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
-                    
+
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize">Type of Device </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Device Type" tabindex="1" #device (change)='selectedDevice(device.value)' ngModel [(ngModel)]='selected_device'>
+                                <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Device Type" tabindex="1" #device (change)='selectedDevice(device.value)' ngModel [(ngModel)]='selected_device'>
                                     <option value ="">Select Device</option>
                                     <option name="Device_Type" *ngFor='let device of devices' [value]='device' >
                     {{ device }}</option>
@@ -61,13 +59,13 @@
                             </div>
                         </td>
                     </tr>
-                   
+
                 </tbody>
             </table>
 
 
-            
-           <table id="t3" width="100%" cellspacing="0" cellpadding="0" border="0" [hidden]='hideDeviceSection'>
+
+            <table id="t3" width="100%" cellspacing="0" cellpadding="0" border="0" [hidden]='hideDeviceSection'>
                 <tbody>
                     <tr valign="top" [hidden]='showforAnyDevice'>
                         <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize">Type of Model </label>
@@ -75,7 +73,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left"  style="width:300px !important; text-transform: uppercase;" title="Model" tabindex="1" [(ngModel)]='modelValue'>
+                                <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Model" tabindex="1" [(ngModel)]='modelValue'>
                                     <option value ="">Select Model</option>
                                     <option name="Model_Type" *ngFor='let model of models' [value]='model'>
                     {{ model }}</option>
@@ -87,24 +85,24 @@
                     <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%" height="10"><label for="EmployeeID" class="ds-text-capitalize">Employee ID </label>
                             <span class="ds-text-contextual-red-2">*</span>
-                            
+
                         </td>
                         <td width="54%" height="10">
                             <label style="display: ruby-base-container;">
                                 <input name="StepMentor" class="ds-input" style="width:250px !important;display: inline-block;" title="Employee ID" [(ngModel)]='empID' (change)='onEmpIDChange()'>
                                 <button class="ds-button ds-small ds-width-auto" style="padding-right: 1rem;padding-left: 1rem; margin-left: 2px;margin-bottom: 0px" (click)='fetchEmployee()'>Go</button>
                             </label>
-                                <div [hidden]='goClick'>
+                            <div [hidden]='goClick'>
                                 <div [hidden]='emailResult' id="StepMentorDiv" *ngIf="goResults; else elseBlock" style="font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;">
                                     Search result: <br>
                                     <a (click)='onEmailClick()'>{{ this.email }}</a><br>
                                 </div>
                                 <ng-template #elseBlock>
-                                <div style="font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;">
-                                    No match, please try again<br>
-                                </div>
-                            </ng-template>
-                        </div>
+                                    <div style="font-size: 14pt; background: rgb(238, 238, 238) none repeat scroll 0% 0%; width: 300px;">
+                                        No match, please try again<br>
+                                    </div>
+                                </ng-template>
+                            </div>
                         </td>
                     </tr>
 
@@ -126,23 +124,19 @@
                     </tr> -->
                     <br>
                     <tr valign="top" [hidden]='showforFixedPhone'>
-                        <td colspan="2" width="46%" height="10"><label for="cos"
-                            class="ds-text-capitalize">Select Class of Service (COS)</label>
+                        <td colspan="2" width="46%" height="10"><label for="cos" class="ds-text-capitalize">Select Class of Service (COS)</label>
                         </td>
                         <td width="54%" height="10">
-                          <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                            <select rows="2" name="cos" cols="40" id="COSId"
-                              class="ds-title ds-align-text-left"
-                              style="width:300px !important; text-transform: uppercase;" title="Class of Service" tabindex="1" [(ngModel)]='COS' #cos (change)='classofservice(cos.value)'
-                              ngModel>
+                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="cos" cols="40" id="COSId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Class of Service" tabindex="1" [(ngModel)]='COS' #cos (change)='classofservice(cos.value)' ngModel>
                               <option value="national">National</option>
                               <option value="international">International</option>
                             </select>
-                          </div>
+                            </div>
                         </td>
-                      </tr>
+                    </tr>
 
-                      <tr valign="top" [hidden]='showBusinessNeed'>
+                    <tr valign="top" [hidden]='showBusinessNeed'>
                         <td colspan="2" width="46%"><br><label for="Justification" class="ds-text-capitalize ds-pad-t-1">Business Need (Why is international required?) </label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
@@ -150,7 +144,7 @@
                         </td>
                     </tr>
 
-                      <tr valign="top" [hidden]='showforAnyDevice'>
+                    <tr valign="top" [hidden]='showforAnyDevice'>
                         <td colspan="2" width="46%"><br><label for="Description" class="ds-text-capitalize ds-pad-t-1">Description of the Device </label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
@@ -172,7 +166,7 @@
                             </div>
                         </td>
                     </tr>
-                    
+
                 </tbody>
             </table>
 
@@ -196,10 +190,10 @@
         </form>
 
         <form [hidden]="isReviewForm">
-            
+
             <b translate>servicestitle.Fixed Phone - New Request</b>
 
-            
+
             <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
@@ -269,56 +263,56 @@
                         </td>
                         <td width="54%">{{reviewDetailsIndia.icaCode}}</td>
                     </tr> -->
-                    
+
                     <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="device">Type of Device</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.device}}</td>
                     </tr>
-                    
+
                     <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="model">Type of Model</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.model}}</td>
                     </tr>
-                    
+
                     <tr valign="top" [hidden]='hideEmpID'>
                         <td colspan="2" width="46%">
                             <label for="employeeId">Employee ID</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.employeeId}}</td>
                     </tr>
-                    
+
                     <!-- <tr valign="top" [hidden]='hideVoicemail'>
                         <td colspan="2" width="46%">
                             <label for="voiemail">Voicemail Required</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.voicemail}}</td>
                     </tr> -->
-                    
+
                     <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%">
                             <label for="cos">Class of Service</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.cos}}</td>
                     </tr>
-                    
+
                     <tr valign="top" [hidden]='showBusinessNeed'>
                         <td colspan="2" width="46%">
                             <label for="justification">Business Justification</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.justification}}</td>
                     </tr>
-                    
+
                     <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="description">Description of Device</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.description}}</td>
                     </tr>
-                    
+
                     <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="mac">MAC Address of the Device</label>
@@ -351,7 +345,7 @@
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
-                        
+
 
 
                     </div>
