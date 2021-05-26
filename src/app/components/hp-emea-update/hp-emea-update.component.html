@@ -12,13 +12,12 @@
         <b translate>servicestitle.Fixed Phone - Update Request</b>
 
         <div class="ds-pad-t-0_5 ds-pad-b-1">
-        <span translate>Jabberentrydetails.Fieldsasterisk</span> (<span class="ds-text-contextual-red-2">*</span>) <span translate>Jabberentrydetails.arerequired</span>
+        <span translate *ngIf="warninginfo==false && warninginfosnow==false">Jabberentrydetails.Fieldsasterisk</span> (<span class="ds-text-contextual-red-2">*</span>) <span translate>Jabberentrydetails.arerequired</span>
         </div>
 
         <div class=" ds-panel ds-col-12 "></div> 
     
-        <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
-
+        <app-steps [step]="servicesData.step" [isSelf]="reqFor" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" [hideSteps]="hideSteps"></app-steps>
         <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>employeeinfotrans.EmployeeEntryDetails</h2>
 
         <table id="t1" width="100%" height="10" cellspacing="0" cellpadding="0" border="0">
@@ -96,7 +95,7 @@
                     </td>
                     <td width="50%"><br>
                         <div class="ds-dropdown ds-secondary"  role="menu" aria-label="w3DS Dropdown1"> 
-                            <select name="UpdateReq" id="voicetype" class="ds-title ds-align-text-left" style="width:300px !important;" 
+                            <select name="UpdateReq" id="voicetype" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" 
                             title="Update Required For" #device (change)='updateFor(device.value)' [(ngModel)]='selected_device' ngModel>
                                 <option value="" translate>Jabbernewtrans.SelectOne</option>
                                 <option *ngFor='let device of updateRequiredFor' [value]='device'>{{ device }}</option>
@@ -114,15 +113,15 @@
                 <tr valign="top" *ngIf='showformodel'>
                     <td colspan="2" width="50%">
                         <span id="modelid"><br>
-                            <label for="modelid" class="ds-text-capitalize" translate>fixedphonenew.TypeOfModel</label>
+                            <label for="modelid" class="ds-text-capitalize" translate>fixedphonenew.NewPhonemodel</label>
                             <span class="ds-text-contextual-red-2"></span>
                         </span>
                     </td>
                     <td width="50%">
-                        <div id="model1" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1"><br>
-                            <select name="NewModel" rows="2" cols="40"class="ds-title ds-align-text-left" style="width:300px !important;" title="Phone Model" ngModel>
-                                <option value="" translate>fixedphonenew.SelectPhoneModel</option>
-                                <option name="NewModel" *ngFor='let model of models' [value]='model'>{{ model }}</option>
+                        <div id="model1" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1" (change)="checkModel(newModel)"><br>
+                            <select name="NewModel" rows="2" cols="40" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;"    title="Phone Model" [(ngModel)]='newModel'>
+                                <option value="" translate >Jabbernewtrans.SelectOne</option>
+                                <option name="NewModel"  *ngFor='let model of models' [value]='model' >{{ model }}</option>
                             </select>
                         </div>
                     </td>
@@ -145,7 +144,7 @@
                     </td>
                     <td width="50%" class="ds-pad-t-1 ds-pad-b-1">
                         <input name="Newdesc" value="" id="desc" class="ds-input " style="width:300px !important;" 
-                        title="New Description" ngModel><br>
+                        title="New Description" maxlength="500;" ngModel><br>
                     </td>
                 </tr>
 
@@ -155,7 +154,7 @@
                     </td>
                     <td width="50%">
                         <textarea name="Comments" class="ds-input " style="width:300px !important;" 
-                        title="Reason for Update" rows="2" cols="40" ngModel>
+                        title="Reason for Update" rows="2" cols="40" maxlength="200;"  ngModel>
                         </textarea><br>
                     </td>
                 </tr>
@@ -169,9 +168,9 @@
                 <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                     <span class="ds-pad-l-4" id="button1">
                     <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" 
-                    value="{{ 'Jabberentrydetails.Back' | translate}}" (click)="backClick()">
+                    value="{{ 'Jabberentrydetails.Back' | translate}}" (click)="backClick(formData)">
                     </span>
-                    <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='showerrormessage'>
+                    <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='hideNextButton'>
                     <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                     value="{{ 'Jabberentrydetails.Next' | translate}}" >
                     </span>
@@ -189,8 +188,8 @@
         </div>
         <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
-        <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
-
+        <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" (previousStep)="previousStep($event)">
+        </app-steps>
 
          <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 " translate>Jabberupdate.ReviewDetails</h2> 
 
@@ -242,13 +241,13 @@
                     <td colspan="2" width="46%">
                         <label for="addId1" translate>fixedphonenew.ReasonforUpdation</label>
                     </td>
-                    <td width="54%">{{reviewDetailsIndia.justification}}</td>
+                    <td width="54%" style="word-break:break-all;">{{reviewDetailsIndia.justification}}</td>
                 </tr>
                 <tr valign="top" *ngIf='showforNewDesc'>
                     <td colspan="2" width="46%">
                         <label for="addId1" translate>fixedphonenew.NewDescriptiontoUpdate</label>
                     </td>
-                    <td width="54%">{{reviewDetailsIndia.description}}</td>
+                    <td width="54%" style="word-break:break-all;">{{reviewDetailsIndia.description}}</td>
                 </tr>
                 
             </tbody>
