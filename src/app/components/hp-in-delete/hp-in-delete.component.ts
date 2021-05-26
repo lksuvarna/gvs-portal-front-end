@@ -36,6 +36,7 @@ export class HpInDeleteComponent implements OnInit {
   cnum : any;	
   countrydetails : any;
   currentMac: any;
+  currentMacSep: any;
   currentPhone: any ;
   currentdesc: any ;
   isButtonVisible = true;
@@ -68,15 +69,17 @@ export class HpInDeleteComponent implements OnInit {
   }
 
   onMacClick(){
+    
+    if (this.currentMacOrPhone != ''){
     this.showerrormessage = false;
     this.hideSteps = false;
+    }
   }
 
   OnSearchClick(){
-    
     if(this.currentMacOrPhone != ''){
 
-      this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
+      this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone.toUpperCase(),this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
         if(data.message != '')
         {
           
@@ -89,6 +92,8 @@ export class HpInDeleteComponent implements OnInit {
           this.showerrormessage = false;
           this.hideNextButton = false;
           this.hideSteps = false;
+
+          this.currentMacSep = this.currentMac.toLowerCase().includes("sep") ? this.currentMac.slice(3,this.currentMac.length) :this.currentMac;
         }
         else
         {
@@ -166,7 +171,7 @@ export class HpInDeleteComponent implements OnInit {
 
       this.payload.ReqNo=this.reqno;	
       this.payload.Identifier = this.currentPhone;
-      this.payload.macaddress = this.currentMac;
+      this.payload.macaddress = this.currentMacSep;
       this.payload.olddesc = this.currentdesc;
 
       this.payload.countryname=this.countrydetails.name;	

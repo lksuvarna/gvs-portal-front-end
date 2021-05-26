@@ -15,6 +15,7 @@ import {Db2Service} from '../../_services/db2.service'
 })
 export class HpInUpdateComponent implements OnInit {
 
+  
   campA: any = [];	
   camp: any = [];	
   buildA: any = [];	
@@ -70,6 +71,8 @@ export class HpInUpdateComponent implements OnInit {
   reasonForUpdate: any = "";
   FixedPhoneData: any = [];
   state: any = "";
+  mainConfiguration :any;
+  
 
   showerrormessage = false
   hideNextButton = true
@@ -124,7 +127,7 @@ export class HpInUpdateComponent implements OnInit {
 
     if(this.currentMacOrPhone != ''){
 
-      this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
+      this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone.toUpperCase(),this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
         if(data.message != '')
         {
           
@@ -250,11 +253,13 @@ export class HpInUpdateComponent implements OnInit {
     }
   }
 
-  checkModel(model : string){
+  checkModel(model : any){
 
     if(model === this.currentmodel){
       alert('Please provide a different Model as the current Model is already '+this.currentmodel );
       this.newModel = ""
+      
+      
     }
   }
 
@@ -270,6 +275,7 @@ export class HpInUpdateComponent implements OnInit {
 
   entryDetails(formData: NgForm){
 
+    var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
     if(this.currentMacOrPhone == '')
     {
       // alert("Please give some ");
@@ -278,8 +284,13 @@ export class HpInUpdateComponent implements OnInit {
       alert('Please select update required for');	
     }	
 
-    else if( formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && formData.value.MAC1 == '' ) {	
+    else if( formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (formData.value.MAC1 == '' || formData.value.MAC1.length != 12)) {	
       alert('Please enter 12 characters MAC address');
+    }
+    
+    else if(formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (pat1.test(formData.value.MAC1))) {
+      alert('MAC field value to be in combination of 0 to 9 and A to F');
+      return;
     }
 
     else if(formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && formData.value.MAC1 == this.currentMac){
@@ -294,6 +305,11 @@ export class HpInUpdateComponent implements OnInit {
     else if(formData.value.UpdateReq.toLowerCase() !== 'replace the hardphone only' && formData.value.Newdesc.trim() == this.currentdesc){
       alert('Please choose a different Description as the current Description is already '+this.currentdesc );
     }
+
+    // else if(this.showformodel == true && formData.value.newModel == this.currentmodel) {
+    //   alert(this.mainConfiguration.fixedphonenew.enteranewModel);
+    //   return;
+    // }
 
     else if(formData.value.UpdateReq.toLowerCase() == 'change phone location' && formData.value.Location_1_1 == '' && this.showLocation == true) {	
       alert('Please select a location');	
@@ -348,6 +364,8 @@ export class HpInUpdateComponent implements OnInit {
       // this.reviewDetailsIndia.campus = this.campus;
     }
     this.create_cache(formData);
+    alert("in cache");
+    console.log(formData);
  
 
   }
