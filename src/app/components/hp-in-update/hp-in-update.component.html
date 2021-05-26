@@ -25,7 +25,7 @@
                 <tbody>
                     <tr valign="top">
                         <td width="50%">
-                            <label for="Sear class=">Enter Current MAC Address or Phone Number</label>
+                            <label for="Sear class=">Enter current MAC address or Phone Number</label>
                             <span class="ds-text-contextual-red-2"> *</span>
                         </td>
                         <td width="50%">
@@ -63,7 +63,7 @@
 
                     <tr valign="top" *ngIf='showSearch'>
                         <td width="50%"><br>
-                            <label for="sear" class="">Current MAC Address </label>
+                            <label for="sear" class="">Current MAC address</label>
                         </td>
                         <td width="50%"><br>{{currentMac}}
                         </td>
@@ -71,7 +71,7 @@
 
                     <tr valign="top" *ngIf='showSearch'>
                         <td width="50%"><br>
-                            <label for="sear" class="">Current  Phone Number </label>
+                            <label for="sear" class="">Current Phone Number</label>
                         </td>
                         <td width="50%"><br>{{currentPhone}}
                         </td>
@@ -79,21 +79,21 @@
 
                     <tr valign="top" *ngIf='showSearch'>
                         <td width="50%"><br>
-                            <label for="sear" class="">  Current  Description </label>
+                            <label for="sear" class="">Current description</label>
                         </td>
                         <td width="50%"><br>{{currentdesc}}</td>
                     </tr>
 
                     <tr valign="top" *ngIf='showSearch'>
                         <td width="50%"><br>
-                            <label for="sear" class="">  Current Model</label>
+                            <label for="sear" class="">Current phone model</label>
                         </td>
                         <td width="50%"><br>{{currentmodel}}</td>
                     </tr>
 
                     <tr valign="top" *ngIf='showSearch'>
                         <td width="50%"><br>
-                            <label for="up" class=""> Update Required for</label>
+                            <label for="up" class="">Update required for</label>
                             <span class="ds-text-contextual-red-2"> *</span>
                         </td>
                         <td width="50%"><br>
@@ -109,7 +109,7 @@
                     <tr valign="top" *ngIf='showformodel'>
                         <td width="50%">
                             <span id="modelid"><br>
-                            <label for="modelid" class="ds-text-capitalize"> Type Of Model</label>
+                            <label for="modelid" class="ds-text-capitalize">New phone model</label>
                             <span class="ds-text-contextual-red-2"></span>
                             </span>
                         </td>
@@ -126,7 +126,7 @@
 
                     <tr valign="top" *ngIf='showformacadd'>
                         <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
-                            <label class="">New MAC Address<span class="ds-text-contextual-red-2"> *</span></label>
+                            <label class="">New MAC address<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
                             <input name="MAC1" value="" class="ds-input ds-pad-b-1" style="width:300px !important;" title="New MAC Address" 
@@ -137,7 +137,7 @@
 
                     <tr valign="top" *ngIf='showforNewDesc'>
                         <td width="50%" class="ds-pad-t-1 ds-pad-b-1">
-                            <label for="descn" id="desc1" class="">New Description to Update
+                            <label for="descn" id="desc1" class="">New description
                             <span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%" class="ds-pad-t-1 ds-pad-b-1">
@@ -147,7 +147,7 @@
 
                     <tr valign="top" *ngIf='showforrsn'>
                         <td width="50%">
-                            <label class="">Reason for Update<span class="ds-text-contextual-red-2"> *</span></label>
+                            <label class="">Reason for update<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%">
                             <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update" maxlength="200;" rows="2" cols="40" ngModel [(ngModel)]='reasonForUpdate'>
@@ -160,8 +160,7 @@
             <table id="t2" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
                 <tbody>
                     <tr valign="top" *ngIf='showLocation'>
-                        <td  width="50%"><label for="LocationId" class="ds-text-capitalize"> Office
-                        Location</label>
+                        <td  width="50%"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="50%" class="ds-pad-t-1">
@@ -268,7 +267,7 @@
                 <tbody>
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Current MAC Address</label>
+                            <label for="addId1">Current MAC address</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.mac}}</td>
                     </tr>
@@ -282,35 +281,35 @@
 
                     <tr valign="top" *ngIf='showSearch'>
                         <td colspan="2" width="46%">
-                            <label for="addId1">Current Description</label>
+                            <label for="addId1">Current description</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.Currentdescription}}</td>
                     </tr>
 
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Current Model</label>
+                            <label for="addId1">Current phone model</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.model}}</td>
                     </tr>
 
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Update Required for</label>
+                            <label for="addId1">Update required for</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.device}}</td>
                     </tr>
 
                     <tr valign="top" *ngIf='showformodel'>
                         <td colspan="2" width="46%">
-                            <label for="addId1">Type Of Model</label>
+                            <label for="addId1">New phone model</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.newModel}}</td>
                     </tr>
 
                     <tr valign="top" *ngIf='showformacadd'>
                         <td colspan="2" width="46%">
-                            <label for="addId1">New MAC Address</label>
+                            <label for="addId1">New MAC address</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.newMac}}</td>
                     </tr>
@@ -340,7 +339,7 @@
 
                     <tr valign="top" *ngIf='showforNewDesc'>
                         <td colspan="2" width="46%">
-                            <label for="addId1">New Description to Update</label>
+                            <label for="addId1">New description</label>
                         </td>
                         <td width="54%" height="10">
                             <label><span style="word-break:break-all;">{{reviewDetailsIndia.description}}</span></label>
@@ -349,7 +348,7 @@
 
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Reason for Update</label>
+                            <label for="addId1">Reason for update</label>
                         </td>
                         <td width="54%" height="10">
                             <label><span style="word-break:break-all;">{{reviewDetailsIndia.justification}}</span></label>
