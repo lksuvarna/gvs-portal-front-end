@@ -233,7 +233,8 @@
         "Only" : "Seule",
         "serialnumbersareallowed":"Les numéros de série sont autorisés à créer une demande de",
         "selectlocation":"Veuillez sélectionner un emplacement",
-        "selectjabbernumber":"Veuillez sélectionner le Jabber / Numéro de téléphone"
+        "selectjabbernumber":"Veuillez sélectionner le Jabber / Numéro de téléphone",
+        "selectlocationsp" : "Veuillez sélectionner l'emplacement du Jabber / numéro de téléphone"
 
 
     },

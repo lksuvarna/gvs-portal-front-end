@@ -163,6 +163,7 @@ export class EmployeesearchComponent implements OnInit {
    
    if (this.countrydetails.testuser) {
      this.ccode = this.countrydetails.testuser
+     this.fullName=sessionStorage.getItem('testusername')
    }
    else { this.ccode = this.cookie.getCookie('ccode'); }
   }

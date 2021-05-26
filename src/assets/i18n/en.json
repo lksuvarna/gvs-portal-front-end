@@ -249,7 +249,8 @@
         "Only": "Only",
         "serialnumbersareallowed": "Serial numbers are allowed to create a request for",
         "selectlocation": "Please select a Location",
-        "selectjabbernumber": "Please select the Jabber / Phone Number"
+        "selectjabbernumber": "Please select the Jabber / Phone Number",
+        "selectlocationsp" : "Please select the Jabber / Phone Location"
 
     },
     "topui": {

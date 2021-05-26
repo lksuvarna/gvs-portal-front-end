@@ -7,7 +7,11 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Users\HARSHITHAARAVA\Desktop\Cirrus Latest\Cirrus latest new\gvs-portal-front-end\src\polyfills.ts */"hN/g");
+=======
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\polyfills.ts */"hN/g");
+>>>>>>> beb6d2a971e822342afa64263462ee53e8ea6a13
 
 
 /***/ }),
