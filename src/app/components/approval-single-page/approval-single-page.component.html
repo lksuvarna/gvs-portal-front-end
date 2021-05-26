@@ -1,115 +1,119 @@
 <app-topcountryframe></app-topcountryframe>
 
-<div class=" ds-panel ds-col-12"></div>
+
 
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
-        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>    </div>
+        <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
+    </div>
 
 
     <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
         <form #formData='ngForm'>
-        <h3 *ngIf="!reval"><b>Approvals</b></h3>
-        <h3 *ngIf="reval"><b>Reactivate Process</b></h3>
-        <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
-        <div class=" ds-panel ds-col-12 "></div> 
-        <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
-            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " ></h2>
+            <h3 *ngIf="!reval"><b>Approvals</b></h3>
+            <h3 *ngIf="reval"><b>Reactivate Process</b></h3>
+            <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
+            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 "></h2>
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5">Details</h2>
-                <table>
-                    <tbody valign="top">
-                        <tr valign="top" >
-                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Serial Number</label>
-    
-                            </td>
-                            <td width="54%" height="10">
-                                <label>{{request_cnum}}</label>
-                            </td>
-                        </tr>
-                        <tr valign="top" >
-                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">User Name</label>
-    
-                            </td>
-                            <td width="54%" height="10">
-                                <label>{{request_name}}</label>
-                            </td>
-                        </tr>
-                        <tr valign="top" *ngIf="reval">
-                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Identifier</label>
-    
-                            </td>
-                            <td width="54%" height="10">
-                                <label>{{revalitn}}</label>
-                            </td>
-                        </tr>
-                        <tr valign="top" *ngIf="reval">
-                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Revalidation Date</label>
-    
-                            </td>
-                            <td width="54%" height="10">
-                                <label>{{revaldate}}</label>
-                            </td>
-                        </tr>
-                        <tr valign="top" *ngIf="reval">
-                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Old Manager CNUM</label>
-    
-                            </td>
-                            <td width="54%" height="10">
-                                <label>{{revaloldmgr}}</label>
-                            </td>
-                        </tr>
-                        <tr valign="top" *ngIf="reval">
-                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">New Manager CNUM</label>
-    
-                            </td>
-                            <td width="54%" height="10">
-                                <label>{{revalnewmgr}}</label>
-                            </td>
-                        </tr>
-                        <tr valign="top" *ngIf="reval">
-                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Old Department Code</label>
-    
-                            </td>
-                            <td width="54%" height="10">
-                                <label>{{revalolddept}}</label>
-                            </td>
-                        </tr>
-                        <tr valign="top" *ngIf="reval">
-                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">New Department Code</label>
-    
-                            </td>
-                            <td width="54%" height="10">
-                                <label>{{revalnewdept}}</label>
-                            </td>
-                        </tr>
-                        <tr valign="top" >
-                            <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Rejection Comments</label>
-                                <span class="ds-text-contextual-red-2"></span>
-                            </td>
-                            <td width="54%" height="10">
-                                <div class="ds-input-container">
-                                    <textarea name="rejectioncomments" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Rejection Comments" rows="2" cols="40" [(ngModel)]="rejectioncomments"></textarea></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>      
-        <div class="ds-panel ds-col-12" ></div> 
-        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
-            <p>Something seems to have gone wrong. Please try later.</p><p>
-        </p></div>
-        <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
-            <div class="ds-loader-header">Your request is being processed. Do not refresh or go back.</div>
-            <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being processed. Do not refresh or go back."></div>
-        </div>
-        <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right" *ngIf="this.isButtonVisible && !errorinfo">
-            <div class="ds-tray-fit-content ds-mar-b-0">
-                <span class="ds-pad-l-4" id="button1">
+            <table>
+                <tbody valign="top">
+                    <tr valign="top">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Serial Number</label>
+
+                        </td>
+                        <td width="54%" height="10">
+                            <label>{{request_cnum}}</label>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">User Name</label>
+
+                        </td>
+                        <td width="54%" height="10">
+                            <label>{{request_name}}</label>
+                        </td>
+                    </tr>
+                    <tr valign="top" *ngIf="reval">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Identifier</label>
+
+                        </td>
+                        <td width="54%" height="10">
+                            <label>{{revalitn}}</label>
+                        </td>
+                    </tr>
+                    <tr valign="top" *ngIf="reval">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Revalidation Date</label>
+
+                        </td>
+                        <td width="54%" height="10">
+                            <label>{{revaldate}}</label>
+                        </td>
+                    </tr>
+                    <tr valign="top" *ngIf="reval">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Old Manager CNUM</label>
+
+                        </td>
+                        <td width="54%" height="10">
+                            <label>{{revaloldmgr}}</label>
+                        </td>
+                    </tr>
+                    <tr valign="top" *ngIf="reval">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">New Manager CNUM</label>
+
+                        </td>
+                        <td width="54%" height="10">
+                            <label>{{revalnewmgr}}</label>
+                        </td>
+                    </tr>
+                    <tr valign="top" *ngIf="reval">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Old Department Code</label>
+
+                        </td>
+                        <td width="54%" height="10">
+                            <label>{{revalolddept}}</label>
+                        </td>
+                    </tr>
+                    <tr valign="top" *ngIf="reval">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">New Department Code</label>
+
+                        </td>
+                        <td width="54%" height="10">
+                            <label>{{revalnewdept}}</label>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Rejection Comments</label>
+                            <span class="ds-text-contextual-red-2"></span>
+                        </td>
+                        <td width="54%" height="10">
+                            <div class="ds-input-container">
+                                <textarea name="rejectioncomments" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Rejection Comments" rows="2" cols="40" [(ngModel)]="rejectioncomments"></textarea></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="ds-panel ds-col-12"></div>
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
+                <p></p>
+                <p>Something seems to have gone wrong. Please try later.</p>
+                <p>
+                </p>
+            </div>
+            <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
+                <div class="ds-loader-header">Your request is being processed. Do not refresh or go back.</div>
+                <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being processed. Do not refresh or go back."></div>
+            </div>
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right" *ngIf="this.isButtonVisible && !errorinfo">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <span class="ds-pad-l-4" id="button1">
                 <input type="button" (click)="process('approve',formData)" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="APPROVE">
                 </span>
-                <span class="ds-pad-l-1" id="button2">
+                    <span class="ds-pad-l-1" id="button2">
                 <input type="button" (click)="process('reject',formData)" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="REJECT">
                 </span>
-    </div>
+                </div>
 
-</div>
+            </div>
         </form>
