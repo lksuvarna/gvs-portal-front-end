@@ -26207,6 +26207,7 @@ class HomepageComponent {
         this.ccode = '';
         this.display = false;
         this.searchData = [];
+        this.list = [];
     }
     generate(cnum) {
         console.log(cnum);
@@ -26235,8 +26236,17 @@ class HomepageComponent {
         this.display = false;
         this.cloudantservice.getcountrydetails('000').subscribe(data => {
             this.countrynamehome = data.countrydetails;
-            if (data.countrydetailshome.homepagecodesCA.includes(this.ccode)) {
+            if (data.countrydetailshome.this.homepagecodesCA.includes(this.ccode)) {
                 this.ccode = data.countrydetailshome.codeCA;
+            }
+            if (data.countrydetailshome.this.homepagecodesLA.includes(this.ccode)) {
+                this.ccode = data.countrydetailshome.codeLA;
+            }
+            if (data.countrydetailshome.this.homepagecodesPH.includes(this.ccode)) {
+                this.ccode = data.countrydetailshome.codePH;
+            }
+            if (data.countrydetailshome.this.homepagecodesCN.includes(this.ccode)) {
+                this.ccode = data.countrydetailshome.codeCN;
             }
         });
         this.cloudantservice.getcountrydetails(this.ccode).subscribe(data => {
@@ -26258,6 +26268,18 @@ class HomepageComponent {
                         this.testusercode = data.countrydetails.codeCA;
                         console.log("testusercod1" + this.testusercode);
                         this.ccode = data.countrydetails.codeCA;
+                    }
+                    else if (data.countrydetails.homepagecodesLA.includes(this.employeeSerial.substring(6, 9))) {
+                        this.testusercode = data.countrydetails.codeLA;
+                        this.ccode = data.countrydetailshome.codeLA;
+                    }
+                    else if (data.countrydetails.homepagecodesPH.includes(this.employeeSerial.substring(6, 9))) {
+                        this.testusercode = data.countrydetails.codePH;
+                        this.ccode = data.countrydetailshome.codePH;
+                    }
+                    else if (data.countrydetails.homepagecodesCN.includes(this.employeeSerial.substring(6, 9))) {
+                        this.testusercode = data.countrydetails.codeCN;
+                        this.ccode = data.countrydetailshome.codeCN;
                     }
                     else {
                         this.testusercode = this.employeeSerial.substring(6, 9);
