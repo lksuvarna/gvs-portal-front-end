@@ -1150,7 +1150,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -2706,20 +2706,6 @@ class StepsComponent {
             }
         }
         if (this.service == 'fixedphone_update' || this.service == 'fixedphone_delete') {
-            if (this.step === 2 && this.isSelf === true && this.isWarning === true) {
-                this.isWarning2 = true;
-            }
-            else {
-                this.isWarning2 = false;
-            }
-            if (this.step === 3 && this.isSelf === false && this.isWarning === true) {
-                this.isWarning3 = true;
-            }
-            else {
-                this.isWarning3 = false;
-            }
-        }
-        if ((this.service = 'specialrequest') && (this.step === 1)) {
             if (this.step === 2 && this.isSelf === true && this.isWarning === true) {
                 this.isWarning2 = true;
             }
