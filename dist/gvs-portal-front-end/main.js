@@ -1150,11 +1150,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\Users\HARSHITHAARAVA\Desktop\Cirrus Latest\Cirrus latest new\gvs-portal-front-end\src\main.ts */"zUnb");
-=======
 module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
->>>>>>> beb6d2a971e822342afa64263462ee53e8ea6a13
 
 
 /***/ }),
@@ -4387,11 +4383,11 @@ __webpack_require__.r(__webpack_exports__);
 
 function HpInDeleteComponent_tr_43_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 43);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 43);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "p", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "fixedphonenew.norecordfoundformac");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4400,8 +4396,8 @@ function HpInDeleteComponent_tr_43_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function HpInDeleteComponent_div_87_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 45);
+function HpInDeleteComponent_div_84_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 43);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "p", 7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "fixedphonenew.Somethingseemswrong");
@@ -4409,27 +4405,27 @@ function HpInDeleteComponent_div_87_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function HpInDeleteComponent_div_89_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 47);
+function HpInDeleteComponent_div_86_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 45);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Jabberentrydetails.Submissioninprogress");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 46);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function HpInDeleteComponent_input_94_Template(rf, ctx) { if (rf & 1) {
+function HpInDeleteComponent_input_91_Template(rf, ctx) { if (rf & 1) {
     const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInDeleteComponent_input_94_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.BackButton(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInDeleteComponent_input_91_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.BackButton(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](1, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](1, 1, "Jabberentrydetails.Back"));
 } }
-function HpInDeleteComponent_input_96_Template(rf, ctx) { if (rf & 1) {
+function HpInDeleteComponent_input_93_Template(rf, ctx) { if (rf & 1) {
     const _r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInDeleteComponent_input_96_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r8.submit_snow(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInDeleteComponent_input_93_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r9); const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r8.submit_snow(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](1, "translate");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -4473,12 +4469,14 @@ class HpInDeleteComponent {
         this.hideSteps = false;
     }
     onMacClick() {
-        this.showerrormessage = false;
-        this.hideSteps = false;
+        if (this.currentMacOrPhone != '') {
+            this.showerrormessage = false;
+            this.hideSteps = false;
+        }
     }
     OnSearchClick() {
         if (this.currentMacOrPhone != '') {
-            this.db2.search_db2(this.cnum, "fixedphone_search", this.currentMacOrPhone, this.currentMacOrPhone, this.countrydetails.name).subscribe(data => {
+            this.db2.search_db2(this.cnum, "fixedphone_search", this.currentMacOrPhone.toUpperCase(), this.currentMacOrPhone, this.countrydetails.name).subscribe(data => {
                 if (data.message != '') {
                     this.currentMac = data.message[0].ATTRIBUTE1;
                     this.currentPhone = data.message[0].IDENTIFIER;
@@ -4489,6 +4487,7 @@ class HpInDeleteComponent {
                     this.showerrormessage = false;
                     this.hideNextButton = false;
                     this.hideSteps = false;
+                    this.currentMacSep = this.currentMac.toLowerCase().includes("sep") ? this.currentMac.slice(3, this.currentMac.length) : this.currentMac;
                 }
                 else {
                     this.showerrormessage = true;
@@ -4550,7 +4549,7 @@ class HpInDeleteComponent {
         this.payload.cNum_payload = this.cnum;
         this.payload.ReqNo = this.reqno;
         this.payload.Identifier = this.currentPhone;
-        this.payload.macaddress = this.currentMac;
+        this.payload.macaddress = this.currentMacSep;
         this.payload.olddesc = this.currentdesc;
         this.payload.countryname = this.countrydetails.name;
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
@@ -4634,7 +4633,7 @@ class HpInDeleteComponent {
     }
 }
 HpInDeleteComponent.ɵfac = function HpInDeleteComponent_Factory(t) { return new (t || HpInDeleteComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_db2_service__WEBPACK_IMPORTED_MODULE_2__["Db2Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_4__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_5__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_translate_config_service__WEBPACK_IMPORTED_MODULE_8__["TranslateConfigService"])); };
-HpInDeleteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpInDeleteComponent, selectors: [["app-hp-in-delete"]], decls: 97, vars: 32, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "formData", "cnum", "hideSteps"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "50%"], ["for", "Sear class=", "translate", ""], [1, "ds-col-12"], [1, "ds-row"], [1, "ds-col-7"], ["name", "IdNum1", "value", "", "maxlength", "15;", 1, "ds-input", 2, "width", "180px !important", 3, "ngModel", "ngModelChange", "click"], [1, "ds-col-5", "ds-pad-l-1"], ["type", "button", "name", "SEARCH", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-margin-bottom-0", "ds-pad-l-1", "ds-pad-r-1", 3, "value", "click"], ["valign", "top", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1", 3, "hidden"], ["type", "submit", "name", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value"], [3, "hidden"], ["translate", "", 1, "ds-pad-t-0_5", "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps", "formData", "cnum", "previousStep"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%"], ["for", "addId1", "translate", ""], ["width", "54%"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["colspan", "2", "width", "100%"], ["id", "err1"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"]], template: function HpInDeleteComponent_Template(rf, ctx) { if (rf & 1) {
+HpInDeleteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpInDeleteComponent, selectors: [["app-hp-in-delete"]], decls: 94, vars: 28, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "formData", "cnum", "hideSteps"], ["id", "h22", "translate", "", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "50%"], ["for", "Sear class=", "translate", ""], [1, "ds-col-12"], [1, "ds-row"], [1, "ds-col-7"], ["name", "IdNum1", "value", "", "maxlength", "15;", 1, "ds-input", 2, "width", "180px !important", 3, "ngModel", "ngModelChange", "click"], [1, "ds-col-5", "ds-pad-l-1"], ["type", "button", "name", "SEARCH", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-margin-bottom-0", "ds-pad-l-1", "ds-pad-r-1", 3, "value", "click"], ["valign", "top", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"], [3, "hidden"], ["translate", "", 1, "ds-pad-t-0_5", "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps", "formData", "cnum", "previousStep"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%"], ["for", "addId1", "translate", ""], ["width", "54%"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", 3, "value", "click", 4, "ngIf"], ["colspan", "2", "width", "100%"], ["id", "err1"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], ["translate", "", 1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "value", "click"]], template: function HpInDeleteComponent_Template(rf, ctx) { if (rf & 1) {
         const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -4644,7 +4643,7 @@ HpInDeleteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 5, 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function HpInDeleteComponent_Template_form_submit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r10); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.entryDetails(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function HpInDeleteComponent_Template_form_submit_6_listener() { return ctx.OnSearchClick(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "b", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "servicestitle.Fixed Phone - Delete Request");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4716,76 +4715,72 @@ HpInDeleteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](51, "translate");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "span", 28);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](53, "input", 29);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](54, "translate");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "form", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "b", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54, "servicestitle.Fixed Phone - Delete Request");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "form", 30);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "b", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](57, "servicestitle.Fixed Phone - Delete Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "div", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, " Jabbernewtrans.pleasesubmittostart ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "div", 31);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](59, " Jabbernewtrans.pleasesubmittostart ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](57, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "app-steps", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpInDeleteComponent_Template_app_steps_previousStep_58_listener($event) { return ctx.previousStep($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](60, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "app-steps", 32);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpInDeleteComponent_Template_app_steps_previousStep_61_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "h2", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](60, "Jabberupdate.ReviewDetails");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "h2", 11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](63, "Jabberupdate.ReviewDetails");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "table", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "tr", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "td", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "label", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](66, "fixedphonenew.MACAddress");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "table", 33);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "tbody");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "tr", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "td", 34);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "label", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](69, "fixedphonenew.MACAddress");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](68);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "td", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](71);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](69, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "tr", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "td", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "label", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](73, "fixedphonenew.PhoneNumber");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](72, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "tr", 13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "td", 34);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "label", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](76, "fixedphonenew.PhoneNumber");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](75);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "td", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](78);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](76, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "tr", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](78, "td", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "label", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](80, "fixedphonenew.Description");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](79, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](80, "tr", 13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "td", 34);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](82, "label", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](83, "fixedphonenew.Description");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "td", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](85);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](82);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](86, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](87, HpInDeleteComponent_div_87_Template, 5, 0, "div", 37);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](88, "div", 38);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](89, HpInDeleteComponent_div_89_Template, 4, 0, "div", 39);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](90, "div", 23);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "div", 24);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](92, "div", 25);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](93, "span", 26);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](94, HpInDeleteComponent_input_94_Template, 2, 3, "input", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](83, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](84, HpInDeleteComponent_div_84_Template, 5, 0, "div", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](85, "div", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](86, HpInDeleteComponent_div_86_Template, 4, 0, "div", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](88, "div", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](89, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](90, "span", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](91, HpInDeleteComponent_input_91_Template, 2, 3, "input", 38);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](95, "span", 41);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](96, HpInDeleteComponent_input_96_Template, 2, 3, "input", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](92, "span", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](93, HpInDeleteComponent_input_93_Template, 2, 3, "input", 40);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4804,21 +4799,17 @@ HpInDeleteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](17);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.currentMacOrPhone);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](42, 26, "fixedphonenew.SEARCH"));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](42, 24, "fixedphonenew.SEARCH"));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showerrormessage);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](51, 28, "Jabberentrydetails.Back"));
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.hideNextButton);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](54, 30, "Jabberentrydetails.Next"));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](51, 26, "Jabberentrydetails.Back"));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isReviewForm);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor)("formData", _r0)("cnum", ctx.cnum);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.currentMac);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.currentMacSep);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.currentPhone);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
@@ -10546,114 +10537,114 @@ function FacInUpdateComponent_table_18_option_90_Template(rf, ctx) { if (rf & 1)
 const _c0 = function () { return { standalone: true }; };
 function FacInUpdateComponent_table_18_Template(rf, ctx) { if (rf & 1) {
     const _r42 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 36);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tbody");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label", 39);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Current Office Location ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "label", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " Current Charge Dept Code ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "td", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "label", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, " Current Authorization Level ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "td", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "label", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, " Current FAC Code / IDD PIN Type ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "td", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](33);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "label", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, " Current Validity ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "td", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "label", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](42, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "label", 43);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](45, " Update Required for ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "span", 31);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](47, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "td", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "div", 40);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "div", 43);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "div", 44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "input", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "div", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "div", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "div", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "input", 46);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FacInUpdateComponent_table_18_Template_input_change_52_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r41 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r41.toggle_options(); })("ngModelChange", function FacInUpdateComponent_table_18_Template_input_ngModelChange_52_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r43.checked = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](53, "div", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "label", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](53, "div", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "label", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](55, "Office Location");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "div", 44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "input", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "div", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "input", 49);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FacInUpdateComponent_table_18_Template_input_change_57_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r44.toggle_options(); })("ngModelChange", function FacInUpdateComponent_table_18_Template_input_ngModelChange_57_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r45.checked2 = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](58, "div", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "label", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](58, "div", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "label", 50);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](60, "Funded");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "div", 44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "input", 50);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "div", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "input", 51);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FacInUpdateComponent_table_18_Template_input_change_62_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r46.toggle_options(); })("ngModelChange", function FacInUpdateComponent_table_18_Template_input_ngModelChange_62_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r47 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r47.checked3 = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](63, "div", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "label", 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](63, "div", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "label", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](65, "Authorization Level");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10661,29 +10652,29 @@ function FacInUpdateComponent_table_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "tr", 52);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "label", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "tr", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "label", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](69, "Office Location");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "span", 31);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](71, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "td", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "div", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "select", 55, 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "div", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "select", 56, 57);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function FacInUpdateComponent_table_18_Template_select_change_74_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const _r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](75); const ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r48.selectedLocation(_r36.value); })("ngModelChange", function FacInUpdateComponent_table_18_Template_select_ngModelChange_74_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r49 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r49.Location_1 = $event; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](76, "option", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](76, "option", 58);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](77, "Select One");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](78, FacInUpdateComponent_table_18_option_78_Template, 2, 2, "option", 58);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](78, FacInUpdateComponent_table_18_option_78_Template, 2, 2, "option", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "tr", 52);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](80, "td", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "tr", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](80, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "label", 60);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](82, " Campus");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10692,10 +10683,10 @@ function FacInUpdateComponent_table_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](85, "td", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](86, "div", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](86, "div", 55);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "select", 62);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function FacInUpdateComponent_table_18_Template_select_ngModelChange_87_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r50 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r50.Buildings = $event; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](88, "option", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](88, "option", 58);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](89, "Select One");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](90, FacInUpdateComponent_table_18_option_90_Template, 2, 2, "option", 63);
@@ -10703,8 +10694,8 @@ function FacInUpdateComponent_table_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "tr", 52);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](92, "td", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "tr", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](92, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](93, "label", 64);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](94, "Funded");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10716,7 +10707,7 @@ function FacInUpdateComponent_table_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](99, "input", 68);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function FacInUpdateComponent_table_18_Template_input_ngModelChange_99_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r51 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r51.Voice_Mail = $event; })("change", function FacInUpdateComponent_table_18_Template_input_change_99_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r52 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r52.isFunded(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](100, "div", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](100, "div", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](101, "span", 69);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](102, "Yes");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10725,7 +10716,7 @@ function FacInUpdateComponent_table_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](104, "input", 71);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function FacInUpdateComponent_table_18_Template_input_ngModelChange_104_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r53 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r53.Voice_Mail = $event; })("change", function FacInUpdateComponent_table_18_Template_input_change_104_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r54 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r54.isFunded(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](105, "div", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](105, "div", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](106, "span", 69);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](107, "No");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10734,8 +10725,8 @@ function FacInUpdateComponent_table_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](108, "tr", 52);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](109, "td", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](108, "tr", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](109, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](110, "div", 72);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](111, "label", 73);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](112, "Charge Department Code");
@@ -10754,8 +10745,8 @@ function FacInUpdateComponent_table_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](119, "tr", 52);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](120, "td", 59);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](119, "tr", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](120, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](121, "label", 77);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](122, " Authorization Level");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10764,10 +10755,10 @@ function FacInUpdateComponent_table_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](125, "td", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](126, "div", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](126, "div", 55);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](127, "select", 78);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function FacInUpdateComponent_table_18_Template_select_ngModelChange_127_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r56 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r56.authLevel = $event; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](128, "option", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](128, "option", 58);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](129, "Select One");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](130, "option");
@@ -10783,17 +10774,17 @@ function FacInUpdateComponent_table_18_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](136, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](137, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](138, "label", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](136, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](137, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](138, "label", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](139, " Business Justification");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](140, "span", 31);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](141, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](142, "td", 39);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](143, "div", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](142, "td", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](143, "div", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](144, "textarea", 79);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function FacInUpdateComponent_table_18_Template_textarea_ngModelChange_144_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r42); const ctx_r57 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r57.businessjustification = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10865,13 +10856,13 @@ function FacInUpdateComponent_b_30_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function FacInUpdateComponent_tr_39_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Current Office Location ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10886,13 +10877,13 @@ function FacInUpdateComponent_br_40_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
 function FacInUpdateComponent_tr_41_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 38);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 83);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Current Charge Dept Code ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10907,13 +10898,13 @@ function FacInUpdateComponent_br_42_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
 function FacInUpdateComponent_tr_43_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Current Authorization Level ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10928,13 +10919,13 @@ function FacInUpdateComponent_br_44_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
 function FacInUpdateComponent_tr_45_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Current FAC Code / IDD PIN Type");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10949,13 +10940,13 @@ function FacInUpdateComponent_br_46_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
 function FacInUpdateComponent_tr_47_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Current Validity");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10970,13 +10961,13 @@ function FacInUpdateComponent_br_48_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
 function FacInUpdateComponent_tr_49_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Office Location");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10991,13 +10982,13 @@ function FacInUpdateComponent_br_50_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
 function FacInUpdateComponent_tr_51_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Campus");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -11012,13 +11003,13 @@ function FacInUpdateComponent_br_52_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
 function FacInUpdateComponent_tr_53_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Funded");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -11033,13 +11024,13 @@ function FacInUpdateComponent_br_54_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
 function FacInUpdateComponent_tr_55_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Charge Department Code");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -11054,13 +11045,13 @@ function FacInUpdateComponent_br_56_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
 function FacInUpdateComponent_tr_57_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Authorization Level");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -11075,13 +11066,13 @@ function FacInUpdateComponent_br_58_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "br");
 } }
 function FacInUpdateComponent_tr_59_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Business Justification");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 84);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
@@ -11251,7 +11242,7 @@ class FacInUpdateComponent {
                 alert('Please select a campus');
                 return;
             }
-            if (formData.value.Location_1.toLowerCase() + '~~' + formData.value.Buildings.toLowerCase() === this.currLocation.toLocaleLowerCase()) {
+            if (formData.value.Location_1.toLowerCase().trim() + '~~' + formData.value.Buildings.toLowerCase().trim() === this.currLocation1.toLowerCase().trim() + '~~' + this.currBuilding.toLowerCase().trim()) {
                 alert('Please provide a new campus');
                 return;
             }
@@ -11561,6 +11552,7 @@ class FacInUpdateComponent {
     selectedLocation(loc) {
         this.build = [];
         this.campus = '';
+        this.Buildings = '';
         //alert("Location"+loc);
         if (loc != '') {
             this.hideBuilding = false;
@@ -11579,7 +11571,7 @@ class FacInUpdateComponent {
     }
 }
 FacInUpdateComponent.ɵfac = function FacInUpdateComponent_Factory(t) { return new (t || FacInUpdateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_5__["Location"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_db2_service__WEBPACK_IMPORTED_MODULE_6__["Db2Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_7__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"])); };
-FacInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FacInUpdateComponent, selectors: [["app-fac-in-update"]], decls: 71, vars: 46, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", "", 4, "ngIf"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [4, "ngIf"], [3, "step", "formData", "cnum", "UpdatedFor", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["class", "ds-pad-l-1 ds-pad-r-1", "id", "button2", 4, "ngIf"], [3, "hidden"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top", 4, "ngIf"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32765", "value", "BACK", 3, "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32767", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["translate", ""], [1, "ds-text-contextual-red-2"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["valign", "top"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "current_loc", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], [1, "ds-input-container"], ["for", "current_cos", 1, "ds-text-capitalize"], ["for", "updaterequested", 1, "ds-text-capitalize"], ["role", "group", "aria-labelledby", "basic-checkboxes-example", 1, "ds-input-checkbox-group"], [1, "ds-input-checkbox"], ["type", "checkbox", "id", "checkbox1", "name", "checked", "title", "Update requested for", 1, "ds-input", 3, "ngModel", "ngModelOptions", "change", "ngModelChange"], [1, "ds-input-control"], ["for", "checkbox1"], ["type", "checkbox", "id", "checkbox2", "name", "checked1", "title", "Update requested for", 1, "ds-input", 3, "ngModel", "ngModelOptions", "change", "ngModelChange"], ["for", "checkbox2"], ["type", "checkbox", "id", "checkbox3", "name", "checked2", "title", "Update requested for", 1, "ds-input", 3, "ngModel", "ngModelOptions", "change", "ngModelChange"], ["for", "checkbox3"], ["valign", "top", 3, "hidden"], ["for", "LocationId", 1, "ds-text-capitalize"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["colspan", "2", "width", "46%"], ["for", "builId", 1, "ds-text-capitalize"], ["width", "54%"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Mail", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "change"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Mail", "id", "radio2", "value", "No", "checked", "", 1, "ds-input", 3, "ngModel", "ngModelChange", "change"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "chargeDepartmentCode", "value", "", "id", "d2", "maxlength", "6", "title", "Charge Department Code", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["id", "Mentor1Div"], ["for", "LocationId", 1, ""], ["name", "authLevel", "rows", "2", "cols", "40", "id", "authLevel", "title", "Authorization Level", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "businessjustification", "tabindex", "3", "id", "ch", "maxlength", "200", "title", "Business Justification", "rows", "2", "cols", "40", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["name", "Location_1", 3, "value"], [3, "value"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], ["for", "current_vm", 1, "ds-text-capitalize"], [2, "word-break", "break-all"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function FacInUpdateComponent_Template(rf, ctx) { if (rf & 1) {
+FacInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FacInUpdateComponent, selectors: [["app-fac-in-update"]], decls: 71, vars: 46, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", "", 4, "ngIf"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [4, "ngIf"], [3, "step", "formData", "cnum", "UpdatedFor", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "b1", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "req_stat_del", "class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["id", "t2", "width", "110%", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "tabindex", "32765", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["class", "ds-pad-l-1 ds-pad-r-1", "id", "button2", 4, "ngIf"], [3, "hidden"], [3, "step", "isSelf", "hideSteps", "previousStep"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top", 4, "ngIf"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32765", "value", "BACK", 3, "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "tabindex", "32767", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["translate", ""], [1, "ds-text-contextual-red-2"], ["id", "b1", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["id", "req_stat_del", 1, "ds-col-xs-12", "ds-alert", "ds-warning"], [2, "font-size", "1rem"], ["target", "_blank", "href", "https://ibm-cio.slack.com/archives/C0133EDUGVB", 2, "color", "blue"], ["id", "t2", "width", "110%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["height", "10"], ["for", "current_loc", 1, "ds-text-capitalize"], ["height", "10", 1, "ds-pad-l-2"], [1, "ds-input-container"], ["for", "current_cos", 1, "ds-text-capitalize"], ["for", "updaterequested", 1, "ds-text-capitalize"], ["role", "group", "aria-labelledby", "basic-checkboxes-example", 1, "ds-input-checkbox-group"], [1, "ds-input-checkbox"], ["type", "checkbox", "id", "checkbox1", "name", "checked", "title", "Update requested for", 1, "ds-input", 3, "ngModel", "ngModelOptions", "change", "ngModelChange"], [1, "ds-input-control"], ["for", "checkbox1"], ["type", "checkbox", "id", "checkbox2", "name", "checked1", "title", "Update requested for", 1, "ds-input", 3, "ngModel", "ngModelOptions", "change", "ngModelChange"], ["for", "checkbox2"], ["type", "checkbox", "id", "checkbox3", "name", "checked2", "title", "Update requested for", 1, "ds-input", 3, "ngModel", "ngModelOptions", "change", "ngModelChange"], ["for", "checkbox3"], ["valign", "top", 3, "hidden"], ["for", "LocationId", 1, "ds-text-capitalize"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["for", "builId", 1, "ds-text-capitalize"], [1, "ds-pad-l-2"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Mail", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "change"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Mail", "id", "radio2", "value", "No", "checked", "", 1, "ds-input", 3, "ngModel", "ngModelChange", "change"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "chargeDepartmentCode", "value", "", "id", "d2", "maxlength", "6", "title", "Charge Department Code", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["id", "Mentor1Div"], ["for", "LocationId", 1, ""], ["name", "authLevel", "rows", "2", "cols", "40", "id", "authLevel", "title", "Authorization Level", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "businessjustification", "tabindex", "3", "id", "ch", "maxlength", "200", "title", "Business Justification", "rows", "2", "cols", "40", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["name", "Location_1", 3, "value"], [3, "value"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], ["for", "current_vm", 1, "ds-text-capitalize"], [2, "word-break", "break-all"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "next", "tabindex", "32767", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function FacInUpdateComponent_Template(rf, ctx) { if (rf & 1) {
         const _r62 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
@@ -14461,11 +14453,7 @@ function gettime() {
 /*! exports provided: home, footer, footnote, lhs, Jabberservices, Jabbernewtrans, servicestitle, employeeinfotrans, Jabberentrydetails, Jabberupdate, Jabbermove, requesttrans, resultpagetrans, resourcespagetranslation, phonenumber, alerttranslation, topui, steps, fixedphonenew, specialrequest, otheralerts, default */
 /***/ (function(module) {
 
-<<<<<<< HEAD
-module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choisissez une langue: \",\"app-name\":\"Services téléphoniques mondiaux\",\"app-function\":\"Point d'entrée unique pour commander des services vocaux dans votre pays\",\"sponsor\":\"Basé sur le cloud hybride CIO optimisé par Red Hat OpenShift\",\"welcomemessage\":\"Bienvenue,\",\"question\":\"Quel service ou quel pays rechercherez-vous?\",\"search-placeholder\":\"Service de recherche ...\",\"search-text\":\"Cliquez ici pour voir tous les résultats de la recherche GVS\",\"my-country\":\"Mon pays\",\"click-here\":\"Cliquez ici\",\"available\":\"pour afficher tous les\",\"servicesonlyokay\":\"services pour\",\"most-viewed-services\":\"Services les plus consultés\",\"find-right-service\":\"Trouvez les bons services, vérifiez leur disponibilité,\",\"find-right-service2\":\"puis choisissez la façon dont vous vous connectez et travaillez ensemble.\",\"jabber-description\":\"Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.\",\"button-value\":\"Premiers pas\",\"Searchservice\":\"Service de recherche...\"},\"footer\":{\"aditional-question\":\"Vous avez des questions supplémentaires sur la commande de  Services téléphoniques mondiaux ?\",\"please consult\":\"Veuillez consulter\",\"consult\":\"* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE, Edge et Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Conditions d'utilisation\",\"Useful Information\":\"Informations utiles\",\"Please bear in mind the following points when making a request :\":\"Veuillez garder à l'esprit les points suivants lorsque vous faites une demande:\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"Pour faire une demande, l'Employé doit exister dans BluePages (sauf pour les demandes d'annulation).\",\"You must know the IBM serial Number of the person making the request.\":\"Vous devez connaître le numéro de série IBM de la personne qui fait la demande.\",\"Only one request per employee per request type is processed at a time.\":\"Une seule demande par employé et par type de demande est traitée à la fois.\"},\"lhs\":{\"Services\":\"Prestations de service\",\"Jabber\":\"Jabber\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approbations en attente\",\"Revalidation Pending\":\"Revalidation en attente\",\"Phone Number Search\":\"Recherche par numéro de téléphone\",\"Resources\":\"Ressources\",\"Requests\":\"Demandes\"},\"Jabberservices\":{\"initiateJabber\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service Jabber.\",\"jnew\":\"Demander un nouveau service\",\"jupdate\":\"Mettre à jour un service existant\",\"jmove\":\"Déplacer un service existant\",\"jdelete\":\"Supprimer un service existant\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"Cette demande peut être soumise pour vous-même ou au nom d'un autre employé. Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeSearch\":\"Recherche d'employés\",\"requestfor\":\"À qui s'adresse cette demande\",\"Myself\":\"Moi-même\",\"AnotherEmployee\":\"Un autre employé\",\"Name\":\"Nom\",\"SerialNumber\":\"Numéro de série\",\"EmployeeSerialNumber\":\"Numéro de série de l'employé\",\"forexample\":\"(par exemple 012789)\",\"CountryCode\":\"Code postal\",\"SelectOne\":\"Sélectionnez-en un\",\"norecord\":\"Il n'y a pas d'enregistrement d'un employé IBM avec le numéro de série \",\"availablefromBluePages\":\"disponible auprès de BluePages\",\"opps\":\"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard\",\"JabberLocation\":\"Emplacement du Jabber / Numéro de téléphone\",\"Voicemail\":\"Messagerie vocale\",\"ClassofService\":\"Classe de service (COS)\",\"pleasesubmittostart\":\"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\"},\"servicestitle\":{\"Request new Jabber service\":\"Jabber - Nouvelle demande\",\"Update Jabber Request\":\"Jabber - Demande de mise à jour\",\"Move Jabber Request\":\"Jabber - Demande de déplacement\",\"Delete Jabber Request\":\"Jabber - Demande de déplacement\",\"FAC Code / IDD PIN New Request\":\"Code FAC - Nouvelle demande\",\"FAC Code / IDD PIN Update Request\":\"Code FAC - Demande de mise à jour\",\"FAC Code / IDD PIN Reset Request\":\"Code FAC - Demande de réinitialisation\",\"FAC Code / IDD PIN Delete Request\":\"Code FAC - Demande de suppression\",\"Request Move Jabber service\":\"Jabber - Demande de déplacement\",\"Update Existing Jabber Request\":\"Jabber - Demande de mise à jour\",\"SpecialRequestentryandreview\":\"Demande spéciale\",\"FAC Code / IDD PIN - Delete Request\":\"Code FAC / Pin IDD - Demande de suppression\",\"Special Request\":\"Demande spéciale\",\"Delete an existing service\":\"Supprimer un service existant\",\"Request a new service\":\"Demander un nouveau service\",\"Update an existing service\":\"Mettre à jour un service existant\",\"Requests\":\"Demandes\",\"Resources\":\"Ressources\",\"Fixed Phone - New Request\":\"Téléphone fixe - Nouvelle demande\",\"New Fixed Phone Request\":\"Nouvelle demande de téléphone fixe\",\"Fixed Phone - Update Request\":\"Téléphone fixe - Demande de mise à jour\",\"Fixed Phone - Delete Request\":\"Téléphone fixe - Demande de suppression\",\"Delete an existing FAC Code / IDD PIN\":\"Supprimer un code FAC existant\",\"Request a new FAC Code / IDD PIN\":\"Demander un nouveau code FAC\",\"Update an existing FAC Code / IDD PIN\":\"Mettre à jour un code FAC existant\",\"Reset an existing FAC Code / IDD PIN\":\"Réinitialiser un code FAC existant\",\"Phone Number Search\":\"Recherche par numéro de téléphone\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"Si les informations suivantes sont correctes, cliquez sur Suivant. Toute erreur doit être corrigée dans le\",\"BluePagesrecord\":\"enregistrer BluePages\",\"beforecontinuing\":\"avant de continuer.\",\"EmployeeInformation\":\"Information sur les employés\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"Name\":\"Nom:\",\"SerialNumber\":\"Numéro de série:\",\"JobResponsibility\":\"Responsabilité du travail:\",\"BusinessUnit\":\"Unité commerciale:\",\"Department\":\"département:\",\"Country\":\"Pays:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander un compte Jabber.\",\"itnexistsforuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour cet utilisateur est .\",\"nojabber\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"nojabberusethislink\":\"Le numéro de série que vous avez entré ne possède pas de numéro de téléphone IP (ITN) et n'est donc pas éligible pour Jabber. Veuillez utiliser ce lien pour faire une demande d'ITN \",\"GlobalVoiceInfrastructure\":\"Infrastructure vocale mondiale.\",\"receiveITN\":\"vous avez reçu l'ITN, vous pouvez alors demander Jabber. Merci.\",\"notauthorizedtoaccessjabber\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter\",\"notauthorizedtoaccessip\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter\",\"noteligibletorequestmorethanonejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander plus d'un compte Jabber.\",\"ITNexistsforthisuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour ce compte jabber d'utilisateurs est\",\"jabberconfiguration\":\"lié à la configuration de Jabber peut être trouvé à\",\"furtherassistance\":\"Pour toute assistance supplémentaire, veuillez contacter\",\"alreadyone\":\"le numéro de série que vous avez entré en a déjà un\",\"inprogess\":\"est en cours et le numéro de la demande est\",\"ongoingrequestsbyclickonrequestpage\":\"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.\",\"nooutstandingreq\":\"Aucune demande en suspens n'a été trouvée pour le numéro de série.\",\"noresources\":\"Il n'y a pas de ressources pour ce numéro de série.\",\"nojabberforthisserial\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"BACK\":\"DOS\",\"NEXT\":\"SUIVANTE\",\"SUBMIT1\":\"NOUS FAIRE PARVENIR\",\"alreadyonerequestinprogress\":\"Le numéro de série que vous avez entré a déjà une nouvelle demande Jabber est en cours et le numéro de demande est\",\"alreadyoneupdaterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de mise à jour Jabber est en cours et le numéro de demande est\",\"alreadyonemoverequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de déplacement Jabber est en cours et le numéro de demande est\",\"alreadyonedeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est\",\"alreadyonefacdeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression FAC est en cours et le numéro de demande est\",\"enterserialnumber\":\"Please enter a serial number\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"OfficeLocation\":\"Emplacement du bureau\",\"Campus\":\"Campus\",\"Funded\":\"Financé\",\"ChargeDepartmentCode\":\"Code du département de facturation\",\"BusinessUnit\":\"Unité commerciale\",\"Projectid\":\"ID du projet (pour les employés de GBS uniquement)\",\"alreadyhaveFixedPhone\":\"Si vous avez déjà un téléphone fixe, veuillez fournir l'identifiant\",\"toprocessPI\":\"En soumettant cette demande de provisioning, vous consentez expressément par écrit à IBM pour traiter les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\",\"JabberRequestDetails\":\"Détails de la demande Jabber\",\"FixedPhoneIdentifier\":\"Identifiant de téléphone fixe\",\"Submissioninprogress\":\"La soumission de votre demande est en cours.Ne revenez pas en arrière ou n'actualisez pas la page.\",\"Submissionbeinginprogress\":\"Votre demande est en cours d'envoi. Ne pas actualiser ni revenir en arrière.\",\"Back\":\"DOS\",\"Next\":\"SUIVANTE\",\"Select Location\":\"Sélectionnez l'emplacement\"},\"Jabberupdate\":{\"SELECTONE\":\"CHOISISSEZ UNE\",\"ReviewDetails\":\"revoir les détails\",\"JabberNumber\":\"Jabber / Numéro de téléphone\",\"SelectJabberNumber\":\"Jabber / Numéro de téléphone\",\"Jabber/PhoneNumberLocation\":\"Sélectionnez Emplacement du numéro de téléphone / Jabber\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber / Numéro de téléphone\",\"ProjectIId\":\"Id du projet\",\"AccountId\":\"Identifiant de compte\",\"ICA Code\":\"Code ICA\",\"NewOfficeLocation\":\"Nouveau bureau\",\"Building\":\"Imeuble\"},\"requesttrans\":{\"Requests\":\"Demandes\",\"beingsubmitted\":\"Votre demande est en cours d'envoi.Ne pas actualiser ni revenir en arrière.\",\"EmployeeRequestsDetails\":\"Détails des demandes des employés\",\"ResourceType\":\"Type de ressource\",\"CreatedDate\":\"Date de création\",\"Status\":\"Statut\",\"TrackingNumber\":\"Numéro de suivi\",\"AdditionalComments\":\"Commentaires supplémentaires\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Votre demande de\",\"hasbeensubmitted\":\"a été soumis\",\"Trackingrequest\":\"Le numéro de suivi de la demande est :\",\"receiveemailnotification\":\"Vous recevrez une notification par e-mail, lorsque votre demande aura été traitée.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Détails des ressources des employés\",\"Supplier\":\"Fournisseuse\",\"Phone/Dial\":\"Téléphone / Numérotation\",\"Innumber\":\"En nombre\",\"AdditionalInformation\":\"Informations Complémentaires\"},\"phonenumber\":{\"PhoneNumberSearch\":\"Recherche par numéro de téléphone\",\"PhoneNumberDetails\":\"Détails du numéro de téléphone\",\"EnterITNNumber\":\"Entrez le numéro ITN\",\"EmpID\":\"EmpID\",\"UserName\":\"Nom d'utilisateur\",\"ServiceDetails\":\"Détails du service\"},\"alerttranslation\":{\"EXITREQUEST\":\"DEMANDE DE SORTIE\",\"digitserialnumber\":\"Le numéro de série de l'employé doit être composé de 6 caractères\",\"enterserialnumber\":\"Veuillez saisir un numéro de série\",\"moverequest\":\"La demande de déplacement supprimera l'ITN actuel et un nouvel ITN sera attribué. Cliquez sur OK pour continuer ou sur Annuler pour quitter\",\"selectcountrycode\":\"Veuillez sélectionner le code du pays\",\"Only\":\"Seule\",\"serialnumbersareallowed\":\"Les numéros de série sont autorisés à créer une demande de\",\"selectlocation\":\"Veuillez sélectionner un emplacement\",\"selectjabbernumber\":\"Veuillez sélectionner le Jabber / Numéro de téléphone\"},\"topui\":{\"HOME\":\"DOMICILE\",\"SERVICES\":\"PRESTATIONS DE SERVICE\",\"DATAPRIVACY\":\"CONFIDENTIALITÉ DES DONNÉES\",\"HELP\":\"AIDER\",\"FEEDBACK\":\"RÉTROACTION\",\"CHANGECOUNTRY\":\"CHANGER DE PAYS\"},\"steps\":{\"Employee Search\":\"Recherche d'employés\",\"Employee Information\":\"Information sur les employés\",\"Employee Entry Details\":\"Détails de l'entrée des employés\",\"Review Details\":\"Détails de l'examen\",\"Employee Resources Details\":\"Détails des ressources des employés\",\"Employee Requests Details\":\"Détails des demandes des employés\",\"Phone Number Search\":\"Recherche par numéro de téléphone\",\"Phone Number Details\":\"Détails du numéro de téléphone\",\"STEP 1\":\"MARCHER 1\",\"STEP 2\":\"MARCHER 2\",\"STEP 3\":\"MARCHER 3\",\"STEP 4\":\"MARCHER 4\"},\"fixedphonenew\":{\"Location\":\"Emplacement\",\"TypeofDevice\":\"Type d'appareil \",\"SelectDevice\":\"Choisir un appareil\",\"TypeofModel\":\"Type de modèle \",\"NewPhonemodel\":\"Nouveau modèle de téléphone\",\"SelectModel\":\"Sélectionnez un modèle\",\"SelectClassofService (COS)\":\"Classe de service (COS)\",\"National\":\"Nationale\",\"International\":\"Internationale\",\"BusinessNeed(Whyisinternationalrequired?)\":\"Besoin commercial (pourquoi l'international est-il requis?) \",\"DescriptionoftheDevice\":\"Description de l'appareil \",\"IBMCLv21EMdesk\":\"par exemple. Bureau EM IBMC Lv21 \",\"IBMCLv21conferenceroom3\":\"par exemple. IBMC Lv21 salle de conférence 3 \",\"MACAddressoftheDevice\":\"Adresse MAC de l'appareil \",\"NoteCombinationofandLength12\":\"Remarque: combinaison de (0 à 9, A à F) et longueur: 12\",\"BusinessJustification\":\"Justification de l'entreprise\",\"DescriptionofDevice\":\"Description de l'appareil\",\"Somethingseemswrong\":\"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard.\",\"selectdevice\":\"Veuillez sélectionner un type d'appareil\",\"selectmodel\":\"Veuillez sélectionner un type de modèle\",\"businesscos\":\"Veuillez saisir le besoin professionnel pour la classe de service.\",\"descriptioncharacters\":\"Veuillez saisir une description et elle ne doit pas dépasser 30 caractères\",\"entermacadd\":\"Veuillez saisir une adresse MAC de 12 caractères\",\"MACfieldAtoF\":\"La valeur du champ MAC doit être en combinaison de 0 à 9 et de A à F\",\"initiateFixedPhoneservice\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service de téléphonie fixe.\",\"MACAddressorPhoneNumber\":\"Entrez l'adresse MAC ou le numéro de téléphone actuel\",\"norecordfoundformac\":\"Aucun enregistrement n'a été trouvé pour l'adresse Mac ou le numéro de téléphone que vous avez entré. Veuillez vérifier et réessayer.\",\"Pleaseenternumber\":\"Veuillez saisir un numéro à rechercher\",\"MACAddress\":\"Adresse Mac \",\"PhoneNumber\":\"Numéro de téléphone \",\"Description\":\"La description \",\"SEARCH\":\"RECHERCHER\",\"CurrentMACAddress\":\"Adresse MAC actuelle \",\"CurrentPhoneNumber\":\"Numéro de téléphone actuel \",\"CurrentDescription\":\"Description actuelle \",\"CurrentModel\":\"Modèle actuel\",\"UpdateRequiredfor\":\"Mise à jour requise pour\",\"TypeOfModel\":\"Type de modèle\",\"SelectPhoneModel\":\"Sélectionnez le modèle de téléphone\",\"NewMACAddress\":\"Nouvelle adresse MAC\",\"NewDescriptiontoUpdate\":\"Nouvelle description à mettre à jour\",\"ReasonforUpdation\":\"Raison de la mise à jour\",\"MACAddresssearch\":\"Veuillez saisir une adresse MAC ou un numéro de téléphone pour rechercher\",\"updaterequiredfor\":\"Veuillez sélectionner la mise à jour requise pour\",\"enternewMACaddress\":\"Veuillez saisir une nouvelle adresse MAC\",\"enteranewModel\":\"Veuillez saisir un nouveau modèle\",\"providethereasonforupdate\":\"Veuillez indiquer la raison de la mise à jour.\",\"provideNewDescription\":\"Veuillez fournir la nouvelle description. \",\"differentDescriptionasisalready\":\"Veuillez choisir une description différente car la description actuelle est déjà\",\"fortheprovidednumber\":\"pour le numéro fourni.\",\"FixedPhoneLocation\":\"Emplacement du téléphone fixe\",\"SelectOne\":\"Sélectionnez-en un\",\"cos\":\"Veuillez sélectionner une classe de service.\",\"NoteCombination\":\"Remarque: combinaison de (0 à 9, A à F) et longueur: 12\"},\"specialrequest\":{\"OnlyusetheSpecialRequest\":\"N'utilisez la demande spéciale que pour toute opération spéciale, telle qu'un deuxième numéro de bureau, une hotline pour un groupe de support, une configuration de ligne partagée pour des groupes fonctionnels, ou pour indiquer un besoin de conseil en matière de téléphonie. \",\"needstandardservice\":\"Si vous avez besoin d'un service standard tel que Jabber ou téléphone fixe, ne soumettez pas de demande spéciale car elle sera rejetée. Les services standard peuvent être demandés dans le menu à gauche de cette page.\",\"SpecialRequestHCSmigratedsite\":\"Veuillez noter que les demandes spéciales liées aux services vocaux ne peuvent être soumises que pour le site migré HCS. Les demandes spéciales relatives aux services vocaux pour un site non HCS doivent être soumises \",\"TMAC tool\":\"TMAC outil.\",\"HelpTMACtool\":\"L'aide relative à l'outil TMAC peut être trouvée \",\"here\":\"ici.\",\"JabberNumberoptional\":\"Jabber / numéro de téléphone (facultatif)\",\"JabberLocationspecial\":\"Emplacement du Jabber / Numéro de téléphone\",\"Description of Requirement\":\"Description de l'exigence\",\"notexceed200\":\"Remarque: la longueur ne doit pas dépasser 500\",\"Note\":\"Noter:\",\"Fieldsasteriskspl\":\"Champs marqués d'un astérisque\",\"arerequiredspl\":\"sont requis.\",\"selectjabbernumberwishtoupdate\":\"Jabber / Numéro de téléphone\",\"JabberLocationslect\":\"Emplacement du numéro de téléphone / Jabber\"},\"otheralerts\":{\"selectthejabber\":\"Veuillez sélectionner le jabber / numéro de téléphone à mettre à jour\",\"selectthejabbertomove\":\"Sélectionnez le Jabber / numéro de téléphone que vous souhaitez déplacer\",\"Model\":\"Modèle\",\"MAC Address\":\"Adresse Mac\",\"Device Description\":\"Description de l'appareil\"}}");
-=======
-module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choisissez une langue: \",\"app-name\":\"Services téléphoniques mondiaux\",\"app-function\":\"Point d'entrée unique pour commander des services vocaux dans votre pays\",\"sponsor\":\"Basé sur le cloud hybride CIO optimisé par Red Hat OpenShift\",\"welcomemessage\":\"Bienvenue,\",\"question\":\"Quel service ou quel pays rechercherez-vous?\",\"search-placeholder\":\"Service de recherche ...\",\"search-text\":\"Cliquez ici pour voir tous les résultats de la recherche GVS\",\"my-country\":\"Mon pays\",\"click-here\":\"Cliquez ici\",\"available\":\"pour afficher tous les\",\"servicesonlyokay\":\"services pour\",\"most-viewed-services\":\"Services les plus consultés\",\"find-right-service\":\"Trouvez les bons services, vérifiez leur disponibilité,\",\"find-right-service2\":\"puis choisissez la façon dont vous vous connectez et travaillez ensemble.\",\"jabber-description\":\"Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.\",\"button-value\":\"Premiers pas\",\"Searchservice\":\"Service de recherche...\"},\"footer\":{\"aditional-question\":\"Vous avez des questions supplémentaires sur la commande de  Services téléphoniques mondiaux ?\",\"please consult\":\"Veuillez consulter\",\"consult\":\"* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE, Edge et Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Conditions d'utilisation\",\"Useful Information\":\"Informations utiles\",\"Please bear in mind the following points when making a request :\":\"Veuillez garder à l'esprit les points suivants lorsque vous faites une demande:\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"Pour faire une demande, l'Employé doit exister dans BluePages (sauf pour les demandes d'annulation).\",\"You must know the IBM serial Number of the person making the request.\":\"Vous devez connaître le numéro de série IBM de la personne qui fait la demande.\",\"Only one request per employee per request type is processed at a time.\":\"Une seule demande par employé et par type de demande est traitée à la fois.\"},\"lhs\":{\"Services\":\"Prestations de service\",\"Jabber\":\"Jabber\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approbations en attente\",\"Revalidation Pending\":\"Revalidation en attente\",\"Phone Number Search\":\"Recherche par numéro de téléphone\",\"Resources\":\"Ressources\",\"Requests\":\"Demandes\"},\"Jabberservices\":{\"initiateJabber\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service Jabber.\",\"jnew\":\"Demander un nouveau service\",\"jupdate\":\"Mettre à jour un service existant\",\"jmove\":\"Déplacer un service existant\",\"jdelete\":\"Supprimer un service existant\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"Cette demande peut être soumise pour vous-même ou au nom d'un autre employé. Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeSearch\":\"Recherche d'employés\",\"requestfor\":\"À qui s'adresse cette demande\",\"Myself\":\"Moi-même\",\"AnotherEmployee\":\"Un autre employé\",\"Name\":\"Nom\",\"SerialNumber\":\"Numéro de série\",\"EmployeeSerialNumber\":\"Numéro de série de l'employé\",\"forexample\":\"(par exemple 012789)\",\"CountryCode\":\"Code postal\",\"SelectOne\":\"Sélectionnez-en un\",\"norecord\":\"Il n'y a pas d'enregistrement d'un employé IBM avec le numéro de série \",\"availablefromBluePages\":\"disponible auprès de BluePages\",\"opps\":\"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard\",\"JabberLocation\":\"Emplacement du Jabber / Numéro de téléphone\",\"Voicemail\":\"Messagerie vocale\",\"ClassofService\":\"Classe de service (COS)\",\"pleasesubmittostart\":\"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\"},\"servicestitle\":{\"Request new Jabber service\":\"Jabber - Nouvelle demande\",\"Update Jabber Request\":\"Jabber - Demande de mise à jour\",\"Move Jabber Request\":\"Jabber - Demande de déplacement\",\"Delete Jabber Request\":\"Jabber - Demande de déplacement\",\"FAC Code / IDD PIN New Request\":\"Code FAC - Nouvelle demande\",\"FAC Code / IDD PIN Update Request\":\"Code FAC - Demande de mise à jour\",\"FAC Code / IDD PIN Reset Request\":\"Code FAC - Demande de réinitialisation\",\"FAC Code / IDD PIN Delete Request\":\"Code FAC - Demande de suppression\",\"Request Move Jabber service\":\"Jabber - Demande de déplacement\",\"Update Existing Jabber Request\":\"Jabber - Demande de mise à jour\",\"SpecialRequestentryandreview\":\"Demande spéciale\",\"FAC Code / IDD PIN - Delete Request\":\"Code FAC / Pin IDD - Demande de suppression\",\"Special Request\":\"Demande spéciale\",\"Delete an existing service\":\"Supprimer un service existant\",\"Request a new service\":\"Demander un nouveau service\",\"Update an existing service\":\"Mettre à jour un service existant\",\"Requests\":\"Demandes\",\"Resources\":\"Ressources\",\"Fixed Phone - New Request\":\"Téléphone fixe - Nouvelle demande\",\"New Fixed Phone Request\":\"Nouvelle demande de téléphone fixe\",\"Fixed Phone - Update Request\":\"Téléphone fixe - Demande de mise à jour\",\"Fixed Phone - Delete Request\":\"Téléphone fixe - Demande de suppression\",\"Delete an existing FAC Code / IDD PIN\":\"Supprimer un code FAC existant\",\"Request a new FAC Code / IDD PIN\":\"Demander un nouveau code FAC\",\"Update an existing FAC Code / IDD PIN\":\"Mettre à jour un code FAC existant\",\"Reset an existing FAC Code / IDD PIN\":\"Réinitialiser un code FAC existant\",\"Phone Number Search\":\"Recherche par numéro de téléphone\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"Si les informations suivantes sont correctes, cliquez sur Suivant. Toute erreur doit être corrigée dans le\",\"BluePagesrecord\":\"enregistrer BluePages\",\"beforecontinuing\":\"avant de continuer.\",\"EmployeeInformation\":\"Information sur les employés\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"Name\":\"Nom:\",\"SerialNumber\":\"Numéro de série:\",\"JobResponsibility\":\"Responsabilité du travail:\",\"BusinessUnit\":\"Unité commerciale:\",\"Department\":\"département:\",\"Country\":\"Pays:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander un compte Jabber.\",\"itnexistsforuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour cet utilisateur est .\",\"nojabber\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"nojabberusethislink\":\"Le numéro de série que vous avez entré ne possède pas de numéro de téléphone IP (ITN) et n'est donc pas éligible pour Jabber. Veuillez utiliser ce lien pour faire une demande d'ITN \",\"GlobalVoiceInfrastructure\":\"Infrastructure vocale mondiale.\",\"receiveITN\":\"vous avez reçu l'ITN, vous pouvez alors demander Jabber. Merci.\",\"notauthorizedtoaccessjabber\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter\",\"notauthorizedtoaccessip\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter\",\"noteligibletorequestmorethanonejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander plus d'un compte Jabber.\",\"ITNexistsforthisuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour ce compte jabber d'utilisateurs est\",\"jabberconfiguration\":\"lié à la configuration de Jabber peut être trouvé à\",\"furtherassistance\":\"Pour toute assistance supplémentaire, veuillez contacter\",\"alreadyone\":\"le numéro de série que vous avez entré en a déjà un\",\"inprogess\":\"est en cours et le numéro de la demande est\",\"ongoingrequestsbyclickonrequestpage\":\"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.\",\"nooutstandingreq\":\"Aucune demande en suspens n'a été trouvée pour le numéro de série.\",\"noresources\":\"Il n'y a pas de ressources pour ce numéro de série.\",\"nojabberforthisserial\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"BACK\":\"DOS\",\"NEXT\":\"SUIVANTE\",\"SUBMIT1\":\"NOUS FAIRE PARVENIR\",\"alreadyonerequestinprogress\":\"Le numéro de série que vous avez entré a déjà une nouvelle demande Jabber est en cours et le numéro de demande est\",\"alreadyoneupdaterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de mise à jour Jabber est en cours et le numéro de demande est\",\"alreadyonemoverequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de déplacement Jabber est en cours et le numéro de demande est\",\"alreadyonedeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est\",\"alreadyonefacdeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression FAC est en cours et le numéro de demande est\",\"enterserialnumber\":\"Please enter a serial number\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"OfficeLocation\":\"Emplacement du bureau\",\"Campus\":\"Campus\",\"Funded\":\"Financé\",\"ChargeDepartmentCode\":\"Code du département de facturation\",\"BusinessUnit\":\"Unité commerciale\",\"Projectid\":\"ID du projet (pour les employés de GBS uniquement)\",\"alreadyhaveFixedPhone\":\"Si vous avez déjà un téléphone fixe, veuillez fournir l'identifiant\",\"toprocessPI\":\"En soumettant cette demande de provisioning, vous consentez expressément par écrit à IBM pour traiter les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\",\"JabberRequestDetails\":\"Détails de la demande Jabber\",\"FixedPhoneIdentifier\":\"Identifiant de téléphone fixe\",\"Submissioninprogress\":\"La soumission de votre demande est en cours.Ne revenez pas en arrière ou n'actualisez pas la page.\",\"Submissionbeinginprogress\":\"Votre demande est en cours d'envoi. Ne pas actualiser ni revenir en arrière.\",\"Back\":\"DOS\",\"Next\":\"SUIVANTE\",\"Select Location\":\"Sélectionnez l'emplacement\"},\"Jabberupdate\":{\"SELECTONE\":\"CHOISISSEZ UNE\",\"ReviewDetails\":\"revoir les détails\",\"JabberNumber\":\"Jabber / Numéro de téléphone\",\"SelectJabberNumber\":\"Jabber / Numéro de téléphone\",\"Jabber/PhoneNumberLocation\":\"Sélectionnez Emplacement du numéro de téléphone / Jabber\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber / Numéro de téléphone\",\"ProjectIId\":\"Id du projet\",\"AccountId\":\"Identifiant de compte\",\"ICA Code\":\"Code ICA\",\"NewOfficeLocation\":\"Nouveau bureau\",\"Building\":\"Imeuble\"},\"requesttrans\":{\"Requests\":\"Demandes\",\"beingsubmitted\":\"Votre demande est en cours d'envoi.Ne pas actualiser ni revenir en arrière.\",\"EmployeeRequestsDetails\":\"Détails des demandes des employés\",\"ResourceType\":\"Type de ressource\",\"CreatedDate\":\"Date de création\",\"Status\":\"Statut\",\"TrackingNumber\":\"Numéro de suivi\",\"AdditionalComments\":\"Commentaires supplémentaires\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Votre demande de\",\"hasbeensubmitted\":\"a été soumis\",\"Trackingrequest\":\"Le numéro de suivi de la demande est :\",\"receiveemailnotification\":\"Vous recevrez une notification par e-mail, lorsque votre demande aura été traitée.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Détails des ressources des employés\",\"Supplier\":\"Fournisseuse\",\"Phone/Dial\":\"Téléphone / Numérotation\",\"Innumber\":\"En nombre\",\"AdditionalInformation\":\"Informations Complémentaires\"},\"phonenumber\":{\"PhoneNumberSearch\":\"Recherche par numéro de téléphone\",\"PhoneNumberDetails\":\"Détails du numéro de téléphone\",\"EnterITNNumber\":\"Entrez le numéro ITN\",\"EmpID\":\"EmpID\",\"UserName\":\"Nom d'utilisateur\",\"ServiceDetails\":\"Détails du service\"},\"alerttranslation\":{\"EXITREQUEST\":\"DEMANDE DE SORTIE\",\"digitserialnumber\":\"Le numéro de série de l'employé doit être composé de 6 caractères\",\"enterserialnumber\":\"Veuillez saisir un numéro de série\",\"moverequest\":\"La demande de déplacement supprimera l'ITN actuel et un nouvel ITN sera attribué. Cliquez sur OK pour continuer ou sur Annuler pour quitter\",\"selectcountrycode\":\"Veuillez sélectionner le code du pays\",\"Only\":\"Seule\",\"serialnumbersareallowed\":\"Les numéros de série sont autorisés à créer une demande de\",\"selectlocation\":\"Veuillez sélectionner un emplacement\",\"selectjabbernumber\":\"Veuillez sélectionner le Jabber / Numéro de téléphone\",\"selectlocationsp\":\"Veuillez sélectionner l'emplacement du Jabber / numéro de téléphone\"},\"topui\":{\"HOME\":\"DOMICILE\",\"SERVICES\":\"PRESTATIONS DE SERVICE\",\"DATAPRIVACY\":\"CONFIDENTIALITÉ DES DONNÉES\",\"HELP\":\"AIDER\",\"FEEDBACK\":\"RÉTROACTION\",\"CHANGECOUNTRY\":\"CHANGER DE PAYS\"},\"steps\":{\"Employee Search\":\"Recherche d'employés\",\"Employee Information\":\"Information sur les employés\",\"Employee Entry Details\":\"Détails de l'entrée des employés\",\"Review Details\":\"Détails de l'examen\",\"Employee Resources Details\":\"Détails des ressources des employés\",\"Employee Requests Details\":\"Détails des demandes des employés\",\"Phone Number Search\":\"Recherche par numéro de téléphone\",\"Phone Number Details\":\"Détails du numéro de téléphone\",\"STEP 1\":\"MARCHER 1\",\"STEP 2\":\"MARCHER 2\",\"STEP 3\":\"MARCHER 3\",\"STEP 4\":\"MARCHER 4\"},\"fixedphonenew\":{\"Location\":\"Emplacement\",\"TypeofDevice\":\"Type d'appareil \",\"SelectDevice\":\"Choisir un appareil\",\"TypeofModel\":\"Type de modèle \",\"SelectModel\":\"Sélectionnez un modèle\",\"SelectClassofService (COS)\":\"Classe de service (COS)\",\"National\":\"Nationale\",\"International\":\"Internationale\",\"BusinessNeed(Whyisinternationalrequired?)\":\"Besoin commercial (pourquoi l'international est-il requis?) \",\"DescriptionoftheDevice\":\"Description de l'appareil \",\"IBMCLv21EMdesk\":\"par exemple. Bureau EM IBMC Lv21 \",\"IBMCLv21conferenceroom3\":\"par exemple. IBMC Lv21 salle de conférence 3 \",\"MACAddressoftheDevice\":\"Adresse MAC de l'appareil \",\"NoteCombinationofandLength12\":\"Remarque: combinaison de (0 à 9, A à F) et longueur: 12\",\"BusinessJustification\":\"Justification de l'entreprise\",\"DescriptionofDevice\":\"Description de l'appareil\",\"Somethingseemswrong\":\"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard.\",\"selectdevice\":\"Veuillez sélectionner un type d'appareil\",\"selectmodel\":\"Veuillez sélectionner un type de modèle\",\"businesscos\":\"Veuillez saisir le besoin professionnel pour la classe de service.\",\"descriptioncharacters\":\"Veuillez saisir une description et elle ne doit pas dépasser 30 caractères\",\"entermacadd\":\"Veuillez saisir une adresse MAC de 12 caractères\",\"MACfieldAtoF\":\"La valeur du champ MAC doit être en combinaison de 0 à 9 et de A à F\",\"initiateFixedPhoneservice\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service de téléphonie fixe.\",\"MACAddressorPhoneNumber\":\"Entrez l'adresse MAC ou le numéro de téléphone actuel\",\"norecordfoundformac\":\"Aucun enregistrement n'a été trouvé pour l'adresse Mac ou le numéro de téléphone que vous avez entré. Veuillez vérifier et réessayer.\",\"Pleaseenternumber\":\"Veuillez saisir un numéro à rechercher\",\"MACAddress\":\"Adresse Mac \",\"PhoneNumber\":\"Numéro de téléphone \",\"Description\":\"La description \",\"SEARCH\":\"RECHERCHER\",\"CurrentMACAddress\":\"Adresse MAC actuelle \",\"CurrentPhoneNumber\":\"Numéro de téléphone actuel \",\"CurrentDescription\":\"Description actuelle \",\"CurrentModel\":\"Modèle actuel\",\"UpdateRequiredfor\":\"Mise à jour requise pour\",\"TypeOfModel\":\"Type de modèle\",\"SelectPhoneModel\":\"Sélectionnez le modèle de téléphone\",\"NewMACAddress\":\"Nouvelle adresse MAC\",\"NewDescriptiontoUpdate\":\"Nouvelle description à mettre à jour\",\"ReasonforUpdation\":\"Raison de la mise à jour\",\"MACAddresssearch\":\"Veuillez saisir une adresse MAC ou un numéro de téléphone pour rechercher\",\"updaterequiredfor\":\"Veuillez sélectionner la mise à jour requise pour\",\"enternewMACaddress\":\"Veuillez saisir une nouvelle adresse MAC\",\"enteranewModel\":\"Veuillez saisir un nouveau modèle\",\"providethereasonforupdation\":\"Veuillez indiquer la raison de la mise à jour.\",\"provideNewDescription\":\"Veuillez fournir la nouvelle description. \",\"differentDescriptionasisalready\":\"Veuillez choisir une description différente car la description actuelle est déjà\",\"fortheprovidednumber\":\"pour le numéro fourni.\",\"FixedPhoneLocation\":\"Emplacement du téléphone fixe\",\"SelectOne\":\"Sélectionnez-en un\",\"cos\":\"Veuillez sélectionner une classe de service.\",\"NoteCombination\":\"Remarque: combinaison de (0 à 9, A à F) et longueur: 12\"},\"specialrequest\":{\"OnlyusetheSpecialRequest\":\"N'utilisez la demande spéciale que pour toute opération spéciale, telle qu'un deuxième numéro de bureau, une hotline pour un groupe de support, une configuration de ligne partagée pour des groupes fonctionnels, ou pour indiquer un besoin de conseil en matière de téléphonie. \",\"needstandardservice\":\"Si vous avez besoin d'un service standard tel que Jabber ou téléphone fixe, ne soumettez pas de demande spéciale car elle sera rejetée. Les services standard peuvent être demandés dans le menu à gauche de cette page.\",\"SpecialRequestHCSmigratedsite\":\"Veuillez noter que les demandes spéciales liées aux services vocaux ne peuvent être soumises que pour le site migré HCS. Les demandes spéciales relatives aux services vocaux pour un site non HCS doivent être soumises \",\"TMAC tool\":\"TMAC outil.\",\"HelpTMACtool\":\"L'aide relative à l'outil TMAC peut être trouvée \",\"here\":\"ici.\",\"JabberNumberoptional\":\"Jabber / numéro de téléphone (facultatif)\",\"JabberLocationspecial\":\"Emplacement du Jabber / Numéro de téléphone\",\"Description of Requirement\":\"Description de l'exigence\",\"notexceed200\":\"Remarque: la longueur ne doit pas dépasser 500\",\"Note\":\"Noter:\",\"Fieldsasteriskspl\":\"Champs marqués d'un astérisque\",\"arerequiredspl\":\"sont requis.\",\"selectjabbernumberwishtoupdate\":\"Jabber / Numéro de téléphone\",\"JabberLocationslect\":\"Emplacement du numéro de téléphone / Jabber\"},\"otheralerts\":{\"selectthejabber\":\"Veuillez sélectionner le jabber / numéro de téléphone à mettre à jour\",\"selectthejabbertomove\":\"Sélectionnez le Jabber / numéro de téléphone que vous souhaitez déplacer\",\"Model\":\"Modèle\",\"MAC Address\":\"Adresse Mac\",\"Device Description\":\"Description de l'appareil\"}}");
->>>>>>> beb6d2a971e822342afa64263462ee53e8ea6a13
+module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choisissez une langue: \",\"app-name\":\"Services téléphoniques mondiaux\",\"app-function\":\"Point d'entrée unique pour commander des services vocaux dans votre pays\",\"sponsor\":\"Basé sur le cloud hybride CIO optimisé par Red Hat OpenShift\",\"welcomemessage\":\"Bienvenue,\",\"question\":\"Quel service ou quel pays rechercherez-vous?\",\"search-placeholder\":\"Service de recherche ...\",\"search-text\":\"Cliquez ici pour voir tous les résultats de la recherche GVS\",\"my-country\":\"Mon pays\",\"click-here\":\"Cliquez ici\",\"available\":\"pour afficher tous les\",\"servicesonlyokay\":\"services pour\",\"most-viewed-services\":\"Services les plus consultés\",\"find-right-service\":\"Trouvez les bons services, vérifiez leur disponibilité,\",\"find-right-service2\":\"puis choisissez la façon dont vous vous connectez et travaillez ensemble.\",\"jabber-description\":\"Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.\",\"button-value\":\"Premiers pas\",\"Searchservice\":\"Service de recherche...\"},\"footer\":{\"aditional-question\":\"Vous avez des questions supplémentaires sur la commande de  Services téléphoniques mondiaux ?\",\"please consult\":\"Veuillez consulter\",\"consult\":\"* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE, Edge et Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Conditions d'utilisation\",\"Useful Information\":\"Informations utiles\",\"Please bear in mind the following points when making a request :\":\"Veuillez garder à l'esprit les points suivants lorsque vous faites une demande:\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"Pour faire une demande, l'Employé doit exister dans BluePages (sauf pour les demandes d'annulation).\",\"You must know the IBM serial Number of the person making the request.\":\"Vous devez connaître le numéro de série IBM de la personne qui fait la demande.\",\"Only one request per employee per request type is processed at a time.\":\"Une seule demande par employé et par type de demande est traitée à la fois.\"},\"lhs\":{\"Services\":\"Prestations de service\",\"Jabber\":\"Jabber\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approbations en attente\",\"Revalidation Pending\":\"Revalidation en attente\",\"Phone Number Search\":\"Recherche par numéro de téléphone\",\"Resources\":\"Ressources\",\"Requests\":\"Demandes\"},\"Jabberservices\":{\"initiateJabber\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service Jabber.\",\"jnew\":\"Demander un nouveau service\",\"jupdate\":\"Mettre à jour un service existant\",\"jmove\":\"Déplacer un service existant\",\"jdelete\":\"Supprimer un service existant\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"Cette demande peut être soumise pour vous-même ou au nom d'un autre employé. Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeSearch\":\"Recherche d'employés\",\"requestfor\":\"À qui s'adresse cette demande\",\"Myself\":\"Moi-même\",\"AnotherEmployee\":\"Un autre employé\",\"Name\":\"Nom\",\"SerialNumber\":\"Numéro de série\",\"EmployeeSerialNumber\":\"Numéro de série de l'employé\",\"forexample\":\"(par exemple 012789)\",\"CountryCode\":\"Code postal\",\"SelectOne\":\"Sélectionnez-en un\",\"norecord\":\"Il n'y a pas d'enregistrement d'un employé IBM avec le numéro de série \",\"availablefromBluePages\":\"disponible auprès de BluePages\",\"opps\":\"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard\",\"JabberLocation\":\"Emplacement du Jabber / Numéro de téléphone\",\"Voicemail\":\"Messagerie vocale\",\"ClassofService\":\"Classe de service (COS)\",\"pleasesubmittostart\":\"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\"},\"servicestitle\":{\"Request new Jabber service\":\"Jabber - Nouvelle demande\",\"Update Jabber Request\":\"Jabber - Demande de mise à jour\",\"Move Jabber Request\":\"Jabber - Demande de déplacement\",\"Delete Jabber Request\":\"Jabber - Demande de déplacement\",\"FAC Code / IDD PIN New Request\":\"Code FAC - Nouvelle demande\",\"FAC Code / IDD PIN Update Request\":\"Code FAC - Demande de mise à jour\",\"FAC Code / IDD PIN Reset Request\":\"Code FAC - Demande de réinitialisation\",\"FAC Code / IDD PIN Delete Request\":\"Code FAC - Demande de suppression\",\"Request Move Jabber service\":\"Jabber - Demande de déplacement\",\"Update Existing Jabber Request\":\"Jabber - Demande de mise à jour\",\"SpecialRequestentryandreview\":\"Demande spéciale\",\"FAC Code / IDD PIN - Delete Request\":\"Code FAC / Pin IDD - Demande de suppression\",\"Special Request\":\"Demande spéciale\",\"Delete an existing service\":\"Supprimer un service existant\",\"Request a new service\":\"Demander un nouveau service\",\"Update an existing service\":\"Mettre à jour un service existant\",\"Requests\":\"Demandes\",\"Resources\":\"Ressources\",\"Fixed Phone - New Request\":\"Téléphone fixe - Nouvelle demande\",\"New Fixed Phone Request\":\"Nouvelle demande de téléphone fixe\",\"Fixed Phone - Update Request\":\"Téléphone fixe - Demande de mise à jour\",\"Fixed Phone - Delete Request\":\"Téléphone fixe - Demande de suppression\",\"Delete an existing FAC Code / IDD PIN\":\"Supprimer un code FAC existant\",\"Request a new FAC Code / IDD PIN\":\"Demander un nouveau code FAC\",\"Update an existing FAC Code / IDD PIN\":\"Mettre à jour un code FAC existant\",\"Reset an existing FAC Code / IDD PIN\":\"Réinitialiser un code FAC existant\",\"Phone Number Search\":\"Recherche par numéro de téléphone\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"Si les informations suivantes sont correctes, cliquez sur Suivant. Toute erreur doit être corrigée dans le\",\"BluePagesrecord\":\"enregistrer BluePages\",\"beforecontinuing\":\"avant de continuer.\",\"EmployeeInformation\":\"Information sur les employés\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"Name\":\"Nom:\",\"SerialNumber\":\"Numéro de série:\",\"JobResponsibility\":\"Responsabilité du travail:\",\"BusinessUnit\":\"Unité commerciale:\",\"Department\":\"département:\",\"Country\":\"Pays:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander un compte Jabber.\",\"itnexistsforuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour cet utilisateur est .\",\"nojabber\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"nojabberusethislink\":\"Le numéro de série que vous avez entré ne possède pas de numéro de téléphone IP (ITN) et n'est donc pas éligible pour Jabber. Veuillez utiliser ce lien pour faire une demande d'ITN \",\"GlobalVoiceInfrastructure\":\"Infrastructure vocale mondiale.\",\"receiveITN\":\"vous avez reçu l'ITN, vous pouvez alors demander Jabber. Merci.\",\"notauthorizedtoaccessjabber\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter\",\"notauthorizedtoaccessip\":\"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter\",\"noteligibletorequestmorethanonejabber\":\"Le numéro de série que vous avez entré n'est pas éligible pour demander plus d'un compte Jabber.\",\"ITNexistsforthisuser\":\"Le numéro de téléphone IBM (ITN) qui existe pour ce compte jabber d'utilisateurs est\",\"jabberconfiguration\":\"lié à la configuration de Jabber peut être trouvé à\",\"furtherassistance\":\"Pour toute assistance supplémentaire, veuillez contacter\",\"alreadyone\":\"le numéro de série que vous avez entré en a déjà un\",\"inprogess\":\"est en cours et le numéro de la demande est\",\"ongoingrequestsbyclickonrequestpage\":\"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.\",\"nooutstandingreq\":\"Aucune demande en suspens n'a été trouvée pour le numéro de série.\",\"noresources\":\"Il n'y a pas de ressources pour ce numéro de série.\",\"nojabberforthisserial\":\"Il n'y a pas de Jabber pour ce numéro de série.\",\"BACK\":\"DOS\",\"NEXT\":\"SUIVANTE\",\"SUBMIT1\":\"NOUS FAIRE PARVENIR\",\"alreadyonerequestinprogress\":\"Le numéro de série que vous avez entré a déjà une nouvelle demande Jabber est en cours et le numéro de demande est\",\"alreadyoneupdaterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de mise à jour Jabber est en cours et le numéro de demande est\",\"alreadyonemoverequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de déplacement Jabber est en cours et le numéro de demande est\",\"alreadyonedeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est\",\"alreadyonefacdeleterequestinprogress\":\"Le numéro de série que vous avez entré a déjà une demande de suppression FAC est en cours et le numéro de demande est\",\"enterserialnumber\":\"Please enter a serial number\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Champs marqués d'un astérisque\",\"arerequired\":\"sont requis.\",\"EmployeeEntryDetails\":\"Détails de l'entrée des employés\",\"OfficeLocation\":\"Emplacement du bureau\",\"Campus\":\"Campus\",\"Funded\":\"Financé\",\"ChargeDepartmentCode\":\"Code du département de facturation\",\"BusinessUnit\":\"Unité commerciale\",\"Projectid\":\"ID du projet (pour les employés de GBS uniquement)\",\"alreadyhaveFixedPhone\":\"Si vous avez déjà un téléphone fixe, veuillez fournir l'identifiant\",\"toprocessPI\":\"En soumettant cette demande de provisioning, vous consentez expressément par écrit à IBM pour traiter les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning.\",\"JabberRequestDetails\":\"Détails de la demande Jabber\",\"FixedPhoneIdentifier\":\"Identifiant de téléphone fixe\",\"Submissioninprogress\":\"La soumission de votre demande est en cours.Ne revenez pas en arrière ou n'actualisez pas la page.\",\"Submissionbeinginprogress\":\"Votre demande est en cours d'envoi. Ne pas actualiser ni revenir en arrière.\",\"Back\":\"DOS\",\"Next\":\"SUIVANTE\",\"Select Location\":\"Sélectionnez l'emplacement\"},\"Jabberupdate\":{\"SELECTONE\":\"CHOISISSEZ UNE\",\"ReviewDetails\":\"revoir les détails\",\"JabberNumber\":\"Jabber / Numéro de téléphone\",\"SelectJabberNumber\":\"Jabber / Numéro de téléphone\",\"Jabber/PhoneNumberLocation\":\"Sélectionnez Emplacement du numéro de téléphone / Jabber\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber / Numéro de téléphone\",\"ProjectIId\":\"Id du projet\",\"AccountId\":\"Identifiant de compte\",\"ICA Code\":\"Code ICA\",\"NewOfficeLocation\":\"Nouveau bureau\",\"Building\":\"Imeuble\"},\"requesttrans\":{\"Requests\":\"Demandes\",\"beingsubmitted\":\"Votre demande est en cours d'envoi.Ne pas actualiser ni revenir en arrière.\",\"EmployeeRequestsDetails\":\"Détails des demandes des employés\",\"ResourceType\":\"Type de ressource\",\"CreatedDate\":\"Date de création\",\"Status\":\"Statut\",\"TrackingNumber\":\"Numéro de suivi\",\"AdditionalComments\":\"Commentaires supplémentaires\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Votre demande de\",\"hasbeensubmitted\":\"a été soumis\",\"Trackingrequest\":\"Le numéro de suivi de la demande est :\",\"receiveemailnotification\":\"Vous recevrez une notification par e-mail, lorsque votre demande aura été traitée.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Détails des ressources des employés\",\"Supplier\":\"Fournisseuse\",\"Phone/Dial\":\"Téléphone / Numérotation\",\"Innumber\":\"En nombre\",\"AdditionalInformation\":\"Informations Complémentaires\"},\"phonenumber\":{\"PhoneNumberSearch\":\"Recherche par numéro de téléphone\",\"PhoneNumberDetails\":\"Détails du numéro de téléphone\",\"EnterITNNumber\":\"Entrez le numéro ITN\",\"EmpID\":\"EmpID\",\"UserName\":\"Nom d'utilisateur\",\"ServiceDetails\":\"Détails du service\"},\"alerttranslation\":{\"EXITREQUEST\":\"DEMANDE DE SORTIE\",\"digitserialnumber\":\"Le numéro de série de l'employé doit être composé de 6 caractères\",\"enterserialnumber\":\"Veuillez saisir un numéro de série\",\"moverequest\":\"La demande de déplacement supprimera l'ITN actuel et un nouvel ITN sera attribué. Cliquez sur OK pour continuer ou sur Annuler pour quitter\",\"selectcountrycode\":\"Veuillez sélectionner le code du pays\",\"Only\":\"Seule\",\"serialnumbersareallowed\":\"Les numéros de série sont autorisés à créer une demande de\",\"selectlocation\":\"Veuillez sélectionner un emplacement\",\"selectjabbernumber\":\"Veuillez sélectionner le Jabber / Numéro de téléphone\",\"selectlocationsp\":\"Veuillez sélectionner l'emplacement du Jabber / numéro de téléphone\"},\"topui\":{\"HOME\":\"DOMICILE\",\"SERVICES\":\"PRESTATIONS DE SERVICE\",\"DATAPRIVACY\":\"CONFIDENTIALITÉ DES DONNÉES\",\"HELP\":\"AIDER\",\"FEEDBACK\":\"RÉTROACTION\",\"CHANGECOUNTRY\":\"CHANGER DE PAYS\"},\"steps\":{\"Employee Search\":\"Recherche d'employés\",\"Employee Information\":\"Information sur les employés\",\"Employee Entry Details\":\"Détails de l'entrée des employés\",\"Review Details\":\"Détails de l'examen\",\"Employee Resources Details\":\"Détails des ressources des employés\",\"Employee Requests Details\":\"Détails des demandes des employés\",\"Phone Number Search\":\"Recherche par numéro de téléphone\",\"Phone Number Details\":\"Détails du numéro de téléphone\",\"STEP 1\":\"MARCHER 1\",\"STEP 2\":\"MARCHER 2\",\"STEP 3\":\"MARCHER 3\",\"STEP 4\":\"MARCHER 4\"},\"fixedphonenew\":{\"Location\":\"Emplacement\",\"TypeofDevice\":\"Type d'appareil \",\"SelectDevice\":\"Choisir un appareil\",\"TypeofModel\":\"Type de modèle \",\"NewPhonemodel\":\"Nouveau modèle de téléphone\",\"SelectModel\":\"Sélectionnez un modèle\",\"SelectClassofService (COS)\":\"Classe de service (COS)\",\"National\":\"Nationale\",\"International\":\"Internationale\",\"BusinessNeed(Whyisinternationalrequired?)\":\"Besoin commercial (pourquoi l'international est-il requis?) \",\"DescriptionoftheDevice\":\"Description de l'appareil \",\"IBMCLv21EMdesk\":\"par exemple. Bureau EM IBMC Lv21 \",\"IBMCLv21conferenceroom3\":\"par exemple. IBMC Lv21 salle de conférence 3 \",\"MACAddressoftheDevice\":\"Adresse MAC de l'appareil \",\"NoteCombinationofandLength12\":\"Remarque: combinaison de (0 à 9, A à F) et longueur: 12\",\"BusinessJustification\":\"Justification de l'entreprise\",\"DescriptionofDevice\":\"Description de l'appareil\",\"Somethingseemswrong\":\"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard.\",\"selectdevice\":\"Veuillez sélectionner un type d'appareil\",\"selectmodel\":\"Veuillez sélectionner un type de modèle\",\"businesscos\":\"Veuillez saisir le besoin professionnel pour la classe de service.\",\"descriptioncharacters\":\"Veuillez saisir une description et elle ne doit pas dépasser 30 caractères\",\"entermacadd\":\"Veuillez saisir une adresse MAC de 12 caractères\",\"MACfieldAtoF\":\"La valeur du champ MAC doit être en combinaison de 0 à 9 et de A à F\",\"initiateFixedPhoneservice\":\"Veuillez cliquer sur un type de demande ci-dessous pour lancer une demande de service de téléphonie fixe.\",\"MACAddressorPhoneNumber\":\"Entrez l'adresse MAC ou le numéro de téléphone actuel\",\"norecordfoundformac\":\"Aucun enregistrement n'a été trouvé pour l'adresse Mac ou le numéro de téléphone que vous avez entré. Veuillez vérifier et réessayer.\",\"Pleaseenternumber\":\"Veuillez saisir un numéro à rechercher\",\"MACAddress\":\"Adresse Mac \",\"PhoneNumber\":\"Numéro de téléphone \",\"Description\":\"La description \",\"SEARCH\":\"RECHERCHER\",\"CurrentMACAddress\":\"Adresse MAC actuelle \",\"CurrentPhoneNumber\":\"Numéro de téléphone actuel \",\"CurrentDescription\":\"Description actuelle \",\"CurrentModel\":\"Modèle actuel\",\"UpdateRequiredfor\":\"Mise à jour requise pour\",\"TypeOfModel\":\"Type de modèle\",\"SelectPhoneModel\":\"Sélectionnez le modèle de téléphone\",\"NewMACAddress\":\"Nouvelle adresse MAC\",\"NewDescriptiontoUpdate\":\"Nouvelle description à mettre à jour\",\"ReasonforUpdation\":\"Raison de la mise à jour\",\"MACAddresssearch\":\"Veuillez saisir une adresse MAC ou un numéro de téléphone pour rechercher\",\"updaterequiredfor\":\"Veuillez sélectionner la mise à jour requise pour\",\"enternewMACaddress\":\"Veuillez saisir une nouvelle adresse MAC\",\"enteranewModel\":\"Veuillez saisir un nouveau modèle\",\"providethereasonforupdate\":\"Veuillez indiquer la raison de la mise à jour.\",\"provideNewDescription\":\"Veuillez fournir la nouvelle description. \",\"differentDescriptionasisalready\":\"Veuillez choisir une description différente car la description actuelle est déjà\",\"fortheprovidednumber\":\"pour le numéro fourni.\",\"FixedPhoneLocation\":\"Emplacement du téléphone fixe\",\"SelectOne\":\"Sélectionnez-en un\",\"cos\":\"Veuillez sélectionner une classe de service.\",\"NoteCombination\":\"Remarque: combinaison de (0 à 9, A à F) et longueur: 12\"},\"specialrequest\":{\"OnlyusetheSpecialRequest\":\"N'utilisez la demande spéciale que pour toute opération spéciale, telle qu'un deuxième numéro de bureau, une hotline pour un groupe de support, une configuration de ligne partagée pour des groupes fonctionnels, ou pour indiquer un besoin de conseil en matière de téléphonie. \",\"needstandardservice\":\"Si vous avez besoin d'un service standard tel que Jabber ou téléphone fixe, ne soumettez pas de demande spéciale car elle sera rejetée. Les services standard peuvent être demandés dans le menu à gauche de cette page.\",\"SpecialRequestHCSmigratedsite\":\"Veuillez noter que les demandes spéciales liées aux services vocaux ne peuvent être soumises que pour le site migré HCS. Les demandes spéciales relatives aux services vocaux pour un site non HCS doivent être soumises \",\"TMAC tool\":\"TMAC outil.\",\"HelpTMACtool\":\"L'aide relative à l'outil TMAC peut être trouvée \",\"here\":\"ici.\",\"JabberNumberoptional\":\"Jabber / numéro de téléphone (facultatif)\",\"JabberLocationspecial\":\"Emplacement du Jabber / Numéro de téléphone\",\"Description of Requirement\":\"Description de l'exigence\",\"notexceed200\":\"Remarque: la longueur ne doit pas dépasser 500\",\"Note\":\"Noter:\",\"Fieldsasteriskspl\":\"Champs marqués d'un astérisque\",\"arerequiredspl\":\"sont requis.\",\"selectjabbernumberwishtoupdate\":\"Jabber / Numéro de téléphone\",\"JabberLocationslect\":\"Emplacement du numéro de téléphone / Jabber\"},\"otheralerts\":{\"selectthejabber\":\"Veuillez sélectionner le jabber / numéro de téléphone à mettre à jour\",\"selectthejabbertomove\":\"Sélectionnez le Jabber / numéro de téléphone que vous souhaitez déplacer\",\"Model\":\"Modèle\",\"MAC Address\":\"Adresse Mac\",\"Device Description\":\"Description de l'appareil\"}}");
 
 /***/ }),
 
@@ -21785,11 +21773,7 @@ function gettime() {
 /*! exports provided: home, footer, footnote, lhs, Jabberservices, Jabbernewtrans, servicestitle, employeeinfotrans, Jabberentrydetails, Jabberupdate, Jabbermove, requesttrans, resultpagetrans, resourcespagetranslation, phonenumber, alerttranslation, topui, steps, fixedphonenew, specialrequest, otheralerts, Requests, default */
 /***/ (function(module) {
 
-<<<<<<< HEAD
-module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choose a language: \",\"app-name\":\"Global Voice Services\",\"app-function\":\"Single entry point for ordering voice services in your country\",\"sponsor\":\"Built on CIO Hybrid Cloud Powered by Red Hat OpenShift\",\"welcomemessage\":\"Welcome,\",\"question\":\"What service or country are you looking for?\",\"search-placeholder\":\"Search service...\",\"search-text\":\"Click here to see all results in GVS search\",\"my-country\":\"My Country\",\"click-here\":\"Click here\",\"available\":\"to view all available\",\"servicesonlyokay\":\"services for\",\"most-viewed-services\":\"Most Viewed Services\",\"find-right-service\":\"Find the right services, check their availability,\",\"find-right-service2\":\"and then choose the way you connect and work together.\",\"jabber-description\":\"Cisco Jabber is a multiple platform soft phone application to make and receive phone calls.\",\"button-value\":\"Get Started\",\"Searchservice\":\"Search service...\"},\"footer\":{\"aditional-question\":\"Have additional questions about ordering Global Voice Services ?\",\"please consult\":\"Please consult\",\"consult\":\"* This website supports Mozilla Firefox, Google Chrome, IE, Edge and Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Terms of use\",\"Useful Information\":\"Useful Information\",\"Please bear in mind the following points when making a request :\":\"Please bear in mind the following points when making a request :\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"To make a request the Employee must exist in BluePages (except for cancellation requests).\",\"You must know the IBM serial Number of the person making the request.\":\"You must know the IBM serial Number of the person making the request.\",\"Only one request per employee per request type is processed at a time.\":\"Only one request per employee per request type is processed at a time.\"},\"lhs\":{\"Services\":\"Services\",\"Jabber\":\"Jabber\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Mobile\":\"Mobile\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approvals Pending\",\"Revalidation Pending\":\"Revalidation Pending\",\"Phone Number Search\":\"Phone Number Search\",\"Requests\":\"Requests\",\"Resources\":\"Resources\"},\"Jabberservices\":{\"initiateJabber\":\" Please click on a request type below to initiate a Jabber service request.\",\"jnew\":\"Request a new service\",\"jupdate\":\"Update an existing service\",\"jmove\":\"Move an existing service\",\"jdelete\":\"Delete an existing service\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeSearch\":\"Employee Search\",\"Declaration\":\"Declaration\",\"DeclarationAck\":\"I have read and comply with the Algeria Mobility Policy, available here and I acknowledge reading the Privacy Notice.\",\"requestfor\":\"Who is this request for\",\"Myself\":\"Myself\",\"AnotherEmployee\":\"Another Employee\",\"Name\":\"Name\",\"SerialNumber\":\"Serial Number\",\"EmployeeSerialNumber\":\"Employee Serial Number\",\"forexample\":\"(eg 012789)\",\"CountryCode\":\"Country Code\",\"SelectOne\":\"Select One\",\"norecord\":\"There is no record of an IBM employee with the serial number \",\"availablefromBluePages\":\"available from BluePages\",\"opps\":\"Something seems to have gone wrong. Please try later.\",\"JabberLocation\":\"Jabber / Phone Number location\",\"Voicemail\":\"Voicemail\",\"ClassofService\":\"Class of Service (COS)\",\"pleasesubmittostart\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service.\"},\"servicestitle\":{\"Request new Jabber service\":\"Jabber - New Request\",\"Update Jabber Request\":\"Jabber - Update Request\",\"Move Jabber Request\":\"Jabber - Move Request\",\"Delete Jabber Request\":\"Jabber - Delete Request\",\"FAC Code / IDD PIN New Request\":\"FAC Code / IDD PIN - New Request\",\"FAC Code / IDD PIN Update Request\":\"FAC Code / IDD PIN - Update Request\",\"FAC Code / IDD PIN - New Request\":\"FAC Code / IDD PIN - New Request\",\"FAC Code / IDD PIN - Reset Request\":\"FAC Code / IDD PIN - Reset Request\",\"FAC Code / IDD PIN - Update Request\":\"FAC Code / IDD PIN - Update Request\",\"FAC Code / IDD PIN Reset Request\":\"FAC Code / IDD PIN - Reset Request\",\"SpecialRequestentryandreview\":\"Special Request\",\"FAC Code / IDD PIN - Delete Request\":\"FAC Code / IDD PIN - Delete Request\",\"Mobile New Request\":\"Mobile - New Request\",\"FAC Code / IDD PIN Delete Request\":\"FAC Code / IDD PIN - Delete Request\",\"Request Move Jabber service\":\"Jabber - Move Request\",\"Update Existing Jabber Request\":\"Jabber - Update Request\",\"Delete an existing service\":\"Delete an existing service\",\"Request a new service\":\"Request a new service\",\"Update an existing service\":\"Update an existing service\",\"Requests\":\"Requests\",\"Resources\":\"Resources\",\"Delete an existing FAC Code / IDD PIN\":\"Delete an existing FAC Code / IDD PIN\",\"Fixed Phone - New Request\":\"Fixed Phone - New Request\",\"New Fixed Phone Request\":\"New Fixed Phone Request\",\"Fixed Phone - Update Request\":\"Fixed Phone - Update Request\",\"Fixed Phone - Delete Request\":\"Fixed Phone - Delete Request\",\"Request a new FAC Code / IDD PIN\":\"Request a new FAC Code / IDD PIN\",\"Update an existing FAC Code / IDD PIN\":\"Update an existing FAC Code / IDD PIN\",\"Reset an existing FAC Code / IDD PIN\":\"Reset an existing FAC Code / IDD PIN\",\"Phone Number Search\":\"Phone Number Search\",\"Special Request\":\"Special Request\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"If the following information is correct, click Next. Any errors must be corrected in the employee's\",\"BluePagesrecord\":\"BluePages record\",\"beforecontinuing\":\"before continuing.\",\"EmployeeInformation\":\"Employee Information\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"Name\":\"Name:\",\"SerialNumber\":\"Serial Number:\",\"JobResponsibility\":\"Job Responsibility:\",\"BusinessUnit\":\"Business Unit:\",\"Department\":\"Department:\",\"Country\":\"Country:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"The serial number that you have entered is not eligible to request Jabber account.\",\"itnexistsforuser\":\"The IBM Telephone Number (ITN) that exists for this user is .\",\"nojabber\":\"There is no Jabber for this serial number.\",\"nojabberusethislink\":\"The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN \",\"GlobalVoiceInfrastructure\":\"Global Voice Infrastructure.\",\"receiveITN\":\"you have received the ITN you can then request Jabber.  Thank you.\",\"notauthorizedtoaccessjabber\":\"The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact\",\"notauthorizedtoaccessip\":\"The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact\",\"noteligibletorequestmorethanonejabber\":\"The serial number that you have entered is not eligible to request more than one Jabber account.\",\"ITNexistsforthisuser\":\"The IBM Telephone Number (ITN) that exists for this users jabber account is\",\"jabberconfiguration\":\"Help related to Jabber configuration can be found at\",\"furtherassistance\":\"For any further assistance, please contact\",\"alreadyone\":\"The serial number that you have entered has already one\",\"inprogess\":\"request in progress and request number is\",\"ongoingrequestsbyclickonrequestpage\":\"You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.\",\"nooutstandingreq\":\"No outstanding requests were found for the serial number.\",\"noresources\":\"There are no resources for this serial number.\",\"nojabberforthisserial\":\"There is no Jabber for this serial number.\",\"BACK\":\"BACK\",\"NEXT\":\"NEXT\",\"SUBMIT1\":\"SUBMIT\",\"alreadyonerequestinprogress\":\"The serial number that you have entered has already one new Jabber request is in progress and request number is\",\"alreadyoneupdaterequestinprogress\":\"The serial number that you have entered has already one Update Jabber request is in progress and request number is\",\"alreadyonemoverequestinprogress\":\"The serial number that you have entered has already one move Jabber request is in progress and request number is\",\"alreadyonedeleterequestinprogress\":\"The serial number that you have entered has already one delete Jabber request is in progress and request number is\",\"alreadyonefacdeleterequestinprogress\":\"The serial number that you have entered has already one delete FAC request is in progress and request number is\",\"enterserialnumber\":\"Please enter a serial number\",\"alreadyonerequestinprogressfac\":\"The serial number that you have entered has already one new FAC Code / IDD PIN request is in progress and request number is\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"OfficeLocation\":\"Office Location\",\"Campus\":\"Campus\",\"Funded\":\"Funded\",\"ChargeDepartmentCode\":\"Charge Department Code\",\"BusinessUnit\":\"Business Unit\",\"Projectid\":\"Project ID (for GBS employee only)\",\"alreadyhaveFixedPhone\":\"If you already have Fixed Phone , please provide the identifier\",\"toprocessPI\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.\",\"JabberRequestDetails\":\"Jabber Request Details\",\"FixedPhoneIdentifier\":\"Fixed Phone Identifier\",\"Submissioninprogress\":\"Your request submission is in progress.Do not Go back or Refresh the page.\",\"Submissionbeinginprogress\":\"Your request is being submitted. Do not refresh or go back.\",\"Back\":\"BACK\",\"Next\":\"NEXT\",\"Select Location\":\"Select Location\"},\"Jabberupdate\":{\"SELECTONE\":\"SELECT ONE\",\"ReviewDetails\":\"Review Details\",\"JabberNumber\":\"Jabber / Phone Number\",\"SelectJabberNumber\":\"Jabber / Phone Number\",\"Jabber/PhoneNumberLocation\":\"Select Jabber / Phone Number Location\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber / Phone number\",\"ProjectIId\":\"Project ID\",\"AccountId\":\"Account ID\",\"ICACode\":\"ICA Code\",\"NewOfficeLocation\":\"New Office Location\",\"Building\":\"Building\"},\"requesttrans\":{\"Requests\":\"Requests\",\"beingsubmitted\":\"Your request is being submitted.Do not refresh or go back.\",\"EmployeeRequestsDetails\":\"Employee Requests Details\",\"ResourceType\":\"Resource Type\",\"CreatedDate\":\"Created Date\",\"Status\":\"Status\",\"TrackingNumber\":\"Tracking Number\",\"AdditionalComments\":\"Additional Comments\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Your request for\",\"hasbeensubmitted\":\"has been submitted\",\"Trackingrequest\":\"Tracking number for the request is :\",\"receiveemailnotification\":\"You will receive an email notification, when your request has been processed.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Employee Resources Details\",\"Supplier\":\"Supplier\",\"Phone/Dial\":\"Phone/Dial\",\"Innumber\":\"In number\",\"AdditionalInformation\":\"Additional Information\"},\"phonenumber\":{\"PhoneNumberSearch\":\"Phone Number Search\",\"PhoneNumberDetails\":\"Phone Number Details\",\"EnterITNNumber\":\"Enter ITN Number\",\"EmpID\":\"EmpID\",\"UserName\":\"User Name\",\"ServiceDetails\":\"Service Details\"},\"alerttranslation\":{\"EXITREQUEST\":\"EXIT REQUEST\",\"digitserialnumber\":\"Employee Serial Number should be of 6 characters\",\"enterserialnumber\":\"Please enter a serial number\",\"moverequest\":\"Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit\",\"selectcountrycode\":\"Please select the Country Code\",\"Only\":\"Only\",\"serialnumbersareallowed\":\"Serial numbers are allowed to create a request for\",\"selectlocation\":\"Please select a Location\",\"selectjabbernumber\":\"Please select the Jabber / Phone Number\"},\"topui\":{\"HOME\":\"HOME\",\"SERVICES\":\"SERVICES\",\"DATAPRIVACY\":\"DATA PRIVACY\",\"HELP\":\"HELP\",\"FEEDBACK\":\"FEEDBACK\",\"CHANGECOUNTRY\":\"CHANGE COUNTRY\"},\"steps\":{\"Employee Search\":\"Employee Search\",\"Employee Information\":\"Employee Information\",\"Employee Entry Details\":\"Employee Entry Details\",\"Review Details\":\"Review Details\",\"Employee Resources Details\":\"Employee Resources Details\",\"Employee Requests Details\":\"Employee Requests Details\",\"Phone Number Search\":\"Phone Number Search\",\"Phone Number Details\":\"Phone Number Details\",\"STEP 1\":\"STEP 1\",\"STEP 2\":\"STEP 2\",\"STEP 3\":\"STEP 3\",\"STEP 4\":\"STEP 4\"},\"fixedphonenew\":{\"Location\":\"Location\",\"TypeofDevice\":\"Type of Device \",\"SelectDevice\":\"Select Device\",\"TypeofModel\":\"Type of Model \",\"SelectModel\":\"Select Model\",\"SelectClassofService (COS)\":\"Class of Service (COS)\",\"National\":\"National\",\"International\":\"International\",\"BusinessNeed(Whyisinternationalrequired?)\":\"Business Need (Why is international required?) \",\"DescriptionoftheDevice\":\"Description of the Device \",\"IBMCLv21EMdesk\":\"e.g. IBMC Lv21 EM desk \",\"IBMCLv21conferenceroom3\":\"e.g. IBMC Lv21 conference room 3 \",\"MACAddressoftheDevice\":\"MAC Address of the Device \",\"NoteCombinationofandLength12\":\"Note:Combination of (0 to 9 , A to F) and Length:12\",\"BusinessJustification\":\"Business Justification\",\"DescriptionofDevice\":\"Description of Device\",\"Somethingseemswrong\":\"Something seems to have gone wrong. Please try later.\",\"selectdevice\":\"Please select a device type\",\"selectmodel\":\"Please select a model type\",\"businesscos\":\"Please enter the business need for Class of Service.\",\"descriptioncharacters\":\"Please Enter a description and it should not be more than 30 characters\",\"entermacadd\":\"Please enter 12 characters MAC address\",\"MACfieldAtoF\":\"MAC field value to be in combination of 0 to 9 and A to F\",\"initiateFixedPhoneservice\":\"Please click on a request type below to initiate a Fixed Phone service request. \",\"MACAddressorPhoneNumber\":\"Enter Current MAC Address or Phone Number\",\"norecordfoundformac\":\"No record was found for the Mac Address or Phone Number you have entered.Please check and try again.\",\"Pleaseenternumber\":\"Please enter a number to search\",\"MACAddress\":\"MAC Address \",\"PhoneNumber\":\"Phone Number \",\"Description\":\"Description\",\"SEARCH\":\"SEARCH\",\"CurrentMACAddress\":\"Current MAC Address \",\"CurrentPhoneNumber\":\"Current Phone Number \",\"CurrentDescription\":\"Current Description \",\"CurrentModel\":\"Current Model\",\"UpdateRequiredfor\":\"Update Required for\",\"TypeOfModel\":\"Type Of Model\",\"NewPhonemodel\":\"New Phone model\",\"SelectPhoneModel\":\"Select Phone Model\",\"NewMACAddress\":\"New MAC Address\",\"NewDescriptiontoUpdate\":\"New Description to Update\",\"ReasonforUpdation\":\"Reason for update\",\"MACAddresssearch\":\"Please enter a MAC Address or Phone number to search\",\"updaterequiredfor\":\"Please select update required for\",\"enternewMACaddress\":\"Please enter a new MAC address\",\"enteranewModel\":\"Please enter a new Model\",\"providethereasonforupdate\":\"Please provide the reason for update.\",\"provideNewDescription\":\"Please provide the New Description. \",\"differentDescriptionasisalready\":\"Please choose a different Description as the current Description is already\",\"fortheprovidednumber\":\"for the provided number.\",\"FixedPhoneLocation\":\"Fixed Phone Location\",\"SelectOne\":\"Select One\",\"cos\":\"Please select a class of service.\",\"NoteCombination\":\"Note: Combination of (0 to 9 , A to F) and Length:12\"},\"specialrequest\":{\"OnlyusetheSpecialRequest\":\"Only use the Special Request for any special operation, such as a second office number, a hotline for a support group, a shared line setup for functional groups, or to indicate a need for telephony-related consultancy. \",\"needstandardservice\":\"If you need standard service such as Jabber or Fixed Phone , do not submit a Special Request as it will be rejected. Standard services can be requested from the menu on the left of this page.\",\"SpecialRequestHCSmigratedsite\":\"Please note , Special Request related to voice services can be submitted only for HCS migrated site.  Special Request related to voice services for a non-HCS site should be submitted in the  \",\"TMAC tool\":\"TMAC tool.\",\"HelpTMACtool\":\"Help related to TMAC tool can be found \",\"here\":\"here.\",\"JabberNumberoptional\":\"Jabber / Phone Number (Optional)\",\"JabberLocationspecial\":\"Jabber / Phone Number location\",\"Description of Requirement\":\"Description of requirement\",\"notexceed200\":\"Note:Length should not exceed 500\",\"Note\":\"Note:\",\"Fieldsasteriskspl\":\"Fields marked with an asterisk\",\"arerequiredspl\":\"are required.\",\"selectjabbernumberwishtoupdate\":\"Jabber / Phone Number\",\"JabberLocationslect\":\"Jabber / Phone Number location\"},\"otheralerts\":{\"selectthejabber\":\"Please select the Jabber / Phone number to update\",\"selectthejabbertomove\":\"Select the Jabber / Phone Number  you wish to move\",\"Model\":\"Model\",\"MAC Address\":\"MAC Address\",\"Device Description\":\"Device Description\"},\"Requests\":{\"approved\":\"Processing\",\"Approved\":\"Processing\",\"_approval\":\"Processing\"}}");
-=======
-module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choose a language: \",\"app-name\":\"Global Voice Services\",\"app-function\":\"Single entry point for ordering voice services in your country\",\"sponsor\":\"Built on CIO Hybrid Cloud Powered by Red Hat OpenShift\",\"welcomemessage\":\"Welcome,\",\"question\":\"What service or country are you looking for?\",\"search-placeholder\":\"Search service...\",\"search-text\":\"Click here to see all results in GVS search\",\"my-country\":\"My Country\",\"click-here\":\"Click here\",\"available\":\"to view all available\",\"servicesonlyokay\":\"services for\",\"most-viewed-services\":\"Most Viewed Services\",\"find-right-service\":\"Find the right services, check their availability,\",\"find-right-service2\":\"and then choose the way you connect and work together.\",\"jabber-description\":\"Cisco Jabber is a multiple platform soft phone application to make and receive phone calls.\",\"button-value\":\"Get Started\",\"Searchservice\":\"Search service...\"},\"footer\":{\"aditional-question\":\"Have additional questions about ordering Global Voice Services ?\",\"please consult\":\"Please consult\",\"consult\":\"* This website supports Mozilla Firefox, Google Chrome, IE, Edge and Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Terms of use\",\"Useful Information\":\"Useful Information\",\"Please bear in mind the following points when making a request :\":\"Please bear in mind the following points when making a request :\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"To make a request the Employee must exist in BluePages (except for cancellation requests).\",\"You must know the IBM serial Number of the person making the request.\":\"You must know the IBM serial Number of the person making the request.\",\"Only one request per employee per request type is processed at a time.\":\"Only one request per employee per request type is processed at a time.\"},\"lhs\":{\"Services\":\"Services\",\"Jabber\":\"Jabber\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Mobile\":\"Mobile\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approvals Pending\",\"Revalidation Pending\":\"Revalidation Pending\",\"Phone Number Search\":\"Phone Number Search\",\"Requests\":\"Requests\",\"Resources\":\"Resources\"},\"Jabberservices\":{\"initiateJabber\":\" Please click on a request type below to initiate a Jabber service request.\",\"jnew\":\"Request a new service\",\"jupdate\":\"Update an existing service\",\"jmove\":\"Move an existing service\",\"jdelete\":\"Delete an existing service\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeSearch\":\"Employee Search\",\"Declaration\":\"Declaration\",\"DeclarationAck\":\"I have read and comply with the Algeria Mobility Policy, available here and I acknowledge reading the Privacy Notice.\",\"requestfor\":\"Who is this request for\",\"Myself\":\"Myself\",\"AnotherEmployee\":\"Another Employee\",\"Name\":\"Name\",\"SerialNumber\":\"Serial Number\",\"EmployeeSerialNumber\":\"Employee Serial Number\",\"forexample\":\"(eg 012789)\",\"CountryCode\":\"Country Code\",\"SelectOne\":\"Select One\",\"norecord\":\"There is no record of an IBM employee with the serial number \",\"availablefromBluePages\":\"available from BluePages\",\"opps\":\"Something seems to have gone wrong. Please try later.\",\"JabberLocation\":\"Jabber / Phone Number location\",\"Voicemail\":\"Voicemail\",\"ClassofService\":\"Class of Service (COS)\",\"pleasesubmittostart\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service.\"},\"servicestitle\":{\"Request new Jabber service\":\"Jabber - New Request\",\"Update Jabber Request\":\"Jabber - Update Request\",\"Move Jabber Request\":\"Jabber - Move Request\",\"Delete Jabber Request\":\"Jabber - Delete Request\",\"FAC Code / IDD PIN New Request\":\"FAC Code / IDD PIN - New Request\",\"FAC Code / IDD PIN Update Request\":\"FAC Code / IDD PIN - Update Request\",\"FAC Code / IDD PIN - New Request\":\"FAC Code / IDD PIN - New Request\",\"FAC Code / IDD PIN - Reset Request\":\"FAC Code / IDD PIN - Reset Request\",\"FAC Code / IDD PIN - Update Request\":\"FAC Code / IDD PIN - Update Request\",\"FAC Code / IDD PIN Reset Request\":\"FAC Code / IDD PIN - Reset Request\",\"SpecialRequestentryandreview\":\"Special Request\",\"FAC Code / IDD PIN - Delete Request\":\"FAC Code / IDD PIN - Delete Request\",\"Mobile New Request\":\"Mobile - New Request\",\"FAC Code / IDD PIN Delete Request\":\"FAC Code / IDD PIN - Delete Request\",\"Request Move Jabber service\":\"Jabber - Move Request\",\"Update Existing Jabber Request\":\"Jabber - Update Request\",\"Delete an existing service\":\"Delete an existing service\",\"Request a new service\":\"Request a new service\",\"Update an existing service\":\"Update an existing service\",\"Requests\":\"Requests\",\"Resources\":\"Resources\",\"Delete an existing FAC Code / IDD PIN\":\"Delete an existing FAC Code / IDD PIN\",\"Fixed Phone - New Request\":\"Fixed Phone - New Request\",\"New Fixed Phone Request\":\"New Fixed Phone Request\",\"Fixed Phone - Update Request\":\"Fixed Phone - Update Request\",\"Fixed Phone - Delete Request\":\"Fixed Phone - Delete Request\",\"Request a new FAC Code / IDD PIN\":\"Request a new FAC Code / IDD PIN\",\"Update an existing FAC Code / IDD PIN\":\"Update an existing FAC Code / IDD PIN\",\"Reset an existing FAC Code / IDD PIN\":\"Reset an existing FAC Code / IDD PIN\",\"Phone Number Search\":\"Phone Number Search\",\"Special Request\":\"Special Request\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"If the following information is correct, click Next. Any errors must be corrected in the employee's\",\"BluePagesrecord\":\"BluePages record\",\"beforecontinuing\":\"before continuing.\",\"EmployeeInformation\":\"Employee Information\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"Name\":\"Name:\",\"SerialNumber\":\"Serial Number:\",\"JobResponsibility\":\"Job Responsibility:\",\"BusinessUnit\":\"Business Unit:\",\"Department\":\"Department:\",\"Country\":\"Country:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"The serial number that you have entered is not eligible to request Jabber account.\",\"itnexistsforuser\":\"The IBM Telephone Number (ITN) that exists for this user is .\",\"nojabber\":\"There is no Jabber for this serial number.\",\"nojabberusethislink\":\"The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN \",\"GlobalVoiceInfrastructure\":\"Global Voice Infrastructure.\",\"receiveITN\":\"you have received the ITN you can then request Jabber.  Thank you.\",\"notauthorizedtoaccessjabber\":\"The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact\",\"notauthorizedtoaccessip\":\"The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact\",\"noteligibletorequestmorethanonejabber\":\"The serial number that you have entered is not eligible to request more than one Jabber account.\",\"ITNexistsforthisuser\":\"The IBM Telephone Number (ITN) that exists for this users jabber account is\",\"jabberconfiguration\":\"Help related to Jabber configuration can be found at\",\"furtherassistance\":\"For any further assistance, please contact\",\"alreadyone\":\"The serial number that you have entered has already one\",\"inprogess\":\"request in progress and request number is\",\"ongoingrequestsbyclickonrequestpage\":\"You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.\",\"nooutstandingreq\":\"No outstanding requests were found for the serial number.\",\"noresources\":\"There are no resources for this serial number.\",\"nojabberforthisserial\":\"There is no Jabber for this serial number.\",\"BACK\":\"BACK\",\"NEXT\":\"NEXT\",\"SUBMIT1\":\"SUBMIT\",\"alreadyonerequestinprogress\":\"The serial number that you have entered has already one new Jabber request is in progress and request number is\",\"alreadyoneupdaterequestinprogress\":\"The serial number that you have entered has already one Update Jabber request is in progress and request number is\",\"alreadyonemoverequestinprogress\":\"The serial number that you have entered has already one move Jabber request is in progress and request number is\",\"alreadyonedeleterequestinprogress\":\"The serial number that you have entered has already one delete Jabber request is in progress and request number is\",\"alreadyonefacdeleterequestinprogress\":\"The serial number that you have entered has already one delete FAC request is in progress and request number is\",\"enterserialnumber\":\"Please enter a serial number\",\"alreadyonerequestinprogressfac\":\"The serial number that you have entered has already one new FAC Code / IDD PIN request is in progress and request number is\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"OfficeLocation\":\"Office Location\",\"Campus\":\"Campus\",\"Funded\":\"Funded\",\"ChargeDepartmentCode\":\"Charge Department Code\",\"BusinessUnit\":\"Business Unit\",\"Projectid\":\"Project ID (for GBS employee only)\",\"alreadyhaveFixedPhone\":\"If you already have Fixed Phone , please provide the identifier\",\"toprocessPI\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.\",\"JabberRequestDetails\":\"Jabber Request Details\",\"FixedPhoneIdentifier\":\"Fixed Phone Identifier\",\"Submissioninprogress\":\"Your request submission is in progress.Do not Go back or Refresh the page.\",\"Submissionbeinginprogress\":\"Your request is being submitted. Do not refresh or go back.\",\"Back\":\"BACK\",\"Next\":\"NEXT\",\"Select Location\":\"Select Location\"},\"Jabberupdate\":{\"SELECTONE\":\"SELECT ONE\",\"ReviewDetails\":\"Review Details\",\"JabberNumber\":\"Jabber / Phone Number\",\"SelectJabberNumber\":\"Jabber / Phone Number\",\"Jabber/PhoneNumberLocation\":\"Select Jabber / Phone Number Location\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber / Phone number\",\"ProjectIId\":\"Project ID\",\"AccountId\":\"Account ID\",\"ICACode\":\"ICA Code\",\"NewOfficeLocation\":\"New Office Location\",\"Building\":\"Building\"},\"requesttrans\":{\"Requests\":\"Requests\",\"beingsubmitted\":\"Your request is being submitted.Do not refresh or go back.\",\"EmployeeRequestsDetails\":\"Employee Requests Details\",\"ResourceType\":\"Resource Type\",\"CreatedDate\":\"Created Date\",\"Status\":\"Status\",\"TrackingNumber\":\"Tracking Number\",\"AdditionalComments\":\"Additional Comments\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Your request for\",\"hasbeensubmitted\":\"has been submitted\",\"Trackingrequest\":\"Tracking number for the request is :\",\"receiveemailnotification\":\"You will receive an email notification, when your request has been processed.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Employee Resources Details\",\"Supplier\":\"Supplier\",\"Phone/Dial\":\"Phone/Dial\",\"Innumber\":\"In number\",\"AdditionalInformation\":\"Additional Information\"},\"phonenumber\":{\"PhoneNumberSearch\":\"Phone Number Search\",\"PhoneNumberDetails\":\"Phone Number Details\",\"EnterITNNumber\":\"Enter ITN Number\",\"EmpID\":\"EmpID\",\"UserName\":\"User Name\",\"ServiceDetails\":\"Service Details\"},\"alerttranslation\":{\"EXITREQUEST\":\"EXIT REQUEST\",\"digitserialnumber\":\"Employee Serial Number should be of 6 characters\",\"enterserialnumber\":\"Please enter a serial number\",\"moverequest\":\"Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit\",\"selectcountrycode\":\"Please select the Country Code\",\"Only\":\"Only\",\"serialnumbersareallowed\":\"Serial numbers are allowed to create a request for\",\"selectlocation\":\"Please select a Location\",\"selectjabbernumber\":\"Please select the Jabber / Phone Number\",\"selectlocationsp\":\"Please select the Jabber / Phone Location\"},\"topui\":{\"HOME\":\"HOME\",\"SERVICES\":\"SERVICES\",\"DATAPRIVACY\":\"DATA PRIVACY\",\"HELP\":\"HELP\",\"FEEDBACK\":\"FEEDBACK\",\"CHANGECOUNTRY\":\"CHANGE COUNTRY\"},\"steps\":{\"Employee Search\":\"Employee Search\",\"Employee Information\":\"Employee Information\",\"Employee Entry Details\":\"Employee Entry Details\",\"Review Details\":\"Review Details\",\"Employee Resources Details\":\"Employee Resources Details\",\"Employee Requests Details\":\"Employee Requests Details\",\"Phone Number Search\":\"Phone Number Search\",\"Phone Number Details\":\"Phone Number Details\",\"STEP 1\":\"STEP 1\",\"STEP 2\":\"STEP 2\",\"STEP 3\":\"STEP 3\",\"STEP 4\":\"STEP 4\"},\"fixedphonenew\":{\"Location\":\"Location\",\"TypeofDevice\":\"Type of Device \",\"SelectDevice\":\"Select Device\",\"TypeofModel\":\"Type of Model \",\"SelectModel\":\"Select Model\",\"SelectClassofService (COS)\":\"Class of Service (COS)\",\"National\":\"National\",\"International\":\"International\",\"BusinessNeed(Whyisinternationalrequired?)\":\"Business Need (Why is international required?) \",\"DescriptionoftheDevice\":\"Description of the Device \",\"IBMCLv21EMdesk\":\"e.g. IBMC Lv21 EM desk \",\"IBMCLv21conferenceroom3\":\"e.g. IBMC Lv21 conference room 3 \",\"MACAddressoftheDevice\":\"MAC Address of the Device \",\"NoteCombinationofandLength12\":\"Note:Combination of (0 to 9 , A to F) and Length:12\",\"BusinessJustification\":\"Business Justification\",\"DescriptionofDevice\":\"Description of Device\",\"Somethingseemswrong\":\"Something seems to have gone wrong. Please try later.\",\"selectdevice\":\"Please select a device type\",\"selectmodel\":\"Please select a model type\",\"businesscos\":\"Please enter the business need for Class of Service.\",\"descriptioncharacters\":\"Please Enter a description and it should not be more than 30 characters\",\"entermacadd\":\"Please enter 12 characters MAC address\",\"MACfieldAtoF\":\"MAC field value to be in combination of 0 to 9 and A to F\",\"initiateFixedPhoneservice\":\"Please click on a request type below to initiate a Fixed Phone service request. \",\"MACAddressorPhoneNumber\":\"Enter Current MAC Address or Phone Number\",\"norecordfoundformac\":\"No record was found for the Mac Address or Phone Number you have entered.Please check and try again.\",\"Pleaseenternumber\":\"Please enter a number to search\",\"MACAddress\":\"MAC Address \",\"PhoneNumber\":\"Phone Number \",\"Description\":\"Description\",\"SEARCH\":\"SEARCH\",\"CurrentMACAddress\":\"Current MAC Address \",\"CurrentPhoneNumber\":\"Current Phone Number \",\"CurrentDescription\":\"Current Description \",\"CurrentModel\":\"Current Model\",\"UpdateRequiredfor\":\"Update Required for\",\"TypeOfModel\":\"Type Of Model\",\"SelectPhoneModel\":\"Select Phone Model\",\"NewMACAddress\":\"New MAC Address\",\"NewDescriptiontoUpdate\":\"New Description to Update\",\"ReasonforUpdation\":\"Reason for Updation\",\"MACAddresssearch\":\"Please enter a MAC Address or Phone number to search\",\"updaterequiredfor\":\"Please select update required for\",\"enternewMACaddress\":\"Please enter a new MAC address\",\"enteranewModel\":\"Please enter a new Model\",\"providethereasonforupdation\":\"Please provide the reason for updation.\",\"provideNewDescription\":\"Please provide the New Description. \",\"differentDescriptionasisalready\":\"Please choose a different Description as the current Description is already\",\"fortheprovidednumber\":\"for the provided number.\",\"FixedPhoneLocation\":\"Fixed Phone Location\",\"SelectOne\":\"Select One\",\"cos\":\"Please select a class of service.\",\"NoteCombination\":\"Note: Combination of (0 to 9 , A to F) and Length:12\"},\"specialrequest\":{\"OnlyusetheSpecialRequest\":\"Only use the Special Request for any special operation, such as a second office number, a hotline for a support group, a shared line setup for functional groups, or to indicate a need for telephony-related consultancy. \",\"needstandardservice\":\"If you need standard service such as Jabber or Fixed Phone , do not submit a Special Request as it will be rejected. Standard services can be requested from the menu on the left of this page.\",\"SpecialRequestHCSmigratedsite\":\"Please note , Special Request related to voice services can be submitted only for HCS migrated site.  Special Request related to voice services for a non-HCS site should be submitted in the  \",\"TMAC tool\":\"TMAC tool.\",\"HelpTMACtool\":\"Help related to TMAC tool can be found \",\"here\":\"here.\",\"JabberNumberoptional\":\"Jabber / Phone Number (Optional)\",\"JabberLocationspecial\":\"Jabber / Phone Number location\",\"Description of Requirement\":\"Description of requirement\",\"notexceed200\":\"Note:Length should not exceed 500\",\"Note\":\"Note:\",\"Fieldsasteriskspl\":\"Fields marked with an asterisk\",\"arerequiredspl\":\"are required.\",\"selectjabbernumberwishtoupdate\":\"Jabber / Phone Number\",\"JabberLocationslect\":\"Jabber / Phone Number location\"},\"otheralerts\":{\"selectthejabber\":\"Please select the Jabber / Phone number to update\",\"selectthejabbertomove\":\"Select the Jabber / Phone Number  you wish to move\",\"Model\":\"Model\",\"MAC Address\":\"MAC Address\",\"Device Description\":\"Device Description\"},\"Requests\":{\"approved\":\"Processing\",\"Approved\":\"Processing\",\"_approval\":\"Processing\"}}");
->>>>>>> beb6d2a971e822342afa64263462ee53e8ea6a13
+module.exports = JSON.parse("{\"home\":{\"select-language\":\"Choose a language: \",\"app-name\":\"Global Voice Services\",\"app-function\":\"Single entry point for ordering voice services in your country\",\"sponsor\":\"Built on CIO Hybrid Cloud Powered by Red Hat OpenShift\",\"welcomemessage\":\"Welcome,\",\"question\":\"What service or country are you looking for?\",\"search-placeholder\":\"Search service...\",\"search-text\":\"Click here to see all results in GVS search\",\"my-country\":\"My Country\",\"click-here\":\"Click here\",\"available\":\"to view all available\",\"servicesonlyokay\":\"services for\",\"most-viewed-services\":\"Most Viewed Services\",\"find-right-service\":\"Find the right services, check their availability,\",\"find-right-service2\":\"and then choose the way you connect and work together.\",\"jabber-description\":\"Cisco Jabber is a multiple platform soft phone application to make and receive phone calls.\",\"button-value\":\"Get Started\",\"Searchservice\":\"Search service...\"},\"footer\":{\"aditional-question\":\"Have additional questions about ordering Global Voice Services ?\",\"please consult\":\"Please consult\",\"consult\":\"* This website supports Mozilla Firefox, Google Chrome, IE, Edge and Safari.\"},\"footnote\":{\"Jabber\":\"Jabber\",\"Fixed Phone\":\"Fixed Phone\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Special Request\":\"Special Request\",\"Terms of use\":\"Terms of use\",\"Useful Information\":\"Useful Information\",\"Please bear in mind the following points when making a request :\":\"Please bear in mind the following points when making a request :\",\"To make a request the Employee must exist in BluePages (except for cancellation requests).\":\"To make a request the Employee must exist in BluePages (except for cancellation requests).\",\"You must know the IBM serial Number of the person making the request.\":\"You must know the IBM serial Number of the person making the request.\",\"Only one request per employee per request type is processed at a time.\":\"Only one request per employee per request type is processed at a time.\"},\"lhs\":{\"Services\":\"Services\",\"Jabber\":\"Jabber\",\"FAC Code / IDD PIN\":\"FAC Code / IDD PIN\",\"Mobile\":\"Mobile\",\"Fixed Phone\":\"Fixed Phone\",\"Special Request\":\"Special Request\",\"Approvals Pending\":\"Approvals Pending\",\"Revalidation Pending\":\"Revalidation Pending\",\"Phone Number Search\":\"Phone Number Search\",\"Requests\":\"Requests\",\"Resources\":\"Resources\"},\"Jabberservices\":{\"initiateJabber\":\" Please click on a request type below to initiate a Jabber service request.\",\"jnew\":\"Request a new service\",\"jupdate\":\"Update an existing service\",\"jmove\":\"Move an existing service\",\"jdelete\":\"Delete an existing service\"},\"Jabbernewtrans\":{\"Reqnewservice\":\"This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeSearch\":\"Employee Search\",\"Declaration\":\"Declaration\",\"DeclarationAck\":\"I have read and comply with the Algeria Mobility Policy, available here and I acknowledge reading the Privacy Notice.\",\"requestfor\":\"Who is this request for\",\"Myself\":\"Myself\",\"AnotherEmployee\":\"Another Employee\",\"Name\":\"Name\",\"SerialNumber\":\"Serial Number\",\"EmployeeSerialNumber\":\"Employee Serial Number\",\"forexample\":\"(eg 012789)\",\"CountryCode\":\"Country Code\",\"SelectOne\":\"Select One\",\"norecord\":\"There is no record of an IBM employee with the serial number \",\"availablefromBluePages\":\"available from BluePages\",\"opps\":\"Something seems to have gone wrong. Please try later.\",\"JabberLocation\":\"Jabber / Phone Number location\",\"Voicemail\":\"Voicemail\",\"ClassofService\":\"Class of Service (COS)\",\"pleasesubmittostart\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service.\"},\"servicestitle\":{\"Request new Jabber service\":\"Jabber - New Request\",\"Update Jabber Request\":\"Jabber - Update Request\",\"Move Jabber Request\":\"Jabber - Move Request\",\"Delete Jabber Request\":\"Jabber - Delete Request\",\"FAC Code / IDD PIN New Request\":\"FAC Code / IDD PIN - New Request\",\"FAC Code / IDD PIN Update Request\":\"FAC Code / IDD PIN - Update Request\",\"FAC Code / IDD PIN - New Request\":\"FAC Code / IDD PIN - New Request\",\"FAC Code / IDD PIN - Reset Request\":\"FAC Code / IDD PIN - Reset Request\",\"FAC Code / IDD PIN - Update Request\":\"FAC Code / IDD PIN - Update Request\",\"FAC Code / IDD PIN Reset Request\":\"FAC Code / IDD PIN - Reset Request\",\"SpecialRequestentryandreview\":\"Special Request\",\"FAC Code / IDD PIN - Delete Request\":\"FAC Code / IDD PIN - Delete Request\",\"Mobile New Request\":\"Mobile - New Request\",\"FAC Code / IDD PIN Delete Request\":\"FAC Code / IDD PIN - Delete Request\",\"Request Move Jabber service\":\"Jabber - Move Request\",\"Update Existing Jabber Request\":\"Jabber - Update Request\",\"Delete an existing service\":\"Delete an existing service\",\"Request a new service\":\"Request a new service\",\"Update an existing service\":\"Update an existing service\",\"Requests\":\"Requests\",\"Resources\":\"Resources\",\"Delete an existing FAC Code / IDD PIN\":\"Delete an existing FAC Code / IDD PIN\",\"Fixed Phone - New Request\":\"Fixed Phone - New Request\",\"New Fixed Phone Request\":\"New Fixed Phone Request\",\"Fixed Phone - Update Request\":\"Fixed Phone - Update Request\",\"Fixed Phone - Delete Request\":\"Fixed Phone - Delete Request\",\"Request a new FAC Code / IDD PIN\":\"Request a new FAC Code / IDD PIN\",\"Update an existing FAC Code / IDD PIN\":\"Update an existing FAC Code / IDD PIN\",\"Reset an existing FAC Code / IDD PIN\":\"Reset an existing FAC Code / IDD PIN\",\"Phone Number Search\":\"Phone Number Search\",\"Special Request\":\"Special Request\"},\"employeeinfotrans\":{\"ifinfoiscorrect\":\"If the following information is correct, click Next. Any errors must be corrected in the employee's\",\"BluePagesrecord\":\"BluePages record\",\"beforecontinuing\":\"before continuing.\",\"EmployeeInformation\":\"Employee Information\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"Name\":\"Name:\",\"SerialNumber\":\"Serial Number:\",\"JobResponsibility\":\"Job Responsibility:\",\"BusinessUnit\":\"Business Unit:\",\"Department\":\"Department:\",\"Country\":\"Country:\",\"E-mail\":\"E-mail:\",\"noteligiblejabber\":\"The serial number that you have entered is not eligible to request Jabber account.\",\"itnexistsforuser\":\"The IBM Telephone Number (ITN) that exists for this user is .\",\"nojabber\":\"There is no Jabber for this serial number.\",\"nojabberusethislink\":\"The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN \",\"GlobalVoiceInfrastructure\":\"Global Voice Infrastructure.\",\"receiveITN\":\"you have received the ITN you can then request Jabber.  Thank you.\",\"notauthorizedtoaccessjabber\":\"The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact\",\"notauthorizedtoaccessip\":\"The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact\",\"noteligibletorequestmorethanonejabber\":\"The serial number that you have entered is not eligible to request more than one Jabber account.\",\"ITNexistsforthisuser\":\"The IBM Telephone Number (ITN) that exists for this users jabber account is\",\"jabberconfiguration\":\"Help related to Jabber configuration can be found at\",\"furtherassistance\":\"For any further assistance, please contact\",\"alreadyone\":\"The serial number that you have entered has already one\",\"inprogess\":\"request in progress and request number is\",\"ongoingrequestsbyclickonrequestpage\":\"You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.\",\"nooutstandingreq\":\"No outstanding requests were found for the serial number.\",\"noresources\":\"There are no resources for this serial number.\",\"nojabberforthisserial\":\"There is no Jabber for this serial number.\",\"BACK\":\"BACK\",\"NEXT\":\"NEXT\",\"SUBMIT1\":\"SUBMIT\",\"alreadyonerequestinprogress\":\"The serial number that you have entered has already one new Jabber request is in progress and request number is\",\"alreadyoneupdaterequestinprogress\":\"The serial number that you have entered has already one Update Jabber request is in progress and request number is\",\"alreadyonemoverequestinprogress\":\"The serial number that you have entered has already one move Jabber request is in progress and request number is\",\"alreadyonedeleterequestinprogress\":\"The serial number that you have entered has already one delete Jabber request is in progress and request number is\",\"alreadyonefacdeleterequestinprogress\":\"The serial number that you have entered has already one delete FAC request is in progress and request number is\",\"enterserialnumber\":\"Please enter a serial number\",\"alreadyonerequestinprogressfac\":\"The serial number that you have entered has already one new FAC Code / IDD PIN request is in progress and request number is\"},\"Jabberentrydetails\":{\"Fieldsasterisk\":\"Fields marked with an asterisk\",\"arerequired\":\"are required.\",\"EmployeeEntryDetails\":\"Employee Entry Details\",\"OfficeLocation\":\"Office Location\",\"Campus\":\"Campus\",\"Funded\":\"Funded\",\"ChargeDepartmentCode\":\"Charge Department Code\",\"BusinessUnit\":\"Business Unit\",\"Projectid\":\"Project ID (for GBS employee only)\",\"alreadyhaveFixedPhone\":\"If you already have Fixed Phone , please provide the identifier\",\"toprocessPI\":\"By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.\",\"JabberRequestDetails\":\"Jabber Request Details\",\"FixedPhoneIdentifier\":\"Fixed Phone Identifier\",\"Submissioninprogress\":\"Your request submission is in progress.Do not Go back or Refresh the page.\",\"Submissionbeinginprogress\":\"Your request is being submitted. Do not refresh or go back.\",\"Back\":\"BACK\",\"Next\":\"NEXT\",\"Select Location\":\"Select Location\"},\"Jabberupdate\":{\"SELECTONE\":\"SELECT ONE\",\"ReviewDetails\":\"Review Details\",\"JabberNumber\":\"Jabber / Phone Number\",\"SelectJabberNumber\":\"Jabber / Phone Number\",\"Jabber/PhoneNumberLocation\":\"Select Jabber / Phone Number Location\"},\"Jabbermove\":{\"JabbertoMove\":\"Jabber / Phone number\",\"ProjectIId\":\"Project ID\",\"AccountId\":\"Account ID\",\"ICACode\":\"ICA Code\",\"NewOfficeLocation\":\"New Office Location\",\"Building\":\"Building\"},\"requesttrans\":{\"Requests\":\"Requests\",\"beingsubmitted\":\"Your request is being submitted.Do not refresh or go back.\",\"EmployeeRequestsDetails\":\"Employee Requests Details\",\"ResourceType\":\"Resource Type\",\"CreatedDate\":\"Created Date\",\"Status\":\"Status\",\"TrackingNumber\":\"Tracking Number\",\"AdditionalComments\":\"Additional Comments\"},\"resultpagetrans\":{\"Yourrequestfor\":\"Your request for\",\"hasbeensubmitted\":\"has been submitted\",\"Trackingrequest\":\"Tracking number for the request is :\",\"receiveemailnotification\":\"You will receive an email notification, when your request has been processed.\"},\"resourcespagetranslation\":{\"EmployeeResourcesDetails\":\"Employee Resources Details\",\"Supplier\":\"Supplier\",\"Phone/Dial\":\"Phone/Dial\",\"Innumber\":\"In number\",\"AdditionalInformation\":\"Additional Information\"},\"phonenumber\":{\"PhoneNumberSearch\":\"Phone Number Search\",\"PhoneNumberDetails\":\"Phone Number Details\",\"EnterITNNumber\":\"Enter ITN Number\",\"EmpID\":\"EmpID\",\"UserName\":\"User Name\",\"ServiceDetails\":\"Service Details\"},\"alerttranslation\":{\"EXITREQUEST\":\"EXIT REQUEST\",\"digitserialnumber\":\"Employee Serial Number should be of 6 characters\",\"enterserialnumber\":\"Please enter a serial number\",\"moverequest\":\"Move request will delete current ITN and a new ITN will be assigned. Click Ok  to proceed or Cancel to quit\",\"selectcountrycode\":\"Please select the Country Code\",\"Only\":\"Only\",\"serialnumbersareallowed\":\"Serial numbers are allowed to create a request for\",\"selectlocation\":\"Please select a Location\",\"selectjabbernumber\":\"Please select the Jabber / Phone Number\",\"selectlocationsp\":\"Please select the Jabber / Phone Location\"},\"topui\":{\"HOME\":\"HOME\",\"SERVICES\":\"SERVICES\",\"DATAPRIVACY\":\"DATA PRIVACY\",\"HELP\":\"HELP\",\"FEEDBACK\":\"FEEDBACK\",\"CHANGECOUNTRY\":\"CHANGE COUNTRY\"},\"steps\":{\"Employee Search\":\"Employee Search\",\"Employee Information\":\"Employee Information\",\"Employee Entry Details\":\"Employee Entry Details\",\"Review Details\":\"Review Details\",\"Employee Resources Details\":\"Employee Resources Details\",\"Employee Requests Details\":\"Employee Requests Details\",\"Phone Number Search\":\"Phone Number Search\",\"Phone Number Details\":\"Phone Number Details\",\"STEP 1\":\"STEP 1\",\"STEP 2\":\"STEP 2\",\"STEP 3\":\"STEP 3\",\"STEP 4\":\"STEP 4\"},\"fixedphonenew\":{\"Location\":\"Location\",\"TypeofDevice\":\"Type of Device \",\"SelectDevice\":\"Select Device\",\"TypeofModel\":\"Type of Model \",\"SelectModel\":\"Select Model\",\"SelectClassofService (COS)\":\"Class of Service (COS)\",\"National\":\"National\",\"International\":\"International\",\"BusinessNeed(Whyisinternationalrequired?)\":\"Business Need (Why is international required?) \",\"DescriptionoftheDevice\":\"Description of the Device \",\"IBMCLv21EMdesk\":\"e.g. IBMC Lv21 EM desk \",\"IBMCLv21conferenceroom3\":\"e.g. IBMC Lv21 conference room 3 \",\"MACAddressoftheDevice\":\"MAC Address of the Device \",\"NoteCombinationofandLength12\":\"Note:Combination of (0 to 9 , A to F) and Length:12\",\"BusinessJustification\":\"Business Justification\",\"DescriptionofDevice\":\"Description of Device\",\"Somethingseemswrong\":\"Something seems to have gone wrong. Please try later.\",\"selectdevice\":\"Please select a device type\",\"selectmodel\":\"Please select a model type\",\"businesscos\":\"Please enter the business need for Class of Service.\",\"descriptioncharacters\":\"Please Enter a description and it should not be more than 30 characters\",\"entermacadd\":\"Please enter 12 characters MAC address\",\"MACfieldAtoF\":\"MAC field value to be in combination of 0 to 9 and A to F\",\"initiateFixedPhoneservice\":\"Please click on a request type below to initiate a Fixed Phone service request. \",\"MACAddressorPhoneNumber\":\"Enter Current MAC Address or Phone Number\",\"norecordfoundformac\":\"No record was found for the Mac Address or Phone Number you have entered.Please check and try again.\",\"Pleaseenternumber\":\"Please enter a number to search\",\"MACAddress\":\"MAC Address \",\"PhoneNumber\":\"Phone Number \",\"Description\":\"Description\",\"SEARCH\":\"SEARCH\",\"CurrentMACAddress\":\"Current MAC Address \",\"CurrentPhoneNumber\":\"Current Phone Number \",\"CurrentDescription\":\"Current Description \",\"CurrentModel\":\"Current Model\",\"UpdateRequiredfor\":\"Update Required for\",\"TypeOfModel\":\"Type Of Model\",\"NewPhonemodel\":\"New Phone model\",\"SelectPhoneModel\":\"Select Phone Model\",\"NewMACAddress\":\"New MAC Address\",\"NewDescriptiontoUpdate\":\"New Description to Update\",\"ReasonforUpdation\":\"Reason for update\",\"MACAddresssearch\":\"Please enter a MAC Address or Phone number to search\",\"updaterequiredfor\":\"Please select update required for\",\"enternewMACaddress\":\"Please enter a new MAC address\",\"enteranewModel\":\"Please enter a new Model\",\"providethereasonforupdate\":\"Please provide the reason for update.\",\"provideNewDescription\":\"Please provide the New Description. \",\"differentDescriptionasisalready\":\"Please choose a different Description as the current Description is already\",\"fortheprovidednumber\":\"for the provided number.\",\"FixedPhoneLocation\":\"Fixed Phone Location\",\"SelectOne\":\"Select One\",\"cos\":\"Please select a class of service.\",\"NoteCombination\":\"Note: Combination of (0 to 9 , A to F) and Length:12\"},\"specialrequest\":{\"OnlyusetheSpecialRequest\":\"Only use the Special Request for any special operation, such as a second office number, a hotline for a support group, a shared line setup for functional groups, or to indicate a need for telephony-related consultancy. \",\"needstandardservice\":\"If you need standard service such as Jabber or Fixed Phone , do not submit a Special Request as it will be rejected. Standard services can be requested from the menu on the left of this page.\",\"SpecialRequestHCSmigratedsite\":\"Please note , Special Request related to voice services can be submitted only for HCS migrated site.  Special Request related to voice services for a non-HCS site should be submitted in the  \",\"TMAC tool\":\"TMAC tool.\",\"HelpTMACtool\":\"Help related to TMAC tool can be found \",\"here\":\"here.\",\"JabberNumberoptional\":\"Jabber / Phone Number (Optional)\",\"JabberLocationspecial\":\"Jabber / Phone Number location\",\"Description of Requirement\":\"Description of requirement\",\"notexceed200\":\"Note:Length should not exceed 500\",\"Note\":\"Note:\",\"Fieldsasteriskspl\":\"Fields marked with an asterisk\",\"arerequiredspl\":\"are required.\",\"selectjabbernumberwishtoupdate\":\"Jabber / Phone Number\",\"JabberLocationslect\":\"Jabber / Phone Number location\"},\"otheralerts\":{\"selectthejabber\":\"Please select the Jabber / Phone number to update\",\"selectthejabbertomove\":\"Select the Jabber / Phone Number  you wish to move\",\"Model\":\"Model\",\"MAC Address\":\"MAC Address\",\"Device Description\":\"Device Description\"},\"Requests\":{\"approved\":\"Processing\",\"Approved\":\"Processing\",\"_approval\":\"Processing\"}}");
 
 /***/ }),
 
@@ -31437,11 +31421,11 @@ __webpack_require__.r(__webpack_exports__);
 
 function HpInUpdateComponent_tr_38_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 46);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 44);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 45);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 46);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "No record was found for the Mac Address or Phone Number you have entered. Please check and try again.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -31454,8 +31438,8 @@ function HpInUpdateComponent_tr_39_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Current MAC Address ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Current MAC address");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
@@ -31472,8 +31456,8 @@ function HpInUpdateComponent_tr_40_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Current Phone Number ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Current Phone Number");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
@@ -31490,8 +31474,8 @@ function HpInUpdateComponent_tr_41_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Current Description ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Current description");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
@@ -31508,8 +31492,8 @@ function HpInUpdateComponent_tr_42_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 49);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Current Model");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 47);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Current phone model");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 13);
@@ -31523,22 +31507,22 @@ function HpInUpdateComponent_tr_42_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r5.currentmodel);
 } }
 function HpInUpdateComponent_tr_43_option_14_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 54);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const device_r21 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", device_r21);
+    const device_r24 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", device_r24);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](device_r21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](device_r24);
 } }
 function HpInUpdateComponent_tr_43_Template(rf, ctx) { if (rf & 1) {
-    const _r23 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r26 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 50);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Update Required for");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Update required for");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " *");
@@ -31546,13 +31530,13 @@ function HpInUpdateComponent_tr_43_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "td", 13);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 51);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "select", 52, 53);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpInUpdateComponent_tr_43_Template_select_change_10_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](11); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r22.updateFor(_r19.value); })("ngModelChange", function HpInUpdateComponent_tr_43_Template_select_ngModelChange_10_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r23); const ctx_r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r24.selected_device = $event; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "option", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "select", 50, 51);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpInUpdateComponent_tr_43_Template_select_change_10_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r26); const _r22 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](11); const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r25.updateFor(_r22.value); })("ngModelChange", function HpInUpdateComponent_tr_43_Template_select_ngModelChange_10_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r26); const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r27.selected_device = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "option", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Select One");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, HpInUpdateComponent_tr_43_option_14_Template, 2, 2, "option", 55);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, HpInUpdateComponent_tr_43_option_14_Template, 2, 2, "option", 53);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -31564,300 +31548,268 @@ function HpInUpdateComponent_tr_43_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r6.updateRequiredFor);
 } }
-function HpInUpdateComponent_table_44_tr_2_option_12_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 56);
+function HpInUpdateComponent_tr_44_option_13_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 60);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const fl_location_r29 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_location_r29);
+    const model_r29 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", model_r29);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_location_r29, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](model_r29);
 } }
-function HpInUpdateComponent_table_44_tr_2_Template(rf, ctx) { if (rf & 1) {
+function HpInUpdateComponent_tr_44_Template(rf, ctx) { if (rf & 1) {
     const _r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 59);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 60);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Office Location");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 51);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "select", 62, 63);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpInUpdateComponent_table_44_tr_2_Template_select_change_8_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r31); const _r27 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](9); const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r30.selectedLocation(_r27.value); })("ngModelChange", function HpInUpdateComponent_table_44_tr_2_Template_select_ngModelChange_8_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r31); const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r32.state = $event; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "option", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Select One");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, HpInUpdateComponent_table_44_tr_2_option_12_Template, 2, 2, "option", 55);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r25.state);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r25.camp);
-} }
-function HpInUpdateComponent_table_44_tr_3_option_11_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 56);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const fl_campus_r34 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_campus_r34);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](fl_campus_r34);
-} }
-function HpInUpdateComponent_table_44_tr_3_Template(rf, ctx) { if (rf & 1) {
-    const _r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 64);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 59);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 65);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Campus");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "*");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 51);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "select", 66);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInUpdateComponent_table_44_tr_3_Template_select_ngModelChange_8_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r36); const ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r35.campus = $event; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "option", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Select One");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, HpInUpdateComponent_table_44_tr_3_option_11_Template, 2, 2, "option", 55);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r26 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r26.campus);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r26.build);
-} }
-function HpInUpdateComponent_table_44_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 57);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tbody");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, HpInUpdateComponent_table_44_tr_2_Template, 13, 2, "tr", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HpInUpdateComponent_table_44_tr_3_Template, 12, 2, "tr", 58);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r7.showLocation);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r7.hideBuilding);
-} }
-function HpInUpdateComponent_table_45_tr_2_option_13_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 73);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const model_r42 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", model_r42);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](model_r42);
-} }
-function HpInUpdateComponent_table_45_tr_2_Template(rf, ctx) { if (rf & 1) {
-    const _r44 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 59);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 68);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "span", 55);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label", 69);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Type Of Model");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "label", 56);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "New phone model");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "span", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "td", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 70);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 57);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpInUpdateComponent_tr_44_Template_div_change_8_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r31); const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r30.checkModel(ctx_r30.newModel); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "select", 71);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpInUpdateComponent_table_45_tr_2_Template_select_change_10_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r44); const ctx_r43 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r43.checkModel(ctx_r43.newModel); })("ngModelChange", function HpInUpdateComponent_table_45_tr_2_Template_select_ngModelChange_10_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r44); const ctx_r45 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r45.newModel = $event; });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "option", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "select", 58);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInUpdateComponent_tr_44_Template_select_ngModelChange_10_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r31); const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r32.newModel = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "option", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Select One");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, HpInUpdateComponent_table_45_tr_2_option_13_Template, 2, 2, "option", 72);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](13, HpInUpdateComponent_tr_44_option_13_Template, 2, 2, "option", 59);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    const ctx_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r37.newModel);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r7.newModel);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r37.models);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r7.models);
 } }
-function HpInUpdateComponent_table_45_tr_3_Template(rf, ctx) { if (rf & 1) {
-    const _r47 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+function HpInUpdateComponent_tr_45_Template(rf, ctx) { if (rf & 1) {
+    const _r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 74);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 75);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New MAC Address");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 62);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New MAC address");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " *");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 76);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "input", 77);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInUpdateComponent_table_45_tr_3_Template_input_ngModelChange_7_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r47); const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r46.newMacAddress = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 61);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "input", 63);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInUpdateComponent_tr_45_Template_input_ngModelChange_7_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r34); const ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r33.newMacAddress = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "label");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Note:Combination of (0 to 9 , A to F) and Length:12");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r38 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r38.newMacAddress);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r8.newMacAddress);
 } }
-function HpInUpdateComponent_table_45_tr_4_Template(rf, ctx) { if (rf & 1) {
-    const _r49 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+function HpInUpdateComponent_tr_46_Template(rf, ctx) { if (rf & 1) {
+    const _r36 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 78);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 79);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New Description to Update ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 64);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 65);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New description ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " *");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 80);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "input", 81);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInUpdateComponent_table_45_tr_4_Template_input_ngModelChange_7_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r49); const ctx_r48 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r48.newDescription = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 64);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "input", 66);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInUpdateComponent_tr_46_Template_input_ngModelChange_7_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r36); const ctx_r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r35.newDescription = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r39.newDescription);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r9.newDescription);
 } }
-function HpInUpdateComponent_table_45_tr_5_Template(rf, ctx) { if (rf & 1) {
-    const _r51 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+function HpInUpdateComponent_tr_47_Template(rf, ctx) { if (rf & 1) {
+    const _r38 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 59);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 75);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Reason for Updation");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 62);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Reason for update");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " *");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "textarea", 82);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInUpdateComponent_table_45_tr_5_Template_textarea_ngModelChange_7_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r51); const ctx_r50 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r50.reasonForUpdate = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "textarea", 67);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInUpdateComponent_tr_47_Template_textarea_ngModelChange_7_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r38); const ctx_r37 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r37.reasonForUpdate = $event; });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "                        ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r40.reasonForUpdate);
-} }
-function HpInUpdateComponent_table_45_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 67);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tbody");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, HpInUpdateComponent_table_45_tr_2_Template, 14, 2, "tr", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HpInUpdateComponent_table_45_tr_3_Template, 8, 1, "tr", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, HpInUpdateComponent_table_45_tr_4_Template, 9, 1, "tr", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, HpInUpdateComponent_table_45_tr_5_Template, 10, 1, "tr", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r8 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r8.showformodel);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r8.showformacadd);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r8.showforNewDesc);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r8.showforrsn);
-} }
-function HpInUpdateComponent_tr_76_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Current Description");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r9.reviewDetailsIndia.Currentdescription);
-} }
-function HpInUpdateComponent_tr_89_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Type Of Model");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
     const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r10.reviewDetailsIndia.newModel);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r10.reasonForUpdate);
 } }
-function HpInUpdateComponent_tr_90_Template(rf, ctx) { if (rf & 1) {
+function HpInUpdateComponent_table_48_tr_2_option_12_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const fl_location_r43 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_location_r43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", fl_location_r43, "");
+} }
+function HpInUpdateComponent_table_48_tr_2_Template(rf, ctx) { if (rf & 1) {
+    const _r45 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New MAC Address");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 70);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Office Location");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "*");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 71);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "select", 72, 73);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function HpInUpdateComponent_table_48_tr_2_Template_select_change_8_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r45); const _r41 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](9); const ctx_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r44.selectedLocation(_r41.value); })("ngModelChange", function HpInUpdateComponent_table_48_tr_2_Template_select_ngModelChange_8_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r45); const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r46.state = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "option", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Select One");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, HpInUpdateComponent_table_48_tr_2_option_12_Template, 2, 2, "option", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r39 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r39.state);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r39.camp);
+} }
+function HpInUpdateComponent_table_48_tr_3_option_11_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 54);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const fl_campus_r48 = ctx.$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_campus_r48);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](fl_campus_r48);
+} }
+function HpInUpdateComponent_table_48_tr_3_Template(rf, ctx) { if (rf & 1) {
+    const _r50 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 74);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 75);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Campus");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, "*");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "td", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 49);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "select", 76);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HpInUpdateComponent_table_48_tr_3_Template_select_ngModelChange_8_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r50); const ctx_r49 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r49.campus = $event; });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "option", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Select One");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, HpInUpdateComponent_table_48_tr_3_option_11_Template, 2, 2, "option", 53);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r40.campus);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r40.build);
+} }
+function HpInUpdateComponent_table_48_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 68);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tbody");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, HpInUpdateComponent_table_48_tr_2_Template, 13, 2, "tr", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, HpInUpdateComponent_table_48_tr_3_Template, 12, 2, "tr", 69);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r11.reviewDetailsIndia.newMac);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r11.showLocation);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r11.hideBuilding);
 } }
-function HpInUpdateComponent_tr_91_Template(rf, ctx) { if (rf & 1) {
+function HpInUpdateComponent_tr_79_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 83);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Office Location");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Current description");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 36);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r12.reviewDetailsIndia.officeLocation);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r12.reviewDetailsIndia.Currentdescription);
 } }
 function HpInUpdateComponent_tr_92_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Campus");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New phone model");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r13.reviewDetailsIndia.newModel);
+} }
+function HpInUpdateComponent_tr_93_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New MAC address");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r14.reviewDetailsIndia.newMac);
+} }
+function HpInUpdateComponent_tr_94_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 77);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Office Location");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 37);
@@ -31865,32 +31817,48 @@ function HpInUpdateComponent_tr_92_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r13.reviewDetailsIndia.campus);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r15.reviewDetailsIndia.officeLocation);
 } }
-function HpInUpdateComponent_tr_93_Template(rf, ctx) { if (rf & 1) {
+function HpInUpdateComponent_tr_95_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New Description to Update");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Campus");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 38);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r16.reviewDetailsIndia.campus);
+} }
+function HpInUpdateComponent_tr_96_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New description");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 37);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 38);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r14.reviewDetailsIndia.description);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r17.reviewDetailsIndia.description);
 } }
-function HpInUpdateComponent_div_102_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 48);
+function HpInUpdateComponent_div_105_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 46);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Something seems to have gone wrong. Please try later.");
@@ -31898,24 +31866,24 @@ function HpInUpdateComponent_div_102_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "p");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function HpInUpdateComponent_div_104_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 84);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 85);
+function HpInUpdateComponent_div_107_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 78);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 79);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Your request submission is in progress.Do not Go back or Refresh the page.");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 86);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "div", 80);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function HpInUpdateComponent_input_109_Template(rf, ctx) { if (rf & 1) {
-    const _r53 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInUpdateComponent_input_109_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r53); const ctx_r52 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r52.BackButton(); });
+function HpInUpdateComponent_input_112_Template(rf, ctx) { if (rf & 1) {
+    const _r52 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInUpdateComponent_input_112_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r52); const ctx_r51 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r51.BackButton(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function HpInUpdateComponent_input_111_Template(rf, ctx) { if (rf & 1) {
-    const _r55 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 87);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInUpdateComponent_input_111_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r55); const ctx_r54 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r54.submit_snow(); });
+function HpInUpdateComponent_input_114_Template(rf, ctx) { if (rf & 1) {
+    const _r54 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "input", 81);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInUpdateComponent_input_114_Template_input_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r54); const ctx_r53 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r53.submit_snow(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 class HpInUpdateComponent {
@@ -32005,7 +31973,7 @@ class HpInUpdateComponent {
     }
     OnSearchClick() {
         if (this.currentMacOrPhone != '') {
-            this.db2.search_db2(this.cnum, "fixedphone_search", this.currentMacOrPhone, this.currentMacOrPhone, this.countrydetails.name).subscribe(data => {
+            this.db2.search_db2(this.cnum, "fixedphone_search", this.currentMacOrPhone.toUpperCase(), this.currentMacOrPhone, this.countrydetails.name).subscribe(data => {
                 if (data.message != '') {
                     this.currentMac = data.message[0].ATTRIBUTE1;
                     this.currentPhone = data.message[0].IDENTIFIER;
@@ -32130,14 +32098,19 @@ class HpInUpdateComponent {
     //   }
     // }
     entryDetails(formData) {
+        var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
         if (this.currentMacOrPhone == '') {
             // alert("Please give some ");
         }
         else if (formData.value.UpdateReq == '') {
             alert('Please select update required for');
         }
-        else if (formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && formData.value.MAC1 == '') {
+        else if (formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (formData.value.MAC1 == '' || formData.value.MAC1.length != 12)) {
             alert('Please enter 12 characters MAC address');
+        }
+        else if (formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (pat1.test(formData.value.MAC1))) {
+            alert('MAC field value to be in combination of 0 to 9 and A to F');
+            return;
         }
         else if (formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && formData.value.MAC1 == this.currentMac) {
             alert('Please provide a different MAC Address as the current MAC Address is already ' + this.currentMac);
@@ -32148,6 +32121,10 @@ class HpInUpdateComponent {
         else if (formData.value.UpdateReq.toLowerCase() !== 'replace the hardphone only' && formData.value.Newdesc.trim() == this.currentdesc) {
             alert('Please choose a different Description as the current Description is already ' + this.currentdesc);
         }
+        // else if(this.showformodel == true && formData.value.newModel == this.currentmodel) {
+        //   alert(this.mainConfiguration.fixedphonenew.enteranewModel);
+        //   return;
+        // }
         else if (formData.value.UpdateReq.toLowerCase() == 'change phone location' && formData.value.Location_1_1 == '' && this.showLocation == true) {
             alert('Please select a location');
         }
@@ -32197,6 +32174,7 @@ class HpInUpdateComponent {
             // this.reviewDetailsIndia.campus = this.campus;
         }
         this.create_cache(formData);
+        console.log(formData);
     }
     create_cache(formData) {
         var _a, _b, _c, _d;
@@ -32365,8 +32343,8 @@ class HpInUpdateComponent {
     }
 }
 HpInUpdateComponent.ɵfac = function HpInUpdateComponent_Factory(t) { return new (t || HpInUpdateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_db2_service__WEBPACK_IMPORTED_MODULE_2__["Db2Service"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_4__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_5__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_6__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_7__["Location"])); };
-HpInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpInUpdateComponent, selectors: [["app-hp-in-update"]], decls: 112, vars: 40, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps", "formData", "cnum", "FixedPhoneData", "previousStep"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t1", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "50%"], ["for", "Sear class="], [1, "ds-col-12"], [1, "ds-row"], [1, "ds-col-7"], ["name", "IdNum1", "value", "", "maxlength", "15;", 1, "ds-input", 2, "width", "180px !important", 3, "ngModel", "ngModelChange", "click"], [1, "ds-col-5", "ds-pad-l-1"], ["type", "button", "name", "SEARCH", "value", "SEARCH", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-margin-bottom-0", "ds-pad-l-1", "ds-pad-r-1", 3, "click"], ["valign", "top", 4, "ngIf"], ["id", "t2", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], ["id", "t3", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1", 3, "hidden"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], ["id", "t2", "width", "100%", "cellspacing", "8", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%"], ["for", "addId1"], ["width", "54%"], ["width", "54%", "height", "10"], [2, "word-break", "break-all"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["colspan", "2", "width", "100%"], ["id", "err1"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["for", "sear", 1, ""], ["for", "up", 1, ""], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "UpdateReq", "id", "voicetype", "title", "Update Required For", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "t2", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top", "class", "ds-pad-t-1", 4, "ngIf"], ["colspan", "2", "width", "50%"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "50%", 1, "ds-pad-t-1"], ["rows", "2", "name", "Location_1_1", "cols", "40", "id", "LocationId", "title", "Office Location", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["location", ""], ["valign", "top", 1, "ds-pad-t-1"], ["for", "builId", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "title", "Campus", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["id", "t3", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["id", "modelid"], ["for", "modelid", 1, "ds-text-capitalize"], ["id", "model1", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "NewModel", "rows", "2", "cols", "40", "title", "Phone Model", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["name", "NewModel", 3, "value", 4, "ngFor", "ngForOf"], ["name", "NewModel", 3, "value"], ["colspan", "2", "width", "50%", 1, "ds-pad-t-1", "ds-pad-b-2"], [1, ""], ["width", "50%", 1, "ds-pad-t-1", "ds-pad-b-2"], ["name", "MAC1", "value", "", "title", "New MAC Address", "maxlength", "12;", "ngModel", "", 1, "ds-input", "ds-pad-b-1", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["colspan", "2", "width", "50%", 1, "ds-pad-t-1", "ds-pad-b-1"], ["for", "descn", "id", "desc1", 1, ""], ["width", "50%", 1, "ds-pad-t-1", "ds-pad-b-1"], ["name", "Newdesc", "value", "", "id", "desc", "title", "New Description", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["name", "Comments", "title", "Reason for Update", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["colspan", "2", "width", "46%", "height", "10"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpInUpdateComponent_Template(rf, ctx) { if (rf & 1) {
-        const _r56 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+HpInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HpInUpdateComponent, selectors: [["app-hp-in-update"]], decls: 115, vars: 42, consts: [[1, "ds-panel", "ds-col-12"], [1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [3, "step", "isSelf", "hideSteps", "formData", "cnum", "FixedPhoneData", "previousStep"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t1", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["width", "50%"], ["for", "Sear class="], [1, "ds-col-12"], [1, "ds-row"], [1, "ds-col-7"], ["name", "IdNum1", "value", "", "maxlength", "15;", 1, "ds-input", 2, "width", "180px !important", 3, "ngModel", "ngModelChange", "click"], [1, "ds-col-5", "ds-pad-l-1"], ["type", "button", "name", "SEARCH", "value", "SEARCH", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-margin-bottom-0", "ds-pad-l-1", "ds-pad-r-1", 3, "click"], ["valign", "top", 4, "ngIf"], ["id", "t2", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0", 4, "ngIf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [1, "ds-hr-thick", "ds-mar-b-1_5"], ["id", "t2", "width", "100%", "cellspacing", "8", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%"], ["for", "addId1"], ["width", "54%"], ["width", "54%", "height", "10"], [2, "word-break", "break-all"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["colspan", "2", "width", "100%"], ["id", "err1"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], ["for", "sear", 1, ""], ["for", "up", 1, ""], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "UpdateReq", "id", "voicetype", "title", "Update Required For", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["device", ""], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["id", "modelid"], ["for", "modelid", 1, "ds-text-capitalize"], ["id", "model1", "role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary", 3, "change"], ["name", "NewModel", "title", "Phone Model", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["name", "NewModel", 3, "value", 4, "ngFor", "ngForOf"], ["name", "NewModel", 3, "value"], ["width", "50%", 1, "ds-pad-t-1", "ds-pad-b-2"], [1, ""], ["name", "MAC1", "value", "", "title", "New MAC Address", "maxlength", "12;", "ngModel", "", 1, "ds-input", "ds-pad-b-1", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["width", "50%", 1, "ds-pad-t-1", "ds-pad-b-1"], ["for", "descn", "id", "desc1", 1, ""], ["name", "Newdesc", "value", "", "id", "desc", "title", "New Description", "maxlength", "200;", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["name", "Comments", "title", "Reason for Update", "maxlength", "200;", "rows", "2", "cols", "40", "ngModel", "", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["id", "t2", "width", "100%", "height", "10", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top", "class", "ds-pad-t-1", 4, "ngIf"], ["for", "LocationId", 1, "ds-text-capitalize"], ["width", "50%", 1, "ds-pad-t-1"], ["rows", "2", "name", "Location_1_1", "cols", "40", "id", "LocationId", "title", "Office Location", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["location", ""], ["valign", "top", 1, "ds-pad-t-1"], ["for", "builId", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "title", "Campus", "ngModel", "", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["colspan", "2", "width", "46%", "height", "10"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"]], template: function HpInUpdateComponent_Template(rf, ctx) { if (rf & 1) {
+        const _r55 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 1);
@@ -32375,7 +32353,7 @@ HpInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "form", 5, 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function HpInUpdateComponent_Template_form_submit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r56); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.entryDetails(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function HpInUpdateComponent_Template_form_submit_6_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r55); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.entryDetails(_r0); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "b");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Fixed Phone - Update Request");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -32399,7 +32377,7 @@ HpInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "tr", 12);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "td", 13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "label", 14);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Enter Current MAC Address or Phone Number");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](25, "Enter current MAC address or Phone Number");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "span", 8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, " *");
@@ -32434,113 +32412,116 @@ HpInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](41, HpInUpdateComponent_tr_41_Template, 8, 1, "tr", 21);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](42, HpInUpdateComponent_tr_42_Template, 8, 1, "tr", 21);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](43, HpInUpdateComponent_tr_43_Template, 15, 2, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](44, HpInUpdateComponent_tr_44_Template, 14, 2, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](45, HpInUpdateComponent_tr_45_Template, 10, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](46, HpInUpdateComponent_tr_46_Template, 9, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](47, HpInUpdateComponent_tr_47_Template, 10, 1, "tr", 21);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](44, HpInUpdateComponent_table_44_Template, 4, 2, "table", 22);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](45, HpInUpdateComponent_table_45_Template, 6, 4, "table", 23);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](46, "br");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](47, "div", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](48, "div", 24);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "div", 25);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "div", 26);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "span", 27);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "input", 28);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInUpdateComponent_Template_input_click_52_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r56); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.backClick(_r0); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](48, HpInUpdateComponent_table_48_Template, 4, 2, "table", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](49, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](50, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "div", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](54, "span", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "input", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HpInUpdateComponent_Template_input_click_55_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r55); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](7); return ctx.backClick(_r0); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "span", 29);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](54, "input", 30);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "span", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](57, "input", 29);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "form", 31);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](56, "b");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](57, "Fixed Phone - Update Request");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "div", 32);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](59, "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](60, "div", 33);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "app-steps", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpInUpdateComponent_Template_app_steps_previousStep_61_listener($event) { return ctx.previousStep($event); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](62, "table", 34);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](63, "tbody");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "tr", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "td", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "label", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](67, "Current MAC Address");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "td", 37);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](69);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](58, "form", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](59, "b");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](60, "Fixed Phone - Update Request");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](61, "div", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](62, "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](63, "div", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](64, "app-steps", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("previousStep", function HpInUpdateComponent_Template_app_steps_previousStep_64_listener($event) { return ctx.previousStep($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](65, "table", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](66, "tbody");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](67, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](68, "td", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](69, "label", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](70, "Current MAC address");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](70, "tr", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "td", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](72, "label", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](73, "Current Phone Number ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](71, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](72);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "td", 37);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](75);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](73, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](74, "td", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](75, "label", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](76, "Current Phone Number ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](76, HpInUpdateComponent_tr_76_Template, 6, 1, "tr", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "tr", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](78, "td", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](79, "label", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](80, "Current Model");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](77, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](78);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "td", 37);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](82);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](79, HpInUpdateComponent_tr_79_Template, 6, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](80, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](81, "td", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](82, "label", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](83, "Current phone model");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](83, "tr", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "td", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](85, "label", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](86, "Update Required for");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](84, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](85);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "td", 37);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](88);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](86, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](87, "td", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](88, "label", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](89, "Update required for");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](89, HpInUpdateComponent_tr_89_Template, 6, 1, "tr", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](90, HpInUpdateComponent_tr_90_Template, 6, 1, "tr", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](91, HpInUpdateComponent_tr_91_Template, 6, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](90, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](91);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](92, HpInUpdateComponent_tr_92_Template, 6, 1, "tr", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](93, HpInUpdateComponent_tr_93_Template, 8, 1, "tr", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](94, "tr", 12);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](95, "td", 35);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](96, "label", 36);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](97, "Reason for Updation");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](93, HpInUpdateComponent_tr_93_Template, 6, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](94, HpInUpdateComponent_tr_94_Template, 6, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](95, HpInUpdateComponent_tr_95_Template, 6, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](96, HpInUpdateComponent_tr_96_Template, 8, 1, "tr", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](97, "tr", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](98, "td", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](99, "label", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](100, "Reason for update");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](98, "td", 38);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](99, "label");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](100, "span", 39);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](101);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](101, "td", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](102, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](103, "span", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](104);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](102, HpInUpdateComponent_div_102_Template, 5, 0, "div", 40);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](103, "div", 41);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](104, HpInUpdateComponent_div_104_Template, 4, 0, "div", 42);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](105, "div", 24);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](106, "div", 25);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](107, "div", 26);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](108, "span", 27);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](109, HpInUpdateComponent_input_109_Template, 1, 0, "input", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](105, HpInUpdateComponent_div_105_Template, 5, 0, "div", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](106, "div", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](107, HpInUpdateComponent_div_107_Template, 4, 0, "div", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](108, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](109, "div", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](110, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](111, "span", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](112, HpInUpdateComponent_input_112_Template, 1, 0, "input", 42);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](110, "span", 44);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](111, HpInUpdateComponent_input_111_Template, 1, 0, "input", 45);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](113, "span", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](114, HpInUpdateComponent_input_114_Template, 1, 0, "input", 43);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -32571,12 +32552,16 @@ HpInUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showformodel);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showformacadd);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showforNewDesc);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showforrsn);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.showSearch);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.hideNextButton);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("hidden", ctx.isReviewForm);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("step", ctx.servicesData.step + 1)("isSelf", ctx.reqFor)("formData", _r0)("cnum", ctx.cnum)("FixedPhoneData", ctx.FixedPhoneData);
