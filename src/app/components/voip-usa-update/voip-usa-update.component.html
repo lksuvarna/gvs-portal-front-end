@@ -74,7 +74,7 @@
                 </tbody>
             </table>
             <br>
-            <p *ngif="warninginfo==false || warninginfosnow==false">Standard internal billing for a Jabber account uses the Employee's Department as the Account ID.<br>
+            <p *ngIf="warninginfo==false && warninginfosnow==false">Standard internal billing for a Jabber account uses the Employee's Department as the Account ID.<br>
                 If you wish to modify internal billing to utilize a different Account ID, please provide the Account ID and click Next.</p>
             <br>
             <div class=" ds-panel ds-col-12 "></div>
