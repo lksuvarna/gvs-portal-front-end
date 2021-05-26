@@ -259,6 +259,7 @@ export class HpInUpdateComponent implements OnInit {
       alert('Please provide a different Model as the current Model is already '+this.currentmodel );
       this.newModel = ""
       
+      
     }
   }
 
