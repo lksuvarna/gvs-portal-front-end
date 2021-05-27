@@ -1,7 +1,7 @@
 <app-topcountryframe></app-topcountryframe>
 
 
-<div class=" ds-panel ds-col-12"></div>
+
 
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
@@ -32,8 +32,8 @@
                         </td>
                         <td width="53%">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                            <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left"
-                                style="width:300px !important; text-transform: uppercase;" title="{{ 'fixedphonenew.Location' | translate}}" #location (change)='selectedLocation(location.value)' ngModel [(ngModel)]='selected_location'>
+                                <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'fixedphonenew.Location' | translate}}" #location (change)='selectedLocation(location.value)'
+                                    ngModel [(ngModel)]='selected_location'>
                                 <option value ="" translate>Jabberentrydetails.Select Location</option>
                                 <option name="Location" *ngFor='let fl_location of locationlist' [value]='fl_location'>
                                 {{ fl_location }} </option>
@@ -42,17 +42,22 @@
                         </td>
                     </tr>
                 </tbody>
-        </table>
+            </table>
 
-        <table width="100%" cellspacing="0" cellpadding="0" border="0">
-            <tbody>
-                <!-- <tr valign="top"><td colspan="3" width="100%" height="10"><p id="war11" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <!-- <tr valign="top"><td colspan="3" width="100%" height="10"><p id="war11" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
             </p></td></tr> -->
 
-            <tr valign="top"><td width="5%"><br><br></td><td width="41%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td><td width="53%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td></tr>
-            </tbody>
-        </table>
-            <br><div class=" ds-panel ds-col-12 "></div>
+                    <tr valign="top">
+                        <td width="5%"><br><br></td>
+                        <td width="41%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                        <td width="53%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div class=" ds-panel ds-col-12 "></div>
 
             <div class="ds-row ds-grid ds-mar-b-5 ds-pad-r-1">
                 <div class="ds-col-lg-2 ds-push-lg-8">
@@ -61,17 +66,17 @@
                 <div class="ds-col-lg-2 ds-push-lg-8">
                     <button type="submit" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" translate>employeeinfotrans.NEXT</button>
                 </div>
-                
+
             </div>
         </form>
-        
+
         <form [hidden]="isReviewFormEmea">
             <b translate>servicestitle.Request new Jabber service</b>
 
-            <div class = "ds-pad-t-0_5" translate>
+            <div class="ds-pad-t-0_5" translate>
                 Jabbernewtrans.pleasesubmittostart
             </div><br>
-            
+
             <div class="ds-panel ds-col-12"></div>
 
             <!-- <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps> -->
@@ -93,18 +98,21 @@
             </table>
 
             <br><br>
-            
-            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
-                <p translate>Jabbernewtrans.opps</p><p>
-            </p></div>
-            
+
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
+                <p></p>
+                <p translate>Jabbernewtrans.opps</p>
+                <p>
+                </p>
+            </div>
+
             <div class=" ds-panel ds-col-12 "></div>
-              <!-- Dark Background -->
+            <!-- Dark Background -->
             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
                 <div class="ds-loader-header" translate>Jabberentrydetails.Submissioninprogress</div>
                 <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being submitted. Do not refresh or go back."></div>
             </div>
-                <!-- <div class="ds-row ds-grid ds-mar-b-5 ds-pad-r-1">
+            <!-- <div class="ds-row ds-grid ds-mar-b-5 ds-pad-r-1">
                     <div class="ds-col-lg-2 ds-push-lg-8">
                         <button type="button" class="ds-button ds-secondary ds-no-expand 
                         ds-text-align-center ds-mar-b-0" style="width: 100%" (click)='BackButton()'>BACK</button>
@@ -116,27 +124,25 @@
                     
                 </div> -->
 
-                <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
-                    <div class="ds-tray-fit-content ds-mar-b-0">
-                        <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
-                            <span class="ds-pad-l-4" id="button1">
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-4" id="button1">
                                 <input type="button" name="back" class="ds-button ds-secondary 
                                 ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value=" {{'employeeinfotrans.BACK'|translate}}" 
                                 (click)='BackButton()' *ngIf="this.isButtonVisible && !errorinfo">
                             </span>
-                            <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
                                 <input type="submit" name="submit" class="ds-button ds-width-auto 
                                 ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="{{'employeeinfotrans.SUBMIT1'|translate}}" (click)="submit_snow()"
                                  *ngIf="this.isButtonVisible && !errorinfo">
                             </span>
-                                <input type="button" name="exit" *ngIf="errorinfo"type="button" 
-                                class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 
-                                ds-pad-r-3" [routerLink]="['/jabberservices']" 
-                                [queryParams]="{country:pcode,service:service}" value="{{ 'alerttranslation.EXITREQUEST'| translate}}">            
-                              
-                        </div>
+                        <input type="button" name="exit" *ngIf="errorinfo" type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 
+                                ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="{{ 'alerttranslation.EXITREQUEST'| translate}}">
+
                     </div>
                 </div>
+            </div>
         </form>
     </div>
 </div>

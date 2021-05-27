@@ -1,7 +1,7 @@
 <app-topcountryframe></app-topcountryframe>
 
 
-<div class=" ds-panel ds-col-12"></div>
+
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
@@ -11,10 +11,10 @@
 
             <b translate>servicestitle.Update Existing Jabber Request</b>
 
-      <div class="ds-pad-t-0_5 ds-pad-b-1">
-        <label *ngIf="warninginfo==false && warninginfosnow==false">Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</label>
-      </div>
-      <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-pad-t-0_5 ds-pad-b-1">
+                <label *ngIf="warninginfo==false && warninginfosnow==false">Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</label>
+            </div>
+            <div class=" ds-panel ds-col-12 "></div>
 
             <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
 
@@ -32,7 +32,7 @@
             For any further assistance, please contact <a style="color:blue" target="_blank"
               href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
             </div>
-             
+
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
                 <tbody>
                     <tr valign="top">
@@ -41,8 +41,8 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" tabindex="1"
-                                    #number ngModel [(ngModel)]='selected_jabber'>
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" tabindex="1" #number ngModel
+                                    [(ngModel)]='selected_jabber'>
                   <option value="">SELECT ONE</option>
                 <!--  <option name="Jabber_1" *ngFor='let fl_itn of Jabber' [value]='fl_itn' selected>
                     {{ fl_itn }}</option>-->
@@ -52,8 +52,8 @@
                             </div>
                         </td>
                     </tr>
-                    
-                    <tr valign="top" >
+
+                    <tr valign="top">
                         <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> 	
                         Account ID</label>
                             <span class="ds-text-contextual-red-2">*</span>
@@ -66,7 +66,7 @@
 
                     <tr valign="top" [hidden]='hideChargeDept'>
                         <td width="604" colspan="2">
-                            
+
                         </td>
                     </tr>
 
@@ -74,8 +74,7 @@
                 </tbody>
             </table>
             <br>
-            <p *ngIf="warninginfo==false && warninginfosnow==false">Standard internal billing for a Jabber account uses the Employee's Department as the Account ID.<br>
-                If you wish to modify internal billing to utilize a different Account ID, please provide the Account ID and click Next.</p>
+            <p *ngIf="warninginfo==false && warninginfosnow==false">Standard internal billing for a Jabber account uses the Employee's Department as the Account ID.<br> If you wish to modify internal billing to utilize a different Account ID, please provide the Account ID and click Next.</p>
             <br>
             <div class=" ds-panel ds-col-12 "></div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
@@ -132,9 +131,12 @@
                 </tbody>
             </table>
             <br>
-            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
-                <p>Something seems to have gone wrong. Please try later.</p><p>
-            </p></div>
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
+                <p></p>
+                <p>Something seems to have gone wrong. Please try later.</p>
+                <p>
+                </p>
+            </div>
             <div class=" ds-panel ds-col-12 "></div>
             <!-- Dark Background -->
             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
@@ -154,7 +156,7 @@
               <input type="SUBMIT" name="next"
                 class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="Submit" (click)="submit_snow()" *ngIf="this.isButtonVisible && !errorinfo">
             </span>
-            <input type="button" name="exit" *ngIf="errorinfo"type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
+                        <input type="button" name="exit" *ngIf="errorinfo" type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="EXIT REQUEST">
                     </div>
                 </div>
             </div>

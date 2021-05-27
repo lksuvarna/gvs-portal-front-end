@@ -1,7 +1,7 @@
 <app-topcountryframe></app-topcountryframe>
 
 
-<div class=" ds-panel ds-col-12"></div>
+
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
@@ -28,10 +28,8 @@
                             <span class="ds-text-contextual-red-2"> *</span>
                         </td>
                         <td width="54%" height="10">
-                            <div class="ds-dropdown ds-secondary"role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left"  
-                                style="width:300px !important; text-transform: uppercase;" title="{{ 'fixedphonenew.Location' | translate}}" 
-                                #location  ngModel [(ngModel)]='selected_location'>
+                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'fixedphonenew.Location' | translate}}" #location ngModel [(ngModel)]='selected_location'>
                                     <option value =""> <span translate> fixedphonenew.SelectOne </span></option>
                                     <option name="Location_1" *ngFor='let fl_location of locationlist' [value]='fl_location' >
                                         {{ fl_location }}</option>
@@ -39,13 +37,13 @@
                             </div>
                         </td>
                     </tr>
-                    
+
                 </tbody>
             </table>
 
             <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
-                    
+
 
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10"><label for="DeviceType" translate>fixedphonenew.TypeofDevice</label>
@@ -53,22 +51,21 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left"  
-                                style="width:300px !important; text-transform: uppercase;" title="{{ 'fixedphonenew.Type of Device' | translate}}"
-                                #device (change)='selectedDevice(device.value)' ngModel [(ngModel)]='selected_device'>
+                                <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'fixedphonenew.Type of Device' | translate}}" #device (change)='selectedDevice(device.value)'
+                                    ngModel [(ngModel)]='selected_device'>
                                     <option value ="" translate>fixedphonenew.SelectOne</option>
                                     <option name="Device_Type" *ngFor='let device of devices' [value]='device' >{{ device }}</option>
                                 </select>
                             </div>
                         </td>
                     </tr>
-                   
+
                 </tbody>
             </table>
 
 
-            
-           <table id="t3" width="100%" cellspacing="0" cellpadding="0" border="0" [hidden]='hideDeviceSection'>
+
+            <table id="t3" width="100%" cellspacing="0" cellpadding="0" border="0" [hidden]='hideDeviceSection'>
                 <tbody>
                     <tr valign="top" [hidden]='showforAnyDevice'>
                         <td colspan="2" width="46%" height="10"><label for="DeviceType" translate>fixedphonenew.TypeofModel </label>
@@ -76,8 +73,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left"  
-                                style="width:300px !important; text-transform: uppercase;" title="{{ 'otheralerts.Model' | translate}}" [(ngModel)]='modelValue'>
+                                <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'otheralerts.Model' | translate}}" [(ngModel)]='modelValue'>
                                     <option value ="" translate>fixedphonenew.SelectOne</option>
                                     <option name="Model_Type" *ngFor='let model of models' [value]='model'>{{ model }}</option>
                                 </select>
@@ -85,7 +81,7 @@
                         </td>
                     </tr>
 
-                  
+
                     <!-- <tr class='ds-mar-t-1_5' valign="top" [hidden]='showforFixedPhone'>
                       <td colspan="2" width="46%" height="10"><label for="Voicemail"
                           class="ds-text-capitalize ds-mar-t-1" style="display: inline-block;">Voicemail Required</label>
@@ -108,20 +104,18 @@
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
-                          <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                            <select rows="2" name="cos" cols="40" id="COSId"
-                              class="ds-title ds-align-text-left"
-                              style="width:300px !important; text-transform: uppercase;" title="{{ 'Jabbernewtrans.ClassofService' | translate}}"[(ngModel)]='COS' #cos (change)='classofservice(cos.value)'
-                              ngModel>
+                            <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="cos" cols="40" id="COSId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'Jabbernewtrans.ClassofService' | translate}}" [(ngModel)]='COS' #cos (change)='classofservice(cos.value)'
+                                    ngModel>
                               <option value ="" translate>fixedphonenew.SelectOne</option>
                               <option value="national" translate>fixedphonenew.National</option>
                               <option value="international" translate>fixedphonenew.International</option>
                             </select>
-                          </div>
+                            </div>
                         </td>
-                      </tr>
+                    </tr>
 
-                      <tr valign="top" [hidden]='showBusinessNeed'>
+                    <tr valign="top" [hidden]='showBusinessNeed'>
                         <td colspan="2" width="46%"><br><label for="Justification" class="ds-pad-t-1" translate>fixedphonenew.BusinessNeed(Whyisinternationalrequired?)</label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
@@ -129,7 +123,7 @@
                         </td>
                     </tr>
 
-                      <tr valign="top" [hidden]='showforAnyDevice'>
+                    <tr valign="top" [hidden]='showforAnyDevice'>
                         <td colspan="2" width="46%"><br><label for="Description" class="ds-pad-t-1" translate>fixedphonenew.DescriptionoftheDevice</label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
@@ -151,7 +145,7 @@
                             </div>
                         </td>
                     </tr>
-                    
+
                 </tbody>
             </table>
 
@@ -175,10 +169,10 @@
         </form>
 
         <form [hidden]="isReviewForm">
-            
+
             <b translate>servicestitle.Fixed Phone - New Request</b>
 
-            
+
             <div class="ds-pad-b-1" translate>Jabberentrydetails.toprocessPI
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
@@ -196,56 +190,56 @@
                         </td>
                         <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
                     </tr>
-                    
+
                 </tbody>
             </table>
 
             <table id="t1" width="100%" cellspacing="8" cellpadding="0" border="0">
                 <tbody>
-                                        
+
                     <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="device" translate>fixedphonenew.TypeofDevice</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.device}}</td>
                     </tr>
-                    
+
                     <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="model" translate>fixedphonenew.TypeofModel</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.model}}</td>
                     </tr>
-                    
-                                      
+
+
                     <!-- <tr valign="top" [hidden]='hideVoicemail'>
                         <td colspan="2" width="46%">
                             <label for="voiemail">Voicemail Required</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.voicemail}}</td>
                     </tr> -->
-                    
+
                     <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%">
                             <label for="cos" translate>Jabbernewtrans.ClassofService</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.cos}}</td>
                     </tr>
-                    
+
                     <tr valign="top" [hidden]='showBusinessNeed'>
                         <td colspan="2" width="46%">
                             <label for="justification" translate>fixedphonenew.BusinessJustification</label>
                         </td>
                         <td width="54%" style='word-wrap: anywhere;'>{{reviewDetailsIndia.justification}}</td>
                     </tr>
-                    
+
                     <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="description" translate>fixedphonenew.DescriptionoftheDevice</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.description}}</td>
                     </tr>
-                    
+
                     <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="mac" translate>fixedphonenew.MACAddressoftheDevice</label>
@@ -278,7 +272,7 @@
               <input type="submit" name="submit" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 value="{{ 'employeeinfotrans.SUBMIT1' | translate}}" (click)="submit_snow()" *ngIf="this.isButtonVisible">
             </span>
-                        
+
 
 
                     </div>

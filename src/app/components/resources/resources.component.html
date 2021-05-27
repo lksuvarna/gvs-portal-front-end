@@ -1,7 +1,7 @@
 <app-topcountryframe></app-topcountryframe>
 
 
-<div class=" ds-panel ds-col-12"></div>
+
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData"></app-navigation>
@@ -17,9 +17,11 @@
 
             <span class="ds-pad-t-1"></span><br>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowres>
-        
-              <p translate>employeeinfotrans.noresources</p><p>
-          </p></div>
+
+                <p translate>employeeinfotrans.noresources</p>
+                <p>
+                </p>
+            </div>
             <table id="t1" cellspacing="0" cellpad="0" border="0" *ngIf="warninginfosnowres==false">
                 <thead>
                     <tr valign="top">
