@@ -813,7 +813,7 @@ class FacInNewComponent {
     }
 }
 FacInNewComponent.ɵfac = function FacInNewComponent_Factory(t) { return new (t || FacInNewComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_3__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_4__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_5__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_6__["Location"])); };
-FacInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FacInNewComponent, selectors: [["app-fac-in-new"]], decls: 136, vars: 48, consts: [[1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData", "ngClass"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", "", 4, "ngIf"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "formData", "cnum", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["for", "LocationId", "class", "ds-text-capitalize", 4, "ngIf"], ["height", "10", 1, "ds-pad-l-8"], ["class", "ds-dropdown ds-secondary", "role", "menu", "aria-label", "w3DS Dropdown1", 4, "ngIf"], ["valign", "top", 3, "hidden", 4, "ngIf"], ["valign", "top", 4, "ngIf"], ["for", "addId", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], [1, "ds-pad-l-8"], ["name", "BusinessUnit", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["for", "DeptID", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["name", "DeptID", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], [4, "ngIf"], ["class", "ds-pad-l-8", 4, "ngIf"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "authLevel", "rows", "2", "cols", "40", "id", "authLevel", "class", "ds-title ds-align-text-left", "style", "width:300px !important; text-transform: uppercase;", "title", "Authorization Level", 3, "ngModel", "ngModelChange", 4, "ngIf"], ["for", "comments", 1, ""], ["name", "Comments", "id", "JustificationId", "maxlength", "200", "title", "Buisness Justification", "rows", "2", "cols", "40", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1"], ["width", "54%", "height", "10"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%"], ["width", "54%"], [2, "word-break", "break-all"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-b-1_5", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["translate", ""], ["for", "LocationId", 1, "ds-text-capitalize"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["name", "Location_1", 3, "value"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "FAC Code / IDD PIN Office Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["valign", "top", 3, "hidden"], ["for", "builId", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "chargeDepartmentCode", "value", "", "id", "d2", "maxlength", "6", "title", "Charge Department Code", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["id", "Mentor1Div"], ["for", "LocationId", 1, ""], ["name", "authLevel", "rows", "2", "cols", "40", "id", "authLevel", "title", "Authorization Level", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["value", "International"], ["name", "Fac_Type", "rows", "2", "cols", "40", "id", "Fac_Type", "title", "FAC Code / IDD PIN Type", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["facType", ""], ["name", "validity", "rows", "2", "cols", "40", "id", "validity", "title", "Validity", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["for", "addId1", 3, "hidden"], ["width", "54%", 3, "hidden"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function FacInNewComponent_Template(rf, ctx) { if (rf & 1) {
+FacInNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FacInNewComponent, selectors: [["app-fac-in-new"]], decls: 136, vars: 48, consts: [[1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData", "ngClass"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", "", 4, "ngIf"], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [1, "ds-hr-thick", "ds-mar-b-1_5"], [3, "step", "isSelf", "formData", "cnum", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["id", "t2", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["for", "LocationId", "class", "ds-text-capitalize", 4, "ngIf"], ["height", "10", 1, "ds-pad-l-8"], ["class", "ds-dropdown ds-secondary", "role", "menu", "aria-label", "w3DS Dropdown1", 4, "ngIf"], ["valign", "top", 3, "hidden", 4, "ngIf"], ["valign", "top", 4, "ngIf"], ["for", "addId", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], [1, "ds-pad-l-8"], ["name", "BusinessUnit", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], ["for", "DeptID", 1, "ds-text-capitalize", 2, "display", "inline-block", "padding-bottom", "1rem"], ["name", "DeptID", "ngModel", "", 2, "display", "inline-block", "padding-bottom", "1rem"], [4, "ngIf"], ["class", "ds-pad-l-8", 4, "ngIf"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "authLevel", "rows", "2", "cols", "40", "id", "authLevel", "class", "ds-title ds-align-text-left", "style", "width:300px !important; text-transform: uppercase;", "title", "Authorization Level", 3, "ngModel", "ngModelChange", 4, "ngIf"], ["for", "comments", 1, ""], ["name", "Comments", "id", "JustificationId", "maxlength", "200", "title", "Business Justification", "rows", "2", "cols", "40", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], [1, "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1"], ["width", "54%", "height", "10"], ["id", "t1", "width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%"], ["width", "54%"], [2, "word-break", "break-all"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-b-1_5", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], ["translate", ""], ["for", "LocationId", 1, "ds-text-capitalize"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "Office Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["location", ""], ["value", ""], ["name", "Location_1", 3, "value", 4, "ngFor", "ngForOf"], ["name", "Location_1", 3, "value"], ["rows", "2", "name", "Location_1", "cols", "40", "id", "LocationId", "title", "FAC Code / IDD PIN Office Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["valign", "top", 3, "hidden"], ["for", "builId", 1, "ds-text-capitalize"], ["name", "Buildings", "rows", "2", "cols", "40", "id", "LocationId_1_1", "title", "Campus", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], [3, "value", 4, "ngFor", "ngForOf"], [3, "value"], ["for", "addId", 1, "ds-text-capitalize", "ds-padding-top-2"], [1, "ds-mar-b-1"], [1, "ds-input-radio-group"], ["for", "radio1", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "name", "Voice_Type", "id", "radio1", "value", "Yes", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], [1, "ds-input-control"], [1, "ds-pad-l-0_5"], ["for", "radio2", 1, "ds-input-radio", "ds-pad-r-1", 2, "display", "inline"], ["type", "radio", "checked", "", "name", "Voice_Type", "id", "radio2", "value", "No", 1, "ds-input", 3, "ngModel", "ngModelChange", "click"], ["id", "d1"], ["for", "addId", 1, "ds-text-capitalize", "ds-pad-t-1"], ["id", "d21", 1, "ds-input-container"], ["name", "chargeDepartmentCode", "value", "", "id", "d2", "maxlength", "6", "title", "Charge Department Code", 1, "ds-input", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], ["id", "Mentor1Div"], ["for", "LocationId", 1, ""], ["name", "authLevel", "rows", "2", "cols", "40", "id", "authLevel", "title", "Authorization Level", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["value", "International"], ["name", "Fac_Type", "rows", "2", "cols", "40", "id", "Fac_Type", "title", "FAC Code / IDD PIN Type", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "change", "ngModelChange"], ["facType", ""], ["name", "validity", "rows", "2", "cols", "40", "id", "validity", "title", "Validity", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange"], ["for", "addId1", 3, "hidden"], ["width", "54%", 3, "hidden"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function FacInNewComponent_Template(rf, ctx) { if (rf & 1) {
         const _r65 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
@@ -1149,7 +1149,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -19884,6 +19884,43 @@ class VoipInNewComponent {
     hideChargeDepartmentCode() {
         this.hideDeptCode = true;
     }
+    getl2approver() {
+        if (this.ccode == '744') {
+            if (this.reviewDetailsIndia.businessUnit == "GTS-GD") {
+                this.l2approver = "GVS_L2_APPROVER_IN_GTS-GD";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "GTS") {
+                this.l2approver = "GVS_L2_APPROVER_IN_GTS";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "ISDL") {
+                this.l2approver = "GVS_L2_APPROVER_IN_ISDL";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "ISL") {
+                this.l2approver = "GVS_L2_APPROVER_IN_ISL";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "CPS") {
+                this.l2approver = "GVS_L2_APPROVER_IN_CPS";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "GPS") {
+                this.l2approver = "GVS_L2_APPROVER_IN_GPS";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "GBS") {
+                this.l2approver = "GVS_L2_APPROVER_IN_GBS";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "IRL") {
+                this.l2approver = "GVS_L2_APPROVER_IN_IRL";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "S&D") {
+                this.l2approver = "GVS_L2_APPROVER_IN_S&D";
+            }
+            else {
+                this.l2approver = "GVS_L2_APPROVER_IN_Others";
+            }
+        }
+        else if (this.ccode == '652') {
+            this.l2approver = "GVS_L2_APPROVER_LK_All";
+        }
+    }
     entryDetails(formData) {
         if (formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {
             alert('Please select the Office Location');
@@ -19928,6 +19965,7 @@ class VoipInNewComponent {
         this.reviewDetailsIndia.funded = this.Voice_Type;
         this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;
         this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;
+        this.reviewDetailsIndia.businessUnit = this.reviewDetailsIndia.businessUnit.trim();
         this.reviewDetailsIndia.projectId = formData.value.Projectid;
         this.reviewDetailsIndia.fixPhoneIdentifier = formData.value.identifier_hp;
         //set up the cache for form values.
@@ -19953,6 +19991,7 @@ class VoipInNewComponent {
     }
     // Submit to Snow Jabber new code added by Swarnava	
     submit_snow() {
+        this.getl2approver();
         this.reqno = this.countrydetails.isocode + "-NS-" + this.cnum.substr(0, 6) + "-" + gettime();
         sessionStorage.setItem('reqno', this.reqno);
         this.isButtonVisible = false;
@@ -19973,7 +20012,7 @@ class VoipInNewComponent {
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends	
         this.payload.level1_japproval = this.countrydetails.level1_japproval;
-        this.payload.level2_japproval = this.countrydetails.level2_japproval;
+        this.payload.level2_japproval = this.l2approver;
         this.payload.SLA_type = this.countrydetails.SLA_type;
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
@@ -26352,13 +26391,13 @@ class HomepageComponent {
             if (data.countrydetailshome.this.homepagecodesCA.includes(this.ccode)) {
                 this.ccode = data.countrydetailshome.codeCA;
             }
-            if (data.countrydetailshome.this.homepagecodesLA.includes(this.ccode)) {
+            else if (data.countrydetailshome.this.homepagecodesLA.includes(this.ccode)) {
                 this.ccode = data.countrydetailshome.codeLA;
             }
-            if (data.countrydetailshome.this.homepagecodesPH.includes(this.ccode)) {
+            else if (data.countrydetailshome.this.homepagecodesPH.includes(this.ccode)) {
                 this.ccode = data.countrydetailshome.codePH;
             }
-            if (data.countrydetailshome.this.homepagecodesCN.includes(this.ccode)) {
+            else if (data.countrydetailshome.this.homepagecodesCN.includes(this.ccode)) {
                 this.ccode = data.countrydetailshome.codeCN;
             }
         });
@@ -26373,10 +26412,11 @@ class HomepageComponent {
             console.log("testuser" + data.countrydetails.testuser);
             if (data.countrydetails.testuser) {
                 this.employeeSerial = data.countrydetails.testuser;
+                this.loggedinuser = data.countrydetails.testuser;
                 this.cloudantservice.getcountrydetails('000').subscribe(data => {
                     this.countrynamehome = data.countrydetails;
                     console.log("canada codes" + data.countrydetails.homepagecodesCA + data.countrydetails.codeCA);
-                    console.log("testusercod" + this.ccode);
+                    console.log("testusercod" + this.ccode + this.employeeSerial.substring(6, 9));
                     if (data.countrydetails.homepagecodesCA.includes(this.employeeSerial.substring(6, 9))) {
                         this.testusercode = data.countrydetails.codeCA;
                         console.log("testusercod1" + this.testusercode);
@@ -26384,15 +26424,15 @@ class HomepageComponent {
                     }
                     else if (data.countrydetails.homepagecodesLA.includes(this.employeeSerial.substring(6, 9))) {
                         this.testusercode = data.countrydetails.codeLA;
-                        this.ccode = data.countrydetailshome.codeLA;
+                        this.ccode = data.countrydetails.codeLA;
                     }
                     else if (data.countrydetails.homepagecodesPH.includes(this.employeeSerial.substring(6, 9))) {
                         this.testusercode = data.countrydetails.codePH;
-                        this.ccode = data.countrydetailshome.codePH;
+                        this.ccode = data.countrydetails.codePH;
                     }
                     else if (data.countrydetails.homepagecodesCN.includes(this.employeeSerial.substring(6, 9))) {
                         this.testusercode = data.countrydetails.codeCN;
-                        this.ccode = data.countrydetailshome.codeCN;
+                        this.ccode = data.countrydetails.codeCN;
                     }
                     else {
                         this.testusercode = this.employeeSerial.substring(6, 9);

@@ -62,6 +62,7 @@ export class VoipInNewComponent implements OnInit {
   projectIdValue:any = '';
   cache_tmp:  any = [];
   index: any;
+  l2approver:any
   
     
       
@@ -107,7 +108,8 @@ export class VoipInNewComponent implements OnInit {
     icano_Disp : "",	
     Location_final :"",	
     accid_Disp: "",	
-    reqno:""	
+    reqno:""
+    
   }	
  // Submit to Snow Jabber new code added by Swarnava ends	
 
@@ -154,7 +156,20 @@ export class VoipInNewComponent implements OnInit {
   hideChargeDepartmentCode() {	
     this.hideDeptCode = true;	
   }	
-  
+  getl2approver(){
+    if(this.ccode=='744'){
+    if(this.reviewDetailsIndia.businessUnit=="GTS-GD"){this.l2approver="GVS_L2_APPROVER_IN_GTS-GD"}
+    else if(this.reviewDetailsIndia.businessUnit=="GTS"){ this.l2approver="GVS_L2_APPROVER_IN_GTS"}
+     else if(this.reviewDetailsIndia.businessUnit=="ISDL"){this.l2approver="GVS_L2_APPROVER_IN_ISDL"}
+      else if(this.reviewDetailsIndia.businessUnit=="ISL"){this.l2approver="GVS_L2_APPROVER_IN_ISL" }
+      else if(this.reviewDetailsIndia.businessUnit=="CPS"){this.l2approver="GVS_L2_APPROVER_IN_CPS"}
+      else if(this.reviewDetailsIndia.businessUnit=="GPS"){this.l2approver="GVS_L2_APPROVER_IN_GPS"}
+       else if(this.reviewDetailsIndia.businessUnit=="GBS"){this.l2approver="GVS_L2_APPROVER_IN_GBS"}
+        else if(this.reviewDetailsIndia.businessUnit=="IRL"){this.l2approver="GVS_L2_APPROVER_IN_IRL"}
+         else if(this.reviewDetailsIndia.businessUnit=="S&D"){this.l2approver="GVS_L2_APPROVER_IN_S&D"}
+         else{this.l2approver="GVS_L2_APPROVER_IN_Others"}}
+        else if(this.ccode=='652'){this.l2approver="GVS_L2_APPROVER_LK_All"}
+  }
   entryDetails(formData: NgForm) {	
       
     if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
@@ -201,7 +216,8 @@ export class VoipInNewComponent implements OnInit {
     this.reviewDetailsIndia.campus = formData.value.Buildings;	
     this.reviewDetailsIndia.funded = this.Voice_Type;	
     this.reviewDetailsIndia.chargeDepartmentCode = formData.value.Department_number;	
-    this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;	
+    this.reviewDetailsIndia.businessUnit = this.employeeInfo.businessUnit;
+    this.reviewDetailsIndia.businessUnit=this.reviewDetailsIndia.businessUnit.trim()	
     this.reviewDetailsIndia.projectId = formData.value.Projectid;	
     this.reviewDetailsIndia.fixPhoneIdentifier = formData.value.identifier_hp;	
 
@@ -232,6 +248,7 @@ export class VoipInNewComponent implements OnInit {
   
    // Submit to Snow Jabber new code added by Swarnava	
   submit_snow(){	
+    this.getl2approver();
     this.reqno=this.countrydetails.isocode+"-NS-"+this.cnum.substr(0,6)+"-"+gettime();	
     sessionStorage.setItem('reqno',this.reqno)	
     this.isButtonVisible=false;	
@@ -253,7 +270,7 @@ export class VoipInNewComponent implements OnInit {
   
       // fields to be picked up from form -- ends	
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
-      this.payload.level2_japproval=this.countrydetails.level2_japproval;	
+      this.payload.level2_japproval=this.l2approver;	
       this.payload.SLA_type=this.countrydetails.SLA_type;	
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
