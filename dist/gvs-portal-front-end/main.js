@@ -2868,7 +2868,7 @@ class StepsComponent {
         }
         if (this.service == 'specialrequest') {
             console.log("Starting special Request cache");
-            this.cache.setflag = true;
+            this.cache.setflag = false;
             this.cache.cnum = this.cnum;
             if (this.formData.value.Jabber_1 == undefined)
                 this.cache.selected_jabber = '';
@@ -13479,7 +13479,7 @@ class VoipAllSpecialRequestComponent {
     }
     create_cache(formData) {
         console.log("Starting Cache");
-        this.cache.setflag = true;
+        this.cache.setflag = false;
         this.cache.cnum = this.cnum;
         this.cache.selected_jabber = formData.value.Jabber_1;
         this.cache.officeLocation = formData.value.Location;
@@ -13543,7 +13543,7 @@ class VoipAllSpecialRequestComponent {
         this.cache_tmp = sessionStorage.getItem('cache');
         console.log("cached items " + this.cache_tmp);
         this.cache_disp = JSON.parse(this.cache_tmp);
-        if ((this.cnum === this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service = 'specialrequest')) {
+        if ((this.cnum === this.cache_disp.cnum) && (this.cache_disp.setflag == false) && (this.service = 'specialrequest')) {
             if ((this.cache_disp.selected_jabber == undefined) || (this.cache_disp.selected_jabber == ''))
                 this.selected_jabber = '';
             else
@@ -19642,7 +19642,20 @@ class TopcountryframeComponent {
             }
         });
         if ((this.service != 'jabber_new') && (this.service != 'jabber_delete') && (this.service != 'jabber_update') && (this.service != 'jabber_move') && (this.service != 'fixedphone_new') && (this.service != 'fixedphone_delete') && (this.service != 'fixedphone_update') && (this.service != 'fac_new') && (this.service != 'fac_update') && (this.service != 'specialrequest') && (this.service != 'mobile_new')) {
+            console.log("Remove cache inside main block");
             sessionStorage.removeItem('cache');
+        }
+        if (this.service == 'specialrequest') {
+            this.cache = sessionStorage.getItem('cache');
+            this.cache = JSON.parse(this.cache);
+            if (this.cache != null) {
+                console.log("Special Req " + this.cache);
+                if ((this.cache.setflag) || (this.cache.setflag == undefined)) {
+                    console.log("Remove cache second main block");
+                    sessionStorage.removeItem('cache');
+                }
+                console.log("Special Req " + this.cache);
+            }
         }
     }
 }
