@@ -2719,6 +2719,20 @@ class StepsComponent {
                 this.isWarning3 = false;
             }
         }
+        if ((this.service == 'specialrequest') && (this.step != 1)) {
+            if (this.step === 2 && this.isSelf === true && this.isWarning === true) {
+                this.isWarning2 = true;
+            }
+            else {
+                this.isWarning2 = false;
+            }
+            if (this.step === 3 && this.isSelf === false && this.isWarning === true) {
+                this.isWarning3 = true;
+            }
+            else {
+                this.isWarning3 = false;
+            }
+        }
     }
     ngOnInit() {
         this.route.queryParams
@@ -2766,7 +2780,12 @@ class StepsComponent {
             this.isWarning3 = true;
             this.isWarning1 = false;
         }
-        if (this.service !== 'jabber_new' && this.step === 3 && this.isWarning === true) {
+        if (this.service !== 'jabber_new' && this.service !== 'specialrequest' && this.step === 3 && this.isWarning === true) {
+            this.isWarning2 = true;
+            this.isWarning3 = true;
+            this.isWarning1 = false;
+        }
+        if (this.isSelf === true && this.service == 'specialrequest' && this.step === 3 && this.isWarning === true) {
             this.isWarning2 = true;
             this.isWarning3 = true;
             this.isWarning1 = false;
@@ -13409,11 +13428,11 @@ class VoipAllSpecialRequestComponent {
     checkOthers(e) {
         if (e.target.value.toUpperCase() == 'OTHERS') {
             this.others = true;
-            //  this.hideSteps = true;
+            this.hideSteps = true;
         }
         else {
             this.others = false;
-            //  this.hideSteps = false;
+            this.hideSteps = false;
         }
     }
     entryDetails(formData) {
@@ -13549,11 +13568,11 @@ class VoipAllSpecialRequestComponent {
                 this.selected_jabber = String(this.cache_disp.selected_jabber);
             if (this.cache_disp.officeLocation == 'Others') {
                 this.others = true;
-                // this.hideSteps = true;
+                this.hideSteps = true;
             }
             else {
                 this.others = false;
-                //this.hideSteps = false;
+                this.hideSteps = false;
             }
             if (this.cache_disp.campus == '' || this.cache_disp.campus == undefined) {
                 this.defaultlocation = false;

@@ -144,11 +144,11 @@ export class VoipAllSpecialRequestComponent implements OnInit {
     checkOthers(e:any){
       if(e.target.value.toUpperCase()=='OTHERS'){
       this.others=true;
-    //  this.hideSteps = true;
+      this.hideSteps = true;
       }
       else{
       this.others=false;
-    //  this.hideSteps = false;
+      this.hideSteps = false;
       }
     }
   
@@ -316,11 +316,11 @@ export class VoipAllSpecialRequestComponent implements OnInit {
 
    if(this.cache_disp.officeLocation=='Others'){
    this.others=true; 
-  // this.hideSteps = true;
+   this.hideSteps = true;
   }
   else{
     this.others=false;
-    //this.hideSteps = false;
+    this.hideSteps = false;
     }
     
     if(this.cache_disp.campus=='' || this.cache_disp.campus==undefined){

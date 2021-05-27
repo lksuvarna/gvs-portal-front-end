@@ -24,7 +24,7 @@ export class StepsComponent implements OnInit {
   @Input ('isSelf') isSelf : any;
   @Input('hideSteps') set onChange (isWarning: any) {
     this.isWarning = isWarning
-
+  
     if (this.step === 1 ){
       if(isWarning === true){
             this.isWarning1 = true
@@ -48,6 +48,19 @@ export class StepsComponent implements OnInit {
               this.isWarning3 = false
             } 
         }
+    
+        if ((this.service =='specialrequest') && (this.step != 1)) {
+          if (this.step === 2 && this.isSelf ===true && this.isWarning === true){
+            this.isWarning2 = true
+          } else {
+            this.isWarning2 = false
+          }
+          if (this.step === 3 && this.isSelf ===false && this.isWarning === true){  
+            this.isWarning3 = true
+          } else {
+            this.isWarning3 = false
+          } 
+      }
   }
   
 
@@ -68,6 +81,7 @@ export class StepsComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
@@ -119,7 +133,13 @@ export class StepsComponent implements OnInit {
     this.isWarning1 = false
    }
 
-   if(this.service !== 'jabber_new' && this.step === 3 && this.isWarning === true){
+   if(this.service !== 'jabber_new' && this.service !== 'specialrequest' && this.step === 3 && this.isWarning === true){
+    this.isWarning2 = true
+    this.isWarning3 = true
+    this.isWarning1 = false
+   }
+
+   if(this.isSelf === true && this.service == 'specialrequest' && this.step === 3 && this.isWarning === true){
     this.isWarning2 = true
     this.isWarning3 = true
     this.isWarning1 = false
@@ -129,7 +149,7 @@ export class StepsComponent implements OnInit {
     this.step = 2
   }
 
-  if (this.step === 4 && this.isSelf === true){
+  if (this.step === 4  && this.isSelf === true){
     this.step = 3
   }
 
