@@ -13408,7 +13408,7 @@ class VoipAllSpecialRequestComponent {
         }
     }
     checkOthers(e) {
-        if (e.target.value.toUpperCase() == 'OTHERS') {
+        if ((e.target.value.toUpperCase() == 'OTHERS') && (this.pcode == '897')) {
             this.others = true;
             this.hideSteps = true;
         }
@@ -13548,7 +13548,7 @@ class VoipAllSpecialRequestComponent {
                 this.selected_jabber = '';
             else
                 this.selected_jabber = String(this.cache_disp.selected_jabber);
-            if (this.cache_disp.officeLocation == 'Others') {
+            if ((this.cache_disp.officeLocation == 'Others') && (this.pcode == '897')) {
                 this.others = true;
                 this.hideSteps = true;
             }
