@@ -80,8 +80,24 @@ if(this.service=='fixedphone_delete'){
   this.page='delete Fixed Phone';
   return this.page;
 }
- if(this.service=='fac_delete'){
-  this.page='delete Fac';
+if(this.service=='mobile_new'){
+  this.page='new Mobile';
+  return this.page
+}
+ if(this.service=='fac_new'){
+  this.page='new FAC Code / IDD PIN';
+  return this.page;
+} 
+if(this.service=='fac_update'){
+  this.page='update FAC Code / IDD PIN';
+  return this.page;
+} 
+if(this.service=='fac_reset'){
+  this.page='reset FAC Code / IDD PIN';
+  return this.page;
+} 
+if(this.service=='fac_delete'){
+  this.page='delete FAC Code / IDD PIN';
   return this.page;
 } 
 
