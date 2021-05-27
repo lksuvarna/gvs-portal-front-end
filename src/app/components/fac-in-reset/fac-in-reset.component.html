@@ -1,7 +1,5 @@
 <app-topcountryframe></app-topcountryframe>
 
-
-<div class=" ds-panel ds-col-12"></div>
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
@@ -13,9 +11,11 @@
             <b *ngIf="facIn" translate>servicestitle.FAC Code / IDD PIN Reset Request</b>
             <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD PIN - Reset Request</b>
 
-            <div class="ds-pad-t-0_5 ds-pad-b-1" *ngIf="warninginfo !=true && warninginfosnow != true">
-                By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. </div>
-            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-pad-t-0_5" *ngIf="warninginfo !=true && warninginfosnow != true">
+                By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+            </div>
+
+            <div class="ds-hr-thick ds-mar-b-1_5 ds-mar-t-1_5"></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
 
@@ -57,7 +57,7 @@
                 </p>
             </div>
 
-            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-hr-thick ds-mar-b-1_5"></div>
             <!-- Dark Background -->
             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
                 <div class="ds-loader-header">Your request submission is in progress.Do not Go back or Refresh the page.

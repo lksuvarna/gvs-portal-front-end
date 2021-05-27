@@ -69,6 +69,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
   defaultlocation=false;
   default_location='';
   la=false;
+  disable=false;
   laloc !: String;
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
@@ -110,9 +111,17 @@ export class VoipAllSpecialRequestComponent implements OnInit {
     toggleOptions(e:any){
       this.index = e.target["selectedIndex"]-1 ;
       if(e.target.value.toUpperCase()=='SELECT ONE' || e.target.value.trim()==''){
+        
+        if(this.locationlist.length==1){
+          this.locationselected=this.locationlist;
+          this.disable=true;
+        }
+        else
+        this.locationselected='';
+
         this.fl_location='';
         this.defaultlocation=false;
-        this.locationselected='';
+        
         
       }else{
         if(this.data[this.index].ATTRIBUTE7=='' || this.data[this.index].ATTRIBUTE7==null)
@@ -133,16 +142,19 @@ export class VoipAllSpecialRequestComponent implements OnInit {
     }
 
     checkOthers(e:any){
-      if(e.target.value.toUpperCase()=='OTHERS')
+      if((e.target.value.toUpperCase()=='OTHERS')&&(this.pcode == '897')){
       this.others=true;
-      else
+      this.hideSteps = true;
+      }
+      else{
       this.others=false;
-
+      this.hideSteps = false;
+      }
     }
   
   entryDetails(formData: NgForm) {
      
-    if((this.defaultlocation==false)){
+    if((this.defaultlocation==false) && (this.locationlist.length>1)){
     if((formData.value.Location.toUpperCase() == 'SELECT ONE' || formData.value.Location == '') && (this.defaultlocation==false)) {
       alert(this.mainConfiguration.alerttranslation.selectlocationsp);
       return;
@@ -254,21 +266,10 @@ export class VoipAllSpecialRequestComponent implements OnInit {
      this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
      this.locationlist=this.locationlist?.replace('"','').split(',');
   
-    //   for (var i = 0; i < this.locationlist.length; i++) {	
-    //    var n = this.locationlist[i].indexOf("~")	
-    //    this.campA[i] = this.locationlist[i].substr(1, n - 1);	
-    //    this.buildA[i] = this.locationlist[i].substring(n + 2, this.locationlist[i].length - 1);	
-    //  }	
-    //  for (var i = 0; i < this.campA.length; i++) {	
-    //    if (this.campA[i] != this.campA[i + 1]) {	
-    //      this.camp[this.j] = this.campA[i];	
-    //      this.j++;	
-    //    }	
-    //  }
-
-    // if(this.cnum.substring(6,9)=='897'){
-    //   this.locationlist[this.locationlist.length]='Others';
-    // }
+    if(this.locationlist.length==1){
+      this.locationselected=this.locationlist;
+      this.disable=true;
+    }
     	
   
     this.dbdata=sessionStorage.getItem('identifier');
@@ -301,18 +302,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
     this.servicesData = servicesData.data[0]
     this.reqFor = sessionStorage.getItem('radioAction')
 
-    if(this.warninginfo || this.warninginfosnow){
-      this.hideSteps = true
-    } else {
-      this.hideSteps = false
-    }
-
-
-    // if(this.countrydetails.name.toUpperCase().trim()=='LATIN AMERICA'){
-    //     this.la=true;
-    //    }else{
-    //      this.la=false;
-    //    }
+  
 
      //load cache data for entry details form. -- START
    this.cache_tmp=sessionStorage.getItem('cache')	
@@ -323,12 +313,14 @@ export class VoipAllSpecialRequestComponent implements OnInit {
    this.selected_jabber=''
    else
    this.selected_jabber=String(this.cache_disp.selected_jabber) ;
-   
-   if(this.cache_disp.officeLocation=='Others'){
+
+   if((this.cache_disp.officeLocation=='Others')&&(this.pcode == '897')){
    this.others=true; 
+   this.hideSteps = true;
   }
-    else{
+  else{
     this.others=false;
+    this.hideSteps = false;
     }
     
     if(this.cache_disp.campus=='' || this.cache_disp.campus==undefined){
@@ -346,6 +338,12 @@ export class VoipAllSpecialRequestComponent implements OnInit {
      //sessionStorage.removeItem('cache');
    }
    //Load Cache ends.
+
+  //  if(this.warninginfo || this.warninginfosnow){
+  //   this.hideSteps = true
+  // } else {
+  //   this.hideSteps = false
+  // }
  
   }
   previousStep(event : any){
