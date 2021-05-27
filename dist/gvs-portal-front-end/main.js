@@ -1149,7 +1149,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -19885,35 +19885,40 @@ class VoipInNewComponent {
         this.hideDeptCode = true;
     }
     getl2approver() {
-        if (this.reviewDetailsIndia.businessUnit == "GTS-GD") {
-            this.l2approver = "GVS_L2_APPROVER_IN_GTS-GD";
+        if (this.ccode == '744') {
+            if (this.reviewDetailsIndia.businessUnit == "GTS-GD") {
+                this.l2approver = "GVS_L2_APPROVER_IN_GTS-GD";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "GTS") {
+                this.l2approver = "GVS_L2_APPROVER_IN_GTS";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "ISDL") {
+                this.l2approver = "GVS_L2_APPROVER_IN_ISDL";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "ISL") {
+                this.l2approver = "GVS_L2_APPROVER_IN_ISL";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "CPS") {
+                this.l2approver = "GVS_L2_APPROVER_IN_CPS";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "GPS") {
+                this.l2approver = "GVS_L2_APPROVER_IN_GPS";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "GBS") {
+                this.l2approver = "GVS_L2_APPROVER_IN_GBS";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "IRL") {
+                this.l2approver = "GVS_L2_APPROVER_IN_IRL";
+            }
+            else if (this.reviewDetailsIndia.businessUnit == "S&D") {
+                this.l2approver = "GVS_L2_APPROVER_IN_S&D";
+            }
+            else {
+                this.l2approver = "GVS_L2_APPROVER_IN_Others";
+            }
         }
-        else if (this.reviewDetailsIndia.businessUnit == "GTS") {
-            this.l2approver = "GVS_L2_APPROVER_IN_GTS";
-        }
-        else if (this.reviewDetailsIndia.businessUnit == "ISDL") {
-            this.l2approver = "GVS_L2_APPROVER_IN_ISDL";
-        }
-        else if (this.reviewDetailsIndia.businessUnit == "ISL") {
-            this.l2approver = "GVS_L2_APPROVER_IN_ISL";
-        }
-        else if (this.reviewDetailsIndia.businessUnit == "CPS") {
-            this.l2approver = "GVS_L2_APPROVER_IN_CPS";
-        }
-        else if (this.reviewDetailsIndia.businessUnit == "GPS") {
-            this.l2approver = "GVS_L2_APPROVER_IN_GPS";
-        }
-        else if (this.reviewDetailsIndia.businessUnit == "GBS") {
-            this.l2approver = "GVS_L2_APPROVER_IN_GBS";
-        }
-        else if (this.reviewDetailsIndia.businessUnit == "IRL") {
-            this.l2approver = "GVS_L2_APPROVER_IN_IRL";
-        }
-        else if (this.reviewDetailsIndia.businessUnit == "S&D") {
-            this.l2approver = "GVS_L2_APPROVER_IN_S&D";
-        }
-        else {
-            this.l2approver = "GVS_L2_APPROVER_IN_Others";
+        else if (this.ccode == '652') {
+            this.l2approver = "GVS_L2_APPROVER_LK_All";
         }
     }
     entryDetails(formData) {
