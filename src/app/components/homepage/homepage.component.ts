@@ -82,17 +82,17 @@ export class HomepageComponent implements OnInit {
     this.display=false;
     this.cloudantservice.getcountrydetails('000').subscribe(data=> {
       this.countrynamehome=data.countrydetails;
-      
+     
       if (data.countrydetailshome.this.homepagecodesCA.includes(this.ccode)){
         this.ccode=data.countrydetailshome.codeCA
       }
-      if (data.countrydetailshome.this.homepagecodesLA.includes(this.ccode)){
+      else if (data.countrydetailshome.this.homepagecodesLA.includes(this.ccode)){
         this.ccode=data.countrydetailshome.codeLA
       }
-      if (data.countrydetailshome.this.homepagecodesPH.includes(this.ccode)){
+      else if (data.countrydetailshome.this.homepagecodesPH.includes(this.ccode)){
         this.ccode=data.countrydetailshome.codePH
       }
-      if (data.countrydetailshome.this.homepagecodesCN.includes(this.ccode)){
+     else if (data.countrydetailshome.this.homepagecodesCN.includes(this.ccode)){
         this.ccode=data.countrydetailshome.codeCN
       }
     })
@@ -110,7 +110,7 @@ export class HomepageComponent implements OnInit {
         this.cloudantservice.getcountrydetails('000').subscribe(data=> {
           this.countrynamehome=data.countrydetails;
           console.log("canada codes"+data.countrydetails.homepagecodesCA+data.countrydetails.codeCA)
-          console.log("testusercod"+this.ccode)
+          console.log("testusercod"+this.ccode+this.employeeSerial.substring(6,9))
           if (data.countrydetails.homepagecodesCA.includes(this.employeeSerial.substring(6,9))){
             
             this.testusercode=data.countrydetails.codeCA
@@ -119,15 +119,15 @@ export class HomepageComponent implements OnInit {
           }
           else if (data.countrydetails.homepagecodesLA.includes(this.employeeSerial.substring(6,9))){
             this.testusercode=data.countrydetails.codeLA
-            this.ccode=data.countrydetailshome.codeLA
+            this.ccode=data.countrydetails.codeLA
           }
           else if (data.countrydetails.homepagecodesPH.includes(this.employeeSerial.substring(6,9))){
             this.testusercode=data.countrydetails.codePH
-            this.ccode=data.countrydetailshome.codePH
+            this.ccode=data.countrydetails.codePH
           }
           else if (data.countrydetails.homepagecodesCN.includes(this.employeeSerial.substring(6,9))){
             this.testusercode=data.countrydetails.codeCN
-            this.ccode=data.countrydetailshome.codeCN
+            this.ccode=data.countrydetails.codeCN
           }
           else{
             this. testusercode=this.employeeSerial.substring(6,9)
