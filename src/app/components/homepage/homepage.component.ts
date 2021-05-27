@@ -107,6 +107,7 @@ export class HomepageComponent implements OnInit {
       console.log("testuser"+data.countrydetails.testuser)
       if (data.countrydetails.testuser){
         this.employeeSerial=data.countrydetails.testuser;
+        this.loggedinuser=data.countrydetails.testuser;
         this.cloudantservice.getcountrydetails('000').subscribe(data=> {
           this.countrynamehome=data.countrydetails;
           console.log("canada codes"+data.countrydetails.homepagecodesCA+data.countrydetails.codeCA)
