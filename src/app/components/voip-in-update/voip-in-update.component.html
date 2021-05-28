@@ -1,7 +1,7 @@
 <app-topcountryframe></app-topcountryframe>
 
 
-<div class=" ds-panel ds-col-12"></div>
+
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
@@ -11,12 +11,12 @@
 
             <b translate>servicestitle.Update Jabber Request</b>
 
-      <div class="ds-pad-t-0_5 ds-pad-b-1">
-        <label *ngIf="warninginfo==false && warninginfosnow==false" translate>Jabberentrydetails.Fieldsasterisk<span class="ds-text-contextual-red-2">*</span>) <span translate> Jabberentrydetails.arerequired </span></label>
-      </div>
-      <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-pad-t-0_5 ds-pad-b-1">
+                <label *ngIf="warninginfo==false && warninginfosnow==false" translate>Jabberentrydetails.Fieldsasterisk<span class="ds-text-contextual-red-2">*</span>) <span translate> Jabberentrydetails.arerequired </span></label>
+            </div>
+            <div class=" ds-panel ds-col-12 "></div>
 
-            <app-steps [step]="servicesData.step"  [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
+            <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [isSelf]="reqFor" [hideSteps]="hideSteps"></app-steps>
 
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>Jabberentrydetails.EmployeeEntryDetails</h2>
@@ -27,10 +27,10 @@
             <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
                 <p><span style="font-size: 1rem;"><Span translate>employeeinfotrans.alreadyoneupdaterequestinprogress</Span> {{identifier}}.<br>
 
-            <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>
+                    <span translate>employeeinfotrans.ongoingrequestsbyclickonrequestpage</span><br>
 
-            <span translate> employeeinfotrans.furtherassistance</span><a style="color:blue" target="_blank"
-              href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+                    <span translate> employeeinfotrans.furtherassistance</span><a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span>
+                </p>
             </div>
 
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
@@ -41,8 +41,8 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" (change)='SelectedJabber(number.value)' tabindex="1"
-                                    #number ngModel [(ngModel)]='selected_jabber'>
+                                <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" (change)='SelectedJabber(number.value)'
+                                    tabindex="1" #number ngModel [(ngModel)]='selected_jabber'>
                   <option value="">Select One</option>
               <!--    <option name="Jabber_1" *ngFor='let fl_itn of Jabber' [value]='fl_itn' selected>
                     {{ fl_itn }}</option>-->
@@ -119,9 +119,12 @@
                 </tbody>
             </table>
             <br>
-            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo><p></p>
-                <p translate>Jabbernewtrans.opps</p><p>
-            </p></div>
+            <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
+                <p></p>
+                <p translate>Jabbernewtrans.opps</p>
+                <p>
+                </p>
+            </div>
             <div class=" ds-panel ds-col-12 "></div>
             <!-- Dark Background -->
             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">

@@ -1,7 +1,5 @@
 <app-topcountryframe></app-topcountryframe>
 
-
-<div class=" ds-panel ds-col-12"></div>
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData" [ngClass]="{'disabled':isSpinnerVisible==true}"></app-navigation>
@@ -15,7 +13,7 @@
             <div class="ds-pad-t-0_5 ds-pad-b-1">
                 Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.
             </div>
-            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="reqFor" [formData]="formData" [cnum]="cnum" [hideSteps]=""></app-steps>
 
@@ -168,14 +166,14 @@
                             <label for="comments" class="">Business Justification <span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td class="ds-pad-l-8"><br>
-                            <textarea name="Comments" id="JustificationId" class="ds-input " style="width:300px !important;" maxlength='200' title="Buisness Justification" rows="2" cols="40" [(ngModel)]="Comments"></textarea>
+                            <textarea name="Comments" id="JustificationId" class="ds-input " style="width:300px !important;" maxlength='200' title="Business Justification" rows="2" cols="40" [(ngModel)]="Comments"></textarea>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
             <br>
-            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-hr-thick ds-mar-b-1_5"></div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
                 <div class="ds-tray-fit-content ds-mar-b-0">
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
@@ -286,7 +284,7 @@
                     </p>
             </div>
 
-            <div class="ds-hr-thick ds-mar-t-1_5"></div>
+            <div class="ds-hr-thick ds-mar-b-1_5  ds-mar-t-1_5"></div>
 
             <!-- Dark Background -->
             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">

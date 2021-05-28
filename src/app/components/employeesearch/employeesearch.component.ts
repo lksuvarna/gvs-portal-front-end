@@ -95,6 +95,8 @@ export class EmployeesearchComponent implements OnInit {
     this.mainConfiguration = this.servicesd.readConfigFile();
     this.showloader = false
     this.selectedCountry = sessionStorage.getItem('selectedCountry')
+    this.checked = sessionStorage.getItem('moback')
+
     if(this.selectedCountry === null || this.selectedCountry === ''){
       this.selectedCountry = 'Select One'
     }
@@ -288,7 +290,7 @@ export class EmployeesearchComponent implements OnInit {
         return;
       }
 
-      if(this.countryroute === '612' && this.service === 'mobile_new' && this.checked===false) {
+      if(this.countryroute === '612' && this.service === 'mobile_new' && (this.checked===false || this.checked===null)) {
         alert('Please read the Algeria Mobility Policy');
         return;
       }
@@ -315,7 +317,7 @@ export class EmployeesearchComponent implements OnInit {
         }
       }
 
-      if(this.countryroute === '612' && this.service === 'mobile_new' && this.checked===false) {
+      if(this.countryroute === '612' && this.service === 'mobile_new' && (this.checked===false || this.checked===null)) {
         alert('Please read the Algeria Mobility Policy');
         return;
       }
@@ -406,8 +408,10 @@ export class EmployeesearchComponent implements OnInit {
   ackMobile(){
     if (this.checked){
       this.ackMobileAlg = true
+      sessionStorage.setItem('moback', 'true')
     } else {
       this.ackMobileAlg = false
+      sessionStorage.setItem('moback', 'false')
     }
   }
 

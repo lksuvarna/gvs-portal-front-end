@@ -1,6 +1,6 @@
 <app-topcountryframe [ngClass]="{'disabled':showloader==true}"></app-topcountryframe>
 
-<div class=" ds-panel ds-col-12"></div>
+
 
 <div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
     <div class="ds-col-md-4 ds-col-xl-4">
@@ -111,7 +111,8 @@
                             <div class=" row ds-pad-t-2">
                                 <div class="ds-col-4">
                                     <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                        <select name="selectedCountry" rows="2" cols="40" id="sub-Countries" class="ds-title ds-align-text-left" (click)="hidedata()" style="width:230px !important; text-transform: uppercase;" title="{{ 'Jabbernewtrans.CountryCode' | translate}}" tabindex="1" [(ngModel)]="selectedCountry">	
+                                        <select name="selectedCountry" rows="2" cols="40" id="sub-Countries" class="ds-title ds-align-text-left" (click)="hidedata()" style="width:230px !important; text-transform: uppercase;" title="{{ 'Jabbernewtrans.CountryCode' | translate}}" tabindex="1"
+                                            [(ngModel)]="selectedCountry">	
                                             <option value ="Select One" translate>Jabbernewtrans.SelectOne</option>	
                                             <option *ngFor="let subCountry of subCountries" [value]='subCountry'>{{ subCountry }}</option>	
                                         </select>
@@ -125,15 +126,20 @@
 
             <h2 *ngIf="algMobile" class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 " translate>Jabbernewtrans.Declaration</h2>
 
-            <div class="ds-input-container" *ngIf="algMobile">
-                <div class="ds-input-checkbox-group" role="group" aria-labelledby="basic-checkboxes-example">
-                    <div class="ds-input-checkbox">
-                        <input type="checkbox" id="checkbox1" name="checked" class="ds-input" title="Update requested for" (change)='ackMobile()' [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">
-                        <div class="ds-input-control"></div>
-                        <label for="checkbox1"></label>
-                        <span><span class="ds-text-contextual-red-2">*</span></span> <span translate>I have read and comply with the Algeria Mobility Policy, available <a href="https://apps.na.collabserv.com/wikis/home?lang=en-us#!/wiki/W8d573d8543f3_4106_b81c_623774d0a823/page/Getting%20Started" target="_blank">here</a> and I  acknowledge reading the Privacy Notice.</span>
+            <div class="ds-row" *ngIf="algMobile">
+                <div class="ds-col-md-1 ds-col-xl-1 ds-input-container">
+                    <div class="ds-input-checkbox-group ds-flex" role="group" aria-labelledby="horizontal-checkboxes-example">
+                        <div class="ds-input-checkbox ds-mar-r-2">
+                            <input type="checkbox" id="checkbox1" class="ds-input" value="option4" (change)='ackMobile()' [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">
+                            <div class="ds-input-control"></div>
+                            <label for="checkbox1"></label>
+                        </div>
                     </div>
-
+                </div>
+                <div class="ds-col-md-11 ds-col-xl-11 ds-text-align-left mar-left">
+                    <span class="ds-text-contextual-red-2">*</span>
+                    <span> I have read and comply with the Algeria Mobility Policy, available <a href="https://apps.na.collabserv.com/wikis/home?lang=en-us#!/wiki/W8d573d8543f3_4106_b81c_623774d0a823/page/Getting%20Started" target="_blank">here</a> and I  acknowledge reading the Privacy Notice.
+                    </span>
                 </div>
             </div>
 
@@ -142,7 +148,7 @@
                 <font color="black" translate>Jabbernewtrans.norecord <span>{{employeeSerial.substr(0,6)}}</span><span translate=""> Jabbernewtrans.availablefromBluePages</span></font>
             </p>
             <p class="ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning" id="emailblankid" *ngIf="notvalid && emailblank">
-                <font color="black" ><span>The E-mail address could not be found in Bluepages for the entered serial number and cannot proceed further. Please try later.</span></font>
+                <font color="black"><span>The E-mail address could not be found in Bluepages for the entered serial number and cannot proceed further. Please try later.</span></font>
             </p>
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
@@ -154,7 +160,7 @@
 
 
             <br>
-            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-hr-thick ds-mar-b-1"></div>
             <div class="ds-loader-container" *ngIf=showloader>
                 <div class="ds-loader-header"></div>
                 <div class="ds-loader" role="alert" aria-busy="true" aria-label=""> </div>

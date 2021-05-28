@@ -243,15 +243,6 @@ export class Mobile_New
 {
     orinator_payload !: String;
     cNum_payload !: String;
-    Buildings_Disp !: String;
-    Voice_Type_Disp !: String;
-    Projectid_Disp !: String;
-    icano_Disp !: String;
-    identifier_hp_Disp !: String;
-    BusinessUnit_Disp !: String;
-    Department_number_Disp !: String;
-    Location_final !: String;
-    accid_Disp !: String;
     ReqNo !: String;
     level2_japproval !: String;
     countryname !: String;
@@ -264,38 +255,19 @@ export class Mobile_New
     gvs_approval_link !: String;
     SLA_type !: String;
     country_code !:String;
-    default_call_permission !: String
-    Dept_IN !: String;
-    authLevel_final !: String;
-    Fac_Type_disp !: String;
-    validity_disp !: String;
     comments !: String;
-    authLevel_disp !:String;
-    authValue !: String;
-
+    default_call_permission !: String
 Mobile_New()
  {
     this.orinator_payload ="";
     this.cNum_payload ="";
-    this.Location_final ="";
-    this.Buildings_Disp  ="";
-    this.Voice_Type_Disp  ="";
-    this.Projectid_Disp  ="";
-    this.Department_number_Disp ="";
-    this.BusinessUnit_Disp  ="";
-    this.Dept_IN  ="";
-    this.authLevel_final  ="";
-    this.Fac_Type_disp  ="";
-    this.validity_disp  ="";
     this.comments  ="";
     this.ReqNo ="";
     this.gvs_portal_link ="";
     this.gvs_approval_link ="";
     this.countryname  ="";
     this.SLA_type ="";
-    this.authLevel_disp ="";
-    this.authValue = ""
-
+    this.default_call_permission =""
  }
 
 }
