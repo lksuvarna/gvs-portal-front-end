@@ -276,11 +276,11 @@ export class HpInUpdateComponent implements OnInit {
   entryDetails(formData: NgForm){
 
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
-    if(this.currentMacOrPhone == '')
-    {
-      // alert("Please give some ");
-    }
-   else if(formData.value.UpdateReq == '') {	
+    // if(this.currentMacOrPhone == '')
+    // {
+    //   // alert("Please give some ");
+    // }
+   if(formData.value.UpdateReq == '') {	
       alert('Please select update required for');	
     }	
 
@@ -320,7 +320,7 @@ export class HpInUpdateComponent implements OnInit {
     }
 
     else if(formData.value.Comments.trim() == '' || formData.value.Comments == '/\s/') {	
-      alert('Please provide the reason for updation.');	
+      alert('Please provide the reason for update.');	
     }
 
 
