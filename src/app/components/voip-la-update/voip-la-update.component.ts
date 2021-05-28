@@ -201,7 +201,7 @@ export class VoipLaUpdateComponent implements OnInit {
     if(this.vm_disp.toUpperCase()=="NO" ||this.vm_disp.toUpperCase()=="N")
     this.vm_actual="No"
 
-    if(formData.value.Voice_Mail==this.vm_actual){
+    if((formData.value.Voice_Mail==this.vm_actual)&&(this.checked)){
       alert('Current and New Voice Mail cannot be same');
         return;
     }

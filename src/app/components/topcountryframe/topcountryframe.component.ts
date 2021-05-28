@@ -24,6 +24,7 @@ export class TopcountryframeComponent implements OnInit {
   currentLang :any;
   translatecountryname :any;
   translatecountryname1 :boolean =false;
+  cache : any;
 
   
   routingservices: any = ['services','jabberservices','fixedphoneservices','facservices','mobileservices','mobile_new','jabber_new','jabber_delete','jabber_update','jabber_move','fixedphone_new','fixedphone_update','fixedphone_delete','fac_new','fac_update','fac_reset','fac_delete','requests','resources','approvalpending','revalidationpending','phone_search', 'specialrequest']
@@ -289,10 +290,28 @@ export class TopcountryframeComponent implements OnInit {
   
 
   if((this.service!='jabber_new') && (this.service!='jabber_delete') && (this.service!='jabber_update') && (this.service!='jabber_move') && (this.service!='fixedphone_new') && (this.service!='fixedphone_delete') &&  (this.service!='fixedphone_update') && (this.service!='fac_new') && (this.service!='fac_update') && (this.service!='specialrequest')&& (this.service!='mobile_new')){
-
+    
+    console.log("Remove cache inside main block");
     sessionStorage.removeItem('cache');
   }
 
+  if(this.service!='mobile_new'){
+    sessionStorage.removeItem('moback')
+  }
+  if(this.service=='specialrequest'){
+ 
+    this.cache=sessionStorage.getItem('cache');
+    this.cache=JSON.parse(this.cache);
+    if(this.cache != null){
+    console.log("Special Req "+this.cache);
+    if((this.cache.setflag) || (this.cache.setflag==undefined)){
+
+    console.log("Remove cache second main block");
+      sessionStorage.removeItem('cache');
+    }
+    console.log("Special Req "+this.cache);
+  }
+  }
   
 
   }
