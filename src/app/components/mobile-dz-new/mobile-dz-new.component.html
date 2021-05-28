@@ -13,7 +13,7 @@
             <div class="ds-pad-t-0_5 ds-pad-b-1">
                 Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.
             </div>
-            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="reqFor" [formData]="formData" [cnum]="cnum" [hideSteps]=""></app-steps>
 
@@ -32,13 +32,13 @@
                             <label for="comments" class="">Business Justification <span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%"><br>
-                            <textarea name="Comments" id="JustificationId" class="ds-input " style="width:300px !important;" maxlength='200' title="Buisness Justification" rows="2" cols="40" [(ngModel)]="Comments"></textarea>
+                            <textarea name="Comments" id="JustificationId" class="ds-input " style="width:300px !important;" maxlength='200' title="Business Justification" rows="2" cols="40" [(ngModel)]="Comments"></textarea>
                         </td>
                     </tr>
                 </tbody>
             </table>
-
-            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Local Voice Package Details</h2>
+            <br>
+            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5">Local Voice Package Details</h2>
 
             <table width="100%" border="1">
                 <tbody>
@@ -258,7 +258,7 @@
 
 
             <br>
-            <div class=" ds-panel ds-col-12 "></div>
+            <div class="ds-hr-thick ds-mar-b-1_5"></div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
                 <div class="ds-tray-fit-content ds-mar-b-0">
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
@@ -302,224 +302,6 @@
                             <label for="addId1">Business Justification</label>
                         </td>
                         <td width="54%"><span style="word-break:break-all;">{{reviewDetailsIndia.Comments}}</span></td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Local Voice Package Details</h2>
-
-            <table width="100%" border="1">
-                <tbody>
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center"><b><font size="2">Nouvelles offres Business</font></b></div>
-                        </td>
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center"><b><font size="2">Business 3500</font></b></div>
-                        </td>
-                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">Abonnement mensuel </font>
-                                <font size="2">​</font>
-                                <font size="2"> </font>
-                                <font size="2">​</font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">3 500 DA</font>
-                            </div>
-                        </td>
-                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">National </font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">20h</font>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">Packge </font>
-                                <font size="2">​</font>
-                                <font size="2"> (non cumulable) </font>
-                            </div>
-                        </td>
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">International </font>
-                                <font size="2">​</font>
-                                <font size="2">(activation àla demande du client)</font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">60 mn</font>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">DATA </font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">3 Go</font>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">SMS vers Djezzy </font>
-                                <font size="2">​</font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">200 SMS</font>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">Prix de la minute en national hors forfait </font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">3,5 DA/Min</font>
-                            </div>
-                        </td>
-                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">Prix SMS </font>
-                            </div>
-                        </td>
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">Vers Djezzy </font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">3,5 </font>
-                                <font size="2">​</font>
-                                <font size="2">DA</font>
-                            </div>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">Vers autre opérateurs nationaux</font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">5 DA</font>
-                            </div>
-                        </td>
-                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">Vers international </font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">14 DA</font>
-                            </div>
-                        </td>
-                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">International Plus : Top10 des pays* à10DA/min fixe et mobile (activation àla demande du client</font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">abonnement gratuit </font>
-                            </div>
-                        </td>
-                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">Prix Vidéo Call</font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">12 DA</font>
-                            </div>
-                        </td>
-                        <td width="33%"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">Forfaits Mensuel 3G**</font>
-                            </div>
-                        </td>
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">35 Go 10000 DA</font>
-                            </div>
-                        </td>
-                        <td width="33%">
-                            <div align="center"><u><font size="2">- 50% sur le prix Djezzy Speed</font></u></div>
-                        </td>
-                    </tr>
-
-                    <tr valign="top">
-                        <td width="33%" bgcolor="#C0C0C0">
-                            <div align="center">
-                                <font size="2">avec engagement </font>
-                            </div>
-                        </td>
-                        <td width="33%" bgcolor="#C0C0C0"><img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0"></td>
-                        <td width="33%">
-                            <div align="center">
-                                <font size="2">Tarifs en vigueur </font>
-                            </div>
-                        </td>
                     </tr>
                 </tbody>
             </table>

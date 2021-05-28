@@ -83,6 +83,11 @@ export class MobileDzNewComponent implements OnInit {
       alert('Please provide business justification');	
       return;	
     }	
+
+    if( formData.value.Comments.trim().length < 4) {	
+      alert('Justification length should be atleast 4 characters');	
+      return;	
+    }	
   
     this.isEntryForm = true;	
     this.isReviewForm = false;	
@@ -95,6 +100,8 @@ export class MobileDzNewComponent implements OnInit {
 
    create_cache(formData:NgForm){
     console.log("Starting Cache");
+    this.cache.setflag=true;
+    this.cache.cnum=this.cnum;
     this.cache.Comments= formData.value.Comments;
     sessionStorage.setItem('cache',JSON.stringify(this.cache));
     console.log("cached");
@@ -115,8 +122,8 @@ export class MobileDzNewComponent implements OnInit {
       this.payload.cNum_payload=this.cnum;	
       // fields picked up from form -- begins	
       this.payload.comments =this.reviewDetailsIndia.Comments;	
-      this.payload.ReqNo=this.reqno;	
       // fields to be picked up from form -- ends	
+      this.payload.ReqNo=this.reqno;	
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
       this.payload.level2_japproval=this.countrydetails.level2_japproval;	
       this.payload.SLA_type=this.countrydetails.SLA_type;	

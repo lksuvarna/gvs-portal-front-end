@@ -226,7 +226,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
  
      create_cache(formData:NgForm){
       console.log("Starting Cache");
-      this.cache.setflag=true;
+      this.cache.setflag=false;
       this.cache.cnum=this.cnum;
       this.cache.selected_jabber = formData.value.Jabber_1;		
       this.cache.officeLocation =  formData.value.Location;	
@@ -308,7 +308,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
    this.cache_tmp=sessionStorage.getItem('cache')	
    console.log("cached items "+this.cache_tmp);
    this.cache_disp=JSON.parse(this.cache_tmp);
-   if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='specialrequest')){
+   if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag==false) && (this.service='specialrequest')){
    if((this.cache_disp.selected_jabber==undefined) ||(this.cache_disp.selected_jabber==''))
    this.selected_jabber=''
    else

@@ -243,7 +243,7 @@ export class StepsComponent implements OnInit {
 
   if(this.service=='specialrequest'){
     console.log("Starting special Request cache");
-    this.cache.setflag=true;
+    this.cache.setflag=false;
     this.cache.cnum=this.cnum;
     if(this.formData.value.Jabber_1==undefined)
     this.cache.selected_jabber='';
