@@ -121,7 +121,7 @@ export class MobileDzNewComponent implements OnInit {
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
       // fields picked up from form -- begins	
-      this.payload.comments =this.reviewDetailsIndia.Comments;	
+      this.payload.Justification_disp =this.reviewDetailsIndia.Comments;	
       // fields to be picked up from form -- ends	
       this.payload.ReqNo=this.reqno;	
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
@@ -130,7 +130,32 @@ export class MobileDzNewComponent implements OnInit {
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
-      this.payload.request_type='mobile_new';	
+      this.payload.request_type=this.countrydetails.request_type;
+      this.payload.request_type1_val=this.countrydetails.request_type1;
+      this.payload.resource_type_val=this.countrydetails.resource_type;
+      this.payload.resource_type1_val=this.countrydetails.resource_type1;
+      this.payload.l1group_val=this.countrydetails.l1group;
+      this.payload.l1_val=this.countrydetails.l1;
+      this.payload.l1email_user_name_val=this.countrydetails.l1email_user_name;
+      this.payload.l2group_val=this.countrydetails.l2group;
+      this.payload.l2_val=this.countrydetails.l2;
+      this.payload.l2email_user_name_val=this.countrydetails.l2email_user_name;
+      this.payload.UI_Fields_val=this.countrydetails.UI_Fields;
+      this.payload.attribute1_val=this.countrydetails.attribute1;
+      this.payload.attribute2_val=this.countrydetails.attribute2;
+      this.payload.attribute3_val=this.countrydetails.attribute3;
+      this.payload.attribute4_val=this.countrydetails.attribute4;
+      this.payload.supplier_val=this.countrydetails.supplier;
+      this.payload.country_spoc_val=this.countrydetails.country_spoc;
+      this.payload.Response_Fields_val=this.countrydetails.Response_Fields;
+      this.payload.Item_val=this.countrydetails.Item;
+      this.payload.mail_body_1_val=this.countrydetails.mail_body_1;
+      this.payload.mail_body_2_val=this.countrydetails.mail_body_2;
+      this.payload.mail_body_3_val=this.countrydetails.mail_body_3;
+      this.payload.mail_body_4_val=this.countrydetails.mail_body_4;
+      this.payload.mail_body_5_val=this.countrydetails.mail_body_5;
+      this.payload.smail_body1_val=this.countrydetails.smail_body1;
+      this.payload.smail_body2_val=this.countrydetails.smail_body2;
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
       this.payload.qag =this.countrydetails.qag ;	
       this.payload.class_of_serice =this.countrydetails.class_of_serice ;	
