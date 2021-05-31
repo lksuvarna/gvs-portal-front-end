@@ -106,6 +106,12 @@
                         </td>
                     </tr>
 
+                    
+                </tbody>
+            </table>
+
+            <table id="t3" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
+                <tbody>
                     <tr valign="top" *ngIf='showformodel'>
                         <td width="50%">
                             <span id="modelid"><br>
@@ -119,6 +125,35 @@
                                 <select name="NewModel" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Phone Model" [(ngModel)]='newModel'>
                                 <option value="" >Select One</option>
                                 <option name="NewModel" *ngFor='let model of models' [value]='model'>{{ model }}</option>
+                            </select>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top" *ngIf='showLocation'>
+                        <td  width="50%"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="50%" class="ds-pad-t-1">
+                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
+                                <select rows="2" name="Location_1_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location (change)='selectedLocation(location.value)' ngModel [(ngModel)]='state'>
+                                <option value ="">Select One</option>
+                                <option *ngFor='let fl_location of camp' [value]='fl_location' >
+                                {{ fl_location }}</option>
+                            </select>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr valign="top" *ngIf='hideBuilding' class="ds-pad-t-1">
+                        <td  width="50%"><label for="builId" class="ds-text-capitalize"> Campus</label>
+                            <span class="ds-text-contextual-red-2">*</span>
+                        </td>
+                        <td width="54%">
+                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
+                                <select name="Buildings" rows="2" cols="40" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" [(ngModel)]='campus' ngModel>
+                                <option value ="">Select One</option>
+                                <option *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
                             </select>
                             </div>
                         </td>
@@ -149,48 +184,17 @@
                             <label class="">Reason for update<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%">
-                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update" maxlength="200;" rows="2" cols="40" ngModel [(ngModel)]='reasonForUpdate'>
+                            <textarea name="Comments" class="ds-input " style="width:300px !important;" 
+                            title="Reason for Update" maxlength="200;" rows="2" cols="40" ngModel [(ngModel)]='reasonForUpdate'>
                         </textarea><br>
                         </td>
                     </tr>
-                </tbody>
-            </table>
-
-            <table id="t2" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
-                <tbody>
-                    <tr valign="top" *ngIf='showLocation'>
-                        <td width="50%"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
-                            <span class="ds-text-contextual-red-2">*</span>
-                        </td>
-                        <td width="50%" class="ds-pad-t-1">
-                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Location_1_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location (change)='selectedLocation(location.value)' ngModel [(ngModel)]='state'>
-                                <option value ="">Select One</option>
-                                <option *ngFor='let fl_location of camp' [value]='fl_location' >
-                                {{ fl_location }}</option>
-                            </select>
-                            </div>
-                        </td>
-                    </tr>
-
-
-
-                    <tr valign="top" *ngIf='hideBuilding' class="ds-pad-t-1">
-                        <td width="50%"><label for="builId" class="ds-text-capitalize"> Campus</label>
-                            <span class="ds-text-contextual-red-2">*</span>
-                        </td>
-                        <td width="54%">
-                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select name="Buildings" rows="2" cols="40" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" [(ngModel)]='campus' ngModel>
-                                <option value ="">Select One</option>
-                                <option *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
-                            </select>
-                            </div>
-                        </td>
-                    </tr>
+                    
 
                 </tbody>
             </table>
+
+            
 
             <!-- <table id="t3" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
                 <tbody>
@@ -314,9 +318,6 @@
                     </tr>
 
 
-                    <!-- <table id="t1" width="100%" cellspacing="0" cellpadding="0" border="0">
-
-                    <tbody> -->
                     <tr valign="top" *ngIf='showLocation'>
                         <td colspan="2" width="46%" height="10">
                             <label for="addId1">Office Location</label>
@@ -330,11 +331,7 @@
                         </td>
                         <td width="54%">{{reviewDetailsIndia.campus}}</td>
                     </tr>
-                    <!-- </tbody>
-                </table> -->
-
-                    <!-- <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
-                    <tbody> -->
+                    
 
                     <tr valign="top" *ngIf='showforNewDesc'>
                         <td colspan="2" width="46%">
