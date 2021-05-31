@@ -42,6 +42,8 @@ export class HpInUpdateComponent implements OnInit {
   currentdesc: any ;
   currentmodel: any;
 
+  showformodel1:boolean = false;
+
   showformodel: boolean = false;
   showformacadd: boolean = false;
   showforrsn: boolean = false;
@@ -257,10 +259,11 @@ export class HpInUpdateComponent implements OnInit {
 
     if(model === this.currentmodel){
       alert('Please provide a different Model as the current Model is already '+this.currentmodel );
-      this.newModel = ""
-      
+      this.newModel = ""     
       
     }
+
+   
   }
 
   // checkModel(e : any){
@@ -276,10 +279,13 @@ export class HpInUpdateComponent implements OnInit {
   entryDetails(formData: NgForm){
 
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
-    // if(this.currentMacOrPhone == '')
-    // {
-    //   // alert("Please give some ");
-    // }
+    
+
+    if(this.newModel.toUpperCase() =='' || this.newModel.toUpperCase() =='SELECT ONE'){
+      this.showformodel1 = false;
+            
+    }
+
    if(formData.value.UpdateReq == '') {	
       alert('Please select update required for');	
     }	
