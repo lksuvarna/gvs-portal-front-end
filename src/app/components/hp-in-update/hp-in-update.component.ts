@@ -259,10 +259,16 @@ export class HpInUpdateComponent implements OnInit {
 
     if(model === this.currentmodel){
       alert('Please provide a different Model as the current Model is already '+this.currentmodel );
-      this.newModel = ""     
-      
+      this.newModel = ""        
     }
 
+   if(model != ''){
+     this.showformodel1  = true;
+   }
+
+   else {
+     this.showformodel1 = false;
+   }
    
   }
 
