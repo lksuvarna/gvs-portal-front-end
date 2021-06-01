@@ -196,6 +196,16 @@ export class HomepageComponent implements OnInit {
           this.searchItems.push(this.searchObj)
 
         }
+        if (element.ismobile === true) {
+          this.searchObj =  Object.create(this.searchObj)
+          this.searchObj.name = element.name + ' : Mobile'
+          this.searchObj.flag = element.flagname
+          this.searchObj.code = element.code
+          this.searchObj.path = 'mobileservices'
+          this.searchObj.visibility = true
+          this.searchItems.push(this.searchObj)
+
+        }
         // alert(JSON.stringify(this.searchItems))
       });
       
