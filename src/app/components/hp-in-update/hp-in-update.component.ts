@@ -191,8 +191,10 @@ export class HpInUpdateComponent implements OnInit {
       this.showforrsn = true;
       this.showformodel = false;
       this.showformacadd = false;
+      this.showformodel1 = false;
       this.showLocation = false;
       this.hideBuilding = false;
+
 
     }
     if(device.toUpperCase() == 'CHANGE PHONE LOCATION') {
@@ -201,6 +203,7 @@ export class HpInUpdateComponent implements OnInit {
       this.showforrsn = true;
       this.showformodel = false;
       this.showformacadd = false;
+      this.showformodel1 = false;
       if(this.state != '') {
         this.hideBuilding = true;
       }
