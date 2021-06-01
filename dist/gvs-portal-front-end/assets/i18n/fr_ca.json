@@ -336,7 +336,8 @@
     "Fieldsasteriskspl":"Champs marqués d'un astérisque",
      "arerequiredspl":"sont requis.",
      "selectjabbernumberwishtoupdate":"Jabber / Numéro de téléphone",
-     "JabberLocationslect": "Emplacement du numéro de téléphone / Jabber"
+     "JabberLocationslect": "Emplacement du numéro de téléphone / Jabber",
+     "devicehelpmessage" : "P - Primaire, SEP - Fixe Téléphone"
 
     },
     "otheralerts":{

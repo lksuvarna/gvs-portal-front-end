@@ -352,7 +352,8 @@
      "Fieldsasteriskspl": "Fields marked with an asterisk",
      "arerequiredspl": "are required.",
      "selectjabbernumberwishtoupdate":"Jabber / Phone Number",
-     "JabberLocationslect": "Jabber / Phone Number location"
+     "JabberLocationslect": "Jabber / Phone Number location",
+     "devicehelpmessage" : "P - Primary, SEP - Fixed Phone"
 
      },
      "otheralerts":{
