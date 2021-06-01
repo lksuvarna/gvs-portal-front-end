@@ -17858,7 +17858,7 @@ function ResourcesComponent_table_15_tbody_28_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const no_r3 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](no_r3.TYPE.includes("ip") ? "Jabber" : no_r3.TYPE.includes("fac") ? "FAC" : no_r3.TYPE);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](no_r3.ATTRIBUTE1 != null && no_r3.ATTRIBUTE1.includes("SEP") && !no_r3.ATTRIBUTE8.includes("chcs") ? "Fixedphone" : no_r3.ATTRIBUTE1 != null && no_r3.ATTRIBUTE1.includes("SEP") && no_r3.ATTRIBUTE8.includes("chcs") ? "Jabber,Fixedphone" : no_r3.TYPE.includes("ip") ? "Jabber" : no_r3.TYPE.includes("fac") ? "FAC" : no_r3.TYPE);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", no_r3.SUPPLIER, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
