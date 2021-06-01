@@ -13106,9 +13106,9 @@ function VoipAllSpecialRequestComponent_table_26_tr_2_option_11_Template(rf, ctx
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const fl_r14 = ctx.$implicit;
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_r14.ATTRIBUTE1 != null && fl_r14.ATTRIBUTE1.toUpperCase().trim().includes("SEP") ? fl_r14.IDENTIFIER.trim() + "-SEP" : fl_r14.ATTRIBUTE8 != null && fl_r14.ATTRIBUTE8.trim().toUpperCase().includes("CHCS") ? fl_r14.IDENTIFIER.trim() + "-P" : fl_r14.IDENTIFIER.trim());
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", fl_r14.ATTRIBUTE8 != null && fl_r14.ATTRIBUTE8.trim().toUpperCase().includes("CHCS") ? fl_r14.IDENTIFIER.trim() + "-P" : fl_r14.ATTRIBUTE1 != null && fl_r14.ATTRIBUTE1.toUpperCase().trim().includes("SEP") ? fl_r14.IDENTIFIER.trim() + "-SEP" : fl_r14.IDENTIFIER.trim());
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" ", fl_r14.IDENTIFIER.trim(), "", fl_r14.ATTRIBUTE1 != null && fl_r14.ATTRIBUTE1.toUpperCase().trim().includes("SEP") ? " - SEP" : fl_r14.ATTRIBUTE8 != null && fl_r14.ATTRIBUTE8.trim().toUpperCase().includes("CHCS") ? " - P" : "", "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"](" ", fl_r14.IDENTIFIER.trim(), "", fl_r14.ATTRIBUTE8 != null && fl_r14.ATTRIBUTE8.trim().toUpperCase().includes("CHCS") ? " - P" : fl_r14.ATTRIBUTE1 != null && fl_r14.ATTRIBUTE1.toUpperCase().trim().includes("SEP") ? " - SEP" : "", "");
 } }
 function VoipAllSpecialRequestComponent_table_26_tr_2_Template(rf, ctx) { if (rf & 1) {
     const _r16 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
