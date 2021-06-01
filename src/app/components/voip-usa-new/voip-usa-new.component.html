@@ -13,8 +13,7 @@
         <form [hidden]="isEntryForm" (submit)='entryDetailsUSA(formData)' #formData='ngForm'>
             <b translate>servicestitle.Request new Jabber service</b>
 
-            <div class="ds-pad-t-0_5 ds-pad-b-1">
-                By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+            <div class="ds-pad-t-0_5 ds-pad-b-1" translate>Jabberentrydetails.toprocessPI
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
@@ -48,9 +47,8 @@
             </span><br>
 
             <div id="msgdis" *ngIf="locationselected=='Home and Mobile'">
-                <p>Clicking submit will result in your service being assigned a phone number in the 720 area code. If you wish to have a local number, or retain your existing phone number at an IBM site, then please wait for your site to be migrated to Cisco
-                    Jabber. The US Site Migration schedule can be found
-                    <a href="https://pdydalhcsad01.sl.bluecloud.ibm.com/reports/home.htm" target="_blank">here</a>.
+                <p translate>alerttranslation.usaschedule
+                    <a href="https://pdydalhcsad01.sl.bluecloud.ibm.com/reports/home.htm" target="_blank"><span translate>specialrequest.here</span></a>.
                 </p>
             </div>
 
@@ -78,7 +76,7 @@
             <b translate>servicestitle.Request new Jabber service</b>
 
 
-            <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+            <div class="ds-pad-b-1" translate>Jabberentrydetails.toprocessPI
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
@@ -101,7 +99,7 @@
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p>Something seems to have gone wrong. Please try later.</p>
+                <p translate>fixedphonenew.Somethingseemswrong</p>
                 <p>
                 </p>
             </div>
