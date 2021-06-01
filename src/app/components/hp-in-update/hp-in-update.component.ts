@@ -6,7 +6,8 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Location} from '@angular/common';	
 import { fixedphone_update,Create_Cache_fixedphone} from 'config/payload';
-import {Db2Service} from '../../_services/db2.service'
+import {Db2Service} from '../../_services/db2.service';
+import { TranslateConfigService } from '../../_services/translate-config.service'; 
 
 @Component({
   selector: 'app-hp-in-update',
@@ -35,6 +36,7 @@ export class HpInUpdateComponent implements OnInit {
   ccode='';	
   locationlist: any;	
   pcode: any;	
+  mainConfiguration :any;
   service: any;
 
   currentMac: string = "";
@@ -73,7 +75,7 @@ export class HpInUpdateComponent implements OnInit {
   reasonForUpdate: any = "";
   FixedPhoneData: any = [];
   state: any = "";
-  mainConfiguration :any;
+ 
   
 
   showerrormessage = false
@@ -113,7 +115,7 @@ export class HpInUpdateComponent implements OnInit {
     location_final:""
   }
   
-  constructor(private db2:Db2Service, private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
+  constructor(private db2:Db2Service, private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private servicesd : TranslateConfigService) { }
 
   onSearch(){
     this.showerrormessage = false;
@@ -157,7 +159,7 @@ export class HpInUpdateComponent implements OnInit {
 
     }
     else{
-      alert("Please enter a MAC Address or Phone number to search");
+      alert("Please provide the MAC address or phone number being updated.");
     }
     
 
@@ -261,8 +263,8 @@ export class HpInUpdateComponent implements OnInit {
   checkModel(model : any){
 
     if(model === this.currentmodel){
-      alert('Please provide a different Model as the current Model is already '+this.currentmodel );
-      this.newModel = ""        
+      alert('You have selected the same model as the current phone model. ');
+      this.newModel = ""     
     }
 
    if(model != ''){
@@ -296,11 +298,11 @@ export class HpInUpdateComponent implements OnInit {
     }
 
    if(formData.value.UpdateReq == '') {	
-      alert('Please select update required for');	
+      alert('Please provide the update requirements.');	
     }	
 
     else if( formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (formData.value.MAC1 == '' || formData.value.MAC1.length != 12)) {	
-      alert('Please enter 12 characters MAC address');
+      alert('Please provide the MAC address (12 character limit).');
     }
     
     else if(formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (pat1.test(formData.value.MAC1))) {
@@ -313,7 +315,7 @@ export class HpInUpdateComponent implements OnInit {
     }
 
     else if(formData.value.UpdateReq.toLowerCase() != 'replace the hardphone only' && (formData.value.Newdesc.trim() == '' || formData.value.Comments == '/\s/')) {	
-      alert('Please provide the New Description.');	
+      alert('Please provide a new description.');	
       	
     }
 
@@ -327,15 +329,15 @@ export class HpInUpdateComponent implements OnInit {
     // }
 
     else if(formData.value.UpdateReq.toLowerCase() == 'change phone location' && formData.value.Location_1_1 == '' && this.showLocation == true) {	
-      alert('Please select a location');	
+      alert(this.mainConfiguration.alerttranslation.selectlocation);	
     }
 
     else if(formData.value.UpdateReq.toLowerCase() == 'change phone location' && formData.value.Buildings == '' && this.showLocation == true) {	
-      alert('Please select a campus');	
+      alert('Please select the appropriate campus.');	
     }
 
     else if(formData.value.Comments.trim() == '' || formData.value.Comments == '/\s/') {	
-      alert('Please provide the reason for update.');	
+      alert('Please provide the reason for the update.');	
     }
 
 

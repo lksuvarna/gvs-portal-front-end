@@ -73,11 +73,11 @@ export class VoipInUpdateComponent implements OnInit {
       return;
     }
     if(formData.value.Charge_Dept.toUpperCase() == 'NA') {
-      alert('No value is changed, so Update request is not required');
+      alert('A new value has not been provided, so an update is not required.');
       return;
     }
     if(formData.value.Charge_Dept == '') {
-      alert('Please enter the Charge Department code');
+      alert('Please provide the charge department code.');
       return;
     }
     this.jabberDisp = formData.value.Jabber_1;

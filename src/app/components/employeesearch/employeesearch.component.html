@@ -145,10 +145,10 @@
 
 
             <p class="ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning" id="error" *ngIf="notvalid && !emailblank">
-                <font color="black" translate>Jabbernewtrans.norecord <span>{{employeeSerial.substr(0,6)}}</span><span translate=""> Jabbernewtrans.availablefromBluePages</span></font>
+                <font color="black" translate>Jabbernewtrans.norecord <span>{{employeeSerial.substr(0,6)}}. </span><span translate>Jabbernewtrans.Pleaseverifyandtryagain</span></font>
             </p>
             <p class="ds-col-xs-12 ds-mar-t-1 ds-alert ds-warning" id="emailblankid" *ngIf="notvalid && emailblank">
-                <font color="black"><span>The E-mail address could not be found in Bluepages for the entered serial number and cannot proceed further. Please try later.</span></font>
+                <font color="black"><span translate>Jabbernewtrans.EMAILcouldnotbefoundinbp</span></font>
             </p>
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>

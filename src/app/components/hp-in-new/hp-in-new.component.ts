@@ -8,6 +8,7 @@ import { bpservices } from '../../_services/bp.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {fixedphone_new,Create_Cache_fixedphone} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
+import { TranslateConfigService } from '../../_services/translate-config.service'; 
 
 @Component({
   selector: 'app-hp-in-new',
@@ -43,6 +44,7 @@ Locations: any;
 locationlist: any;	
 pcode: any;	
 service: any;	
+mainConfiguration :any;
 employeeInfo: any;	
 employeeInfo1: any;	
 campus:any;	
@@ -89,7 +91,7 @@ cacheGoValue: any = false;
 FixedPhoneData: any = [];
   
     
-constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private bpservices:bpservices) { 	
+constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private bpservices:bpservices,private servicesd : TranslateConfigService) { 	
  /* this.Locations = {	
     locc : ['Banglore~~MTP','Banglore~~SA',	
     'Gurgaon~~DLF Infinity','Gurgaon~~ASF','Hyderabad~~Hitech','Hyderabad~~Hitech2']	
@@ -296,19 +298,19 @@ getFixedPhoneData(){
 entryDetails(formData: NgForm) {	
     
   if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
-    alert('Please select a location');	
+    alert(this.mainConfiguration.alerttranslation.selectlocation);	
     return;	
   }	
   if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	
-    alert('Please select the Campus');	
+    alert('Please select the appropriate campus.');	
     return;	
   }	
   if((formData.value.Department_number.toUpperCase() == '' || formData.value.Department_number.trim() == '') && this.hideDeptCode == false) {	
-    alert('Please enter the Charge Department Code');	
+    alert('Please provide the charge department code.');	
     return;	
   }	
   if(formData.value.Projectid.trim() == '' && this.hideProjectId == false) {
-    alert('Please enter the Project ID');
+    alert('Please provide the project ID.');
     return;
     }
     // if(formData.value.Accountid.trim() == '') {
@@ -320,11 +322,11 @@ entryDetails(formData: NgForm) {
     //   return;
     // }
     if(formData.value.Device_Type == '') {
-      alert('Please select a device type');
+      alert('Please select the device type.');
       return;
     }
     if(formData.value.Model_Type == '') {
-      alert('Please select a type of model');
+      alert('Please select the model type.');
       return;
     }
     // if(this.goResults == false && formData.value.StepMentor != '' && this.gggg == true && this.showforFixedPhone == false) {
@@ -349,15 +351,15 @@ entryDetails(formData: NgForm) {
     //   return;
     // }
     if(formData.value.Justification.trim() == '' && this.showBusinessNeed == false) {
-      alert('Please enter the business need for Class of Service.');
+      alert('Please provide a business justification for the selected class of service.');
       return;
     }
     if(formData.value.Description.trim() == '') {
-      alert('Please Enter a description and it should not be more than 30 characters');
+      alert('Please provide a description (30 character limit).');
       return;
     }
     if(formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
-      alert('Please enter 12 characters MAC address');
+      alert('Please provide the MAC address (12 character limit).');
       return;
     }
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
