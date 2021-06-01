@@ -42,6 +42,8 @@ export class HpInUpdateComponent implements OnInit {
   currentdesc: any ;
   currentmodel: any;
 
+  showformodel1:boolean = false;
+
   showformodel: boolean = false;
   showformacadd: boolean = false;
   showforrsn: boolean = false;
@@ -189,8 +191,10 @@ export class HpInUpdateComponent implements OnInit {
       this.showforrsn = true;
       this.showformodel = false;
       this.showformacadd = false;
+      this.showformodel1 = false;
       this.showLocation = false;
       this.hideBuilding = false;
+
 
     }
     if(device.toUpperCase() == 'CHANGE PHONE LOCATION') {
@@ -199,6 +203,7 @@ export class HpInUpdateComponent implements OnInit {
       this.showforrsn = true;
       this.showformodel = false;
       this.showformacadd = false;
+      this.showformodel1 = false;
       if(this.state != '') {
         this.hideBuilding = true;
       }
@@ -257,10 +262,17 @@ export class HpInUpdateComponent implements OnInit {
 
     if(model === this.currentmodel){
       alert('Please provide a different Model as the current Model is already '+this.currentmodel );
-      this.newModel = ""
-      
-      
+      this.newModel = ""        
     }
+
+   if(model != ''){
+     this.showformodel1  = true;
+   }
+
+   else {
+     this.showformodel1 = false;
+   }
+   
   }
 
   // checkModel(e : any){
@@ -276,11 +288,14 @@ export class HpInUpdateComponent implements OnInit {
   entryDetails(formData: NgForm){
 
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
-    if(this.currentMacOrPhone == '')
-    {
-      // alert("Please give some ");
+    
+
+    if(this.newModel.toUpperCase() =='' || this.newModel.toUpperCase() =='SELECT ONE'){
+      this.showformodel1 = false;
+            
     }
-   else if(formData.value.UpdateReq == '') {	
+
+   if(formData.value.UpdateReq == '') {	
       alert('Please select update required for');	
     }	
 
@@ -320,7 +335,7 @@ export class HpInUpdateComponent implements OnInit {
     }
 
     else if(formData.value.Comments.trim() == '' || formData.value.Comments == '/\s/') {	
-      alert('Please provide the reason for updation.');	
+      alert('Please provide the reason for update.');	
     }
 
 

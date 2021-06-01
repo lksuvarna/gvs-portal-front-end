@@ -243,15 +243,6 @@ export class Mobile_New
 {
     orinator_payload !: String;
     cNum_payload !: String;
-    Buildings_Disp !: String;
-    Voice_Type_Disp !: String;
-    Projectid_Disp !: String;
-    icano_Disp !: String;
-    identifier_hp_Disp !: String;
-    BusinessUnit_Disp !: String;
-    Department_number_Disp !: String;
-    Location_final !: String;
-    accid_Disp !: String;
     ReqNo !: String;
     level2_japproval !: String;
     countryname !: String;
@@ -264,38 +255,70 @@ export class Mobile_New
     gvs_approval_link !: String;
     SLA_type !: String;
     country_code !:String;
+    Justification_disp !: String;
     default_call_permission !: String
-    Dept_IN !: String;
-    authLevel_final !: String;
-    Fac_Type_disp !: String;
-    validity_disp !: String;
-    comments !: String;
-    authLevel_disp !:String;
-    authValue !: String;
-
+    smail_body2_val!: String
+    smail_body1_val!: String
+    resource_type_val!: String
+    resource_type1_val!: String
+    l1group_val!: String
+    l1_val!: String
+    l1email_user_name_val!: String
+    l2group_val!: String
+    l2_val!: String
+    l2email_user_name_val!: String
+    UI_Fields_val!: String
+    attribute1_val!: String
+    attribute2_val!: String
+    attribute3_val!: String
+    attribute4_val!: String
+    supplier_val!: String
+    country_spoc_val!: String
+    Response_Fields_val!: String
+    Item_val!: String
+    mail_body_1_val!: String
+    mail_body_2_val!: String
+    mail_body_3_val!: String
+    mail_body_4_val!: String
+    mail_body_5_val!: String
+    request_type1_val!: String
 Mobile_New()
  {
     this.orinator_payload ="";
     this.cNum_payload ="";
-    this.Location_final ="";
-    this.Buildings_Disp  ="";
-    this.Voice_Type_Disp  ="";
-    this.Projectid_Disp  ="";
-    this.Department_number_Disp ="";
-    this.BusinessUnit_Disp  ="";
-    this.Dept_IN  ="";
-    this.authLevel_final  ="";
-    this.Fac_Type_disp  ="";
-    this.validity_disp  ="";
-    this.comments  ="";
+    this.Justification_disp  ="";
     this.ReqNo ="";
     this.gvs_portal_link ="";
     this.gvs_approval_link ="";
     this.countryname  ="";
     this.SLA_type ="";
-    this.authLevel_disp ="";
-    this.authValue = ""
-
+    this.default_call_permission =""
+    this.request_type ="",
+    this.smail_body2_val =""
+    this.smail_body1_val =""
+    this.request_type1_val =""
+    this.resource_type_val =""
+    this.resource_type1_val =""
+    this.l1group_val =""
+    this.l1_val =""
+    this.l1email_user_name_val =""
+    this.l2group_val =""
+    this.l2_val =""
+    this.l2email_user_name_val =""
+    this.UI_Fields_val =""
+    this.attribute1_val =""
+    this.attribute2_val =""
+    this.attribute3_val =""
+    this.attribute4_val =""
+    this.supplier_val =""
+    this.country_spoc_val =""
+    this.Response_Fields_val =""
+    this.Item_val =""
+    this.mail_body_1_val =""
+    this.mail_body_2_val =""
+    this.mail_body_3_val =""
+    this.mail_body_4_val =""
+    this.mail_body_5_val =""
  }
 
 }

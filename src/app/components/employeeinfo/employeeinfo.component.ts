@@ -46,6 +46,7 @@ export class EmployeeinfoComponent implements OnInit {
 
   warninginfofacdelete = false;
   warninginfofacdeletesnow=false;
+  warninginfosnowlegacy= false;
 
   warninginfofacu = false;
   warninginfofacr = false;
@@ -108,6 +109,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.warninginfofac = false
     this.warninginfosnow=false
     this.warninginfosnowfac=false
+    this.warninginfosnowlegacy=false
     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
     this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
     console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
@@ -161,6 +163,11 @@ export class EmployeeinfoComponent implements OnInit {
      this.page = 'FAC reset';
    } 
    }
+   else if (this.sessionwarninginfosnow =='true1' && this.service=="mobile_new"){
+    this.warninginfosnowlegacy = true    
+    this.identifier=sessionStorage.getItem('identifier')
+    this.isDataLoaded=true
+   }
    else if (this.sessionwarninginfosnow =='false1' && this.service=="requests"){
     this.warninginfosnowreq = true    
     this.isDataLoaded=true
@@ -199,7 +206,7 @@ export class EmployeeinfoComponent implements OnInit {
 
 
     
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdelete ||this.warninginfofacdeletesnow || this.warninginfosnowfac){
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdelete ||this.warninginfofacdeletesnow || this.warninginfosnowfac || this.warninginfosnowlegacy){
 
       this.hideSteps = true;
       this.warn = true;

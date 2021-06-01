@@ -46,7 +46,7 @@
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select [(ngModel)]="loc_sel" name="Location_Selected" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Location" #loc (change)="getlocation(loc.value)">
-                  <option value="Select Location">Select Location</option>
+                  <option value="Select Location" translate>Jabbernewtrans.SelectOne</option>
                   <option *ngFor="let loc of locations" [ngValue]="loc">{{loc}}</option>
                 </select>
                             </div>
