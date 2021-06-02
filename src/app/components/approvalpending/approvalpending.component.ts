@@ -24,6 +24,7 @@ export class ApprovalpendingComponent implements OnInit {
   cloudantData: any = [];
   servicesData: any = [];
   countryname:any;
+  countryroute :any
   ccode='';
   pcode: any;	
   service: any;	
@@ -51,8 +52,9 @@ export class ApprovalpendingComponent implements OnInit {
       this.pcode = params.country;	
       console.log("navigation component" + this.pcode);	
       sessionStorage.setItem('serviceName', this.service);
+      this.countryroute=sessionStorage.getItem('countryroute')
 
-      if(sessionStorage.getItem('countrydetails')==undefined){
+      if(this.pcode== this.countryroute){
   
         this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {            
           
@@ -65,22 +67,7 @@ export class ApprovalpendingComponent implements OnInit {
         this.ccode=this.countrydetails.testuser;
       }
       else{this.ccode = this.cookie.getCookie('ccode');}
-          })}
-          else{
-            this.countrydetails = sessionStorage.getItem('countrydetails')
-            this.countrydetails = JSON.parse(this.countrydetails)
-            if(this.countrydetails.testuser)
-      {
-        this.ccode=this.countrydetails.testuser;
-      }
-      else{this.ccode = this.cookie.getCookie('ccode');}
-          }	
-
-    
-
-    this.ccode = this.cookie.getCookie('ccode');
- 
-    this.empserial = this.ccode; 
+      this.empserial = this.ccode; 
     this.ccode=this.ccode.substring(6,9);
    if(this.service.includes('revalidationpending')){
      this.snowaction='snow_revalidation'
@@ -114,6 +101,56 @@ export class ApprovalpendingComponent implements OnInit {
       }
 
       console.log(' snow response', this.pendingRequest);
+          })}
+          else{
+            this.countrydetails = sessionStorage.getItem('countrydetails')
+            this.countrydetails = JSON.parse(this.countrydetails)
+            if(this.countrydetails.testuser)
+      {
+        this.ccode=this.countrydetails.testuser;
+      }
+      else{this.ccode = this.cookie.getCookie('ccode');}
+      this.empserial = this.ccode; 
+    this.ccode=this.ccode.substring(6,9);
+   if(this.service.includes('revalidationpending')){
+     this.snowaction='snow_revalidation'
+   // this.empserial="467756744";
+     this.reval=false;
+     sessionStorage.setItem('reval','reval');
+    }
+     else{
+      this.snowaction='snow_approve'
+      sessionStorage.setItem('reval','approval');
+     }
+   
+  console.log("CCCODE VALUE= "+ this.ccode) ;
+ 
+   if(this.pcode == this.ccode){
+      this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction,"","").subscribe(data => {
+        console.log(' snow response', data.message);
+        console.log(' snow response', data.message.length);
+        
+        if(data.message.length==0)
+        this.errorinfo=false;
+        else{
+        this.pendingRequest_original=data.message;
+        this.pendingRequest=this.pendingRequest_original;
+        }
+
+      });
+    }
+      else{
+        this.errorinfo=false;
+      }
+
+      console.log(' snow response', this.pendingRequest);
+          }	
+
+    
+
+   // this.ccode = this.cookie.getCookie('ccode');
+ 
+    
   const servicesData = {
     "data": [
       {          

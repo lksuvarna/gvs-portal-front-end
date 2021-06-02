@@ -25242,7 +25242,8 @@ class ApprovalpendingComponent {
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
             sessionStorage.setItem('serviceName', this.service);
-            if (sessionStorage.getItem('countrydetails') == undefined) {
+            this.countryroute = sessionStorage.getItem('countryroute');
+            if (this.pcode == this.countryroute) {
                 this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {
                     this.countryname = data.countrydetails;
                     sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
@@ -25254,6 +25255,35 @@ class ApprovalpendingComponent {
                     else {
                         this.ccode = this.cookie.getCookie('ccode');
                     }
+                    this.empserial = this.ccode;
+                    this.ccode = this.ccode.substring(6, 9);
+                    if (this.service.includes('revalidationpending')) {
+                        this.snowaction = 'snow_revalidation';
+                        // this.empserial="467756744";
+                        this.reval = false;
+                        sessionStorage.setItem('reval', 'reval');
+                    }
+                    else {
+                        this.snowaction = 'snow_approve';
+                        sessionStorage.setItem('reval', 'approval');
+                    }
+                    console.log("CCCODE VALUE= " + this.ccode);
+                    if (this.pcode == this.ccode) {
+                        this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction, "", "").subscribe(data => {
+                            console.log(' snow response', data.message);
+                            console.log(' snow response', data.message.length);
+                            if (data.message.length == 0)
+                                this.errorinfo = false;
+                            else {
+                                this.pendingRequest_original = data.message;
+                                this.pendingRequest = this.pendingRequest_original;
+                            }
+                        });
+                    }
+                    else {
+                        this.errorinfo = false;
+                    }
+                    console.log(' snow response', this.pendingRequest);
                 });
             }
             else {
@@ -25265,37 +25295,37 @@ class ApprovalpendingComponent {
                 else {
                     this.ccode = this.cookie.getCookie('ccode');
                 }
+                this.empserial = this.ccode;
+                this.ccode = this.ccode.substring(6, 9);
+                if (this.service.includes('revalidationpending')) {
+                    this.snowaction = 'snow_revalidation';
+                    // this.empserial="467756744";
+                    this.reval = false;
+                    sessionStorage.setItem('reval', 'reval');
+                }
+                else {
+                    this.snowaction = 'snow_approve';
+                    sessionStorage.setItem('reval', 'approval');
+                }
+                console.log("CCCODE VALUE= " + this.ccode);
+                if (this.pcode == this.ccode) {
+                    this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction, "", "").subscribe(data => {
+                        console.log(' snow response', data.message);
+                        console.log(' snow response', data.message.length);
+                        if (data.message.length == 0)
+                            this.errorinfo = false;
+                        else {
+                            this.pendingRequest_original = data.message;
+                            this.pendingRequest = this.pendingRequest_original;
+                        }
+                    });
+                }
+                else {
+                    this.errorinfo = false;
+                }
+                console.log(' snow response', this.pendingRequest);
             }
-            this.ccode = this.cookie.getCookie('ccode');
-            this.empserial = this.ccode;
-            this.ccode = this.ccode.substring(6, 9);
-            if (this.service.includes('revalidationpending')) {
-                this.snowaction = 'snow_revalidation';
-                // this.empserial="467756744";
-                this.reval = false;
-                sessionStorage.setItem('reval', 'reval');
-            }
-            else {
-                this.snowaction = 'snow_approve';
-                sessionStorage.setItem('reval', 'approval');
-            }
-            console.log("CCCODE VALUE= " + this.ccode);
-            if (this.pcode == this.ccode) {
-                this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction, "", "").subscribe(data => {
-                    console.log(' snow response', data.message);
-                    console.log(' snow response', data.message.length);
-                    if (data.message.length == 0)
-                        this.errorinfo = false;
-                    else {
-                        this.pendingRequest_original = data.message;
-                        this.pendingRequest = this.pendingRequest_original;
-                    }
-                });
-            }
-            else {
-                this.errorinfo = false;
-            }
-            console.log(' snow response', this.pendingRequest);
+            // this.ccode = this.cookie.getCookie('ccode');
             const servicesData = {
                 "data": [
                     {
