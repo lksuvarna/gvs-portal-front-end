@@ -53,51 +53,51 @@ export class ResultpageComponent implements OnInit {
     }
     getPage(){
 if(this.service=='jabber_new'){
-  this.page='new Jabber';
+  this.page='for a new IBM Telephone Number (ITN)/Jabber account';
   return this.page
 }
 if(this.service=='jabber_delete'){
-  this.page='delete Jabber';
+  this.page='to delete an IBM Telephone Number (ITN)/Jabber account';
   return this.page;
 }
 if(this.service=='jabber_update'){
-  this.page='update Jabber';
+  this.page='to update an IBM Telephone Number (ITN)/Jabber account';
   return this.page;
 }
 if(this.service=='jabber_move'){
-  this.page='move Jabber';
+  this.page='to move an IBM Telephone Number (ITN)/Jabber account';
   return this.page;
 }
 if(this.service=='fixedphone_new'){
-  this.page='new Fixed Phone';
+  this.page='for a new Fixed Phone';
   return this.page;
 }
 if(this.service=='fixedphone_update'){
-  this.page='update Fixed Phone';
+  this.page='to update Fixed Phone';
   return this.page;
 }
 if(this.service=='fixedphone_delete'){
-  this.page='delete Fixed Phone';
+  this.page='to delete Fixed Phone';
   return this.page;
 }
 if(this.service=='mobile_new'){
-  this.page='new Mobile';
+  this.page='for a new Mobile';
   return this.page
 }
  if(this.service=='fac_new'){
-  this.page='new FAC Code / IDD PIN';
+  this.page='for a new FAC Code / IDD PIN';
   return this.page;
 } 
 if(this.service=='fac_update'){
-  this.page='update FAC Code / IDD PIN';
+  this.page='to update FAC Code / IDD PIN';
   return this.page;
 } 
 if(this.service=='fac_reset'){
-  this.page='reset FAC Code / IDD PIN';
+  this.page='to reset FAC Code / IDD PIN';
   return this.page;
 } 
 if(this.service=='fac_delete'){
-  this.page='delete FAC Code / IDD PIN';
+  this.page='to delete FAC Code / IDD PIN';
   return this.page;
 } 
 

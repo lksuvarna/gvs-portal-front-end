@@ -272,7 +272,7 @@ export class EmployeesearchComponent implements OnInit {
 
         if (this.countrydetails.extracodes.split(',').some((s: string[]) => s.includes(this.ccode.substr(6, 9)))) { }
         else {
-          alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name + " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" " + this.countrydetails.name);
+          alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name + " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" " + this.countrydetails.name+ " "+this.mainConfiguration.alerttranslation.requests);
           return;
         }
       }
@@ -281,12 +281,12 @@ export class EmployeesearchComponent implements OnInit {
 
         if (this.countrydetails.scountries.some((s: string | string[]) => s.includes(this.ccode.substr(6, 9)))) { }
         else {
-          alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name +  " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" " + this.countrydetails.name);
+          alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name + " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" " + this.countrydetails.name+ " "+this.mainConfiguration.alerttranslation.requests);
           return;
         }
       }
       else if (this.pcode !== this.ccode.substr(6, 9)) {
-        alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name +  " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" " + this.countrydetails.name);
+        alert(""+this.mainConfiguration.alerttranslation.Only+ " " + this.countrydetails.name + " "+this.mainConfiguration.alerttranslation.serialnumbersareallowed+" " + this.countrydetails.name+ " "+this.mainConfiguration.alerttranslation.requests);
         return;
       }
 
