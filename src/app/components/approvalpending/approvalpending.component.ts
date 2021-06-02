@@ -27,6 +27,7 @@ export class ApprovalpendingComponent implements OnInit {
   countryroute :any
   ccode='';
   pcode: any;	
+  searchresult=false
   service: any;	
   isButtonVisible = true;	
   isSpinnerVisible= false; 	
@@ -54,7 +55,7 @@ export class ApprovalpendingComponent implements OnInit {
       sessionStorage.setItem('serviceName', this.service);
       this.countryroute=sessionStorage.getItem('countryroute')
 
-      if(this.pcode== this.countryroute){
+      if(this.pcode!== this.countryroute){
   
         this.cloudantservice.getcountrydetails(this.pcode).subscribe(data => {            
           
@@ -260,13 +261,19 @@ performsearch(){
    }
   
    this.pendingRequest=List;
-
+   if(this.pendingRequest.length==0){
+    this.searchresult=true
+   }
+   else{
+    this.searchresult=false
+   }
 
 }
 
 clear()
 {
   this.search='';
+  this.searchresult=false
   this.pendingRequest=this.pendingRequest_original;
   
 }
