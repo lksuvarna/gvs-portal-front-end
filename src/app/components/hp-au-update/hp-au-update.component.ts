@@ -135,7 +135,7 @@ export class HpAuUpdateComponent implements OnInit {
       });
     }
     else{
-      alert("Please enter a MAC Address or Phone number to search");
+      alert("Please provide the MAC address or phone number being updated.");
     }
     
 
@@ -232,11 +232,11 @@ export class HpAuUpdateComponent implements OnInit {
   entryDetails(formData: NgForm){
 
     if(formData.value.UpdateReq == '') {	
-      alert('Please select update required for');	
+      alert('Please provide the update requirements.');	
       return;
     }	
     if(this.showformacadd ==true && (formData.value.MAC1.trim() == '' || formData.value.MAC1.length != 12)) {	
-      alert('Please enter 12 characters MAC address');
+      alert('Please provide the MAC address (12 character limit).');
       return;	
     }
     if(this.showformacadd == true && formData.value.MAC1 == this.currentMac) {
@@ -249,7 +249,7 @@ export class HpAuUpdateComponent implements OnInit {
       return;
     }
     if(this.showLocation == true && formData.value.Location_1_1 == '') {	
-      alert('Please select the State');	
+      alert('Please select a state.');	
       return;	
     }	
     if(this.showLocation == true && (formData.value.Buildings.toUpperCase() == 'SELECT LOCATION' || formData.value.Buildings == '' || formData.value.Location_1_1.toUpperCase() != 'SELECT STATE' && formData.value.Buildings == '')) {	
@@ -257,7 +257,7 @@ export class HpAuUpdateComponent implements OnInit {
       return;	
     }	
     if(this.showforNewDesc == true && formData.value.Newdesc.trim() == '') {	
-      alert('Please provide the New Description.');
+      alert('Please provide a new description.');
       return;
     }
 

@@ -138,31 +138,31 @@ export class FacInNewComponent implements OnInit {
         return;	
       }	
       if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	
-        alert('Please select the Campus');	
+        alert('Please select the appropriate campus.');	
         return;	
       }	
       if(formData.value.chargeDepartmentCode.trim() === '' && this.hideDeptCode == false) {	
-        alert('Please enter the Charge Department Code');	
+        alert('Please provide the charge department code.');	
         return;	
       }	
 
       if(formData.value.authLevel.toLowerCase() === 'select one' || formData.value.authLevel === '') {	
-        alert('Please select an authorization level');	
+        alert('Please select the appropriate authorization level.');	
         return;	
       }	
 
       if(formData.value.Fac_Type.toLowerCase() === 'select one' || formData.value.Fac_Type === '') {	
-        alert('Please select a FAC Code / IDD PIN type');	
+        alert('Please select the FAC type.');	
         return;	
       }	
 
       if((formData.value.validity.toLowerCase() === 'select one' || formData.value.validity === '' ) && this.hideValidity === false) {	
-        alert('Please select a validity');	
+        alert('Please select the validity.');	
         return;	
       }	
 
       if( formData.value.Comments.trim() === '') {	
-        alert('Please provide business justification');	
+        alert('Please provide a business justification.');	
         return;	
       }	
     } else {
@@ -172,7 +172,7 @@ export class FacInNewComponent implements OnInit {
       }	
 
       if( formData.value.Comments.trim() === '') {	
-        alert('Please provide business justification');	
+        alert('Please provide a business justification.');	
         return;	
       }	
     }

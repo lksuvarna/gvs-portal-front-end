@@ -46,15 +46,17 @@
                                 <select rows="2" name="Jabber_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.selectjabbernumberwishtoupdate' | translate}}" tabindex="1" (change)='toggleOptions($event)'
                                     ngModel [(ngModel)]='selected_jabber'>
                   <option value ="" translate>Jabberupdate.SELECTONE</option>
-                  <option name="Jabber_1" *ngFor='let fl of data'  [value]='fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?fl.IDENTIFIER.trim()+"-P":fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?fl.IDENTIFIER.trim()+"-SEP":fl.IDENTIFIER.trim()' selected>
-                    {{ fl.IDENTIFIER.trim()}}{{fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?" - P":fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?" - SEP":''}}</option>
+                  <option name="Jabber_1" *ngFor='let fl of data'  [value]='fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS") && fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?fl.IDENTIFIER.trim()+"-P,SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?fl.IDENTIFIER.trim()+"-P":fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?fl.IDENTIFIER.trim()+"-SEP":fl.IDENTIFIER.trim()' selected>
+                    {{ fl.IDENTIFIER.trim()}}{{fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS") && fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?" - P,SEP" :fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?" - P":fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?" - SEP":''}}</option>
                 </select>
-                            </div>
+                <span style="color: black" translate>specialrequest.devicehelpmessage</span>
+                            </div>  
                         </td>
                     </tr>
                     <tr valign="top" *ngIf='defaultlocation==false'>
                         <td colspan="2" width="47%" height="10">
                             <label for="LocationId" class="ds-text-capitalize" translate>Jabbernewtrans.JabberLocation</label>
+            
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="53%" height="10">
