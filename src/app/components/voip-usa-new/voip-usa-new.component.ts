@@ -8,7 +8,6 @@ import { servicenowservice } from '../../_services/servicenow.service';
 import {Create_Cache_jabber, Jabber_New} from '../../../../config/payload';	
 import { analyzeAndValidateNgModules } from '@angular/compiler';	
 import {Location} from '@angular/common';	
-import { TranslateConfigService } from '../../_services/translate-config.service';
 
 @Component({
   selector: 'app-voip-usa-new',
@@ -52,7 +51,6 @@ service: any;
 //min = 1000;	
 //max = 9000;	
 employeeInfo: any;	
-mainConfiguration :any;
 employeeInfo1: any;	
 campus:any;	
 hideProjectId = false;
@@ -157,7 +155,7 @@ index!: number;
     
     if(this.countrycodes[this.index] !== this.employeeInfo.workloc && e.target.value !== "Home and Mobile") {	
       
-      alert(this.mainConfiguration.alerttranslation.Homeandmobilealert);	
+      alert('The serial number that you have entered does not belong to the selected location. Please choose your correct location or choose Home and Mobile location.');	
       e.target.value = "Home and Mobile";
       this.locationselected="Home and Mobile";
       this.msgdis=true
@@ -185,7 +183,7 @@ this.msgdis=true
      
  }
 
- constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private servicesd : TranslateConfigService) { 	}
+ constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	}
  payload : Jabber_New = new Jabber_New();	
   
  reviewDetailsIndia = {	
