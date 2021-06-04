@@ -93,7 +93,12 @@ export class ApprovalSinglePageComponent implements OnInit {
     alert('Enter rejection comments');
     return
   }
-
+  backClick(){
+   if(this.service=='approvalpending')
+    this.router.navigate(['/approvalpending'],{  queryParams: { country: this.pcode, service: this.service } });
+    else this.router.navigate(['/revalidationpending'],{  queryParams: { country: this.pcode, service: this.service } });
+  }
+  
   process(action:string, formData : NgForm)
   {
      

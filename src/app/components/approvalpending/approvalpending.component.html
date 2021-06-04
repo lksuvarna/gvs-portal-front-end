@@ -42,20 +42,29 @@
         </table>
         <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5">Pending Requests</h2>
         <div class="ds-table-container">
-            <table class="ds-table" *ngIf="reval">
+            <table style="width:100%; border-collapse: collapse; padding:2px" *ngIf="reval && errorinfo && searchresult==false">
+                <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">
+                    <tr>
+                        <td width="59" height="49"></td>
+                        <td width="175" height="49">Serial Number</td>
+                        <td width="194" height="49">Employee Name</td>
+                        <td width="213" height="49">Resource Type</td>
+                        <td width="175" height="49">Tracking Number</td>                        
+                    </tr>
+                </thead>
                 <tbody valign="top" *ngFor="let req of pendingRequest, let i = index">
                     <tr>
-                        <td width="59">
+                        <td width="59" height="49">
                             <font color="#ffffff">
                                 <input name="req.sys_id" id="req.sys_id" type="checkbox" [(ngModel)]="checked[i]">
                             </font>
                         </td>
-                        <td width="175"><a (click)='openpage(req)'>{{req['sysapproval.variables.requested_by.user_name'].replace('-','')}}</a></td>
-                        <td width="194">{{req['sysapproval.variables.requested_by.name']}}
+                        <td width="175" height="49"><a (click)='openpage(req)'>{{req['sysapproval.variables.requested_by.user_name'].replace('-','')}}</a></td>
+                        <td width="194" height="49">{{req['sysapproval.variables.requested_by.name']}}
                             <font color="#808080"> </font>
                         </td>
-                        <td width="213">{{req['sysapproval.short_description']}}</td>
-                        <td width="213">{{req['sysapproval.variables.id']}}</td>
+                        <td width="213" height="49">{{req['sysapproval.short_description']}}</td>
+                        <td width="213" height="49">{{req['sysapproval.variables.id']}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -63,11 +72,11 @@
                 <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">
                     <tr>
                         <td width="59"></td>
-                        <td width="175">CNUM</td>
+                        <td width="175">Serial Number</td>
                         <td width="194">Employee Name</td>
                         <td width="213">Revalidation Date</td>
-                        <td width="175">Identifier</td>
-                        <td width="213">Changed</td>
+                        <td width="175">Phone/Dial in number</td>
+                        <td width="213">Details of Change</td>
                     </tr>
                 </thead>
                 <tbody valign="top" *ngFor="let req of pendingRequest, let i = index">
@@ -95,6 +104,12 @@
             <p>
             </p>
         </div>
+        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="searchresult">
+            <p></p>
+            <p>No search results found.</p>
+            <p>
+            </p>
+        </div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo && !reval">
             <p></p>
             <p>There are no pending revalidation documents.</p>
@@ -107,7 +122,7 @@
             <div class="ds-loader-header">Your request is being processed. Do not refresh or go back.</div>
             <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being processed. Do not refresh or go back."></div>
         </div>
-        <div class="ds-row ds-pad-t-2" style="margin-right:12px" *ngIf="this.isButtonVisible && errorinfo">
+        <div class="ds-row ds-pad-t-2" style="margin-right:12px" *ngIf="this.isButtonVisible && errorinfo && searchresult==false">
             <div class="ds-tray-fit-content ds-mar-b-0">
                 <div class="button-bar ds-tray-fit-content ds-pad-t-1 ds-float-lg-right">
                     <span class="ds-pad-l-4" id="button1">
