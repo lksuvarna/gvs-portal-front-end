@@ -203,7 +203,7 @@ emailClick = false;
   entryDetails(formData: NgForm) {	
       
     if(formData.value.Location_1.toUpperCase() == 'SELECT LOCATION' || formData.value.Location_1 == '') {	
-      alert('Please select the Location');	
+      alert('Please select the appropriate location.');	
       return;	
     }	
     

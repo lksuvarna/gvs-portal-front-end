@@ -94,7 +94,7 @@
                         </td>
                         <td width="50%"><br>
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select name="UpdateReq" id="voicetype" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Update Required For" #device (change)='updateFor(device.value)' [(ngModel)]='selected_device' ngModel>
+                                <select name="UpdateReq" id="voicetype" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'tooltips.UpdateRequiredFor' | translate}}" #device (change)='updateFor(device.value)' [(ngModel)]='selected_device' ngModel>
                                 <option value="" translate>Jabbernewtrans.SelectOne</option>
                                 <option *ngFor='let device of updateRequiredFor' [value]='device'>{{ device }}</option>
                             </select>
@@ -117,7 +117,7 @@
                         </td>
                         <td width="50%">
                             <div id="model1" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1" (change)="checkModel(newModel)"><br>
-                                <select name="NewModel" rows="2" cols="40" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Phone Model" [(ngModel)]='newModel'>
+                                <select name="NewModel" rows="2" cols="40" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'tooltips.PhoneModel'| translate}}" [(ngModel)]='newModel'>
                                 <option value="" translate >Jabbernewtrans.SelectOne</option>
                                 <option name="NewModel"  *ngFor='let model of models' [value]='model' >{{ model }}</option>
                             </select>
@@ -130,7 +130,7 @@
                             <label class="" translate>fixedphonenew.NewMACAddress<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
-                            <input name="MAC1" value="" class="ds-input ds-pad-b-1" style="width:300px !important;" title="New MAC Address" maxlength="12;" ngModel>
+                            <input name="MAC1" value="" class="ds-input ds-pad-b-1" style="width:300px !important;" title="{{ 'tooltips.NewMACAddress'| translate}}" maxlength="12;" ngModel>
                             <p translate>fixedphonenew.NoteCombination</p>
                         </td>
                     </tr>
@@ -141,7 +141,7 @@
                             <span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%" class="ds-pad-t-1 ds-pad-b-1">
-                            <input name="Newdesc" value="" id="desc" class="ds-input " style="width:300px !important;" title="New Description" maxlength="500;" ngModel><br>
+                            <input name="Newdesc" value="" id="desc" class="ds-input " style="width:300px !important;" title="{{ 'tooltips.NewDescription'| translate}}" maxlength="500;" ngModel><br>
                         </td>
                     </tr>
 
@@ -150,7 +150,7 @@
                             <label class="" translate>fixedphonenew.ReasonforUpdation<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%">
-                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update" rows="2" cols="40" maxlength="200;" ngModel>
+                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="{{ 'tooltips.ReasonforUpdate'| translate}}" rows="2" cols="40" maxlength="200;" ngModel>
                         </textarea><br>
                         </td>
                     </tr>

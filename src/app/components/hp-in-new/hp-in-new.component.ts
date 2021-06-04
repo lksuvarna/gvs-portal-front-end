@@ -488,7 +488,7 @@ submit_snow(){
 // Submit to Snow Jabber new code added by Swarnava ends	
 
 ngOnInit(): void {	
-
+  this.mainConfiguration = this.servicesd.readConfigFile();
    // Submit to Snow Jabber new code added by Swarnava	
   this.orgi=this.cookie.getCookie('ccode');	
   this.cnum = sessionStorage.getItem('cnum') ;	

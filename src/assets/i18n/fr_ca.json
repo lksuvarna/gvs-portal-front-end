@@ -1,12 +1,12 @@
 {
 
     "home": {
-        "select-language": "Choisissez une langue: ",
-        "app-name": "Services téléphoniques mondiaux",
+        "select-language": "Choisissez une langue : ",
+        "app-name": "Services vocaux mondiaux",
         "app-function": "Point d'entrée unique pour commander des services vocaux dans votre pays",
         "sponsor":"Basé sur le cloud hybride CIO optimisé par Red Hat OpenShift",
         "welcomemessage": "Bienvenue,",
-        "question": "Quel service ou quel pays rechercherez-vous?",
+        "question": "Quel service ou pays recherchez-vous ?",
         "search-placeholder": "Service de recherche ...",
         "search-text": "Cliquez ici pour voir tous les résultats de la recherche GVS",
         "my-country": "Mon pays",
@@ -288,7 +288,7 @@
            "DescriptionofDevice" : "Description de l'appareil",
            "Somethingseemswrong" :"Nous rencontrons actuellement des difficultés pour traiter votre demande en raison d'une erreur inattendue. Veuillez contacter le service d'assistance pour signaler ce message. [Erreur SN]",
            "selectdevice" :"Veuillez sélectionner le type d'appareil.",
-           "selectmodel" :"Veuillez sélectionner un type de modèle",
+           "selectmodel" :"Veuillez sélectionner le type de modèle.",
            "businesscos" :"Veuillez fournir une justification commerciale pour la classe de service sélectionnée.",
            "descriptioncharacters" :"Veuillez fournir une description (30 caractères maximum).",
            "entermacadd":"Veuillez fournir l'adresse MAC (limite de 12 caractères).",
@@ -309,7 +309,7 @@
         "TypeOfModel" :"Type de modèle",
         "SelectPhoneModel" :"Sélectionnez le modèle de téléphone",
         "NewMACAddress" :"Nouvelle adresse MAC",
-        "NewDescriptiontoUpdate" :"Nouvelle description à mettre à jour",
+        "NewDescriptiontoUpdate" :"Nouveau descriptif",
         "ReasonforUpdation" :"Raison de la mise à jour",
         "MACAddresssearch"  :"Veuillez fournir l'adresse MAC ou le numéro de téléphone mis à jour.",
         "updaterequiredfor" :"Veuillez fournir les exigences de mise à jour.",
@@ -351,7 +351,15 @@
        "Device Description" :"Description de l'appareil"
        
        
-    }
+    },
+    "tooltips":{
+        "UpdateRequiredFor":"Mise à jour requise pour",
+        "PhoneModel" :"Modèle de téléphone",
+        "NewMACAddress":"Nouvelle adresse MAC",
+        "NewDescription":"Nouvelle description",
+        "ReasonforUpdate":"Raison de la mise à jour",
+        "samemodelupdate":"Vous avez sélectionné le même modèle que le modèle de téléphone actuel."
+     }
     
  
 }
