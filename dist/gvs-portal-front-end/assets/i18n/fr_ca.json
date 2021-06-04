@@ -4,25 +4,25 @@
         "select-language": "Choisissez une langue : ",
         "app-name": "Services vocaux mondiaux",
         "app-function": "Point d'entrée unique pour commander des services vocaux dans votre pays",
-        "sponsor":"Basé sur le cloud hybride CIO optimisé par Red Hat OpenShift",
+        "sponsor":"Construit sur le cloud hybride CIO optimisé par Red Hat OpenShift",
         "welcomemessage": "Bienvenue,",
         "question": "Quel service ou pays recherchez-vous ?",
-        "search-placeholder": "Service de recherche ...",
+        "search-placeholder": "Service de recherche...",
         "search-text": "Cliquez ici pour voir tous les résultats de la recherche GVS",
         "my-country": "Mon pays",
         "click-here": "Cliquez ici",
-        "available": "pour afficher tous les",
+        "available": "pour voir tous les disponibles",
         "servicesonlyokay": "services pour",
         "most-viewed-services": "Services les plus consultés",
         "find-right-service": "Trouvez les bons services, vérifiez leur disponibilité,",
         "find-right-service2": "puis choisissez la façon dont vous vous connectez et travaillez ensemble.",
-        "jabber-description": "Cisco Jabber est une application de téléphonie logicielle multiplateforme pour effectuer et recevoir des appels téléphoniques.",
-        "button-value": "Premiers pas",
+        "jabber-description": "Cisco Jabber est une application de téléphonie logicielle à plateformes multiples pour passer et recevoir des appels téléphoniques.",
+        "button-value": "Commencer",
         "Searchservice": "Service de recherche..."
     },
 
     "footer": {
-        "aditional-question": "Vous avez des questions supplémentaires sur la commande de  Services téléphoniques mondiaux ?",
+        "aditional-question": "Vous avez des questions supplémentaires sur la commande de Global Voice Services ?",
         "please consult": "Veuillez consulter",
         "consult": "* Ce site Web prend en charge Mozilla Firefox, Google Chrome, IE, Edge et Safari."
 
@@ -35,7 +35,7 @@
         "Special Request":"Special Request",
         "Terms of use":"Conditions d'utilisation",
         "Useful Information":"Informations utiles",
-        "Please bear in mind the following points when making a request :":"Veuillez garder à l'esprit les points suivants lorsque vous faites une demande:",
+        "Please bear in mind the following points when making a request :":"Veuillez garder à l'esprit les points suivants lorsque vous faites une demande :",
         "To make a request the Employee must exist in BluePages (except for cancellation requests).":"Pour faire une demande, l'Employé doit exister dans BluePages (sauf pour les demandes d'annulation).",
         "You must know the IBM serial Number of the person making the request.":"Vous devez connaître le numéro de série IBM de la personne qui fait la demande.",
         "Only one request per employee per request type is processed at a time.":"Une seule demande par employé et par type de demande est traitée à la fois."
@@ -45,27 +45,21 @@
     "lhs": {
         "Services": "Prestations de service",
         "Jabber": "Jabber",
-        "FAC Code / IDD PIN": "FAC Code / IDD PIN",
         "Fixed Phone": "Fixed Phone",
         "Special Request": "Special Request",
-        "Approvals Pending": "Approbations en attente",
-        "Revalidation Pending": "Revalidation en attente",
-        "Phone Number Search": "Recherche par numéro de téléphone",
         "Resources": "Ressources",
         "Requests": "Demandes"
     },
     "Jabberservices": {
-        "initiateJabber":"Veuillez sélectionner un type de demande ci-dessous.",
+        "initiateJabber":"Veuillez sélectionner un type de demande ci-dessous",
         "jnew":"Demander un nouveau service",
-        "jupdate":"Mettre à jour un service existant",
-        "jmove":"Déplacer un service existant",
         "jdelete":"Supprimer un service existant"
     },
     "Jabbernewtrans" :{
         "Reqnewservice":"Cette demande peut être soumise pour vous-même ou au nom d'un autre employé. Champs marqués d'un astérisque",
-        "arerequired":"sont obligatoires.",
+        "arerequired":" sont obligatoires.",
         "EmployeeSearch":"Recherche d'employés",
-        "requestfor":"À qui s'adresse cette demande",
+        "requestfor":"A qui s'adresse cette demande",
         "Myself":"Moi-même",
         "AnotherEmployee":"Un autre employé",
         "Name":"Nom",
@@ -80,26 +74,15 @@
         "EMAILcouldnotbefoundinbp":"Une adresse e-mail pour le numéro de série que vous avez entré est introuvable dans les pages bleues. Veuillez réessayer plus tard.",
         "opps":"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard",
         "JabberLocation" : "Emplacement du Jabber / Numéro de téléphone",
-        "Voicemail" : "Messagerie vocale",
-        "ClassofService" : "Classe de service (COS)",
-        "pleasesubmittostart":"En soumettant cette demande de provisioning, vous donnez votre consentement écrit explicite pour qu'IBM traite les informations personnelles (PI) que vous avez fournies dans le cadre du processus de provisioning."
+        "pleasesubmittostart":"En soumettant cette demande d'approvisionnement, vous donnez votre consentement écrit à IBM pour traiter les Informations personnelles (IP) fournies."
 
     },
 
     "servicestitle":{
 
         "Request new Jabber service": "Jabber - Nouvelle demande",
-        "Update Jabber Request": "Jabber - Demande de mise à jour",
-        "Move Jabber Request": "Jabber - Demande de déplacement",
         "Delete Jabber Request": "Jabber - Demande de déplacement",
-        "FAC Code / IDD PIN New Request": "Code FAC - Nouvelle demande",
-        "FAC Code / IDD PIN Update Request": "Code FAC - Demande de mise à jour",
-        "FAC Code / IDD PIN Reset Request": "Code FAC - Demande de réinitialisation",
-        "FAC Code / IDD PIN Delete Request" :"Code FAC - Demande de suppression",
-        "Request Move Jabber service" :"Jabber - Demande de déplacement",
-        "Update Existing Jabber Request" :"Jabber - Demande de mise à jour",
         "SpecialRequestentryandreview" :"Demande spéciale",
-        "FAC Code / IDD PIN - Delete Request" :"Code FAC / Pin IDD - Demande de suppression",
         "Special Request": "Demande spéciale",
         "Delete an existing service" : "Supprimer un service existant",
         "Request a new service" :"Demander un nouveau service",
@@ -109,12 +92,7 @@
         "Fixed Phone - New Request" : "Téléphone fixe - Nouvelle demande",
         "New Fixed Phone Request" : "Nouvelle demande de téléphone fixe",
         "Fixed Phone - Update Request" : "Téléphone fixe - Demande de mise à jour",
-        "Fixed Phone - Delete Request"  : "Téléphone fixe - Demande de suppression",
-        "Delete an existing FAC Code / IDD PIN" :"Supprimer un code FAC existant",
-        "Request a new FAC Code / IDD PIN" : "Demander un nouveau code FAC",
-        "Update an existing FAC Code / IDD PIN" : "Mettre à jour un code FAC existant",
-        "Reset an existing FAC Code / IDD PIN" : "Réinitialiser un code FAC existant",
-        "Phone Number Search": "Recherche par numéro de téléphone"
+        "Fixed Phone - Delete Request"  : "Téléphone fixe - Demande de suppression"
 
     },
     "employeeinfotrans":{
@@ -147,7 +125,7 @@
         "alreadyone":"le numéro de série que vous avez entré en a déjà un",
         "inprogess":"est en cours et le numéro de la demande est",
         "ongoingrequestsbyclickonrequestpage":"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.",
-        "isalreadybeingprocessed":"est déjà en cours de traitement pour cet utilisateur. Pour voir l'état de cette demande, veuillez cliquer sur Demandes dans le menu de la barre latérale.",
+        "isalreadybeingprocessed":" est déjà en cours de traitement pour cet utilisateur. Pour voir l'état de cette demande, veuillez cliquer sur Demandes dans le menu de la barre latérale.",
         "Ifyoucannotsee":"Si vous ne pouvez pas voir la demande répertoriée, ou pour tout autre problème, veuillez contacter le service d'assistance. ",
         "nooutstandingreq":"Aucune demande en suspens n'a été trouvée pour le numéro de série.",
         "noresources":"Il n'y a pas de ressources pour ce numéro de série.",
@@ -155,12 +133,8 @@
         "BACK":"DOS",
         "NEXT":"SUIVANTE",
         "SUBMIT1" : "NOUS FAIRE PARVENIR",
-        "alreadyonerequestinprogress":"Demandes",
-        "alreadyoneupdaterequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de mise à jour Jabber est en cours et le numéro de demande est",
-        "alreadyonemoverequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de déplacement Jabber est en cours et le numéro de demande est",
-        "alreadyonedeleterequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est",
-        "alreadyonefacdeleterequestinprogress" :"Le numéro de série que vous avez entré a déjà une demande de suppression FAC est en cours et le numéro de demande est",
-        "enterserialnumber":"Please enter a serial number"
+        "alreadyonerequestinprogress":"Demander",
+        "alreadyonedeleterequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est"
     },
     "Jabberentrydetails":{
         "Fieldsasterisk":"Champs marqués d'un astérisque",
@@ -286,7 +260,7 @@
            "NoteCombinationofandLength12" :"Remarque: combinaison de (0 à 9, A à F) et longueur: 12",
            "BusinessJustification" :"Justification de l'entreprise",
            "DescriptionofDevice" : "Description de l'appareil",
-           "Somethingseemswrong" :"Nous rencontrons actuellement des difficultés pour traiter votre demande en raison d'une erreur inattendue. Veuillez contacter le service d'assistance pour signaler ce message. [Erreur SN]",
+           "Somethingseemswrong" :"Nous rencontrons actuellement des difficultés pour traiter votre demande en raison d'une erreur inattendue. Veuillez contacter le service d'assistance pour signaler ce message. [Erreur]",
            "selectdevice" :"Veuillez sélectionner le type d'appareil.",
            "selectmodel" :"Veuillez sélectionner le type de modèle.",
            "businesscos" :"Veuillez fournir une justification commerciale pour la classe de service sélectionnée.",
@@ -304,7 +278,7 @@
             "CurrentMACAddress" :"Adresse MAC actuelle ",
         "CurrentPhoneNumber" :"Numéro de téléphone actuel ", 
         "CurrentDescription" :"Description actuelle ",
-        "CurrentModel" :"Modèle actuel",
+        "CurrentModel" :"Modèle de téléphone actuel",
         "UpdateRequiredfor" :"Mise à jour requise pour",
         "TypeOfModel" :"Type de modèle",
         "SelectPhoneModel" :"Sélectionnez le modèle de téléphone",

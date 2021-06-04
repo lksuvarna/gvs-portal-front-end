@@ -65,7 +65,7 @@
     },
     "Jabbernewtrans": {
         "Reqnewservice": "This request can be submitted for yourself, or on behalf of another employee. Fields marked with an asterisk",
-        "arerequired": "are mandatory.",
+        "arerequired": " are mandatory.",
         "EmployeeSearch": "Employee Search",
         "Declaration": "Declaration",
         "DeclarationAck": "I have read and comply with the Algeria Mobility Policy, available here and I acknowledge reading the Privacy Notice.",
@@ -82,11 +82,11 @@
         "availablefromBluePages": "available from BluePages",
         "Pleaseverifyandtryagain" :"Please verify and try again.",
         "EMAILcouldnotbefoundinbp":"An email address for the serial number you entered could not be found in Bluepages. Please try again later. ",
-        "opps": "We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message. [SN Error]",
+        "opps": "We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message.",
         "JabberLocation": "Jabber / Phone Number location",
         "Voicemail": "Voicemail",
         "ClassofService": "Class of Service (COS)",
-        "pleasesubmittostart": "By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.Press submit to start the process of provisioning your Jabber service."
+        "pleasesubmittostart": "By submitting this provisioning request, you are providing your written consent to IBM to process the Personal Information (PI) provided."
 
     },
 
@@ -161,7 +161,7 @@
         "alreadyone": "The serial number that you have entered has already one",
         "inprogess": "request in progress and request number is",
         "ongoingrequestsbyclickonrequestpage": "You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.",
-        "isalreadybeingprocessed":"is already being processed for this user. To view the status of this request, please click on Requests in the sidebar menu.",
+        "isalreadybeingprocessed":" is already being processed for this user. To view the status of this request, please click on Requests in the sidebar menu.",
         "Ifyoucannotsee":"If you cannot see the request listed, or for any other issues, please reach out to the help desk. ",
         "nooutstandingreq": "No outstanding requests were found for the serial number.",
         "noresources": "There are no resources for this serial number.",
@@ -169,13 +169,11 @@
         "BACK": "BACK",
         "NEXT": "NEXT",
         "SUBMIT1": "SUBMIT",
-        "alreadyonerequestinprogress": "Requests",
+        "alreadyonerequestinprogress":"Request ",
         "alreadyoneupdaterequestinprogress": "The serial number that you have entered has already one Update Jabber request is in progress and request number is",
         "alreadyonemoverequestinprogress": "The serial number that you have entered has already one move Jabber request is in progress and request number is",
         "alreadyonedeleterequestinprogress": "The serial number that you have entered has already one delete Jabber request is in progress and request number is",
-        "alreadyonefacdeleterequestinprogress": "The serial number that you have entered has already one delete FAC request is in progress and request number is",
-        "enterserialnumber": "Please enter a serial number",
-        "alreadyonerequestinprogressfac": "The serial number that you have entered has already one new FAC Code / IDD PIN request is in progress and request number is"
+        "alreadyonefacdeleterequestinprogress": "The serial number that you have entered has already one delete FAC request is in progress and request number is"
 
     },
     "Jabberentrydetails": {
@@ -303,7 +301,7 @@
         "NoteCombinationofandLength12" :"Note:Combination of (0 to 9 , A to F) and Length:12",
         "BusinessJustification" :"Business Justification",
         "DescriptionofDevice" : "Description of Device",
-        "Somethingseemswrong" :"We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message. [SN Error]",
+        "Somethingseemswrong" :"We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message. [Error]",
         "selectdevice" :"Please select the device type.",
         "selectmodel" :"Please select the model type.",
         "businesscos" :"Please provide a business justification for the selected class of service.",
@@ -321,7 +319,7 @@
         "CurrentMACAddress" :"Current MAC address ",
         "CurrentPhoneNumber" :"Current Phone Number ", 
         "CurrentDescription" :"Current description ",
-        "CurrentModel" :"Modèle de téléphone actuel",
+        "CurrentModel" :"Current phone model",
         "UpdateRequiredfor" :"Update required for",
         "TypeOfModel" :"Type Of Model",
         "NewPhonemodel" :"New phone model",

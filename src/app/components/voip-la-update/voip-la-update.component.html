@@ -26,14 +26,12 @@
                 <p>There is no Jabber for this serial number. </p>
             </div>
             <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
-                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Update Jabber request
-            is in progress and request number is {{identifier}}.<br>
+                <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
-            You can view the status of the on-going request by clicking on the Requests link on the left side navigation
-            menu.<br>
-
-            For any further assistance, please contact <a style="color:blue" target="_blank"
-              href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+                    <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
+    
+                    <span translate> employeeinfotrans.Ifyoucannotsee </span></span>
+                </p>
             </div>
 
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
