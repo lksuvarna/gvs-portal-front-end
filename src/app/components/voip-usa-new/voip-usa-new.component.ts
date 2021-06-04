@@ -214,7 +214,7 @@ this.msgdis=true
 }
 
  ngOnInit(): void {	
-  
+  this.mainConfiguration = this.servicesd.readConfigFile();
   
  this.orgi=this.cookie.getCookie('ccode');	
  this.cnum = sessionStorage.getItem('cnum') ;	

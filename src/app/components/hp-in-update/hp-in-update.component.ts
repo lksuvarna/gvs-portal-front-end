@@ -465,6 +465,7 @@ export class HpInUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mainConfiguration = this.servicesd.readConfigFile();
     this.updateRequiredFor = sessionStorage.getItem('updaterequired');
     this.updateRequiredFor = JSON.parse(this.updateRequiredFor).split(",");
     this.models = sessionStorage.getItem('fpumodels');

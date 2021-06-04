@@ -196,6 +196,7 @@ export class VoipAuMoveComponent implements OnInit {
 
   ngOnInit(): void {
      // Submit to Snow Jabber Update code
+     this.mainConfiguration = this.servicesd.readConfigFile();
      this.cnum = sessionStorage.getItem('cnum');
      this.orgi = this.cookie.getCookie('ccode');
      this.countrydetails = sessionStorage.getItem('countrydetails');
