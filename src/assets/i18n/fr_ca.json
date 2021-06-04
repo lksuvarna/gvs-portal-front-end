@@ -72,7 +72,7 @@
         "availablefromBluePages" :"disponible auprès de BluePages",
         "Pleaseverifyandtryagain" :"Veuillez vérifier et réessayer.",
         "EMAILcouldnotbefoundinbp":"Une adresse e-mail pour le numéro de série que vous avez entré est introuvable dans les pages bleues. Veuillez réessayer plus tard.",
-        "opps":"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard",
+        "opps":"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard [Erreur]",
         "JabberLocation" : "Emplacement du Jabber / Numéro de téléphone",
         "pleasesubmittostart":"En soumettant cette demande d'approvisionnement, vous donnez votre consentement écrit à IBM pour traiter les Informations personnelles (IP) fournies."
 
