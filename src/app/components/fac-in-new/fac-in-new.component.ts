@@ -134,7 +134,7 @@ export class FacInNewComponent implements OnInit {
   entryDetailsFac(formData: NgForm) {	
     if (this.facIn) {    
       if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
-        alert('Please select the Office Location');	
+        alert('Please select the appropriate office location');	
         return;	
       }	
       if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	
@@ -167,7 +167,7 @@ export class FacInNewComponent implements OnInit {
       }	
     } else {
       if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
-        alert('Please select the FAC Code / IDD PIN Office Location');	
+        alert('Please select the FAC Code / IDD PIN office location');	
         return;	
       }	
 

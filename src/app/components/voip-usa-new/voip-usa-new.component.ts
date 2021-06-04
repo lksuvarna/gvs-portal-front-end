@@ -158,7 +158,7 @@ mainConfiguration :any;
     
     if(this.countrycodes[this.index] !== this.employeeInfo.workloc && e.target.value !== "Home and Mobile") {	
       
-      alert('The serial number that you have entered does not belong to the selected location. Please choose your correct location or choose Home and Mobile location.');	
+      alert(this.mainConfiguration.alerttranslation.Homeandmobilealert);	
       e.target.value = "Home and Mobile";
       this.locationselected="Home and Mobile";
       this.msgdis=true
