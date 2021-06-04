@@ -82,7 +82,7 @@
         "availablefromBluePages": "available from BluePages",
         "Pleaseverifyandtryagain" :"Please verify and try again.",
         "EMAILcouldnotbefoundinbp":"An email address for the serial number you entered could not be found in Bluepages. Please try again later. ",
-        "opps": "We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message.",
+        "opps": "We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message. [Error]",
         "JabberLocation": "Jabber / Phone Number location",
         "Voicemail": "Voicemail",
         "ClassofService": "Class of Service (COS)",
