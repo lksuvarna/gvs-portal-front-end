@@ -27,7 +27,7 @@
                 <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
                     <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
-    
+
                     <span translate> employeeinfotrans.Ifyoucannotsee </span></span>
                 </p>
             </div>
@@ -85,7 +85,7 @@
                         <td class="ds-pad-l-4" height="10">
                             <div class="ds-input-container">
                                 <div class="ds-input-checkbox-group" role="group" aria-labelledby="basic-checkboxes-example">
-                                    <div class="ds-input-checkbox">
+                                    <div *ngIf="!facSl" class="ds-input-checkbox">
                                         <input type="checkbox" id="checkbox1" name="checked" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">
                                         <div class="ds-input-control"></div>
                                         <label for="checkbox1">Office Location</label>
