@@ -109,7 +109,7 @@ export class HpAuUpdateComponent implements OnInit {
 
   OnSearchClick(){
     if(this.currentMacOrPhone != ''){
-      this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,"Australia").subscribe(data =>{
+      this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone.toUpperCase(),this.currentMacOrPhone.toUpperCase(),"Australia").subscribe(data =>{
         if(data.message != '')
         {
          console.log("data"+data); 
@@ -239,7 +239,7 @@ export class HpAuUpdateComponent implements OnInit {
       alert('Please enter 12 characters MAC address');
       return;	
     }
-    if(this.showformacadd == true && formData.value.MAC1 == this.currentMac) {
+    if(this.showformacadd == true && formData.value.MAC1.toUpperCase() == this.currentMac.toUpperCase()) {
       alert('Please enter a new MAC address');
       return;
     }
@@ -256,12 +256,16 @@ export class HpAuUpdateComponent implements OnInit {
       alert('Please select the Location');	
       return;	
     }	
+    if(this.showLocation == true && (this.currentloc.toUpperCase().includes(formData.value.Location_1_1.toUpperCase()) && this.currentloc.toUpperCase().includes(formData.value.Buildings.toUpperCase()))) {	
+      alert('Please choose a different Location as the current Location is same as new location for the provided number.');	
+      return;	
+    }	
     if(this.showforNewDesc == true && formData.value.Newdesc.trim() == '') {	
       alert('Please provide the New Description.');
       return;
     }
 
-    if(this.showforNewDesc == true && formData.value.Newdesc == this.currentdesc) {
+    if(this.showforNewDesc == true && formData.value.Newdesc.toUpperCase() == this.currentdesc.toUpperCase()) {
       alert("Please choose a different Description as the current Description is already "+this.currentdesc+" for the provided number.");
       return;
     }
