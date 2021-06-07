@@ -112,6 +112,7 @@ export class FacInUpdateComponent implements OnInit {
   cache_disp : Create_Cache_fac = new Create_Cache_fac();
   countryroute: any;
   facIn: boolean = false;
+  facSl: boolean = false;
 
   toggle_options(){
     if (this.checked){
@@ -393,6 +394,12 @@ export class FacInUpdateComponent implements OnInit {
       this.facIn = true
     } else {
       this.facIn = false
+    }
+
+    if (this.countryroute === '652' ) {
+      this.facSl = true
+    } else {
+      this.facSl = false
     }
 
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
