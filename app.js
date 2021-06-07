@@ -89,7 +89,7 @@ if (!req.isAuthenticated()) {
   }
   res.redirect('/api/login');
 } else {
-  console.log('USER =>', req.user);
+  console.log('logged in user: email = ', req.user._json.preferred_username + ' cnum= '+req.user._json.uid);
   res.clearCookie('user');  
   res.clearCookie('ccode');          
     res.cookie('user',req.user._json.name);  

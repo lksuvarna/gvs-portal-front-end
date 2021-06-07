@@ -156,7 +156,7 @@ export class VoipInMoveComponent implements OnInit {
     }
     this.selectedjabber = formData.value.Identifier_Selected;
     if (formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {
-      alert('Please select the Office Location');
+      alert('Please select the appropriate office location');
       return;
     }
     if (formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '') {

@@ -241,7 +241,7 @@ backClick(formData: NgForm){
 		
     if(model === this.currentmodel){	
       this.newModel='';
-      alert('You have selected the same model as the current phone model. ' );	
+      alert(this.mainConfiguration.tooltips.samemodelupdate);	
     /*  this.newModel= document.forms[0].model.selectedIndex = 0
       document.forms[0].model.focus();
       this.modelcheck  =false;

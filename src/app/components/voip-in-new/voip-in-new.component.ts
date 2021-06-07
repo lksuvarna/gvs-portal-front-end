@@ -173,7 +173,7 @@ export class VoipInNewComponent implements OnInit {
   entryDetails(formData: NgForm) {	
       
     if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
-      alert('Please select the Office Location');	
+      alert('Please select the appropriate office location');	
       return;	
     }	
     if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	

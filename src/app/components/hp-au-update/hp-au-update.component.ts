@@ -253,7 +253,7 @@ export class HpAuUpdateComponent implements OnInit {
       return;	
     }	
     if(this.showLocation == true && (formData.value.Buildings.toUpperCase() == 'SELECT LOCATION' || formData.value.Buildings == '' || formData.value.Location_1_1.toUpperCase() != 'SELECT STATE' && formData.value.Buildings == '')) {	
-      alert('Please select the Location');	
+      alert('Please select the appropriate location.');	
       return;	
     }	
     if(this.showforNewDesc == true && formData.value.Newdesc.trim() == '') {	

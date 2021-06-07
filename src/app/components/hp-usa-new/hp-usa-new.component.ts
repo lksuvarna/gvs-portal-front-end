@@ -144,7 +144,7 @@ classofservice(cos:string) {
   entryDetails(formData: NgForm) {	
     
     if(formData.value.Location_1.toUpperCase() == 'SELECT LOCATION' || formData.value.Location_1 == '') {	
-      alert('Please select the Location');	
+      alert('Please select the appropriate location.');	
       return;	
     }	
     // if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	

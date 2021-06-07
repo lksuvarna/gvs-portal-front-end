@@ -281,7 +281,7 @@ entryDetails(formData: NgForm) {
     return;	
   }	
   if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	
-    alert('Please select the Location');	
+    alert('Please select the appropriate location.');	
     return;	
   }	
     if(formData.value.Device_Type == '') {
