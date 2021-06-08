@@ -25,7 +25,7 @@
                 <tbody>
                     <tr valign="top">
                         <td width="50%">
-                            <label for="Sear class=">Enter Current MAC Address or Phone Number</label>
+                            <label for="Sear class=">Enter current MAC address or Phone Number</label>
                             <span class="ds-text-contextual-red-2"> *</span>
                         </td>
                         <td width="50%">
@@ -61,7 +61,7 @@
                     </tr>
                     <tr valign="top" *ngIf='showSearch'>
                         <td width="50%"><br>
-                            <label for="sear" class=""> Current MAC Address </label>
+                            <label for="sear" class=""> Current MAC address </label>
                         </td>
                         <td width="50%"><br>{{currentMac}}
                         </td>
@@ -84,14 +84,14 @@
 
                     <tr valign="top" *ngIf='showSearch'>
                         <td width="50%"><br>
-                            <label for="sear" class=""> Current Description </label>
+                            <label for="sear" class=""> Current description </label>
                         </td>
                         <td width="50%"><br>{{currentdesc}}</td>
                     </tr>
 
                     <tr valign="top" *ngIf='showSearch'>
                         <td width="50%"><br>
-                            <label for="up" class=""> Update Required for</label>
+                            <label for="up" class=""> Update required for</label>
                             <span class="ds-text-contextual-red-2"> *</span>
                         </td>
                         <td width="50%"><br>
@@ -106,24 +106,24 @@
                 </tbody>
             </table>
 
-            <table id="t2" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showLocation && showSearch' border="0">
+            <table id="t2" width="100%" height="10" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
-                    <tr valign="top">
-                        <td colspan="2" width="50%"><label for="LocationId" class="ds-text-capitalize">Select State </label>
+                    <tr valign="top" *ngIf='showLocation && showSearch'>
+                        <td width="50%"><label for="LocationId" class="ds-text-capitalize">Select State </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select ngModel rows="2" name="Location_1_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)'
                                     [(ngModel)]='state'>
-                                    <option value ="">Select State</option>
+                                    <option value ="">Select One</option>
                                     <option name="Location_1_1" *ngFor='let fl_location of camp' [value]='fl_location'>{{ fl_location }}</option>
                                 </select>
                             </div>
                         </td>
                     </tr>
-                    <tr valign="top" class="ds-pad-t-1">
-                        <td colspan="2" width="50%"><label for="LocationId_1_1" class="ds-text-capitalize">Select New Location </label>
+                    <tr valign="top" *ngIf='showLocation && showSearch' class="ds-pad-t-1">
+                        <td width="50%"><label for="LocationId_1_1">Select new Location </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%">
@@ -135,13 +135,43 @@
                             </div>
                         </td>
                     </tr>
+
+                    <tr valign="top" *ngIf='showSearch && showformacadd'>
+                        <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
+                            <label class="">New MAC address<span class="ds-text-contextual-red-2"> *</span></label>
+                        </td>
+                        <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
+                            <input name="MAC1" value="" class="ds-input" style="width:300px !important;" title="New MAC Address" maxlength="12" ngModel [(ngModel)]='newMacAddress'>
+                            <label>Note:Combination of (0 to 9 , A to F) and Length:12</label>
+                        </td>
+                    </tr>
+
+                    <tr valign="top" *ngIf='showSearch && showforNewDesc'>
+                        <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
+                            <label class="">New description<span class="ds-text-contextual-red-2"> *</span></label>
+                        </td>
+                        <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
+                            <input name="Newdesc" value="" class="ds-input" style="width:300px !important;" title="New Description" maxlength="200" ngModel [(ngModel)]='newDescription'>
+                        </td>
+                    </tr>
+
+
+                    <tr valign="top" *ngIf='showSearch && showforrsn'>
+                        <td width="50%">
+                            <label class="">Reason for update<span class="ds-text-contextual-red-2"> *</span></label>
+                        </td>
+                        <td width="50%">
+                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update" rows="2" cols="40" maxlength="200" ngModel [(ngModel)]='reasonForUpdate'>
+                        </textarea><br>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 
-            <table id="t3" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
+           <!-- <table id="t3" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
                 <tbody>
 
-                    <tr valign="top" *ngIf='showformacadd'>
+                     <tr valign="top" *ngIf='showformacadd'>
                         <td colspan="2" width="50%" class="ds-pad-t-1 ds-pad-b-2">
                             <label class="">New MAC Address<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
@@ -156,7 +186,7 @@
                             <label class="">New Description to Update<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
-                            <input name="Newdesc" value="" class="ds-input" style="width:300px !important;" title="New Description" ngModel [(ngModel)]='newDescription'>
+                            <input name="Newdesc" value="" class="ds-input" style="width:300px !important;" title="New Description" maxlength="200" ngModel [(ngModel)]='newDescription'>
                         </td>
                     </tr>
 
@@ -166,12 +196,12 @@
                             <label class="">Reason for Update<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%">
-                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update" rows="2" cols="40" ngModel [(ngModel)]='reasonForUpdate'>
+                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update" rows="2" cols="40" maxlength="200" ngModel [(ngModel)]='reasonForUpdate'>
                         </textarea><br>
                         </td>
-                    </tr>
+                    </tr> 
                 </tbody>
-            </table>
+            </table> -->
 
             <br>
             <div class=" ds-panel ds-col-12 "></div>
@@ -183,7 +213,7 @@
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                 (click)="backClick(formData)">
             </span>
-                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='hideNextButton'>
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 value="NEXT">
             </span>
@@ -211,7 +241,7 @@
                 <tbody>
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Current MAC Address</label>
+                            <label for="addId1">Current MAC address</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.mac}}</td>
                     </tr>
@@ -229,13 +259,13 @@
                     </tr>
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Current Description</label>
+                            <label for="addId1">Current description</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.Currentdescription}}</td>
                     </tr>
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Update Required for</label>
+                            <label for="addId1">Update required for</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.updatereq}}</td>
                     </tr>
@@ -253,21 +283,21 @@
                     </tr>
                     <tr valign="top" *ngIf='showformacadd'>
                         <td colspan="2" width="46%">
-                            <label for="addId1">New MAC Address</label>
+                            <label for="addId1">New MAC address</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.newMac}}</td>
                     </tr>
                     <tr valign="top" *ngIf='showforNewDesc'>
                         <td colspan="2" width="46%">
-                            <label for="addId1">New Description</label>
+                            <label for="addId1">New description</label>
                         </td>
-                        <td width="54%">{{reviewDetailsIndia.description}}</td>
+                        <td width="54%" style='word-wrap: anywhere;'>{{reviewDetailsIndia.description}}</td>
                     </tr>
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Reason for Update</label>
+                            <label for="addId1">Reason for update</label>
                         </td>
-                        <td width="54%">{{reviewDetailsIndia.justification}}</td>
+                        <td width="54%" style='word-wrap: anywhere;'>{{reviewDetailsIndia.justification}}</td>
                     </tr>
 
                 </tbody>
