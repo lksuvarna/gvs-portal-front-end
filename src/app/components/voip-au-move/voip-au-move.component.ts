@@ -95,7 +95,7 @@ export class VoipAuMoveComponent implements OnInit {
   }
   entryDetailsMove(formData:NgForm) {
     if(formData.value.Identifier_Selected == '') {
-      alert('Please select a Jabber number');
+      alert('Please select the Jabber account/ITN being moved');
       return;
     }
     this.selectedjabber = formData.value.Identifier_Selected;
