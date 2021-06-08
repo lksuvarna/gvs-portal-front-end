@@ -97,13 +97,14 @@ export class HomepageComponent implements OnInit {
       }
     })
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
+      this.display=true;
       console.log('Response received', data.countrydetails.name);
       this.countryname=data.countrydetails;
        this.countrydetails=JSON.stringify(data.countrydetails)
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.ccode);
       sessionStorage.setItem('pagedisplay','homepage')
-      this.display=true;
+      
       console.log("testuser"+data.countrydetails.testuser)
       if (data.countrydetails.testuser){
         this.employeeSerial=data.countrydetails.testuser;

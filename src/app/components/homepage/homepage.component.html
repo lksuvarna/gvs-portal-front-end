@@ -1,16 +1,17 @@
+<div >
 <div class="ds-row ds-bg-dark ds-pad-t-2_4" style="background-image:  url(././assets/banner.png);background-position:center;background-size:cover;background-repeat:no-repeat;">
     <div class="ds-col-xs-10 ds-offset-xs-3 ds-mar-t-3 ds-col-lg-8 ds-offset-lg-2 ds-col-xl-6 ds-offset-xl-3 ds-text-align-center ds-shadow-text">
-        <h3 class="ds-heading-xs-2 ds-heading-lg-2 ds-shadow-text " translate>
+        <h3 class="ds-heading-xs-2 ds-heading-lg-2 ds-shadow-text " translate *ngIf="display">
             home.app-name
         </h3>
-        <font translate>
+        <font translate *ngIf="display">
             home.app-function
         </font>
 
     </div>
     <div><br><br></div>
 
-    <font class="ds-text-align-left" translate>
+    <font class="ds-text-align-left" translate *ngIf="display">
         &nbsp; &nbsp; home.sponsor
     </font>
 
@@ -28,15 +29,15 @@
 </div>
 <br><br>
 <div class="ds-row ">
-    <h3 class="ds-text-align-center ds-heading-2"><span class="ds-col-xs-30" style="font-size:48px"><span translate>home.welcomemessage </span>{{fullName}}</span>
+    <h3 class="ds-text-align-center ds-heading-2"><span class="ds-col-xs-30" style="font-size:48px" *ngIf="display"><span translate >home.welcomemessage </span>{{fullName}}</span>
     </h3>
 </div><br>
 <div class="ds-row">
-    <h4 class="ds-heading-3 ds-text-align-center"><span style="font-size:30px" translate>home.question</span></h4>
+    <h4 class="ds-heading-3 ds-text-align-center"><span style="font-size:30px" translate *ngIf="display">home.question</span></h4>
 </div>
 <div class="ds-row"></div>
 <br>
-<div class="ds-row">
+<div class="ds-row" >
     <div class="ds-padding-top-0_5 ds-row ds-text-align-center ">
         <div class="ds-col-sm-4  md-2 xl-5">
             <input type="text" class="ds-input" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="{{ 'home.Searchservice' | translate}}" style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; ">
@@ -53,24 +54,24 @@
 
 <br>
 <br>
-<div class="ds-row ds-text-align-center " style="background-color: #f3f3f3; ">
+<div class="ds-row ds-text-align-center " style="background-color: #f3f3f3; " >
     <div class="ds-col-sm-6 ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5 ">
         <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode,service:'services'}" routerLinkActive="active " data="{cdetails:this.countryname}"><img class="ds-text-align-center ds-border-neutral-5 " [src]='countryname.flagname'></a>
     </div>
-    <div class="ds-col-sm-6 ds-text-align-left ds-padding-top-1 "><br><span style="font-size:30px " class="ds-padding-left-3 " translate>home.my-country</span><br>
+    <div class="ds-col-sm-6 ds-text-align-left ds-padding-top-1 " *ngIf="display"><br><span style="font-size:30px " class="ds-padding-left-3 " translate>home.my-country</span><br>
         <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode,service:'services'}" data="{cdetails:this.countryname}" translate>home.click-here</a>
         <div translate>home.available </div><span class="ds-padding-left-3 "><span translate>home.servicesonlyokay</span> {{countryname.name}}</span><br>
     </div>
 </div>
 <br>
 <br>
-<div class="ds-row ">
+<div class="ds-row " *ngIf="display">
     <h4 class="ds-text-align-center ds-heading-4 ds-margin-bottom-0 ">
         <span style="font-size:30px " translate>home.most-viewed-services</span>
     </h4><br>
     <h5 class="ds-text-align-center ds-heading-5 ds-margin-bottom-0 " translate>home.find-right-service <br translate> home.find-right-service2</h5>
 </div>
-<div class="ds-row ds-text-align-center ds-padding-left-1 ds-padding-right-1 ">
+<div class="ds-row ds-text-align-center ds-padding-left-1 ds-padding-right-1 " *ngIf="display">
     <div class="ds-col-3 ds-padding-left-1 ">
         <div class="ds-panel ">
             <div class="ds-panel-container ">
@@ -89,7 +90,7 @@
         </div>
     </div>
 </div>
-
+</div>
 
 
 <input name="country_code " type="hidden" [value]="ccode ">
