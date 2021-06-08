@@ -16,8 +16,8 @@
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
-            <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]=""></app-steps>
-
+            <app-steps [step]="servicesData.step" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" [isSelf]="reqFor" [hideSteps]=""></app-steps>
+            
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
@@ -29,7 +29,9 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location ngModel>
+                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" 
+                                style="width:300px !important; text-transform: uppercase;" title="Office Location" #location ngModel
+                                [(ngModel)]='selected_location'>
                                     <option value ="" translate>Jabbernewtrans.SelectOne</option>
                                     <option name="Location_1" *ngFor='let fl_location of locationlist' [value]='fl_location' >
                                         {{ fl_location }}</option> -->
@@ -37,6 +39,8 @@
                             </div>
                         </td>
                     </tr>
+                    <br>
+                    
 
                 </tbody>
             </table>
@@ -46,19 +50,20 @@
 
 
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize">Type of Device </label>
+                        <td colspan="2" width="46%" height="10"><label for="DeviceType" class="">Type of device </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Device Type" #device (change)='selectedDevice(device.value)' ngModel [(ngModel)]='selected_device'>
-                                    <option value ="">Select Device</option>
+                                    <option value ="">Select One</option>
                                     <option name="Device_Type" *ngFor='let device of devices' [value]='device' >{{ device }}</option>
                                 </select>
                             </div>
                         </td>
                     </tr>
-
+                    <br>
+                    
                 </tbody>
             </table>
 
@@ -67,13 +72,13 @@
             <table id="t3" width="100%" cellspacing="0" cellpadding="0" border="0" [hidden]='hideDeviceSection'>
                 <tbody>
                     <tr valign="top" [hidden]='showforAnyDevice'>
-                        <td colspan="2" width="46%" height="10"><label for="DeviceType" class="ds-text-capitalize">Type of Model </label>
+                        <td colspan="2" width="46%" height="10"><label for="DeviceType" class="">Type of Model </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Model_Type" cols="40" id="ModelTypeId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Model" [(ngModel)]='modelValue'>
-                                    <option value ="">Select Model</option>
+                                    <option value ="">Select One</option>
                                     <option name="Model_Type" *ngFor='let model of models' [value]='model'>{{ model }}</option>
                                 </select>
                             </div>
@@ -116,9 +121,10 @@
                             </div>
                         </td>
                     </tr>
+                    <br>
 
                     <tr valign="top" [hidden]='showforFixedPhone'>
-                        <td colspan="2" width="46%" height="10"><label for="cos" class="ds-text-capitalize">Select Class of Service (COS)</label>
+                        <td colspan="2" width="46%" height="10"><label for="cos" class="ds-pad-b-2">Class of Service (COS)</label>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
@@ -129,21 +135,22 @@
                             </div>
                         </td>
                     </tr>
+                    
 
-                    <tr valign="top" [hidden]='showBusinessNeed'>
-                        <td colspan="2" width="46%"><br><label for="Justification" class="ds-text-capitalize ds-pad-t-1">Business Need (Why is international required?) </label>
+                    <tr valign="top" [hidden]='showBusinessNeed' >
+                        <td colspan="2" width="46%"><br><label for="Justification"class="ds-pas-t-1 ds-pas-b-1" >Business Justification (Why is international required?)</label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
-                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" ngModel></textarea>
+                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" maxlength="200" rows="2" cols="40" ngModel ngModel [(ngModel)]="justificationValue"></textarea>
                         </td>
                     </tr>
 
                     <tr valign="top" [hidden]='showforAnyDevice'>
-                        <td colspan="2" width="46%"><br><label for="Description" class="ds-text-capitalize ds-pad-t-1">Description of the Device </label>
+                        <td colspan="2" width="46%"><br><label for="Description" class="ds-pad-t-3" margin-top>Description of the Device </label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container ds-pad-t-1">
-                                <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" style="width:300px !important;" title="Description" maxlength="30" ngModel>
+                                <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" maxlength="200" style="width:300px !important;" title="Description" maxlength="30" ngModel [(ngModel)]='descValue'>
                                 <label *ngIf="selected_device == 'Extension Mobility Station'">e.g. IBMC Lv21 EM desk </label>
                                 <label *ngIf="selected_device == 'Conference / Meeting Room Phone'">e.g. IBMC Lv21 conference room 3 </label>
                             </div>
@@ -151,11 +158,11 @@
                     </tr>
 
                     <tr valign="top" [hidden]='showforAnyDevice'>
-                        <td colspan="2" width="46%"><br><label for="MACAddress" class="ds-text-capitalize">MAC Address of the Device </label>
+                        <td colspan="2" width="46%"><br><label for="MACAddress" class="">MAC Address of the Device </label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container">
-                                <input name="MACAddress" value="" tabindex="2" rows="2" cols="40" id="MACAddressId" class="ds-input" style="width:300px !important;" title="MAC Address" maxlength="12" ngModel>
+                                <input name="MACAddress" value="" tabindex="2" rows="2" cols="40" id="MACAddressId" class="ds-input" style="width:300px !important;" title="MAC Address" maxlength="12" ngModel [(ngModel)]='MACValue'>
                                 <label>Note:Combination of (0 to 9 , A to F) and Length:12</label>
                             </div>
                         </td>
@@ -172,7 +179,7 @@
                         <span class="ds-pad-l-4" id="button1">
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" 
-                value="BACK" (click)="backClick()">
+                value="BACK" (click)="backClick(formData)">
             </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
@@ -192,8 +199,8 @@
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
-            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
-
+            <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" (previousStep)="previousStep($event)"></app-steps>
+            
 
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2>
 
@@ -201,7 +208,7 @@
                 <tbody>
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10">
-                            <label for="addId1">Office Location</label>
+                            <label for="addId1">Location</label>
                         </td>
                         <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
                     </tr>
@@ -260,7 +267,7 @@
 
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="device">Type of Device</label>
+                            <label for="device">Type of device</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.device}}</td>
                     </tr>
@@ -288,7 +295,7 @@
 
                     <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%">
-                            <label for="cos">Class of Service</label>
+                            <label for="cos">Class of Service (COS)</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.cos}}</td>
                     </tr>
@@ -302,7 +309,7 @@
 
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="description">Description of Device</label>
+                            <label for="description">Description of the Device</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.description}}</td>
                     </tr>
