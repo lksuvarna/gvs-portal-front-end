@@ -15,7 +15,7 @@
             <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD PIN - Delete Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
-                <label *ngIf="warninginfo !=true && warninginfosnow != true"> By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.</label>                </div>
+                <label *ngIf="warninginfo !=true && warninginfosnow != true"> By submitting this provisioning request, you are providing your written consent to IBM to process the Personal Information (PI) provided.</label>                </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
             <app-steps [step]="servicesData.step" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
@@ -23,17 +23,15 @@
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
             <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
-                <p>There is no FAC Code / IDD PIN for this serial number.</p>
+                <p>There is no FAC Code / IDD PIN associated to this serial number.</p>
             </div>
             <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
-                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Delete FAC request
-            is in progress and request number is {{identifier}}.<br>
+                <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
-            You can view the status of the on-going request by clicking on the Requests link on the left side navigation
-            menu.<br>
-
-            For any further assistance, please contact <a style="color:blue" target="_blank"
-              href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+                    <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
+    
+                    <span translate> employeeinfotrans.Ifyoucannotsee </span></span>
+                </p>
             </div>
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
                 <tbody>
@@ -54,7 +52,7 @@
             <br>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p>Something seems to have gone wrong. Please try later.</p>
+                <p>We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message. [Error]</p>
                 <p>
                 </p>
             </div>

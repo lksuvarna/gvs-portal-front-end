@@ -151,20 +151,20 @@ export class VoipInMoveComponent implements OnInit {
   }
   entryDetailsMove(formData: NgForm) {
     if (formData.value.Identifier_Selected == '') {
-      alert('Please select the Jabber / Phone number to move');
+      alert('Please select the Jabber account/ITN being moved.');
       return;
     }
     this.selectedjabber = formData.value.Identifier_Selected;
     if (formData.value.Location_1.toUpperCase() == 'SELECT OFFICE LOCATION' || formData.value.Location_1 == '') {
-      alert('Please select the Office Location');
+      alert('Please select the appropriate office location');
       return;
     }
     if (formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '') {
-      alert('Please select the Campus');
+      alert('Please select the appropriate campus.');
       return;
     }
     if (formData.value.Department_number.toUpperCase().trim() == '' && this.hideDeptCode == false) {
-      alert('Please enter the Charge Department Code');
+      alert('Please provide the charge department code.');
       return;
     }
     if((formData.value.Department_number.trim() == '' || formData.value.Department_number.includes(' ')) && this.hideDeptCode == false) {	

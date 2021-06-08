@@ -158,7 +158,7 @@ emailClick = false;
   }
   fetchEmployee() {
     if(this.empID == '') {
-      alert('Please enter the Employee ID');
+      alert('Please provide the employee ID.');
       return false;
     } else if(this.empID.length != 6) {
       alert('Please enter 6 digit Employee ID');
@@ -203,16 +203,16 @@ emailClick = false;
   entryDetails(formData: NgForm) {	
       
     if(formData.value.Location_1.toUpperCase() == 'SELECT LOCATION' || formData.value.Location_1 == '') {	
-      alert('Please select the Location');	
+      alert('Please select the appropriate location.');	
       return;	
     }	
     
       if(formData.value.Device_Type == '') {
-        alert('Please select a device type');
+        alert('Please select the device type.');
         return;
       }
       if(formData.value.Model_Type == '') {
-        alert('Please select a type of model');
+        alert('Please select the model type.');
         return;
       }
       if(this.goResults == false && formData.value.StepMentor != '' && this.gggg == true && this.showforFixedPhone == false) {
@@ -221,7 +221,7 @@ emailClick = false;
         return;
       }
       if(formData.value.StepMentor == '' && this.showforFixedPhone == false && this.showforFixedPhone == false) {
-        alert('Please enter the employee ID');
+        alert('Please provide the employee ID.');
         return;
       }
       if(formData.value.StepMentor.length != 6 && this.empIDEmail == '' && this.goClick == true &&this.showforFixedPhone == false) {
@@ -237,15 +237,15 @@ emailClick = false;
         return;
       }
       if(formData.value.Justification == '' && this.showBusinessNeed == false) {
-        alert('Please enter the business need for Class of Service.');
+        alert('Please provide a business justification for the selected class of service.');
         return;
       }
       if(formData.value.Description == '') {
-        alert('Please Enter a description and it should not be more than 30 characters');
+        alert('Please provide a description (30 character limit).');
         return;
       }
       if(formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
-        alert('Please enter 12 characters MAC address');
+        alert('Please provide the MAC address (12 character limit).');
         return;
       }
       var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;

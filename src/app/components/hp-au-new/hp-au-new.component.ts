@@ -277,19 +277,19 @@ getFixedPhoneData(){
 entryDetails(formData: NgForm) {	
     
   if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
-    alert('Please select the State');	
+    alert('Please select a state.');	
     return;	
   }	
   if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	
-    alert('Please select the Location');	
+    alert('Please select the appropriate location.');	
     return;	
   }	
     if(formData.value.Device_Type == '') {
-      alert('Please select a device type');
+      alert('Please select the device type.');
       return;
     }
     if(formData.value.Model_Type == '') {
-      alert('Please select a type of model');
+      alert('Please select the model type.');
       return;
     }
     // if(this.goResults == false && formData.value.StepMentor != '' && this.gggg == true && this.showforFixedPhone == false) {
@@ -314,15 +314,15 @@ entryDetails(formData: NgForm) {
     //   return;
     // }
     if(formData.value.Justification.trim() == '' && this.showBusinessNeed == false) {
-      alert('Please enter the business need for Class of Service.');
+      alert('Please provide a business justification for the selected class of service.');
       return;
     }
     if(formData.value.Description.trim() == '') {
-      alert('Please Enter a description and it should not be more than 30 characters');
+      alert('Please provide a description (30 character limit).');
       return;
     }
     if(formData.value.MACAddress.trim() == '' || formData.value.MACAddress.length != 12) {
-      alert('Please enter 12 characters MAC address');
+      alert('Please provide the MAC address (12 character limit).');
       return;
     }
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;

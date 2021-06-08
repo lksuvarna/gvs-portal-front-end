@@ -241,7 +241,7 @@ backClick(formData: NgForm){
 		
     if(model === this.currentmodel){	
       this.newModel='';
-      alert('Please provide a different Model as the current Model is already '+this.currentmodel );	
+      alert(this.mainConfiguration.tooltips.samemodelupdate);	
     /*  this.newModel= document.forms[0].model.selectedIndex = 0
       document.forms[0].model.focus();
       this.modelcheck  =false;

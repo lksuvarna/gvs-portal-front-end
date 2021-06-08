@@ -12,7 +12,7 @@
 
             <b>Fixed Phone - Update Request</b><br>
             <div class="ds-pad-t-0_5 ds-pad-b-1">
-                Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.
+                Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are mandatory.
             </div>
 
             <div class=" ds-panel ds-col-12 "></div>
@@ -115,7 +115,7 @@
                     <tr valign="top" *ngIf='showformodel'>
                         <td width="50%">
                             <span id="modelid"><br>
-                            <label for="modelid" class="ds-text-capitalize">New phone model</label>
+                            <label for="modelid" class="">New phone model</label>
                             <span class="ds-text-contextual-red-2"></span>
                             </span>
                         </td>
@@ -244,7 +244,7 @@
                     </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
                     <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
-                    value="NEXT">
+                    value="NEXT" >
                     </span>
                     </div>
                 </div>
@@ -257,7 +257,7 @@
             <b>Fixed Phone - Update Request</b>
 
 
-            <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+            <div class="ds-pad-b-1" translate>Jabberentrydetails.toprocessPI
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
@@ -303,7 +303,7 @@
                         <td width="54%">{{reviewDetailsIndia.device}}</td>
                     </tr>
 
-                    <tr valign="top" *ngIf='showformodel'>
+                    <tr valign="top" *ngIf='showformodel1'>
                         <td colspan="2" width="46%">
                             <label for="addId1">New phone model</label>
                         </td>
@@ -356,7 +356,7 @@
             </table>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p>Something seems to have gone wrong. Please try later.</p>
+                <p translate>fixedphonenew.Somethingseemswrong</p>
                 <p>
                 </p>
             </div>

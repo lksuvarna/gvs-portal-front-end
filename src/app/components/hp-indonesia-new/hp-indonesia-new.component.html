@@ -12,7 +12,7 @@
             <b translate>servicestitle.Fixed Phone - New Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
-                Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.
+                Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are mandatory.
             </div>
             <div class=" ds-panel ds-col-12 "></div>
 
@@ -31,7 +31,7 @@
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location ngModel>
-                                    <option value ="">Select Location</option>
+                                    <option value ="" translate>Jabbernewtrans.SelectOne</option>
                                     <option name="Location_1" *ngFor='let fl_location of locationlist' [value]='fl_location' >
                                          {{ fl_location }}</option>
                                 </select>
@@ -194,7 +194,7 @@
             <b translate>servicestitle.Fixed Phone - New Request</b>
 
 
-            <div class="ds-pad-b-1">By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process.
+            <div class="ds-pad-b-1" translate>Jabberentrydetails.toprocessPI
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
@@ -323,7 +323,7 @@
             </table>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p>Something seems to have gone wrong. Please try later.</p>
+                <p translate>fixedphonenew.Somethingseemswrong</p>
                 <p>
                 </p>
             </div>

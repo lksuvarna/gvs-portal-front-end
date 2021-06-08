@@ -112,6 +112,7 @@ export class FacInUpdateComponent implements OnInit {
   cache_disp : Create_Cache_fac = new Create_Cache_fac();
   countryroute: any;
   facIn: boolean = false;
+  facSl: boolean = false;
 
   toggle_options(){
     if (this.checked){
@@ -154,7 +155,7 @@ export class FacInUpdateComponent implements OnInit {
  
   EntryDetails(formData: NgForm) {
     if((this.checked===false)&&(this.checked2===false)&&(this.checked3===false)) {
-      alert('Please select update required for');
+      alert('Please provide the update requirements.');
       return;
     }
       
@@ -165,19 +166,19 @@ export class FacInUpdateComponent implements OnInit {
       }
 
       if(formData.value.Buildings ==='' || formData.value.Buildings.toLowerCase() ==='select one' ) {
-        alert('Please select a campus');
+        alert('Please select the appropriate campus.');
         return;
       }
 
       if(formData.value.Location_1.toLowerCase().trim() + '~~' + formData.value.Buildings.toLowerCase().trim() === this.currLocation1.toLowerCase().trim() + '~~' + this.currBuilding.toLowerCase().trim()) {
-        alert('Please provide a new campus');
+        alert('Please select the appropriate campus.');
         return;
       }
     }
 
     if(this.checked2 && formData.value.Voice_Mail ==='Yes') {
       if(formData.value.chargeDepartmentCode === '') {
-        alert('Please enter the charge department code');
+        alert('Please provide the charge department code.');
         return;
       }
       if(formData.value.chargeDepartmentCode.trim() === this.currChargeDeptCode) {
@@ -188,7 +189,7 @@ export class FacInUpdateComponent implements OnInit {
 
     if(this.checked3) {
       if(formData.value.authLevel ==='' || formData.value.authLevel.toLowerCase() ==='select one' ) {
-        alert('Please select an authorization level');
+        alert('Please select the appropriate authorization level.');
         return;
       }
       if(formData.value.authLevel === this.currAuthorizationLevel  ) {
@@ -198,7 +199,7 @@ export class FacInUpdateComponent implements OnInit {
     }
 
     if(formData.value.businessjustification == ''){
-      alert('Please provide business justification');
+      alert('Please provide a business justification.');
       return;
     }
   
@@ -393,6 +394,12 @@ export class FacInUpdateComponent implements OnInit {
       this.facIn = true
     } else {
       this.facIn = false
+    }
+
+    if (this.countryroute === '652' ) {
+      this.facSl = true
+    } else {
+      this.facSl = false
     }
 
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {

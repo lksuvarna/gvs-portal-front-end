@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';		
-
+import { TranslateConfigService } from '../../_services/translate-config.service';
 @Component({
   selector: 'app-voip-au-move',
   templateUrl: './voip-au-move.component.html',
@@ -26,6 +26,7 @@ export class VoipAuMoveComponent implements OnInit {
   loc_sel = "Select Location";
   itn_sel = '';
   set_value = "Location";
+  mainConfiguration :any;
   sel:any;
   cnum : any;	
   reqno:any;	
@@ -63,7 +64,7 @@ export class VoipAuMoveComponent implements OnInit {
   payload : Jabber_Move = new Jabber_Move();
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
-  constructor(private router:Router,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private cookie: CookieHandlerService) { }
+  constructor(private router:Router,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private cookie: CookieHandlerService,private servicesd : TranslateConfigService) { }
 
   backClick(formData: NgForm): void{	
     sessionStorage.setItem('backbutton','yes');	
@@ -94,12 +95,12 @@ export class VoipAuMoveComponent implements OnInit {
   }
   entryDetailsMove(formData:NgForm) {
     if(formData.value.Identifier_Selected == '') {
-      alert('Please select a Jabber number');
+      alert('Please select the Jabber account/ITN being moved');
       return;
     }
     this.selectedjabber = formData.value.Identifier_Selected;
     if(formData.value.Location_Selected.toUpperCase() == 'SELECT LOCATION') {
-      alert('Please select a Location');
+      alert(this.mainConfiguration.alerttranslation.selectlocation);
       return;
     }
 
@@ -195,6 +196,7 @@ export class VoipAuMoveComponent implements OnInit {
 
   ngOnInit(): void {
      // Submit to Snow Jabber Update code
+     this.mainConfiguration = this.servicesd.readConfigFile();
      this.cnum = sessionStorage.getItem('cnum');
      this.orgi = this.cookie.getCookie('ccode');
      this.countrydetails = sessionStorage.getItem('countrydetails');

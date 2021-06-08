@@ -182,7 +182,7 @@ export class VoipLaUpdateComponent implements OnInit {
     }
     
     if((formData.value.checked=='')&&(formData.value.checked2=='')) {
-      alert('Please select update required for');
+      alert('Please provide the update requirements.');
       return;
     }
     
@@ -208,7 +208,7 @@ export class VoipLaUpdateComponent implements OnInit {
 
     if(this.checked2) {
       if(formData.value.select_cos.toUpperCase() == 'SELECT ONE' || formData.value.select_cos == '') {
-        alert('Please select New Class of Service');
+        alert('Please select a class of service.');
         return;
       }
     }

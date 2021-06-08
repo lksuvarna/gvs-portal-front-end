@@ -173,15 +173,15 @@ export class VoipInNewComponent implements OnInit {
   entryDetails(formData: NgForm) {	
       
     if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
-      alert('Please select the Office Location');	
+      alert('Please select the appropriate office location');	
       return;	
     }	
     if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT ONE' && formData.value.Buildings == '') {	
-      alert('Please select the Campus');	
+      alert('Please select the appropriate campus.');	
       return;	
     }	
     if(formData.value.Department_number.toUpperCase() == '' && this.hideDeptCode == false) {	
-      alert('Please enter the Charge Department Code');	
+      alert('Please provide the charge department code.');	
       return;	
     }	
     if((formData.value.Department_number.trim() == '' || formData.value.Department_number.includes(' ')) && this.hideDeptCode == false) {	
@@ -190,7 +190,7 @@ export class VoipInNewComponent implements OnInit {
       return;	
     }	
     if(formData.value.Projectid == '' && this.hideProjectId == false) {
-      alert('Please enter the Project ID');
+      alert('Please provide the project ID.');
       return;
     }
     if((formData.value.Projectid.trim() == '' || formData.value.Projectid.includes(' ')) && this.hideProjectId == false) {	

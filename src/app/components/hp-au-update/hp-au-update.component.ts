@@ -135,7 +135,7 @@ export class HpAuUpdateComponent implements OnInit {
       });
     }
     else{
-      alert("Please enter a MAC Address or Phone number to search");
+      alert("Please provide the MAC address or phone number being updated.");
     }
     
 
@@ -232,11 +232,11 @@ export class HpAuUpdateComponent implements OnInit {
   entryDetails(formData: NgForm){
 
     if(formData.value.UpdateReq == '') {	
-      alert('Please select update required for');	
+      alert('Please provide the update requirements.');	
       return;
     }	
     if(this.showformacadd ==true && (formData.value.MAC1.trim() == '' || formData.value.MAC1.length != 12)) {	
-      alert('Please enter 12 characters MAC address');
+      alert('Please provide the MAC address (12 character limit).');
       return;	
     }
     if(this.showformacadd == true && formData.value.MAC1.toUpperCase() == this.currentMac.toUpperCase()) {
@@ -249,11 +249,11 @@ export class HpAuUpdateComponent implements OnInit {
       return;
     }
     if(this.showLocation == true && formData.value.Location_1_1 == '') {	
-      alert('Please select the State');	
+      alert('Please select a state.');	
       return;	
     }	
     if(this.showLocation == true && (formData.value.Buildings.toUpperCase() == 'SELECT LOCATION' || formData.value.Buildings == '' || formData.value.Location_1_1.toUpperCase() != 'SELECT STATE' && formData.value.Buildings == '')) {	
-      alert('Please select the Location');	
+      alert('Please select the appropriate location.');	
       return;	
     }	
     if(this.showLocation == true && (this.currentloc.toUpperCase().includes(formData.value.Location_1_1.toUpperCase()) && this.currentloc.toUpperCase().includes(formData.value.Buildings.toUpperCase()))) {	
@@ -261,7 +261,7 @@ export class HpAuUpdateComponent implements OnInit {
       return;	
     }	
     if(this.showforNewDesc == true && formData.value.Newdesc.trim() == '') {	
-      alert('Please provide the New Description.');
+      alert('Please provide a new description.');
       return;
     }
 
@@ -454,7 +454,7 @@ export class HpAuUpdateComponent implements OnInit {
       this.currentPhone = String(this.cache_disp.currentPhone);
       this.currentloc = String(this.cache_disp.currentLocation);
       this.currentdesc = String(this.cache_disp.currentDescription);
-      if(this.cache_disp.officeLocation != undefined){
+      if(this.cache_disp.updateRequired != undefined){
         this.updateRequired = String(this.cache_disp.updateRequired);
         this.updateFor(this.updateRequired);
       }

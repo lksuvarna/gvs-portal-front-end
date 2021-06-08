@@ -11,7 +11,7 @@
             <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD PIN - Update Request</b>
 
             <div class="ds-pad-t-0_5 ds-pad-b-1">
-                <label *ngIf="warninginfo==false">Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are required.</label>
+                <label *ngIf="warninginfo==false">Fields marked with an asterisk (<span class="ds-text-contextual-red-2">*</span>) are mandatory.</label>
             </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
@@ -21,17 +21,15 @@
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 ">Employee Entry Details</h2>
 
             <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo==true">
-                <p>There is no FAC Code / IDD PIN for this serial number.</p>
+                <p>There is no FAC Code / IDD PIN associated to this serial number.</p>
             </div>
             <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
-                <p><span style="font-size: 1rem;">The serial number that you have entered has already one Update FAC Code / IDD PIN request
-            is in progress and request number is {{identifier}}.<br>
+                <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
-            You can view the status of the on-going request by clicking on the Requests link on the left side navigation
-            menu.<br>
+                    <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
 
-            For any further assistance, please contact <a style="color:blue" target="_blank"
-              href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a>.<br></span></p>
+                    <span translate> employeeinfotrans.Ifyoucannotsee </span></span>
+                </p>
             </div>
 
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
@@ -87,7 +85,7 @@
                         <td class="ds-pad-l-4" height="10">
                             <div class="ds-input-container">
                                 <div class="ds-input-checkbox-group" role="group" aria-labelledby="basic-checkboxes-example">
-                                    <div class="ds-input-checkbox">
+                                    <div *ngIf="!facSl" class="ds-input-checkbox">
                                         <input type="checkbox" id="checkbox1" name="checked" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked" [ngModelOptions]="{standalone: true}">
                                         <div class="ds-input-control"></div>
                                         <label for="checkbox1">Office Location</label>
@@ -221,8 +219,8 @@
             <b *ngIf="facIn" translate>servicestitle.FAC Code / IDD PIN Update Request</b>
             <b *ngIf="!facIn" translate>servicestitle.FAC Code / IDD PIN - Update Request</b>
 
-            <div class="ds-pad-t-0_5 ds-pad-b-1">
-                By submitting this provisioning request, you are providing express written consent for IBM to process the Personal Information (PI) that you have provided as part of the provisioning process. </div>
+            <div class="ds-pad-t-0_5 ds-pad-b-1" translate>
+                Jabberentrydetails.toprocessPI </div>
             <div class="ds-hr-thick ds-mar-b-1_5"></div>
 
             <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" (previousStep)="previousStep($event)"></app-steps>
@@ -318,7 +316,7 @@
             <br>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p>Something seems to have gone wrong. Please try later.</p>
+                <p>We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message. [Error]</p>
                 <p>
                 </p>
             </div>

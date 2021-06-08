@@ -8,6 +8,7 @@ import { servicenowservice } from '../../_services/servicenow.service';
 import {Create_Cache_jabber, Jabber_New} from '../../../../config/payload';	
 import { analyzeAndValidateNgModules } from '@angular/compiler';	
 import {Location} from '@angular/common';	
+import { TranslateConfigService } from '../../_services/translate-config.service';
 
 @Component({
   selector: 'app-voip-usa-new',
@@ -57,6 +58,8 @@ hideProjectId = false;
 reqFor: any;
 belongsTo:any;
 index!: number;
+mainConfiguration :any;
+
   //locations:any[] = ["Select Office Location","Home and Mobile","AZ-Phoenix","AZ-Tucson","CA-Costa Mesa-Anton Blvd"];
 
   cache : Create_Cache_jabber = new Create_Cache_jabber();
@@ -155,7 +158,7 @@ index!: number;
     
     if(this.countrycodes[this.index] !== this.employeeInfo.workloc && e.target.value !== "Home and Mobile") {	
       
-      alert('The serial number that you have entered does not belong to the selected location. Please choose your correct location or choose Home and Mobile location.');	
+      alert(this.mainConfiguration.alerttranslation.Homeandmobilealert);	
       e.target.value = "Home and Mobile";
       this.locationselected="Home and Mobile";
       this.msgdis=true
@@ -183,7 +186,7 @@ this.msgdis=true
      
  }
 
- constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { 	}
+ constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private servicesd : TranslateConfigService) { 	}
  payload : Jabber_New = new Jabber_New();	
   
  reviewDetailsIndia = {	
@@ -212,7 +215,7 @@ this.msgdis=true
 }
 
  ngOnInit(): void {	
-  
+  this.mainConfiguration = this.servicesd.readConfigFile();
   
  this.orgi=this.cookie.getCookie('ccode');	
  this.cnum = sessionStorage.getItem('cnum') ;	
