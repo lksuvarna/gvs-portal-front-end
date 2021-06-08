@@ -168,7 +168,7 @@ getFixedPhoneData(){
   entryDetails(formData: NgForm) {	
     
     if(formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {	
-      alert('Please select the appropriate location.');	
+      alert('Please select a location.');	
       return;	
     }	
     // if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
@@ -177,24 +177,24 @@ getFixedPhoneData(){
     // }	
 
     if(formData.value.Device_Type == '') {
-        alert('Please select the device type.');
+        alert('Please select a device type.');
         return;
       }
       if(formData.value.Model_Type == '') {
-        alert('Please select the model type.');
+        alert('Please select a model type.');
         return;
       }
       
       if(formData.value.Justification == '' && this.showBusinessNeed == false) {
-        alert('Please provide a business justification for the selected class of service.');
+        alert('Please enter the business need for Class of Service.');
         return;
       }
       if(formData.value.Description == '') {
-        alert('Please provide a description (30 character limit).');
+        alert('Please Enter a description and it should not be more than 30 characters');
         return;
       }
       if(formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
-        alert('Please provide the MAC address (12 character limit).');
+        alert('Please enter 12 characters MAC address ');
         return;
       }
       var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
