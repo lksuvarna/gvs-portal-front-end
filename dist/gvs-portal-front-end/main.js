@@ -27347,9 +27347,10 @@ function NavigationComponent_div_0_li_3_Template(rf, ctx) { if (rf & 1) {
     const nav_r2 = ctx.$implicit;
     const i_r3 = ctx.index;
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("title", nav_r2.tooltip);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", i_r3 == ctx_r1.selectedItem ? ctx_r1.getNavActiveClass(i_r3) : ctx_r1.getNavClass(i_r3));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", nav_r2.routingname)("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](5, _c0, ctx_r1.pcode, nav_r2.param))("ngClass", i_r3 == ctx_r1.selectedItem ? "ds-text-contextual-blue-5" : "ds-text-neutral-7");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", nav_r2.routingname)("queryParams", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](6, _c0, ctx_r1.pcode, nav_r2.param))("ngClass", i_r3 == ctx_r1.selectedItem ? "ds-text-contextual-blue-5" : "ds-text-neutral-7");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("lhs.", nav_r2.name, "");
 } }
@@ -27357,7 +27358,7 @@ function NavigationComponent_div_0_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "ul", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, NavigationComponent_div_0_li_3_Template, 3, 8, "li", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, NavigationComponent_div_0_li_3_Template, 3, 9, "li", 4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -27536,13 +27537,13 @@ class NavigationComponent {
                     "data": [
                         {
                             "lhs": [
-                                { "name": "Services", "routingname": "/services", "indented": this.serin, "highlighted": this.serhl, "param": "services" },
+                                { "name": "Services", "routingname": "/services", "indented": this.serin, "highlighted": this.serhl, "param": "services", "tooltip": "To check all available services" },
                                 // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
-                                { "name": "Approvals Pending", "routingname": "/approvalpending", "indented": this.appin, "highlighted": this.apphl, "param": "approvalpending" },
-                                { "name": "Revalidation Pending", "routingname": "/revalidationpending", "indented": this.revalin, "highlighted": this.revalhl, "param": "revalidationpending" },
-                                { "name": "Phone Number Search", "routingname": "/extensionsummaryau", "indented": this.pnsin, "highlighted": this.pnshl, "param": "phone_search" },
-                                { "name": "Resources", "routingname": "/employeesearchres", "indented": this.resin, "highlighted": this.reshl, "param": "resources" },
-                                { "name": "Requests", "routingname": "/employeesearchreq", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests" }
+                                { "name": "Approvals Pending", "routingname": "/approvalpending", "indented": this.appin, "highlighted": this.apphl, "param": "approvalpending", "tooltip": "To check pending approvals" },
+                                { "name": "Revalidation Pending", "routingname": "/revalidationpending", "indented": this.revalin, "highlighted": this.revalhl, "param": "revalidationpending", "tooltip": "To check revalidation pending" },
+                                { "name": "Phone Number Search", "routingname": "/extensionsummaryau", "indented": this.pnsin, "highlighted": this.pnshl, "param": "phone_search", "tooltip": "phone_search" },
+                                { "name": "Resources", "routingname": "/employeesearchres", "indented": this.resin, "highlighted": this.reshl, "param": "resources", "tooltip": "To check the voice services ownership" },
+                                { "name": "Requests", "routingname": "/employeesearchreq", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests", "tooltip": "To check the outstanding request status" }
                             ],
                             "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request", "Mobile"],
                             "step": 1,
@@ -27555,17 +27556,17 @@ class NavigationComponent {
                     "data": [
                         {
                             "lhs": [
-                                { "name": "Services", "routingname": "/services", "indented": this.serin, "highlighted": this.serhl, "param": "services" },
-                                { "name": "Jabber", "routingname": "/jabberservices", "indented": true, "highlighted": this.jhl, "param": "jabberservices" },
-                                { "name": "FAC Code / IDD PIN", "routingname": "/facservices", "indented": true, "highlighted": this.fachl, "param": "facservices" },
-                                { "name": "Mobile", "routingname": "/mobileservices", "indented": true, "highlighted": this.mhl, "param": "mobileservices" },
-                                { "name": "Fixed Phone", "routingname": "/fixedphoneservices", "indented": this.fin, "highlighted": this.fhl, "param": "fixedphoneservices" },
-                                { "name": "Special Request", "routingname": "/employeesearchsp", "indented": true, "highlighted": this.sphl, "param": "specialrequest" },
-                                { "name": "Approvals Pending", "routingname": "/approvalpending", "indented": this.appin, "highlighted": this.apphl, "param": "approvalpending" },
-                                { "name": "Revalidation Pending", "routingname": "/revalidationpending", "indented": this.revalin, "highlighted": this.revalhl, "param": "revalidationpending" },
-                                { "name": "Phone Number Search", "routingname": "/extensionsummaryau", "indented": this.pnsin, "highlighted": this.pnshl, "param": "phone_search" },
-                                { "name": "Resources", "routingname": "/employeesearchres", "indented": this.resin, "highlighted": this.reshl, "param": "resources" },
-                                { "name": "Requests", "routingname": "/employeesearchreq", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests" }
+                                { "name": "Services", "routingname": "/services", "indented": this.serin, "highlighted": this.serhl, "param": "services", "tooltip": "To check all available services" },
+                                { "name": "Jabber", "routingname": "/jabberservices", "indented": true, "highlighted": this.jhl, "param": "jabberservices", "tooltip": "IBM office telephone number" },
+                                { "name": "FAC Code / IDD PIN", "routingname": "/facservices", "indented": true, "highlighted": this.fachl, "param": "facservices", "tooltip": "Fac services" },
+                                { "name": "Mobile", "routingname": "/mobileservices", "indented": true, "highlighted": this.mhl, "param": "mobileservices", "tooltip": "Mobile services" },
+                                { "name": "Fixed Phone", "routingname": "/fixedphoneservices", "indented": this.fin, "highlighted": this.fhl, "param": "fixedphoneservices", "tooltip": "IBM office physical desk phone" },
+                                { "name": "Special Request", "routingname": "/employeesearchsp", "indented": true, "highlighted": this.sphl, "param": "specialrequest", "tooltip": "Special request" },
+                                { "name": "Approvals Pending", "routingname": "/approvalpending", "indented": this.appin, "highlighted": this.apphl, "param": "approvalpending", "tooltip": "To check pending approvals" },
+                                { "name": "Revalidation Pending", "routingname": "/revalidationpending", "indented": this.revalin, "highlighted": this.revalhl, "param": "revalidationpending", "tooltip": "To check revalidation pending" },
+                                { "name": "Phone Number Search", "routingname": "/extensionsummaryau", "indented": this.pnsin, "highlighted": this.pnshl, "param": "phone_search", "tooltip": "To check ITN or phone number search" },
+                                { "name": "Resources", "routingname": "/employeesearchres", "indented": this.resin, "highlighted": this.reshl, "param": "resources", "tooltip": "To check the voice services ownership" },
+                                { "name": "Requests", "routingname": "/employeesearchreq", "indented": this.reqin, "highlighted": this.reqhl, "param": "requests", "tooltip": "To check the outstanding request status" }
                             ],
                             "services": ["Jabber", "Fixed Phone", "FAC Code / IDD PIN", "Special Request", "Mobile"],
                             "step": 1,
@@ -27664,11 +27665,11 @@ class NavigationComponent {
     }
 }
 NavigationComponent.ɵfac = function NavigationComponent_Factory(t) { return new (t || NavigationComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_1__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_2__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_translate_config_service__WEBPACK_IMPORTED_MODULE_4__["TranslateConfigService"])); };
-NavigationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NavigationComponent, selectors: [["app-navigation"]], inputs: { dataNavParent1: ["dataNav", "dataNavParent1"], cloudantData1: ["cloudantData", "cloudantData1"] }, outputs: { previousStep: "previousStep" }, decls: 1, vars: 1, consts: [["class", "ds-row ds-pad-t-1 ds-pad-b-2", 4, "ngIf"], [1, "ds-row", "ds-pad-t-1", "ds-pad-b-2"], [1, "ds-panel", "ds-bg-neutral-warm-1", "ds-no-border"], [1, "ds-list-unstyled", "ds-hover"], [3, "ngClass", 4, "ngFor", "ngForOf"], [3, "ngClass"], ["translate", "", 3, "routerLink", "queryParams", "ngClass", "click"]], template: function NavigationComponent_Template(rf, ctx) { if (rf & 1) {
+NavigationComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NavigationComponent, selectors: [["app-navigation"]], inputs: { dataNavParent1: ["dataNav", "dataNavParent1"], cloudantData1: ["cloudantData", "cloudantData1"] }, outputs: { previousStep: "previousStep" }, decls: 1, vars: 1, consts: [["class", "ds-row ds-pad-t-1 ds-pad-b-2", 4, "ngIf"], [1, "ds-row", "ds-pad-t-1", "ds-pad-b-2"], [1, "ds-panel", "ds-bg-neutral-warm-1", "ds-no-border"], ["translate", "", 1, "ds-list-unstyled", "ds-hover"], [3, "ngClass", "title", 4, "ngFor", "ngForOf"], [3, "ngClass", "title"], ["translate", "", 3, "routerLink", "queryParams", "ngClass", "click"]], template: function NavigationComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, NavigationComponent_div_0_Template, 4, 1, "div", 0);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.display);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgClass"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__["TranslateDirective"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJuYXZpZ2F0aW9uLmNvbXBvbmVudC5jc3MifQ== */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_5__["NgIf"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__["TranslateDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgForOf"], _angular_common__WEBPACK_IMPORTED_MODULE_5__["NgClass"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterLinkWithHref"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJuYXZpZ2F0aW9uLmNvbXBvbmVudC5jc3MifQ== */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NavigationComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -28650,7 +28651,7 @@ HpEmeaNewComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefin
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.locationlist);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("title", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](51, 56, "fixedphonenew.Type of Device"));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("title", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](51, 56, "fixedphonenew.TypeofDevice"));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.selected_device);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.devices);

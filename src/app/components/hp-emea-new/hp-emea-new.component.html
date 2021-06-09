@@ -51,7 +51,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'fixedphonenew.Type of Device' | translate}}" #device (change)='selectedDevice(device.value)'
+                                <select rows="2" name="Device_Type" cols="40" id="DeviceTypeId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'fixedphonenew.TypeofDevice' | translate}}" #device (change)='selectedDevice(device.value)'
                                     ngModel [(ngModel)]='selected_device'>
                                     <option value ="" translate>fixedphonenew.SelectOne</option>
                                     <option name="Device_Type" *ngFor='let device of devices' [value]='device' >{{ device }}</option>
