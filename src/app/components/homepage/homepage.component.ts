@@ -156,9 +156,20 @@ export class HomepageComponent implements OnInit {
             console.log("testusercod2"+this.testusercode)
             this.ccode=this.employeeSerial.substring(6,9)
           }
+          if (data.countrydetails.loc.includes(this.ccode)){
+      
+            this.micountry=true;
+            sessionStorage.setItem('micountry',"true")
+            this.miccountrycodes=data.countrydetails.loc.split(',');	
+            this.miccountrynames=data.countrydetails.locdisplay.split(',');
+            let n:number=this.miccountrycodes.indexOf(this.ccode)
+            this.micpath="././assets/flags/"+this.miccountrycodes[n]+".png"
+            this.micountry=this.miccountrynames[n]
+          }
           this.cloudantservice.getcountrydetails(this.testusercode).subscribe(data=> {
             if(data){
              console.log('Response received', data.countrydetails.name);
+             
              this.countryname=data.countrydetails;
              this.getBPData();
            }

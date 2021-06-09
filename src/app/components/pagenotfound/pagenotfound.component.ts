@@ -10,10 +10,16 @@ export class PagenotfoundComponent implements OnInit {
   
   constructor(private cloudantservice:cloudantservice) { }
   miccountry=false;
+  display=false;
   ngOnInit(): void {
     this.cloudantservice.getcountrydetails('000').subscribe(data=> {
+      if(data){}else{this.display=true;}
       if (data.countrydetails.loc.includes(sessionStorage.getItem('countryroute'))){
       this.miccountry=true
+      this.display=true;
+    }
+    else{
+      this.display=true;
     }
   })
   }
