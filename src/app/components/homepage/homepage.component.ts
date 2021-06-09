@@ -166,6 +166,7 @@ export class HomepageComponent implements OnInit {
             this.micpath="././assets/flags/"+this.miccountrycodes[n]+".png"
             this.micountry=this.miccountrynames[n]
           }
+          
           this.cloudantservice.getcountrydetails(this.testusercode).subscribe(data=> {
             if(data){
              console.log('Response received', data.countrydetails.name);
