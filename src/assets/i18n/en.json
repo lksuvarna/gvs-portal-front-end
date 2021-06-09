@@ -152,15 +152,10 @@
         "receiveITN": "you have received the ITN you can then request Jabber.  Thank you.",
         "notauthorizedtoaccessjabber": "The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact",
         "notauthorizedtoaccessip": "The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact",
-        "noteligibletorequestmorethanonejabber": "The serial number that you have entered is not eligible to request more than one Jabber account.",
         "Jabber/ITN": "Jabber/ITN",
         "jabberconfiguration": "is already registered for this user. If you cannot see this ITN listed in Bluepages under Contact information, please reach out to the help desk.",
         "toinstallbegin":"To install and begin using your Jabber account, please see",
-        "furtherassistance": "For any further assistance, please contact",
         "CiscoJabber" :"Cisco Jabber.",
-        "alreadyone": "The serial number that you have entered has already one",
-        "inprogess": "request in progress and request number is",
-        "ongoingrequestsbyclickonrequestpage": "You can view the status of the on-going request by clicking on the Requests link on the left side navigation menu.",
         "isalreadybeingprocessed":" is already being processed for this user. To view the status of this request, please click on Requests in the sidebar menu.",
         "Ifyoucannotsee":"If you cannot see the request listed, or for any other issues, please reach out to the help desk. ",
         "nooutstandingreq": "No outstanding requests were found for the serial number.",
@@ -179,7 +174,6 @@
     "Jabberentrydetails": {
         "Fieldsasterisk": "Fields marked with an asterisk",
         "arerequired": "are mandatory.",
-        "EmployeeEntryDetails": "Employee Entry Details",
         "OfficeLocation": "Office Location",
         "Campus": "Campus",
         "Funded": "Funded",
@@ -380,5 +374,15 @@
    "NewDescription":"New Description",
    "ReasonforUpdate":"Reason for update",
    "samemodelupdate":"You have selected the same model as the current phone model."
+},
+"feedback":{
+    "Donotincludeanypersonal":"Do not include any personal identifying information in the write-in fields or questions.",
+    "Onascale":"On a scale of 0 to 10, how likely are you to recommend this service to a friend or colleague?",
+    "Not at all likely":"Not at all likely",
+    "Extremely likely":"Extremely likely",
+    "Caretotell":"Care to tell us why? Your feedback will help us to improve. ",    
+    "Wearesopleasedthat":"We are so pleased that you feel this way about Global Voice Services! Care to tell us why? ",
+    "NoteThisfeedback":"Note: This feedback is for User Experience of the website. For any other feedback please use",
+   "Help":"Help"
 }
 }
