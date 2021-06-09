@@ -101,7 +101,8 @@
             <p translate>employeeinfotrans.notauthorizedtoaccessip <a style="color:blue" target="_blank" href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
         <div id="w1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfo>
-            <p><span style="font-size: 1rem;" translate> <span translate>employeeinfotrans.Jabber/ITN</span> {{identifier}} <span translate> employeeinfotrans.jabberconfiguration </span><br><br> <span translate> employeeinfotrans.toinstallbegin </span>          <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>:
+            <p><span style="font-size: 1rem;" translate> <span translate>employeeinfotrans.Jabber/ITN</span> {{identifier}} <span translate> employeeinfotrans.jabberconfiguration </span><br><br> <span translate> employeeinfotrans.toinstallbegin </span>
+                <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>:
                 <span translate> employeeinfotrans.CiscoJabber </span> <br></span>
             </p>
         </div>
@@ -111,8 +112,10 @@
         </div>
 
         <div id="fac_new_snow" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowfac>
-            <p><span style="font-size: 1rem;"translate> <span translate>employeeinfotrans.Jabber/ITN</span> {{identifier}} <span translate> employeeinfotrans.jabberconfiguration </span><br><br> <span translate> employeeinfotrans.toinstallbegin </span>          <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>:
-                <span translate> employeeinfotrans.CiscoJabber </span> <br></span></p>
+            <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
+                <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
+                <span translate> employeeinfotrans.Ifyoucannotsee </span></span>
+            </p>
         </div>
 
         <div id="fac_delete" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacdelete">
