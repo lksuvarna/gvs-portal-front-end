@@ -26707,6 +26707,7 @@ class HomepageComponent {
                             this.micpath = "././assets/flags/" + this.miccountrycodes[n] + ".png";
                             this.micountry = this.miccountrynames[n];
                         }
+                        sessionStorage.setItem('countryroute', this.ccode);
                         this.cloudantservice.getcountrydetails(this.testusercode).subscribe(data => {
                             if (data) {
                                 console.log('Response received', data.countrydetails.name);
