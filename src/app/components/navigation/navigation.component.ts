@@ -17,6 +17,7 @@ export class NavigationComponent implements OnInit {
   service : any;
   cloudantData: any = []
   servicesData: any = []
+  tooltip : any
   pcountrydetails:any;
   display=false
   @Output() previousStep = new EventEmitter<string>()
@@ -209,13 +210,13 @@ export class NavigationComponent implements OnInit {
           "data": [
             {    
               "lhs": [
-                {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
+                {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services","tooltip":"To check all available services"},
                // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
-                {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
-                {"name" : "Revalidation Pending","routingname":"/revalidationpending", "indented" : this.revalin, "highlighted": this.revalhl,"param":"revalidationpending"},
-                {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search"},
-                {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
-                {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
+                {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending","tooltip":"To check pending approvals"},
+                {"name" : "Revalidation Pending","routingname":"/revalidationpending", "indented" : this.revalin, "highlighted": this.revalhl,"param":"revalidationpending","tooltip":"To check revalidation pending"},
+                {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search","tooltip":"phone_search"},
+                {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources","tooltip":"To check the voice services ownership"},
+                {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests","tooltip":"To check the outstanding request status"}
               ],
               "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request","Mobile"], 
               "step" : 1,
@@ -227,19 +228,19 @@ export class NavigationComponent implements OnInit {
         "data": [
           {    
             "lhs": [
-              {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services"},
+              {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services","tooltip":"To check all available services"},
 
-              {"name" : "Jabber","routingname":"/jabberservices", "indented" : true, "highlighted": this.jhl,"param":"jabberservices"}, 
-              {"name" : "FAC Code / IDD PIN","routingname":"/facservices", "indented" : true, "highlighted": this.fachl,"param":"facservices"},  
-              {"name" : "Mobile","routingname":"/mobileservices", "indented" : true, "highlighted": this.mhl,"param":"mobileservices"},                        
+              {"name" : "Jabber","routingname":"/jabberservices", "indented" : true, "highlighted": this.jhl,"param":"jabberservices","tooltip":"IBM office telephone number"}, 
+              {"name" : "FAC Code / IDD PIN","routingname":"/facservices", "indented" : true, "highlighted": this.fachl,"param":"facservices","tooltip":"Fac services"},  
+              {"name" : "Mobile","routingname":"/mobileservices", "indented" : true, "highlighted": this.mhl,"param":"mobileservices","tooltip":"Mobile services"},                        
 
-              {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : this.fin, "highlighted": this.fhl,"param":"fixedphoneservices"},            
-              {"name" : "Special Request","routingname":"/employeesearchsp", "indented" : true, "highlighted": this.sphl,"param":"specialrequest"},            
-              {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending"},
-              {"name" : "Revalidation Pending","routingname":"/revalidationpending", "indented" : this.revalin, "highlighted": this.revalhl,"param":"revalidationpending"},
-              {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search"},
-              {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources"},
-              {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests"}
+              {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : this.fin, "highlighted": this.fhl,"param":"fixedphoneservices","tooltip":"IBM office physical desk phone"},            
+              {"name" : "Special Request","routingname":"/employeesearchsp", "indented" : true, "highlighted": this.sphl,"param":"specialrequest","tooltip":"Special request"},            
+              {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending","tooltip":"To check pending approvals"},
+              {"name" : "Revalidation Pending","routingname":"/revalidationpending", "indented" : this.revalin, "highlighted": this.revalhl,"param":"revalidationpending","tooltip":"To check revalidation pending"},
+              {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search","tooltip":"To check ITN or phone number search"},
+              {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources","tooltip":"To check the voice services ownership"},
+              {"name" : "Requests","routingname":"/employeesearchreq", "indented" : this.reqin, "highlighted": this.reqhl,"param":"requests","tooltip":"To check the outstanding request status"}
             ],
             "services" : ["Jabber", "Fixed Phone", "FAC Code / IDD PIN","Special Request","Mobile"], 
             "step" : 1,
