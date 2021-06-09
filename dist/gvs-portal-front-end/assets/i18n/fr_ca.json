@@ -116,62 +116,37 @@
         "receiveITN":"vous avez reçu l'ITN, vous pouvez alors demander Jabber. Merci.",
         "notauthorizedtoaccessjabber": "Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter",
         "notauthorizedtoaccessip":"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter",
-        "noteligibletorequestmorethanonejabber":"Le numéro de série que vous avez entré n'est pas éligible pour demander plus d'un compte Jabber.",
         "Jabber/ITN": "Jabber/ITN",
         "jabberconfiguration":"est déjà enregistré pour cet utilisateur. Si vous ne pouvez pas voir cet ITN répertorié dans les pages bleues sous Informations de contact, veuillez contacter le service d'assistance.",
         "toinstallbegin":"Pour installer et commencer à utiliser votre compte Jabber, veuillez consulter",
-        "furtherassistance":"Pour toute assistance supplémentaire, veuillez contacter",
         "CiscoJabber" :"Cisco Jabber.",
-        "alreadyone":"le numéro de série que vous avez entré en a déjà un",
-        "inprogess":"est en cours et le numéro de la demande est",
         "ongoingrequestsbyclickonrequestpage":"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.",
         "isalreadybeingprocessed":" est déjà en cours de traitement pour cet utilisateur. Pour voir l'état de cette demande, veuillez cliquer sur Demandes dans le menu de la barre latérale.",
         "Ifyoucannotsee":"Si vous ne pouvez pas voir la demande répertoriée, ou pour tout autre problème, veuillez contacter le service d'assistance. ",
         "nooutstandingreq":"Aucune demande en suspens n'a été trouvée pour le numéro de série.",
         "noresources":"Il n'y a pas de ressources pour ce numéro de série.",
-        "nojabberforthisserial":"Il n'y a pas de compte Jabber actif pour ce numéro de série. Veuillez vérifier et réessayer.",
         "BACK":"DOS",
         "NEXT":"SUIVANTE",
         "SUBMIT1" : "NOUS FAIRE PARVENIR",
-        "alreadyonerequestinprogress":"Demander",
-        "alreadyonedeleterequestinprogress":"Le numéro de série que vous avez entré a déjà une demande de suppression Jabber est en cours et le numéro de demande est"
+        "alreadyonerequestinprogress":"Demander "
     },
     "Jabberentrydetails":{
         "Fieldsasterisk":"Champs marqués d'un astérisque",
          "arerequired":"sont obligatoires.",
-         "EmployeeEntryDetails":"Détails de l'entrée des employés",
-         "OfficeLocation" : "Emplacement du bureau",
-         "Campus" : "Campus",
-         "Funded" : "Financé",
-         "ChargeDepartmentCode": "Code du département de facturation",
-         "BusinessUnit" : "Unité commerciale",
-         "Projectid" : "ID du projet (pour les employés de GBS uniquement)",
-         "alreadyhaveFixedPhone":"Si vous avez déjà un téléphone fixe, veuillez fournir l'identifiant",
-         "toprocessPI":"En soumettant cette demande d'approvisionnement, vous donnez votre consentement écrit à IBM pour traiter les Informations personnelles (IP) fournies.",
-         "JabberRequestDetails":"Détails de la demande Jabber",
-         "FixedPhoneIdentifier":"Identifiant de téléphone fixe",
-         "Submissioninprogress":"La soumission de votre demande est en cours.Ne revenez pas en arrière ou n'actualisez pas la page.",
-        "Submissionbeinginprogress":"Votre demande est en cours d'envoi. Ne pas actualiser ni revenir en arrière.",
+         "toprocessPI":"En soumettant cette demande de fourniture, vous fournissez votre consentement écrit à IBM pour traiter les informations personnelles fournies.",
+         "Submissioninprogress":"L'envoi de votre demande est en cours. Ne revenez pas en arrière et n'actualisez pas la page.",
+        "Submissionbeinginprogress":"Votre demande est en en cours d'envoi. Ne pas actualiser ou revenir en arrière.",
          "Back" : "DOS",
          "Next" : "SUIVANTE",
          "Select Location" : "Sélectionnez l'emplacement"
      },
      "Jabberupdate":{
-        "SELECTONE":"CHOISISSEZ UNE",
+        "SELECTONE":"SÉLECTIONNER UN",
         "ReviewDetails" : "revoir les détails",
         "JabberNumber" : "Jabber / Numéro de téléphone",
         "SelectJabberNumber" : "Jabber / Numéro de téléphone",
         "Jabber/PhoneNumberLocation" :"Sélectionnez Emplacement du numéro de téléphone / Jabber"
     },
-
-    "Jabbermove":{
-        "JabbertoMove":"Jabber / Numéro de téléphone",
-        "ProjectIId" : "Id du projet",
-        "AccountId" : "Identifiant de compte",
-        "ICA Code" : "Code ICA",
-        "NewOfficeLocation" :"Nouveau bureau",
-        "Building" : "Imeuble"
-        },
 
     "requesttrans" : {
         "Requests" : "Demandes",
@@ -187,7 +162,7 @@
         "Yourrequestfor" : "Demander ",
         "hasbeensubmitted" :"a été soumis",
         "Trackingrequest":"Le numéro de suivi de la demande est :",
-        "receiveemailnotification":"Vous recevrez d'autres notifications par e-mail au fur et à mesure que la demande sera traitée."
+        "receiveemailnotification":"Vous recevrez d'autres notifications par e-mail au fur et à mesure du traitement de la demande."
      },
      "resourcespagetranslation" :{
         "EmployeeResourcesDetails":"Détails des ressources des employés",
@@ -196,19 +171,10 @@
         "Innumber" : "En nombre",
         "AdditionalInformation" : "Informations Complémentaires"
     },
-    "phonenumber" :{
-        "PhoneNumberSearch":"Recherche par numéro de téléphone",
-        "PhoneNumberDetails":"Détails du numéro de téléphone",
-        "EnterITNNumber":"Entrez le numéro ITN",
-        "EmpID":"EmpID",
-        "UserName":"Nom d'utilisateur",
-        "ServiceDetails":"Détails du service"
-    },
     "alerttranslation" : {
         "EXITREQUEST" : "DEMANDE DE SORTIE",
         "digitserialnumber":"Le numéro de série de l'employé doit être composé de 6 caractères",
         "enterserialnumber" : "Veuillez saisir un numéro de série",
-        "moverequest":"Cette demande de déplacement supprimera le compte Jabber / ITN actuel et en attribuera un nouveau. Sélectionnez OK pour continuer, sur Annuler pour revenir en arrière.",
         "selectcountrycode":"Veuillez sélectionner le code du pays",
         "Only" : "Seule",
         "serialnumbersareallowed":"les numéros de série sont autorisés à créer",
@@ -248,16 +214,16 @@
            "SelectDevice":"Choisir un appareil",
            "TypeofModel":"Type de modèle ",
            "NewPhonemodel" :"Nouveau modèle de téléphone",
-           "SelectModel" :"Sélectionnez un modèle",
+           "SelectModel" :"Sélectionnez le modèle",
            "SelectClassofService (COS)" :"Classe de service (COS)",
            "National" :"Nationale",
            "International" :"Internationale",
-           "BusinessNeed(Whyisinternationalrequired?)" :"Besoin commercial (pourquoi l'international est-il requis?) ",
+           "BusinessNeed(Whyisinternationalrequired?)" :"Besoin de l'entreprise (Pourquoi l'international ?) ",
            "DescriptionoftheDevice" :"Description de l'appareil ",
            "IBMCLv21EMdesk" :"par exemple. Bureau EM IBMC Lv21 ", 
-           "IBMCLv21conferenceroom3" :"par exemple. IBMC Lv21 salle de conférence 3 ",
+           "IBMCLv21conferenceroom3" :"par exemple. Salle de conférence IBMC Lv21 3 ",
            "MACAddressoftheDevice" :"Adresse MAC de l'appareil ",   
-           "NoteCombinationofandLength12" :"Remarque: combinaison de (0 à 9, A à F) et longueur: 12",
+           "NoteCombinationofandLength12" :"Remarque : Combinaison de (0 à 9 , A à F) et longueur :12",
            "BusinessJustification" :"Justification de l'entreprise",
            "DescriptionofDevice" : "Description de l'appareil",
            "Somethingseemswrong" :"Nous rencontrons actuellement des difficultés pour traiter votre demande en raison d'une erreur inattendue. Veuillez contacter le service d'assistance pour signaler ce message. [Erreur]",
@@ -299,16 +265,12 @@
         "NoteCombination":"Remarque: combinaison de (0 à 9, A à F) et longueur: 12"
     },
     "specialrequest" :{
-    "OnlyusetheSpecialRequest":"Les demandes spéciales sont utilisées pour gérer des services supplémentaires pour un compte Jabber / ITN existant; pour indiquer le besoin d'un conseil en matière de téléphonie; ou pour créer/gérer des services spéciaux : identifiants secondaires, hotlines de groupe d'assistance et/ou lignes partagées ou groupes de recherche." ,
-    "needstandardservice":"Pour les services standard tels que la création d'un nouveau compte Jabber/ITN, veuillez utiliser les options du menu de la barre latérale. Ne soumettez pas de demande spéciale ou elle sera rejetée.",
-    "SpecialRequestHCSmigratedsite":"Les demandes spéciales liées aux services vocaux ne sont autorisées que pour les sites migrés vers CHCS / Jabber. Si vous devez soumettre une demande spéciale pour un site non migré, veuillez utiliser ",
-    "TMAC tool":"TMAC.",
-    "HelpTMACtool":"L'aide relative à l'outil TMAC peut être trouvée ",
-    "here" :"ici.",
-    "JabberNumberoptional": "Jabber / numéro de téléphone (facultatif)",
+    "OnlyusetheSpecialRequest":"Les demandes spéciales sont utilisées pour gérer des services supplémentaires pour un compte Jabber/ITN existant ; pour indiquer le besoin d'un conseil en téléphonie ; ou pour créer /gérer des services spéciaux : des identifiants secondaires, des assistances téléphoniques de groupe d'assistance et/ou des lignes partagées ou des groupes de recherche." ,
+    "needstandardservice":"Pour les services standards tels que la création d'un nouveau compte Jabber/ITN, veuillez utiliser les options du menu de la barre latérale. N'envoyez pas de demande spéciale, sinon elle sera rejetée.",
+    "JabberNumberoptional": "Jabber / Numéro de téléphone (Facultatif)",
     "JabberLocationspecial": "Emplacement du Jabber / Numéro de téléphone",
-    "Description of Requirement" :"Description de l'exigence",
-    "notexceed200":"Remarque: la longueur ne doit pas dépasser 500",
+    "Description of Requirement" :"Description du besoin",
+    "notexceed200":"Remarque : la longueur ne doit pas dépasser 500",
     "Note": "Noter:",
     "Fieldsasteriskspl":"Champs marqués d'un astérisque",
      "arerequiredspl":"sont obligatoires.",
@@ -318,8 +280,6 @@
 
     },
     "otheralerts":{
-       "selectthejabber":"Veuillez sélectionner le compte Jabber / ITN en cours de mise à jour.",
-       "selectthejabbertomove":"Sélectionnez le Jabber / numéro de téléphone que vous souhaitez déplacer",
        "Model" :"Modèle",
        "MAC Address" :"Adresse Mac",
        "Device Description" :"Description de l'appareil"
@@ -333,7 +293,16 @@
         "NewDescription":"Nouvelle description",
         "ReasonforUpdate":"Raison de la mise à jour",
         "samemodelupdate":"Vous avez sélectionné le même modèle que le modèle de téléphone actuel."
-     }
+     },
+     "feedback":{
+        "Donotincludeanypersonal":"N'incluez aucune information d'identification personnelle dans les champs d'écriture ou les questions.",
+        "Onascale":"Sur une échelle de 0 à 10, quelle est la probabilité que vous recommandiez ce service à un ami ou un collègue ?",
+        "Not at all likely":"Pas du tout probable",
+        "Extremely likely":"Extrêmement probable",
+        "Caretotell":"Voulez-vous nous dire pourquoi ? Vos commentaires nous aideront à nous améliorer. ",    
+        "Wearesopleasedthat":"Nous sommes ravis que vous vous sentiez ainsi à propos de Global Voice Services ! Voulez-vous nous dire pourquoi ?",
+        "NoteThisfeedback":"Remarque : Ces commentaires sont destinés à l'expérience utilisateur du site Web. Pour tout autre commentaire, veuillez utiliser",
+       "Help":"Aider"
     
- 
+     }
 }

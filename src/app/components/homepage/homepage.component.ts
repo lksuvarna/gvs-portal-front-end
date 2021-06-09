@@ -36,13 +36,18 @@ export class HomepageComponent implements OnInit {
   homepagecodesCA:any;
   codeCA:any;
   tscode:any
+  micountry=false;
   translatecountryname :any;
   translatecountryname1 :boolean =false;
   ccode='';
   testusercode:any
   countrydetails:any;
   countrynamehome:any;
-  employeeInfo:any
+  employeeInfo:any;
+  micpath:any;
+  micname:any;
+  miccountrycodes:any; 
+  miccountrynames:any; 
   display=false
   fixphoneVisibility:any;
   loggedinuser:any;
@@ -77,34 +82,49 @@ export class HomepageComponent implements OnInit {
     this.fullName = this.fullName.replace(/[&\/\\#+()$~%.'":*?<>{}0-9]/g, ' ');
     this.fullName = this.fullName.replace(","," ");
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
+   
     this.employeeSerial=this.ccode;
     this.loggedinuser = this.cookie.getCookie('ccode');
     this.display=false;
     this.cloudantservice.getcountrydetails('000').subscribe(data=> {
       this.countrynamehome=data.countrydetails;
+      console.log(data.countrydetails)
      
-      if (data.countrydetailshome.this.homepagecodesCA.includes(this.ccode)){
-        this.ccode=data.countrydetailshome.codeCA
+    // this.ccode="897"
+    
+      if (data.countrydetails.homepagecodesCA.includes(this.ccode)){
+        this.ccode=data.countrydetails.codeCA
       }
-      else if (data.countrydetailshome.this.homepagecodesLA.includes(this.ccode)){
-        this.ccode=data.countrydetailshome.codeLA
+      else if (data.countrydetails.homepagecodesLA.includes(this.ccode)){
+        this.ccode=data.countrydetails.codeLA
       }
-      else if (data.countrydetailshome.this.homepagecodesPH.includes(this.ccode)){
-        this.ccode=data.countrydetailshome.codePH
+      else if (data.countrydetails.homepagecodesPH.includes(this.ccode)){
+        this.ccode=data.countrydetails.codePH
       }
-     else if (data.countrydetailshome.this.homepagecodesCN.includes(this.ccode)){
-        this.ccode=data.countrydetailshome.codeCN
+     else if (data.countrydetails.homepagecodesCN.includes(this.ccode)){
+        this.ccode=data.countrydetails.codeCN
       }
-    })
+      if (data.countrydetails.loc.includes(this.ccode)){
+      
+        this.micountry=true;
+        sessionStorage.setItem('micountry',"true")
+        this.miccountrycodes=data.countrydetails.loc.split(',');	
+        this.miccountrynames=data.countrydetails.locdisplay.split(',');
+        let n:number=this.miccountrycodes.indexOf(this.ccode)
+        this.micpath="././assets/flags/"+this.miccountrycodes[n]+".png"
+        this.micountry=this.miccountrynames[n]
+      }
+     
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       this.display=true;
+      
       console.log('Response received', data.countrydetails.name);
       this.countryname=data.countrydetails;
        this.countrydetails=JSON.stringify(data.countrydetails)
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.ccode);
       sessionStorage.setItem('pagedisplay','homepage')
-      
+     
       console.log("testuser"+data.countrydetails.testuser)
       if (data.countrydetails.testuser){
         this.employeeSerial=data.countrydetails.testuser;
@@ -136,9 +156,21 @@ export class HomepageComponent implements OnInit {
             console.log("testusercod2"+this.testusercode)
             this.ccode=this.employeeSerial.substring(6,9)
           }
+          if (data.countrydetails.loc.includes(this.ccode)){
+      
+            this.micountry=true;
+            sessionStorage.setItem('micountry',"true")
+            this.miccountrycodes=data.countrydetails.loc.split(',');	
+            this.miccountrynames=data.countrydetails.locdisplay.split(',');
+            let n:number=this.miccountrycodes.indexOf(this.ccode)
+            this.micpath="././assets/flags/"+this.miccountrycodes[n]+".png"
+            this.micountry=this.miccountrynames[n]
+          }
+          
           this.cloudantservice.getcountrydetails(this.testusercode).subscribe(data=> {
             if(data){
              console.log('Response received', data.countrydetails.name);
+             
              this.countryname=data.countrydetails;
              this.getBPData();
            }
@@ -149,7 +181,7 @@ export class HomepageComponent implements OnInit {
         )
         
       }
-      
+   
       this.translatecountryname = this.countryname.name;
       if (this.translatecountryname == 'Canada/Caribbean'){
           this.translatecountryname1 = true;
@@ -159,7 +191,7 @@ export class HomepageComponent implements OnInit {
         }
 
      }); 
-
+    })
      this.cloudantservice.getcountrysearchdetails(this.ccode).subscribe(data =>{
       this.searchData = data;
       console.log('Response received for search', this.searchData );

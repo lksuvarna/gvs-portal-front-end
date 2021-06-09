@@ -54,13 +54,19 @@
 
 <br>
 <br>
-<div class="ds-row ds-text-align-center " style="background-color: #f3f3f3; " >
+<div class="ds-row ds-text-align-center " style="background-color: #f3f3f3; " *ngIf="display">
     <div class="ds-col-sm-6 ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5 ">
-        <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode,service:'services'}" routerLinkActive="active " data="{cdetails:this.countryname}"><img class="ds-text-align-center ds-border-neutral-5 " [src]='countryname.flagname'></a>
+        <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode,service:'services'}" routerLinkActive="active " data="{cdetails:this.countryname}"><img class="ds-text-align-center ds-border-neutral-5 " [src]='countryname.flagname' *ngIf="micountry==false"></a>
+        <a [routerLink]="[ '/**'] " [queryParams]="{country:ccode,service:'services'}" routerLinkActive="active " data="{cdetails:this.countryname}"><img class="ds-text-align-center ds-border-neutral-5 " [src]='micpath' *ngIf="micountry"></a>
     </div>
     <div class="ds-col-sm-6 ds-text-align-left ds-padding-top-1 " *ngIf="display"><br><span style="font-size:30px " class="ds-padding-left-3 " translate>home.my-country</span><br>
-        <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode,service:'services'}" data="{cdetails:this.countryname}" translate>home.click-here</a>
-        <div translate>home.available </div><span class="ds-padding-left-3 "><span translate>home.servicesonlyokay</span> {{countryname.name}}</span><br>
+        <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode,service:'services'}" data="{cdetails:this.countryname}" translate *ngIf="micountry==false">home.click-here</a>
+        <a [routerLink]="[ '/**'] " [queryParams]="{country:ccode,service:'services'}" data="{cdetails:this.countryname}" translate *ngIf="micountry">home.click-here</a>
+        <div translate>home.available </div>
+        <span class="ds-padding-left-3 " *ngIf="micountry==false"><span translate>home.servicesonlyokay</span> {{countryname.name}}</span>
+        <span class="ds-padding-left-3 " *ngIf="micountry"><span translate>home.servicesonlyokay</span> {{micountry}}</span>
+        
+        <br>
     </div>
 </div>
 <br>
