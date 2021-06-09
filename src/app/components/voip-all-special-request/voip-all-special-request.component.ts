@@ -70,6 +70,10 @@ export class VoipAllSpecialRequestComponent implements OnInit {
   default_location='';
   la=false;
   disable=false;
+  jabberDept: any
+  countryroute: any;
+  employeeInfo1: any;	
+  employeeInfo: any;	
   laloc !: String;
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
@@ -204,7 +208,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.payload.Identifier_Disp=this.selectedJabber.substring(0,8);
       this.payload.countryname=this.countrydetails.name;	
       this.payload.request_type='special_request';	
-      this.payload.Location_Disp=this.fl_location_disp   
+      this.payload.Location_Disp=this.getLocationCorrect() 
       this.payload.Comments = this.requirements_disp.replace(/[\n\r+]/g, ' ');
       this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
     
@@ -236,6 +240,23 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       console.log("cached" + JSON.stringify(this.cache));
     }
 
+  getLocationCorrect() : any { 
+    //Egypt dept based location
+    if(this.countryroute === '865'){
+      this.jabberDept = this.countrydetails.jabber_dept
+      this.jabberDept = this.jabberDept.map((val: string)=> val.toLowerCase())
+
+      if(this.jabberDept.includes(this.employeeInfo.department.toLowerCase())){
+        return this.fl_location_disp + ' - J7A'
+      } else {
+        return this.fl_location_disp + ' - J7A_2'
+      }
+
+    } else {
+      return this.fl_location_disp  
+    }
+  }
+
 
   ngOnInit(): void {
     this.mainConfiguration = this.servicesd.readConfigFile();
@@ -253,6 +274,10 @@ export class VoipAllSpecialRequestComponent implements OnInit {
      this.cnum = sessionStorage.getItem('cnum') ;	
      this.countrydetails = sessionStorage.getItem('countrydetails');	
      this.countrydetails = JSON.parse(this.countrydetails);	
+     this.countryroute = sessionStorage.getItem('countryroute');	
+     this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
+     this.employeeInfo = JSON.parse(this.employeeInfo1);	
+
       // Submit to Snow Jabber new code added by Swarnava ends	
         
      this.ccode=this.cookie.getCookie('ccode').substring(6,9);
