@@ -1678,7 +1678,7 @@ class HpUsaNewComponent {
     }
     entryDetails(formData) {
         if (formData.value.Location_1.toUpperCase() == 'SELECT ONE' || formData.value.Location_1 == '') {
-            alert('Please select a location.');
+            alert('Please select the appropriate location.');
             return;
         }
         // if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
@@ -1686,23 +1686,23 @@ class HpUsaNewComponent {
         //   return;	
         // }	
         if (formData.value.Device_Type == '') {
-            alert('Please select a device type.');
+            alert('Please select the device type.');
             return;
         }
         if (formData.value.Model_Type == '') {
-            alert('Please select a model type.');
+            alert('Please select the model type.');
             return;
         }
         if (formData.value.Justification == '' && this.showBusinessNeed == false) {
-            alert('Please enter the business need for Class of Service.');
+            alert('Please provide a business justification for the selected class of service.');
             return;
         }
         if (formData.value.Description == '') {
-            alert('Please Enter a description and it should not be more than 30 characters');
+            alert('Please provide a description (30 character limit).');
             return;
         }
         if (formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
-            alert('Please enter 12 characters MAC address ');
+            alert('Please provide the MAC address (12 character limit).');
             return;
         }
         var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
