@@ -12,7 +12,7 @@
         <b translate>servicestitle.{{this.title}}</b>
         <div class="ds-pad-t-0_5 ds-pad-b-1">
 
-            <span *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfosnowothersfac==false && warninginfosnowfac==false && warninginfofac== false && warninginfosnowlegacy==false && warninginfofacr== false  && warninginfofacu== false && warninginfofacdelete== false">  <p                 translate>employeeinfotrans.ifinfoiscorrect <a translate href="https://w3.ibm.com/bluepages/" target="_blank">employeeinfotrans.BluePagesrecord </a> <span translate>employeeinfotrans.beforecontinuing </span></p>
+            <span *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfosnowothersfac==false && warningDeptEgypt==false && warninginfosnowfac==false && warninginfofac== false && warninginfosnowlegacy==false && warninginfofacr== false  && warninginfofacu== false && warninginfofacdelete== false">  <p translate>employeeinfotrans.ifinfoiscorrect <a translate href="https://w3.ibm.com/bluepages/" target="_blank">employeeinfotrans.BluePagesrecord </a> <span translate>employeeinfotrans.beforecontinuing </span></p>
             </span>
         </div>
         <div class="ds-hr-thick ds-mar-b-1_5"></div>
@@ -107,6 +107,11 @@
             </p>
         </div>
 
+        <div id="dept-egypt" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warningDeptEgypt">
+            <p>The serial number that you have entered is not authorized to request Jabber. <br> For an Extension Mobility phone number (including voicemail), please submit a <a style="color:blue" [routerLink]="['/employeesearch']" [queryParams]="{country:pcode,service:'specialrequest'}">Special Request</a>.
+                For further assistance, please reach out to the <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">help desk</a>.</p>
+        </div>
+
         <div id="fac_new" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfofac>
             <p><span style="font-size: 1rem;">The serial number that you have entered is not eligible to request more than one FAC Code / IDD PIN.</span></p>
         </div>
@@ -183,12 +188,12 @@
         <div class="ds-hr-thick"></div>
 
         <div class="ds-row ds-grid ds-mar-t-b-3_5 ds-pad-r-1">
-            <div [ngClass]="warninginfo==false&&warninginfosnow==false&&warninginfosnowfac==false&& warninginfofac==false&&warn==false? 'ds-col-lg-2 ds-push-lg-8': 'ds-col-lg-2 ds-push-lg-10'">
+            <div [ngClass]="warninginfo==false&&warninginfosnow==false&&warninginfosnowfac==false&&warningDeptEgypt==false&& warninginfofac==false&&warn==false? 'ds-col-lg-2 ds-push-lg-8': 'ds-col-lg-2 ds-push-lg-10'">
                 <button (click)="backClick()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" translate>employeeinfotrans.BACK</button>
             </div>
             <div class="ds-col-lg-2 ds-push-lg-8">
 
-                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfosnowothersfac==false && warninginfosnowfac==false && warninginfofac== false && warninginfofacr== false  && warninginfofacu== false && warninginfofacdelete== false && warninginfosnowlegacy == false"
+                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfosnowothersfac==false && warninginfosnowfac==false && warninginfofac== false && warninginfofacr== false  && warninginfofacu== false && warninginfofacdelete== false && warningDeptEgypt == false"
                     translate>employeeinfotrans.NEXT</button>
 
             </div>
