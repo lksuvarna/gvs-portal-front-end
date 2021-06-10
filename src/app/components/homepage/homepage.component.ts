@@ -49,11 +49,12 @@ export class HomepageComponent implements OnInit {
   miccountrycodes:any; 
   miccountrynames:any; 
   display=false
+  selected_device:any
   fixphoneVisibility:any;
   loggedinuser:any;
   searchData:any = [];
   list:any = [];
-
+s:any
   generate(cnum : string): void{
     console.log(cnum);
 
@@ -112,9 +113,12 @@ export class HomepageComponent implements OnInit {
         this.miccountrynames=data.countrydetails.locdisplay.split(',');
         let n:number=this.miccountrycodes.indexOf(this.ccode)
         this.micpath="././assets/flags/"+this.miccountrycodes[n]+".png"
+       
+      
         this.micountry=this.miccountrynames[n]
       }
-     
+      
+      
     this.cloudantservice.getcountrydetails(this.ccode).subscribe(data=> {
       this.display=true;
       
