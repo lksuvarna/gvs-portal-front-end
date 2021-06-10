@@ -10,10 +10,6 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 
-
-
-
-
 @Component({
   selector: 'app-employeeinfo',
   templateUrl: './employeeinfo.component.html',
@@ -43,6 +39,7 @@ export class EmployeeinfoComponent implements OnInit {
   warninginfosnowothers = false;
   warninginfosnowothersfac = false
   warninginfofac = false;
+  warningDeptEgypt = false;
 
   warninginfofacdelete = false;
   warninginfofacdeletesnow=false;
@@ -64,6 +61,9 @@ export class EmployeeinfoComponent implements OnInit {
   navpage1:any;
   page:any;
   warn = false;
+  countryroute:any;
+  countrydetails:any;
+  jabberDept: any
 
   submit() {
     if(this.service=="requests"||this.service=="resources"||this.service=="approvalpending"||this.service=="revalidationpending"){
@@ -80,7 +80,7 @@ export class EmployeeinfoComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    
+
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
@@ -110,6 +110,7 @@ export class EmployeeinfoComponent implements OnInit {
     this.warninginfosnow=false
     this.warninginfosnowfac=false
     this.warninginfosnowlegacy=false
+    this.warningDeptEgypt=false
     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
     this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
     console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
@@ -198,15 +199,33 @@ export class EmployeeinfoComponent implements OnInit {
     
    }
    
+
   // this.warninginfosnow = true
    this.isDataLoaded=true
    //this.identifier=sessionStorage.getItem('identifier')
     this.employeeInfo1=sessionStorage.getItem('employeeInfo')
     this.employeeInfo=JSON.parse(this.employeeInfo1)
-
+    this.countryroute=sessionStorage.getItem('countryroute')
+    this.countrydetails=sessionStorage.getItem('countrydetails')
+    this.countrydetails = JSON.parse(this.countrydetails)
+   
+  if(this.countryroute === '865' && ( this.service=="jabber_new" || this.service=="jabber_delete")) {
+    this.jabberDept = this.countrydetails.jabber_dept
+    this.jabberDept = this.jabberDept.map((val: string)=> val.toLowerCase())
+    
+    if(this.jabberDept.includes(this.employeeInfo.department.toLowerCase())){
+      this.warningDeptEgypt = false
+    } else {
+      this.warningDeptEgypt = true
+      this.warninginfo = false
+      this.warninginfoothers = false
+      this.warninginfosnow = false
+      this.warninginfosnowothers = false
+    }
+  }
 
     
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdelete ||this.warninginfofacdeletesnow || this.warninginfosnowfac || this.warninginfosnowlegacy){
+    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdelete ||this.warninginfofacdeletesnow || this.warninginfosnowfac || this.warninginfosnowlegacy || this.warningDeptEgypt){
 
       this.hideSteps = true;
       this.warn = true;

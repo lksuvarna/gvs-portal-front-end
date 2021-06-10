@@ -39,6 +39,7 @@ orgi:any;
 cnum : any;	
 reqno:any;	
 countrydetails : any;	
+countryroute: any;
 isButtonVisible = true;	
 isSpinnerVisible= false; 		
 pcode: any;	
@@ -58,7 +59,8 @@ MACValue:any = '';
 descValue:any = '';
 justificationValue:any = '';
 FixedPhoneData: any = [];
-
+locSelected : any
+jabberDept: any
 
 
 payload : fixedphone_new = new fixedphone_new();	
@@ -269,11 +271,22 @@ getFixedPhoneData(){
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
       this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
       this.payload.Desc_Disp = this.reviewDetailsIndia.description;
-      this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+
+      if(this.countrydetails.jabber_dept){
+        this.jabberDept = this.countrydetails.jabber_dept;
+        this.jabberDept = this.jabberDept.map((val: string)=> val.toLowerCase());
+      }
+
+      this.locSelected = this.reviewDetailsIndia.officeLocation
+      if(this.countrydetails.did_loc_formula){
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.did_loc_formula);
+      } else {
+        this.payload.LocationCorrectnew = 'HP' + this.locSelected
+      }
+
       this.payload.COS_Disp = this.reviewDetailsIndia.cos;
       this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
-  
-  
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
       this.payload.level2_japproval=this.countrydetails.level2_japproval;	
       this.payload.SLA_type=this.countrydetails.SLA_type;	
@@ -298,6 +311,38 @@ getFixedPhoneData(){
         );	
   
   }
+
+
+  getLocationCorrectNew() : any {
+    this.locSelected = this.reviewDetailsIndia.officeLocation
+
+    //Egypt Location
+    if(this.countryroute === '865'){
+      this.jabberDept = this.countrydetails.jabber_dept
+      this.jabberDept = this.jabberDept.map((val: string)=> val.toLowerCase())
+
+      if(this.jabberDept.includes(this.employeeInfo.department.toLowerCase())){
+        if(this.reviewDetailsIndia.device === 'Extension Mobility Station'){
+          return 'HP' + this.locSelected
+        } else if (this.reviewDetailsIndia.device === 'Conference / Meeting Room Phone'){
+          return 'HP' + this.locSelected + 'Conf'
+        } else {
+          return this.locSelected
+        }
+      } else {
+        if(this.reviewDetailsIndia.device === 'Extension Mobility Station' ){
+          return 'HP' + this.locSelected + ' - J7A_2'
+        } else if (this.reviewDetailsIndia.device.trim().toLowerCase() === 'conference / meeting room phone'){
+          return 'HP' + this.locSelected + ' - J7A_2'
+        } else {
+          return this.locSelected + ' - J7A_2'
+        } 
+      }
+    //Default Location
+    } else {
+     return 'HP' + this.locSelected
+    }
+  }
   
   ngOnInit(): void {
     this.mainConfiguration = this.servicesd.readConfigFile();
@@ -305,6 +350,7 @@ getFixedPhoneData(){
   this.orgi=this.cookie.getCookie('ccode');	
   this.cnum = sessionStorage.getItem('cnum') ;	
   this.countrydetails = sessionStorage.getItem('countrydetails');	
+  this.countryroute = sessionStorage.getItem('countryroute');	
   this.countrydetails = JSON.parse(this.countrydetails);	
    // Submit to Snow Jabber new code added by Swarnava ends	
 
