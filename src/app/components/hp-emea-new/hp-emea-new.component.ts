@@ -271,11 +271,22 @@ getFixedPhoneData(){
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
       this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
       this.payload.Desc_Disp = this.reviewDetailsIndia.description;
-      this.payload.LocationCorrectnew = this.getLocationCorrectNew()
+
+      if(this.countrydetails.jabber_dept){
+        this.jabberDept = this.countrydetails.jabber_dept;
+        this.jabberDept = this.jabberDept.map((val: string)=> val.toLowerCase());
+      }
+
+      this.locSelected = this.reviewDetailsIndia.officeLocation
+      if(this.countrydetails.did_loc_formula){
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.did_loc_formula);
+      } else {
+        this.payload.LocationCorrectnew = 'HP' + this.locSelected
+      }
+
       this.payload.COS_Disp = this.reviewDetailsIndia.cos;
       this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
-  
-  
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
       this.payload.level2_japproval=this.countrydetails.level2_japproval;	
       this.payload.SLA_type=this.countrydetails.SLA_type;	
