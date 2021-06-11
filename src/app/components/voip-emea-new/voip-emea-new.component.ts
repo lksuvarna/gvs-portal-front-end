@@ -59,6 +59,7 @@ export class VoipEmeaNewComponent implements OnInit {
   hideProjectId = false;
   cache_tmp:  any = [];
   selected_location ="";
+  locSelected : any
   campA: any = [];	
     camp: any = [];	
     buildA: any = [];	
@@ -148,7 +149,15 @@ export class VoipEmeaNewComponent implements OnInit {
       this.payload.identifier_hp_Disp = this.reviewDetailsEMEA.fixPhoneIdentifier;	
       this.payload.BusinessUnit_Disp =this.reviewDetailsEMEA.businessUnit;	
       this.payload.Department_number_Disp = this.reviewDetailsEMEA.chargeDepartmentCode;	
-      this.payload.Location_final =this.reviewDetailsEMEA.Location_final;
+
+      this.locSelected = this.reviewDetailsEMEA.Location_final
+      if(this.countrydetails.did_loc_formula){
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.did_loc_formula);
+      } else {
+        this.payload.Location_final = this.locSelected
+      }
+
       this.payload.accid_Disp="";
       this.payload.ReqNo=this.reqno;	
   

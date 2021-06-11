@@ -282,7 +282,12 @@ getFixedPhoneData(){
         // Assign location value from cloudant. Needed for ITN allocation
         eval(this.countrydetails.did_loc_formula);
       } else {
-        this.payload.LocationCorrectnew = 'HP' + this.locSelected
+       // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
+        if (this.reviewDetailsIndia.device === 'Fixed Phone User'){
+          this.payload.LocationCorrectnew = this.locSelected
+        } else {
+          this.payload.LocationCorrectnew = 'HP' + this.locSelected
+        }
       }
 
       this.payload.COS_Disp = this.reviewDetailsIndia.cos;
@@ -312,37 +317,6 @@ getFixedPhoneData(){
   
   }
 
-
-  getLocationCorrectNew() : any {
-    this.locSelected = this.reviewDetailsIndia.officeLocation
-
-    //Egypt Location
-    if(this.countryroute === '865'){
-      this.jabberDept = this.countrydetails.jabber_dept
-      this.jabberDept = this.jabberDept.map((val: string)=> val.toLowerCase())
-
-      if(this.jabberDept.includes(this.employeeInfo.department.toLowerCase())){
-        if(this.reviewDetailsIndia.device === 'Extension Mobility Station'){
-          return 'HP' + this.locSelected
-        } else if (this.reviewDetailsIndia.device === 'Conference / Meeting Room Phone'){
-          return 'HP' + this.locSelected + 'Conf'
-        } else {
-          return this.locSelected
-        }
-      } else {
-        if(this.reviewDetailsIndia.device === 'Extension Mobility Station' ){
-          return 'HP' + this.locSelected + ' - J7A_2'
-        } else if (this.reviewDetailsIndia.device.trim().toLowerCase() === 'conference / meeting room phone'){
-          return 'HP' + this.locSelected + ' - J7A_2'
-        } else {
-          return this.locSelected + ' - J7A_2'
-        } 
-      }
-    //Default Location
-    } else {
-     return 'HP' + this.locSelected
-    }
-  }
   
   ngOnInit(): void {
     this.mainConfiguration = this.servicesd.readConfigFile();
