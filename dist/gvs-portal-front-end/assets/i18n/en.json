@@ -219,6 +219,7 @@
     },
     "resultpagetrans": {
         "Yourrequestfor": "Request ",
+        "new":"for a new IBM Telephone Number (ITN)/Jabber account",
         "hasbeensubmitted": "has been submitted",
         "Trackingrequest": "Tracking number for the request is :",
         "receiveemailnotification": "You will receive further email notifications as the request is processed."
