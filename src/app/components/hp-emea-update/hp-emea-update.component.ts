@@ -256,6 +256,11 @@ backClick(formData: NgForm){
     }
   }
   entryDetails(formData: NgForm){
+
+    if(this.newModel.toUpperCase() =='' || this.newModel.toUpperCase() =='SELECT ONE'){
+      this.showformodel1 = false;
+            
+    }
     if(formData.value.UpdateReq == '') {	
       alert(this.mainConfiguration.fixedphonenew.updaterequiredfor);	
       return;
