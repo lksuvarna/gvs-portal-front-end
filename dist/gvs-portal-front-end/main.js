@@ -6580,6 +6580,9 @@ class HpEmeaUpdateComponent {
         }
     }
     entryDetails(formData) {
+        if (this.newModel.toUpperCase() == '' || this.newModel.toUpperCase() == 'SELECT ONE') {
+            this.showformodel1 = false;
+        }
         if (formData.value.UpdateReq == '') {
             alert(this.mainConfiguration.fixedphonenew.updaterequiredfor);
             return;
@@ -24454,6 +24457,9 @@ class EmployeesearchComponent {
                 else if (this.countrydetails.fnavpage == 'AU') {
                     this.routingname = '/entrydetailsaufu';
                 }
+                else if (this.countrydetails.fnavpage == 'US') {
+                    this.routingname = '/entrydetailsaufu';
+                }
                 else if (this.countrydetails.fnavpage == 'ID') {
                     this.routingname = '/entrydetailsidfu';
                 }
@@ -29406,7 +29412,7 @@ class HpAuUpdateComponent {
     }
     OnSearchClick() {
         if (this.currentMacOrPhone != '') {
-            this.db2.search_db2(this.cnum, "fixedphone_search", this.currentMacOrPhone.toUpperCase(), this.currentMacOrPhone.toUpperCase(), "Australia").subscribe(data => {
+            this.db2.search_db2(this.cnum, "fixedphone_search", this.currentMacOrPhone.toUpperCase(), this.currentMacOrPhone.toUpperCase(), this.countrydetails.name).subscribe(data => {
                 if (data.message != '') {
                     console.log("data" + data);
                     console.log("data message" + data.message[0]);
