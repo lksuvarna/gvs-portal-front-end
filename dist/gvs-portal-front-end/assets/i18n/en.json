@@ -145,7 +145,7 @@
         "Country": "Country:",
         "E-mail": "E-mail:",
         "noteligiblejabber": "The serial number that you have entered is not eligible to request Jabber account.",
-        "itnexistsforuser": "The IBM Telephone Number (ITN) that exists for this user is .",
+        "itnexistsforuser": "Jabber / Phone Number that exists for this user is .",
         "nojabber": "There is no active Jabber account for this serial number. Please verify and try again.",
         "nojabberusethislink": "The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN ",
         "GlobalVoiceInfrastructure": "Global Voice Infrastructure.",
@@ -219,7 +219,18 @@
     },
     "resultpagetrans": {
         "Yourrequestfor": "Request ",
-        "new":"for a new IBM Telephone Number (ITN)/Jabber account",
+        "jabbernew":"for a new Jabber / Phone Number",
+        "jabberdelete":"to delete an Jabber / Phone Number",
+        "jabberupdate":"to update an Jabber / Phone Number",
+        "jabbermove":"to move an Jabber / Phone Number",
+        "newfixedphone":"for a new Fixed Phone",
+        "updatefixedphone":"to update Fixed Phone",
+        "deletefixedphone":"to delete Fixed Phone",
+        "newmobile":"for a new Mobile",
+        "facnew":"for a new FAC Code / IDD PIN",
+        "facupdate":"to update FAC Code / IDD PIN",
+        "facreset":"to reset FAC Code / IDD PIN",
+        "facdelete":"to delete FAC Code / IDD PIN",
         "hasbeensubmitted": "has been submitted",
         "Trackingrequest": "Tracking number for the request is :",
         "receiveemailnotification": "You will receive further email notifications as the request is processed."
@@ -355,7 +366,7 @@
 
      },
      "otheralerts":{
-        "selectthejabber":"Please select the Jabber account/ITN being updated.",
+        "selectthejabber":"Please select the Jabber / Phone Number being updated.",
         "selectthejabbertomove":"Select the Jabber / Phone Number  you wish to move",
         "Model" :"Model",
         "MAC Address" :"MAC Address",
