@@ -103,7 +103,8 @@ mainConfiguration :any;
       this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;	
       this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
       this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
-      this.payload.Location_final =this.reviewDetailsIndia.officeLocation;	
+      this.payload.Location_final =this.reviewDetailsIndia.officeLocation;
+      this.payload.DID_Location =this.reviewDetailsIndia.officeLocation;	
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
       this.payload.ReqNo=this.reqno;	
   

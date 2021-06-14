@@ -54,6 +54,7 @@ export class Jabber_New
     BusinessUnit_Disp !: String;
     Department_number_Disp !: String;
     Location_final !: String;
+    DID_Location !: String;
     accid_Disp !: String;
     ReqNo !: String;
     level2_japproval !: String;

@@ -265,6 +265,7 @@ export class VoipInNewComponent implements OnInit {
       this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
       this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
       this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.DID_Location =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
       this.payload.accid_Disp="";
       this.payload.ReqNo=this.reqno;	
   

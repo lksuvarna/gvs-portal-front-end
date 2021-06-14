@@ -8667,6 +8667,7 @@ class VoipLaNewComponent {
     }
     // Submit to Snow Jabber new code added by Swarnava	
     submit_snow() {
+        var _a, _b, _c;
         this.reqno = this.countrydetails.isocode + "-NS-" + this.cnum.substr(0, 6) + "-" + gettime();
         sessionStorage.setItem('reqno', this.reqno);
         this.isButtonVisible = false;
@@ -8682,7 +8683,15 @@ class VoipLaNewComponent {
         this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
         this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
-        this.payload.Location_final = this.reviewDetailsIndia.campus;
+        if (this.countrydetails.isocode !== 'LA') {
+            this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
+            this.payload.DID_Location = this.reviewDetailsIndia.officeLocation;
+        }
+        else {
+            this.len = (_a = sessionStorage.getItem('selectedCountry')) === null || _a === void 0 ? void 0 : _a.length;
+            this.payload.Location_final = ((_b = sessionStorage.getItem('selectedCountry')) === null || _b === void 0 ? void 0 : _b.slice(0, this.len - 6)) + "~~" + this.reviewDetailsIndia.officeLocation;
+            this.payload.DID_Location = ((_c = sessionStorage.getItem('selectedCountry')) === null || _c === void 0 ? void 0 : _c.slice(0, this.len - 6)) + "~~" + this.reviewDetailsIndia.officeLocation;
+        }
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends
@@ -18950,6 +18959,7 @@ class VoipUsaNewComponent {
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
         this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
+        this.payload.DID_Location = this.reviewDetailsIndia.officeLocation;
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends	
@@ -19974,6 +19984,7 @@ class VoipInNewComponent {
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
         this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.DID_Location = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.accid_Disp = "";
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends	

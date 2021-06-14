@@ -21,7 +21,8 @@ export class VoipLaNewComponent implements OnInit {
   camp: any = [];	
   buildA: any = [];	
   build: any = [];	
-  j = 0;	
+  j = 0;
+  len:any	
   countryname:any;	
 ccode='';	
 orgi:any;	
@@ -204,7 +205,16 @@ submit_snow(){
     this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;	
     this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
-    this.payload.Location_final =this.reviewDetailsIndia.campus;	
+    if(this.countrydetails.isocode!=='LA'){
+      this.payload.Location_final =this.reviewDetailsIndia.officeLocation;
+    this.payload.DID_Location =this.reviewDetailsIndia.officeLocation;
+    }else{
+      
+      this.len=sessionStorage.getItem('selectedCountry')?.length
+      this.payload.Location_final =sessionStorage.getItem('selectedCountry')?.slice(0,this.len-6)+"~~"+this.reviewDetailsIndia.officeLocation;
+    this.payload.DID_Location =sessionStorage.getItem('selectedCountry')?.slice(0,this.len-6)+"~~"+this.reviewDetailsIndia.officeLocation;
+    }
+    	
     //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
     this.payload.ReqNo=this.reqno;	
 
