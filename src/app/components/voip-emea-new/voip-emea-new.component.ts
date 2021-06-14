@@ -148,14 +148,15 @@ export class VoipEmeaNewComponent implements OnInit {
       this.payload.icano_Disp = "";
       this.payload.identifier_hp_Disp = this.reviewDetailsEMEA.fixPhoneIdentifier;	
       this.payload.BusinessUnit_Disp =this.reviewDetailsEMEA.businessUnit;	
-      this.payload.Department_number_Disp = this.reviewDetailsEMEA.chargeDepartmentCode;	
+      this.payload.Department_number_Disp = this.reviewDetailsEMEA.chargeDepartmentCode;
+      this.payload.Location_final = this.reviewDetailsEMEA.Location_final;	
 
       this.locSelected = this.reviewDetailsEMEA.Location_final
-      if(this.countrydetails.did_loc_formula){
+      if(this.countrydetails.did_loc_formula_jabber){
         // Assign location value from cloudant. Needed for ITN allocation
-        eval(this.countrydetails.did_loc_formula);
+        eval(this.countrydetails.did_loc_formula_jabber);
       } else {
-        this.payload.Location_final = this.locSelected
+        this.payload.DID_Location = this.locSelected
       } 
 
       this.payload.accid_Disp="";

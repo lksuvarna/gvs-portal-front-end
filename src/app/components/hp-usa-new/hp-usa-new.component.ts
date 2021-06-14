@@ -9,8 +9,6 @@ import {Location} from '@angular/common';
 import {fixedphone_new,Create_Cache_fixedphone} from '../../../../config/payload';	
 
 
-
-
 @Component({
   selector: 'app-hp-usa-new',
   templateUrl: './hp-usa-new.component.html',
@@ -62,7 +60,7 @@ MACValue:any = '';
 descValue:any = '';
 justificationValue:any = '';
 cacheGoValue: any = false;
-
+locSelected : any
 
 payload : fixedphone_new = new fixedphone_new();	
 cache : Create_Cache_fixedphone = new Create_Cache_fixedphone();
@@ -285,7 +283,6 @@ submit_snow(){
     this.payload.orinator_payload=this.orgi;	
     this.payload.cNum_payload=this.cnum;
     
-    
     this.payload.Location_final =this.reviewDetailsIndia.officeLocation
     this.payload.ReqNo=this.reqno;
     this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
@@ -294,10 +291,17 @@ submit_snow(){
     this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
     this.payload.Desc_Disp = this.reviewDetailsIndia.description;
     this.payload.Location_final = this.reviewDetailsIndia.officeLocation
-    this.payload.DID_Location = "HP"+this.reviewDetailsIndia.officeLocation
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
     this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
 
+    this.locSelected = this.reviewDetailsIndia.officeLocation
+    if(this.countrydetails.did_loc_formula){
+      // Assign location value from cloudant. Needed for ITN allocation
+      eval(this.countrydetails.did_loc_formula);
+    } else {
+     // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
+      this.payload.DID_Location = "HP"+this.reviewDetailsIndia.officeLocation
+    }
 
     this.payload.level1_japproval=this.countrydetails.level1_japproval;	
     this.payload.level2_japproval=this.countrydetails.level2_japproval;	

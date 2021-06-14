@@ -82,6 +82,7 @@ Jabber_New()
     this.BusinessUnit_Disp  ="";
     this.Department_number_Disp ="";
     this.Location_final ="";
+    this.DID_Location="";
     this.accid_Disp ="";
     this.ReqNo ="";
     this.level2_japproval ="";
@@ -613,6 +614,7 @@ this.identifier_hp_Disp="";
 this.BusinessUnit_Disp="";
 this.Department_number_Disp="";
 this.Location_final="";
+this.DID_Location="";
 this.accid_Disp="";
 this.ReqNo="";
 this.Device_Type_Disp="";
