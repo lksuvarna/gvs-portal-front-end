@@ -1149,7 +1149,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -7929,7 +7929,7 @@ class VoipLaUpdateComponent {
         }
         if (this.checked2) {
             this.newcos = false;
-            this.toup_disp2 = "Class of Service";
+            this.toup_disp2 = "Class of Service(COS)";
             if (this.selectcos.toUpperCase() == "INTERNATIONAL")
                 this.businessJust = false;
             else
@@ -8108,7 +8108,12 @@ class VoipLaUpdateComponent {
         this.payload.request_type = 'jabber_update';
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
         this.payload.prov_type = this.countrydetails.provision_type;
-        this.payload.updated_for = this.toup_disp + ',' + this.toup_disp2;
+        if ((this.toup_disp != '') && (this.toup_disp2 != ''))
+            this.payload.updated_for = this.toup_disp + ' ; ' + this.toup_disp2;
+        else if (this.toup_disp != '')
+            this.payload.updated_for = this.toup_disp;
+        else
+            this.payload.updated_for = this.toup_disp2;
         this.servicenowservice.submit_request_update(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)

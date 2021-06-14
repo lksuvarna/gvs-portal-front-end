@@ -99,7 +99,7 @@ export class VoipLaUpdateComponent implements OnInit {
 
     if (this.checked2){
     this.newcos=false;
-    this.toup_disp2="Class of Service";
+    this.toup_disp2="Class of Service(COS)";
     if(this.selectcos.toUpperCase() =="INTERNATIONAL")
     this.businessJust=false;
     else
@@ -306,7 +306,14 @@ export class VoipLaUpdateComponent implements OnInit {
       this.payload.request_type='jabber_update';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
       this.payload.prov_type=this.countrydetails.provision_type;
-      this.payload.updated_for=this.toup_disp+','+this.toup_disp2;
+      if((this.toup_disp!='') && (this.toup_disp2!=''))
+      this.payload.updated_for=this.toup_disp+' ; '+this.toup_disp2;
+      else if(this.toup_disp!='')
+      this.payload.updated_for=this.toup_disp;
+      else
+      this.payload.updated_for=this.toup_disp2;
+
+      
       	
      this.servicenowservice.submit_request_update(this.payload).subscribe(data=> {	
      console.log('response', data);	
