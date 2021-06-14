@@ -290,7 +290,8 @@ submit_snow(){
     this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
     this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
     this.payload.Desc_Disp = this.reviewDetailsIndia.description;
-    this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation
+    this.payload.Location_final = this.reviewDetailsIndia.officeLocation
+    this.payload.DID_Location = "HP"+this.reviewDetailsIndia.officeLocation
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
     this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
 
@@ -310,6 +311,7 @@ submit_snow(){
     this.payload.level1_japproval=this.countrydetails.level1_japproval;	
     this.payload.level2_japproval=this.countrydetails.level2_japproval;	
     this.payload.SLA_type=this.countrydetails.SLA_type;	
+    
     this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
     this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
     this.payload.countryname=this.countrydetails.name;	

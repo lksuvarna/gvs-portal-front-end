@@ -579,7 +579,6 @@ identifier_hp_Disp !: String;
 BusinessUnit_Disp !: String;
 Department_number_Disp !: String;
 Location_final !: String;
-DID_Location !: String;
 accid_Disp !: String;
 ReqNo !: String;
 Device_Type_Disp!: String;
@@ -600,6 +599,8 @@ gvs_approval_link!: String;
 SLA_type!: String;
 country_code!: String;
 LocationCorrectnew!: String;
+
+    DID_Location !: String;
 
 fixedphone_new()
 {
@@ -634,6 +635,8 @@ this.gvs_approval_link="";
 this.SLA_type="";
 this.country_code="";
 this.LocationCorrectnew="";
+this.Location_final="";
+this.DID_Location=""
 }
 
 }

@@ -1771,9 +1771,24 @@ class HpUsaNewComponent {
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
         this.payload.Desc_Disp = this.reviewDetailsIndia.description;
-        this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation;
+        this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
+        this.payload.DID_Location = "HP" + this.reviewDetailsIndia.officeLocation;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
         this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+        this.locSelected = this.reviewDetailsIndia.officeLocation;
+        if (this.countrydetails.did_loc_formula) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.did_loc_formula);
+        }
+        else {
+            // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
+            if (this.reviewDetailsIndia.device === 'Extension Mobility Station') {
+                this.payload.DID_Location = 'HP' + this.locSelected;
+            }
+            else {
+                this.payload.DID_Location = this.locSelected;
+            }
+        }
         this.payload.level1_japproval = this.countrydetails.level1_japproval;
         this.payload.level2_japproval = this.countrydetails.level2_japproval;
         this.payload.SLA_type = this.countrydetails.SLA_type;
@@ -15765,6 +15780,20 @@ class HpIndonesiaNewComponent {
         this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
         this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+        this.locSelected = this.reviewDetailsIndia.officeLocation;
+        if (this.countrydetails.did_loc_formula) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.did_loc_formula);
+        }
+        else {
+            // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
+            if (this.reviewDetailsIndia.device === 'Extension Mobility Station') {
+                this.payload.DID_Location = 'HP' + this.locSelected;
+            }
+            else {
+                this.payload.DID_Location = this.locSelected;
+            }
+        }
         this.payload.level1_japproval = this.countrydetails.level1_japproval;
         this.payload.level2_japproval = this.countrydetails.level2_japproval;
         this.payload.SLA_type = this.countrydetails.SLA_type;
@@ -21017,8 +21046,8 @@ class HpInNewComponent {
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
         this.payload.Desc_Disp = this.reviewDetailsIndia.description;
-        this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
-        this.payload.LocationCorrectnew = "HP" + this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.DID_Location = "HP" + this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
         this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
         // fields to be picked up from form -- ends	
@@ -22621,6 +22650,7 @@ class Jabber_New {
         this.BusinessUnit_Disp = "";
         this.Department_number_Disp = "";
         this.Location_final = "";
+        this.DID_Location = "";
         this.accid_Disp = "";
         this.ReqNo = "";
         this.level2_japproval = "";
@@ -22868,6 +22898,7 @@ class fixedphone_new {
         this.BusinessUnit_Disp = "";
         this.Department_number_Disp = "";
         this.Location_final = "";
+        this.DID_Location = "";
         this.accid_Disp = "";
         this.ReqNo = "";
         this.Device_Type_Disp = "";
@@ -22888,6 +22919,8 @@ class fixedphone_new {
         this.SLA_type = "";
         this.country_code = "";
         this.LocationCorrectnew = "";
+        this.Location_final = "";
+        this.DID_Location = "";
     }
 }
 // // class used to create the payload for snow fixed phone delete service
@@ -28351,7 +28384,7 @@ class HpEmeaNewComponent {
         this.isSpinnerVisible = true;
         this.payload.orinator_payload = this.orgi;
         this.payload.cNum_payload = this.cnum;
-        this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
         this.payload.ReqNo = this.reqno;
         this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
         this.payload.Model_Disp = this.reviewDetailsIndia.model;
@@ -28370,10 +28403,10 @@ class HpEmeaNewComponent {
         else {
             // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
             if (this.reviewDetailsIndia.device === 'Extension Mobility Station') {
-                this.payload.LocationCorrectnew = 'HP' + this.locSelected;
+                this.payload.DID_Location = 'HP' + this.locSelected;
             }
             else {
-                this.payload.LocationCorrectnew = this.locSelected;
+                this.payload.DID_Location = this.locSelected;
             }
         }
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
