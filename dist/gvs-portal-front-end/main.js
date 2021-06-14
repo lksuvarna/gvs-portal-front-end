@@ -4270,7 +4270,7 @@ class TranslateConfigService {
         this.translateservice = translateservice;
         this.cloudantservice = cloudantservice;
         this.pcode = '';
-        this.currentLang = localStorage.getItem("currentLang");
+        // this.currentLang = localStorage.getItem("currentLang")
         this.currentlang1 = sessionStorage.getItem("currentlang1");
         this.countryroute = sessionStorage.getItem("countryroute");
         if (sessionStorage.getItem('countryroute') == '649') {
@@ -4288,16 +4288,16 @@ class TranslateConfigService {
     }
     changeLanguage(type) {
         this.translateservice.use(type);
-        localStorage.setItem("currentLang", type);
-        this.currentLang = localStorage.getItem("currentLang");
+        //  localStorage.setItem("currentLang", type);
+        // this.currentLang = sessionStorage.getItem("currentLang1")
         sessionStorage.setItem("currentlang1", type);
-        this.currentLang = sessionStorage.getItem("currentlang1");
-        this.languageType = sessionStorage.getItem("currentlang1");
+        this.currentLang = type;
+        this.languageType = type;
     }
     changeLanguage1(type) {
         this.translateservice.use(type);
         sessionStorage.setItem("languageType", type);
-        this.languageType = sessionStorage.getItem("languageType");
+        this.languageType = type;
     }
     readConfigFile() {
         if (this.languageType === "fr_ca") {
@@ -19369,8 +19369,7 @@ class TopcountryframeComponent {
                 this.pcountrydetails = sessionStorage.getItem('countrydetails');
                 console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code);
                 this.countryname = JSON.parse(this.pcountrydetails);
-                this.translatecountryname = this.pcode;
-                if (this.translatecountryname == '649' && this.service == 'services') {
+                if (this.countryname.isLtFrench && this.service == 'services') {
                     this.translatecountryname1 = true;
                 }
                 else {
@@ -19487,8 +19486,7 @@ class TopcountryframeComponent {
                         sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
                         sessionStorage.setItem('countryroute', this.pcode);
                     }
-                    this.translatecountryname = this.pcode;
-                    if (this.translatecountryname == '649' && this.service == 'services') {
+                    if (this.countryname.isLtFrench && this.service == 'services') {
                         this.translatecountryname1 = true;
                     }
                     else {
@@ -26827,8 +26825,7 @@ class HomepageComponent {
                         });
                     });
                 }
-                this.translatecountryname = this.countryname.name;
-                if (this.translatecountryname == 'Canada/Caribbean') {
+                if (data.countrydetails.isLtFrench) {
                     this.translatecountryname1 = true;
                 }
                 else {
@@ -28356,11 +28353,11 @@ class HpEmeaNewComponent {
         }
         else {
             // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
-            if (this.reviewDetailsIndia.device === 'Fixed Phone User') {
-                this.payload.LocationCorrectnew = this.locSelected;
+            if (this.reviewDetailsIndia.device === 'Extension Mobility Station') {
+                this.payload.LocationCorrectnew = 'HP' + this.locSelected;
             }
             else {
-                this.payload.LocationCorrectnew = 'HP' + this.locSelected;
+                this.payload.LocationCorrectnew = this.locSelected;
             }
         }
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
@@ -30530,7 +30527,7 @@ function UitoplinksComponent_div_46_Template(rf, ctx) { if (rf & 1) {
     const _r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function UitoplinksComponent_div_46_Template_a_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.closeDropdown("services-nav", "searchResult.code"); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function UitoplinksComponent_div_46_Template_a_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r7); const searchResult_r1 = ctx.$implicit; const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r6.closeDropdown("services-nav", searchResult_r1.code); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, UitoplinksComponent_div_46_img_2_Template, 1, 1, "img", 34);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, UitoplinksComponent_div_46_span_3_Template, 1, 0, "span", 35);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "span", 36);
@@ -30572,6 +30569,7 @@ class UitoplinksComponent {
         this.searchItems = [];
         this.ccode = '';
         this.routerPath = '';
+        this.isLTFrench = false;
         this.pcode = '';
         this.searchData = [];
         this.searchObj = {
@@ -30589,8 +30587,10 @@ class UitoplinksComponent {
             .subscribe(params => {
             this.service = params.service;
             this.pcode = params.country;
-            if (this.pcode == '649') {
-                this.langType = localStorage.getItem("currentLang");
+            this.countrydetails = sessionStorage.getItem('countrydetails');
+            this.countrydetails = JSON.parse(this.countrydetails);
+            if (this.countrydetails.isLtFrench) {
+                this.langType = sessionStorage.getItem("currentLang1");
                 this.translateconfigservice.changeLanguage1(this.langType);
             }
             else {
@@ -30638,11 +30638,21 @@ class UitoplinksComponent {
         (_a = document.getElementById('countrydropdown')) === null || _a === void 0 ? void 0 : _a.classList.remove('show');
         this.searchText = '';
         this.toggleHighlight(id);
-        if (ccode != '649') {
+        this.searchData.countrydetails.filter((element) => {
+            if (element.code === ccode) {
+                if (element.isLtFrench) {
+                    this.isLTFrench = true;
+                }
+                else {
+                    this.isLTFrench = false;
+                }
+            }
+        });
+        if (!this.isLTFrench) {
             this.translateconfigservice.changeLanguage1('en');
         }
         else {
-            this.langType = localStorage.getItem("currentLang");
+            this.langType = sessionStorage.getItem("currentlang1");
             this.translateconfigservice.changeLanguage1(this.langType);
         }
     }
@@ -30713,7 +30723,7 @@ UitoplinksComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 19);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 20);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "a", 21);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function UitoplinksComponent_Template_a_click_30_listener() { return ctx.closeDropdown("home-nav", ""); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function UitoplinksComponent_Template_a_click_30_listener() { return ctx.closeDropdown("home-nav", ctx.ccode); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "topui.HOME");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "a", 22);
@@ -30721,7 +30731,7 @@ UitoplinksComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](33, "topui.DATAPRIVACY");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "a", 23);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function UitoplinksComponent_Template_a_click_34_listener() { return ctx.closeDropdown("services-nav", ""); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function UitoplinksComponent_Template_a_click_34_listener() { return ctx.closeDropdown("services-nav", ctx.ccode); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](35, "topui.SERVICES");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "a", 24);

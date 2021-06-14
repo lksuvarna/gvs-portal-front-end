@@ -37,7 +37,6 @@ export class HomepageComponent implements OnInit {
   codeCA:any;
   tscode:any
   micountry=false;
-  translatecountryname :any;
   translatecountryname1 :boolean =false;
   ccode='';
   testusercode:any
@@ -54,7 +53,8 @@ export class HomepageComponent implements OnInit {
   loggedinuser:any;
   searchData:any = [];
   list:any = [];
-s:any
+  s:any
+
   generate(cnum : string): void{
     console.log(cnum);
 
@@ -185,14 +185,12 @@ s:any
         )
         
       }
-   
-      this.translatecountryname = this.countryname.name;
-      if (this.translatecountryname == 'Canada/Caribbean'){
-          this.translatecountryname1 = true;
-          }
-        else{
-          this.translatecountryname1 = false;
-        }
+
+      if (data.countrydetails.isLtFrench){
+        this.translatecountryname1 = true;
+      }else{
+        this.translatecountryname1 = false;
+      }
 
      }); 
     })

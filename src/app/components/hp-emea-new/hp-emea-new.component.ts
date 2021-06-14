@@ -283,10 +283,10 @@ getFixedPhoneData(){
         eval(this.countrydetails.did_loc_formula);
       } else {
        // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
-        if (this.reviewDetailsIndia.device === 'Fixed Phone User'){
-          this.payload.LocationCorrectnew = this.locSelected
-        } else {
+        if (this.reviewDetailsIndia.device === 'Extension Mobility Station'){
           this.payload.LocationCorrectnew = 'HP' + this.locSelected
+        } else {
+          this.payload.LocationCorrectnew = this.locSelected
         }
       }
 
