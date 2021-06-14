@@ -59,6 +59,7 @@ reqFor: any;
 belongsTo:any;
 index!: number;
 mainConfiguration :any;
+locSelected : any
 
   //locations:any[] = ["Select Office Location","Home and Mobile","AZ-Phoenix","AZ-Tucson","CA-Costa Mesa-Anton Blvd"];
 
@@ -104,9 +105,17 @@ mainConfiguration :any;
       this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
       this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
       this.payload.Location_final =this.reviewDetailsIndia.officeLocation;
-      this.payload.DID_Location =this.reviewDetailsIndia.officeLocation;	
+     // this.payload.DID_Location =this.reviewDetailsIndia.officeLocation;	
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
       this.payload.ReqNo=this.reqno;	
+
+      this.locSelected = this.reviewDetailsIndia.officeLocation;
+      if(this.countrydetails.did_loc_formula_jabber){
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.did_loc_formula_jabber);
+      } else {
+        this.payload.DID_Location = this.locSelected
+      } 
   
       // fields to be picked up from form -- ends	
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	

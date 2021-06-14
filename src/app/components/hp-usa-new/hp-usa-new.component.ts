@@ -291,7 +291,6 @@ submit_snow(){
     this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
     this.payload.Desc_Disp = this.reviewDetailsIndia.description;
     this.payload.Location_final = this.reviewDetailsIndia.officeLocation
-    this.payload.DID_Location = "HP"+this.reviewDetailsIndia.officeLocation
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
     this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
 
@@ -301,11 +300,7 @@ submit_snow(){
       eval(this.countrydetails.did_loc_formula);
     } else {
      // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
-      if (this.reviewDetailsIndia.device === 'Extension Mobility Station'){
-        this.payload.DID_Location = 'HP' + this.locSelected	
-      } else {
-        this.payload.DID_Location = this.locSelected
-      }
+      this.payload.DID_Location = "HP"+this.reviewDetailsIndia.officeLocation
     }
 
     this.payload.level1_japproval=this.countrydetails.level1_japproval;	

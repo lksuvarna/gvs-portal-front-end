@@ -89,6 +89,7 @@ descValue:any = '';
 justificationValue:any = '';
 cacheGoValue: any = false;
 FixedPhoneData: any = [];
+locSelected : any
   
     
 constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private bpservices:bpservices,private servicesd : TranslateConfigService) { 	
@@ -454,9 +455,17 @@ submit_snow(){
     this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
     this.payload.Desc_Disp = this.reviewDetailsIndia.description;
     this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
-    this.payload.DID_Location = "HP"+this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
     this.payload.Justification_Disp = this.reviewDetailsIndia.justification;	
+
+    this.locSelected = this.reviewDetailsIndia.officeLocation
+    if(this.countrydetails.did_loc_formula){
+      // Assign location value from cloudant. Needed for ITN allocation
+      eval(this.countrydetails.did_loc_formula);
+    } else {
+     // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
+      this.payload.DID_Location = "HP"+this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    }
 
     // fields to be picked up from form -- ends	
     this.payload.level1_japproval=this.countrydetails.level1_japproval;	

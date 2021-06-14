@@ -1772,7 +1772,6 @@ class HpUsaNewComponent {
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
         this.payload.Desc_Disp = this.reviewDetailsIndia.description;
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
-        this.payload.DID_Location = "HP" + this.reviewDetailsIndia.officeLocation;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
         this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
         this.locSelected = this.reviewDetailsIndia.officeLocation;
@@ -1782,12 +1781,7 @@ class HpUsaNewComponent {
         }
         else {
             // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
-            if (this.reviewDetailsIndia.device === 'Extension Mobility Station') {
-                this.payload.DID_Location = 'HP' + this.locSelected;
-            }
-            else {
-                this.payload.DID_Location = this.locSelected;
-            }
+            this.payload.DID_Location = "HP" + this.reviewDetailsIndia.officeLocation;
         }
         this.payload.level1_japproval = this.countrydetails.level1_japproval;
         this.payload.level2_japproval = this.countrydetails.level2_japproval;
@@ -3678,6 +3672,20 @@ class HpAuNewComponent {
         this.payload.LocationCorrect = this.reviewDetailsIndia.Locationcorrectnew;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
         this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+        this.locSelected = this.reviewDetailsIndia.Locationcorrectnew;
+        if (this.countrydetails.did_loc_formula) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.did_loc_formula);
+        }
+        else {
+            // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
+            if (this.reviewDetailsIndia.device === 'Extension Mobility Station') {
+                this.payload.DID_Location = 'HP' + this.locSelected;
+            }
+            else {
+                this.payload.DID_Location = this.locSelected;
+            }
+        }
         // fields to be picked up from form -- ends	
         this.payload.level1_japproval = this.countrydetails.level1_japproval;
         this.payload.level2_japproval = this.countrydetails.level2_japproval;
@@ -14964,13 +14972,14 @@ class VoipEmeaNewComponent {
         this.payload.identifier_hp_Disp = this.reviewDetailsEMEA.fixPhoneIdentifier;
         this.payload.BusinessUnit_Disp = this.reviewDetailsEMEA.businessUnit;
         this.payload.Department_number_Disp = this.reviewDetailsEMEA.chargeDepartmentCode;
+        this.payload.Location_final = this.reviewDetailsEMEA.Location_final;
         this.locSelected = this.reviewDetailsEMEA.Location_final;
-        if (this.countrydetails.did_loc_formula) {
+        if (this.countrydetails.did_loc_formula_jabber) {
             // Assign location value from cloudant. Needed for ITN allocation
-            eval(this.countrydetails.did_loc_formula);
+            eval(this.countrydetails.did_loc_formula_jabber);
         }
         else {
-            this.payload.Location_final = this.locSelected;
+            this.payload.DID_Location = this.locSelected;
         }
         this.payload.accid_Disp = "";
         this.payload.ReqNo = this.reqno;
@@ -18993,9 +19002,17 @@ class VoipUsaNewComponent {
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
         this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
-        this.payload.DID_Location = this.reviewDetailsIndia.officeLocation;
+        // this.payload.DID_Location =this.reviewDetailsIndia.officeLocation;	
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
+        this.locSelected = this.reviewDetailsIndia.officeLocation;
+        if (this.countrydetails.did_loc_formula_jabber) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.did_loc_formula_jabber);
+        }
+        else {
+            this.payload.DID_Location = this.locSelected;
+        }
         // fields to be picked up from form -- ends	
         this.payload.level1_japproval = this.countrydetails.level1_japproval;
         this.payload.level2_japproval = this.countrydetails.level2_japproval;
@@ -20016,9 +20033,16 @@ class VoipInNewComponent {
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
         this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
-        this.payload.DID_Location = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.accid_Disp = "";
         this.payload.ReqNo = this.reqno;
+        this.locSelected = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        if (this.countrydetails.did_loc_formula_jabber) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.did_loc_formula_jabber);
+        }
+        else {
+            this.payload.DID_Location = this.locSelected;
+        }
         // fields to be picked up from form -- ends	
         this.payload.level1_japproval = this.countrydetails.level1_japproval;
         this.payload.level2_japproval = this.l2approver;
@@ -21047,9 +21071,17 @@ class HpInNewComponent {
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
         this.payload.Desc_Disp = this.reviewDetailsIndia.description;
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
-        this.payload.DID_Location = "HP" + this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
         this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+        this.locSelected = this.reviewDetailsIndia.officeLocation;
+        if (this.countrydetails.did_loc_formula) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.did_loc_formula);
+        }
+        else {
+            // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
+            this.payload.DID_Location = "HP" + this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        }
         // fields to be picked up from form -- ends	
         this.payload.level1_japproval = this.countrydetails.level1_japproval;
         this.payload.level2_japproval = this.countrydetails.level2_japproval;
