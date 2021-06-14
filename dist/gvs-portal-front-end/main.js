@@ -1149,7 +1149,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\VivekRatnesh\Desktop\Project Work\Cirrus\GVS-Portal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -28309,7 +28309,12 @@ class HpEmeaNewComponent {
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
         this.payload.Desc_Disp = this.reviewDetailsIndia.description;
-        this.payload.LocationCorrectnew = this.getLocationCorrectNew();
+        this.locSelected = this.reviewDetailsIndia.officeLocation;
+        //this.payload.LocationCorrectnew = this.getLocationCorrectNew()
+        this.jabberDept = this.countrydetails.jabber_dept;
+        this.jabberDept = this.jabberDept.map((val) => val.toLowerCase());
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.did_loc_formula);
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
         this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
         this.payload.level1_japproval = this.countrydetails.level1_japproval;
