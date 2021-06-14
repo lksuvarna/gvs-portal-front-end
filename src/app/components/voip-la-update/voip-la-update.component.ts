@@ -311,7 +311,7 @@ export class VoipLaUpdateComponent implements OnInit {
       else if(this.toup_disp!='')
       this.payload.updated_for=this.toup_disp;
       else
-      this.payload.updated_for=this.toup_disp;
+      this.payload.updated_for=this.toup_disp2;
 
       
       	

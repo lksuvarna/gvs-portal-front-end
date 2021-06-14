@@ -1149,11 +1149,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
-=======
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
->>>>>>> 37fe6604059a51555b15f82b41ff42e69e35886f
 
 
 /***/ }),
@@ -7933,7 +7929,7 @@ class VoipLaUpdateComponent {
         }
         if (this.checked2) {
             this.newcos = false;
-            this.toup_disp2 = "Class of Service";
+            this.toup_disp2 = "Class of Service(COS)";
             if (this.selectcos.toUpperCase() == "INTERNATIONAL")
                 this.businessJust = false;
             else
@@ -8112,7 +8108,12 @@ class VoipLaUpdateComponent {
         this.payload.request_type = 'jabber_update';
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
         this.payload.prov_type = this.countrydetails.provision_type;
-        this.payload.updated_for = this.toup_disp + ',' + this.toup_disp2;
+        if ((this.toup_disp != '') && (this.toup_disp2 != ''))
+            this.payload.updated_for = this.toup_disp + ' ; ' + this.toup_disp2;
+        else if (this.toup_disp != '')
+            this.payload.updated_for = this.toup_disp;
+        else
+            this.payload.updated_for = this.toup_disp2;
         this.servicenowservice.submit_request_update(this.payload).subscribe(data => {
             console.log('response', data);
             if (data)
@@ -28349,14 +28350,6 @@ class HpEmeaNewComponent {
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
         this.payload.Desc_Disp = this.reviewDetailsIndia.description;
-<<<<<<< HEAD
-        this.locSelected = this.reviewDetailsIndia.officeLocation;
-        //this.payload.LocationCorrectnew = this.getLocationCorrectNew()
-        this.jabberDept = this.countrydetails.jabber_dept;
-        this.jabberDept = this.jabberDept.map((val) => val.toLowerCase());
-        // Assign location value from cloudant. Needed for ITN allocation
-        eval(this.countrydetails.did_loc_formula);
-=======
         if (this.countrydetails.jabber_dept) {
             this.jabberDept = this.countrydetails.jabber_dept;
             this.jabberDept = this.jabberDept.map((val) => val.toLowerCase());
@@ -28375,7 +28368,6 @@ class HpEmeaNewComponent {
                 this.payload.LocationCorrectnew = 'HP' + this.locSelected;
             }
         }
->>>>>>> 37fe6604059a51555b15f82b41ff42e69e35886f
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
         this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
         this.payload.level1_japproval = this.countrydetails.level1_japproval;
