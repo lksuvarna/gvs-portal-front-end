@@ -254,13 +254,13 @@
         "EXITREQUEST": "EXIT REQUEST",
         "digitserialnumber": "Employee Serial Number should be of 6 characters",
         "enterserialnumber": "Please enter a serial number",
-        "moverequest": "This move request will delete the current Jabber account/ITN and assign a new one. Select OK to proceed, to Cancel to go back.",
+        "moverequest": "This move request will delete the current Jabber / Phone Number and assign a new one. Select OK to proceed, to Cancel to go back.",
         "selectcountrycode": "Please select the Country Code",
         "Only": "Only",
         "serialnumbersareallowed": "serial numbers are permitted to create",
         "requests":"requests.",
         "selectlocation": "Please select the appropriate location.",
-        "selectjabbernumberdel": "Please select the Jabber account/ITN being deleted.",
+        "selectjabbernumberdel": "Please select the Jabber / Phone Number being deleted.",
         "selectlocationsp" : "Please select the Jabber / Phone Location",
         "Homeandmobilealert":"The serial number you have entered does not belong to the selected office location. Please choose your correct location, or select Home and Mobile.",
         "usaschedule":"Selecting Home and Mobile will result in your service being assigned a phone number in the 720 area code. If you wish to have a number local to your office, or if you'd like to retain your existing office number, please wait for your site to be migrated to CHCS/Jabber. The USA site migration schedule can be found"
@@ -347,8 +347,8 @@
         "NoteCombination":"Note: Combination of (0 to 9 , A to F) and Length:12"
     },
      "specialrequest" :{
-        "OnlyusetheSpecialRequest":"Special Requests are used to manage additional services for an existing Jabber account/ITN; to indicate the need for a telephony-related consultancy; or to create/manage special services: secondary IDs, support group hotlines, and/or shared lines or hunt groups. " ,
-        "needstandardservice":"For standard services such as the creation of a new Jabber account/ITN, please use the options in the sidebar menu. Do not submit a Special Request or it will be rejected.",
+        "OnlyusetheSpecialRequest":"Special Requests are used to manage additional services for an existing Jabber / Phone Number; to indicate the need for a telephony-related consultancy; or to create/manage special services: secondary IDs, support group hotlines, and/or shared lines or hunt groups. " ,
+        "needstandardservice":"For standard services such as the creation of a new Jabber / Phone Number, please use the options in the sidebar menu. Do not submit a Special Request or it will be rejected.",
         "SpecialRequestHCSmigratedsite":"Special Requests related to voice services are only permitted for sites migrated to CHCS/Jabber. If you need to submit a Special Request for a non-migrated site, please use  ",
         "TMAC tool":"TMAC.",
         "HelpTMACtool":"Help related to TMAC can be found ",
