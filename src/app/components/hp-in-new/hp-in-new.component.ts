@@ -453,8 +453,8 @@ submit_snow(){
     this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
     this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
     this.payload.Desc_Disp = this.reviewDetailsIndia.description;
-    this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
-    this.payload.LocationCorrectnew = "HP"+this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+    this.payload.DID_Location = "HP"+this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
     this.payload.Justification_Disp = this.reviewDetailsIndia.justification;	
 

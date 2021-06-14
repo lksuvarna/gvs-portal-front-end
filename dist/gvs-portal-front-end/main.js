@@ -1149,7 +1149,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -1771,7 +1771,8 @@ class HpUsaNewComponent {
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
         this.payload.Desc_Disp = this.reviewDetailsIndia.description;
-        this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation;
+        this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
+        this.payload.DID_Location = "HP" + this.reviewDetailsIndia.officeLocation;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
         this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
         this.payload.level1_japproval = this.countrydetails.level1_japproval;
@@ -21019,8 +21020,8 @@ class HpInNewComponent {
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
         this.payload.Desc_Disp = this.reviewDetailsIndia.description;
-        this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
-        this.payload.LocationCorrectnew = "HP" + this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.DID_Location = "HP" + this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
         this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
         // fields to be picked up from form -- ends	
@@ -22890,6 +22891,8 @@ class fixedphone_new {
         this.SLA_type = "";
         this.country_code = "";
         this.LocationCorrectnew = "";
+        this.Location_final = "";
+        this.DID_Location = "";
     }
 }
 // // class used to create the payload for snow fixed phone delete service

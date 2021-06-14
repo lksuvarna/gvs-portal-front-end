@@ -599,6 +599,8 @@ SLA_type!: String;
 country_code!: String;
 LocationCorrectnew!: String;
 
+    DID_Location !: String;
+
 fixedphone_new()
 {
 this.orinator_payload="";
@@ -631,6 +633,8 @@ this.gvs_approval_link="";
 this.SLA_type="";
 this.country_code="";
 this.LocationCorrectnew="";
+this.Location_final="";
+this.DID_Location=""
 }
 
 }
