@@ -50,8 +50,10 @@
                     <button (click)="toggleDropdown()" class="dropbtn" translate>topui.CHANGECOUNTRY</button>
                     <div id="countrydropdown" class="dropdown-content">
                         <input type="text" class="ds-input" id="myInput" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Search.." style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; ">
-                        <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | dropdownsearch: searchText; let i=index">
-                            <a (click)="closeDropdown('services-nav','searchResult.code')" [routerLink]="['/services']" [queryParams]="{country:searchResult.code,service:'services'}"><img *ngIf="searchResult.path" class="ds-border-neutral-5" src={{searchResult.path}} width="25;" height="16;"> <span *ngIf="!searchResult.path" class="ds-pad-l-1_5"> </span><span class="ds-pad-l-0_5">{{searchResult.name}}</span></a>
+                        <div class="dropdown-content1">
+                            <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | dropdownsearch: searchText; let i=index">
+                                <a (click)="closeDropdown('services-nav','searchResult.code')" [routerLink]="['/services']" [queryParams]="{country:searchResult.code,service:'services'}"><img *ngIf="searchResult.path" class="ds-border-neutral-5" src={{searchResult.path}} width="25;" height="16;"> <span *ngIf="!searchResult.path" class="ds-pad-l-1_5"> </span><span class="ds-pad-l-0_5">{{searchResult.name}}</span></a>
+                            </div>
                         </div>
                     </div>
                 </div>

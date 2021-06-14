@@ -45,6 +45,7 @@ export class HpEmeaUpdateComponent implements OnInit {
   showformodel: boolean = false;
   showformacadd: boolean = false;
   showforrsn: boolean = false;
+  showformodel1:boolean = false;
   showforNewDesc: boolean = false;
   showLocation: boolean = false;
   modelcheck:boolean=true;
@@ -177,6 +178,7 @@ export class HpEmeaUpdateComponent implements OnInit {
       this.showforNewDesc = true;
       this.showforrsn = true;
       this.showformodel = false;
+      this.showformodel1 = false;
       this.showformacadd = false;
       this.showLocation = false;
       this.hideBuilding = false;
@@ -242,16 +244,23 @@ backClick(formData: NgForm){
     if(model === this.currentmodel){	
       this.newModel='';
       alert(this.mainConfiguration.tooltips.samemodelupdate);	
-    /*  this.newModel= document.forms[0].model.selectedIndex = 0
-      document.forms[0].model.focus();
-      this.modelcheck  =false;
-      return false; */
+   
+    } 
+   	
+    if(model != ''){	
+      this.showformodel1  = true;	
     }	
-   /*  else{
-      return true;
-    } */
+   
+    else {	
+      this.showformodel1 = false;	
+    }
   }
   entryDetails(formData: NgForm){
+
+    if(this.newModel.toUpperCase() =='' || this.newModel.toUpperCase() =='SELECT ONE'){
+      this.showformodel1 = false;
+            
+    }
     if(formData.value.UpdateReq == '') {	
       alert(this.mainConfiguration.fixedphonenew.updaterequiredfor);	
       return;
@@ -291,12 +300,28 @@ backClick(formData: NgForm){
       return;
     }
     
-
-    else
-    {
+    if(formData.value.UpdateReq.toUpperCase() == 'DESCRIPTION ONLY') {
+      this.reviewDetailsIndia.officeLocation = "";
+      this.reviewDetailsIndia.campus = "";
+      //this.reviewDetailsIndia.location_final = "";
+      this.reviewDetailsIndia.newMac = "";
+      this.reviewDetailsIndia.description = formData.value.Newdesc;
+    } else if(formData.value.UpdateReq.toUpperCase() == 'REPLACE THE HARDPHONE ONLY') {
+      this.reviewDetailsIndia.officeLocation = "";
+      this.reviewDetailsIndia.campus = "";
+     // this.reviewDetailsIndia.location_final = "";
+      this.reviewDetailsIndia.newMac = formData.value.MAC1;
+      this.reviewDetailsIndia.description = "";
+    } else {
+      this.reviewDetailsIndia.officeLocation = formData.value.Location_1_1;
+      this.reviewDetailsIndia.campus = this.campus;
+    //  this.reviewDetailsIndia.location_final = this.reviewDetailsIndia.officeLocation+" - "+this.reviewDetailsIndia.campus;
+     // this.reviewDetailsIndia.newMac = "";
+      //this.reviewDetailsIndia.description = formData.value.Newdesc;
+    }
+    
       this.isEntryForm = true;	
       this.isReviewForm = false;	
-
       this.reviewDetailsIndia.mac = this.currentMac;
       this.reviewDetailsIndia.phoneNunmer = this.currentPhone;
       this.reviewDetailsIndia.Currentdescription = this.currentdesc;
@@ -308,7 +333,7 @@ backClick(formData: NgForm){
       this.reviewDetailsIndia.description = formData.value.Newdesc;
       this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
       this.reviewDetailsIndia.campus = this.campus;
-    }
+    
  
     this.create_cache(formData);
   }
@@ -365,6 +390,7 @@ backClick(formData: NgForm){
       this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
       this.payload.LocationCorrectnew = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
       this.payload.ReqNo=this.reqno;
+      this.payload.ccmail_1= this.countrydetails.ccmail;
       this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
 
 

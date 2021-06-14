@@ -106,7 +106,7 @@
                         </td>
                     </tr>
 
-                    
+
                 </tbody>
             </table>
 
@@ -131,7 +131,7 @@
                     </tr>
 
                     <tr valign="top" *ngIf='showLocation'>
-                        <td  width="50%"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
+                        <td width="50%"><label for="LocationId" class="ds-text-capitalize">Office Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="50%" class="ds-pad-t-1">
@@ -146,7 +146,7 @@
                     </tr>
 
                     <tr valign="top" *ngIf='hideBuilding' class="ds-pad-t-1">
-                        <td  width="50%"><label for="builId" class="ds-text-capitalize"> Campus</label>
+                        <td width="50%"><label for="builId" class="ds-text-capitalize"> Campus</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%">
@@ -184,17 +184,16 @@
                             <label class="">Reason for update<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%">
-                            <textarea name="Comments" class="ds-input " style="width:300px !important;" 
-                            title="Reason for Update" maxlength="200;" rows="2" cols="40" ngModel [(ngModel)]='reasonForUpdate'>
+                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update" maxlength="200;" rows="2" cols="40" ngModel [(ngModel)]='reasonForUpdate'>
                         </textarea><br>
                         </td>
                     </tr>
-                    
+
 
                 </tbody>
             </table>
 
-            
+
 
             <!-- <table id="t3" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
                 <tbody>
@@ -263,8 +262,7 @@
 
             <app-steps [step]="servicesData.step+1" [isSelf]="reqFor" [hideSteps]="" [formData]="formData" [cnum]="cnum" [FixedPhoneData]="FixedPhoneData" (previousStep)="previousStep($event)"></app-steps>
 
-
-            <!-- <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 ">Review Details</h2> -->
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-padding-left-0_5 " translate>Jabberupdate.ReviewDetails</h2>
 
             <table id="t2" width="100%" cellspacing="8" cellpadding="0" border="0">
                 <tbody>
@@ -331,7 +329,7 @@
                         </td>
                         <td width="54%">{{reviewDetailsIndia.campus}}</td>
                     </tr>
-                    
+
 
                     <tr valign="top" *ngIf='showforNewDesc'>
                         <td colspan="2" width="46%">

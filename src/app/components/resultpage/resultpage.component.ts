@@ -3,6 +3,8 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateConfigService} from '../../_services/translate-config.service';
+
 @Component({
   selector: 'app-resultpage',
   templateUrl: './resultpage.component.html',
@@ -19,11 +21,12 @@ export class ResultpageComponent implements OnInit {
   service='';
   page:any;
   requestResult:any;
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice, private route: ActivatedRoute) { }
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice, private route: ActivatedRoute,private servicesd : TranslateConfigService) { }
 
-
+  mainConfiguration :any;
   
   ngOnInit(): void {
+    this.mainConfiguration = this.servicesd.readConfigFile();
      
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.route.queryParams
@@ -53,51 +56,52 @@ export class ResultpageComponent implements OnInit {
     }
     getPage(){
 if(this.service=='jabber_new'){
-  this.page='for a new IBM Telephone Number (ITN)/Jabber account';
+  
+  this.page=this.mainConfiguration.resultpagetrans.jabbernew;
   return this.page
 }
 if(this.service=='jabber_delete'){
-  this.page='to delete an IBM Telephone Number (ITN)/Jabber account';
+  this.page=this.mainConfiguration.resultpagetrans.jabberdelete;
   return this.page;
 }
 if(this.service=='jabber_update'){
-  this.page='to update an IBM Telephone Number (ITN)/Jabber account';
+  this.page=this.mainConfiguration.resultpagetrans.jabberupdate;
   return this.page;
 }
 if(this.service=='jabber_move'){
-  this.page='to move an IBM Telephone Number (ITN)/Jabber account';
+  this.page=this.mainConfiguration.resultpagetrans.jabbermove;
   return this.page;
 }
 if(this.service=='fixedphone_new'){
-  this.page='for a new Fixed Phone';
+  this.page=this.mainConfiguration.resultpagetrans.newfixedphone;
   return this.page;
 }
 if(this.service=='fixedphone_update'){
-  this.page='to update Fixed Phone';
+  this.page=this.mainConfiguration.resultpagetrans.updatefixedphone;
   return this.page;
 }
 if(this.service=='fixedphone_delete'){
-  this.page='to delete Fixed Phone';
+  this.page=this.mainConfiguration.resultpagetrans.deletefixedphone;
   return this.page;
 }
 if(this.service=='mobile_new'){
-  this.page='for a new Mobile';
+  this.page=this.mainConfiguration.resultpagetrans.newmobile;
   return this.page
 }
  if(this.service=='fac_new'){
-  this.page='for a new FAC Code / IDD PIN';
+  this.page=this.mainConfiguration.resultpagetrans.facnew;
   return this.page;
 } 
 if(this.service=='fac_update'){
-  this.page='to update FAC Code / IDD PIN';
+  this.page=this.mainConfiguration.resultpagetrans.facupdate;
   return this.page;
 } 
 if(this.service=='fac_reset'){
-  this.page='to reset FAC Code / IDD PIN';
+  this.page=this.mainConfiguration.resultpagetrans.facreset;
   return this.page;
 } 
 if(this.service=='fac_delete'){
-  this.page='to delete FAC Code / IDD PIN';
+  this.page=this.mainConfiguration.resultpagetrans.facdelete;
   return this.page;
 } 
 
