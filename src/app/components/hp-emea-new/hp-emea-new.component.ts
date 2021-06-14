@@ -262,9 +262,7 @@ getFixedPhoneData(){
     this.isSpinnerVisible=true;	
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;
-      
-      
-      this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;	
+      this.payload.Location_final =this.reviewDetailsIndia.officeLocation;	
       this.payload.ReqNo=this.reqno;
       this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
       this.payload.Model_Disp =  this.reviewDetailsIndia.model;
@@ -284,9 +282,9 @@ getFixedPhoneData(){
       } else {
        // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
         if (this.reviewDetailsIndia.device === 'Extension Mobility Station'){
-          this.payload.LocationCorrectnew = 'HP' + this.locSelected
+          this.payload.DID_Location = 'HP' + this.locSelected	
         } else {
-          this.payload.LocationCorrectnew = this.locSelected
+          this.payload.DID_Location = this.locSelected
         }
       }
 
