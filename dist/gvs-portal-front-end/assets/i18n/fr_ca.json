@@ -109,7 +109,7 @@
         "Country":"Pays:",
         "E-mail":"E-mail:",
         "noteligiblejabber":"Le numéro de série que vous avez entré n'est pas éligible pour demander un compte Jabber.",
-        "itnexistsforuser":"Le numéro de téléphone IBM (ITN) qui existe pour cet utilisateur est .",
+        "itnexistsforuser":"Jabber / Le numéro de téléphone qui existe pour cet utilisateur est.",
         "nojabber":"Il n'y a pas de compte Jabber actif pour ce numéro de série. Veuillez vérifier et réessayer.",
         "nojabberusethislink":"Le numéro de série que vous avez entré ne possède pas de numéro de téléphone IP (ITN) et n'est donc pas éligible pour Jabber. Veuillez utiliser ce lien pour faire une demande d'ITN ",
         "GlobalVoiceInfrastructure":"Infrastructure vocale mondiale.",
@@ -160,6 +160,18 @@
     },
     "resultpagetrans" : {
         "Yourrequestfor" : "Demander ",
+        "jabbernew":"pour un nouveau Jabber / Numéro de téléphone",
+        "jabberdelete":"supprimer un Jabber / Numéro de téléphone",
+        "jabberupdate":"pour mettre à jour un Jabber / Numéro de téléphone",
+        "jabbermove":"pour déplacer un Jabber / Numéro de téléphone",
+        "newfixedphone":"pour un nouveau téléphone fixe",
+        "updatefixedphone":"pour mettre à jour le téléphone fixe",
+        "deletefixedphone":"supprimer un téléphone fixe",
+        "newmobile":"pour un nouveau mobile",
+        "facnew":"pour un nouveau code FAC / code PIN IDD",
+        "facupdate":"pour mettre à jour le code FAC / PIN IDD",
+        "facreset":"pour réinitialiser le code FAC / PIN IDD",
+        "facdelete":"pour supprimer le code FAC / PIN IDD",
         "hasbeensubmitted" :"a été soumis",
         "Trackingrequest":"Le numéro de suivi de la demande est :",
         "receiveemailnotification":"Vous recevrez d'autres notifications par e-mail au fur et à mesure du traitement de la demande."
@@ -180,7 +192,7 @@
         "serialnumbersareallowed":"les numéros de série sont autorisés à créer",
         "requests":"demandes.",
         "selectlocation":"Veuillez sélectionner l'emplacement approprié.",
-        "selectjabbernumberdel":"Veuillez sélectionner le compte Jabber / ITN en cours de suppression.",
+        "selectjabbernumberdel":"Veuillez sélectionner le Jabber/numéro de téléphone à supprimer.",
         "selectlocationsp" : "Veuillez sélectionner l'emplacement du Jabber / numéro de téléphone"
 
 
@@ -265,8 +277,8 @@
         "NoteCombination":"Remarque: combinaison de (0 à 9, A à F) et longueur: 12"
     },
     "specialrequest" :{
-    "OnlyusetheSpecialRequest":"Les demandes spéciales sont utilisées pour gérer des services supplémentaires pour un compte Jabber/ITN existant ; pour indiquer le besoin d'un conseil en téléphonie ; ou pour créer /gérer des services spéciaux : des identifiants secondaires, des assistances téléphoniques de groupe d'assistance et/ou des lignes partagées ou des groupes de recherche." ,
-    "needstandardservice":"Pour les services standards tels que la création d'un nouveau compte Jabber/ITN, veuillez utiliser les options du menu de la barre latérale. N'envoyez pas de demande spéciale, sinon elle sera rejetée.",
+    "OnlyusetheSpecialRequest":"Les demandes spéciales sont utilisées pour gérer des services supplémentaires pour un numéro de téléphone / Jabber existant ; d'indiquer le besoin d'une consultation liée à la téléphonie ; ou pour créer/gérer des services spéciaux : identifiants secondaires, hotlines de groupe d'assistance et/ou lignes partagées ou groupes de recherche." ,
+    "needstandardservice":"Pour les services standard tels que la création d'un nouveau Jabber / Numéro de téléphone, veuillez utiliser les options dans le menu de la barre latérale. Ne soumettez pas de demande spéciale ou elle sera rejetée.",
     "JabberNumberoptional": "Jabber / Numéro de téléphone (Facultatif)",
     "JabberLocationspecial": "Emplacement du Jabber / Numéro de téléphone",
     "Description of Requirement" :"Description du besoin",

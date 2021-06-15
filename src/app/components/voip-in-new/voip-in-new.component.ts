@@ -51,6 +51,7 @@ export class VoipInNewComponent implements OnInit {
   previousUrl:any
   pcode: any;	
   service: any;	
+  locSelected : any
   //min = 1000;	
   //max = 9000;	
   employeeInfo: any;	
@@ -267,6 +268,14 @@ export class VoipInNewComponent implements OnInit {
       this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
       this.payload.accid_Disp="";
       this.payload.ReqNo=this.reqno;	
+
+      this.locSelected = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      if(this.countrydetails.did_loc_formula_jabber){
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.did_loc_formula_jabber);
+      } else {
+        this.payload.DID_Location =this.locSelected
+      } 
   
       // fields to be picked up from form -- ends	
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	

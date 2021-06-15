@@ -29,7 +29,8 @@ cnum : any;
 reqno:any;	
 countrydetails : any;	
 isButtonVisible = true;	
-isSpinnerVisible= false; 	
+isSpinnerVisible= false; 
+locSelected : any	
 
 isEntryForm = false;	
 isReviewForm = true;	
@@ -417,7 +418,20 @@ submit_snow(){
     this.payload.Desc_Disp = this.reviewDetailsIndia.description;
     this.payload.LocationCorrect = this.reviewDetailsIndia.Locationcorrectnew;
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
-    this.payload.Justification_Disp = this.reviewDetailsIndia.justification;	
+    this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+    
+    this.locSelected = this.reviewDetailsIndia.Locationcorrectnew;
+    if(this.countrydetails.did_loc_formula){
+      // Assign location value from cloudant. Needed for ITN allocation
+      eval(this.countrydetails.did_loc_formula);
+    } else {
+     // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
+      if (this.reviewDetailsIndia.device === 'Extension Mobility Station'){
+        this.payload.DID_Location = 'HP' + this.locSelected	
+      } else {
+        this.payload.DID_Location = this.locSelected
+      }
+    }
 
     // fields to be picked up from form -- ends	
     this.payload.level1_japproval=this.countrydetails.level1_japproval;	

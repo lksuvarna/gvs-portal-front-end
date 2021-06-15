@@ -54,6 +54,7 @@ export class Jabber_New
     BusinessUnit_Disp !: String;
     Department_number_Disp !: String;
     Location_final !: String;
+    DID_Location !: String;
     accid_Disp !: String;
     ReqNo !: String;
     level2_japproval !: String;
@@ -81,6 +82,7 @@ Jabber_New()
     this.BusinessUnit_Disp  ="";
     this.Department_number_Disp ="";
     this.Location_final ="";
+    this.DID_Location="";
     this.accid_Disp ="";
     this.ReqNo ="";
     this.level2_japproval ="";
@@ -598,6 +600,8 @@ SLA_type!: String;
 country_code!: String;
 LocationCorrectnew!: String;
 
+    DID_Location !: String;
+
 fixedphone_new()
 {
 this.orinator_payload="";
@@ -610,6 +614,7 @@ this.identifier_hp_Disp="";
 this.BusinessUnit_Disp="";
 this.Department_number_Disp="";
 this.Location_final="";
+this.DID_Location="";
 this.accid_Disp="";
 this.ReqNo="";
 this.Device_Type_Disp="";
@@ -630,6 +635,8 @@ this.gvs_approval_link="";
 this.SLA_type="";
 this.country_code="";
 this.LocationCorrectnew="";
+this.Location_final="";
+this.DID_Location=""
 }
 
 }

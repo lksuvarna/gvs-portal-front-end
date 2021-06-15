@@ -30,7 +30,7 @@ export class TranslateConfigService {
   constructor(private translateservice : TranslateService, private cloudantservice: cloudantservice) { 
    
 
-  this.currentLang = localStorage.getItem("currentLang")
+ // this.currentLang = localStorage.getItem("currentLang")
   this.currentlang1 = sessionStorage.getItem("currentlang1")
 this.countryroute =sessionStorage.getItem("countryroute")
 
@@ -53,19 +53,18 @@ this.translateservice.use('en');
 } 
  
   changeLanguage(type :string){
-    
     this.translateservice.use(type);
-     localStorage.setItem("currentLang", type);
-    this.currentLang = localStorage.getItem("currentLang")
-     sessionStorage.setItem("currentlang1",type);
-    this.currentLang = sessionStorage.getItem("currentlang1") 
-    this.languageType = sessionStorage.getItem("currentlang1") 
+   //  localStorage.setItem("currentLang", type);
+    // this.currentLang = sessionStorage.getItem("currentLang1")
+    sessionStorage.setItem("currentlang1",type);
+    this.currentLang = type 
+    this.languageType = type
      
   } 
   changeLanguage1(type :string){
     this.translateservice.use(type);
     sessionStorage.setItem("languageType",type);
-    this.languageType = sessionStorage.getItem("languageType") 
+    this.languageType = type
     
      
   } 

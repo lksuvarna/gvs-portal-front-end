@@ -21,7 +21,8 @@ export class VoipLaNewComponent implements OnInit {
   camp: any = [];	
   buildA: any = [];	
   build: any = [];	
-  j = 0;	
+  j = 0;
+  len:any	
   countryname:any;	
 ccode='';	
 orgi:any;	
@@ -34,7 +35,7 @@ errorinfo=false;
 isEntryForm = false;	
 isReviewForm = true;	
 Voice_Type = "No";	
- 
+locSelected : any
   
  
     
@@ -204,7 +205,19 @@ submit_snow(){
     this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;	
     this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
-    this.payload.Location_final =this.reviewDetailsIndia.campus;	
+    this.locSelected = this.reviewDetailsIndia.officeLocation;
+    
+    if(this.countrydetails.did_loc_formula_jabber){
+      // Assign location value from cloudant. Needed for ITN allocation
+      eval(this.countrydetails.did_loc_formula_jabber);
+    } 
+    else{this.payload.DID_Location =this.locSelected;}
+    if(this.countrydetails.Location_final_formula_jabber){
+      // Assign location value from cloudant. Needed for ITN allocation
+      eval(this.countrydetails.Location_final_formula_jabber);
+    } else {
+      this.payload.Location_final = this.locSelected
+    } 
     //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
     this.payload.ReqNo=this.reqno;	
 

@@ -22,7 +22,6 @@ export class TopcountryframeComponent implements OnInit {
   service:any;
   pagedisplay:any;
   currentLang :any;
-  translatecountryname :any;
   translatecountryname1 :boolean =false;
   cache : any;
 
@@ -72,8 +71,7 @@ export class TopcountryframeComponent implements OnInit {
       this.pcountrydetails=sessionStorage.getItem('countrydetails')
             console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code)
       this.countryname = JSON.parse(this.pcountrydetails)
-        this.translatecountryname = this.pcode;
-      if (this.translatecountryname == '649' && this.service == 'services'){
+      if (this.countryname.isLtFrench && this.service == 'services'){
           this.translatecountryname1 = true;
         }  
         else{
@@ -190,8 +188,7 @@ export class TopcountryframeComponent implements OnInit {
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.pcode);}
       
-        this.translatecountryname = this.pcode;
-      if (this.translatecountryname == '649' && this.service == 'services'){
+      if (this.countryname.isLtFrench && this.service == 'services'){
           this.translatecountryname1 = true;
         }  
         else{
