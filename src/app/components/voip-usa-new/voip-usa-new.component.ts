@@ -96,7 +96,7 @@ locSelected : any
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
       // fields picked up from form -- begins	
-      this.payload.Buildings_Disp=this.reviewDetailsIndia.officeLocation;	
+     // this.payload.Buildings_Disp=this.reviewDetailsIndia.officeLocation;	
       // by default set to true. below line can be removed if needed.	
       //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
       this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
@@ -104,12 +104,25 @@ locSelected : any
       this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;	
       this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
       this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
-      this.payload.Location_final =this.reviewDetailsIndia.officeLocation;
+      
      // this.payload.DID_Location =this.reviewDetailsIndia.officeLocation;	
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
       this.payload.ReqNo=this.reqno;	
 
       this.locSelected = this.reviewDetailsIndia.officeLocation;
+      this.payload.Location_final =this.reviewDetailsIndia.officeLocation;
+      if(this.countrydetails.Location_final_formula_jabber){
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.Location_final_formula_jabber);
+      } else {
+        this.payload.Location_final = this.locSelected
+      } 
+      if(this.countrydetails.cos_formula_jabber){
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.cos_formula_jabber);
+      } else {
+        this.payload.class_of_serice =this.countrydetails.class_of_serice ;	
+      } 
       if(this.countrydetails.did_loc_formula_jabber){
         // Assign location value from cloudant. Needed for ITN allocation
         eval(this.countrydetails.did_loc_formula_jabber);
@@ -126,8 +139,7 @@ locSelected : any
       this.payload.countryname=this.countrydetails.name;	
       this.payload.request_type='jabber_new';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
-      this.payload.qag =this.countrydetails.qag ;	
-      this.payload.class_of_serice =this.countrydetails.class_of_serice ;	
+      this.payload.qag =this.countrydetails.qag ;	      
       this.payload.country_code = this.countrydetails.code ;	
       this.payload.default_call_permission=this.countrydetails.default_call_permission;
       

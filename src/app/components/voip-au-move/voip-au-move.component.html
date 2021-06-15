@@ -29,13 +29,23 @@
                             <label for="IdentifierId" class="ds-text-capitalize">Jabber / Phone Number</label>
                             <span class="ds-text-contextual-red-2"> *</span>
                         </td>
+                       
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select [(ngModel)]='itn_sel' #jabberNumberVal (change)="getjabberNumberVal(jabberNumberVal.value)" name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Extension Number">
+                                <select [(ngModel)]='itn_sel' #jabberNumberVal (change)="getjabberNumberVal(jabberNumberVal.value)" name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Extension Number" (change)='toggleOptions($event)'>
                   <option value="">Select One</option>
                   <option *ngFor="let jab of jabberNumber" [value]="jab">{{jab}}</option>
                 </select>
                             </div>
+                        </td>
+                    </tr>
+                    <tr valign="top" *ngIf='displayloc==true'>
+                        <td colspan="2" width="46%" height="10">
+                            <label for="default_location" translate>Jabbernewtrans.JabberLocation</label>
+                        </td>
+                        <td width="54%" height="10">
+                            <div class="ds-input-container">
+                                <input name="default_location" value="" autocomplete="off" tabindex="2" id="ch" class="ds-input ds-disabled" style="width:300px !important;" [(ngModel)]='default_location'></div>
                         </td>
                     </tr>
                     <tr valign="top">
@@ -98,6 +108,14 @@
                             <label for="addId1">Jabber / Phone Number</label>
                         </td>
                         <td width="54%" height="10">{{reviewDetailsIndia.Identifier_Selected}}</td>
+                    </tr>
+                    <tr valign="top" *ngIf='displayloc==true'>
+                        <td colspan="2" width="46%" height="10">
+                            <label for="default_location" translate>Jabbernewtrans.JabberLocation</label>
+                        </td>
+                        <td width="54%" height="10">
+                            {{reviewDetailsIndia.default_location}} 
+                            </td>
                     </tr>
                     <tr valign="top">
                         <td colspan="2" width="46%">
