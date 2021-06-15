@@ -64,7 +64,7 @@
         <a [routerLink]="[ '/**'] " [queryParams]="{country:ccode,service:'services'}" data="{cdetails:this.countryname}" translate *ngIf="micountry">home.click-here</a>
         <div translate>home.available </div>
         <span class="ds-padding-left-3 " *ngIf="micountry==false"><span translate>home.servicesonlyokay</span> {{countryname.name}}</span>
-        <span class="ds-padding-left-3 " *ngIf="micountry"><span translate>home.servicesonlyokay</span> {{micountry}}</span>
+        <span class="ds-padding-left-3 " *ngIf="micountry"><span translate>home.servicesonlyokay</span> {{micountryname}}</span>
         
         <br>
     </div>
@@ -80,7 +80,7 @@
 <div class="ds-row ds-text-align-center ds-padding-left-1 ds-padding-right-1 " *ngIf="display">
     <div class="ds-col-3 ds-padding-left-1 ">
         <div class="ds-panel ">
-            <div class="ds-panel-container ">
+            <div class="ds-panel-container " *ngIf="jabberdisplay">
                 <p><img src="././assets/Jabber.png " width="93px " height="93px "><br><br>Cisco Jabber</p>
                 <p class="ds-text-small ds-align-text-left ds-padding-bottom-2 " translate>home.jabber-description<br>
                 </p><br><br>
@@ -88,6 +88,18 @@
           <button name="next "
             class="ds-button ds-secondary ds-margin-bottom-0 ds-padding-top-1 ds-padding-bottom-1 " tabindex="15 "
             [routerLink]="[ '/jabberservices'] " [queryParams]="{country:ccode,service:'jabberservices'}" data="{cdetails:this.countryname}"
+            translate>home.button-value</button>
+            <!-- <value="button-value "> -->
+
+        </span>
+            </div>
+            <div class="ds-panel-container " *ngIf="jabberdisplay==false">
+                <p><img src="././assets/fixedphone.png " width="93px " height="93px "><br><br>Fixed Phone</p>
+                <br><br>
+                <span class="button-blue " id="button2 ">
+          <button name="next "
+            class="ds-button ds-secondary ds-margin-bottom-0 ds-padding-top-1 ds-padding-bottom-1 " tabindex="15 "
+            [routerLink]="[ '/fixedphoneservices'] " [queryParams]="{country:ccode,service:'fixedphoneservices'}" data="{cdetails:this.countryname}"
             translate>home.button-value</button>
             <!-- <value="button-value "> -->
 

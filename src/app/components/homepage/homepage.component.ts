@@ -39,6 +39,8 @@ export class HomepageComponent implements OnInit {
   micountry=false;
   translatecountryname1 :boolean =false;
   ccode='';
+  jabberdisplay=true;
+  micountryname:any;
   testusercode:any
   countrydetails:any;
   countrynamehome:any;
@@ -115,7 +117,7 @@ export class HomepageComponent implements OnInit {
         this.micpath="././assets/flags/"+this.miccountrycodes[n]+".png"
        
       
-        this.micountry=this.miccountrynames[n]
+        this.micountryname=this.miccountrynames[n]
       }
       
       
@@ -128,7 +130,8 @@ export class HomepageComponent implements OnInit {
       sessionStorage.setItem('countrydetails', JSON.stringify(data.countrydetails));
       sessionStorage.setItem('countryroute', this.ccode);
       sessionStorage.setItem('pagedisplay','homepage')
-     
+      if (data.countrydetails.isjabber==true){}
+      else{this.jabberdisplay=false}
       console.log("testuser"+data.countrydetails.testuser)
       if (data.countrydetails.testuser){
         this.employeeSerial=data.countrydetails.testuser;
@@ -168,7 +171,7 @@ export class HomepageComponent implements OnInit {
             this.miccountrynames=data.countrydetails.locdisplay.split(',');
             let n:number=this.miccountrycodes.indexOf(this.ccode)
             this.micpath="././assets/flags/"+this.miccountrycodes[n]+".png"
-            this.micountry=this.miccountrynames[n]
+            this.micountryname=this.miccountrynames[n]
           }
           
           this.cloudantservice.getcountrydetails(this.testusercode).subscribe(data=> {
@@ -176,6 +179,8 @@ export class HomepageComponent implements OnInit {
              console.log('Response received', data.countrydetails.name);
              
              this.countryname=data.countrydetails;
+             if (data.countrydetails.isjabber==true){}
+      else{this.jabberdisplay=false}
              this.getBPData();
            }
            })
