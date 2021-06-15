@@ -214,6 +214,10 @@ submit_snow(){
       this.payload.Location_final =sessionStorage.getItem('selectedCountry')?.slice(0,this.len-6)+"~~"+this.reviewDetailsIndia.officeLocation;
     this.payload.DID_Location =sessionStorage.getItem('selectedCountry')?.slice(0,this.len-6)+"~~"+this.reviewDetailsIndia.officeLocation;
     }
+    if(this.countrydetails.did_loc_formula_jabber){
+      // Assign location value from cloudant. Needed for ITN allocation
+      eval(this.countrydetails.did_loc_formula_jabber);
+    } 
     	
     //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
     this.payload.ReqNo=this.reqno;	

@@ -1149,7 +1149,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\VivekRatnesh\Desktop\Project Work\Cirrus\GVS-Portal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -8719,6 +8719,10 @@ class VoipLaNewComponent {
             this.len = (_a = sessionStorage.getItem('selectedCountry')) === null || _a === void 0 ? void 0 : _a.length;
             this.payload.Location_final = ((_b = sessionStorage.getItem('selectedCountry')) === null || _b === void 0 ? void 0 : _b.slice(0, this.len - 6)) + "~~" + this.reviewDetailsIndia.officeLocation;
             this.payload.DID_Location = ((_c = sessionStorage.getItem('selectedCountry')) === null || _c === void 0 ? void 0 : _c.slice(0, this.len - 6)) + "~~" + this.reviewDetailsIndia.officeLocation;
+        }
+        if (this.countrydetails.did_loc_formula_jabber) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.did_loc_formula_jabber);
         }
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
@@ -19001,11 +19005,25 @@ class VoipUsaNewComponent {
         this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
         this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
-        this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
         // this.payload.DID_Location =this.reviewDetailsIndia.officeLocation;	
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
         this.locSelected = this.reviewDetailsIndia.officeLocation;
+        this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
+        if (this.countrydetails.Location_final_formula_jabber) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.Location_final_formula_jabber);
+        }
+        else {
+            this.payload.Location_final = this.locSelected;
+        }
+        if (this.countrydetails.cos_formula_jabber) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.cos_formula_jabber);
+        }
+        else {
+            this.payload.class_of_serice = this.countrydetails.class_of_serice;
+        }
         if (this.countrydetails.did_loc_formula_jabber) {
             // Assign location value from cloudant. Needed for ITN allocation
             eval(this.countrydetails.did_loc_formula_jabber);
@@ -19023,7 +19041,6 @@ class VoipUsaNewComponent {
         this.payload.request_type = 'jabber_new';
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
         this.payload.qag = this.countrydetails.qag;
-        this.payload.class_of_serice = this.countrydetails.class_of_serice;
         this.payload.country_code = this.countrydetails.code;
         this.payload.default_call_permission = this.countrydetails.default_call_permission;
         // console.log('Payload');	
