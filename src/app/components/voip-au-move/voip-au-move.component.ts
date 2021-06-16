@@ -89,8 +89,9 @@ export class VoipAuMoveComponent implements OnInit {
     if(this.itn_sel != '') {
     for(var j=0;j<this.jabberNumber.length;j++) {
         if(loc == this.profilelocationlists[j]) {
-          alert('Sorry, according to our record, you already have a jabber number for the selected location. To keep this number, no further action is needed.');
           this.loc_sel = "Select Location";
+          alert('Sorry, according to our record, you already have a jabber number for the selected location. To keep this number, no further action is needed.');
+          
         }
     }
   }
