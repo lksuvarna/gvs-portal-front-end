@@ -18,7 +18,9 @@ export class UitoplinksComponent implements OnInit {
   langType :any;
   routerPath = '';
   service:any;
+  isLTFrench = false
   pcode = '';
+  countrydetails:any;
   searchData:any = [];
   searchObj =  {
     name: '',
@@ -53,13 +55,17 @@ export class UitoplinksComponent implements OnInit {
     .subscribe(params => {
       this.service=params.service;
       this.pcode = params.country;
-       if (this.pcode == '649'){
-      this.langType=localStorage.getItem("currentLang")
+    
+      this.countrydetails=sessionStorage.getItem('countrydetails')
+      this.countrydetails = JSON.parse(this.countrydetails)
+
+    if (this.countrydetails.isLtFrench){
+      this.langType=sessionStorage.getItem("currentLang1")
       this.translateconfigservice.changeLanguage1(this.langType);
-      }
-      else{
-        this.translateconfigservice.changeLanguage1('en');
-      }  
+    }
+    else{
+      this.translateconfigservice.changeLanguage1('en');
+    }  
     this.routerPath = window.location.pathname
 
     if (this.routerPath === '/'){
@@ -105,18 +111,29 @@ export class UitoplinksComponent implements OnInit {
   }
 
   closeDropdown(id: any,ccode: any) {
+
     document.getElementById('countrydropdown')?.classList.remove('show');
     this.searchText = ''
     this.toggleHighlight(id);
-      if (ccode != '649' ){
-     this.translateconfigservice.changeLanguage1('en');
-      }  
-       else{
-        this.langType=localStorage.getItem("currentLang")
-        this.translateconfigservice.changeLanguage1(this.langType);
-      }   
+
+    this.searchData.countrydetails.filter((element: any)=> {
+      if(element.code === ccode ){
+        if(element.isLtFrench){
+          this.isLTFrench = true
+        } else  {
+          this.isLTFrench = false
+        }
+      } 
+    });
+
+    if (!this.isLTFrench){
+      this.translateconfigservice.changeLanguage1('en');
+    } else{
+      this.langType=sessionStorage.getItem("currentlang1")
+      this.translateconfigservice.changeLanguage1(this.langType);
+    }   
       
-    }
+  }
 
   toggleHighlight(id : any){
           

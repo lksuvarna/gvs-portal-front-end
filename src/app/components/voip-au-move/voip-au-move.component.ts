@@ -35,6 +35,7 @@ export class VoipAuMoveComponent implements OnInit {
   countrydetails : any;
   pcode: any;	
   service: any;
+  default_location:any
   sessionwarninginfo:any;
   sessionwarninginfosnow:any;
   warninginfo=false;
@@ -50,8 +51,8 @@ export class VoipAuMoveComponent implements OnInit {
   employeeInfo1: any;	
   cache_tmp:  any = [];
   selectedjabber : any;
- 
-
+  index!: number;
+  displayloc=false
 
   reviewDetailsIndia = {	
     officeLocation:	"",	
@@ -59,7 +60,8 @@ export class VoipAuMoveComponent implements OnInit {
     Location_Selected:	"",	
     reqno:"",
     businessUnit:"",
-    currentLocation:""
+    currentLocation:"",
+    default_location:""
   }	
   payload : Jabber_Move = new Jabber_Move();
   cache : Create_Cache_jabber = new Create_Cache_jabber();
@@ -116,6 +118,7 @@ export class VoipAuMoveComponent implements OnInit {
         this.reviewDetailsIndia.currentLocation = this.profilelocationlists[j];
       }
     }
+    this.reviewDetailsIndia.default_location=formData.value.default_location;	
        //set up the cache for form values.
        this.create_cache(formData);
     
@@ -144,7 +147,16 @@ export class VoipAuMoveComponent implements OnInit {
     this.isEntryForm = false;	
     this.isReviewForm = true;		
   }	
-   // Submit to Snow Jabber new code added by Swarnava	
+  toggleOptions(e:any){
+    this.index = e.target["selectedIndex"]-1 ;
+    if(e.target.value.toUpperCase()=='SELECT ONE' || e.target.value.trim()==''){
+      this.displayloc=false
+    }
+    else{this.displayloc=true
+      this.default_location=this.profilelocationlists[this.index]
+      
+    }
+  }	
    submit_snow(){	
     this.reqno=this.countrydetails.isocode+"-MS-"+this.cnum.substr(0,6)+"-"+gettime();	
     sessionStorage.setItem('reqno',this.reqno)	

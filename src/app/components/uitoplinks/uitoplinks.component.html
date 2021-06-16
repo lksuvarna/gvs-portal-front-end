@@ -41,9 +41,9 @@
     <div class="ds-row ds-shadow-floating ds-margin-bottom-0">
         <div class="ds-col-8 ds-padding-top-0_8 ds-no-gutter ds-float-lg-right ">
             <div class="ds-tray-fit-content ds-margin-bottom-0">
-                <a id="home-nav" class="ds-button ds-flat ds-padding-left-2 ds-padding-right-2" (click)="closeDropdown('home-nav','')" [routerLink]="['/']" translate>topui.HOME</a>
+                <a id="home-nav" class="ds-button ds-flat ds-padding-left-2 ds-padding-right-2" (click)="closeDropdown('home-nav',ccode)" [routerLink]="['/']" translate>topui.HOME</a>
                 <a id="privacy-nav" href="https://w3.ibm.com/w3publisher/global-voice-services/about-gvs/data-privacy" target="_blank" (click)="closeDropdown('privacy-nav','')" class="ds-button ds-flat ds-flat ds-padding-left-2 ds-padding-right-2" translate>topui.DATAPRIVACY</a>
-                <a id="services-nav" class="ds-button ds-flat ds-padding-left-2 ds-padding-right-2" (click)="closeDropdown('services-nav','')" [routerLink]="['/services']" [queryParams]="{country:ccode,service:'services'}" style="cursor:default" translate>topui.SERVICES</a>
+                <a id="services-nav" class="ds-button ds-flat ds-padding-left-2 ds-padding-right-2" (click)="closeDropdown('services-nav',ccode)" [routerLink]="['/services']" [queryParams]="{country:ccode,service:'services'}" style="cursor:default" translate>topui.SERVICES</a>
                 <a id="help-nav" href="https://w3.ibm.com/help/#/article/telephony_gvi_spoe/overview" target="_blank" (click)="closeDropdown('help-nav','')" class="ds-button ds-flat ds-flat ds-padding-left-2 ds-padding-right-2" translate>topui.HELP</a>
                 <a id="feed-nav" class="ds-button ds-flat ds-padding-left-2 ds-padding-right-2" (click)="closeDropdown('feed-nav','')" [routerLink]="['/feedback']" translate>topui.FEEDBACK</a>
                 <div id="countryDropdown" class="dropdown">
@@ -52,7 +52,7 @@
                         <input type="text" class="ds-input" id="myInput" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Search.." style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; ">
                         <div class="dropdown-content1">
                             <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | dropdownsearch: searchText; let i=index">
-                                <a (click)="closeDropdown('services-nav','searchResult.code')" [routerLink]="['/services']" [queryParams]="{country:searchResult.code,service:'services'}"><img *ngIf="searchResult.path" class="ds-border-neutral-5" src={{searchResult.path}} width="25;" height="16;"> <span *ngIf="!searchResult.path" class="ds-pad-l-1_5"> </span><span class="ds-pad-l-0_5">{{searchResult.name}}</span></a>
+                                <a (click)="closeDropdown('services-nav',searchResult.code)" [routerLink]="['/services']" [queryParams]="{country:searchResult.code,service:'services'}"><img *ngIf="searchResult.path" class="ds-border-neutral-5" src={{searchResult.path}} width="25;" height="16;"> <span *ngIf="!searchResult.path" class="ds-pad-l-1_5"> </span><span class="ds-pad-l-0_5">{{searchResult.name}}</span></a>
                             </div>
                         </div>
                     </div>

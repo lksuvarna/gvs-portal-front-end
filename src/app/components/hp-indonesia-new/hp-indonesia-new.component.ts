@@ -64,9 +64,10 @@ countryCode:any;
 employeeID:any;
 email:any;
 emailClick = false;
+locSelected : any
 
 
-  payload : fixedphone_new = new fixedphone_new();	
+payload : fixedphone_new = new fixedphone_new();	
 
   reviewDetailsIndia = {	
   
@@ -283,7 +284,6 @@ emailClick = false;
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;
       
-      
       this.payload.Location_final =this.reviewDetailsIndia.officeLocation;
       this.payload.ReqNo=this.reqno;
       this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
@@ -293,7 +293,19 @@ emailClick = false;
       this.payload.LocationCorrect = this.reviewDetailsIndia.officeLocation;
       this.payload.COS_Disp = this.reviewDetailsIndia.cos;
       this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
-  
+
+      this.locSelected = this.reviewDetailsIndia.officeLocation;
+      if(this.countrydetails.did_loc_formula){
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.did_loc_formula);
+      } else {
+       // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
+        if (this.reviewDetailsIndia.device === 'Extension Mobility Station'){
+          this.payload.DID_Location = 'HP' + this.locSelected	
+        } else {
+          this.payload.DID_Location = this.locSelected
+        }
+      }
   
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
       this.payload.level2_japproval=this.countrydetails.level2_japproval;	

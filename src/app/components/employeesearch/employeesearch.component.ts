@@ -551,10 +551,15 @@ export class EmployeesearchComponent implements OnInit {
          for (var i = 0; i < data.message.length; i++) {
           this.itns[i] = data.message[i].IDENTIFIER.trim();
           if (this.service == 'jabber_move') {
-          if (data.message[i].ATTRIBUTE3 == null)
+            var att;
+            if(this.countrydetails.jabberloc)
+            {att=this.countrydetails.jabberloc}
+            else{att='ATTRIBUTE7'}
+            
+          if (eval('data.message[i].'+att) == null)
           this.profile_location[i] = 'NA'
             else
-            this.profile_location[i] = data.message[i].ATTRIBUTE3.trim();
+            this.profile_location[i] = eval('data.message[i].'+att).trim();
           }
           if (this.service == 'jabber_update') {
 
