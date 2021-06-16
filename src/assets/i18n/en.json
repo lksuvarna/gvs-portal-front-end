@@ -163,7 +163,7 @@
         "notauthorizedtoaccessjabber": "The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact",
         "notauthorizedtoaccessip": "The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact",
         "Jabber/ITN": "Jabber/ITN",
-        "jabberconfiguration": "is already registered for this user. If you cannot see this ITN listed in Bluepages under Contact information, please reach out to the help desk.",
+        "jabberconfiguration": "is already registered for this user. If you cannot see this Jabber ITN listed in Bluepages under Contact information, please reach out to the",
         "toinstallbegin":"To install and begin using your Jabber account, please see",
         "CiscoJabber" :"Cisco Jabber.",
         "isalreadybeingprocessed":" is already being processed for this user. To view the status of this request, please click on Requests in the sidebar menu.",

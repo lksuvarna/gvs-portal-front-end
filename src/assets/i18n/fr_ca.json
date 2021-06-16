@@ -130,7 +130,7 @@
         "notauthorizedtoaccessjabber": "Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter",
         "notauthorizedtoaccessip":"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter",
         "Jabber/ITN": "Jabber/ITN",
-        "jabberconfiguration":"est déjà enregistré pour cet utilisateur. Si vous ne pouvez pas voir cet ITN répertorié dans les pages bleues sous Informations de contact, veuillez contacter le service d'assistance.",
+        "jabberconfiguration":"est déjà enregistré pour cet utilisateur. Si vous ne pouvez pas voir cet Jabber ITN répertorié dans les pages bleues sous Informations de contact, veuillez contacter le service d'assistance.",
         "toinstallbegin":"Pour installer et commencer à utiliser votre compte Jabber, veuillez consulter",
         "CiscoJabber" :"Cisco Jabber.",
         "ongoingrequestsbyclickonrequestpage":"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.",
