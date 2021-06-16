@@ -1149,7 +1149,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -13699,15 +13699,22 @@ class VoipAllSpecialRequestComponent {
             this.defaultlocation = false;
         }
         else {
-            if (this.data[this.index].ATTRIBUTE7 == '' || this.data[this.index].ATTRIBUTE7 == null)
+            var att;
+            if (this.countrydetails.jabberloc) {
+                att = this.countrydetails.jabberloc;
+            }
+            else {
+                att = 'ATTRIBUTE7';
+            }
+            if (eval('this.data[this.index].' + att) == '' || eval('this.data[this.index].' + att) == null)
                 this.default_location = 'NA';
             else {
                 if (this.pcode == '631') {
-                    this.laloc = this.data[this.index].ATTRIBUTE7;
+                    this.laloc = eval('this.data[this.index].' + att).trim();
                     this.default_location = this.laloc.substr(this.laloc.lastIndexOf('~') + 1, this.laloc.length);
                 }
                 else
-                    this.default_location = this.data[this.index].ATTRIBUTE7;
+                    this.default_location = eval('this.data[this.index].' + att).trim();
             }
             this.defaultlocation = true;
         }
@@ -28571,6 +28578,7 @@ class HpEmeaNewComponent {
         if (this.countrydetails.did_loc_formula) {
             // Assign location value from cloudant. Needed for ITN allocation
             eval(this.countrydetails.did_loc_formula);
+            console.log("DID Location = " + this.payload.DID_Location);
         }
         else {
             // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)

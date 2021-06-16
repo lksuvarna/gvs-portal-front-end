@@ -279,6 +279,7 @@ getFixedPhoneData(){
       if(this.countrydetails.did_loc_formula){
         // Assign location value from cloudant. Needed for ITN allocation
         eval(this.countrydetails.did_loc_formula);
+        console.log("DID Location = "+this.payload.DID_Location);
       } else {
        // Default -> EM and Conference - HP+location (logged off range) and Fixedphone - Location (user range)
         if (this.reviewDetailsIndia.device === 'Extension Mobility Station'){
