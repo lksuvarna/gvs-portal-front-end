@@ -10,8 +10,8 @@
 
     <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
 
-        <h3 *ngIf="reval"><b>Approvals</b></h3>
-        <h3 *ngIf="!reval"><b>Revalidation</b></h3>
+        <h3 *ngIf="reval"><b translate>approvalpending.Approvals</b></h3>
+        <h3 *ngIf="!reval"><b translate>approvalpending.Revalidation</b></h3>
         <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
         <div class=" ds-panel ds-col-12 "></div>
         <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
@@ -20,7 +20,7 @@
             <tbody>
                 <tr valign="top">
                     <td width="783">
-                        <div>Enter Serial Number or Tracking Number</div>
+                        <div translate>approvalpending.EnterSerialNumberorTrackingNumber</div>
                     </td>
                     <td width="217">
                         <div class="ds-pad-l-1">
@@ -31,8 +31,8 @@
                             <div class="ds-tray-fit-content ds-margin-bottom-0">
                                 <div class="button-bar ds-tray-fit-content ds-float-lg-right ">
                                     <span class="ds-pad-l-1 ds-pad-r-1">
-                    <input type="button" class="ds-button ds-secondary ds-pad-l-1 ds-width-auto ds-pad-r-1"  value="SEARCH" (click)="performsearch()"></span>
-                                    <input type="button" class="ds-button ds-secondary  ds-pad-l-1 ds-width-auto ds-pad-r-1" value="CLEAR" (click)="clear()">
+                    <input type="button" class="ds-button ds-secondary ds-pad-l-1 ds-width-auto ds-pad-r-1"  value="{{'fixedphonenew.SEARCH'|translate}}" (click)="performsearch()"></span>
+                                    <input type="button" class="ds-button ds-secondary  ds-pad-l-1 ds-width-auto ds-pad-r-1" value="{{'approvalpending.CLEAR'|translate}}" (click)="clear()">
                                 </div>
                             </div>
                         </div>
@@ -40,16 +40,16 @@
                 </tr>
             </tbody>
         </table>
-        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5">Pending Requests</h2>
+        <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5" translate>approvalpending.PendingRequests</h2>
         <div class="ds-table-container">
             <table style="width:100%; border-collapse: collapse; padding:2px" *ngIf="reval && errorinfo && searchresult==false">
                 <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">
                     <tr>
                         <td width="59" height="49"></td>
-                        <td width="175" height="49">Serial Number</td>
-                        <td width="194" height="49">User Name</td>
-                        <td width="213" height="49">Resource Type</td>
-                        <td width="175" height="49">Tracking Number</td>                        
+                        <td width="175" height="49" translate>Jabbernewtrans.SerialNumber</td>
+                        <td width="194" height="49" translate>phonenumber.UserName</td>
+                        <td width="213" height="49" translate>requesttrans.ResourceType</td>
+                        <td width="175" height="49" translate>requesttrans.TrackingNumber</td>                        
                     </tr>
                 </thead>
                 <tbody valign="top" *ngFor="let req of pendingRequest, let i = index">
@@ -72,11 +72,11 @@
                 <thead class="ds-bg-neutral-warm-2 ds-text-neutral-7 ds-font-weight-bold">
                     <tr>
                         <td width="59"></td>
-                        <td width="175">Serial Number</td>
-                        <td width="194">User Name</td>
-                        <td width="213">Revalidation Date</td>
-                        <td width="175">Phone/Dial in number</td>
-                        <td width="213">Details of Change</td>
+                        <td width="175" translate>Jabbernewtrans.SerialNumber</td>
+                        <td width="194" translate>phonenumber.UserName</td>
+                        <td width="213" translate>approvalpending.Revalidation Date</td>
+                        <td width="175" translate>approvalpending.Phone/Dial in number</td>
+                        <td width="213" translate>approvalpending.Details of Change</td>
                     </tr>
                 </thead>
                 <tbody valign="top" *ngFor="let req of pendingRequest, let i = index">
@@ -100,26 +100,26 @@
         </div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo && reval">
             <p></p>
-            <p>There are no pending approvals.</p>
+            <p translate>approvalpending.There are no pending approvals</p>
             <p>
             </p>
         </div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="searchresult">
             <p></p>
-            <p>No search results found.</p>
+            <p translate>approvalpending.No search results found</p>
             <p>
             </p>
         </div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf="!errorinfo && !reval">
             <p></p>
-            <p>There are no pending revalidation documents.</p>
+            <p translate>approvalpending.There are no pending revalidation documents</p>
             <p>
             </p>
         </div>
 
         <div class="ds-panel ds-col-12"></div>
         <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
-            <div class="ds-loader-header">Your request is being processed. Do not refresh or go back.</div>
+            <div class="ds-loader-header" translate>Jabberentrydetails.Submissioninprogress</div>
             <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being processed. Do not refresh or go back."></div>
         </div>
         <div class="ds-row ds-pad-t-2" style="margin-right:12px" *ngIf="this.isButtonVisible && errorinfo && searchresult==false">
@@ -127,14 +127,14 @@
                 <div class="button-bar ds-tray-fit-content ds-pad-t-1 ds-float-lg-right">
                     <span class="ds-pad-l-4" id="button1">
                 <input type="button" (click)="selectAllcheck()" class="ds-button ds-secondary
-                ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="SELECT ALL">
+                ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="{{'approvalpending.SELECT ALL'|translate}}">
                 </span>
                     <span class="ds-pad-l-1" id="button2">
                 <input type="button" (click)="unSelectAllcheck()" class="ds-button ds-secondary
-                ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="DESELECT ALL">
+                ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" value="{{'approvalpending.DESELECT ALL'|translate}}">
                 </span>
                     <span class="ds-pad-l-1 ds-pad-r-1" id="button3">
-                <input type="button" name="NEXT" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" (click)="process()" value="APPROVE SELECTED ONE">
+                <input type="button" name="NEXT" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" (click)="process()" value="{{'approvalpending.APPROVE SELECTED ONE'|translate}}">
                 </span>
                 </div>
 

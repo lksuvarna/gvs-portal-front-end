@@ -6,6 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
 import { NgForm } from '@angular/forms';
+import { TranslateConfigService } from '../../_services/translate-config.service';
 
 @Component({
   selector: 'app-approval-single-page',
@@ -19,7 +20,7 @@ export class ApprovalSinglePageComponent implements OnInit {
   empserial:any;
   countrydetails:any;
 
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private servicesd : TranslateConfigService) { }
 
   pendingRequest:any=[]; 
   cloudantData: any = [];
@@ -34,6 +35,7 @@ export class ApprovalSinglePageComponent implements OnInit {
   rejectioncomments='';
   request_cnum: any;
   request_name: any;
+  mainConfiguration :any;
   request_sysid: any;
   flag: boolean = true;
   reval=false;
@@ -46,7 +48,7 @@ export class ApprovalSinglePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.mainConfiguration = this.servicesd.readConfigFile();
     this.countrydetails = sessionStorage.getItem('countrydetails')
     this.countrydetails = JSON.parse(this.countrydetails)
     this.route.queryParams	
@@ -86,11 +88,11 @@ export class ApprovalSinglePageComponent implements OnInit {
   EntryDetails(formData: NgForm) {
 
     if(formData.value.rejectioncomments==''){
-      alert('Enter rejection comments');
+      alert(this.mainConfiguration.approvalpending.Enterrejectioncomments);
       return;
 
     }
-    alert('Enter rejection comments');
+    alert(this.mainConfiguration.approvalpending.Enterrejectioncomments);
     return
   }
   backClick(){
@@ -109,7 +111,7 @@ export class ApprovalSinglePageComponent implements OnInit {
       this.flag=true;
     }else{
       if(formData.value.rejectioncomments.trim()==''){
-        alert('Enter rejection comments');
+        alert(this.mainConfiguration.approvalpending.Enterrejectioncomments);
         this.flag=false;
       }else
       this.flag=true;
