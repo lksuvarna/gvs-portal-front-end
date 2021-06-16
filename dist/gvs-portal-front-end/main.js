@@ -10250,8 +10250,8 @@ class VoipAuMoveComponent {
         if (this.itn_sel != '') {
             for (var j = 0; j < this.jabberNumber.length; j++) {
                 if (loc == this.profilelocationlists[j]) {
-                    alert('Sorry, according to our record, you already have a jabber number for the selected location. To keep this number, no further action is needed.');
                     this.loc_sel = "Select Location";
+                    alert('Sorry, according to our record, you already have a jabber number for the selected location. To keep this number, no further action is needed.');
                 }
             }
         }
@@ -24062,6 +24062,24 @@ class EmployeesearchComponent {
                             }
                         }
                     }, 200);
+                    setTimeout(() => {
+                        if (this.service.includes('fixed')) {
+                            if (!(this.countrydetails.power_users.includes(this.ccode))) {
+                                alert(this.countrydetails.alert_message.replace(/<br>/g, "\n"));
+                                this.router.navigate(['fixedphoneservices'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
+                            }
+                        }
+                    }, 200);
+                    setTimeout(() => {
+                        if (this.service == 'specialrequest') {
+                            if (this.countrydetails.special_request_power_users != undefined) {
+                                if (!(this.countrydetails.special_request_power_users.includes(this.ccode))) {
+                                    alert(this.countrydetails.special_request_alert_message);
+                                    this.router.navigate(['services'], { skipLocationChange: true, queryParams: { country: this.pcode, service: 'services' } });
+                                }
+                            }
+                        }
+                    }, 200);
                 });
             }
             else {
@@ -24125,25 +24143,25 @@ class EmployeesearchComponent {
                     }
                 }
             }, 200);
-        });
-        setTimeout(() => {
-            if (this.service.includes('fixed')) {
-                if (!(this.countrydetails.power_users.includes(this.ccode))) {
-                    alert(this.countrydetails.alert_message.replace(/<br>/g, "\n"));
-                    this.router.navigate(['fixedphoneservices'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
-                }
-            }
-        }, 200);
-        setTimeout(() => {
-            if (this.service == 'specialrequest') {
-                if (this.countrydetails.special_request_power_users != undefined) {
-                    if (!(this.countrydetails.special_request_power_users.includes(this.ccode))) {
-                        alert(this.countrydetails.special_request_alert_message);
-                        this.router.navigate(['services'], { skipLocationChange: true, queryParams: { country: this.pcode, service: 'services' } });
+            setTimeout(() => {
+                if (this.service.includes('fixed')) {
+                    if (!(this.countrydetails.power_users.includes(this.ccode))) {
+                        alert(this.countrydetails.alert_message.replace(/<br>/g, "\n"));
+                        this.router.navigate(['fixedphoneservices'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                     }
                 }
-            }
-        }, 200);
+            }, 200);
+            setTimeout(() => {
+                if (this.service == 'specialrequest') {
+                    if (this.countrydetails.special_request_power_users != undefined) {
+                        if (!(this.countrydetails.special_request_power_users.includes(this.ccode))) {
+                            alert(this.countrydetails.special_request_alert_message);
+                            this.router.navigate(['services'], { skipLocationChange: true, queryParams: { country: this.pcode, service: 'services' } });
+                        }
+                    }
+                }
+            }, 200);
+        });
     }
     onSubmit(formData) {
         sessionStorage.setItem('radioAction', this.radioAction.toLowerCase());
