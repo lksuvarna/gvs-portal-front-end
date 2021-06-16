@@ -10,17 +10,17 @@
 
     <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
         <form #formData='ngForm'>
-            <h3 *ngIf="!reval"><b>Approvals</b></h3>
-            <h3 *ngIf="reval"><b>Reactivate Process</b></h3>
+            <h3 *ngIf="!reval"><b translate>approvalpending.Approvals</b></h3>
+            <h3 *ngIf="reval"><b translate>approvalpending.Reactivate Process</b></h3>
             <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
             <div class=" ds-panel ds-col-12 "></div>
             <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
             <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 "></h2>
-            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5">Details</h2>
+            <h2 class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5" translate>approvalpending.Details</h2>
             <table>
                 <tbody valign="top">
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Serial Number</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>approvalpending.Serial Number</label>
 
                         </td>
                         <td width="54%" height="10">
@@ -28,7 +28,7 @@
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">User Name</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>approvalpending.User Name</label>
 
                         </td>
                         <td width="54%" height="10">
@@ -36,7 +36,7 @@
                         </td>
                     </tr>
                     <tr valign="top" *ngIf="reval">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Phone/Dial in number</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>approvalpending.Phone/Dial in number</label>
 
                         </td>
                         <td width="54%" height="10">
@@ -44,7 +44,7 @@
                         </td>
                     </tr>
                     <tr valign="top" *ngIf="reval">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Revalidation Date</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>approvalpending.Revalidation Date</label>
 
                         </td>
                         <td width="54%" height="10">
@@ -52,7 +52,7 @@
                         </td>
                     </tr>
                     <tr valign="top" *ngIf="reval">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Details of Change</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>approvalpending.Details of Change</label>
 
                         </td>
                         <td width="54%" height="10">
@@ -60,7 +60,7 @@
                         </td>
                     </tr>
                     <tr valign="top" *ngIf="reval">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Old Manager Serial Number</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>approvalpending.Old Manager Serial Number</label>
 
                         </td>
                         <td width="54%" height="10">
@@ -68,7 +68,7 @@
                         </td>
                     </tr>
                     <tr valign="top" *ngIf="reval">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">New Manager Serial Number</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>approvalpending.New Manager Serial Number</label>
 
                         </td>
                         <td width="54%" height="10">
@@ -76,7 +76,7 @@
                         </td>
                     </tr>
                     <tr valign="top" *ngIf="reval">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Old Department Code</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>approvalpending.Old Department Code</label>
 
                         </td>
                         <td width="54%" height="10">
@@ -84,7 +84,7 @@
                         </td>
                     </tr>
                     <tr valign="top" *ngIf="reval">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">New Department Code</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>approvalpending.New Department Code</label>
 
                         </td>
                         <td width="54%" height="10">
@@ -92,12 +92,12 @@
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">Rejection Comments</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>approvalpending.Rejection Comments</label>
                             <span class="ds-text-contextual-red-2"></span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <textarea name="rejectioncomments" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Rejection Comments" rows="2" cols="40" [(ngModel)]="rejectioncomments"></textarea></div>
+                                <textarea name="rejectioncomments" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="{{'approvalpending.Rejection Comments'| translate}}" rows="2" cols="40" [(ngModel)]="rejectioncomments"></textarea></div>
                         </td>
                     </tr>
                 </tbody>
@@ -105,12 +105,12 @@
             <div class="ds-panel ds-col-12"></div>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p>We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message. [Error]</p>
+                <p translate>Jabbernewtrans.opps</p>
                 <p>
                 </p>
             </div>
             <div class="ds-loader-container" *ngIf="this.isSpinnerVisible">
-                <div class="ds-loader-header">Your request is being processed. Do not refresh or go back.</div>
+                <div class="ds-loader-header" translate>Jabberentrydetails.Submissioninprogress</div>
                 <div class="ds-loader" role="alert" aria-busy="true" aria-label="Your request is being processed. Do not refresh or go back."></div>
             </div>
             <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right" *ngIf="this.isButtonVisible && !errorinfo">
@@ -118,13 +118,13 @@
                 
                 <div class="ds-tray-fit-content ds-mar-b-0">
                     <span class="ds-pad-l-4" id="button11">
-                        <input type="button" (click)="backClick()" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK">
+                        <input type="button" (click)="backClick()" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="{{'employeeinfotrans.BACK'| translate}}">
                         </span>
                     <span class="ds-pad-l-1" id="button1">
-                <input type="button" (click)="process('approve',formData)" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="APPROVE">
+                <input type="button" (click)="process('approve',formData)" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="{{ 'approvalpending.APPROVE' | translate}}">
                 </span>
                     <span class="ds-pad-l-1" id="button2">
-                <input type="button" (click)="process('reject',formData)" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="REJECT">
+                <input type="button" (click)="process('reject',formData)" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="{{ 'approvalpending.REJECT' | translate}}">
                 </span>
                 </div>
 

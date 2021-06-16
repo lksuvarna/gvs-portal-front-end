@@ -306,7 +306,7 @@ export class HpInUpdateComponent implements OnInit {
     }
     
     else if(formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (pat1.test(formData.value.MAC1))) {
-      alert('MAC field value to be in combination of 0 to 9 and A to F');
+      alert('Please provide MAC address in a combination of 0 to 9 and A to F');
       return;
     }
 
@@ -320,7 +320,7 @@ export class HpInUpdateComponent implements OnInit {
     }
 
     else if(formData.value.UpdateReq.toLowerCase() !== 'replace the hardphone only' && formData.value.Newdesc.trim() == this.currentdesc){
-      alert('Please choose a different Description as the current Description is already '+this.currentdesc );
+      alert('You have selected the same description as the current phone description.' );
     }
 
     // else if(this.showformodel == true && formData.value.newModel == this.currentmodel) {
