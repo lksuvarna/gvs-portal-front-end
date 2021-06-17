@@ -2986,6 +2986,7 @@ class StepsComponent {
             this.cache.chargeDepartmentCode = this.formData.value.Department_number;
             this.cache.projectId = this.formData.value.Projectid;
             this.cache.fixPhoneIdentifier = this.formData.value.identifier_hp;
+            this.cache.defaultLocation = this.formData.value.default_location;
             sessionStorage.setItem('cache', JSON.stringify(this.cache));
             console.log("cached");
         }
@@ -3132,7 +3133,7 @@ StepsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.service === "requests" && ctx.service !== "phone_search" && ctx.isSelf && !ctx.isWarning1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.service === "phone_search");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.service === "phone_search" && !ctx.isWarning);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.service !== "resources" && ctx.service !== "requests" && ctx.service !== "phone_search" && !ctx.isSelf && !ctx.isWarning2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -10124,7 +10125,7 @@ function VoipAuMoveComponent_tr_33_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r3.default_location);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("value", ctx_r3.default_location)("ngModel", ctx_r3.default_location);
 } }
 function VoipAuMoveComponent_option_46_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 52);
@@ -10217,6 +10218,7 @@ class VoipAuMoveComponent {
         this.profilelocationlists = [];
         this.cache_tmp = [];
         this.displayloc = false;
+        this.selectLocation = "Select Location";
         this.reviewDetailsIndia = {
             officeLocation: "",
             Identifier_Selected: "",
@@ -10249,9 +10251,14 @@ class VoipAuMoveComponent {
         loc = loc.substring(3, loc.length);
         if (this.itn_sel != '') {
             for (var j = 0; j < this.jabberNumber.length; j++) {
-                if (loc == this.profilelocationlists[j]) {
+                if (loc == this.profilelocationlists[j] && this.itn_sel == this.jabberNumber[j]) {
                     alert('Sorry, according to our record, you already have a jabber number for the selected location. To keep this number, no further action is needed.');
-                    this.loc_sel = "Select Location";
+                    setTimeout(() => {
+                        this.loc_sel = 'Select Location';
+                    }, 100);
+                }
+                else {
+                    this.loc_sel = loc;
                 }
             }
         }
@@ -10285,6 +10292,7 @@ class VoipAuMoveComponent {
         this.cache.setflag = true;
         this.cache.cnum = this.cnum;
         this.cache.selected_jabber = formData.value.Identifier_Selected;
+        this.cache.defaultLocation = this.default_location;
         if (formData.value.Identifier_Selected == '') {
             this.cache.officeLocation = '';
         }
@@ -10427,6 +10435,10 @@ class VoipAuMoveComponent {
         this.cache_disp = JSON.parse(this.cache_tmp);
         if ((this.cnum === this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service = 'jabber_move')) {
             this.itn_sel = String(this.cache_disp.selected_jabber);
+            if (this.itn_sel != '') {
+                this.displayloc = true;
+                this.default_location = String(this.cache_disp.defaultLocation);
+            }
             if (this.cache_disp.selected_jabber == '')
                 this.loc_sel = 'Select Location';
             else
@@ -10440,7 +10452,7 @@ class VoipAuMoveComponent {
     }
 }
 VoipAuMoveComponent.ɵfac = function VoipAuMoveComponent_Factory(t) { return new (t || VoipAuMoveComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cloudant_service__WEBPACK_IMPORTED_MODULE_3__["cloudantservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_servicenow_service__WEBPACK_IMPORTED_MODULE_4__["servicenowservice"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_cookie_handler_service__WEBPACK_IMPORTED_MODULE_5__["CookieHandlerService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_translate_config_service__WEBPACK_IMPORTED_MODULE_6__["TranslateConfigService"])); };
-VoipAuMoveComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipAuMoveComponent, selectors: [["app-voip-au-move"]], decls: 96, vars: 22, consts: [[1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [1, "ds-panel", "ds-col-12"], [3, "step", "formData", "cnum", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%"], ["for", "IdentifierId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "Identifier_Selected", "id", "IdentifierId", "title", "Extension Number", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["jabberNumberVal", ""], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 4, "ngIf"], ["name", "Location_Selected", "id", "LocationId", "title", "Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["loc", ""], ["value", "Select Location", "translate", ""], [3, "ngValue", 4, "ngFor", "ngForOf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], ["translate", "", 1, "ds-pad-t-0_5", "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "8", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1"], ["width", "54%"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], [3, "value"], ["for", "default_location", "translate", ""], [1, "ds-input-container"], ["name", "default_location", "value", "", "autocomplete", "off", "tabindex", "2", "id", "ch", 1, "ds-input", "ds-disabled", 2, "width", "300px !important", 3, "ngModel", "ngModelChange"], [3, "ngValue"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipAuMoveComponent_Template(rf, ctx) { if (rf & 1) {
+VoipAuMoveComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: VoipAuMoveComponent, selectors: [["app-voip-au-move"]], decls: 96, vars: 22, consts: [[1, "ds-row", "ds-pad-l-7", "ds-pad-t-1", "ds-pad-b-4"], [1, "ds-col-md-4", "ds-col-xl-4"], [3, "dataNav", "cloudantData"], [1, "ds-col-md-8", "ds-col-xl-7", "ds-pad-l-2_5"], [3, "hidden", "submit"], ["formData", "ngForm"], ["translate", ""], [1, "ds-pad-t-0_5", "ds-pad-b-1"], [1, "ds-text-contextual-red-2"], [1, "ds-panel", "ds-col-12"], [3, "step", "formData", "cnum", "isSelf", "hideSteps"], ["id", "h22", 1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-pad-l-0_5"], ["width", "100%", "cellspacing", "0", "cellpadding", "0", "border", "0"], ["valign", "top"], ["colspan", "2", "width", "46%"], ["for", "IdentifierId", 1, "ds-text-capitalize"], ["width", "54%", "height", "10"], ["role", "menu", "aria-label", "w3DS Dropdown1", 1, "ds-dropdown", "ds-secondary"], ["name", "Identifier_Selected", "id", "IdentifierId", "title", "Extension Number", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["jabberNumberVal", ""], ["value", ""], [3, "value", 4, "ngFor", "ngForOf"], ["valign", "top", 4, "ngIf"], ["name", "Location_Selected", "id", "LocationId", "title", "Location", 1, "ds-title", "ds-align-text-left", 2, "width", "300px !important", "text-transform", "uppercase", 3, "ngModel", "ngModelChange", "change"], ["loc", ""], ["value", "Select Location", "translate", ""], [3, "ngValue", 4, "ngFor", "ngForOf"], [1, "ds-col-19", "ds-pad-t-0_8", "ds-no-gutter", "ds-float-lg-right"], [1, "ds-tray-fit-content", "ds-mar-b-0"], [1, "button-bar", "ds-tray-fit-content", "ds-pad-t-1", "ds-float-lg-right"], ["id", "button1", 1, "ds-pad-l-4"], ["type", "button", "name", "back", "value", "BACK", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["id", "button2", 1, "ds-pad-l-1", "ds-pad-r-1"], ["type", "submit", "name", "next", "value", "NEXT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3"], [3, "hidden"], ["translate", "", 1, "ds-pad-t-0_5", "ds-pad-b-1"], [3, "step", "isSelf", "hideSteps", "previousStep"], [1, "ds-bg-neutral-2", "ds-text-neutral-7", "ds-padding-left-0_5"], ["id", "t2", "width", "100%", "cellspacing", "8", "cellpadding", "0", "border", "0"], ["colspan", "2", "width", "46%", "height", "10"], ["for", "addId1"], ["width", "54%"], ["class", "ds-col-xs-12 ds-alert ds-warning", 4, "ngIf"], [1, "ds-hr-thick", "ds-mar-t-1_5"], ["class", "ds-loader-container", 4, "ngIf"], ["type", "button", "name", "back", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "BACK", 3, "click", 4, "ngIf"], ["type", "submit", "name", "submit", "class", "ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "SUBMIT", 3, "click", 4, "ngIf"], ["type", "button", "name", "exit", "type", "button", "class", "ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3", "value", "EXIT REQUEST", 3, "routerLink", "queryParams", 4, "ngIf"], [3, "value"], ["for", "default_location", "translate", ""], [1, "ds-input-container"], ["name", "default_location", "autocomplete", "off", "tabindex", "2", "id", "ch", "ngModel", "", 1, "ds-input", "ds-disabled", 2, "width", "300px !important", 3, "value", "ngModel", "ngModelChange"], [3, "ngValue"], [1, "ds-col-xs-12", "ds-alert", "ds-warning"], [1, "ds-loader-container"], [1, "ds-loader-header"], ["role", "alert", "aria-busy", "true", "aria-label", "Your request is being submitted. Do not refresh or go back.", 1, "ds-loader"], ["type", "submit", "name", "submit", "value", "SUBMIT", 1, "ds-button", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "click"], ["type", "button", "name", "exit", "type", "button", "value", "EXIT REQUEST", 1, "ds-button", "ds-secondary", "ds-width-auto", "ds-mar-b-0", "ds-pad-l-3", "ds-pad-r-3", 3, "routerLink", "queryParams"]], template: function VoipAuMoveComponent_Template(rf, ctx) { if (rf & 1) {
         const _r20 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "app-topcountryframe");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 0);
@@ -10488,7 +10500,7 @@ VoipAuMoveComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](33, VoipAuMoveComponent_tr_33_Template, 7, 1, "tr", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](33, VoipAuMoveComponent_tr_33_Template, 7, 2, "tr", 22);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "tr", 13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "td", 14);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "label", 15);
@@ -12269,7 +12281,7 @@ class EnExtensionAuSummaryComponent {
             alert('Please enter ITN number');
             return;
         }
-        if (formData.value.identifier.length < 8) {
+        if (formData.value.identifier.trim().length < 8 || formData.value.identifier.includes(" ")) {
             alert("ITN Number should be of 8 characters");
             return;
         }
@@ -12282,18 +12294,19 @@ class EnExtensionAuSummaryComponent {
             if (data.message != '') {
                 this.serial = this.phoneData[0].CNUM;
                 this.notesId = this.phoneData[0].NOTES_ID;
-                this.supplier = this.phoneData[0].SUPPLIER;
+                //this.supplier = this.phoneData[0].SUPPLIER;
                 this.type = this.phoneData[0].TYPE.trim();
                 //this.type = this.type == 'ip'? "Jabber":(this.type == 'fac'? "FAC" : this.type);
-                this.type = this.phoneData[0].ATTRIBUTE1 != null && this.phoneData[0].ATTRIBUTE1.includes("SEP") && !this.phoneData[0].ATTRIBUTE8.includes("chcs") ? "Fixed Phone" : (this.phoneData[0].ATTRIBUTE1 != null && this.phoneData[0].ATTRIBUTE1.includes("SEP") && this.phoneData[0].ATTRIBUTE8.includes("chcs") ? "Jabber,Fixed Phone" : (this.phoneData[0].TYPE.includes("ip") ? "Jabber" : this.phoneData[0].TYPE));
+                this.type = this.phoneData[0].ATTRIBUTE1 != null && this.phoneData[0].ATTRIBUTE1.includes("SEP") && !this.phoneData[0].ATTRIBUTE8.includes("chcs") && !this.phoneData[0].ATTRIBUTE8.includes("Secondary") ? "Fixed Phone" : (this.phoneData[0].ATTRIBUTE1 != null && this.phoneData[0].ATTRIBUTE1.includes("SEP") && this.phoneData[0].ATTRIBUTE8.includes("chcs") ? "Jabber - Primary,Fixed Phone" : (this.phoneData[0].ATTRIBUTE1 != null && this.phoneData[0].ATTRIBUTE1.includes("SEP") && this.phoneData[0].ATTRIBUTE8.includes("Secondary") ? "Jabber - Add-on, Fixed Phone" : (this.phoneData[0].TYPE.includes("ip") && this.phoneData[0].ATTRIBUTE8.includes("chcs") ? "Jabber - Primary" : (this.phoneData[0].TYPE.includes("ip") && this.phoneData[0].ATTRIBUTE8.includes("Secondary") ? "Jabber - Add-on" : this.phoneData[0].TYPE))));
                 this.attribute8 = this.phoneData[0].ATTRIBUTE8;
                 this.itn = this.phoneData[0].IDENTIFIER.trim();
                 this.userName = (_a = this.notesId) === null || _a === void 0 ? void 0 : _a.substring(this.notesId.indexOf('=') + 1, this.notesId.indexOf('/'));
-                this.serviceDetails = this.itn + " - " + this.type + " - " + this.supplier;
+                this.serviceDetails = this.itn + " - " + this.type;
                 this.warningmessage = false;
                 this.reviewDetails = false;
                 this.isReviewForm = false;
                 this.isEntryForm = true;
+                this.hideSteps = false;
             }
             if (data.message == '') {
                 this.warningmessage = true;
@@ -12324,6 +12337,7 @@ class EnExtensionAuSummaryComponent {
     }
     hidedata() {
         this.warningmessage = false;
+        this.hideSteps = false;
     }
     ngOnInit() {
         this.route.queryParams
@@ -23119,6 +23133,7 @@ class Create_Cache_jabber {
         this.voicemail = '';
         this.cos = '';
         this.businessjustification = '';
+        this.defaultLocation = '';
     }
 }
 //setting up cache class for fac new data retention.

@@ -59,7 +59,7 @@ export class EnExtensionAuSummaryComponent implements OnInit {
       alert('Please enter ITN number');
       return;
     }
-    if(formData.value.identifier.length < 8){
+    if(formData.value.identifier.trim().length < 8 || formData.value.identifier.includes(" ")){
       alert("ITN Number should be of 8 characters");
       return;
     }
@@ -72,18 +72,19 @@ export class EnExtensionAuSummaryComponent implements OnInit {
       {
         this.serial = this.phoneData[0].CNUM;
         this.notesId = this.phoneData[0].NOTES_ID;
-        this.supplier = this.phoneData[0].SUPPLIER;
+        //this.supplier = this.phoneData[0].SUPPLIER;
         this.type = this.phoneData[0].TYPE.trim();
         //this.type = this.type == 'ip'? "Jabber":(this.type == 'fac'? "FAC" : this.type);
-        this.type = this.phoneData[0].ATTRIBUTE1!=null&&this.phoneData[0].ATTRIBUTE1.includes("SEP")&&!this.phoneData[0].ATTRIBUTE8.includes("chcs")?"Fixed Phone":(this.phoneData[0].ATTRIBUTE1!=null&&this.phoneData[0].ATTRIBUTE1.includes("SEP")&&this.phoneData[0].ATTRIBUTE8.includes("chcs")?"Jabber,Fixed Phone":(this.phoneData[0].TYPE.includes("ip")?"Jabber":this.phoneData[0].TYPE));
+        this.type = this.phoneData[0].ATTRIBUTE1!=null&&this.phoneData[0].ATTRIBUTE1.includes("SEP")&&!this.phoneData[0].ATTRIBUTE8.includes("chcs")&&!this.phoneData[0].ATTRIBUTE8.includes("Secondary")?"Fixed Phone":(this.phoneData[0].ATTRIBUTE1!=null&&this.phoneData[0].ATTRIBUTE1.includes("SEP")&&this.phoneData[0].ATTRIBUTE8.includes("chcs")?"Jabber - Primary, Fixed Phone":(this.phoneData[0].ATTRIBUTE1!=null&&this.phoneData[0].ATTRIBUTE1.includes("SEP")&&this.phoneData[0].ATTRIBUTE8.includes("Secondary")? "Jabber - Add-on, Fixed Phone":(this.phoneData[0].TYPE.includes("ip") && this.phoneData[0].ATTRIBUTE8.includes("chcs")?"Jabber - Primary":(this.phoneData[0].TYPE.includes("ip") && this.phoneData[0].ATTRIBUTE8.includes("Secondary")?"Jabber - Add-on":this.phoneData[0].TYPE))));
         this.attribute8 = this.phoneData[0].ATTRIBUTE8;
         this.itn = this.phoneData[0].IDENTIFIER.trim();
         this.userName = this.notesId?.substring(this.notesId.indexOf('=')+1,this.notesId.indexOf('/'));
-        this.serviceDetails = this.itn + " - " + this.type + " - " + this.supplier;
+        this.serviceDetails = this.itn + " - " + this.type;
         this.warningmessage = false;
         this.reviewDetails = false;
         this.isReviewForm = false;
         this.isEntryForm = true;
+        this.hideSteps = false;
       }
       if(data.message == '')
       {
@@ -117,6 +118,7 @@ export class EnExtensionAuSummaryComponent implements OnInit {
   }
   hidedata() {
     this.warningmessage = false;
+    this.hideSteps = false;
   }
 
 
