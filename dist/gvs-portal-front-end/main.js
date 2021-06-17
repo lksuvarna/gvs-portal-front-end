@@ -1149,7 +1149,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Users\HARSHITHAARAVA\Desktop\Cirrus Latest\Cirrus latest new\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -30091,7 +30091,7 @@ class HpAuUpdateComponent {
             return;
         }
         if (this.showforrsn == true && (formData.value.Comments.trim() == '')) {
-            alert('Please provide the reason for updation.');
+            alert('Please provide the reason for the update.');
             return;
         }
         if (formData.value.UpdateReq.toUpperCase() == 'DESCRIPTION ONLY') {
@@ -31863,7 +31863,7 @@ class HpIndonesiaUpdateComponent {
             return;
         }
         if (this.showforrsn == true && (formData.value.Comments.trim() == '')) {
-            alert('Please provide the reason for updation.');
+            alert('Please provide the reason for the update.');
             return;
         }
         if (formData.value.UpdateReq.toUpperCase() == 'DESCRIPTION ONLY') {
