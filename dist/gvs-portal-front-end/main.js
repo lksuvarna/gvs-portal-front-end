@@ -1149,7 +1149,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\HARSHITHAARAVA\Desktop\Cirrus Latest\Cirrus latest new\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -10354,9 +10354,9 @@ class VoipAuMoveComponent {
         loc = loc.substring(3, loc.length);
         if (this.itn_sel != '') {
             for (var j = 0; j < this.jabberNumber.length; j++) {
-                if (loc == this.profilelocationlists[j]) {
-                    this.loc_sel = "Select Location";
+                if (loc.trim().toLowerCase() == this.profilelocationlists[j].trim().toLowerCase()) {
                     alert('Sorry, according to our record, you already have a jabber number for the selected location. To keep this number, no further action is needed.');
+                    this.loc_sel = "Select Location";
                 }
             }
         }
@@ -10584,7 +10584,7 @@ VoipAuMoveComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "td", 16);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 17);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "select", 18, 19);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function VoipAuMoveComponent_Template_select_ngModelChange_28_listener($event) { return ctx.itn_sel = $event; })("change", function VoipAuMoveComponent_Template_select_change_28_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r20); const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](29); return ctx.getjabberNumberVal(_r1.value); })("change", function VoipAuMoveComponent_Template_select_change_28_listener($event) { return ctx.toggleOptions($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function VoipAuMoveComponent_Template_select_ngModelChange_28_listener($event) { return ctx.itn_sel = $event; })("change", function VoipAuMoveComponent_Template_select_change_28_listener($event) { return ctx.toggleOptions($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "option", 20);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "Select One");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -24859,10 +24859,10 @@ class EmployeesearchComponent {
                 this.title = "Move Jabber Request";
                 this.exitrouting = 'jabberservices';
                 this.reqname = "-MS-";
-                if (this.countrydetails.jnavpage == 'AP') {
+                if (this.countrydetails.jnavpagemove == 'AP') {
                     this.routingname = "/entrydetailsijm";
                 }
-                else if (this.countrydetails.jnavpage == 'EMEA') {
+                else if (this.countrydetails.jnavpagemove == 'EMEA') {
                     this.routingname = "/entrydetailsaumv";
                 }
                 break;
