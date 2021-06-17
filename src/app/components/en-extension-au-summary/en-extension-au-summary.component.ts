@@ -48,14 +48,19 @@ export class EnExtensionAuSummaryComponent implements OnInit {
   type:any;
   showloader = false;
   itn_number = '';
+  hidestep2:any;
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute) {
 
    }
  
   EntryDetails(formData: NgForm) {
 
-    if(formData.value.identifier == '') {
+    if(formData.value.identifier.trim() == '') {
       alert('Please enter ITN number');
+      return;
+    }
+    if(formData.value.identifier.trim().length < 8 || formData.value.identifier.includes(" ")){
+      alert("ITN Number should be of 8 characters");
       return;
     }
     this.identifierEntered = formData.value.identifier;
@@ -67,23 +72,30 @@ export class EnExtensionAuSummaryComponent implements OnInit {
       {
         this.serial = this.phoneData[0].CNUM;
         this.notesId = this.phoneData[0].NOTES_ID;
-        this.supplier = this.phoneData[0].SUPPLIER;
+        //this.supplier = this.phoneData[0].SUPPLIER;
         this.type = this.phoneData[0].TYPE.trim();
-        this.type = this.type == 'ip'? "Jabber":(this.type == 'fac'? "FAC" : this.type);
+        //this.type = this.type == 'ip'? "Jabber":(this.type == 'fac'? "FAC" : this.type);
+        this.type = this.phoneData[0].ATTRIBUTE1!=null&&this.phoneData[0].ATTRIBUTE1.includes("SEP")&&!this.phoneData[0].ATTRIBUTE8.includes("chcs")&&!this.phoneData[0].ATTRIBUTE8.includes("Secondary")?"Fixed Phone":(this.phoneData[0].ATTRIBUTE1!=null&&this.phoneData[0].ATTRIBUTE1.includes("SEP")&&this.phoneData[0].ATTRIBUTE8.includes("chcs")?"Jabber - Primary, Fixed Phone":(this.phoneData[0].ATTRIBUTE1!=null&&this.phoneData[0].ATTRIBUTE1.includes("SEP")&&this.phoneData[0].ATTRIBUTE8.includes("Secondary")? "Jabber - Add-on, Fixed Phone":(this.phoneData[0].TYPE.includes("ip") && this.phoneData[0].ATTRIBUTE8.includes("chcs")?"Jabber - Primary":(this.phoneData[0].TYPE.includes("ip") && this.phoneData[0].ATTRIBUTE8.includes("Secondary")?"Jabber - Add-on":this.phoneData[0].TYPE))));
         this.attribute8 = this.phoneData[0].ATTRIBUTE8;
         this.itn = this.phoneData[0].IDENTIFIER.trim();
         this.userName = this.notesId?.substring(this.notesId.indexOf('=')+1,this.notesId.indexOf('/'));
-        this.serviceDetails = this.itn + " - " + this.type + " - " + this.supplier;
+        this.serviceDetails = this.itn + " - " + this.type;
         this.warningmessage = false;
         this.reviewDetails = false;
+        this.isReviewForm = false;
+        this.isEntryForm = true;
+        this.hideSteps = false;
       }
       if(data.message == '')
       {
         this.warningmessage = true;
         this.reviewDetails = true;
+        this.isReviewForm = true;
+        this.isEntryForm = false;
+        this.hideSteps = true;
       }
-      this.isReviewForm = false;
-      this.isEntryForm = true;
+      //this.isReviewForm = false;
+      //this.isEntryForm = true;
       this.showloader = false;
     },
     (error) => {                              //Error callback
@@ -103,6 +115,10 @@ export class EnExtensionAuSummaryComponent implements OnInit {
   BackButton() {
     this.isReviewForm = true;
     this.isEntryForm = false;
+  }
+  hidedata() {
+    this.warningmessage = false;
+    this.hideSteps = false;
   }
 
 
@@ -151,7 +167,7 @@ export class EnExtensionAuSummaryComponent implements OnInit {
     
     this.isEntryForm = false;	
     this.isReviewForm = true;	
-    this.itn_number = '';
+    //this.itn_number = '';
     // this.fixedPhoneIdentifier = false;	
   }
   

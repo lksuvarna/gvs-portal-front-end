@@ -52,7 +52,8 @@ export class VoipAuMoveComponent implements OnInit {
   cache_tmp:  any = [];
   selectedjabber : any;
   index!: number;
-  displayloc=false
+  displayloc=false;
+  selectLocation: any = "Select Location";
 
   reviewDetailsIndia = {	
     officeLocation:	"",	
@@ -66,6 +67,7 @@ export class VoipAuMoveComponent implements OnInit {
   payload : Jabber_Move = new Jabber_Move();
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
+
   constructor(private router:Router,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private cookie: CookieHandlerService,private servicesd : TranslateConfigService) { }
 
   backClick(formData: NgForm): void{	
@@ -88,15 +90,16 @@ export class VoipAuMoveComponent implements OnInit {
     loc = loc.substring(3,loc.length);
     if(this.itn_sel != '') {
     for(var j=0;j<this.jabberNumber.length;j++) {
-        if(loc.trim().toLowerCase() == this.profilelocationlists[j].trim().toLowerCase()) {
-          
+        if(loc.trim().toLowerCase() == this.profilelocationlists[j].trim().toLowerCase() && this.itn_sel == this.jabberNumber[j]) {
           alert('Sorry, according to our record, you already have a jabber number for the selected location. To keep this number, no further action is needed.');
-          
-          this.loc_sel = "Select Location";
-          
+          setTimeout(() => {
+            this.loc_sel = 'Select Location';
+          }, 100);
+        } else {
+          this.loc_sel = loc;
         }
     }
-  }
+  } 
   }
   entryDetailsMove(formData:NgForm) {
     if(formData.value.Identifier_Selected == '') {
@@ -133,6 +136,7 @@ export class VoipAuMoveComponent implements OnInit {
     this.cache.setflag=true;
     this.cache.cnum=this.cnum;
     this.cache.selected_jabber = formData.value.Identifier_Selected;
+    this.cache.defaultLocation = this.default_location;
     if(formData.value.Identifier_Selected==''){
     this.cache.officeLocation ='';
     }else{
@@ -152,6 +156,7 @@ export class VoipAuMoveComponent implements OnInit {
   }	
   toggleOptions(e:any){
     this.index = e.target["selectedIndex"]-1 ;
+    this.loc_sel = 'Select Location';
     if(e.target.value.toUpperCase()=='SELECT ONE' || e.target.value.trim()==''){
       this.displayloc=false
     }
@@ -288,6 +293,10 @@ export class VoipAuMoveComponent implements OnInit {
     this.cache_disp=JSON.parse(this.cache_tmp);
     if((this.cnum===this.cache_disp.cnum) && (this.cache_disp.setflag) && (this.service='jabber_move')){
       this.itn_sel=String(this.cache_disp.selected_jabber);
+      if(this.itn_sel != '') {
+        this.displayloc = true;
+        this.default_location = String(this.cache_disp.defaultLocation);
+      }
       if(this.cache_disp.selected_jabber=='')
       this.loc_sel='Select Location';
       else

@@ -49,7 +49,7 @@
                                     <div class="ds-col-12">
                                         <div class="ds-row">
                                             <div class="ds-col-7">
-                                                <input name="identifier" value="" maxlength="8" class="ds-input" title='ITN Number' style="width:300px !important;" ngModel [(ngModel)]='itn_number'>
+                                                <input name="identifier" value="" maxlength="8" class="ds-input" title='ITN Number' style="width:300px !important;" ngModel [(ngModel)]='itn_number' (click)="hidedata()">
                                             </div>
                                         </div>
                                     </div>
@@ -59,6 +59,10 @@
                     </tr>
                 </tbody>
             </table>
+            <br>
+            <div id="err" *ngIf='warningmessage' class="ds-col-xs-12 ds-alert ds-warning">This is either a free number, or no record was found. Please verify and try again. If you're still having an issue, please reach out to the <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>. 
+                <div></div>
+            </div>
             <br>
             <div class=" ds-panel ds-col-12 "></div>
             <div class="ds-loader-container" *ngIf=showloader>
@@ -74,7 +78,7 @@
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-1 ds-pad-r-1" tabindex="32765"
                 value="{{'alerttranslation.EXITREQUEST' | translate}}" (click)="backClick()">
             </span>
-                        <span *ngIf="!showloader" class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                        <span *ngIf="!showloader && !warningmessage" class="ds-pad-l-1 ds-pad-r-1" id="button2">
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 tabindex="32767" value="{{'employeeinfotrans.NEXT'|translate}}">
             </span>
@@ -99,9 +103,9 @@
 
             <h2 id="h22" class="ds-bg-neutral-2 ds-text-neutral-7 ds-pad-l-0_5 " translate>phonenumber.PhoneNumberDetails</h2>
 
-            <div id="err" *ngIf='warningmessage' class="ds-col-xs-12 ds-alert ds-warning">This is either a free number, or no record was found. Please verify and try again. If you're still having an issue, please reach out to the <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>. <!--a style="color:blue" target="_blank" href="https://ibm-cio.slack.com/archives/C0133EDUGVB">#voice-at-ibm</a -->
+            <!-- <div id="err" *ngIf='warningmessage' class="ds-col-xs-12 ds-alert ds-warning">This is either a free number, or no record was found. Please verify and try again. If you're still having an issue, please reach out to the help desk.
                 <div></div>
-            </div>
+            </div> -->
 
             <table [hidden]='reviewDetails' id="t2" width="100%" cellspacing="8" cellpadding="0" border="0">
                 <tbody>
@@ -129,6 +133,19 @@
                     </tr>
                 </tbody>
             </table>
+            <br>
+            <div class=" ds-panel ds-col-12 "></div>
+
+            <div class="ds-col-19 ds-pad-t-0_8 ds-no-gutter ds-float-lg-right">
+                <div class="ds-tray-fit-content ds-mar-b-0">
+                    <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+              <input type="button" name="back" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
+                tabindex="32767" value="{{'employeeinfotrans.BACK'|translate}}" (click)='BackButton()'>
+            </span>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 </div>

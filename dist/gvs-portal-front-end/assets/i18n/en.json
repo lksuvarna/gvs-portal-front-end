@@ -265,7 +265,7 @@
         "PhoneNumberSearch": "Phone Number Search",
         "PhoneNumberDetails": "Phone Number Details",
         "EnterITNNumber": "Enter ITN Number",
-        "EmpID": "EmpID",
+        "EmpID": "User Serial Number",
         "UserName": "User Name",
         "ServiceDetails": "Service Details"
     },

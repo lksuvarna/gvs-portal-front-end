@@ -237,6 +237,7 @@ export class StepsComponent implements OnInit {
     this.cache.chargeDepartmentCode=this.formData.value.Department_number;	
     this.cache.projectId=this.formData.value.Projectid;	
     this.cache.fixPhoneIdentifier= this.formData.value.identifier_hp;
+    this.cache.defaultLocation = this.formData.value.default_location;
     sessionStorage.setItem('cache',JSON.stringify(this.cache));
     console.log("cached");
   }
