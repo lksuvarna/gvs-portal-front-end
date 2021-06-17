@@ -266,7 +266,7 @@ export class HpIndonesiaUpdateComponent implements OnInit {
       return;
     }
     if(this.showforrsn == true && (formData.value.Comments.trim() == '')) {	
-      alert('Please provide the reason for updation.');	
+      alert('Please provide the reason for the update.');	
       return;
     }
 
