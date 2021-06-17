@@ -245,7 +245,7 @@ export class HpAuUpdateComponent implements OnInit {
     }
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
     if(this.showformacadd == true && (pat1.test(formData.value.MAC1))) {
-      alert('MAC field value to be in combination of 0 to 9 and A to F');
+      alert('Please provide MAC address in a combination of 0 to 9 and A to F');
       return;
     }
     if(this.showLocation == true && formData.value.Location_1_1 == '') {	
@@ -266,7 +266,7 @@ export class HpAuUpdateComponent implements OnInit {
     }
 
     if(this.showforNewDesc == true && formData.value.Newdesc.toUpperCase() == this.currentdesc.toUpperCase()) {
-      alert("Please choose a different Description as the current Description is already "+this.currentdesc+" for the provided number.");
+      alert("You have selected the same description as the current phone description.");
       return;
     }
     if(this.showforrsn == true && (formData.value.Comments.trim() == '')) {	

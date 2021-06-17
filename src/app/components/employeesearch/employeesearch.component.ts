@@ -157,6 +157,26 @@ export class EmployeesearchComponent implements OnInit {
             }
           }
         }, 200);
+        setTimeout(() => {
+          if (this.service.includes('fixed')) {
+            if (!(this.countrydetails.power_users.includes(this.ccode))) {
+              alert(this.countrydetails.alert_message.replace(/<br>/g,"\n"));
+              this.router.navigate(['fixedphoneservices'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+            }
+          }
+        }, 200);
+    
+    
+        setTimeout(() => {
+          if(this.service=='specialrequest'){
+            if(this.countrydetails.special_request_power_users!=undefined){
+              if(!(this.countrydetails.special_request_power_users.includes(this.ccode))){
+                alert(this.countrydetails.special_request_alert_message);
+                  this.router.navigate(['services'], { skipLocationChange: true ,queryParams: { country: this.pcode, service:'services' } });
+              }
+            }
+          }
+        }, 200);
   });
   
 }
@@ -236,7 +256,7 @@ export class EmployeesearchComponent implements OnInit {
             }
           }
         }, 200);
-      })
+      
     
     setTimeout(() => {
       if (this.service.includes('fixed')) {
@@ -258,7 +278,7 @@ export class EmployeesearchComponent implements OnInit {
         }
       }
     }, 200);
-   
+  })
 
 
   }
@@ -751,9 +771,9 @@ export class EmployeesearchComponent implements OnInit {
         this.title = "Move Jabber Request";
         this.exitrouting = 'jabberservices';
         this.reqname = "-MS-";
-        if (this.countrydetails.jnavpage == 'AP') {
+        if (this.countrydetails.jnavpagemove == 'AP') {
           this.routingname = "/entrydetailsijm";
-        } else if (this.countrydetails.jnavpage == 'EMEA') {
+        } else if (this.countrydetails.jnavpagemove == 'EMEA') {
           this.routingname = "/entrydetailsaumv";
         }
         break;

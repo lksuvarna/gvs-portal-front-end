@@ -83,14 +83,14 @@ export class VoipAuMoveComponent implements OnInit {
   }	}
   
   getjabberNumberVal(jabberNumberVal: string) {
-    this.loc_sel = 'Select Location';
+   this.loc_sel = 'Select Location';
 
   }
   getlocation(loc:any){
     loc = loc.substring(3,loc.length);
     if(this.itn_sel != '') {
     for(var j=0;j<this.jabberNumber.length;j++) {
-        if(loc == this.profilelocationlists[j] && this.itn_sel == this.jabberNumber[j]) {
+        if(loc.trim().toLowerCase() == this.profilelocationlists[j].trim().toLowerCase() && this.itn_sel == this.jabberNumber[j]) {
           alert('Sorry, according to our record, you already have a jabber number for the selected location. To keep this number, no further action is needed.');
           setTimeout(() => {
             this.loc_sel = 'Select Location';
@@ -156,6 +156,7 @@ export class VoipAuMoveComponent implements OnInit {
   }	
   toggleOptions(e:any){
     this.index = e.target["selectedIndex"]-1 ;
+    this.loc_sel = 'Select Location';
     if(e.target.value.toUpperCase()=='SELECT ONE' || e.target.value.trim()==''){
       this.displayloc=false
     }
