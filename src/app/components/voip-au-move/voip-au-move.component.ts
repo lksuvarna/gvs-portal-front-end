@@ -81,16 +81,18 @@ export class VoipAuMoveComponent implements OnInit {
   }	}
   
   getjabberNumberVal(jabberNumberVal: string) {
-    this.loc_sel = 'Select Location';
+   this.loc_sel = 'Select Location';
 
   }
   getlocation(loc:any){
     loc = loc.substring(3,loc.length);
     if(this.itn_sel != '') {
     for(var j=0;j<this.jabberNumber.length;j++) {
-        if(loc == this.profilelocationlists[j]) {
-          this.loc_sel = "Select Location";
+        if(loc.trim().toLowerCase() == this.profilelocationlists[j].trim().toLowerCase()) {
+          
           alert('Sorry, according to our record, you already have a jabber number for the selected location. To keep this number, no further action is needed.');
+          
+          this.loc_sel = "Select Location";
           
         }
     }

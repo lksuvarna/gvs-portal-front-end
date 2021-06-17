@@ -771,9 +771,9 @@ export class EmployeesearchComponent implements OnInit {
         this.title = "Move Jabber Request";
         this.exitrouting = 'jabberservices';
         this.reqname = "-MS-";
-        if (this.countrydetails.jnavpage == 'AP') {
+        if (this.countrydetails.jnavpagemove == 'AP') {
           this.routingname = "/entrydetailsijm";
-        } else if (this.countrydetails.jnavpage == 'EMEA') {
+        } else if (this.countrydetails.jnavpagemove == 'EMEA') {
           this.routingname = "/entrydetailsaumv";
         }
         break;

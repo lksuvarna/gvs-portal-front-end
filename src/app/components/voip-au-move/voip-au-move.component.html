@@ -32,7 +32,7 @@
                        
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select [(ngModel)]='itn_sel' #jabberNumberVal (change)="getjabberNumberVal(jabberNumberVal.value)" name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Extension Number" (change)='toggleOptions($event)'>
+                                <select [(ngModel)]='itn_sel' #jabberNumberVal name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Extension Number" (change)='toggleOptions($event)'>
                   <option value="">Select One</option>
                   <option *ngFor="let jab of jabberNumber" [value]="jab">{{jab}}</option>
                 </select>
