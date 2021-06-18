@@ -4740,7 +4740,7 @@ class HpInDeleteComponent {
         this.isButtonVisible = false;
         this.isSpinnerVisible = true;
         this.payload.orinator_payload = this.orgi;
-        this.payload.cNum_payload = this.cnum;
+        this.payload.cNum_payload = this.orgi;
         this.payload.ReqNo = this.reqno;
         this.payload.Identifier = this.currentPhone;
         this.payload.macaddress = this.currentMacSep;
