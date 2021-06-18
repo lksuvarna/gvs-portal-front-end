@@ -223,7 +223,7 @@
         "AccountId": "Account ID",
         "ICACode": "ICA Code",
         "NewOfficeLocation": "New Office Location",
-        "Building": "Building"
+        "Building": "New Campus"
     },
 
     "requesttrans": {
