@@ -141,7 +141,8 @@
                         <td colspan="2" width="46%"><br><label for="Justification"class="ds-pas-t-1 ds-pas-b-1" >Business Justification (Why is international required?)</label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
-                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" maxlength="200" rows="2" cols="40" ngModel ngModel [(ngModel)]="justificationValue"></textarea>
+                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" maxlength="500" rows="2" cols="40" ngModel ngModel [(ngModel)]="justificationValue"></textarea>
+                            <label>Note:Length should not exceed 500</label>
                         </td>
                     </tr>
 
@@ -150,9 +151,10 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <div class="ds-input-container ds-pad-t-1">
-                                <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" maxlength="200" style="width:300px !important;" title="Description" maxlength="30" ngModel [(ngModel)]='descValue'>
+                                <input name="Description" value="" tabindex="2" rows="2" cols="40" id="DescriptionId" class="ds-input" maxlength="30" style="width:300px !important;" title="Description" maxlength="30" ngModel [(ngModel)]='descValue'>
                                 <label *ngIf="selected_device == 'Extension Mobility Station'">e.g. IBMC Lv21 EM desk </label>
                                 <label *ngIf="selected_device == 'Conference / Meeting Room Phone'">e.g. IBMC Lv21 conference room 3 </label>
+            
                             </div>
                         </td>
                     </tr>

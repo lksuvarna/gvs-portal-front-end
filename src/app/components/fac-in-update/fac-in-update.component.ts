@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
 import { Db2Service } from '../../_services/db2.service';
-import {Create_Cache_fac, Fac_Update} from '../../../../config/payload';
+import {Create_Cache_fac, Fac_Update, removeDiacritics} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 
@@ -231,7 +231,7 @@ export class FacInUpdateComponent implements OnInit {
     this.cache.funded = formData.value.Voice_Mail;
     this.cache.chargeDepartmentCode=formData.value.chargeDepartmentCode;	
     this.cache.authLevel=formData.value.authLevel;	
-    this.cache.Comments= formData.value.businessjustification;
+    this.cache.Comments= removeDiacritics(formData.value.businessjustification);
     sessionStorage.setItem('cache',JSON.stringify(this.cache));
     console.log("cached");
   }

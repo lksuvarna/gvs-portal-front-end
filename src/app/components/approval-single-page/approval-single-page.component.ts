@@ -6,6 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
 import { NgForm } from '@angular/forms';
+import { removeDiacritics } from 'config/payload';
 
 @Component({
   selector: 'app-approval-single-page',
@@ -121,7 +122,7 @@ export class ApprovalSinglePageComponent implements OnInit {
     if(this.flag){
       this.isButtonVisible=false;	
       this.isSpinnerVisible=true;	
-    this.servicenowservice.approvesnow(this.request_sysid,action,this.rejectioncomments).subscribe(data=> {
+    this.servicenowservice.approvesnow(this.request_sysid,action,removeDiacritics(this.rejectioncomments)).subscribe(data=> {
       console.log('response', data);
       if(data){		
         this.router.navigate(['/approvalresult'],{ queryParams: { country: this.pcode, service:this.service}}) ;	

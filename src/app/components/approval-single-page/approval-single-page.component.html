@@ -97,8 +97,9 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <textarea name="rejectioncomments" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Rejection Comments" rows="2" cols="40" [(ngModel)]="rejectioncomments"></textarea></div>
-                        </td>
+                                <textarea name="rejectioncomments" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="Rejection Comments" maxlength="500" rows="2" cols="40" [(ngModel)]="rejectioncomments"></textarea></div>
+                                <label>Note:Length should not exceed 500</label>
+                            </td>
                     </tr>
                 </tbody>
             </table>

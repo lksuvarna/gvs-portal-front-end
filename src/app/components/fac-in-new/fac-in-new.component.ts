@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {Create_Cache_fac, Fac_New} from '../../../../config/payload';
+import {Create_Cache_fac, Fac_New, removeDiacritics} from '../../../../config/payload';
 
 @Component({
   selector: 'app-fac-in-new',
@@ -188,7 +188,7 @@ export class FacInNewComponent implements OnInit {
     this.reviewDetailsIndia.authLevel = formData.value.authLevel;	
     this.reviewDetailsIndia.Fac_Type = formData.value.Fac_Type;	
     this.reviewDetailsIndia.validity = formData.value.validity;	
-    this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r+]/g, ' ');	
+    this.reviewDetailsIndia.Comments = removeDiacritics(formData.value.Comments.replace(/[\n\r+]/g, ' '));	
 
     if(formData.value.authLevel==='STD'){
       this.reviewDetailsIndia.authValue = '4'
