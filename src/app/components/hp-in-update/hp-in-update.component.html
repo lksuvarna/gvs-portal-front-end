@@ -175,7 +175,7 @@
                             <span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%" class="ds-pad-t-1 ds-pad-b-1">
-                            <input name="Newdesc" value="" id="desc" class="ds-input " style="width:300px !important;" title="New Description" maxlength="200;" ngModel [(ngModel)]='newDescription'><br>
+                            <input name="Newdesc" value="" id="desc" class="ds-input " style="width:300px !important;" title="New Description" maxlength="30" ngModel [(ngModel)]='newDescription'><br>
                         </td>
                     </tr>
 
@@ -184,8 +184,10 @@
                             <label class="">Reason for update<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%">
-                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update" maxlength="200;" rows="2" cols="40" ngModel [(ngModel)]='reasonForUpdate'>
-                        </textarea><br>
+                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update" maxlength="500" rows="2" cols="40" ngModel [(ngModel)]='reasonForUpdate'>
+                        </textarea>
+                        <label>Note:Length should not exceed 500</label>
+                        <br>
                         </td>
                     </tr>
 

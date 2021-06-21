@@ -4,7 +4,7 @@ import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { NgForm } from '@angular/forms';
 import {Router} from  '@angular/router';
 import {Location} from '@angular/common';	
-import {Create_Cache_jabber, specialRequest_data, Special_Request} from '../../../../config/payload';	
+import {Create_Cache_jabber, removeDiacritics, Special_Request} from '../../../../config/payload';	
 import { servicenowservice } from '../../_services/servicenow.service';
 import { ActivatedRoute } from '@angular/router';	
 import { TranslateConfigService} from '../../_services/translate-config.service';
@@ -78,6 +78,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
   payload : Special_Request = new Special_Request();
+  
   
 
   constructor(private router:Router,private route: ActivatedRoute,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private servicenowservice:servicenowservice,private servicesd : TranslateConfigService) {
@@ -218,7 +219,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.payload.countryname=this.countrydetails.name;	
       this.payload.request_type='special_request';	
       this.payload.Location_Disp=this.getLocationCorrect() 
-      this.payload.Comments = this.requirements_disp.replace(/[\n\r+]/g, ' ');
+      this.payload.Comments = removeDiacritics(this.requirements_disp.replace(/[\n\r+]/g, ' '));
       this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
     
       
@@ -400,3 +401,4 @@ function gettime() {
     console.log(minutes1+seconds1)	
   return minutes1+seconds1;	
 } 
+

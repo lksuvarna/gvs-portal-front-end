@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import { bpservices } from '../../_services/bp.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {fixedphone_new,Create_Cache_fixedphone} from '../../../../config/payload';	
+import {fixedphone_new,Create_Cache_fixedphone, removeDiacritics} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
 import { TranslateConfigService } from '../../_services/translate-config.service'; 
 
@@ -384,8 +384,8 @@ entryDetails(formData: NgForm) {
   this.reviewDetailsIndia.model = formData.value.Model_Type;
   this.reviewDetailsIndia.employeeId = "";
   this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
-  this.reviewDetailsIndia.justification = formData.value.Justification;
-  this.reviewDetailsIndia.description = formData.value.Description;
+  this.reviewDetailsIndia.justification = removeDiacritics(formData.value.Justification);
+  this.reviewDetailsIndia.description = removeDiacritics(formData.value.Description);
   this.reviewDetailsIndia.mac = formData.value.MACAddress;
   if(formData.value.Device_Type !== 'Fixed Phone User') {
     this.reviewDetailsIndia.cos = "";
