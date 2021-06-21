@@ -52,7 +52,19 @@
         "Revalidation Pending": "Revalidation Pending",
         "Phone Number Search": "Phone Number Search",
         "Requests": "Requests",
-        "Resources": "Resources"
+        "Resources": "Resources",
+        "To check all available services":"To check all available services",
+        "To check pending approvals":"To check pending approvals",
+        "To check revalidation pending":"To check revalidation pending",
+        "phone_search":"phone_search",
+        "To check the voice services ownership":"To check the voice services ownership",
+        "To check the outstanding request status":"To check the outstanding request status",
+        "IBM office telephone number":"IBM office telephone number",
+        "IBM office physical desk phone":"IBM office physical desk phone",
+        "Fac services":"Fac services",
+        "Mobile services":"Mobile services",
+        "Special request":"Special request",
+        "To check ITN or phone number search":"To check ITN or phone number search"
 
     },
     "Jabberservices": {
@@ -82,7 +94,8 @@
         "availablefromBluePages": "available from BluePages",
         "Pleaseverifyandtryagain" :"Please verify and try again.",
         "EMAILcouldnotbefoundinbp":"An email address for the serial number you entered could not be found in Bluepages. Please try again later. ",
-        "opps": "We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message. [Error]",
+        "opps": "We're currently having trouble completing your request due to an unexpected error. Please reach out to the ",
+        "reportthismessage":" to report this message. [Error]",
         "JabberLocation": "Jabber / Phone Number location",
         "Voicemail": "Voicemail",
         "ClassofService": "Class of Service (COS)",
@@ -97,7 +110,6 @@
         "Delete Jabber Request": "Jabber - Delete Request",
         "FAC Code / IDD PIN New Request": "FAC Code / IDD PIN - New Request",
         "FAC Code / IDD PIN Update Request": "FAC Code / IDD PIN - Update Request",
-        
         "FAC Code / IDD PIN - New Request": "FAC Code / IDD PIN - New Request",
         "FAC Code / IDD PIN - Reset Request": "FAC Code / IDD PIN - Reset Request",
         "FAC Code / IDD PIN - Update Request": "FAC Code / IDD PIN - Update Request",
@@ -105,9 +117,7 @@
         "SpecialRequestentryandreview" :"Special Request",
         "FAC Code / IDD PIN - Delete Request" :"FAC Code / IDD PIN - Delete Request",
         "Mobile New Request": "Mobile - New Request",
-
         "FAC Code / IDD PIN Delete Request" :"FAC Code / IDD PIN - Delete Request",
-
         "Request Move Jabber service": "Jabber - Move Request",
         "Update Existing Jabber Request": "Jabber - Update Request",
         "Delete an existing service": "Delete an existing service",
@@ -153,11 +163,12 @@
         "notauthorizedtoaccessjabber": "The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact",
         "notauthorizedtoaccessip": "The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact",
         "Jabber/ITN": "Jabber/ITN",
-        "jabberconfiguration": "is already registered for this user. If you cannot see this ITN listed in Bluepages under Contact information, please reach out to the help desk.",
+        "jabberconfiguration": "is already registered for this user. If you cannot see this Jabber ITN listed in Bluepages under Contact information, please reach out to the",
         "toinstallbegin":"To install and begin using your Jabber account, please see",
         "CiscoJabber" :"Cisco Jabber.",
         "isalreadybeingprocessed":" is already being processed for this user. To view the status of this request, please click on Requests in the sidebar menu.",
-        "Ifyoucannotsee":"If you cannot see the request listed, or for any other issues, please reach out to the help desk. ",
+        "Ifyoucannotsee":"If you cannot see the request listed, or for any other issues, please reach out to the ",
+        "helpdesk":"help desk",
         "nooutstandingreq": "No outstanding requests were found for the serial number.",
         "noresources": "There are no resources for this serial number.",
         "nojabberforthisserial": "There is no active Jabber account for this serial number. Please verify and try again.",
@@ -168,8 +179,13 @@
         "alreadyoneupdaterequestinprogress": "The serial number that you have entered has already one Update Jabber request is in progress and request number is",
         "alreadyonemoverequestinprogress": "The serial number that you have entered has already one move Jabber request is in progress and request number is",
         "alreadyonedeleterequestinprogress": "The serial number that you have entered has already one delete Jabber request is in progress and request number is",
-        "alreadyonefacdeleterequestinprogress": "The serial number that you have entered has already one delete FAC request is in progress and request number is"
-
+        "alreadyonefacdeleterequestinprogress": "The serial number that you have entered has already one delete FAC request is in progress and request number is",
+        "egyptnotauthorized":"The serial number that you have entered is not authorized to request Jabber.",
+        "egyptemsubmit":"For an Extension Mobility phone number (including voicemail), please submit a",
+        "furtherassistance":"For further assistance, please reach out to the",
+        "help desk":"help desk",
+        "noteligibletoraise":"The serial number that you have entered is not eligible to request more than one FAC Code / IDD PIN.",
+        "nofac":"There is no FAC Code / IDD PIN associated to this serial number."
     },
     "Jabberentrydetails": {
         "Fieldsasterisk": "Fields marked with an asterisk",
@@ -188,7 +204,10 @@
         "Submissionbeinginprogress": "Your request is being submitted. Do not refresh or go back.",
         "Back": "BACK",
         "Next": "NEXT",
-        "Select Location": "Select Location"
+        "Select Location": "Select Location",
+        "SelectState":"Select State",
+        "Yes":"Yes",
+        "No":"No"
 
     },
     "Jabberupdate": {
@@ -204,7 +223,7 @@
         "AccountId": "Account ID",
         "ICACode": "ICA Code",
         "NewOfficeLocation": "New Office Location",
-        "Building": "Building"
+        "Building": "New Campus"
     },
 
     "requesttrans": {
@@ -246,7 +265,7 @@
         "PhoneNumberSearch": "Phone Number Search",
         "PhoneNumberDetails": "Phone Number Details",
         "EnterITNNumber": "Enter ITN Number",
-        "EmpID": "EmpID",
+        "EmpID": "User Serial Number",
         "UserName": "User Name",
         "ServiceDetails": "Service Details"
     },
@@ -307,13 +326,13 @@
         "NoteCombinationofandLength12" :"Note:Combination of (0 to 9 , A to F) and Length:12",
         "BusinessJustification" :"Business Justification",
         "DescriptionofDevice" : "Description of Device",
-        "Somethingseemswrong" :"We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message. [Error]",
+        "Somethingseemswrong" :"We're currently having trouble completing your request due to an unexpected error. Please reach out to the ",
         "selectdevice" :"Please select the device type.",
         "selectmodel" :"Please select the model type.",
         "businesscos" :"Please provide a business justification for the selected class of service.",
         "descriptioncharacters" :"Please provide a description (30 character limit).",
         "entermacadd":"Please provide the MAC address (12 character limit).",
-        "MACfieldAtoF" :"MAC field value to be in combination of 0 to 9 and A to F",
+        "MACfieldAtoF" :"Please provide MAC address in a combination of 0 to 9 and A to F",
         "initiateFixedPhoneservice" :"Please select a request type below.", 
         "MACAddressorPhoneNumber" :"Enter Current MAC Address or Phone Number",
         "norecordfoundformac":"No record was found for the Mac Address or Phone Number you have entered.Please check and try again.",
@@ -339,7 +358,7 @@
         "enteranewModel" :"Please enter a new Model",
         "providethereasonforupdate" :"Please provide the reason for the update.",
         "provideNewDescription" :"Please provide a new description.", 
-        "differentDescriptionasisalready" :"Please choose a different Description as the current Description is already",
+        "differentDescriptionasisalready" :"You have selected the same description as the current phone description.",
         "fortheprovidednumber" :"for the provided number.",
         "FixedPhoneLocation" :"Fixed Phone Location",
         "SelectOne" :"Select One",
@@ -396,5 +415,38 @@
     "Wearesopleasedthat":"We are so pleased that you feel this way about Global Voice Services! Care to tell us why? ",
     "NoteThisfeedback":"Note: This feedback is for User Experience of the website. For any other feedback please use",
    "Help":"Help"
+},
+"approvalpending":{
+"Thank You for your response":"Thank You for your response.",
+"Request(s) has been":"Request(s) has been",
+"Approvals":"Approvals",
+"Reactivate Process":"Reactivate Process",
+"Details":"Details",
+"Serial Number":"Serial Number",
+"User Name":"User Name",
+"Phone/Dial in number":"Phone/Dial in number",
+"Revalidation Date":"Revalidation Date",
+"Details of Change":"Details of Change",
+"Old Manager Serial Number":"Old Manager Serial Number",
+"New Manager Serial Number":"New Manager Serial Number",
+"Old Department Code":"Old Department Code",
+"New Department Code":"New Department Code",
+"Rejection Comments":"Rejection Comments",
+"APPROVE":"APPROVE",
+"REJECT":"REJECT",
+"Enterrejectioncomments":"Enter rejection comments",
+"Revalidation":"Revalidation",
+"EnterSerialNumberorTrackingNumber":"Enter Serial Number or Tracking Number",
+"CLEAR":"CLEAR",
+"PendingRequests":"Pending Requests",
+"There are no pending approvals":"There are no pending approvals.",
+"No search results found":"No search results found.",
+"There are no pending revalidation documents":"There are no pending revalidation documents.",
+"SELECT ALL":"SELECT ALL",
+"DESELECT ALL":"DESELECT ALL",
+"APPROVE SELECTED ONE":"APPROVE SELECTED ONE",
+"Selectrequesttoapprove":"Select request to approve",
+"Entersearchtext":"Enter search text"
+
 }
 }

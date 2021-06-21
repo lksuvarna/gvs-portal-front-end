@@ -5,6 +5,7 @@ import { servicenowservice } from '../../_services/servicenow.service';
 import {Router} from  '@angular/router';	
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
+import { TranslateConfigService } from '../../_services/translate-config.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class ApprovalpendingComponent implements OnInit {
   empserial:any;
   countrydetails:any;
 
-  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location) { }
+  constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private route: ActivatedRoute,private servicenowservice:servicenowservice,private location:Location,private servicesd : TranslateConfigService) { }
 
   pendingRequest:any=[]; 
   pendingRequest_original: any=[];
@@ -34,6 +35,7 @@ export class ApprovalpendingComponent implements OnInit {
   checked: any=[];
   checkedList:any;
   errorinfo=true;
+  mainConfiguration :any;
   reval=true;
   flag =true;
   search='';
@@ -44,6 +46,7 @@ export class ApprovalpendingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.mainConfiguration = this.servicesd.readConfigFile();
 
     
     this.route.queryParams	
@@ -176,7 +179,7 @@ export class ApprovalpendingComponent implements OnInit {
   {
     this.getCheckedItemList();
     if(this.checkedList.length==0){
-      alert('Select request to approve');
+      alert(this.mainConfiguration.approvalpending.Selectrequesttoapprove);
       return ;
     }
     console.log(this.checkedList);
@@ -250,7 +253,7 @@ performsearch(){
   
   const List: any=[]; 
   if(this.search==''){
-  alert("Enter search text");
+  alert(this.mainConfiguration.approvalpending.Entersearchtext);
   return;
   }
   

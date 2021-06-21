@@ -101,41 +101,41 @@
             <p translate>employeeinfotrans.notauthorizedtoaccessip <a style="color:blue" target="_blank" href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
         <div id="w1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfo>
-            <p><span style="font-size: 1rem;" translate> <span translate>employeeinfotrans.Jabber/ITN</span> {{identifier}} <span translate> employeeinfotrans.jabberconfiguration </span><br><br> <span translate> employeeinfotrans.toinstallbegin </span>
+            <p><span style="font-size: 1rem;" translate> <span translate>Jabberupdate.JabberNumber</span> {{identifier}} <span translate> employeeinfotrans.jabberconfiguration </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.<br><br> <span translate> employeeinfotrans.toinstallbegin </span>
                 <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>:
                 <span translate> employeeinfotrans.CiscoJabber </span> <br></span>
             </p>
         </div>
 
         <div id="dept-egypt" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warningDeptEgypt">
-            <p>The serial number that you have entered is not authorized to request Jabber. <br> For an Extension Mobility phone number (including voicemail), please submit a <a style="color:blue" [routerLink]="['/employeesearch']" [queryParams]="{country:pcode,service:'specialrequest'}">Special Request</a>.
-                For further assistance, please reach out to the <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">help desk</a>.</p>
+            <p> <span translate>employeeinfotrans.egyptnotauthorized</span><br> <span translate>employeeinfotrans.egyptemsubmit</span><a style="color:blue" [routerLink]="['/employeesearch']" [queryParams]="{country:pcode,service:'specialrequest'}" translate>servicestitle.Special Request</a>.
+               <span translate>employeeinfotrans.furtherassistance</span> <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser" translate>employeeinfotrans.help desk</a>.</p>
         </div>
 
         <div id="fac_new" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfofac>
-            <p><span style="font-size: 1rem;">The serial number that you have entered is not eligible to request more than one FAC Code / IDD PIN.</span></p>
+            <p><span style="font-size: 1rem;" translate>employeeinfotrans.noteligibletoraise</span></p>
         </div>
 
         <div id="fac_new_snow" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowfac>
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
-                <span translate> employeeinfotrans.Ifyoucannotsee </span></span>
+                <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
             </p>
         </div>
 
         <div id="fac_delete" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacdelete">
-            <p><span style="font-size: 1rem;">There is no FAC Code / IDD PIN associated to this serial number.</span></p>
+            <p><span style="font-size: 1rem;" translate>employeeinfotrans.nofac</span></p>
         </div>
 
 
 
 
         <div id="fac_update" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacu">
-            <p><span style="font-size: 1rem;">There is no FAC Code / IDD PIN associated to this serial number.</span></p>
+            <p><span style="font-size: 1rem;" translate>employeeinfotrans.nofac</span></p>
         </div>
 
         <div id="fac_reset" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacr">
-            <p><span style="font-size: 1rem;">There is no FAC Code / IDD PIN associated to this serial number.</span></p>
+            <p><span style="font-size: 1rem;" translate>employeeinfotrans.nofac</span></p>
         </div>
 
 
@@ -144,7 +144,7 @@
 
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
 
-                <span translate> employeeinfotrans.Ifyoucannotsee </span></span>
+                <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
             </p>
         </div>
         <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowothers>
@@ -152,7 +152,7 @@
 
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
 
-                <span translate> employeeinfotrans.Ifyoucannotsee </span></span>
+                <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
             </p>
         </div>
         <div id="fac_others" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowothersfac>
@@ -160,7 +160,7 @@
 
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
 
-                <span translate> employeeinfotrans.Ifyoucannotsee </span></span>
+                <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
             </p>
 
         </div>
@@ -169,7 +169,7 @@
 
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
 
-                <span translate> employeeinfotrans.Ifyoucannotsee </span></span>
+                <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
             </p>
         </div>
         <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowreq>

@@ -752,6 +752,7 @@ update_cos!:String;
 voicemail!:String
 cos!:String
 businessjustification !: String;
+defaultLocation !: String;
 
 
 Create_Cache_jabber(){
@@ -771,6 +772,7 @@ Create_Cache_jabber(){
        this.voicemail='';
        this.cos='';
        this.businessjustification='';
+       this.defaultLocation='';
 
     }
 

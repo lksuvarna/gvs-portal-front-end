@@ -58,7 +58,7 @@
     </span>
     </span>
 
-    <span *ngIf="service === 'phone_search'">
+    <span *ngIf="service === 'phone_search' && !isWarning">
         <span [ngClass]="step===2 ? 'ds-pad-l-r-1 ds-text-contextual-green-3' : 'ds-pad-l-r-1 ds-text-contextual-blue-5'"><b>-----&gt;</b></span>
     <span [ngClass]="changeClass2 ? 'ds-tooltip ds-hover ds-text-align-center ds-open' : 'ds-tooltip ds-hover ds-text-align-center' " id="tooltip-demo1">
         <span (mouseenter)="changeClass2=true" (mouseout)="changeClass2=false">    

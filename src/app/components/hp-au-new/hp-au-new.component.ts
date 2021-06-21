@@ -328,7 +328,7 @@ entryDetails(formData: NgForm) {
     }
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
     if(pat1.test(formData.value.MACAddress)) {
-      alert('MAC field value to be in combination of 0 to 9 and A to F');
+      alert('Please provide MAC address in a combination of 0 to 9 and A to F');
       return
     }
 

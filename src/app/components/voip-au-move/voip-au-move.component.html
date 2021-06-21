@@ -32,7 +32,7 @@
                        
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select [(ngModel)]='itn_sel' #jabberNumberVal (change)="getjabberNumberVal(jabberNumberVal.value)" name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Extension Number" (change)='toggleOptions($event)'>
+                                <select [(ngModel)]='itn_sel' #jabberNumberVal name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Extension Number" (change)='toggleOptions($event)'>
                   <option value="">Select One</option>
                   <option *ngFor="let jab of jabberNumber" [value]="jab">{{jab}}</option>
                 </select>
@@ -45,7 +45,7 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <input name="default_location" value="" autocomplete="off" tabindex="2" id="ch" class="ds-input ds-disabled" style="width:300px !important;" [(ngModel)]='default_location'></div>
+                                <input name="default_location" [value]="default_location" autocomplete="off" tabindex="2" id="ch" class="ds-input ds-disabled" style="width:300px !important;" [(ngModel)]='default_location' ngModel></div>
                         </td>
                     </tr>
                     <tr valign="top">
@@ -128,7 +128,7 @@
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p translate>fixedphonenew.Somethingseemswrong</p>
+                <p ><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a><span translate>Jabbernewtrans.reportthismessage</span></p>
                 <p>
                 </p>
             </div>
