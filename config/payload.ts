@@ -115,6 +115,7 @@ export class Jabber_Delete
     evolution_instance !: String;
     country_code !:String;
     gvs_portal_link !:String;
+    gvs_approval_link !: String
 
 Jabber_Delete()
  {
@@ -126,6 +127,7 @@ Jabber_Delete()
     this.evolution_instance ="";
     this.country_code  ="";
     this.gvs_portal_link = "";
+    this.gvs_approval_link = ""
  }
 
 }

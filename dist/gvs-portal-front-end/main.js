@@ -1152,7 +1152,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Users\VivekRatnesh\Desktop\Project Work\Cirrus\GVS-Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -9909,6 +9909,7 @@ class VoipInDeleteComponent {
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
         this.payload.country_code = this.countrydetails.code;
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
+        this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
         // console.log('Payload');	
         // console.log(this.payload);	
         this.servicenowservice.submit_request_delete(this.payload).subscribe(data => {
@@ -15203,6 +15204,7 @@ class VoipEmeaNewComponent {
         }
         this.selectedLocationEmea = formData.value.Location;
         this.reviewDetailsEMEA.Location_final = formData.value.Location;
+        this.reviewDetailsEMEA.businessUnit = this.employeeInfo.businessUnit;
         this.isEntryFormEmea = true;
         this.isReviewFormEmea = false;
         //set up the cache for form values.
@@ -15256,7 +15258,7 @@ class VoipEmeaNewComponent {
         // fields picked up from form -- begins	
         this.payload.Buildings_Disp = this.reviewDetailsEMEA.campus;
         // by default set to true. below line can be removed if needed.	
-        this.payload.Voice_Type_Disp = "No";
+        this.payload.Voice_Type_Disp = "Yes";
         this.payload.Projectid_Disp = this.reviewDetailsEMEA.projectId;
         this.payload.icano_Disp = "";
         this.payload.identifier_hp_Disp = this.reviewDetailsEMEA.fixPhoneIdentifier;
@@ -23080,6 +23082,7 @@ class Jabber_Delete {
         this.evolution_instance = "";
         this.country_code = "";
         this.gvs_portal_link = "";
+        this.gvs_approval_link = "";
     }
 }
 // class used to create the payload for snow move jabber service
