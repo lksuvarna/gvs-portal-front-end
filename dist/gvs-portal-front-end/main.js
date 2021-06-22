@@ -628,7 +628,7 @@ class FacInNewComponent {
         this.reviewDetailsIndia.authLevel = formData.value.authLevel;
         this.reviewDetailsIndia.Fac_Type = formData.value.Fac_Type;
         this.reviewDetailsIndia.validity = formData.value.validity;
-        this.reviewDetailsIndia.Comments = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.Comments.replace(/[\n\r+]/g, ' '));
+        this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r+]/g, ' ');
         if (formData.value.authLevel === 'STD') {
             this.reviewDetailsIndia.authValue = '4';
         }
@@ -680,7 +680,7 @@ class FacInNewComponent {
         this.payload.authLevel_final = this.reviewDetailsIndia.authLevel;
         this.payload.Fac_Type_disp = this.reviewDetailsIndia.Fac_Type;
         this.payload.validity_disp = this.reviewDetailsIndia.validity;
-        this.payload.comments = this.reviewDetailsIndia.Comments;
+        this.payload.comments = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.Comments);
         this.payload.authValue = this.reviewDetailsIndia.authValue;
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
@@ -11690,7 +11690,7 @@ class FacInUpdateComponent {
         this.cache.funded = formData.value.Voice_Mail;
         this.cache.chargeDepartmentCode = formData.value.chargeDepartmentCode;
         this.cache.authLevel = formData.value.authLevel;
-        this.cache.Comments = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.businessjustification);
+        this.cache.Comments = formData.value.businessjustification;
         sessionStorage.setItem('cache', JSON.stringify(this.cache));
         console.log("cached");
     }
@@ -11757,7 +11757,7 @@ class FacInUpdateComponent {
         this.payload.Funded = this.Funded;
         this.payload.chargeDepartmentCode = this.chargeDepartmentCode;
         this.payload.authLevel = this.newAuthLevelValue;
-        this.payload.bj_disp = this.bj_disp;
+        this.payload.bj_disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.bj_disp);
         this.payload.ReqNo = this.reqno;
         this.payload.updated_for = this.getUpdatedFor();
         this.payload.updated_for_values = this.UpdatedForValues;
@@ -21359,8 +21359,8 @@ class HpInNewComponent {
         this.reviewDetailsIndia.model = formData.value.Model_Type;
         this.reviewDetailsIndia.employeeId = "";
         this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
-        this.reviewDetailsIndia.justification = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.Justification);
-        this.reviewDetailsIndia.description = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.Description);
+        this.reviewDetailsIndia.justification = formData.value.Justification;
+        this.reviewDetailsIndia.description = formData.value.Description;
         this.reviewDetailsIndia.mac = formData.value.MACAddress;
         if (formData.value.Device_Type !== 'Fixed Phone User') {
             this.reviewDetailsIndia.cos = "";
@@ -21425,10 +21425,10 @@ class HpInNewComponent {
         this.payload.Model_Disp = this.reviewDetailsIndia.model;
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
-        this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+        this.payload.Desc_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.description);
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
-        this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+        this.payload.Justification_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.justification);
         this.locSelected = this.reviewDetailsIndia.officeLocation;
         if (this.countrydetails.did_loc_formula) {
             // Assign location value from cloudant. Needed for ITN allocation

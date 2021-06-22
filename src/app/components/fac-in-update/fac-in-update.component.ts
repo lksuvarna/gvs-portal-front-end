@@ -231,7 +231,7 @@ export class FacInUpdateComponent implements OnInit {
     this.cache.funded = formData.value.Voice_Mail;
     this.cache.chargeDepartmentCode=formData.value.chargeDepartmentCode;	
     this.cache.authLevel=formData.value.authLevel;	
-    this.cache.Comments= removeDiacritics(formData.value.businessjustification);
+    this.cache.Comments= formData.value.businessjustification;
     sessionStorage.setItem('cache',JSON.stringify(this.cache));
     console.log("cached");
   }
@@ -300,7 +300,7 @@ export class FacInUpdateComponent implements OnInit {
       this.payload.Funded = this.Funded
       this.payload.chargeDepartmentCode = this.chargeDepartmentCode
       this.payload.authLevel = this.newAuthLevelValue
-      this.payload.bj_disp= this.bj_disp;
+      this.payload.bj_disp= removeDiacritics(this.bj_disp);
       this.payload.ReqNo=this.reqno;
       this.payload.updated_for= this.getUpdatedFor()
       this.payload.updated_for_values= this.UpdatedForValues

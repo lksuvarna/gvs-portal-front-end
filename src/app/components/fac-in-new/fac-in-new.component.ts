@@ -188,7 +188,7 @@ export class FacInNewComponent implements OnInit {
     this.reviewDetailsIndia.authLevel = formData.value.authLevel;	
     this.reviewDetailsIndia.Fac_Type = formData.value.Fac_Type;	
     this.reviewDetailsIndia.validity = formData.value.validity;	
-    this.reviewDetailsIndia.Comments = removeDiacritics(formData.value.Comments.replace(/[\n\r+]/g, ' '));	
+    this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r+]/g, ' ');	
 
     if(formData.value.authLevel==='STD'){
       this.reviewDetailsIndia.authValue = '4'
@@ -245,7 +245,7 @@ export class FacInNewComponent implements OnInit {
       this.payload.authLevel_final=this.reviewDetailsIndia.authLevel;		
       this.payload.Fac_Type_disp=this.reviewDetailsIndia.Fac_Type;		
       this.payload.validity_disp =this.reviewDetailsIndia.validity;	
-      this.payload.comments =this.reviewDetailsIndia.Comments;
+      this.payload.comments =removeDiacritics(this.reviewDetailsIndia.Comments);
       this.payload.authValue =this.reviewDetailsIndia.authValue;	
 
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
