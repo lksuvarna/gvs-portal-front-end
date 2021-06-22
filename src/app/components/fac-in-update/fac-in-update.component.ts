@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
 import { Db2Service } from '../../_services/db2.service';
-import {Create_Cache_fac, Fac_Update} from '../../../../config/payload';
+import {Create_Cache_fac, Fac_Update, removeDiacritics} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 
@@ -300,7 +300,7 @@ export class FacInUpdateComponent implements OnInit {
       this.payload.Funded = this.Funded
       this.payload.chargeDepartmentCode = this.chargeDepartmentCode
       this.payload.authLevel = this.newAuthLevelValue
-      this.payload.bj_disp= this.bj_disp;
+      this.payload.bj_disp= removeDiacritics(this.bj_disp);
       this.payload.ReqNo=this.reqno;
       this.payload.updated_for= this.getUpdatedFor()
       this.payload.updated_for_values= this.UpdatedForValues

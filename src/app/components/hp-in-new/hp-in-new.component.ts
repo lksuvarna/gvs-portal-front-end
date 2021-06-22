@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import { bpservices } from '../../_services/bp.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {fixedphone_new,Create_Cache_fixedphone} from '../../../../config/payload';	
+import {fixedphone_new,Create_Cache_fixedphone, removeDiacritics} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
 import { TranslateConfigService } from '../../_services/translate-config.service'; 
 
@@ -385,7 +385,7 @@ entryDetails(formData: NgForm) {
   this.reviewDetailsIndia.employeeId = "";
   this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
   this.reviewDetailsIndia.justification = formData.value.Justification;
-  this.reviewDetailsIndia.description = formData.value.Description;
+  this.reviewDetailsIndia.description =formData.value.Description;
   this.reviewDetailsIndia.mac = formData.value.MACAddress;
   if(formData.value.Device_Type !== 'Fixed Phone User') {
     this.reviewDetailsIndia.cos = "";
@@ -453,10 +453,10 @@ submit_snow(){
     this.payload.Model_Disp =  this.reviewDetailsIndia.model;
     this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
     this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
-    this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+    this.payload.Desc_Disp = removeDiacritics(this.reviewDetailsIndia.description);
     this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
-    this.payload.Justification_Disp = this.reviewDetailsIndia.justification;	
+    this.payload.Justification_Disp = removeDiacritics(this.reviewDetailsIndia.justification);	
 
     this.locSelected = this.reviewDetailsIndia.officeLocation
     if(this.countrydetails.did_loc_formula){

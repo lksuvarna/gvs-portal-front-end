@@ -6,7 +6,7 @@ import { cloudantservice } from '../../_services/cloudant.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
 import { bpservices } from '../../_services/bp.service';
 import {Location} from '@angular/common';	
-import {fixedphone_new,Create_Cache_fixedphone} from '../../../../config/payload';	
+import {fixedphone_new,Create_Cache_fixedphone, removeDiacritics} from '../../../../config/payload';	
 
 
 @Component({
@@ -212,8 +212,8 @@ getFixedPhoneData(){
     // this.reviewDetailsIndia.employeeId = formData.value.StepMentor;
     this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
     this.reviewDetailsIndia.cos = formData.value.cos;
-    this.reviewDetailsIndia.justification = formData.value.Justification;
-    this.reviewDetailsIndia.description = formData.value.Description;
+    this.reviewDetailsIndia.justification = removeDiacritics(formData.value.Justification);
+    this.reviewDetailsIndia.description = removeDiacritics(formData.value.Description);
     this.reviewDetailsIndia.mac = formData.value.MACAddress;
   this.create_cache(formData);
 
