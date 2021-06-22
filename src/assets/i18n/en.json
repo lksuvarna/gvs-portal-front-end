@@ -6,7 +6,7 @@
         "app-function": "Single entry point for ordering voice services in your country",
         "sponsor": "Built on CIO Hybrid Cloud Powered by Red Hat OpenShift",
         "welcomemessage": "Welcome,",
-        "question": "What service or country are you looking for?",
+        "question": "What service or country are you looking for? ",
         "search-placeholder": "Search service...",
         "search-text": "Click here to see all results in GVS search",
         "my-country": "My Country",
@@ -22,9 +22,9 @@
     },
 
     "footer": {
-        "aditional-question": "Have additional questions about ordering Global Voice Services ?",
-        "please consult": "Please consult",
-        "consult": "* This website supports Mozilla Firefox, Google Chrome, IE, Edge and Safari."
+        "aditional-question": "If you have additional questions about the GVS Portal,",
+        "please consult": "please refer to ",
+        "consult": "This website supports Mozilla Firefox, Google Chrome, IE, Edge, and Safari."
     },
 
     "footnote": {
@@ -34,10 +34,10 @@
         "Special Request": "Special Request",
         "Terms of use": "Terms of use",
         "Useful Information": "Useful Information",
-        "Please bear in mind the following points when making a request :": "Please bear in mind the following points when making a request :",
-        "To make a request the Employee must exist in BluePages (except for cancellation requests).": "To make a request the Employee must exist in BluePages (except for cancellation requests).",
-        "You must know the IBM serial Number of the person making the request.": "You must know the IBM serial Number of the person making the request.",
-        "Only one request per employee per request type is processed at a time.": "Only one request per employee per request type is processed at a time."
+        "Please bear in mind the following points when making a request :": "Please note: ",
+        "To make a request the Employee must exist in BluePages (except for cancellation requests).": "You must know the IBM serial number of the person for whom you are submitting a request.",
+        "You must know the IBM serial Number of the person making the request.": "In order to submit a request, the employee must have a completed BluePages profile (except for cancellation requests).",
+        "Only one request per employee per request type is processed at a time.": "Only one request type per employee is permitted at a time."
 
     },
 
@@ -169,8 +169,8 @@
         "isalreadybeingprocessed":" is already being processed for this user. To view the status of this request, please click on Requests in the sidebar menu.",
         "Ifyoucannotsee":"If you cannot see the request listed, or for any other issues, please reach out to the ",
         "helpdesk":"help desk",
-        "nooutstandingreq": "No outstanding requests were found for the serial number.",
-        "noresources": "There are no resources for this serial number.",
+        "nooutstandingreq": "There are no outstanding requests associated with the entered serial number.",
+        "noresources": "There are no accounts associated with the entered serial number.",
         "nojabberforthisserial": "There is no active Jabber account for this serial number. Please verify and try again.",
         "BACK": "BACK",
         "NEXT": "NEXT",
@@ -280,7 +280,7 @@
         "requests":"requests.",
         "selectlocation": "Please select the appropriate location.",
         "selectjabbernumberdel": "Please select the Jabber / Phone Number being deleted.",
-        "selectlocationsp" : "Please select the Jabber / Phone Location",
+        "selectlocationsp" : "Please select the Jabber / Phone Number Location",
         "Homeandmobilealert":"The serial number you have entered does not belong to the selected office location. Please choose your correct location, or select Home and Mobile.",
         "usaschedule":"Selecting Home and Mobile will result in your service being assigned a phone number in the 720 area code. If you wish to have a number local to your office, or if you'd like to retain your existing office number, please wait for your site to be migrated to CHCS/Jabber. The USA site migration schedule can be found"
 
@@ -332,7 +332,7 @@
         "businesscos" :"Please provide a business justification for the selected class of service.",
         "descriptioncharacters" :"Please provide a description (30 character limit).",
         "entermacadd":"Please provide the MAC address (12 character limit).",
-        "MACfieldAtoF" :"Please provide MAC address in a combination of 0 to 9 and A to F",
+        "MACfieldAtoF" :"Please verify the MAC address; only alphanumeric characters (0 to 9 and A to F) are permitted.",
         "initiateFixedPhoneservice" :"Please select a request type below.", 
         "MACAddressorPhoneNumber" :"Enter Current MAC Address or Phone Number",
         "norecordfoundformac":"No record was found for the Mac Address or Phone Number you have entered.Please check and try again.",
@@ -354,11 +354,11 @@
         "ReasonforUpdation" :"Reason for update",
         "MACAddresssearch"  :"Please provide the MAC address or phone number being updated.",
         "updaterequiredfor" :"Please provide the update requirements.",
-        "enternewMACaddress" :"Please enter a new MAC address",
+        "enternewMACaddress" :"Please verify the MAC address; the information entered is the same as the current MAC address.",
         "enteranewModel" :"Please enter a new Model",
         "providethereasonforupdate" :"Please provide the reason for the update.",
         "provideNewDescription" :"Please provide a new description.", 
-        "differentDescriptionasisalready" :"You have selected the same description as the current phone description.",
+        "differentDescriptionasisalready" :"Please verify the phone description; the information entered is the same as the current phone description.",
         "fortheprovidednumber" :"for the provided number.",
         "FixedPhoneLocation" :"Fixed Phone Location",
         "SelectOne" :"Select One",
@@ -407,13 +407,13 @@
    "samemodelupdate":"You have selected the same model as the current phone model."
 },
 "feedback":{
-    "Donotincludeanypersonal":"Do not include any personal identifying information in the write-in fields or questions.",
+    "Donotincludeanypersonal":"Please do not include any personal identifying or otherwise sensitive information in the text fields.",
     "Onascale":"On a scale of 0 to 10, how likely are you to recommend this service to a friend or colleague?",
     "Not at all likely":"Not at all likely",
     "Extremely likely":"Extremely likely",
-    "Caretotell":"Care to tell us why? Your feedback will help us to improve. ",    
+    "Caretotell":"Care to tell us why? Your feedback will help us to improve.",    
     "Wearesopleasedthat":"We are so pleased that you feel this way about Global Voice Services! Care to tell us why? ",
-    "NoteThisfeedback":"Note: This feedback is for User Experience of the website. For any other feedback please use",
+    "NoteThisfeedback":"Note: This feedback only concerns the useability of the GVS Portal. For any other feedback, please use ",
    "Help":"Help"
 },
 "approvalpending":{
@@ -446,7 +446,8 @@
 "DESELECT ALL":"DESELECT ALL",
 "APPROVE SELECTED ONE":"APPROVE SELECTED ONE",
 "Selectrequesttoapprove":"Select request to approve",
-"Entersearchtext":"Enter search text"
+"Entersearchtext":"Enter search text",
+"rejectserialnumber":"To reject a request click on the respective serial number."
 
 }
 }

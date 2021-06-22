@@ -197,7 +197,7 @@ getFixedPhoneData(){
       }
       var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
       if(pat1.test(formData.value.MACAddress)) {
-        alert('Please provide MAC address in a combination of 0 to 9 and A to F');
+        alert('Please verify the MAC address; only alphanumeric characters (0 to 9 and A to F) are permitted.');
         return
       }
   
