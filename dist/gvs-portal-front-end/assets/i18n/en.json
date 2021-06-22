@@ -413,13 +413,8 @@
     "Extremely likely":"Extremely likely",
     "Caretotell":"Care to tell us why? Your feedback will help us to improve.",    
     "Wearesopleasedthat":"We are so pleased that you feel this way about Global Voice Services! Care to tell us why? ",
-<<<<<<< HEAD
     "NoteThisfeedback":"Note: This feedback only concerns the useability of the GVS Portal. For any other feedback, please use ",
-   "Help":"Help"
-=======
-    "NoteThisfeedback":"Note: This feedback is for User Experience of the website. For any other feedback please use",
-   "Help":"Help@IBM"
->>>>>>> d51d5b5677f07e4fc709baa6a8a48ddbe8fb9d42
+    "Help":"Help@IBM"
 },
 "approvalpending":{
 "Thank You for your response":"Thank You for your response.",
