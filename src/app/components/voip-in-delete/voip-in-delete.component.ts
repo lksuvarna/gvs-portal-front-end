@@ -111,7 +111,7 @@ export class VoipInDeleteComponent implements OnInit {
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;    
       this.payload.country_code = this.countrydetails.code ;
       this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
-    
+      this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       
      // console.log('Payload');	
      // console.log(this.payload);	

@@ -240,12 +240,12 @@ export class HpAuUpdateComponent implements OnInit {
       return;	
     }
     if(this.showformacadd == true && formData.value.MAC1.toUpperCase() == this.currentMac.toUpperCase()) {
-      alert('Please enter a new MAC address');
+      alert('Please verify the MAC address; the information entered is the same as the current MAC address.');
       return;
     }
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
     if(this.showformacadd == true && (pat1.test(formData.value.MAC1))) {
-      alert('Please provide MAC address in a combination of 0 to 9 and A to F');
+      alert('Please verify the MAC address; only alphanumeric characters (0 to 9 and A to F) are permitted.');
       return;
     }
     if(this.showLocation == true && formData.value.Location_1_1 == '') {	
@@ -266,7 +266,7 @@ export class HpAuUpdateComponent implements OnInit {
     }
 
     if(this.showforNewDesc == true && formData.value.Newdesc.toUpperCase() == this.currentdesc.toUpperCase()) {
-      alert("You have selected the same description as the current phone description.");
+      alert("Please verify the phone description; the information entered is the same as the current phone description.");
       return;
     }
     if(this.showforrsn == true && (formData.value.Comments.trim() == '')) {	

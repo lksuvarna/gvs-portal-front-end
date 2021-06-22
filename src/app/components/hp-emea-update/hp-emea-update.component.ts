@@ -292,7 +292,7 @@ backClick(formData: NgForm){
       	
     }
     if(this.showforNewDesc == true && formData.value.Newdesc == this.currentdesc) {
-      alert(this.mainConfiguration.fixedphonenew.differentDescriptionasisalready +" "+this.currentdesc+" " +this.mainConfiguration.fixedphonenew.fortheprovidednumber);
+      alert(this.mainConfiguration.fixedphonenew.differentDescriptionasisalready);
       return;
     }
     if(this.showforrsn == true && (formData.value.Comments.trim() == '')) {	

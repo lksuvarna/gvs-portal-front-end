@@ -306,12 +306,12 @@ export class HpInUpdateComponent implements OnInit {
     }
     
     else if(formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (pat1.test(formData.value.MAC1))) {
-      alert('Please provide MAC address in a combination of 0 to 9 and A to F');
+      alert('Please verify the MAC address; only alphanumeric characters (0 to 9 and A to F) are permitted.');
       return;
     }
 
     else if(formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && formData.value.MAC1 == this.currentMac){
-      alert('Please provide a different MAC Address as the current MAC Address is already '+this.currentMac );
+      alert('Please verify the MAC address; the information entered is the same as the current MAC address.');
     }
 
     else if(formData.value.UpdateReq.toLowerCase() != 'replace the hardphone only' && (formData.value.Newdesc.trim() == '' || formData.value.Comments == '/\s/')) {	
@@ -320,7 +320,7 @@ export class HpInUpdateComponent implements OnInit {
     }
 
     else if(formData.value.UpdateReq.toLowerCase() !== 'replace the hardphone only' && formData.value.Newdesc.trim() == this.currentdesc){
-      alert('You have selected the same description as the current phone description.' );
+      alert('Please verify the phone description; the information entered is the same as the current phone description.' );
     }
 
     // else if(this.showformodel == true && formData.value.newModel == this.currentmodel) {

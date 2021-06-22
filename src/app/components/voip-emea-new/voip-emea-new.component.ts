@@ -80,6 +80,7 @@ export class VoipEmeaNewComponent implements OnInit {
     
     this.selectedLocationEmea = formData.value.Location;
     this.reviewDetailsEMEA.Location_final = formData.value.Location;
+    this.reviewDetailsEMEA.businessUnit = this.employeeInfo.businessUnit;
     this.isEntryFormEmea = true;
     this.isReviewFormEmea = false;
 
@@ -143,7 +144,7 @@ export class VoipEmeaNewComponent implements OnInit {
       // fields picked up from form -- begins	
       this.payload.Buildings_Disp=this.reviewDetailsEMEA.campus;	
       // by default set to true. below line can be removed if needed.	
-      this.payload.Voice_Type_Disp = "No";
+      this.payload.Voice_Type_Disp = "Yes";
       this.payload.Projectid_Disp = this.reviewDetailsEMEA.projectId;	
       this.payload.icano_Disp = "";
       this.payload.identifier_hp_Disp = this.reviewDetailsEMEA.fixPhoneIdentifier;	
