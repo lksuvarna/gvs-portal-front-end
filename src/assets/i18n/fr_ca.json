@@ -201,7 +201,7 @@
         "requests":"demandes.",
         "selectlocation":"Veuillez sélectionner l'emplacement approprié.",
         "selectjabbernumberdel":"Veuillez sélectionner le Jabber/numéro de téléphone à supprimer.",
-        "selectlocationsp" : "Veuillez sélectionner l'emplacement du Jabber / numéro de téléphone"
+        "selectlocationsp" : "Veuillez sélectionner le Jabber / Emplacement du numéro de téléphone"
 
 
     },
@@ -324,5 +324,8 @@
         "NoteThisfeedback":"Remarque : Ces commentaires sont destinés à l'expérience utilisateur du site Web. Pour tout autre commentaire, veuillez utiliser",
        "Help":"Aider@IBM"
     
+     },
+     "approvalpending":{
+     "rejectserialnumber":"Pour rejeter une demande, cliquez sur le numéro de série correspondant."
      }
 }
