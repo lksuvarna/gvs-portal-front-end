@@ -11,7 +11,9 @@
     <div class="ds-col-sm-2 ds-col-md-7  ds-padding-left-1_5">
 
         <h3 *ngIf="reval"><b translate>approvalpending.Approvals</b></h3>
+        <!--<div class="ds-hr-thick ds-mar-b-1_5"></div>-->
         <h3 *ngIf="!reval"><b translate>approvalpending.Revalidation</b></h3>
+        <div  *ngIf="errorinfo && reval" class="ds-pad-b-1" translate> approvalpending.rejectserialnumber</div>
         <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
         <div class=" ds-panel ds-col-12 "></div>
         <div class="ds-padding-top-0_5 ds-padding-bottom-1"></div>
