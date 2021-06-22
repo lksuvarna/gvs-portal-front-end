@@ -239,7 +239,7 @@ export class FacInNewComponent implements OnInit {
       this.payload.Location_final =this.reviewDetailsIndia.officeLocation;	
       this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;		
       this.payload.Voice_Type_Disp=this.reviewDetailsIndia.funded;		
-      this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;		
+      this.payload.Department_number_Disp = removeDiacritics(this.reviewDetailsIndia.chargeDepartmentCode);		
       this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit	
       this.payload.Dept_IN=this.reviewDetailsIndia.Department_number;		
       this.payload.authLevel_final=this.reviewDetailsIndia.authLevel;		

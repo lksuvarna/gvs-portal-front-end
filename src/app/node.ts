@@ -96,6 +96,6 @@ function removeDiacritics (str : string) {
     for(var i=0; i<defaultDiacriticsRemovalMap.length; i++) {
       str = str.replace(defaultDiacriticsRemovalMap[i].letters, defaultDiacriticsRemovalMap[i].base);
     }
-   return str;
+   return str.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
   }
 

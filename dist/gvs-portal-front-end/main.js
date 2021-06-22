@@ -674,7 +674,7 @@ class FacInNewComponent {
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
         this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
         this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;
-        this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
+        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode);
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
         this.payload.Dept_IN = this.reviewDetailsIndia.Department_number;
         this.payload.authLevel_final = this.reviewDetailsIndia.authLevel;
@@ -5350,10 +5350,10 @@ class VoipInUpdateComponent {
         // fields picked up from form -- begins	
         this.payload.Projectid_Disp = '';
         this.payload.icano_Disp = '';
-        this.payload.Department_number_Disp = this.chargeDisp;
+        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.chargeDisp);
         this.payload.accid_Disp = '';
         this.payload.Identifier_Selected = this.jabberDisp.substring(0, 8);
-        this.payload.updated_for = 'ChargeDepartment=' + this.chargeDisp;
+        this.payload.updated_for = 'ChargeDepartment=' + Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.chargeDisp);
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends	
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
@@ -11755,12 +11755,12 @@ class FacInUpdateComponent {
         this.payload.Location_1 = this.Location_1;
         this.payload.Buildings = this.Buildings;
         this.payload.Funded = this.Funded;
-        this.payload.chargeDepartmentCode = this.chargeDepartmentCode;
+        this.payload.chargeDepartmentCode = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.chargeDepartmentCode);
         this.payload.authLevel = this.newAuthLevelValue;
         this.payload.bj_disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.bj_disp);
         this.payload.ReqNo = this.reqno;
         this.payload.updated_for = this.getUpdatedFor();
-        this.payload.updated_for_values = this.UpdatedForValues;
+        this.payload.updated_for_values = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.UpdatedForValues);
         // fields to be picked up from form -- ends	
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
@@ -17178,11 +17178,11 @@ class VoipInMoveComponent {
         //this.payload. = this.reviewDetailsIndia.campus;
         // by default set to true. below line can be removed if needed.	
         this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;
-        this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;
+        this.payload.Projectid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.projectId);
         this.payload.icano_Disp = '';
         this.payload.Identifier_Disp = this.reviewDetailsIndia.jabberNumbertoMove;
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
-        this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
+        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode);
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.correct_location = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.accid_Disp = '';
@@ -20375,11 +20375,11 @@ class VoipInNewComponent {
         this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
         // by default set to true. below line can be removed if needed.	
         this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;
-        this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;
+        this.payload.Projectid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.projectId);
         this.payload.icano_Disp = "";
         this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
-        this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
+        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode);
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.accid_Disp = "";
         this.payload.ReqNo = this.reqno;
@@ -21414,10 +21414,10 @@ class HpInNewComponent {
         this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
         // by default set to true. below line can be removed if needed.	
         this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;
-        this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;
+        this.payload.Projectid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.projectId);
         this.payload.icano_Disp = this.reviewDetailsIndia.icaCode;
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
-        this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;
+        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode);
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.accid_Disp = this.reviewDetailsIndia.accountId;
         this.payload.ReqNo = this.reqno;
@@ -26761,7 +26761,7 @@ class VoipUsaUpdateComponent {
         this.payload.Projectid_Disp = '';
         this.payload.icano_Disp = '';
         //this.payload.Department_number_Disp = this.chargeDisp;
-        this.payload.accid_Disp = this.accountid_Disp;
+        this.payload.accid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.accountid_Disp);
         this.payload.Identifier_Selected = this.jabberDisp.substring(0, 8);
         this.payload.updated_for = '';
         this.payload.ReqNo = this.reqno;
