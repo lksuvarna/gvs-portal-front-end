@@ -38,7 +38,8 @@ export class RequestsComponent implements OnInit {
   commentsresult: any = [];
   lastcomment:any = [];
   stage:any;
-  reqFor : any
+  reqFor : any;
+  reqsta:any;
   sessionwarninginfosnow:any;
   warninginfosnowreq=false
 
@@ -54,9 +55,9 @@ export class RequestsComponent implements OnInit {
     this.DisplayModel = 'none';
   }
   ngOnInit(): void {
-    window.addEventListener("keyup", disableF5);
+   // window.addEventListener("keyup", disableF5);
 
-    window.addEventListener("keydown", disableF5);
+   // window.addEventListener("keydown", disableF5);
     this.display = false
     this.snowdata = sessionStorage.getItem('identifier');
     this.empserial = sessionStorage.getItem('empserial');
@@ -77,7 +78,16 @@ export class RequestsComponent implements OnInit {
      this.stage=this.snowdata[this.i].stage.toLowerCase();
      
     //  if ((this.stage==="waiting for approval" || this.stage==="rejected") && this.stage!=="closed incomplete") {
-        this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver_requests", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
+       if(this.snowdata[this.i].cat_item.display_value.includes('New')){
+        this.reqsta="-NS-"
+       }
+       else if(this.snowdata[this.i].cat_item.display_value.includes('Update')){
+        this.reqsta="-US-"
+       }
+       else if(this.snowdata[this.i].cat_item.display_value.includes('Delete')){
+        this.reqsta="-DS-"
+       }
+    this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver_requests", this.reqsta + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
          
           this.approver.push("("+data.message[0]['approver.name']+")");
         
