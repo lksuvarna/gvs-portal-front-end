@@ -1152,7 +1152,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\HARSHITHAARAVA\Desktop\Cirrus Latest\Cirrus latest new\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -23981,8 +23981,8 @@ class RequestsComponent {
         this.DisplayModel = 'none';
     }
     ngOnInit() {
-        window.addEventListener("keyup", disableF5);
-        window.addEventListener("keydown", disableF5);
+        // window.addEventListener("keyup", disableF5);
+        // window.addEventListener("keydown", disableF5);
         this.display = false;
         this.snowdata = sessionStorage.getItem('identifier');
         this.empserial = sessionStorage.getItem('empserial');
