@@ -91,7 +91,7 @@ export class VoipAuMoveComponent implements OnInit {
     if(this.itn_sel != '') {
     for(var j=0;j<this.jabberNumber.length;j++) {
         if(loc.trim().toLowerCase() == this.profilelocationlists[j].trim().toLowerCase() && this.itn_sel == this.jabberNumber[j]) {
-          alert('Sorry, according to our record, you already have a jabber number for the selected location. To keep this number, no further action is needed.');
+          alert('Please verify the chosen location; according to our records, you already have a Jabber / phone number at this site. If this is correct, no further action is needed.');
           setTimeout(() => {
             this.loc_sel = 'Select Location';
           }, 100);
@@ -108,7 +108,7 @@ export class VoipAuMoveComponent implements OnInit {
     }
     this.selectedjabber = formData.value.Identifier_Selected;
     if(formData.value.Location_Selected.toUpperCase() == 'SELECT LOCATION') {
-      alert(this.mainConfiguration.alerttranslation.selectlocation);
+      alert(this.mainConfiguration.alerttranslation.selectlocationsp);
       return;
     }
 
