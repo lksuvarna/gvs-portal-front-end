@@ -54,7 +54,7 @@ export class RequestsComponent implements OnInit {
     this.allComments=[];
     this.DisplayModel = 'none';
   }
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
    // window.addEventListener("keyup", disableF5);
 
    // window.addEventListener("keydown", disableF5);
@@ -72,7 +72,7 @@ export class RequestsComponent implements OnInit {
     var parsed = JSON.parse(JSON.stringify(JSON.parse(this.snowdata)));
     this.snowdata = parsed;
     
-    console.log(this.snowdata.length)
+    console.log("snowlength"+this.snowdata.length)
     for (this.i = 0; this.i < this.snowdata.length; this.i++) {
      this.stage='';
      this.stage=this.snowdata[this.i].stage.toLowerCase();
@@ -88,9 +88,12 @@ export class RequestsComponent implements OnInit {
         this.reqsta="-DS-"
        }
     this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver_requests", this.reqsta + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
-         
+         if(data.message.length==0){
+          this.approver.push("na")
+         }
+        else{
           this.approver.push("("+data.message[0]['approver.name']+")");
-        
+        }
           
         },
         (error) => {                              //Error callback
@@ -125,7 +128,7 @@ export class RequestsComponent implements OnInit {
          console.error('error caught in component'+error);
          this.errorinfo=true;
        })
-      
+       await wait_promise(500);
     }}
 
     const servicesData = {
@@ -137,6 +140,14 @@ export class RequestsComponent implements OnInit {
       ]
     }
     this.servicesData = servicesData.data[0];
+    function wait_promise(ms:any) 
+	{
+		return new Promise((resolve, reject) => {
+		setTimeout(() => {
+		resolve(ms);
+		}, ms )
+		})
+	}
     function disableF5(e:any) {
 
       if (((e.which || e.keyCode) == 116)|| ((e.which || e.keyCode) == 17) || ((e.which || e.keyCode) == 82)|| ((e.which || e.keyCode) == 123)|| ((e.which || e.key) == 'ctrl+R')|| (e.which || e.keyCode) == 82 ) e.preventDefault(); 
