@@ -236,7 +236,7 @@ export class HpIndonesiaUpdateComponent implements OnInit {
       return;
     }	
     if(this.showformacadd ==true && (formData.value.MAC1.trim() == '' || formData.value.MAC1.length != 12)) {	
-      alert('Please provide the MAC address (12 character limit).');
+      alert('Please provide the MAC address; only the following alphanumeric characters are permitted: 0-9, A-F.');
       return;	
     }
     if(this.showformacadd == true && formData.value.MAC1 == this.currentMac) {
@@ -245,7 +245,7 @@ export class HpIndonesiaUpdateComponent implements OnInit {
     }
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
     if(this.showformacadd == true && (pat1.test(formData.value.MAC1))) {
-      alert('Please verify the MAC address; only alphanumeric characters (0 to 9 and A to F) are permitted.');
+      alert('Please verify the MAC address; only the following alphanumeric characters are permitted: 0-9, A-F.');
       return;
     }
     if(this.showLocation == true && formData.value.Location_1_1 == '') {	
