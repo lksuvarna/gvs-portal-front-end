@@ -141,7 +141,7 @@
                             <span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%" class="ds-pad-t-1 ds-pad-b-1">
-                            <input name="Newdesc" value="" id="desc" class="ds-input " style="width:300px !important;" title="{{ 'tooltips.NewDescription'| translate}}" maxlength="500;" ngModel><br>
+                            <input name="Newdesc" value="" id="desc" class="ds-input " style="width:300px !important;" title="{{ 'tooltips.NewDescription'| translate}}" maxlength="30;" ngModel><br>
                         </td>
                     </tr>
 
@@ -150,8 +150,10 @@
                             <label class="" translate>fixedphonenew.ReasonforUpdation<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%">
-                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="{{ 'tooltips.ReasonforUpdate'| translate}}" rows="2" cols="40" maxlength="200;" ngModel>
-                        </textarea><br>
+                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="{{ 'tooltips.ReasonforUpdate'| translate}}" rows="2" cols="40" maxlength="500;" ngModel>
+                        </textarea>
+                        <label>Note:Length should not exceed 500</label>
+                        <br>
                         </td>
                     </tr>
                 </tbody>

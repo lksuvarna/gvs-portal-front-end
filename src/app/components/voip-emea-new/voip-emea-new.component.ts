@@ -74,7 +74,7 @@ export class VoipEmeaNewComponent implements OnInit {
   entryDetailsEMEA(formData: NgForm) {	    
       
     if(formData.value.Location.toUpperCase() == 'SELECT LOCATION' || formData.value.Location == '') {	
-      alert(this.mainConfiguration.alerttranslation.selectlocation);	
+      alert(this.mainConfiguration.alerttranslation.selectlocationsp);	
       return;	
     }
     

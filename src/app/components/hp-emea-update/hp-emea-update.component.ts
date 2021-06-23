@@ -5,7 +5,7 @@ import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Location} from '@angular/common';	
-import { fixedphone_update, Create_Cache_fixedphone} from 'config/payload';
+import { fixedphone_update, Create_Cache_fixedphone,removeDiacritics} from 'config/payload';
 import {Db2Service} from '../../_services/db2.service';
 import { TranslateConfigService } from '../../_services/translate-config.service';
 
@@ -378,8 +378,8 @@ backClick(formData: NgForm){
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
 
-      this.payload.Comments_Disp = this.reviewDetailsIndia.justification;
-      this.payload.Newdesc_Disp = this.reviewDetailsIndia.description;
+      this.payload.Comments_Disp = removeDiacritics(this.reviewDetailsIndia.justification);
+      this.payload.Newdesc_Disp = removeDiacritics(this.reviewDetailsIndia.description);
       this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
       this.payload.updatereq_Disp = this.reviewDetailsIndia.device;
