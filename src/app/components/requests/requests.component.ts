@@ -54,9 +54,9 @@ export class RequestsComponent implements OnInit {
     this.DisplayModel = 'none';
   }
   ngOnInit(): void {
-    window.addEventListener("keyup", disableF5);
+   // window.addEventListener("keyup", disableF5);
 
-    window.addEventListener("keydown", disableF5);
+   // window.addEventListener("keydown", disableF5);
     this.display = false
     this.snowdata = sessionStorage.getItem('identifier');
     this.empserial = sessionStorage.getItem('empserial');
