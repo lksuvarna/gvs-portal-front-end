@@ -24001,7 +24001,16 @@ class RequestsComponent {
                 this.stage = '';
                 this.stage = this.snowdata[this.i].stage.toLowerCase();
                 //  if ((this.stage==="waiting for approval" || this.stage==="rejected") && this.stage!=="closed incomplete") {
-                this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver_requests", '-NS-' + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
+                if (this.snowdata[this.i].cat_item.display_value.includes('New')) {
+                    this.reqsta = "-NS-";
+                }
+                else if (this.snowdata[this.i].cat_item.display_value.includes('Update')) {
+                    this.reqsta = "-US-";
+                }
+                else if (this.snowdata[this.i].cat_item.display_value.includes('Delete')) {
+                    this.reqsta = "-DS-";
+                }
+                this.servicenowservice.searchsnowcoments(this.empserial, "snow_approver_requests", this.reqsta + this.empserial.substr(0, 6), this.snowdata[this.i].number).subscribe(data => {
                     this.approver.push("(" + data.message[0]['approver.name'] + ")");
                 }, (error) => {
                     console.error('error caught in component' + error);
