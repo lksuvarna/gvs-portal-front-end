@@ -260,11 +260,11 @@ export class VoipInNewComponent implements OnInit {
       this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
       // by default set to true. below line can be removed if needed.	
       this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;	
-      this.payload.Projectid_Disp = removeDiacritics(this.reviewDetailsIndia.projectId);	
+      this.payload.Projectid_Disp = removeDiacritics(this.reviewDetailsIndia.projectId.replace(/[\n\r"\\+]/g, ' '));	
       this.payload.icano_Disp = "";
       this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;	
       this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
-      this.payload.Department_number_Disp = removeDiacritics(this.reviewDetailsIndia.chargeDepartmentCode);	
+      this.payload.Department_number_Disp = removeDiacritics(this.reviewDetailsIndia.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));	
       this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
       this.payload.accid_Disp="";
       this.payload.ReqNo=this.reqno;	

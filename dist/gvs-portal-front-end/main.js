@@ -628,7 +628,7 @@ class FacInNewComponent {
         this.reviewDetailsIndia.authLevel = formData.value.authLevel;
         this.reviewDetailsIndia.Fac_Type = formData.value.Fac_Type;
         this.reviewDetailsIndia.validity = formData.value.validity;
-        this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r+]/g, ' ');
+        this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r"+]/g, ' ');
         if (formData.value.authLevel === 'STD') {
             this.reviewDetailsIndia.authValue = '4';
         }
@@ -1152,7 +1152,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -1731,8 +1731,8 @@ class HpUsaNewComponent {
         // this.reviewDetailsIndia.employeeId = formData.value.StepMentor;
         this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
         this.reviewDetailsIndia.cos = formData.value.cos;
-        this.reviewDetailsIndia.justification = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.Justification);
-        this.reviewDetailsIndia.description = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.Description);
+        this.reviewDetailsIndia.justification = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.Justification.replace(/[\n\r"\\+]/g, ' '));
+        this.reviewDetailsIndia.description = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.Description.replace(/[\n\r"\\+]/g, ' '));
         this.reviewDetailsIndia.mac = formData.value.MACAddress;
         this.create_cache(formData);
     }
@@ -5350,10 +5350,10 @@ class VoipInUpdateComponent {
         // fields picked up from form -- begins	
         this.payload.Projectid_Disp = '';
         this.payload.icano_Disp = '';
-        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.chargeDisp);
+        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.chargeDisp.replace(/[\n\r"\\+]/g, ' '));
         this.payload.accid_Disp = '';
         this.payload.Identifier_Selected = this.jabberDisp.substring(0, 8);
-        this.payload.updated_for = 'ChargeDepartment=' + Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.chargeDisp);
+        this.payload.updated_for = 'ChargeDepartment=' + Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.chargeDisp.replace(/[\n\r"\\+]/g, ' '));
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends	
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
@@ -8206,7 +8206,7 @@ class VoipLaUpdateComponent {
         this.payload.ReqNo = this.reqno;
         this.payload.Current_COS = this.cos_disp;
         this.payload.Current_VM = this.vm_disp;
-        this.payload.Justification = this.bj_disp.replace(/[\n\r+]/g, ' ');
+        this.payload.Justification = this.bj_disp.replace(/[\n\r"+]/g, ' ');
         this.payload.New_Voice = this.new_vm_disp;
         this.payload.New_COS = this.new_cos_disp;
         // fields to be picked up from form -- ends	
@@ -11693,7 +11693,7 @@ class FacInUpdateComponent {
         this.authLevel = formData.value.authLevel;
         this.newAuthLevelValue = this.authCalculation(formData.value.authLevel);
         this.bj_disp = formData.value.businessjustification;
-        this.bj_disp = formData.value.businessjustification.replace(/[\n\r+]/g, ' ');
+        this.bj_disp = formData.value.businessjustification.replace(/[\n\r"+]/g, ' ');
         this.isReviewForm = false;
         this.isEntryForm = true;
         this.authValue = this.authCalculation(this.currAuthorizationLevel);
@@ -14004,7 +14004,7 @@ class VoipAllSpecialRequestComponent {
         this.payload.countryname = this.countrydetails.name;
         this.payload.request_type = 'special_request';
         this.payload.Location_Disp = this.getLocationCorrect();
-        this.payload.Comments = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.requirements_disp.replace(/[\n\r+]/g, ' '));
+        this.payload.Comments = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.requirements_disp.replace(/[\n\r"\\+]/g, ' '));
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
         // console.log('Payload');	
         // console.log(this.payload);	
@@ -17199,11 +17199,11 @@ class VoipInMoveComponent {
         //this.payload. = this.reviewDetailsIndia.campus;
         // by default set to true. below line can be removed if needed.	
         this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;
-        this.payload.Projectid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.projectId);
+        this.payload.Projectid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.projectId.replace(/[\n\r"\\+]/g, ' '));
         this.payload.icano_Disp = '';
         this.payload.Identifier_Disp = this.reviewDetailsIndia.jabberNumbertoMove;
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
-        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode);
+        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.correct_location = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.accid_Disp = '';
@@ -17732,7 +17732,7 @@ class MobileDzNewComponent {
         }
         this.isEntryForm = true;
         this.isReviewForm = false;
-        this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r+]/g, ' ');
+        this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r"+]/g, ' ');
         // set up the cache for form values.
         this.create_cache(formData);
     }
@@ -20398,11 +20398,11 @@ class VoipInNewComponent {
         this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
         // by default set to true. below line can be removed if needed.	
         this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;
-        this.payload.Projectid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.projectId);
+        this.payload.Projectid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.projectId.replace(/[\n\r"\\+]/g, ' '));
         this.payload.icano_Disp = "";
         this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
-        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode);
+        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.accid_Disp = "";
         this.payload.ReqNo = this.reqno;
@@ -21437,10 +21437,10 @@ class HpInNewComponent {
         this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
         // by default set to true. below line can be removed if needed.	
         this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;
-        this.payload.Projectid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.projectId);
+        this.payload.Projectid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.projectId.replace(/[\n\r"\\+]/g, ' '));
         this.payload.icano_Disp = this.reviewDetailsIndia.icaCode;
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
-        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode);
+        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.accid_Disp = this.reviewDetailsIndia.accountId;
         this.payload.ReqNo = this.reqno;
@@ -21448,7 +21448,7 @@ class HpInNewComponent {
         this.payload.Model_Disp = this.reviewDetailsIndia.model;
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
-        this.payload.Desc_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.description);
+        this.payload.Desc_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
         this.payload.Justification_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.justification);
@@ -25767,7 +25767,7 @@ class ApprovalSinglePageComponent {
         if (this.flag) {
             this.isButtonVisible = false;
             this.isSpinnerVisible = true;
-            this.servicenowservice.approvesnow(this.request_sysid, action, Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.rejectioncomments)).subscribe(data => {
+            this.servicenowservice.approvesnow(this.request_sysid, action, Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.rejectioncomments.replace(/[\n\r"\\+]/g, ' '))).subscribe(data => {
                 console.log('response', data);
                 if (data) {
                     this.router.navigate(['/approvalresult'], { queryParams: { country: this.pcode, service: this.service } });
@@ -26821,7 +26821,7 @@ class VoipUsaUpdateComponent {
         this.payload.Projectid_Disp = '';
         this.payload.icano_Disp = '';
         //this.payload.Department_number_Disp = this.chargeDisp;
-        this.payload.accid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.accountid_Disp);
+        this.payload.accid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.accountid_Disp.replace(/[\n\r"\\+]/g, ' '));
         this.payload.Identifier_Selected = this.jabberDisp.substring(0, 8);
         this.payload.updated_for = '';
         this.payload.ReqNo = this.reqno;
@@ -30377,8 +30377,8 @@ class HpAuUpdateComponent {
         this.isSpinnerVisible = true;
         this.payload.orinator_payload = this.orgi;
         this.payload.cNum_payload = this.cnum;
-        this.payload.Comments_Disp = Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.justification);
-        this.payload.Newdesc_Disp = Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.description);
+        this.payload.Comments_Disp = Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
+        this.payload.Newdesc_Disp = Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
         this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
         this.payload.MAC_Disp = this.reviewDetailsIndia.newMac;
         this.payload.updatereq_Disp = this.reviewDetailsIndia.updatereq.toLowerCase();
@@ -33413,8 +33413,8 @@ class HpInUpdateComponent {
         this.isSpinnerVisible = true;
         this.payload.orinator_payload = this.orgi;
         this.payload.cNum_payload = this.cnum;
-        this.payload.Comments_Disp = Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.justification);
-        this.payload.Newdesc_Disp = Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.description);
+        this.payload.Comments_Disp = Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
+        this.payload.Newdesc_Disp = Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
         this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
         this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();

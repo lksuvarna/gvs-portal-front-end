@@ -425,8 +425,8 @@ export class HpInUpdateComponent implements OnInit {
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
 
-      this.payload.Comments_Disp = removeDiacritics(this.reviewDetailsIndia.justification);
-      this.payload.Newdesc_Disp = removeDiacritics(this.reviewDetailsIndia.description);
+      this.payload.Comments_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
+      this.payload.Newdesc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
       this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
       this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();

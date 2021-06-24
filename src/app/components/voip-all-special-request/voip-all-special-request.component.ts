@@ -219,7 +219,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.payload.countryname=this.countrydetails.name;	
       this.payload.request_type='special_request';	
       this.payload.Location_Disp=this.getLocationCorrect() 
-      this.payload.Comments = removeDiacritics(this.requirements_disp.replace(/[\n\r+]/g, ' '));
+      this.payload.Comments = removeDiacritics(this.requirements_disp.replace(/[\n\r"\\+]/g, ' '));
       this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
     
       

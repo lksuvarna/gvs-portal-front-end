@@ -124,7 +124,7 @@ export class ApprovalSinglePageComponent implements OnInit {
     if(this.flag){
       this.isButtonVisible=false;	
       this.isSpinnerVisible=true;	
-    this.servicenowservice.approvesnow(this.request_sysid,action,removeDiacritics(this.rejectioncomments)).subscribe(data=> {
+    this.servicenowservice.approvesnow(this.request_sysid,action,removeDiacritics(this.rejectioncomments.replace(/[\n\r"\\+]/g, ' '))).subscribe(data=> {
       console.log('response', data);
       if(data){		
         this.router.navigate(['/approvalresult'],{ queryParams: { country: this.pcode, service:this.service}}) ;	

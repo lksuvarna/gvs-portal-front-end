@@ -92,7 +92,7 @@ export class MobileDzNewComponent implements OnInit {
     this.isEntryForm = true;	
     this.isReviewForm = false;	
 
-    this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r+]/g, ' ');	
+    this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r"+]/g, ' ');	
    // set up the cache for form values.
     this.create_cache(formData);
 

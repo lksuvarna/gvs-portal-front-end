@@ -237,11 +237,11 @@ export class VoipInMoveComponent implements OnInit {
     //this.payload. = this.reviewDetailsIndia.campus;
     // by default set to true. below line can be removed if needed.	
     this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;
-    this.payload.Projectid_Disp = removeDiacritics(this.reviewDetailsIndia.projectId);
+    this.payload.Projectid_Disp = removeDiacritics(this.reviewDetailsIndia.projectId.replace(/[\n\r"\\+]/g, ' '));
     this.payload.icano_Disp = '';	
     this.payload.Identifier_Disp = this.reviewDetailsIndia.jabberNumbertoMove;
     this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
-    this.payload.Department_number_Disp = removeDiacritics(this.reviewDetailsIndia.chargeDepartmentCode);
+    this.payload.Department_number_Disp = removeDiacritics(this.reviewDetailsIndia.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));
     this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
     this.payload.correct_location = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
     this.payload.accid_Disp='';
