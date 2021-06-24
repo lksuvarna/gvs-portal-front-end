@@ -51,7 +51,7 @@ export class FeedbackComponent implements OnInit {
     {
       if(formData.value.feedbackArea.length==0)
       {
-      alert("Please provide feedback");
+      alert("Please provide feedback.");
       }
       else if(formData.value.feedbackArea.length < 5)
       {

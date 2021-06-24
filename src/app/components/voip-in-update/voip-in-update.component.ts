@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
 import { Db2Service } from '../../_services/db2.service';
-import {Create_Cache_jabber, Jabber_Update} from '../../../../config/payload';
+import {Create_Cache_jabber, Jabber_Update, removeDiacritics} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { TranslateConfigService } from '../../_services/translate-config.service';
 
@@ -113,10 +113,10 @@ export class VoipInUpdateComponent implements OnInit {
       // fields picked up from form -- begins	
       this.payload.Projectid_Disp = '';
       this.payload.icano_Disp = '';	
-      this.payload.Department_number_Disp = this.chargeDisp;
+      this.payload.Department_number_Disp = removeDiacritics(this.chargeDisp.replace(/[\n\r"\\+]/g, ' '));
       this.payload.accid_Disp = '';
       this.payload.Identifier_Selected = this.jabberDisp.substring(0,8)	;
-      this.payload.updated_for = 'ChargeDepartment='+this.chargeDisp;
+      this.payload.updated_for = 'ChargeDepartment='+removeDiacritics(this.chargeDisp.replace(/[\n\r"\\+]/g, ' '));
 
       this.payload.ReqNo=this.reqno;	
   

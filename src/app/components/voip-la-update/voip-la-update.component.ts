@@ -296,7 +296,7 @@ export class VoipLaUpdateComponent implements OnInit {
       this.payload.ReqNo=this.reqno;
       this.payload.Current_COS=this.cos_disp;
       this.payload.Current_VM=this.vm_disp;
-      this.payload.Justification=this.bj_disp.replace(/[\n\r+]/g, ' ');
+      this.payload.Justification=this.bj_disp.replace(/[\n\r"+]/g, ' ');
       this.payload.New_Voice=this.new_vm_disp;
       this.payload.New_COS=this.new_cos_disp
       // fields to be picked up from form -- ends	

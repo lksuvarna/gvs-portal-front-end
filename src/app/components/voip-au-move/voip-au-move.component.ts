@@ -31,6 +31,7 @@ export class VoipAuMoveComponent implements OnInit {
   cnum : any;	
   reqno:any;	
   orgi:any;
+  locSelected:any;
   errorinfo=false;
   countrydetails : any;
   pcode: any;	
@@ -91,13 +92,11 @@ export class VoipAuMoveComponent implements OnInit {
     if(this.itn_sel != '') {
     for(var j=0;j<this.jabberNumber.length;j++) {
         if(loc.trim().toLowerCase() == this.profilelocationlists[j].trim().toLowerCase() && this.itn_sel == this.jabberNumber[j]) {
-          alert('Sorry, according to our record, you already have a jabber number for the selected location. To keep this number, no further action is needed.');
+          alert('Please verify the chosen location; according to our records, you already have a Jabber / phone number at this site. If this is correct, no further action is needed.');
           setTimeout(() => {
             this.loc_sel = 'Select Location';
           }, 100);
-        } else {
-          this.loc_sel = loc;
-        }
+        } 
     }
   } 
   }
@@ -108,7 +107,7 @@ export class VoipAuMoveComponent implements OnInit {
     }
     this.selectedjabber = formData.value.Identifier_Selected;
     if(formData.value.Location_Selected.toUpperCase() == 'SELECT LOCATION') {
-      alert(this.mainConfiguration.alerttranslation.selectlocation);
+      alert(this.mainConfiguration.alerttranslation.selectlocationsp);
       return;
     }
 
@@ -196,7 +195,26 @@ export class VoipAuMoveComponent implements OnInit {
       this.payload.correct_location = this.reviewDetailsIndia.Location_Selected;
       this.payload.Site_location= this.reviewDetailsIndia.currentLocation;
       this.payload.Identifier_Disp = this.reviewDetailsIndia.Identifier_Selected;
-      
+      this.locSelected = this.reviewDetailsIndia.Location_Selected;
+      this.payload.Location_final =this.reviewDetailsIndia.Location_Selected;
+      if(this.countrydetails.Location_final_formula_jabber){
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.Location_final_formula_jabber);
+      } else {
+        this.payload.correct_location = this.locSelected
+      } 
+      if(this.countrydetails.cos_formula_jabber){
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.cos_formula_jabber);
+      } else {
+        this.payload.class_of_serice =this.countrydetails.class_of_serice ;	
+      } 
+      if(this.countrydetails.did_loc_formula_jabber){
+        // Assign location value from cloudant. Needed for ITN allocation
+        eval(this.countrydetails.did_loc_formula_jabber);
+      } else {
+        this.payload.Location_final = this.locSelected
+      } 
       
      // console.log('Payload');	
      // console.log(this.payload);	

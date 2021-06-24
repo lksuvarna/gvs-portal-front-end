@@ -60,7 +60,7 @@ export class EnExtensionAuSummaryComponent implements OnInit {
       return;
     }
     if(formData.value.identifier.trim().length < 8 || formData.value.identifier.includes(" ")){
-      alert("ITN Number should be of 8 characters");
+      alert("Phone Number should be of 8 characters");
       return;
     }
     this.identifierEntered = formData.value.identifier;

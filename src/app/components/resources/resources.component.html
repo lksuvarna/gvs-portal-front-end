@@ -53,7 +53,7 @@
                     </tr>
 
                     <tr valign="top">
-                        <td class="ds-pad-l-1" width="172" bgcolor="#FFFFFF">{{no.ATTRIBUTE1!=null&&no.ATTRIBUTE1.includes("SEP")&&!no.ATTRIBUTE8.includes("chcs")?"Fixed Phone":no.ATTRIBUTE1!=null&&no.ATTRIBUTE1.includes("SEP")&&no.ATTRIBUTE8.includes("chcs")?"Jabber,Fixed Phone":no.TYPE.includes("ip")?"Jabber":no.TYPE.includes("fac")?"FAC":no.TYPE}}</td>
+                        <td class="ds-pad-l-1" width="172" bgcolor="#FFFFFF">{{no.ATTRIBUTE1!=null&&no.ATTRIBUTE1.includes("SEP")&&(no.ATTRIBUTE8==null||!no.ATTRIBUTE8.includes("chcs"))?"Fixed Phone":no.ATTRIBUTE1!=null&&no.ATTRIBUTE1.includes("SEP")&&(no.ATTRIBUTE8!=null && no.ATTRIBUTE8.includes("chcs"))?"Jabber,Fixed Phone":no.TYPE.includes("ip")?"Jabber":no.TYPE.includes("fac")?"FAC":no.TYPE}}</td>
                         <td width="172" bgcolor="#FFFFFF">
                             <font color="#808080"> </font>{{no.SUPPLIER}}
                             <font color="#808080"> </font>
@@ -62,7 +62,7 @@
                             <font color="#808080"> </font>{{no.TYPE.includes("fac")?"XXXXXXXX":no.IDENTIFIER}}
                         </td>
                         <td colspan="2" width="345" bgcolor="#FFFFFF">
-                            <font color="#808080"> </font>{{no.ATTRIBUTE8.includes("chcs")?"Primary":no.ATTRIBUTE8.includes("secondary")?"Add-on":no.ATTRIBUTE8.includes("Secondary")?"Add-on":""}}
+                            <font color="#808080"> </font>{{(no.ATTRIBUTE8!=null && no.ATTRIBUTE8.includes("chcs"))?"Primary":(no.ATTRIBUTE8!=null && no.ATTRIBUTE8.includes("secondary"))?"Add-on":(no.ATTRIBUTE8!=null && no.ATTRIBUTE8.includes("Secondary"))?"Add-on":""}}
                         </td>
                         <br><br>
                     </tr>

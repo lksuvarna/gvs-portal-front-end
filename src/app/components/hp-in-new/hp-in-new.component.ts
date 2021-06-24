@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import { bpservices } from '../../_services/bp.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {fixedphone_new,Create_Cache_fixedphone} from '../../../../config/payload';	
+import {fixedphone_new,Create_Cache_fixedphone, removeDiacritics} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
 import { TranslateConfigService } from '../../_services/translate-config.service'; 
 
@@ -360,12 +360,12 @@ entryDetails(formData: NgForm) {
       return;
     }
     if(formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
-      alert('Please provide the MAC address (12 character limit).');
+      alert('Please provide the MAC address; only the following alphanumeric characters are permitted: 0-9, A-F.');
       return;
     }
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;
     if(pat1.test(formData.value.MACAddress)) {
-      alert('Please provide MAC address in a combination of 0 to 9 and A to F');
+      alert('Please verify the MAC address; only alphanumeric characters (0 to 9 and A to F) are permitted.');
       return
     }
 
@@ -385,7 +385,7 @@ entryDetails(formData: NgForm) {
   this.reviewDetailsIndia.employeeId = "";
   this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
   this.reviewDetailsIndia.justification = formData.value.Justification;
-  this.reviewDetailsIndia.description = formData.value.Description;
+  this.reviewDetailsIndia.description =formData.value.Description;
   this.reviewDetailsIndia.mac = formData.value.MACAddress;
   if(formData.value.Device_Type !== 'Fixed Phone User') {
     this.reviewDetailsIndia.cos = "";
@@ -442,10 +442,10 @@ submit_snow(){
     this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
     // by default set to true. below line can be removed if needed.	
     this.payload.Voice_Type_Disp = 	this.reviewDetailsIndia.funded;
-    this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
+    this.payload.Projectid_Disp = removeDiacritics(this.reviewDetailsIndia.projectId.replace(/[\n\r"\\+]/g, ' '));	
     this.payload.icano_Disp = this.reviewDetailsIndia.icaCode;	
     this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
-    this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
+    this.payload.Department_number_Disp = removeDiacritics(this.reviewDetailsIndia.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));	
     this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;	
     this.payload.accid_Disp=this.reviewDetailsIndia.accountId;	
     this.payload.ReqNo=this.reqno;
@@ -453,10 +453,10 @@ submit_snow(){
     this.payload.Model_Disp =  this.reviewDetailsIndia.model;
     this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
     this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
-    this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+    this.payload.Desc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
     this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
-    this.payload.Justification_Disp = this.reviewDetailsIndia.justification;	
+    this.payload.Justification_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));	
 
     this.locSelected = this.reviewDetailsIndia.officeLocation
     if(this.countrydetails.did_loc_formula){

@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {Create_Cache_fac, Fac_New} from '../../../../config/payload';
+import {Create_Cache_fac, Fac_New, removeDiacritics} from '../../../../config/payload';
 
 @Component({
   selector: 'app-fac-in-new',
@@ -188,7 +188,7 @@ export class FacInNewComponent implements OnInit {
     this.reviewDetailsIndia.authLevel = formData.value.authLevel;	
     this.reviewDetailsIndia.Fac_Type = formData.value.Fac_Type;	
     this.reviewDetailsIndia.validity = formData.value.validity;	
-    this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r+]/g, ' ');	
+    this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r"+]/g, ' ');	
 
     if(formData.value.authLevel==='STD'){
       this.reviewDetailsIndia.authValue = '4'
@@ -239,13 +239,13 @@ export class FacInNewComponent implements OnInit {
       this.payload.Location_final =this.reviewDetailsIndia.officeLocation;	
       this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;		
       this.payload.Voice_Type_Disp=this.reviewDetailsIndia.funded;		
-      this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;		
+      this.payload.Department_number_Disp = removeDiacritics(this.reviewDetailsIndia.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));		
       this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit	
       this.payload.Dept_IN=this.reviewDetailsIndia.Department_number;		
       this.payload.authLevel_final=this.reviewDetailsIndia.authLevel;		
       this.payload.Fac_Type_disp=this.reviewDetailsIndia.Fac_Type;		
       this.payload.validity_disp =this.reviewDetailsIndia.validity;	
-      this.payload.comments =this.reviewDetailsIndia.Comments;
+      this.payload.comments =removeDiacritics(this.reviewDetailsIndia.Comments.replace(/[\n\r"\\+]/g, ' '));
       this.payload.authValue =this.reviewDetailsIndia.authValue;	
 
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	

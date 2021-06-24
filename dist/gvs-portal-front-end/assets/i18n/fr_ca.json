@@ -201,7 +201,7 @@
         "requests":"demandes.",
         "selectlocation":"Veuillez sélectionner l'emplacement approprié.",
         "selectjabbernumberdel":"Veuillez sélectionner le Jabber/numéro de téléphone à supprimer.",
-        "selectlocationsp" : "Veuillez sélectionner l'emplacement du Jabber / numéro de téléphone"
+        "selectlocationsp" : "Veuillez sélectionner le Jabber / Emplacement du numéro de téléphone"
 
 
     },
@@ -322,7 +322,10 @@
         "Caretotell":"Voulez-vous nous dire pourquoi ? Vos commentaires nous aideront à nous améliorer. ",    
         "Wearesopleasedthat":"Nous sommes ravis que vous vous sentiez ainsi à propos de Global Voice Services ! Voulez-vous nous dire pourquoi ?",
         "NoteThisfeedback":"Remarque : Ces commentaires sont destinés à l'expérience utilisateur du site Web. Pour tout autre commentaire, veuillez utiliser",
-       "Help":"Aider"
+       "Help":"Aider@IBM"
     
+     },
+     "approvalpending":{
+     "rejectserialnumber":"Pour rejeter une demande, cliquez sur le numéro de série correspondant."
      }
 }

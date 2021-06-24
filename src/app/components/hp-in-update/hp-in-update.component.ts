@@ -5,7 +5,7 @@ import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { servicenowservice } from '../../_services/servicenow.service';	
 import {Location} from '@angular/common';	
-import { fixedphone_update,Create_Cache_fixedphone} from 'config/payload';
+import { fixedphone_update,Create_Cache_fixedphone, removeDiacritics} from 'config/payload';
 import {Db2Service} from '../../_services/db2.service';
 import { TranslateConfigService } from '../../_services/translate-config.service'; 
 
@@ -302,16 +302,16 @@ export class HpInUpdateComponent implements OnInit {
     }	
 
     else if( formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (formData.value.MAC1 == '' || formData.value.MAC1.length != 12)) {	
-      alert('Please provide the MAC address (12 character limit).');
+      alert('Please provide the MAC address; only the following alphanumeric characters are permitted: 0-9, A-F.');
     }
     
     else if(formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (pat1.test(formData.value.MAC1))) {
-      alert('Please provide MAC address in a combination of 0 to 9 and A to F');
+      alert('Please verify the MAC address; only the following alphanumeric characters are permitted: 0-9, A-F.');
       return;
     }
 
     else if(formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && formData.value.MAC1 == this.currentMac){
-      alert('Please provide a different MAC Address as the current MAC Address is already '+this.currentMac );
+      alert('Please verify the MAC address; the information entered is the same as the current MAC address.');
     }
 
     else if(formData.value.UpdateReq.toLowerCase() != 'replace the hardphone only' && (formData.value.Newdesc.trim() == '' || formData.value.Comments == '/\s/')) {	
@@ -320,7 +320,7 @@ export class HpInUpdateComponent implements OnInit {
     }
 
     else if(formData.value.UpdateReq.toLowerCase() !== 'replace the hardphone only' && formData.value.Newdesc.trim() == this.currentdesc){
-      alert('You have selected the same description as the current phone description.' );
+      alert('Please verify the phone description; the information entered is the same as the current phone description.' );
     }
 
     // else if(this.showformodel == true && formData.value.newModel == this.currentmodel) {
@@ -425,8 +425,8 @@ export class HpInUpdateComponent implements OnInit {
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
 
-      this.payload.Comments_Disp = this.reviewDetailsIndia.justification;
-      this.payload.Newdesc_Disp = this.reviewDetailsIndia.description;
+      this.payload.Comments_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
+      this.payload.Newdesc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
       this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
       this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();
@@ -563,6 +563,7 @@ export class HpInUpdateComponent implements OnInit {
        if(this.cache_disp.newMac != undefined)
        this.newMacAddress = this.cache_disp.newMac;
        if(this.cache_disp.description != undefined)
+       
        this.newDescription = String(this.cache_disp.description);
        if(this.cache_disp.justification != undefined)
        this.reasonForUpdate = String(this.cache_disp.justification);
