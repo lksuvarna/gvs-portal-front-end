@@ -10385,9 +10385,6 @@ class VoipAuMoveComponent {
                         this.loc_sel = 'Select Location';
                     }, 100);
                 }
-                else {
-                    this.loc_sel = loc;
-                }
             }
         }
     }
@@ -10479,6 +10476,29 @@ class VoipAuMoveComponent {
         this.payload.correct_location = this.reviewDetailsIndia.Location_Selected;
         this.payload.Site_location = this.reviewDetailsIndia.currentLocation;
         this.payload.Identifier_Disp = this.reviewDetailsIndia.Identifier_Selected;
+        this.locSelected = this.reviewDetailsIndia.Location_Selected;
+        this.payload.Location_final = this.reviewDetailsIndia.Location_Selected;
+        if (this.countrydetails.Location_final_formula_jabber) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.Location_final_formula_jabber);
+        }
+        else {
+            this.payload.correct_location = this.locSelected;
+        }
+        if (this.countrydetails.cos_formula_jabber) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.cos_formula_jabber);
+        }
+        else {
+            this.payload.class_of_serice = this.countrydetails.class_of_serice;
+        }
+        if (this.countrydetails.did_loc_formula_jabber) {
+            // Assign location value from cloudant. Needed for ITN allocation
+            eval(this.countrydetails.did_loc_formula_jabber);
+        }
+        else {
+            this.payload.Location_final = this.locSelected;
+        }
         // console.log('Payload');	
         // console.log(this.payload);	
         this.servicenowservice.submit_request_move(this.payload).subscribe(data => {
