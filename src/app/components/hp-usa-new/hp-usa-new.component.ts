@@ -212,8 +212,8 @@ getFixedPhoneData(){
     // this.reviewDetailsIndia.employeeId = formData.value.StepMentor;
     this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
     this.reviewDetailsIndia.cos = formData.value.cos;
-    this.reviewDetailsIndia.justification = removeDiacritics(formData.value.Justification);
-    this.reviewDetailsIndia.description = removeDiacritics(formData.value.Description);
+    this.reviewDetailsIndia.justification = removeDiacritics(formData.value.Justification.replace(/[\n\r"+]/g, ' '));
+    this.reviewDetailsIndia.description = removeDiacritics(formData.value.Description.replace(/[\n\r"+]/g, ' '));
     this.reviewDetailsIndia.mac = formData.value.MACAddress;
   this.create_cache(formData);
 

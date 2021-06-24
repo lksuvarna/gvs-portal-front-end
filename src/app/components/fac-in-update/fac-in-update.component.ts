@@ -210,7 +210,7 @@ export class FacInUpdateComponent implements OnInit {
     this.authLevel = formData.value.authLevel
     this.newAuthLevelValue = this.authCalculation(formData.value.authLevel)
     this.bj_disp=formData.value.businessjustification;
-    this.bj_disp=formData.value.businessjustification.replace(/[\n\r+]/g, ' ');
+    this.bj_disp=formData.value.businessjustification.replace(/[\n\r"+]/g, ' ');
     this.isReviewForm = false;
     this.isEntryForm = true;
     this.authValue = this.authCalculation(this.currAuthorizationLevel)

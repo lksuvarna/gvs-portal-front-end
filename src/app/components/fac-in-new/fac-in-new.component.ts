@@ -188,7 +188,7 @@ export class FacInNewComponent implements OnInit {
     this.reviewDetailsIndia.authLevel = formData.value.authLevel;	
     this.reviewDetailsIndia.Fac_Type = formData.value.Fac_Type;	
     this.reviewDetailsIndia.validity = formData.value.validity;	
-    this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r+]/g, ' ');	
+    this.reviewDetailsIndia.Comments = formData.value.Comments.replace(/[\n\r"+]/g, ' ');	
 
     if(formData.value.authLevel==='STD'){
       this.reviewDetailsIndia.authValue = '4'
