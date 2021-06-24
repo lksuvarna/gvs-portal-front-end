@@ -360,7 +360,7 @@ entryDetails(formData: NgForm) {
       return;
     }
     if(formData.value.MACAddress == '' || formData.value.MACAddress.length != 12) {
-      alert('Please provide the MAC address (12 character limit).');
+      alert('Please provide the MAC address; only the following alphanumeric characters are permitted: 0-9, A-F.');
       return;
     }
     var pat1 = /[&\/\\#+()$~%.'":;*? !~`@<>{}g-zG-Z]/g;

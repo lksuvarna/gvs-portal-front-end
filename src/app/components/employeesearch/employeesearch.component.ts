@@ -42,6 +42,7 @@ export class EmployeesearchComponent implements OnInit {
   fpmodels: any;
   ccode = '';
   pcode = '';
+  approver: any = [];
   exitrouting: any;
   exitservice: any;
   routingname: any;
@@ -439,6 +440,7 @@ export class EmployeesearchComponent implements OnInit {
     console.log(' this.employeeSerial', this.employeeSerial);
     this.bpservices.bpdetails(this.employeeSerial).subscribe(data => {
       console.log(' this.employeeSerial', this.employeeSerial);
+      sessionStorage.setItem('reqemp', this.employeeSerial);
       console.log(' BP Details', data.userdata);
       if (data.userdata)
       { }else{this.emailblank=false;}

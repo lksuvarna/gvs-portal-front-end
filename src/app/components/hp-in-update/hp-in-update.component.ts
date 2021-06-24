@@ -302,11 +302,11 @@ export class HpInUpdateComponent implements OnInit {
     }	
 
     else if( formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (formData.value.MAC1 == '' || formData.value.MAC1.length != 12)) {	
-      alert('Please provide the MAC address (12 character limit).');
+      alert('Please provide the MAC address; only the following alphanumeric characters are permitted: 0-9, A-F.');
     }
     
     else if(formData.value.UpdateReq.toLowerCase() == 'replace the hardphone only' && (pat1.test(formData.value.MAC1))) {
-      alert('Please verify the MAC address; only alphanumeric characters (0 to 9 and A to F) are permitted.');
+      alert('Please verify the MAC address; only the following alphanumeric characters are permitted: 0-9, A-F.');
       return;
     }
 
