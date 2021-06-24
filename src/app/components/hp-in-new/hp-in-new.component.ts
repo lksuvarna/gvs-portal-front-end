@@ -442,10 +442,10 @@ submit_snow(){
     this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
     // by default set to true. below line can be removed if needed.	
     this.payload.Voice_Type_Disp = 	this.reviewDetailsIndia.funded;
-    this.payload.Projectid_Disp = removeDiacritics(this.reviewDetailsIndia.projectId.replace(/[\n\r"+]/g, ' '));	
+    this.payload.Projectid_Disp = removeDiacritics(this.reviewDetailsIndia.projectId.replace(/[\n\r"\\+]/g, ' '));	
     this.payload.icano_Disp = this.reviewDetailsIndia.icaCode;	
     this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
-    this.payload.Department_number_Disp = removeDiacritics(this.reviewDetailsIndia.chargeDepartmentCode.replace(/[\n\r"+]/g, ' '));	
+    this.payload.Department_number_Disp = removeDiacritics(this.reviewDetailsIndia.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));	
     this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;	
     this.payload.accid_Disp=this.reviewDetailsIndia.accountId;	
     this.payload.ReqNo=this.reqno;
@@ -453,7 +453,7 @@ submit_snow(){
     this.payload.Model_Disp =  this.reviewDetailsIndia.model;
     this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
     this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
-    this.payload.Desc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"+]/g, ' '));
+    this.payload.Desc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
     this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
     this.payload.Justification_Disp = removeDiacritics(this.reviewDetailsIndia.justification);	

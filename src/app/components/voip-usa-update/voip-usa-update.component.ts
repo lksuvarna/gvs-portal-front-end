@@ -124,7 +124,7 @@ export class VoipUsaUpdateComponent implements OnInit {
       this.payload.Projectid_Disp = '';
       this.payload.icano_Disp = '' ;	
       //this.payload.Department_number_Disp = this.chargeDisp;
-      this.payload.accid_Disp =removeDiacritics(this.accountid_Disp.replace(/[\n\r"+]/g, ' '));
+      this.payload.accid_Disp =removeDiacritics(this.accountid_Disp.replace(/[\n\r"\\+]/g, ' '));
       this.payload.Identifier_Selected = this.jabberDisp.substring(0,8);
       this.payload.updated_for = '';
       this.payload.ReqNo=this.reqno;	

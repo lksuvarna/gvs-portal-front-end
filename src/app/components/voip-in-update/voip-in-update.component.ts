@@ -113,10 +113,10 @@ export class VoipInUpdateComponent implements OnInit {
       // fields picked up from form -- begins	
       this.payload.Projectid_Disp = '';
       this.payload.icano_Disp = '';	
-      this.payload.Department_number_Disp = removeDiacritics(this.chargeDisp.replace(/[\n\r"+]/g, ' '));
+      this.payload.Department_number_Disp = removeDiacritics(this.chargeDisp.replace(/[\n\r"\\+]/g, ' '));
       this.payload.accid_Disp = '';
       this.payload.Identifier_Selected = this.jabberDisp.substring(0,8)	;
-      this.payload.updated_for = 'ChargeDepartment='+removeDiacritics(this.chargeDisp.replace(/[\n\r"+]/g, ' '));
+      this.payload.updated_for = 'ChargeDepartment='+removeDiacritics(this.chargeDisp.replace(/[\n\r"\\+]/g, ' '));
 
       this.payload.ReqNo=this.reqno;	
   
