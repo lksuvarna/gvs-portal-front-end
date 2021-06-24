@@ -674,13 +674,13 @@ class FacInNewComponent {
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
         this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
         this.payload.Voice_Type_Disp = this.reviewDetailsIndia.funded;
-        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode);
+        this.payload.Department_number_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));
         this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit;
         this.payload.Dept_IN = this.reviewDetailsIndia.Department_number;
         this.payload.authLevel_final = this.reviewDetailsIndia.authLevel;
         this.payload.Fac_Type_disp = this.reviewDetailsIndia.Fac_Type;
         this.payload.validity_disp = this.reviewDetailsIndia.validity;
-        this.payload.comments = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.Comments);
+        this.payload.comments = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.Comments.replace(/[\n\r"\\+]/g, ' '));
         this.payload.authValue = this.reviewDetailsIndia.authValue;
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
@@ -1152,7 +1152,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -11795,12 +11795,12 @@ class FacInUpdateComponent {
         this.payload.Location_1 = this.Location_1;
         this.payload.Buildings = this.Buildings;
         this.payload.Funded = this.Funded;
-        this.payload.chargeDepartmentCode = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.chargeDepartmentCode);
+        this.payload.chargeDepartmentCode = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));
         this.payload.authLevel = this.newAuthLevelValue;
-        this.payload.bj_disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.bj_disp);
+        this.payload.bj_disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.bj_disp.replace(/[\n\r"\\+]/g, ' '));
         this.payload.ReqNo = this.reqno;
         this.payload.updated_for = this.getUpdatedFor();
-        this.payload.updated_for_values = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.UpdatedForValues);
+        this.payload.updated_for_values = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.UpdatedForValues.replace(/[\n\r"\\+]/g, ' '));
         // fields to be picked up from form -- ends	
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
