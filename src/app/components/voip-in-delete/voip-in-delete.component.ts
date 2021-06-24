@@ -47,6 +47,7 @@ export class VoipInDeleteComponent implements OnInit {
   textSuggetion: any;
   dbdata : any;
   data : any;
+  flowState : any;
 
   cache : Create_Cache_jabber = new Create_Cache_jabber();
   cache_disp : Create_Cache_jabber = new Create_Cache_jabber();
@@ -111,6 +112,7 @@ export class VoipInDeleteComponent implements OnInit {
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;    
       this.payload.country_code = this.countrydetails.code ;
       this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
+      this.payload.flowState = this.flowState;
     
       
      // console.log('Payload');	
@@ -153,7 +155,8 @@ export class VoipInDeleteComponent implements OnInit {
      this.countrydetails = sessionStorage.getItem('countrydetails');	
      this.countrydetails = JSON.parse(this.countrydetails);	
       // Submit to Snow Jabber new code added by Swarnava ends	
-        
+
+    this.flowState = sessionStorage.getItem('flowState');
      this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
     this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')

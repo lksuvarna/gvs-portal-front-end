@@ -382,7 +382,7 @@ backClick(formData: NgForm){
       this.payload.Newdesc_Disp = this.reviewDetailsIndia.description;
       this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
-      this.payload.updatereq_Disp = this.reviewDetailsIndia.device;
+      this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();
       this.payload.currmodel = this.reviewDetailsIndia.model;
       this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
       this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;

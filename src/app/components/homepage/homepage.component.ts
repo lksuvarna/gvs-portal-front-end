@@ -55,7 +55,8 @@ export class HomepageComponent implements OnInit {
   loggedinuser:any;
   searchData:any = [];
   list:any = [];
-  s:any
+  s:any;
+  flow_state:any;
 
   generate(cnum : string): void{
     console.log(cnum);
@@ -91,7 +92,11 @@ export class HomepageComponent implements OnInit {
     this.display=false;
     this.cloudantservice.getcountrydetails('000').subscribe(data=> {
       this.countrynamehome=data.countrydetails;
-      console.log(data.countrydetails)
+      console.log(data.countrydetails);
+      //Code for state of the flow starts
+      this.flow_state = data.countrydetails.flow_state;
+      sessionStorage.setItem("flowState",this.flow_state);
+      //Code for state of the flow Ends
      
     // this.ccode="897"
     

@@ -56,7 +56,7 @@ export class EnExtensionAuSummaryComponent implements OnInit {
   EntryDetails(formData: NgForm) {
 
     if(formData.value.identifier.trim() == '') {
-      alert('Please enter ITN number');
+      alert('Please enter Phone Number');
       return;
     }
     if(formData.value.identifier.trim().length < 8 || formData.value.identifier.includes(" ")){

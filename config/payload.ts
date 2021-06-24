@@ -115,6 +115,7 @@ export class Jabber_Delete
     evolution_instance !: String;
     country_code !:String;
     gvs_portal_link !:String;
+    flowState !: String;
 
 Jabber_Delete()
  {
@@ -126,6 +127,7 @@ Jabber_Delete()
     this.evolution_instance ="";
     this.country_code  ="";
     this.gvs_portal_link = "";
+    this.flowState = "";
  }
 
 }
@@ -593,6 +595,7 @@ level2_japproval!: String;
 countryname!: String;
 request_type!: String;
 evolution_instance!: String;
+ccmail_1!: String;
 level1_japproval!: String;
 gvs_portal_link!: String;
 gvs_approval_link!: String;
@@ -629,6 +632,7 @@ this.level2_japproval="";
 this.countryname="";
 this.request_type="";
 this.evolution_instance="";
+this.ccmail_1="";
 this.level1_japproval="";
 this.gvs_portal_link="";
 this.gvs_approval_link="";
@@ -636,7 +640,7 @@ this.SLA_type="";
 this.country_code="";
 this.LocationCorrectnew="";
 this.Location_final="";
-this.DID_Location=""
+this.DID_Location="";
 }
 
 }
