@@ -239,13 +239,13 @@ export class FacInNewComponent implements OnInit {
       this.payload.Location_final =this.reviewDetailsIndia.officeLocation;	
       this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;		
       this.payload.Voice_Type_Disp=this.reviewDetailsIndia.funded;		
-      this.payload.Department_number_Disp = removeDiacritics(this.reviewDetailsIndia.chargeDepartmentCode);		
+      this.payload.Department_number_Disp = removeDiacritics(this.reviewDetailsIndia.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));		
       this.payload.BusinessUnit_Disp = this.reviewDetailsIndia.businessUnit	
       this.payload.Dept_IN=this.reviewDetailsIndia.Department_number;		
       this.payload.authLevel_final=this.reviewDetailsIndia.authLevel;		
       this.payload.Fac_Type_disp=this.reviewDetailsIndia.Fac_Type;		
       this.payload.validity_disp =this.reviewDetailsIndia.validity;	
-      this.payload.comments =removeDiacritics(this.reviewDetailsIndia.Comments);
+      this.payload.comments =removeDiacritics(this.reviewDetailsIndia.Comments.replace(/[\n\r"\\+]/g, ' '));
       this.payload.authValue =this.reviewDetailsIndia.authValue;	
 
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
