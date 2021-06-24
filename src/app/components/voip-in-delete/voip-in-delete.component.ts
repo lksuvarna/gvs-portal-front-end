@@ -100,7 +100,7 @@ export class VoipInDeleteComponent implements OnInit {
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
      
-      this.payload.site_address ='';	
+      this.payload.site_address =this.data[0].ATTRIBUTE3	
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
       this.payload.ReqNo=this.reqno;	
   
