@@ -298,12 +298,12 @@ export class FacInUpdateComponent implements OnInit {
       this.payload.Location_1 = this.Location_1
       this.payload.Buildings = this.Buildings
       this.payload.Funded = this.Funded
-      this.payload.chargeDepartmentCode = removeDiacritics(this.chargeDepartmentCode);
+      this.payload.chargeDepartmentCode = removeDiacritics(this.chargeDepartmentCode.replace(/[\n\r"\\+]/g, ' '));
       this.payload.authLevel = this.newAuthLevelValue
-      this.payload.bj_disp= removeDiacritics(this.bj_disp);
+      this.payload.bj_disp= removeDiacritics(this.bj_disp.replace(/[\n\r"\\+]/g, ' '));
       this.payload.ReqNo=this.reqno;
       this.payload.updated_for= this.getUpdatedFor()
-      this.payload.updated_for_values= removeDiacritics(this.UpdatedForValues);
+      this.payload.updated_for_values= removeDiacritics(this.UpdatedForValues.replace(/[\n\r"\\+]/g, ' '));
       // fields to be picked up from form -- ends	
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	

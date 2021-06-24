@@ -456,7 +456,7 @@ submit_snow(){
     this.payload.Desc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
     this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
-    this.payload.Justification_Disp = removeDiacritics(this.reviewDetailsIndia.justification);	
+    this.payload.Justification_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));	
 
     this.locSelected = this.reviewDetailsIndia.officeLocation
     if(this.countrydetails.did_loc_formula){
