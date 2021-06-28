@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { fixedphone_new,Create_Cache_fixedphone } from 'config/payload';
+import { fixedphone_new,Create_Cache_fixedphone,removeDiacritics } from 'config/payload';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { servicenowservice } from '../../_services/servicenow.service';	
@@ -268,7 +268,7 @@ getFixedPhoneData(){
       this.payload.Model_Disp =  this.reviewDetailsIndia.model;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
       this.payload.Voicemail_Disp = '';
-      this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+      this.payload.Desc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
 
       if(this.countrydetails.jabber_dept){
         this.jabberDept = this.countrydetails.jabber_dept;
@@ -290,7 +290,7 @@ getFixedPhoneData(){
       }
 
       this.payload.COS_Disp = this.reviewDetailsIndia.cos;
-      this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+      this.payload.Justification_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
       this.payload.level2_japproval=this.countrydetails.level2_japproval;	
       this.payload.SLA_type=this.countrydetails.SLA_type;	
