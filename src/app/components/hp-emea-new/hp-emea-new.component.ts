@@ -267,7 +267,7 @@ getFixedPhoneData(){
       this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
       this.payload.Model_Disp =  this.reviewDetailsIndia.model;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
-      this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
+      this.payload.Voicemail_Disp = '';
       this.payload.Desc_Disp = this.reviewDetailsIndia.description;
 
       if(this.countrydetails.jabber_dept){
@@ -294,12 +294,19 @@ getFixedPhoneData(){
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
       this.payload.level2_japproval=this.countrydetails.level2_japproval;	
       this.payload.SLA_type=this.countrydetails.SLA_type;	
-      this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+      this.payload.gvs_approval_link='';	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
       this.payload.request_type='fixedphone_new';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;
       this.payload.country_code = this.countrydetails.code;
+      this.payload.Voice_Type_Disp = 'yes';
+      this.payload.Department_number_Disp = '';
+      this.payload.accid_Disp = '';
+      this.payload.icano_Disp = '';
+      this.payload.Projectid_Disp = '';
+      this.payload.ccmail_1 = this.countrydetails.ccmail;
+      this.payload.BusinessUnit_Disp = this.employeeInfo.businessUnit.toUpperCase().trim();
   
       this.servicenowservice.submit_request_fixed_new(this.payload).subscribe(data=> {	
         console.log('response', data);	
