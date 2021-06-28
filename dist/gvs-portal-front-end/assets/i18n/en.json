@@ -96,7 +96,7 @@
         "EMAILcouldnotbefoundinbp":"An email address for the serial number you entered could not be found in Bluepages. Please try again later. ",
         "opps": "We're currently having trouble completing your request due to an unexpected error. Please reach out to the ",
         "reportthismessage":" to report this message. [Error]",
-        "JabberLocation": "Jabber / Phone Number location",
+        "JabberLocation": "Jabber / Phone number location",
         "Voicemail": "Voicemail",
         "ClassofService": "Class of Service (COS)",
         "pleasesubmittostart": "By submitting this provisioning request, you are providing your written consent to IBM to process the Personal Information (PI) provided."
