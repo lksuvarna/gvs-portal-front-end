@@ -102,12 +102,12 @@ export class VoipAuMoveComponent implements OnInit {
   }
   entryDetailsMove(formData:NgForm) {
     if(formData.value.Identifier_Selected == '') {
-      alert('Please select the Jabber / Phone Number being moved');
+      alert('Please select the Jabber / Phone number being moved');
       return;
     }
     this.selectedjabber = formData.value.Identifier_Selected;
     if(formData.value.Location_Selected.toUpperCase() == 'SELECT LOCATION') {
-      alert(this.mainConfiguration.alerttranslation.selectlocationsp);
+      alert('Please select the New Jabber / Phone number location');
       return;
     }
 
