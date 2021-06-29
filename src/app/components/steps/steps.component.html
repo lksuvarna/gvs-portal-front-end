@@ -11,9 +11,9 @@
 
     <span *ngIf="service === 'phone_search'">
         <span [ngClass]="changeClass1 ? 'ds-tooltip ds-hover ds-text-align-center ds-open' : 'ds-tooltip ds-hover ds-text-align-center' " id="tooltip-demo1">
-            <span (mouseenter)="changeClass1=true" (mouseout)="changeClass1=false">
-                <a (click)="sendToEntryDetails()" [class.disabled]="step===1 ? true : false" [ngClass]="step===1 ? 'ds-tooltip-trigger ds-text-contextual-green-3' : 'ds-tooltip-trigger ds-text-contextual-blue-5'" aria-label="help" tabindex="0"><b translate>steps.{{servicesData[10].name}}</b></a>
-            </span>
+
+                <a (mouseenter)="changeClass1=true" (mouseout)="changeClass1=false" (click)="sendToEntryDetails()" [class.disabled]="step===1 ? true : false" [ngClass]="step===1 ? 'ds-tooltip-trigger ds-text-contextual-green-3' : 'ds-tooltip-trigger ds-text-contextual-blue-5'" aria-label="help" tabindex="0"><b translate>steps.{{servicesData[10].name}}</b></a>
+
     <div class="ds-tooltip-content ds-text-neutral-7 text-style" id="tooltip-demo1-content" role="tooltip" translate>steps.{{servicesData[10].tooltip}}</div>
     </span>
     </span>
@@ -61,9 +61,9 @@
     <span *ngIf="service === 'phone_search' && !isWarning">
         <span [ngClass]="step===2 ? 'ds-pad-l-r-1 ds-text-contextual-green-3' : 'ds-pad-l-r-1 ds-text-contextual-blue-5'"><b>-----&gt;</b></span>
     <span [ngClass]="changeClass2 ? 'ds-tooltip ds-hover ds-text-align-center ds-open' : 'ds-tooltip ds-hover ds-text-align-center' " id="tooltip-demo1">
-        <span (mouseenter)="changeClass2=true" (mouseout)="changeClass2=false">    
-        <a [class.disabled]="true" [ngClass]="step===2 ? 'ds-tooltip-trigger ds-text-contextual-green-3' : 'ds-tooltip-trigger ds-text-contextual-blue-5'" aria-label="help" tabindex="0"><b translate>steps.{{servicesData[11].name}}</b></a>
-        </span>
+   
+        <a (mouseenter)="changeClass2=true" (mouseout)="changeClass2=false" [class.disabled]="true" [ngClass]="step===2 ? 'ds-tooltip-trigger ds-text-contextual-green-3' : 'ds-tooltip-trigger ds-text-contextual-blue-5'" aria-label="help" tabindex="0"><b translate>steps.{{servicesData[11].name}}</b></a>
+
     <div class="ds-tooltip-content ds-text-neutral-7 text-style" id="tooltip-demo1-content" role="tooltip" translate>steps.{{servicesData[11].tooltip}}</div>
     </span>
     </span>

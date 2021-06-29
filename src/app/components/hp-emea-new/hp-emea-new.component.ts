@@ -293,7 +293,7 @@ getFixedPhoneData(){
       this.payload.Justification_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
       this.payload.level2_japproval=this.countrydetails.level2_japproval;	
-      this.payload.SLA_type=this.countrydetails.SLA_type;	
+      this.payload.SLA_type="standard_sla";
       this.payload.gvs_approval_link='';	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
