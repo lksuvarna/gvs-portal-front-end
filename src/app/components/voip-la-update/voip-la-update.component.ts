@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import {Location} from '@angular/common';	
 import { Db2Service } from '../../_services/db2.service';
-import {Create_Cache_jabber, Jabber_Update} from '../../../../config/payload';
+import {Create_Cache_jabber, Jabber_Update,removeDiacritics} from '../../../../config/payload';
 import { servicenowservice } from '../../_services/servicenow.service';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { TranslateConfigService } from '../../_services/translate-config.service';
@@ -296,7 +296,7 @@ export class VoipLaUpdateComponent implements OnInit {
       this.payload.ReqNo=this.reqno;
       this.payload.Current_COS=this.cos_disp;
       this.payload.Current_VM=this.vm_disp;
-      this.payload.Justification=this.bj_disp.replace(/[\n\r"+]/g, ' ');
+      this.payload.Justification= removeDiacritics(this.bj_disp.replace(/[\n\r"\\+]/g, ' '));
       this.payload.New_Voice=this.new_vm_disp;
       this.payload.New_COS=this.new_cos_disp
       // fields to be picked up from form -- ends	

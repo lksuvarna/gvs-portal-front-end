@@ -150,7 +150,8 @@
                         <td colspan="2" width="46%"><br><label for="Justification" class="ds-pad-t-1">Business Justification (Why is international required?) </label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
-                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" maxlength='200' ngModel [(ngModel)]="justificationValue"></textarea>
+                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" maxlength='500' ngModel [(ngModel)]="justificationValue"></textarea>
+                            <label>Note:Length should not exceed 500</label>
                         </td>
                     </tr>
 
@@ -287,7 +288,7 @@
             </table>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p ><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>><span translate>Jabbernewtrans.reportthismessage</span></p>
+                <p><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>><span translate>Jabbernewtrans.reportthismessage</span></p>
                 <p>
                 </p>
             </div>

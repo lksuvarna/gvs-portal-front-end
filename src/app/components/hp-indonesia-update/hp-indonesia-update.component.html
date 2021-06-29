@@ -155,7 +155,7 @@
                             <label class="">New description<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%" class="ds-pad-t-1 ds-pad-b-2">
-                            <input name="Newdesc" value="" class="ds-input" style="width:300px !important;" title="New Description" maxlength="200" ngModel [(ngModel)]='newDescription'>
+                            <input name="Newdesc" value="" class="ds-input" style="width:300px !important;" title="New Description" maxlength="30" ngModel [(ngModel)]='newDescription'>
                         </td>
                     </tr>
 
@@ -165,8 +165,9 @@
                             <label class="">Reason for update<span class="ds-text-contextual-red-2"> *</span></label>
                         </td>
                         <td width="50%">
-                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update" rows="2" cols="40" maxlength="200" ngModel [(ngModel)]='reasonForUpdate'>
-                        </textarea><br>
+                            <textarea name="Comments" class="ds-input " style="width:300px !important;" title="Reason for Update" rows="2" cols="40" maxlength="500" ngModel [(ngModel)]='reasonForUpdate'>
+                        </textarea>
+                            <label>Note:Length should not exceed 500</label><br>
                         </td>
                     </tr>
                 </tbody>
@@ -274,7 +275,7 @@
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p ><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a><span translate>Jabbernewtrans.reportthismessage</span></p>
+                <p><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a><span translate>Jabbernewtrans.reportthismessage</span></p>
                 <p>
                 </p>
             </div>
