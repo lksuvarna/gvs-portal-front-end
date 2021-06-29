@@ -387,11 +387,12 @@ backClick(formData: NgForm){
       this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
       this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
       this.payload.MAC = this.reviewDetailsIndia.newMac;
-      this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
-      this.payload.LocationCorrectnew = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.Location_final = "";
+      this.payload.LocationCorrectnew = "";
       this.payload.ReqNo=this.reqno;
       this.payload.ccmail_1= this.countrydetails.ccmail;
-      this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.Location_Disp = "";
+      this.payload.LocationCorrect ="";
 
 
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
