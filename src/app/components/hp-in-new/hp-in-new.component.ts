@@ -449,6 +449,7 @@ submit_snow(){
     this.payload.Location_final =this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;	
     this.payload.accid_Disp=this.reviewDetailsIndia.accountId;	
     this.payload.ReqNo=this.reqno;
+    this.payload.ccmail_1 = this.countrydetails.ccmail;
     this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
     this.payload.Model_Disp =  this.reviewDetailsIndia.model;
     this.payload.MAC_Disp = this.reviewDetailsIndia.mac;

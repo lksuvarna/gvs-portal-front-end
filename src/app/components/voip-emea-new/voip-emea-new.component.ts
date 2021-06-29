@@ -72,8 +72,9 @@ export class VoipEmeaNewComponent implements OnInit {
 
 
   entryDetailsEMEA(formData: NgForm) {	    
-      
+    
     if(formData.value.Location.toUpperCase() == 'SELECT LOCATION' || formData.value.Location == '') {	
+      
       alert(this.mainConfiguration.alerttranslation.selectlocationsp);	
       return;	
     }
@@ -231,6 +232,9 @@ export class VoipEmeaNewComponent implements OnInit {
         this.camp[this.j] = this.campA[i];	
         this.j++;	
       }	
+    }
+    if(this.locationlist.length==1){
+      this.selected_location=this.locationlist[0]
     }
     const servicesData = { 	
       "data": [	

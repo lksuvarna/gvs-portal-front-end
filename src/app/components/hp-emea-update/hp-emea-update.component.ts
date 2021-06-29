@@ -330,7 +330,7 @@ backClick(formData: NgForm){
       this.reviewDetailsIndia.newModel = formData.value.NewModel;
       this.reviewDetailsIndia.newMac = formData.value.MAC1;
       this.reviewDetailsIndia.justification = formData.value.Comments;
-      this.reviewDetailsIndia.description = formData.value.Newdesc;
+     // this.reviewDetailsIndia.description = formData.value.Newdesc;
       this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
       this.reviewDetailsIndia.campus = this.campus;
     
@@ -378,8 +378,8 @@ backClick(formData: NgForm){
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
 
-      this.payload.Comments_Disp = removeDiacritics(this.reviewDetailsIndia.justification);
-      this.payload.Newdesc_Disp = removeDiacritics(this.reviewDetailsIndia.description);
+      this.payload.Comments_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
+      this.payload.Newdesc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
       this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
       this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();
@@ -387,11 +387,12 @@ backClick(formData: NgForm){
       this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
       this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
       this.payload.MAC = this.reviewDetailsIndia.newMac;
-      this.payload.Location_final = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
-      this.payload.LocationCorrectnew = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.Location_final = "";
+      this.payload.LocationCorrectnew = "";
       this.payload.ReqNo=this.reqno;
       this.payload.ccmail_1= this.countrydetails.ccmail;
-      this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation+"~~"+this.reviewDetailsIndia.campus;
+      this.payload.Location_Disp = "";
+      this.payload.LocationCorrect ="";
 
 
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
