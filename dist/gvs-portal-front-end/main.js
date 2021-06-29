@@ -1152,7 +1152,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\VivekRatnesh\Desktop\Project Work\Cirrus\GVS-Portal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -6794,11 +6794,12 @@ class HpEmeaUpdateComponent {
         this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
         this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
         this.payload.MAC = this.reviewDetailsIndia.newMac;
-        this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
-        this.payload.LocationCorrectnew = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.Location_final = "";
+        this.payload.LocationCorrectnew = "";
         this.payload.ReqNo = this.reqno;
         this.payload.ccmail_1 = this.countrydetails.ccmail;
-        this.payload.Location_Disp = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
+        this.payload.Location_Disp = "";
+        this.payload.LocationCorrect = "";
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
         this.payload.countryname = this.countrydetails.name;
@@ -15398,6 +15399,9 @@ class VoipEmeaNewComponent {
                 this.j++;
             }
         }
+        if (this.locationlist.length == 1) {
+            this.selected_location = this.locationlist[0];
+        }
         const servicesData = {
             "data": [
                 {
@@ -21485,6 +21489,7 @@ class HpInNewComponent {
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation + "~~" + this.reviewDetailsIndia.campus;
         this.payload.accid_Disp = this.reviewDetailsIndia.accountId;
         this.payload.ReqNo = this.reqno;
+        this.payload.ccmail_1 = this.countrydetails.ccmail;
         this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
         this.payload.Model_Disp = this.reviewDetailsIndia.model;
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
