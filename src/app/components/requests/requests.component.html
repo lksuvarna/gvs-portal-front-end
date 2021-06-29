@@ -60,7 +60,7 @@
                 <div class="ds-row ds-bg-neutral-1">
                     <div class='ds-mar-r-1'><a class="ds-float-right" (click)="closeNav()">×</a><br><br>
                         <div class="ds-pad-l-5 ds-pad-b-3 ds-pad-r-1">
-                            <div id="inval" style="padding-left: 1rem;" *ngFor='let cmts of allComments'>{{ cmts }}
+                            <div id="inval" style="padding-left: 1rem;" *ngFor='let cmts of allComments'>{{ cmts.replaceAll("Log Posted on:","\n \t  Log Posted on: ") }}
                             </div><br>
                         </div>
                     </div>

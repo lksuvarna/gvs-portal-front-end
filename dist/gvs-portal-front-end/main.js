@@ -23967,7 +23967,7 @@ function RequestsComponent_div_4_div_25_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const cmts_r17 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", cmts_r17, " ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"]("", cmts_r17.replaceAll("Log Posted on:", "\n \t Log Posted on: "), " ");
 } }
 function RequestsComponent_div_4_Template(rf, ctx) { if (rf & 1) {
     const _r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
@@ -24116,7 +24116,10 @@ class RequestsComponent {
                         else {
                             this.snowdataarray.push(data.message.results);
                             this.snowdataarray1 = data.message.results.split("UTC");
-                            this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length - 1]);
+                            this.snowdataarray1.reverse();
+                            // this.snowdataarray1 = this.snowdataarray1.map(function(x:any){ return x.replaceAll("Log Posted on:","\n \t  Log Posted on: ") });      
+                            // this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length-1])
+                            this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length - 2].split("Log Posted on:")[0]);
                             this.display = true;
                         }
                     }, (error) => {
