@@ -48,6 +48,7 @@ Locations: any;
 locationlist: any;	
 pcode: any;	
 service: any;	
+locdisplay=true
 //min = 1000;	
 //max = 9000;	
 employeeInfo: any;	
@@ -300,6 +301,7 @@ ngOnInit(): void {
   }
   if(this.locationlist.length==1){
     this.selected_location=this.locationlist[0]
+    this.locdisplay=false
   }
   const servicesData = { 	
     "data": [	
