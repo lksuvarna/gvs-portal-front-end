@@ -32,6 +32,7 @@ export class VoipEmeaNewComponent implements OnInit {
     Location_final :"",	
     accid_Disp: "",	
     reqno:""
+
     
   }
   
@@ -51,6 +52,7 @@ export class VoipEmeaNewComponent implements OnInit {
   service: any;	
   orgi:any;	
   reqFor: any;
+  locdisplay=true
   errorinfo=false;
   isEntryFormEmea = false;
   isReviewFormEmea = true;
@@ -235,6 +237,7 @@ export class VoipEmeaNewComponent implements OnInit {
     }
     if(this.locationlist.length==1){
       this.selected_location=this.locationlist[0]
+      this.locdisplay=false
     }
     const servicesData = { 	
       "data": [	

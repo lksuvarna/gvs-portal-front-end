@@ -74,9 +74,11 @@
                             <label for="default_location" translate>Jabbernewtrans.JabberLocation</label>
                         </td>
                         <td width="54%" height="10">
-                            <div class="ds-input-container">
+                                <div class="ds-input-container ds-mar-b-2"[hidden]='true'>
                                 <input name="default_location" value="" autocomplete="off" tabindex="2" id="ch" class="ds-input ds-disabled" style="width:300px !important;" [(ngModel)]='default_location'></div>
-                        </td>
+                                <div>
+                                <div class="ds-input ds-disabled" style="width:300px !important;" id="ch2">{{default_location}} </div><br></div>
+                            </td>
                     </tr>
                     <tr valign="top" [hidden]='others'>
                         <td colspan="2" width="46%" height="10"><label for="requirement_id" translate>specialrequest.Description of Requirement</label>

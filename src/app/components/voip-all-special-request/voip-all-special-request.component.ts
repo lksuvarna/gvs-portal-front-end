@@ -189,6 +189,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.msgdis=true
     }
     
+    console.log("default_location= "+formData.value.default_location);
     if(this.defaultlocation==false)
     this.fl_location_disp = formData.value.Location;
     else

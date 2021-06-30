@@ -310,7 +310,7 @@
 
     },
     "fixedphonenew":{
-        "Location" : "Location",
+        "Location" : "Office Location",
         "TypeofDevice":"Type of Device ",
         "SelectDevice":"Select Device",
         "TypeofModel":"Type of Model ",
@@ -318,7 +318,7 @@
         "SelectClassofService (COS)" :"Class of Service (COS)",
         "National" :"National",
         "International" :"International",
-        "BusinessNeed(Whyisinternationalrequired?)" :"Business Need (Why is international required?) ",
+        "BusinessNeed(Whyisinternationalrequired?)" :"Business Justification (Why is international required?) ",
         "DescriptionoftheDevice" :"Description of the Device ",
         "IBMCLv21EMdesk" :"e.g. IBMC Lv21 EM desk ", 
         "IBMCLv21conferenceroom3" :"e.g. IBMC Lv21 conference room 3 ",

@@ -66,8 +66,8 @@
                             <td width="160">
                                 <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                     <input name="%%Surrogate_Location" type="hidden" value="1">
-                                    <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important;" title="Jabber / Phone number location" ngModel [(ngModel)]='selected_location'>
-                                    <option value ="" translate>Jabbernewtrans.SelectOne</option>
+                                    <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Jabber / Phone number location" ngModel [(ngModel)]='selected_location'>
+                                    <option value ="" translate *ngIf=locdisplay>Jabbernewtrans.SelectOne</option>
                                     <option name="Location" *ngFor='let fl_location of locationlist' [value]='fl_location'>
                                         {{ fl_location }}</option>
                                 </select>
