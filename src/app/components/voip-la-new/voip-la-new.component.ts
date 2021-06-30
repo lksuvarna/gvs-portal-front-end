@@ -298,6 +298,9 @@ ngOnInit(): void {
       this.j++;	
     }	
   }
+  if(this.locationlist.length==1){
+    this.selected_location=this.locationlist[0]
+  }
   const servicesData = { 	
     "data": [	
       {    	
