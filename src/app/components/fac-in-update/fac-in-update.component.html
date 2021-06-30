@@ -38,45 +38,47 @@
                         <td height="10"><label for="current_loc" class="ds-text-capitalize"> Current Office Location </label>
                         </td>
                         <td class="ds-pad-l-4" height="10">
-                            <div class="ds-input-container">
+                            <div>
                                 <span>{{currLocation1}}-{{currBuilding}}</span></div>
                         </td>
                     </tr>
+                    <br>
                     <tr valign="top">
                         <td height="10"><label for="current_cos" class="ds-text-capitalize"> Current Charge Dept Code </label>
                         </td>
                         <td class="ds-pad-l-4" height="10">
-                            <div class="ds-input-container">
+                            <div>
                                 <span>{{currChargeDeptCode}}</span></div>
                         </td>
                     </tr>
+                    <br>
                     <tr valign="top">
                         <td height="10"><label for="current_cos" class="ds-text-capitalize"> Current Authorization Level </label>
                         </td>
                         <td class="ds-pad-l-4" height="10">
-                            <div class="ds-input-container">
+                            <div>
                                 <span>{{currAuthorizationLevel}}</span></div>
                         </td>
                     </tr>
-
+                    <br>
                     <tr valign="top">
                         <td height="10"><label for="current_cos" class="ds-text-capitalize"> Current FAC Code / IDD PIN Type </label>
                         </td>
                         <td class="ds-pad-l-4" height="10">
-                            <div class="ds-input-container">
+                            <div>
                                 <span>{{currFACCodeType}}</span></div>
                         </td>
                     </tr>
-
-                    <tr valign="top">
+                    <br>
+                    <tr valign="top" *ngIf="this.currFACCodeType==='Temporary'">
                         <td height="10"><label for="current_cos" class="ds-text-capitalize"> Current Validity </label>
                         </td>
                         <td class="ds-pad-l-4" height="10">
-                            <div class="ds-input-container">
+                            <div>
                                 <span>{{currvalidity}}</span></div>
                         </td>
                     </tr>
-
+                    <br *ngIf="this.currFACCodeType==='Temporary'">
                     <tr valign="top">
                         <td height="10">
                             <label for="updaterequested" class="ds-text-capitalize"> Update Required for </label>

@@ -26,13 +26,13 @@
                 <tbody>
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="IdentifierId" class="ds-text-capitalize">Jabber / Phone Number</label>
+                            <label for="IdentifierId" class="ds-text">Jabber / Phone number</label>
                             <span class="ds-text-contextual-red-2"> *</span>
                         </td>
                        
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select [(ngModel)]='itn_sel' #jabberNumberVal name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Jabber / Phone Number" (change)='toggleOptions($event)'>
+                                <select [(ngModel)]='itn_sel' #jabberNumberVal name="Identifier_Selected" id="IdentifierId" class="ds-title ds-align-text-left" style="width:300px !important;" title="Jabber / Phone number" (change)='toggleOptions($event)'>
                   <option value="">Select One</option>
                   <option *ngFor="let jab of jabberNumber" [value]="jab">{{jab}}</option>
                 </select>
@@ -41,21 +41,21 @@
                     </tr>
                     <tr valign="top" *ngIf='displayloc==true'>
                         <td colspan="2" width="46%" height="10">
-                            <label for="default_location" translate>Jabbernewtrans.JabberLocation</label>
+                            <label for="default_location">Jabber / Phone number location</label>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <input name="default_location" [value]="default_location" autocomplete="off" tabindex="2" id="ch" class="ds-input ds-disabled" style="width:300px !important;" [(ngModel)]='default_location' ngModel></div>
+                                <input name="default_location" [value]="default_location" autocomplete="off" tabindex="2" id="ch" class="ds-input ds-disabled"  style="width:300px !important;" [(ngModel)]='default_location' ngModel></div>
                         </td>
                     </tr>
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="IdentifierId" class="ds-text-capitalize">Location Moving To</label>
+                            <label for="IdentifierId" class="ds-text">New Jabber / Phone number location</label>
                             <span class="ds-text-contextual-red-2"> *</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
-                                <select [(ngModel)]="loc_sel" name="Location_Selected" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Jabber / Phone Number location" #loc (change)="getlocation(loc.value)">
+                                <select [(ngModel)]="loc_sel" name="Location_Selected" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important;" title="New Jabber / Phone number location" #loc (change)="getlocation(loc.value)">
                   <option value="Select Location" translate>Jabbernewtrans.SelectOne</option>
                   <option *ngFor="let loc of locations" [ngValue]="loc">{{loc}}</option>
                 </select>
@@ -109,7 +109,7 @@
                 <tbody>
                     <tr valign="top">
                         <td colspan="2" width="46%" height="10">
-                            <label for="addId1">Jabber / Phone Number</label>
+                            <label for="addId1">Jabber / Phone number</label>
                         </td>
                         <td width="54%" height="10">{{reviewDetailsIndia.Identifier_Selected}}</td>
                     </tr>
@@ -123,7 +123,7 @@
                     </tr>
                     <tr valign="top">
                         <td colspan="2" width="46%">
-                            <label for="addId1">Location Moving To</label>
+                            <label for="addId1">New Jabber / Phone number location</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.Location_Selected}}</td>
                     </tr>

@@ -49,7 +49,7 @@
                                     <div class="ds-col-12">
                                         <div class="ds-row">
                                             <div class="ds-col-7">
-                                                <input name="identifier" value="" maxlength="8" class="ds-input" title='ITN Number' style="width:300px !important;" ngModel [(ngModel)]='itn_number' (click)="hidedata()">
+                                                <input name="identifier" value="" maxlength="8" class="ds-input" title='Phone Number' style="width:300px !important;" ngModel [(ngModel)]='itn_number' (click)="hidedata()">
                                             </div>
                                         </div>
                                     </div>
@@ -122,6 +122,13 @@
                         </td>
                         <td width="54%" height="10">
                             <label>{{userName}}</label>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="2" width="46%" height="10"><label for="serviceDetails" class="ds-text-capitalize" translate>phonenumber.EnterITNNumber</label>
+                        </td>
+                        <td width="54%" height="10">
+                            <label>{{phoneNumber}}</label>
                         </td>
                     </tr>
                     <tr valign="top">

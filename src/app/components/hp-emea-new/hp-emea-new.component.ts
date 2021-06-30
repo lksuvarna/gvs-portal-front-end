@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { fixedphone_new,Create_Cache_fixedphone } from 'config/payload';
+import { fixedphone_new,Create_Cache_fixedphone,removeDiacritics } from 'config/payload';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';	
 import { servicenowservice } from '../../_services/servicenow.service';	
@@ -267,8 +267,8 @@ getFixedPhoneData(){
       this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
       this.payload.Model_Disp =  this.reviewDetailsIndia.model;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
-      this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
-      this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+      this.payload.Voicemail_Disp = '';
+      this.payload.Desc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
 
       if(this.countrydetails.jabber_dept){
         this.jabberDept = this.countrydetails.jabber_dept;
@@ -290,16 +290,23 @@ getFixedPhoneData(){
       }
 
       this.payload.COS_Disp = this.reviewDetailsIndia.cos;
-      this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+      this.payload.Justification_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
       this.payload.level2_japproval=this.countrydetails.level2_japproval;	
-      this.payload.SLA_type=this.countrydetails.SLA_type;	
-      this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+      this.payload.SLA_type="standard_sla";
+      this.payload.gvs_approval_link='';	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
       this.payload.request_type='fixedphone_new';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;
       this.payload.country_code = this.countrydetails.code;
+      this.payload.Voice_Type_Disp = 'yes';
+      this.payload.Department_number_Disp = '';
+      this.payload.accid_Disp = '';
+      this.payload.icano_Disp = '';
+      this.payload.Projectid_Disp = '';
+      this.payload.ccmail_1 = this.countrydetails.ccmail;
+      this.payload.BusinessUnit_Disp = this.employeeInfo.businessUnit.toUpperCase().trim();
   
       this.servicenowservice.submit_request_fixed_new(this.payload).subscribe(data=> {	
         console.log('response', data);	

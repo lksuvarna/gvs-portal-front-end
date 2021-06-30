@@ -49,6 +49,7 @@ export class EnExtensionAuSummaryComponent implements OnInit {
   showloader = false;
   itn_number = '';
   hidestep2:any;
+  phoneNumber: any;
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice,private location:Location,private Db2Service: Db2Service,private servicenowservice:servicenowservice,private route: ActivatedRoute) {
 
    }
@@ -56,11 +57,11 @@ export class EnExtensionAuSummaryComponent implements OnInit {
   EntryDetails(formData: NgForm) {
 
     if(formData.value.identifier.trim() == '') {
-      alert('Please enter ITN number');
+      alert('Please enter Phone Number');
       return;
     }
     if(formData.value.identifier.trim().length < 8 || formData.value.identifier.includes(" ")){
-      alert("ITN Number should be of 8 characters");
+      alert("Phone Number should be of 8 characters");
       return;
     }
     this.identifierEntered = formData.value.identifier;
@@ -79,7 +80,8 @@ export class EnExtensionAuSummaryComponent implements OnInit {
         this.attribute8 = this.phoneData[0].ATTRIBUTE8;
         this.itn = this.phoneData[0].IDENTIFIER.trim();
         this.userName = this.notesId?.substring(this.notesId.indexOf('=')+1,this.notesId.indexOf('/'));
-        this.serviceDetails = this.itn + " - " + this.type;
+        this.phoneNumber = this.itn;
+        this.serviceDetails = this.type;
         this.warningmessage = false;
         this.reviewDetails = false;
         this.isReviewForm = false;

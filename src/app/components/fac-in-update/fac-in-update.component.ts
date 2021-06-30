@@ -169,10 +169,11 @@ export class FacInUpdateComponent implements OnInit {
         alert('Please select the appropriate campus.');
         return;
       }
-
-      if(formData.value.Location_1.toLowerCase().trim() + '~~' + formData.value.Buildings.toLowerCase().trim() === this.currLocation1.toLowerCase().trim() + '~~' + this.currBuilding.toLowerCase().trim()) {
-        alert('Please select the appropriate campus.');
-        return;
+      if(this.currLocation1 && this.currBuilding){
+        if(formData.value.Location_1.toLowerCase().trim() + '~~' + formData.value.Buildings.toLowerCase().trim() === this.currLocation1.toLowerCase().trim() + '~~' + this.currBuilding.toLowerCase().trim()) {
+          alert('Please select a new campus.');
+          return;
+        }
       }
     }
 

@@ -96,7 +96,7 @@
         "EMAILcouldnotbefoundinbp":"An email address for the serial number you entered could not be found in Bluepages. Please try again later. ",
         "opps": "We're currently having trouble completing your request due to an unexpected error. Please reach out to the ",
         "reportthismessage":" to report this message. [Error]",
-        "JabberLocation": "Jabber / Phone Number location",
+        "JabberLocation": "Jabber / Phone number location",
         "Voicemail": "Voicemail",
         "ClassofService": "Class of Service (COS)",
         "pleasesubmittostart": "By submitting this provisioning request, you are providing your written consent to IBM to process the Personal Information (PI) provided."
@@ -155,7 +155,7 @@
         "Country": "Country:",
         "E-mail": "E-mail:",
         "noteligiblejabber": "The serial number that you have entered is not eligible to request Jabber account.",
-        "itnexistsforuser": "Jabber / Phone Number that exists for this user is .",
+        "itnexistsforuser": "Jabber / Phone number that exists for this user is .",
         "nojabber": "There is no active Jabber account for this serial number. Please verify and try again.",
         "nojabberusethislink": "The serial number you have entered does not own an IP Telephone Number (ITN) and so is not eligible for Jabber. Please use this link to raise a request for an ITN ",
         "GlobalVoiceInfrastructure": "Global Voice Infrastructure.",
@@ -213,9 +213,9 @@
     "Jabberupdate": {
         "SELECTONE": "SELECT ONE",
         "ReviewDetails": "Review Details",
-        "JabberNumber": "Jabber / Phone Number",
-        "SelectJabberNumber": "Jabber / Phone Number",
-        "Jabber/PhoneNumberLocation": "Select Jabber / Phone Number Location"
+        "JabberNumber": "Jabber / Phone number",
+        "SelectJabberNumber": "Jabber / Phone number",
+        "Jabber/PhoneNumberLocation": "Select Jabber / Phone number location"
     },
     "Jabbermove": {
         "JabbertoMove": "Jabber / Phone number",
@@ -238,10 +238,10 @@
     },
     "resultpagetrans": {
         "Yourrequestfor": "Request ",
-        "jabbernew":"for a new Jabber / Phone Number",
-        "jabberdelete":"to delete an Jabber / Phone Number",
-        "jabberupdate":"to update an Jabber / Phone Number",
-        "jabbermove":"to move an Jabber / Phone Number",
+        "jabbernew":"for a new Jabber / Phone number",
+        "jabberdelete":"to delete an Jabber / Phone number",
+        "jabberupdate":"to update an Jabber / Phone number",
+        "jabbermove":"to move an Jabber / Phone number",
         "newfixedphone":"for a new Fixed Phone",
         "updatefixedphone":"to update Fixed Phone",
         "deletefixedphone":"to delete Fixed Phone",
@@ -264,7 +264,7 @@
     "phonenumber": {
         "PhoneNumberSearch": "Phone Number Search",
         "PhoneNumberDetails": "Phone Number Details",
-        "EnterITNNumber": "Enter ITN Number",
+        "EnterITNNumber": "Phone Number",
         "EmpID": "User Serial Number",
         "UserName": "User Name",
         "ServiceDetails": "Service Details"
@@ -273,14 +273,14 @@
         "EXITREQUEST": "EXIT REQUEST",
         "digitserialnumber": "Employee Serial Number should be of 6 characters",
         "enterserialnumber": "Please enter a serial number",
-        "moverequest": "This move request will delete the current Jabber / Phone Number and assign a new one. Select OK to proceed, to Cancel to go back.",
+        "moverequest": "This move request will delete the current Jabber / Phone number and assign a new one. Select OK to proceed, to Cancel to go back.",
         "selectcountrycode": "Please select the Country Code",
         "Only": "Only",
         "serialnumbersareallowed": "serial numbers are permitted to create",
         "requests":"requests.",
         "selectlocation": "Please select the appropriate location.",
-        "selectjabbernumberdel": "Please select the Jabber / Phone Number being deleted.",
-        "selectlocationsp" : "Please select the Jabber / Phone Number Location",
+        "selectjabbernumberdel": "Please select the Jabber / Phone number being deleted.",
+        "selectlocationsp" : "Please select the Jabber / Phone number Location",
         "Homeandmobilealert":"The serial number you have entered does not belong to the selected office location. Please choose your correct location, or select Home and Mobile.",
         "usaschedule":"Selecting Home and Mobile will result in your service being assigned a phone number in the 720 area code. If you wish to have a number local to your office, or if you'd like to retain your existing office number, please wait for your site to be migrated to CHCS/Jabber. The USA site migration schedule can be found"
 
@@ -366,27 +366,27 @@
         "NoteCombination":"Note: Combination of (0 to 9 , A to F) and Length:12"
     },
      "specialrequest" :{
-        "OnlyusetheSpecialRequest":"Special Requests are used to manage additional services for an existing Jabber / Phone Number; to indicate the need for a telephony-related consultancy; or to create/manage special services: secondary IDs, support group hotlines, and/or shared lines or hunt groups. " ,
-        "needstandardservice":"For standard services such as the creation of a new Jabber / Phone Number, please use the options in the sidebar menu. Do not submit a Special Request or it will be rejected.",
+        "OnlyusetheSpecialRequest":"Special Requests are used to manage additional services for an existing Jabber / Phone number; to indicate the need for a telephony-related consultancy; or to create/manage special services: secondary IDs, support group hotlines, and/or shared lines or hunt groups. " ,
+        "needstandardservice":"For standard services such as the creation of a new Jabber / Phone number, please use the options in the sidebar menu. Do not submit a Special Request or it will be rejected.",
         "SpecialRequestHCSmigratedsite":"Special Requests related to voice services are only permitted for sites migrated to CHCS/Jabber. If you need to submit a Special Request for a non-migrated site, please use  ",
         "TMAC tool":"TMAC.",
         "HelpTMACtool":"Help related to TMAC can be found ",
         "here" :"here",
-        "JabberNumberoptional": "Jabber / Phone Number (Optional)",
-        "JabberLocationspecial": "Jabber / Phone Number location",
+        "JabberNumberoptional": "Jabber / Phone number (Optional)",
+        "JabberLocationspecial": "Jabber / Phone number location",
         "Description of Requirement" :"Description of requirement",
         "notexceed200":"Note:Length should not exceed 500",
         "Note": "Note:",
         "Fieldsasteriskspl": "Fields marked with an asterisk",
         "arerequiredspl": "are mandatory.",
-        "selectjabbernumberwishtoupdate":"Jabber / Phone Number",
-        "JabberLocationslect": "Jabber / Phone Number location",
+        "selectjabbernumberwishtoupdate":"Jabber / Phone number",
+        "JabberLocationslect": "Jabber / Phone number location",
         "devicehelpmessage" : "P - Primary, SEP - Fixed Phone"
 
      },
      "otheralerts":{
-        "selectthejabber":"Please select the Jabber / Phone Number being updated.",
-        "selectthejabbertomove":"Select the Jabber / Phone Number  you wish to move",
+        "selectthejabber":"Please select the Jabber / Phone number being updated.",
+        "selectthejabbertomove":"Select the Jabber / Phone number  you wish to move",
         "Model" :"Model",
         "MAC Address" :"MAC Address",
         "Device Description" :"Device Description"
