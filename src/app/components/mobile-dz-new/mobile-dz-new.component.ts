@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CookieHandlerService } from 'src/app/_services/cookie-handler.service';
 import { cloudantservice } from '../../_services/cloudant.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
-import { Create_Cache_mobile, Mobile_New} from '../../../../config/payload';
+import { Create_Cache_mobile, Mobile_New,removeDiacritics} from '../../../../config/payload';
 
 @Component({
   selector: 'app-mobile-dz-new',
@@ -121,7 +121,7 @@ export class MobileDzNewComponent implements OnInit {
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
       // fields picked up from form -- begins	
-      this.payload.Justification_disp =this.reviewDetailsIndia.Comments;	
+      this.payload.Justification_disp =removeDiacritics(this.reviewDetailsIndia.Comments.replace(/[\n\r"\\+]/g, ' '));	
       // fields to be picked up from form -- ends	
       this.payload.ReqNo=this.reqno;	
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
