@@ -224,7 +224,7 @@
         "STEP 4" :  "ÉTAPE 4"
        },
        "fixedphonenew":{
-           "Location" : "Emplacement",
+           "Location" : "Emplacement du téléphone fixe",
            "TypeofDevice":"Type d'appareil ",
            "SelectDevice":"Choisir un appareil",
            "TypeofModel":"Type de modèle ",

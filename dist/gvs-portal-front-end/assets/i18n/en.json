@@ -310,7 +310,7 @@
 
     },
     "fixedphonenew":{
-        "Location" : "Office Location",
+        "Location" : "Fixed Phone Location",
         "TypeofDevice":"Type of Device ",
         "SelectDevice":"Select Device",
         "TypeofModel":"Type of Model ",
