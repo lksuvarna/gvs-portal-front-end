@@ -29,7 +29,7 @@
                 <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
                     <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
-    
+
                     <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
                 </p>
             </div>
@@ -37,7 +37,7 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber / Phone Number </label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text"> Jabber / Phone number </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
@@ -145,7 +145,10 @@
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
-                                <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="business Justification" maxlength="200" rows="2" cols="40" [(ngModel)]="businessjustification"></textarea></div>
+                                <textarea name="businessjustification" tabindex="3" id="ch" class="ds-input" style="width:300px !important;" title="business Justification" maxlength="500" rows="2" cols="40" [(ngModel)]="businessjustification"></textarea>
+                                <label>Note:Length should not exceed 500</label>
+                            </div>
+
                         </td>
                     </tr>
 
@@ -189,7 +192,7 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize"> Jabber / Phone Number </label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text"> Jabber / Phone number </label>
 
                         </td>
                         <td width="54%" height="10">
@@ -241,7 +244,7 @@
             <br>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p ><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a><span translate>Jabbernewtrans.reportthismessage</span></p>
+                <p><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a><span translate>Jabbernewtrans.reportthismessage</span></p>
                 <p>
                 </p>
             </div>

@@ -60,14 +60,14 @@
                             <img src="/icons/ecblank.gif" alt="" width="1" height="1" border="0">
                         </td>  -->
                             <td width="50%"><br>
-                                <label for="LocationId" class="ds-text-capitalize" translate>Jabbernewtrans.JabberLocation</label>
+                                <label for="LocationId" class="ds-text" translate>Jabbernewtrans.JabberLocation</label>
                                 <span class="ds-text-contextual-red-2">*</span>
                             </td>
                             <td width="160">
                                 <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                     <input name="%%Surrogate_Location" type="hidden" value="1">
-                                    <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Location" ngModel [(ngModel)]='selected_location'>
-                                    <option value ="" translate>Jabbernewtrans.SelectOne</option>
+                                    <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Jabber / Phone number location" ngModel [(ngModel)]='selected_location'>
+                                    <option value ="" translate *ngIf=locdisplay>Jabbernewtrans.SelectOne</option>
                                     <option name="Location" *ngFor='let fl_location of locationlist' [value]='fl_location'>
                                         {{ fl_location }}</option>
                                 </select>
@@ -214,7 +214,7 @@
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p ><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>><span translate>Jabbernewtrans.reportthismessage</span></p>
+                <p ><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a><span translate>Jabbernewtrans.reportthismessage</span></p>
                 <p>
                 </p>
             </div>

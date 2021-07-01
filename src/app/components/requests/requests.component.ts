@@ -119,8 +119,11 @@ export class RequestsComponent implements OnInit {
           }
           else {
             this.snowdataarray.push(data.message.results)
-            this.snowdataarray1=data.message.results.split("UTC")          
-            this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length-1])
+            this.snowdataarray1=data.message.results.split("UTC")   
+            this.snowdataarray1.reverse(); 
+           // this.snowdataarray1 = this.snowdataarray1.map(function(x:any){ return x.replaceAll("Log Posted on:","\n \t  Log Posted on: ") });      
+           // this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length-1])
+           this.lastcomment.push(this.snowdataarray1[this.snowdataarray1.length-2].split("Log Posted on:")[0])
             this.display = true
           }
         },

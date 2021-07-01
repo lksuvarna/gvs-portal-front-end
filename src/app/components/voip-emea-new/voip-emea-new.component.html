@@ -34,7 +34,7 @@
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="Location" rows="2" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'specialrequest.JabberLocationslect' | translate}}" #location (change)='selectedLocation(location.value)'
                                     ngModel [(ngModel)]='selected_location'>
-                                <option value ="" translate>Jabbernewtrans.SelectOne</option>
+                                <option value ="" translate *ngIf=locdisplay>Jabbernewtrans.SelectOne</option>
                                 <option name="Location" *ngFor='let fl_location of locationlist' [value]='fl_location'>
                                 {{ fl_location }} </option>
                             </select>
@@ -101,7 +101,7 @@
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p ><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>><span translate>Jabbernewtrans.reportthismessage</span></p>
+                <p ><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a><span translate>Jabbernewtrans.reportthismessage</span></p>
                 <p>
                 </p>
             </div>

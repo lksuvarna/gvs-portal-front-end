@@ -130,6 +130,9 @@ export class VoipAllSpecialRequestComponent implements OnInit {
         
       }else{
         var att;
+        if(this.data[this.index].ATTRIBUTE8!=null && (this.data[this.index].ATTRIBUTE8.trim().toUpperCase().includes("CHCS")|| (this.data[this.index].ATTRIBUTE8.trim().toUpperCase().includes("SECONDARY"))))
+       {
+    
         if(this.countrydetails.jabberloc)
           {
               att=this.countrydetails.jabberloc
@@ -137,6 +140,19 @@ export class VoipAllSpecialRequestComponent implements OnInit {
        else{
          att='ATTRIBUTE7'
          }
+         console.log("Inside Jabber location");
+        }
+        else{
+          if(this.countrydetails.fploc)
+          {
+              att=this.countrydetails.fploc
+         }
+       else{
+         att='ATTRIBUTE7'
+         }
+         console.log("Inside FixedPhone location");
+        }
+
        
         if(eval('this.data[this.index].'+att)=='' || eval('this.data[this.index].'+att)==null)
         this.default_location='NA'
@@ -189,6 +205,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.msgdis=true
     }
     
+    console.log("default_location= "+formData.value.default_location);
     if(this.defaultlocation==false)
     this.fl_location_disp = formData.value.Location;
     else

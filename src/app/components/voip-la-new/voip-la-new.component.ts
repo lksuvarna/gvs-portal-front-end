@@ -48,6 +48,7 @@ Locations: any;
 locationlist: any;	
 pcode: any;	
 service: any;	
+locdisplay=true
 //min = 1000;	
 //max = 9000;	
 employeeInfo: any;	
@@ -150,7 +151,7 @@ hideChargeDepartmentCode() {
 entryDetailsLA(formData: NgForm) {	
     
   if(formData.value.Location.toUpperCase() == 'SELECT JABBER / PHONE NUMBER LOCATION' || formData.value.Location == '') {	
-    alert('Please select the Jabber / Phone Number Location');	
+    alert('Please select the Jabber / Phone number location');	
     return;	
   }	
   // if(formData.value.Buildings.toUpperCase() == 'SELECT ONE' || formData.value.Buildings == '' || formData.value.Location_1.toUpperCase() != 'SELECT OFFICE LOCATION' && formData.value.Buildings == '') {	
@@ -298,6 +299,10 @@ ngOnInit(): void {
       this.camp[this.j] = this.campA[i];	
       this.j++;	
     }	
+  }
+  if(this.locationlist.length==1){
+    this.selected_location=this.locationlist[0]
+    this.locdisplay=false
   }
   const servicesData = { 	
     "data": [	

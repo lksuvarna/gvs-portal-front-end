@@ -309,6 +309,8 @@ backClick(formData: NgForm){
     } else if(formData.value.UpdateReq.toUpperCase() == 'REPLACE THE HARDPHONE ONLY') {
       this.reviewDetailsIndia.officeLocation = "";
       this.reviewDetailsIndia.campus = "";
+      this.reviewDetailsIndia.newModel = formData.value.NewModel;
+      this.reviewDetailsIndia.newMac = formData.value.MAC1;
      // this.reviewDetailsIndia.location_final = "";
       this.reviewDetailsIndia.newMac = formData.value.MAC1;
       this.reviewDetailsIndia.description = "";
@@ -327,8 +329,7 @@ backClick(formData: NgForm){
       this.reviewDetailsIndia.Currentdescription = this.currentdesc;
       this.reviewDetailsIndia.model = this.currentmodel;
       this.reviewDetailsIndia.device = this.selected_device;
-      this.reviewDetailsIndia.newModel = formData.value.NewModel;
-      this.reviewDetailsIndia.newMac = formData.value.MAC1;
+      
       this.reviewDetailsIndia.justification = formData.value.Comments;
      // this.reviewDetailsIndia.description = formData.value.Newdesc;
       this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
@@ -389,10 +390,10 @@ backClick(formData: NgForm){
       this.payload.MAC = this.reviewDetailsIndia.newMac;
       this.payload.Location_final = "";
       this.payload.LocationCorrectnew = "";
+      this.payload.LocationCorrect = "";
       this.payload.ReqNo=this.reqno;
       this.payload.ccmail_1= this.countrydetails.ccmail;
       this.payload.Location_Disp = "";
-      this.payload.LocationCorrect ="";
 
 
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
