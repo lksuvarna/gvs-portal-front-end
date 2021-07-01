@@ -199,13 +199,14 @@ submit_snow(){
     // fields picked up from form -- begins	
     this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
     // by default set to true. below line can be removed if needed.	
-    //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
+    this.payload.Voice_Type_Disp = "yes";	
     this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
-   // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+    this.payload.icano_Disp ="";	
     this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;	
-    this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
+    this.payload.BusinessUnit_Disp =this.employeeInfo.businessUnit.toUpperCase().trim();	
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
     this.locSelected = this.reviewDetailsIndia.officeLocation;
+    this.payload.accid_Disp = "";
     
     if(this.countrydetails.did_loc_formula_jabber){
       // Assign location value from cloudant. Needed for ITN allocation

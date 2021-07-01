@@ -24,12 +24,12 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate> Jabberentrydetails.SelectState</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate> Jabberentrydetails.State</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)' [(ngModel)]='selected_location'
+                                <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="State" tabindex="1" #location (change)='selectedLocation(location.value)' [(ngModel)]='selected_location'
                                     ngModel>
                                     <option value ="" translate>Jabbernewtrans.SelectOne</option>
                                     <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
@@ -39,12 +39,12 @@
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td colspan="2" width="46%"><label for="builId" class="ds-text-capitalize" translate>Jabberentrydetails.Select Location</label>
+                        <td colspan="2" width="46%"><label for="builId" class="ds-text-capitalize" translate>Jabberentrydetails.Location</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select name="Buildings" rows="2" [(ngModel)]='campus' cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1">
+                                <select name="Buildings" rows="2" [(ngModel)]='campus' cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Location" tabindex="1">
                                     <option name="Buildings" value ="" translate>Jabbernewtrans.SelectOne</option>
                                     <option name="Buildings" *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
                 </select>
@@ -150,7 +150,8 @@
                         <td colspan="2" width="46%"><br><label for="Justification" class="ds-pad-t-1">Business Justification (Why is international required?) </label>
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
-                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" maxlength='200' ngModel [(ngModel)]="justificationValue"></textarea>
+                            <textarea name="Justification" class="ds-input" style="width:300px !important;" title="Business Justification" tabindex="2" rows="2" cols="40" maxlength='500' ngModel [(ngModel)]="justificationValue"></textarea>
+                            <label>Note:Length should not exceed 500</label>
                         </td>
                     </tr>
 

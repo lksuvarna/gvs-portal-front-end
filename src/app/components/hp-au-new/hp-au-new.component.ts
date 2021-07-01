@@ -6,7 +6,7 @@ import {Router} from  '@angular/router';
 import { ActivatedRoute } from '@angular/router';	
 import { bpservices } from '../../_services/bp.service';
 import { servicenowservice } from '../../_services/servicenow.service';	
-import {fixedphone_new,Create_Cache_fixedphone} from '../../../../config/payload';	
+import {fixedphone_new,Create_Cache_fixedphone,removeDiacritics} from '../../../../config/payload';	
 import {Location} from '@angular/common';	
 
 @Component({
@@ -415,10 +415,11 @@ submit_snow(){
     this.payload.Model_Disp =  this.reviewDetailsIndia.model;
     this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
     this.payload.Voicemail_Disp = "";
-    this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+    this.payload.Desc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
     this.payload.LocationCorrect = this.reviewDetailsIndia.Locationcorrectnew;
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
-    this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+    this.payload.Justification_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
+    this.payload.ccmail_1 = this.countrydetails.ccmail;
     
     this.locSelected = this.reviewDetailsIndia.Locationcorrectnew;
     if(this.countrydetails.did_loc_formula){
