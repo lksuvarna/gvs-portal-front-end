@@ -1152,7 +1152,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Swarnavo\GVS_Portal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -14018,11 +14018,23 @@ class VoipAllSpecialRequestComponent {
         }
         else {
             var att;
-            if (this.countrydetails.jabberloc) {
-                att = this.countrydetails.jabberloc;
+            if (this.data[this.index].ATTRIBUTE8 != null && (this.data[this.index].ATTRIBUTE8.trim().toUpperCase().includes("CHCS") || (this.data[this.index].ATTRIBUTE8.trim().toUpperCase().includes("SECONDARY")))) {
+                if (this.countrydetails.jabberloc) {
+                    att = this.countrydetails.jabberloc;
+                }
+                else {
+                    att = 'ATTRIBUTE7';
+                }
+                console.log("Inside Jabber location");
             }
             else {
-                att = 'ATTRIBUTE7';
+                if (this.countrydetails.fploc) {
+                    att = this.countrydetails.fploc;
+                }
+                else {
+                    att = 'ATTRIBUTE7';
+                }
+                console.log("Inside FixedPhone location");
             }
             if (eval('this.data[this.index].' + att) == '' || eval('this.data[this.index].' + att) == null)
                 this.default_location = 'NA';
