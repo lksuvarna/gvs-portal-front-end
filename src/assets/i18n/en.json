@@ -207,7 +207,9 @@
         "Select Location": "Select Location",
         "SelectState": "Select State",
         "Yes": "Yes",
-        "No": "No"
+        "No": "No",
+        "State": "State",
+        "Location": "Location"
 
     },
     "Jabberupdate": {
@@ -311,7 +313,7 @@
 
     },
     "fixedphonenew": {
-        "Location": "Office Location",
+        "Location": "Fixed Phone Location",
         "TypeofDevice": "Type of Device ",
         "SelectDevice": "Select Device",
         "TypeofModel": "Type of Model ",
