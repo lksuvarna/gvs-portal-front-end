@@ -214,6 +214,7 @@ export class FacInUpdateComponent implements OnInit {
     this.bj_disp=formData.value.businessjustification.replace(/[\n\r"+]/g, ' ');
     this.isReviewForm = false;
     this.isEntryForm = true;
+    this.errorinfo=false;
     this.authValue = this.authCalculation(this.currAuthorizationLevel)
 
     //set up the cache for form values.
