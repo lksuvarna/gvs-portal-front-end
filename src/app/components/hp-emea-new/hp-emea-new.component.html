@@ -30,7 +30,7 @@
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'fixedphonenew.Location' | translate}}" #location ngModel [(ngModel)]='selected_location'>
-                                    <option value =""> <span translate> fixedphonenew.SelectOne </span></option>
+                                    <option value ="" *ngIf=locdisplay> <span translate> fixedphonenew.SelectOne </span></option>
                                     <option name="Location_1" *ngFor='let fl_location of locationlist' [value]='fl_location' >
                                         {{ fl_location }}</option>
                                 </select>

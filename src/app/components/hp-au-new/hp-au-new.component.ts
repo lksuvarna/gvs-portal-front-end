@@ -36,6 +36,7 @@ isEntryForm = false;
 isReviewForm = true;	
 Voice_Type = "no";	
 hideDeptCode = true;	
+locdisplay=true
 hideBuilding = true;	
 //fixedPhoneIdentifier = false;	
 cloudantData: any = []	
@@ -146,7 +147,13 @@ selectedLocation(loc:String) {
     k = k+1;	
     }	
     }
-           
+    if(this.build.length==1){
+      this.campus=this.build[0]
+      this.locdisplay=false
+    } 
+    else{
+      this.locdisplay=true
+    }      
   } else {	
     this.hideBuilding = true;	
     this.build = [];	
@@ -503,6 +510,7 @@ ngOnInit(): void {
       this.j++;	
     }	
   }
+  
   const servicesData = { 	
     "data": [	
       {    	

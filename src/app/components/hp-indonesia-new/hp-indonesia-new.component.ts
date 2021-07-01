@@ -360,7 +360,7 @@ payload : fixedphone_new = new fixedphone_new();
   this.cModels = this.cModels.split(',');
   this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
   this.locationlist=this.locationlist?.replace('"','').split(',');
-
+  
     const servicesData = { 	
       "data": [	
         {    	

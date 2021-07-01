@@ -52,6 +52,7 @@ hideProjectId = false;
 locationlist: any;	
 selected_device:any = '';
 voicemail = 'no';
+locdisplay=true
 mainConfiguration :any;
 cache_tmp:  any = [];
 selected_location:any = '';
@@ -353,7 +354,10 @@ getFixedPhoneData(){
   this.cModels = this.cModels?.replace('"','').split(',');
   this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
   this.locationlist=this.locationlist?.replace('"','').split(',');
-
+  if(this.locationlist.length==1){
+    this.selected_location=this.locationlist[0]
+    this.locdisplay=false
+  }
     const servicesData = { 	
       "data": [	
         {    	
