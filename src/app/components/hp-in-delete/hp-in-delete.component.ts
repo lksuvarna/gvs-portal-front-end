@@ -127,6 +127,7 @@ export class HpInDeleteComponent implements OnInit {
     // this.selectedJabber = formData.value.Jabber_1;
     this.isReviewForm = false;
     this.isEntryForm = true;
+    this.errorinfo=false;
     this.create_cache(formData);
 
   }
