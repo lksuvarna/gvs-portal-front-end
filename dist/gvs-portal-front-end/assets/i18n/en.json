@@ -63,7 +63,7 @@
         "IBM office physical desk phone":"IBM office physical desk phone",
         "Fac services":"Fac services",
         "Mobile services":"Mobile services",
-        "Special request":"Special request",
+        "Special request":"To raise a Special request",
         "To check ITN or phone number search":"To check ITN or phone number search"
 
     },
@@ -310,7 +310,7 @@
 
     },
     "fixedphonenew":{
-        "Location" : "Location",
+        "Location" : "Office Location",
         "TypeofDevice":"Type of Device ",
         "SelectDevice":"Select Device",
         "TypeofModel":"Type of Model ",
@@ -318,7 +318,7 @@
         "SelectClassofService (COS)" :"Class of Service (COS)",
         "National" :"National",
         "International" :"International",
-        "BusinessNeed(Whyisinternationalrequired?)" :"Business Need (Why is international required?) ",
+        "BusinessNeed(Whyisinternationalrequired?)" :"Business Justification (Why is international required?) ",
         "DescriptionoftheDevice" :"Description of the Device ",
         "IBMCLv21EMdesk" :"e.g. IBMC Lv21 EM desk ", 
         "IBMCLv21conferenceroom3" :"e.g. IBMC Lv21 conference room 3 ",
@@ -414,7 +414,8 @@
     "Caretotell":"Care to tell us why? Your feedback will help us to improve.",    
     "Wearesopleasedthat":"We are so pleased that you feel this way about Global Voice Services! Care to tell us why? ",
     "NoteThisfeedback":"Note: This feedback only concerns the useability of the GVS Portal. For any other feedback, please use ",
-    "Help":"Help@IBM"
+    "Help":"Help@IBM",
+    "Thankyoufeedback":"Thank you for your valuable feedback!"
 },
 "approvalpending":{
 "Thank You for your response":"Thank You for your response.",

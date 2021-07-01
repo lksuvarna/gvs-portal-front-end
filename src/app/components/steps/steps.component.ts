@@ -217,6 +217,7 @@ export class StepsComponent implements OnInit {
   }
 
   if(this.service=='jabber_move'){
+    sessionStorage.setItem('step','step1');	
     console.log("Starting Cache");
     this.cache.setflag=true;
     this.cache.cnum=this.cnum;
