@@ -52,13 +52,13 @@
                           
                         </td>
                     </tr>
-                    <tr valign="top">
+                    <tr valign="top" *ngIf="itn_sel!=='Select One' && itn_sel!==''">
                         <td colspan="2" width="46%">
                             <label for="IdentifierId" class="ds-text">New Jabber / Phone number location</label>
                             <span class="ds-text-contextual-red-2"> *</span>
                         </td>
                         <td width="54%" height="10">
-                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
+                            <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1" >
                                 <select [(ngModel)]="loc_sel" name="Location_Selected" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="New Jabber / Phone number location" #loc (change)="getlocation(loc.value)">
                   <option value="Select Location" translate>Jabbernewtrans.SelectOne</option>
                   <option *ngFor="let loc of locations" [ngValue]="loc">{{loc}}</option>
