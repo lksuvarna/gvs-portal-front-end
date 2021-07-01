@@ -426,6 +426,7 @@ submit_snow(){
     this.payload.LocationCorrect = this.reviewDetailsIndia.Locationcorrectnew;
     this.payload.COS_Disp = this.reviewDetailsIndia.cos;
     this.payload.Justification_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
+    this.payload.ccmail_1 = this.countrydetails.ccmail;
     
     this.locSelected = this.reviewDetailsIndia.Locationcorrectnew;
     if(this.countrydetails.did_loc_formula){
