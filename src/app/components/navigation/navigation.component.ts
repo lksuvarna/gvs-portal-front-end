@@ -38,10 +38,16 @@ export class NavigationComponent implements OnInit {
   parcountrydetails:any
   fixphoneVisibility:any;
   loggedinuser:any
+  mainConfiguration :any;
   serhl:any;jhl:any;fhl:any;fachl:any;mhl:any;reqhl:any;reshl:any;apphl:any;pnshl:any;sphl:any;revalhl:any;
   serin:any;jin:any;fin:any;facin:any;min:any;reqin:any;resin:any;appin:any;pnsin:any;spin :any;revalin:any;
   @Input('dataNav') dataNavParent1: any
   @Input('cloudantData') cloudantData1: any
+
+  getNavTitle(tooltip : string){
+    this.mainConfiguration = this.translateconfigservice.readConfigFile();
+    return this.mainConfiguration.lhs[tooltip]
+    }
    
   getNavClass(i: any) {
     if (this.dataNav123.data[0].lhs[i].indented && this.dataNav123.data[0].lhs[i].highlighted) {
