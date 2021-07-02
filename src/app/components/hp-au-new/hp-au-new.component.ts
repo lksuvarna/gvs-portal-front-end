@@ -36,6 +36,7 @@ isEntryForm = false;
 isReviewForm = true;	
 Voice_Type = "no";	
 hideDeptCode = true;	
+locdisplay=true
 hideBuilding = true;	
 //fixedPhoneIdentifier = false;	
 cloudantData: any = []	
@@ -146,7 +147,13 @@ selectedLocation(loc:String) {
     k = k+1;	
     }	
     }
-           
+    if(this.build.length==1){
+      this.campus=this.build[0]
+      this.locdisplay=false
+    } 
+    else{
+      this.locdisplay=true
+    }      
   } else {	
     this.hideBuilding = true;	
     this.build = [];	
@@ -334,6 +341,7 @@ entryDetails(formData: NgForm) {
 
   this.isEntryForm = true;	
   this.isReviewForm = false;	
+  this.errorinfo=false;
 
   this.reviewDetailsIndia.officeLocation = formData.value.Location_1;	
   this.reviewDetailsIndia.campus = formData.value.Buildings;
@@ -504,6 +512,7 @@ ngOnInit(): void {
       this.j++;	
     }	
   }
+  
   const servicesData = { 	
     "data": [	
       {    	

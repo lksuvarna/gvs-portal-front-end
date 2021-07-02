@@ -324,6 +324,7 @@ backClick(formData: NgForm){
     
       this.isEntryForm = true;	
       this.isReviewForm = false;	
+      this.errorinfo=false;
       this.reviewDetailsIndia.mac = this.currentMac;
       this.reviewDetailsIndia.phoneNunmer = this.currentPhone;
       this.reviewDetailsIndia.Currentdescription = this.currentdesc;
