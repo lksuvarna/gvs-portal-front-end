@@ -237,8 +237,9 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.payload.Identifier_Disp=this.selectedJabber.substring(0,8);
       this.payload.countryname=this.countrydetails.name;	
       this.payload.request_type='special_request';	
-      this.payload.Location_Disp=this.getLocationCorrect() 
-      this.payload.Comments = removeDiacritics(this.requirements_disp.replace(/[\n\r"\\+]/g, ' '));
+      this.payload.Location_Disp=this.getLocationCorrect();
+      this.payload.Comments = this.requirements_disp;
+      //this.payload.Comments = removeDiacritics(this.requirements_disp.replace(/[\n\r"\\+]/g, ' '));
       this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
     
       
