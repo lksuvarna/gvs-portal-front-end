@@ -419,7 +419,10 @@
         "Wearesopleasedthat": "We are so pleased that you feel this way about Global Voice Services! Care to tell us why? ",
         "NoteThisfeedback": "Note: This feedback only concerns the useability of the GVS Portal. For any other feedback, please use ",
         "Help": "Help@IBM",
-        "Thankyoufeedback": "Thank you for your valuable feedback!"
+        "Thankyoufeedback": "Thank you for your valuable feedback!",
+        "providereview":"Please provide Review.",
+        "providefeedback":"Please provide feedback.",
+        "feedbackchars":"Feedback length should be more than 5 characters."
     },
     "approvalpending": {
         "Thank You for your response": "Thank You for your response.",
