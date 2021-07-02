@@ -1153,7 +1153,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\VivekRatnesh\Desktop\Project Work\Cirrus\GVS-Portal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -8859,7 +8859,7 @@ class VoipLaNewComponent {
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends
-        if (this.reviewDetailsIndia.campus.includes("Guadalajara")) {
+        if (this.locSelected.includes("Guadalajara")) {
             this.payload.level1_japproval = "yes";
         }
         else {
@@ -14142,7 +14142,8 @@ class VoipAllSpecialRequestComponent {
         this.payload.countryname = this.countrydetails.name;
         this.payload.request_type = 'special_request';
         this.payload.Location_Disp = this.getLocationCorrect();
-        this.payload.Comments = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.requirements_disp.replace(/[\n\r"\\+]/g, ' '));
+        this.payload.Comments = this.requirements_disp;
+        //this.payload.Comments = removeDiacritics(this.requirements_disp.replace(/[\n\r"\\+]/g, ' '));
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
         // console.log('Payload');	
         // console.log(this.payload);	
