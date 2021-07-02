@@ -14142,8 +14142,7 @@ class VoipAllSpecialRequestComponent {
         this.payload.countryname = this.countrydetails.name;
         this.payload.request_type = 'special_request';
         this.payload.Location_Disp = this.getLocationCorrect();
-        this.payload.Comments = this.requirements_disp;
-        //this.payload.Comments = removeDiacritics(this.requirements_disp.replace(/[\n\r"\\+]/g, ' '));
+        this.payload.Comments = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.requirements_disp.replace(/[\n\r"\\+]/g, ' '));
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
         // console.log('Payload');	
         // console.log(this.payload);	
@@ -26667,7 +26666,7 @@ ApprovalpendingComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵ�
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.reval);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.errorinfo && ctx.reval);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.errorinfo);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.errorinfo && ctx.reval);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
