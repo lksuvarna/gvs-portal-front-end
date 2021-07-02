@@ -169,6 +169,7 @@ locSelected : any
 
     this.isEntryForm = true;	
     this.isReviewForm = false;	
+    this.errorinfo=false;
   
     this.reviewDetailsIndia.officeLocation = this.locationselected;	
        //set up the cache for form values.

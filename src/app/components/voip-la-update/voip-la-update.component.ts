@@ -242,6 +242,7 @@ export class VoipLaUpdateComponent implements OnInit {
     this.bj_disp='';
     this.isReviewForm = false;
     this.isEntryForm = true;
+    this.errorinfo=false;
     this.create_cache(formData);
   }
 
