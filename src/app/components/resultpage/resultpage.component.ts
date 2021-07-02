@@ -21,6 +21,7 @@ export class ResultpageComponent implements OnInit {
   service='';
   page:any;
   requestResult:any;
+  isSpecialReq: boolean = false;
   constructor(private router:Router,private cookie: CookieHandlerService,private cloudantservice:cloudantservice, private route: ActivatedRoute,private servicesd : TranslateConfigService) { }
 
   mainConfiguration :any;
@@ -104,6 +105,8 @@ if(this.service=='fac_delete'){
   this.page=this.mainConfiguration.resultpagetrans.facdelete;
   return this.page;
 } 
-
+if(this.service=='specialrequest'){
+ this.isSpecialReq = true
+}
     }
   }
