@@ -76,6 +76,12 @@ export class HomepageComponent implements OnInit {
     this.translateconfigservice.changeLanguage(type);
   }
 
+  toggleServices(){
+    document.getElementById('home-nav')?.classList.remove('ds-bg-neutral-5')
+    document.getElementById('services-nav')?.classList.add('ds-bg-neutral-5')
+    document.getElementById('feed-nav')?.classList.remove('ds-bg-neutral-5')
+  }
+
   ngOnInit(): void {
     //this.userDetails = (this.cookie.getCookie('user'));
    

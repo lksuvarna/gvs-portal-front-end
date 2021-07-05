@@ -190,7 +190,7 @@ export class VoipLaUpdateComponent implements OnInit {
 
     if(this.checked) {
       if(formData.value.Voice_Mail =='') {
-        alert('Please select New Voice Mail');
+        alert('Please select New Voicemail');
         return;
       }
     }
@@ -202,7 +202,7 @@ export class VoipLaUpdateComponent implements OnInit {
     this.vm_actual="No"
 
     if((formData.value.Voice_Mail==this.vm_actual)&&(this.checked)){
-      alert('Current and New Voice Mail cannot be same');
+      alert('Current and New Voicemail cannot be same');
         return;
     }
 
@@ -242,6 +242,7 @@ export class VoipLaUpdateComponent implements OnInit {
     this.bj_disp='';
     this.isReviewForm = false;
     this.isEntryForm = true;
+    this.errorinfo=false;
     this.create_cache(formData);
   }
 

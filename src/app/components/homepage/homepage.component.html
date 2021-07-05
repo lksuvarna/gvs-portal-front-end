@@ -1,113 +1,113 @@
-<div >
-<div class="ds-row ds-bg-dark ds-pad-t-2_4" style="background-image:  url(././assets/banner.png);background-position:center;background-size:cover;background-repeat:no-repeat;">
-    <div class="ds-col-xs-10 ds-offset-xs-3 ds-mar-t-3 ds-col-lg-8 ds-offset-lg-2 ds-col-xl-6 ds-offset-xl-3 ds-text-align-center ds-shadow-text">
-        <h3 class="ds-heading-xs-2 ds-heading-lg-2 ds-shadow-text " translate *ngIf="display">
-            home.app-name
-        </h3>
-        <font translate *ngIf="display">
-            home.app-function
+<div>
+    <div class="ds-row ds-bg-dark ds-pad-t-2_4" style="background-image:  url(././assets/banner.png);background-position:center;background-size:cover;background-repeat:no-repeat;">
+        <div class="ds-col-xs-10 ds-offset-xs-3 ds-mar-t-3 ds-col-lg-8 ds-offset-lg-2 ds-col-xl-6 ds-offset-xl-3 ds-text-align-center ds-shadow-text">
+            <h3 class="ds-heading-xs-2 ds-heading-lg-2 ds-shadow-text " translate *ngIf="display">
+                home.app-name
+            </h3>
+            <font translate *ngIf="display">
+                home.app-function
+            </font>
+
+        </div>
+        <div><br><br></div>
+
+        <font class="ds-text-align-left" translate *ngIf="display">
+            &nbsp; &nbsp; home.sponsor
         </font>
 
     </div>
-    <div><br><br></div>
+    <div class="ds-row" *ngIf=translatecountryname1>
+        <div class="ds-col-12">
+            <p class="ds-text-small ds-text-align-right ds-font-weight-light">
 
-    <font class="ds-text-align-left" translate *ngIf="display">
-        &nbsp; &nbsp; home.sponsor
-    </font>
+                <b><span translate style="color: black">home.select-language</span></b><br>
+                <a (click)="changeLanguage('en')" style="color: black"><span class="ds-font-weight-light"> English </span></a><span>|</span>
+                <a (click)="changeLanguage('fr_ca')" style="color: black"><span class="ds-font-weight-light"> Français </span></a>
 
-</div>
-<div class="ds-row" *ngIf=translatecountryname1>
-    <div class="ds-col-12">
-        <p class="ds-text-small ds-text-align-right ds-font-weight-light">
-
-            <b><span translate style="color: black">home.select-language</span></b><br>
-            <a (click)="changeLanguage('en')" style="color: black"><span class="ds-font-weight-light"> English </span></a><span>|</span>
-            <a (click)="changeLanguage('fr_ca')" style="color: black"><span class="ds-font-weight-light"> Français </span></a>
-
-        </p>
-    </div>
-</div>
-<br><br>
-<div class="ds-row ">
-    <h3 class="ds-text-align-center ds-heading-2"><span class="ds-col-xs-30" style="font-size:48px" *ngIf="display"><span translate >home.welcomemessage </span>{{fullName}}</span>
-    </h3>
-</div><br>
-<div class="ds-row">
-    <h4 class="ds-heading-3 ds-text-align-center"><span style="font-size:30px" translate *ngIf="display">home.question</span></h4>
-</div>
-<div class="ds-row"></div>
-<br>
-<div class="ds-row" >
-    <div class="ds-padding-top-0_5 ds-row ds-text-align-center ">
-        <div class="ds-col-sm-4  md-2 xl-5">
-            <input type="text" class="ds-input" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="{{ 'home.Searchservice' | translate}}" style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; ">
-            <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | search: searchText; let i=index">
-                <a [routerLink]="[searchResult.path]" [queryParams]="{country:searchResult.code,service:searchResult.path}" *ngIf="searchResult.visibility"><img *ngIf="searchResult.flag" class="ds-border-neutral-5" src={{searchResult.flag}} width="28;" height="20;"><span *ngIf="!searchResult.flag" class="ds-pad-l-2"></span> {{searchResult.name}}</a>
-            </div>
-            <!--<div class="ds-pad-t-0_5 ds-text-align-left">
-                <a *ngIf="(searchItems | search: searchText).length >= 1" (click)="storeSearchTerm(searchText)" [routerLink]="['/searchresult']">Click here to see all results in GVS search</a>
-            </div>-->
+            </p>
         </div>
     </div>
-</div>
+    <br><br>
+    <div class="ds-row ">
+        <h3 class="ds-text-align-center ds-heading-2"><span class="ds-col-xs-30" style="font-size:48px" *ngIf="display"><span translate >home.welcomemessage </span>{{fullName}}</span>
+        </h3>
+    </div><br>
+    <div class="ds-row">
+        <h4 class="ds-heading-3 ds-text-align-center"><span style="font-size:30px" translate *ngIf="display">home.question</span></h4>
+    </div>
+    <div class="ds-row"></div>
+    <br>
+    <div class="ds-row">
+        <div class="ds-padding-top-0_5 ds-row ds-text-align-center ">
+            <div class="ds-col-sm-4  md-2 xl-5">
+                <input type="text" class="ds-input" id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="{{ 'home.Searchservice' | translate}}" style="background-image: url('././assets/search.png');background-repeat: no-repeat;background-position:right 20px center; ">
+                <div class="ds-text-align-left ds-pad-t-0_5" *ngFor="let searchResult of searchItems | search: searchText; let i=index">
+                    <a (click)="toggleServices()" [routerLink]="[searchResult.path]" [queryParams]="{country:searchResult.code,service:searchResult.path}" *ngIf="searchResult.visibility"><img *ngIf="searchResult.flag" class="ds-border-neutral-5" src={{searchResult.flag}} width="28;" height="20;"><span *ngIf="!searchResult.flag" class="ds-pad-l-2"></span> {{searchResult.name}}</a>
+                </div>
+                <!--<div class="ds-pad-t-0_5 ds-text-align-left">
+                <a *ngIf="(searchItems | search: searchText).length >= 1" (click)="storeSearchTerm(searchText)" [routerLink]="['/searchresult']">Click here to see all results in GVS search</a>
+            </div>-->
+            </div>
+        </div>
+    </div>
 
 
-<br>
-<br>
-<div class="ds-row ds-text-align-center " style="background-color: #f3f3f3; " *ngIf="display">
-    <div class="ds-col-sm-6 ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5 ">
-        <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode,service:'services'}" routerLinkActive="active " data="{cdetails:this.countryname}"><img class="ds-text-align-center ds-border-neutral-5 " [src]='countryname.flagname' *ngIf="micountry==false"></a>
-        <a [routerLink]="[ '/**'] " [queryParams]="{country:ccode,service:'services'}" routerLinkActive="active " data="{cdetails:this.countryname}"><img class="ds-text-align-center ds-border-neutral-5 " [src]='micpath' *ngIf="micountry"></a>
+    <br>
+    <br>
+    <div class="ds-row ds-text-align-center " style="background-color: #f3f3f3; " *ngIf="display">
+        <div class="ds-col-sm-6 ds-padding-bottom-1_5 ds-padding-right-3_5 ds-text-align-right ds-padding-top-1_5 ">
+            <a (click)="toggleServices()" [routerLink]="[ '/services'] " [queryParams]="{country:ccode,service:'services'}" routerLinkActive="active " data="{cdetails:this.countryname}"><img class="ds-text-align-center ds-border-neutral-5 " [src]='countryname.flagname' *ngIf="micountry==false"></a>
+            <a (click)="toggleServices()" [routerLink]="[ '/**'] " [queryParams]="{country:ccode,service:'services'}" routerLinkActive="active " data="{cdetails:this.countryname}"><img class="ds-text-align-center ds-border-neutral-5 " [src]='micpath' *ngIf="micountry"></a>
+        </div>
+        <div class="ds-col-sm-6 ds-text-align-left ds-padding-top-1 " *ngIf="display"><br><span style="font-size:30px " class="ds-padding-left-3 " translate>home.my-country</span><br>
+            <a (click)="toggleServices()" [routerLink]="[ '/services'] " [queryParams]="{country:ccode,service:'services'}" data="{cdetails:this.countryname}" translate *ngIf="micountry==false">home.click-here</a>
+            <a (click)="toggleServices()" [routerLink]="[ '/**'] " [queryParams]="{country:ccode,service:'services'}" data="{cdetails:this.countryname}" translate *ngIf="micountry">home.click-here</a>
+            <div translate>home.available </div>
+            <span class="ds-padding-left-3 " *ngIf="micountry==false"><span translate>home.servicesonlyokay</span> {{countryname.name}}</span>
+            <span class="ds-padding-left-3 " *ngIf="micountry"><span translate>home.servicesonlyokay</span> {{micountryname}}</span>
+
+            <br>
+        </div>
     </div>
-    <div class="ds-col-sm-6 ds-text-align-left ds-padding-top-1 " *ngIf="display"><br><span style="font-size:30px " class="ds-padding-left-3 " translate>home.my-country</span><br>
-        <a [routerLink]="[ '/services'] " [queryParams]="{country:ccode,service:'services'}" data="{cdetails:this.countryname}" translate *ngIf="micountry==false">home.click-here</a>
-        <a [routerLink]="[ '/**'] " [queryParams]="{country:ccode,service:'services'}" data="{cdetails:this.countryname}" translate *ngIf="micountry">home.click-here</a>
-        <div translate>home.available </div>
-        <span class="ds-padding-left-3 " *ngIf="micountry==false"><span translate>home.servicesonlyokay</span> {{countryname.name}}</span>
-        <span class="ds-padding-left-3 " *ngIf="micountry"><span translate>home.servicesonlyokay</span> {{micountryname}}</span>
-        
-        <br>
+    <br>
+    <br>
+    <div class="ds-row " *ngIf="display">
+        <h4 class="ds-text-align-center ds-heading-4 ds-margin-bottom-0 ">
+            <span style="font-size:30px " translate>home.most-viewed-services</span>
+        </h4><br>
+        <h5 class="ds-text-align-center ds-heading-5 ds-margin-bottom-0 " translate>home.find-right-service <br translate> home.find-right-service2</h5>
     </div>
-</div>
-<br>
-<br>
-<div class="ds-row " *ngIf="display">
-    <h4 class="ds-text-align-center ds-heading-4 ds-margin-bottom-0 ">
-        <span style="font-size:30px " translate>home.most-viewed-services</span>
-    </h4><br>
-    <h5 class="ds-text-align-center ds-heading-5 ds-margin-bottom-0 " translate>home.find-right-service <br translate> home.find-right-service2</h5>
-</div>
-<div class="ds-row ds-text-align-center ds-padding-left-1 ds-padding-right-1 " *ngIf="display">
-    <div class="ds-col-3 ds-padding-left-1 ">
-        <div class="ds-panel ">
-            <div class="ds-panel-container " *ngIf="jabberdisplay">
-                <p><img src="././assets/Jabber.png " width="93px " height="93px "><br><br>Cisco Jabber</p>
-                <p class="ds-text-small ds-align-text-left ds-padding-bottom-2 " translate>home.jabber-description<br>
-                </p><br><br>
-                <span class="button-blue " id="button2 ">
-          <button name="next "
+    <div class="ds-row ds-text-align-center ds-padding-left-1 ds-padding-right-1 " *ngIf="display">
+        <div class="ds-col-3 ds-padding-left-1 ">
+            <div class="ds-panel ">
+                <div class="ds-panel-container " *ngIf="jabberdisplay">
+                    <p><img src="././assets/Jabber.png " width="93px " height="93px "><br><br>Cisco Jabber</p>
+                    <p class="ds-text-small ds-align-text-left ds-padding-bottom-2 " translate>home.jabber-description<br>
+                    </p><br><br>
+                    <span class="button-blue " id="button2 ">
+          <button name="next " (click)="toggleServices()"
             class="ds-button ds-secondary ds-margin-bottom-0 ds-padding-top-1 ds-padding-bottom-1 " tabindex="15 "
             [routerLink]="[ '/jabberservices'] " [queryParams]="{country:ccode,service:'jabberservices'}" data="{cdetails:this.countryname}"
             translate>home.button-value</button>
             <!-- <value="button-value "> -->
 
         </span>
-            </div>
-            <div class="ds-panel-container " *ngIf="jabberdisplay==false">
-                <p><img src="././assets/fixedphone.png " width="93px " height="93px "><br><br>Fixed Phone</p>
-                <br><br>
-                <span class="button-blue " id="button2 ">
-          <button name="next "
+                </div>
+                <div class="ds-panel-container " *ngIf="jabberdisplay==false">
+                    <p><img src="././assets/fixedphone.png " width="93px " height="93px "><br><br>Fixed Phone</p>
+                    <br><br>
+                    <span class="button-blue " id="button2 ">
+          <button name="next " (click)="toggleServices()"
             class="ds-button ds-secondary ds-margin-bottom-0 ds-padding-top-1 ds-padding-bottom-1 " tabindex="15 "
             [routerLink]="[ '/fixedphoneservices'] " [queryParams]="{country:ccode,service:'fixedphoneservices'}" data="{cdetails:this.countryname}"
             translate>home.button-value</button>
             <!-- <value="button-value "> -->
 
         </span>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 
