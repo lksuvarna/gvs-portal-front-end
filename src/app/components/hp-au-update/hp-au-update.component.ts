@@ -297,6 +297,7 @@ export class HpAuUpdateComponent implements OnInit {
 
     this.isEntryForm = true;	
     this.isReviewForm = false;	
+    this.errorinfo=false;
     this.reviewDetailsIndia.updatereq = formData.value.UpdateReq;
     this.reviewDetailsIndia.mac = this.currentMac;
     this.reviewDetailsIndia.phoneNunmer = this.currentPhone;

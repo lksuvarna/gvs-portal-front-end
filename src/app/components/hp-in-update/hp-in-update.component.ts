@@ -366,8 +366,8 @@ export class HpInUpdateComponent implements OnInit {
         this.reviewDetailsIndia.description = formData.value.Newdesc;
       }
       this.isEntryForm = true;	
-      this.isReviewForm = false;	
-
+      this.isReviewForm = false;
+      this.errorinfo=false;
       this.reviewDetailsIndia.mac = this.currentMac;
       this.reviewDetailsIndia.phoneNunmer = this.currentPhone;
       this.reviewDetailsIndia.Currentdescription = this.currentdesc;

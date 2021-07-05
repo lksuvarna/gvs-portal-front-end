@@ -4,6 +4,7 @@ import { feedbackModel } from './feedbackModel';
 import { CookieHandlerService } from '../../_services/cookie-handler.service';
 import { FeedbackService } from 'src/app/_services/feedback.service';
 import { DatePipe } from '@angular/common';
+import {TranslateConfigService} from '../../_services/translate-config.service';
 
 
 @Component({
@@ -19,13 +20,15 @@ export class FeedbackComponent implements OnInit {
   displayOn9n10: boolean = false;
   radioReview: string = "";
   ccode = '';
+  mainConfiguration :any;
+  translatecountryname1 :boolean =false;
   datenumber:number = Date.now();
 
 
   feedbackParams: feedbackModel = new feedbackModel();
   countrydetails: any ;
 
-  constructor(private datePipe: DatePipe,private feedbackservice: FeedbackService, private cookie : CookieHandlerService) { }
+  constructor(private datePipe: DatePipe,private feedbackservice: FeedbackService, private cookie : CookieHandlerService, private translateconfigservice : TranslateConfigService) { }
 
   radioSelectAction():void {
     this.textAreaDisplay = true;
@@ -46,16 +49,16 @@ export class FeedbackComponent implements OnInit {
   onSubmit(formData: NgForm):void {
 
     if(this.radioReview == null || this.radioReview == '')
-      alert("Please provide Review");
+      alert(this.mainConfiguration.feedback.providereview);
     else
     {
       if(formData.value.feedbackArea.length==0)
       {
-      alert("Please provide feedback.");
+      alert(this.mainConfiguration.feedback.providefeedback);
       }
       else if(formData.value.feedbackArea.length < 5)
       {
-        alert("Feedback length should be more than 5 characters");
+        alert(this.mainConfiguration.feedback.feedbackchars);
       }
       else{
 
@@ -87,13 +90,23 @@ export class FeedbackComponent implements OnInit {
     }
     
   }
-
+  changeLanguage(type :string){
+    this.translateconfigservice.changeLanguage(type);
+  }
   ngOnInit(): void {
+    this.mainConfiguration = this.translateconfigservice.readConfigFile();
 
     this.ccode = this.cookie.getCookie('ccode');
     this.countrydetails = sessionStorage.getItem('countrydetails');
     this.countrydetails = JSON.parse(this.countrydetails);
-
+    if (this.countrydetails.isLtFrench){
+      this.translatecountryname1 = true;
+    }else{
+      this.translatecountryname1 = false;
+    }
+    
+  
   }
+  
 
 }

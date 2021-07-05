@@ -171,6 +171,7 @@ entryDetailsLA(formData: NgForm) {
   // }	
   this.isEntryForm = true;	
   this.isReviewForm = false;	
+  this.errorinfo=false;
 
   this.reviewDetailsIndia.officeLocation = formData.value.Location;	
   // this.reviewDetailsIndia.campus = formData.value.Buildings;	
@@ -200,13 +201,14 @@ submit_snow(){
     // fields picked up from form -- begins	
     this.payload.Buildings_Disp=this.reviewDetailsIndia.campus;	
     // by default set to true. below line can be removed if needed.	
-    //this.payload.Voice_Type_Disp = this.reviewDetailsIndia.Voice_Type_Disp ;	
+    this.payload.Voice_Type_Disp = "yes";	
     this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;	
-   // this.payload.icano_Disp = this.reviewDetailsIndia.icano_Disp ;	
+    this.payload.icano_Disp ="";	
     this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;	
-    this.payload.BusinessUnit_Disp =this.reviewDetailsIndia.businessUnit;	
+    this.payload.BusinessUnit_Disp =this.employeeInfo.businessUnit.toUpperCase().trim();	
     this.payload.Department_number_Disp = this.reviewDetailsIndia.chargeDepartmentCode;	
     this.locSelected = this.reviewDetailsIndia.officeLocation;
+    this.payload.accid_Disp = "";
     
     if(this.countrydetails.did_loc_formula_jabber){
       // Assign location value from cloudant. Needed for ITN allocation
@@ -223,7 +225,7 @@ submit_snow(){
     this.payload.ReqNo=this.reqno;	
 
     // fields to be picked up from form -- ends
-    if(	this.reviewDetailsIndia.campus.includes("Guadalajara"))	{
+    if(	this.locSelected.includes("Guadalajara"))	{
       this.payload.level1_japproval="yes";	 
     }
     else{

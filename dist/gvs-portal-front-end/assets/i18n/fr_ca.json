@@ -224,7 +224,7 @@
         "STEP 4" :  "ÉTAPE 4"
        },
        "fixedphonenew":{
-           "Location" : "Emplacement",
+           "Location" : "Emplacement du téléphone fixe",
            "TypeofDevice":"Type d'appareil ",
            "SelectDevice":"Choisir un appareil",
            "TypeofModel":"Type de modèle ",
@@ -318,7 +318,10 @@
         "Wearesopleasedthat":"Nous sommes ravis que vous vous sentiez ainsi à propos de Global Voice Services ! Voulez-vous nous dire pourquoi ?",
         "NoteThisfeedback":"Remarque : Ces commentaires sont destinés à l'expérience utilisateur du site Web. Pour tout autre commentaire, veuillez utiliser",
        "Help":"Aider@IBM",
-       "Thankyoufeedback":"Merci pour votre rétroaction!"
+       "Thankyoufeedback":"Merci pour votre rétroaction!",
+       "providereview":"Veuillez fournir un avis.",
+        "providefeedback":"Veuillez fournir des commentaires.",
+        "feedbackchars":"La longueur des commentaires doit être supérieure à 5 caractères."
     
      },
      "approvalpending":{
