@@ -7685,7 +7685,7 @@ function VoipLaUpdateComponent_table_17_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "tr", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "td", 26);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "label", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, " Current Voice Mail ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, " Current Voicemail ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "td", 28);
@@ -7728,7 +7728,7 @@ function VoipLaUpdateComponent_table_17_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](43, "div", 56);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](44, "label", 57);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](45, "Voice Mail");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](45, "Voicemail");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "div", 54);
@@ -7747,7 +7747,7 @@ function VoipLaUpdateComponent_table_17_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](51, "tr", 48);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](52, "td", 60);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](53, "label", 61);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54, "New Voice Mail");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](54, "New Voicemail");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "span", 38);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, "*");
@@ -7868,7 +7868,7 @@ function VoipLaUpdateComponent_tr_59_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td", 26);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "label", 73);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New Voice Mail");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "New Voicemail");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "td", 28);
@@ -8102,7 +8102,7 @@ class VoipLaUpdateComponent {
         }
         if (this.checked) {
             if (formData.value.Voice_Mail == '') {
-                alert('Please select New Voice Mail');
+                alert('Please select New Voicemail');
                 return;
             }
         }
@@ -8111,7 +8111,7 @@ class VoipLaUpdateComponent {
         if (this.vm_disp.toUpperCase() == "NO" || this.vm_disp.toUpperCase() == "N")
             this.vm_actual = "No";
         if ((formData.value.Voice_Mail == this.vm_actual) && (this.checked)) {
-            alert('Current and New Voice Mail cannot be same');
+            alert('Current and New Voicemail cannot be same');
             return;
         }
         if (this.checked2) {
@@ -8410,7 +8410,7 @@ VoipLaUpdateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](45, "tr", 25);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](46, "td", 26);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](47, "label", 29);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](48, " Current Voice Mail ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](48, " Current Voicemail ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "td", 28);
