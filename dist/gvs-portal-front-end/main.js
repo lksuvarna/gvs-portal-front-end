@@ -19939,7 +19939,7 @@ class TopcountryframeComponent {
                     }
                 }
             }
-            if (this.pcode == this.countryroute) {
+            if (this.pcode === this.countryroute) {
                 this.pcountrydetails = sessionStorage.getItem('countrydetails');
                 console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code);
                 this.countryname = JSON.parse(this.pcountrydetails);
@@ -23124,12 +23124,13 @@ class PagenotfoundComponent {
             .subscribe(params => {
             console.log(params);
             this.pcode = params.country;
+            this.cr = sessionStorage.getItem('countryroute');
             this.cloudantservice.getcountrydetails('000').subscribe(data => {
                 if (data) { }
                 else {
                     this.display = true;
                 }
-                if (data.countrydetails.loc.includes(sessionStorage.getItem('countryroute')) || data.countrydetails.loc.includes(this.pcode)) {
+                if (this.cr.length == 3 && (data.countrydetails.loc.includes(sessionStorage.getItem('countryroute')) || data.countrydetails.loc.includes(this.pcode))) {
                     this.miccountry = true;
                     this.display = true;
                 }
