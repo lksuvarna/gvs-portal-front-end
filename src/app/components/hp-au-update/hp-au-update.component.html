@@ -34,7 +34,7 @@
                                     <div class="ds-col-12">
                                         <div class="ds-row">
                                             <div class="ds-col-7">
-                                                <input name="IdNum1" [(ngModel)]="currentMacOrPhone" value="" class="ds-input" style="width:180px !important;" maxlength="15" (click)='onSearch()'>
+                                                <input name="IdNum1" [(ngModel)]="currentMacOrPhone" value="" class="ds-input" style="width:180px !important;" maxlength="15" title="Enter current MAC address or Phone Number" (click)='onSearch()'>
                                             </div>
                                             <div class="ds-col-5 ds-pad-l-1">
                                                 <div>
@@ -53,8 +53,8 @@
                         <td colspan="2" width="100%">
                             <span id="err1"><br><br>
                             <div class="ds-col-xs-12 ds-alert ds-warning">
-                                <p>No record was found for the Mac Address or Phone Number you have entered. 
-                                Please check and try again.</p>
+                                <p>No record was found for the MAC Address or Phone Number. 
+                                Please verify and try again.</p>
                             </div>
                         </span>
                         </td>
@@ -109,12 +109,12 @@
             <table id="t2" width="100%" height="10" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top" *ngIf='showLocation && showSearch'>
-                        <td width="50%"><label for="LocationId" class="ds-text-capitalize">Select State </label>
+                        <td width="50%"><label for="LocationId">New state </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select ngModel rows="2" name="Location_1_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" tabindex="1" #location (change)='selectedLocation(location.value)'
+                                <select ngModel rows="2" name="Location_1_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="New State" tabindex="1" #location (change)='selectedLocation(location.value)'
                                     [(ngModel)]='state'>
                                     <option value ="">Select One</option>
                                     <option name="Location_1_1" *ngFor='let fl_location of camp' [value]='fl_location'>{{ fl_location }}</option>
@@ -123,12 +123,12 @@
                         </td>
                     </tr>
                     <tr valign="top" *ngIf='showLocation && showSearch' class="ds-pad-t-1">
-                        <td width="50%"><label for="LocationId_1_1">Select new Location </label>
+                        <td width="50%"><label for="LocationId_1_1">New location </label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
-                                <select ngModel name="Buildings" rows="2" [(ngModel)]='campus' cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" tabindex="1">
+                                <select ngModel name="Buildings" rows="2" [(ngModel)]='campus' cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="New Location" tabindex="1">
                         <option value ="Select Location" translate>Jabbernewtrans.SelectOne</option>
                         <option name="Buildings" *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
                     </select>
@@ -215,7 +215,7 @@
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="BACK"
                 (click)="backClick(formData)">
             </span>
-                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2">
+                        <span class="ds-pad-l-1 ds-pad-r-1" id="button2" [hidden]='hideNextButton'>
               <input type="submit" name="next" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3"
                 value="NEXT">
             </span>
@@ -273,13 +273,13 @@
                     </tr>
                     <tr valign="top" *ngIf='showLocation'>
                         <td colspan="2" width="46%" height="10">
-                            <label for="addId1">State</label>
+                            <label for="addId1">New state</label>
                         </td>
                         <td width="54%" height="10">{{reviewDetailsIndia.officeLocation}}</td>
                     </tr>
                     <tr valign="top" *ngIf='showLocation'>
                         <td colspan="2" width="46%">
-                            <label for="addId1">Location</label>
+                            <label for="addId1">New location</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.campus}}</td>
                     </tr>
