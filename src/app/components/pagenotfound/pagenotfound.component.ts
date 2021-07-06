@@ -13,15 +13,18 @@ export class PagenotfoundComponent implements OnInit {
   miccountry=false;
   display=false;
   pcode = '';
+  cr:any;
   ngOnInit(): void {
     this.route.queryParams
       .subscribe(params => {
         console.log(params);
 
         this.pcode = params.country;
+        this.cr=sessionStorage.getItem('countryroute')
+        
     this.cloudantservice.getcountrydetails('000').subscribe(data=> {
       if(data){}else{this.display=true;}
-      if (data.countrydetails.loc.includes(sessionStorage.getItem('countryroute')) || data.countrydetails.loc.includes(this.pcode)){
+      if ( this.cr.length===3 && (data.countrydetails.loc.includes(sessionStorage.getItem('countryroute')) || data.countrydetails.loc.includes(this.pcode)) ){
       this.miccountry=true
       this.display=true;
     }

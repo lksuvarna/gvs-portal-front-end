@@ -56,7 +56,7 @@
 
 
                     <tr valign="top" [hidden]='currentVoiceMail'>
-                        <td colspan="2" width="46%" height="10"><label for="current_vm" class="ds-text-capitalize"> Current Voice Mail </label>
+                        <td colspan="2" width="46%" height="10"><label for="current_vm" class="ds-text-capitalize"> Current Voicemail </label>
                         </td>
                         <td width="54%" height="10">
                             <div class="ds-input-container">
@@ -86,7 +86,7 @@
                                     <div class="ds-input-checkbox">
                                         <input type="checkbox" id="checkbox1" name="checked" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked">
                                         <div class="ds-input-control"></div>
-                                        <label for="checkbox1">Voice Mail</label>
+                                        <label for="checkbox1">Voicemail</label>
                                     </div>
                                     <div class="ds-input-checkbox">
                                         <input type="checkbox" id="checkbox2" name="checked2" class="ds-input" title="Update requested for" (change)='toggle_options()' [(ngModel)]="checked2">
@@ -100,7 +100,7 @@
 
 
                     <tr valign="top" [hidden]='newvoicemail'>
-                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize ds-padding-top-2">New Voice Mail</label>
+                        <td colspan="2" width="46%"><label for="addId" class="ds-text-capitalize ds-padding-top-2">New Voicemail</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="54%">
@@ -200,7 +200,7 @@
                         </td>
                     </tr>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="current_vm" class="ds-text-capitalize"> Current Voice Mail </label>
+                        <td colspan="2" width="46%" height="10"><label for="current_vm" class="ds-text-capitalize"> Current Voicemail </label>
                         </td>
                         <td width="54%" height="10">
                             <span>{{vm_disp}}</span>
@@ -216,7 +216,7 @@
                     </tr>
 
                     <tr valign="top" *ngIf="this.new_vm_disp">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">New Voice Mail</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize">New Voicemail</label>
                         </td>
                         <td width="54%" height="10">
                             <label>{{new_vm_disp}}</label>

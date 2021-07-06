@@ -66,7 +66,7 @@ export class TopcountryframeComponent implements OnInit {
          }
        }
       }   
-    if (this.pcode== this.countryroute) {
+    if (this.pcode=== this.countryroute) {
         
       this.pcountrydetails=sessionStorage.getItem('countrydetails')
             console.log("topcountrysession storageif" + JSON.parse(this.pcountrydetails).code)
