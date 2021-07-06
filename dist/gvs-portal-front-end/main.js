@@ -1733,8 +1733,8 @@ class HpUsaNewComponent {
         // this.reviewDetailsIndia.employeeId = formData.value.StepMentor;
         this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
         this.reviewDetailsIndia.cos = formData.value.cos;
-        this.reviewDetailsIndia.justification = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.Justification.replace(/[\n\r"\\+]/g, ' '));
-        this.reviewDetailsIndia.description = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.Description.replace(/[\n\r"\\+]/g, ' '));
+        this.reviewDetailsIndia.justification = formData.value.Justification;
+        this.reviewDetailsIndia.description = formData.value.Description;
         this.reviewDetailsIndia.mac = formData.value.MACAddress;
         this.create_cache(formData);
     }
@@ -1783,10 +1783,10 @@ class HpUsaNewComponent {
         this.payload.Model_Disp = this.reviewDetailsIndia.model;
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
-        this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+        this.payload.Desc_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
-        this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+        this.payload.Justification_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
         this.locSelected = this.reviewDetailsIndia.officeLocation;
         if (this.countrydetails.did_loc_formula) {
             // Assign location value from cloudant. Needed for ITN allocation
@@ -6874,7 +6874,8 @@ class HpEmeaUpdateComponent {
         this.payload.ReqNo = this.reqno;
         this.payload.ccmail_1 = this.countrydetails.ccmail;
         this.payload.Location_Disp = "";
-        this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
+        //this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+        this.payload.gvs_approval_link = '';
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
         this.payload.countryname = this.countrydetails.name;
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
@@ -9993,7 +9994,14 @@ class VoipInDeleteComponent {
         this.isSpinnerVisible = true;
         this.payload.orinator_payload = this.orgi;
         this.payload.cNum_payload = this.cnum;
-        this.payload.site_address = this.data[0].ATTRIBUTE3;
+        var att;
+        if (this.countrydetails.jabberloc) {
+            att = this.countrydetails.jabberloc;
+        }
+        else {
+            att = 'ATTRIBUTE7';
+        }
+        this.payload.site_address = eval('this.data[0].' + att);
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends	
@@ -27061,7 +27069,7 @@ class VoipUsaUpdateComponent {
         //this.payload.Department_number_Disp = this.chargeDisp;
         this.payload.accid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.accountid_Disp.replace(/[\n\r"\\+]/g, ' '));
         this.payload.Identifier_Selected = this.jabberDisp.substring(0, 8);
-        this.payload.updated_for = '';
+        this.payload.updated_for = 'Account ID:' + Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.accountid_Disp.replace(/[\n\r"\\+]/g, ' '));
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends	
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;

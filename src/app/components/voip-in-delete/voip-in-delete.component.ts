@@ -100,9 +100,17 @@ export class VoipInDeleteComponent implements OnInit {
     this.isButtonVisible=false;	
     this.isSpinnerVisible=true;	
       this.payload.orinator_payload=this.orgi;	
-      this.payload.cNum_payload=this.cnum;	
+      this.payload.cNum_payload=this.cnum;
+      var att;	
+      if(this.countrydetails.jabberloc)
+      {
+          att=this.countrydetails.jabberloc
+     }
+   else{
+     att='ATTRIBUTE7'
+     }
      
-      this.payload.site_address =this.data[0].ATTRIBUTE3	
+      this.payload.site_address =eval('this.data[0].'+att)	
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
       this.payload.ReqNo=this.reqno;	
   
