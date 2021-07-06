@@ -1733,8 +1733,8 @@ class HpUsaNewComponent {
         // this.reviewDetailsIndia.employeeId = formData.value.StepMentor;
         this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
         this.reviewDetailsIndia.cos = formData.value.cos;
-        this.reviewDetailsIndia.justification = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.Justification.replace(/[\n\r"\\+]/g, ' '));
-        this.reviewDetailsIndia.description = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(formData.value.Description.replace(/[\n\r"\\+]/g, ' '));
+        this.reviewDetailsIndia.justification = formData.value.Justification;
+        this.reviewDetailsIndia.description = formData.value.Description;
         this.reviewDetailsIndia.mac = formData.value.MACAddress;
         this.create_cache(formData);
     }
@@ -1783,10 +1783,10 @@ class HpUsaNewComponent {
         this.payload.Model_Disp = this.reviewDetailsIndia.model;
         this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
         this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
-        this.payload.Desc_Disp = this.reviewDetailsIndia.description;
+        this.payload.Desc_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
         this.payload.Location_final = this.reviewDetailsIndia.officeLocation;
         this.payload.COS_Disp = this.reviewDetailsIndia.cos;
-        this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
+        this.payload.Justification_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
         this.locSelected = this.reviewDetailsIndia.officeLocation;
         if (this.countrydetails.did_loc_formula) {
             // Assign location value from cloudant. Needed for ITN allocation
