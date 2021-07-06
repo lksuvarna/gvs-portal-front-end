@@ -1153,7 +1153,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\PavanKumarB\GVS-FE-MASTER\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -6874,7 +6874,8 @@ class HpEmeaUpdateComponent {
         this.payload.ReqNo = this.reqno;
         this.payload.ccmail_1 = this.countrydetails.ccmail;
         this.payload.Location_Disp = "";
-        this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
+        //this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+        this.payload.gvs_approval_link = '';
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
         this.payload.countryname = this.countrydetails.name;
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
@@ -27061,7 +27062,7 @@ class VoipUsaUpdateComponent {
         //this.payload.Department_number_Disp = this.chargeDisp;
         this.payload.accid_Disp = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.accountid_Disp.replace(/[\n\r"\\+]/g, ' '));
         this.payload.Identifier_Selected = this.jabberDisp.substring(0, 8);
-        this.payload.updated_for = '';
+        this.payload.updated_for = 'Account ID:' + Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.accountid_Disp.replace(/[\n\r"\\+]/g, ' '));
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends	
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
