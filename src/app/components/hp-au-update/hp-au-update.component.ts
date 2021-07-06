@@ -108,7 +108,7 @@ export class HpAuUpdateComponent implements OnInit {
   }
 
   OnSearchClick(){
-    if(this.currentMacOrPhone != ''){
+    if(this.currentMacOrPhone.trim() != ''){
       this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone.toUpperCase(),this.currentMacOrPhone.toUpperCase(),this.countrydetails.name).subscribe(data =>{
         if(data.message != '')
         {
