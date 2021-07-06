@@ -397,7 +397,8 @@ backClick(formData: NgForm){
       this.payload.Location_Disp = "";
 
 
-      this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+      //this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
+      this.payload.gvs_approval_link = '';
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
