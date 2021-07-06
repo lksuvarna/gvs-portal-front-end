@@ -52,6 +52,7 @@ hideProjectId = false;
 locationlist: any;	
 selected_device:any = '';
 voicemail = 'no';
+locdisplay=true
 mainConfiguration :any;
 cache_tmp:  any = [];
 selected_location:any = '';
@@ -207,6 +208,9 @@ getFixedPhoneData(){
   
     this.isEntryForm = true;	
     this.isReviewForm = false;	
+    this.errorinfo=false;
+
+    
   
     this.reviewDetailsIndia.officeLocation = formData.value.Location_1;	
     this.reviewDetailsIndia.campus = formData.value.Buildings;	
@@ -268,6 +272,7 @@ getFixedPhoneData(){
       this.payload.Model_Disp =  this.reviewDetailsIndia.model;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
       this.payload.Voicemail_Disp = '';
+      //this.payload.Desc_Disp = this.reviewDetailsIndia.description;
       this.payload.Desc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
 
       if(this.countrydetails.jabber_dept){
@@ -291,6 +296,7 @@ getFixedPhoneData(){
 
       this.payload.COS_Disp = this.reviewDetailsIndia.cos;
       this.payload.Justification_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
+      //this.payload.Justification_Disp = this.reviewDetailsIndia.justification;
       this.payload.level1_japproval=this.countrydetails.level1_japproval;	
       this.payload.level2_japproval=this.countrydetails.level2_japproval;	
       this.payload.SLA_type="standard_sla";
@@ -353,7 +359,10 @@ getFixedPhoneData(){
   this.cModels = this.cModels?.replace('"','').split(',');
   this.locationlist=sessionStorage.getItem('locationdetails')?.replace('"','')	
   this.locationlist=this.locationlist?.replace('"','').split(',');
-
+  if(this.locationlist.length==1){
+    this.selected_location=this.locationlist[0]
+    this.locdisplay=false
+  }
     const servicesData = { 	
       "data": [	
         {    	

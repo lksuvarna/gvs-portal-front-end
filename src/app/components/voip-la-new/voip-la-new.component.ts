@@ -171,6 +171,7 @@ entryDetailsLA(formData: NgForm) {
   // }	
   this.isEntryForm = true;	
   this.isReviewForm = false;	
+  this.errorinfo=false;
 
   this.reviewDetailsIndia.officeLocation = formData.value.Location;	
   // this.reviewDetailsIndia.campus = formData.value.Buildings;	
@@ -224,7 +225,7 @@ submit_snow(){
     this.payload.ReqNo=this.reqno;	
 
     // fields to be picked up from form -- ends
-    if(	this.reviewDetailsIndia.campus.includes("Guadalajara"))	{
+    if(	this.locSelected.includes("Guadalajara"))	{
       this.payload.level1_japproval="yes";	 
     }
     else{

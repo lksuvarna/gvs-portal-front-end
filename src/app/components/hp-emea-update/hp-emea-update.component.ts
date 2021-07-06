@@ -118,7 +118,7 @@ export class HpEmeaUpdateComponent implements OnInit {
   }
   
   OnSearchClick(){
-    if(this.currentMacOrPhone != ''){
+    if(this.currentMacOrPhone.trim() != ''){
           this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
         if(data.message != '')
         {
@@ -324,6 +324,7 @@ backClick(formData: NgForm){
     
       this.isEntryForm = true;	
       this.isReviewForm = false;	
+      this.errorinfo=false;
       this.reviewDetailsIndia.mac = this.currentMac;
       this.reviewDetailsIndia.phoneNunmer = this.currentPhone;
       this.reviewDetailsIndia.Currentdescription = this.currentdesc;
@@ -486,20 +487,22 @@ backClick(formData: NgForm){
     this.currentMacOrPhone = String(this.cache_disp.currentMacOrPhone);
     this.showSearch = Boolean(this.cache_disp.showSearch);
     this.hideNextButton = Boolean(this.cache_disp.hideNextButton);
-    this.showerrormessage = Boolean(this.cache_disp.showerrormessage);
+    //this.showerrormessage = Boolean(this.cache_disp.showerrormessage);
     this.currentMac = String(this.cache_disp.currentMac);
     this.currentPhone = String(this.cache_disp.currentPhone);
     //this.currentloc = String(this.cache_disp.currentLocation);
     this.currentmodel = String(this.cache_disp.currentmodel);
     this.currentdesc = String(this.cache_disp.currentDescription);
-    if(this.cache_disp.officeLocation != undefined){
-      this.updateRequired = String(this.cache_disp.updateRequired);
-      this.updateFor(this.updateRequired);
+    if(this.cache_disp.updateRequired != undefined){
+      this.selected_device = String(this.cache_disp.updateRequired);
+      this.updateFor(this.selected_device);
     }
     if(this.cache_disp.officeLocation != undefined) {
       this.state = String(this.cache_disp.officeLocation);
       this.selectedLocation(this.state)
     }
+    if(this.cache_disp.newModel != undefined)
+    this.newModel = this.cache_disp.newModel;
     if(this.cache_disp.campus != undefined)
     this.campus = String(this.cache_disp.campus);
     if(this.cache_disp.newMac != undefined)

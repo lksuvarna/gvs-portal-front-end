@@ -55,7 +55,16 @@ export class UitoplinksComponent implements OnInit {
     .subscribe(params => {
       this.service=params.service;
       this.pcode = params.country;
-    
+
+      this.routerPath = window.location.pathname
+      if (this.routerPath === '/'){
+        this.toggleHighlight('home-nav')
+      } else if (this.routerPath === '/feedback') {
+        this.toggleHighlight('feed-nav')
+      } else {
+        this.toggleHighlight('services-nav')
+      }
+ 
       this.countrydetails=sessionStorage.getItem('countrydetails')
       this.countrydetails = JSON.parse(this.countrydetails)
 
@@ -66,15 +75,6 @@ export class UitoplinksComponent implements OnInit {
     else{
       this.translateconfigservice.changeLanguage1('en');
     }  
-    this.routerPath = window.location.pathname
-
-    if (this.routerPath === '/'){
-      this.toggleHighlight('home-nav')
-    } else if (this.routerPath === '/feedback') {
-      this.toggleHighlight('feed-nav')
-    } else {
-      this.toggleHighlight('services-nav')
-    }
     
   })
 

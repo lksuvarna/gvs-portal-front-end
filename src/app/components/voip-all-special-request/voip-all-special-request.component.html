@@ -31,14 +31,14 @@
                 <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
                     <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
-    
+
                     <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
                 </p>
             </div>
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0" *ngIf="warninginfo==false && warninginfosnow==false ">
                 <tbody>
                     <tr valign="top" *ngIf="warninginfosnowres==false" [hidden]='others'>
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>specialrequest.JabberNumberoptional</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text" translate>specialrequest.JabberNumberoptional</label>
                             <span class="ds-text-contextual-red-2"></span>
                         </td>
                         <td width="54%" height="10">
@@ -49,14 +49,14 @@
                   <option name="Jabber_1" *ngFor='let fl of data'  [value]='fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS") && fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?fl.IDENTIFIER.trim()+"-P,SEP":fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?fl.IDENTIFIER.trim()+"-P":fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?fl.IDENTIFIER.trim()+"-SEP":fl.IDENTIFIER.trim()' selected>
                     {{ fl.IDENTIFIER.trim()}}{{fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS") && fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?" - P,SEP" :fl.ATTRIBUTE8!=null && fl.ATTRIBUTE8.trim().toUpperCase().includes("CHCS")?" - P":fl.ATTRIBUTE1!=null && fl.ATTRIBUTE1.toUpperCase().trim().includes("SEP")?" - SEP":''}}</option>
                 </select>
-                <span style="color: black" translate>specialrequest.devicehelpmessage</span>
-                            </div>  
+                                <span style="color: black" translate>specialrequest.devicehelpmessage</span>
+                            </div>
                         </td>
                     </tr>
                     <tr valign="top" *ngIf='defaultlocation==false'>
                         <td colspan="2" width="47%" height="10">
-                            <label for="LocationId" class="ds-text-capitalize" translate>Jabbernewtrans.JabberLocation</label>
-            
+                            <label for="LocationId" translate>Jabbernewtrans.JabberLocation</label>
+
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
                         <td width="53%" height="10">
@@ -74,11 +74,11 @@
                             <label for="default_location" translate>Jabbernewtrans.JabberLocation</label>
                         </td>
                         <td width="54%" height="10">
-                                <div class="ds-input-container ds-mar-b-2"[hidden]='true'>
+                            <div class="ds-input-container ds-mar-b-2" [hidden]='true'>
                                 <input name="default_location" value="" autocomplete="off" tabindex="2" id="ch" class="ds-input ds-disabled" style="width:300px !important;" [(ngModel)]='default_location'></div>
-                                <div>
+                            <div>
                                 <div class="ds-input ds-disabled" style="width:300px !important;" id="ch2">{{default_location}} </div><br></div>
-                            </td>
+                        </td>
                     </tr>
                     <tr valign="top" [hidden]='others'>
                         <td colspan="2" width="46%" height="10"><label for="requirement_id" translate>specialrequest.Description of Requirement</label>
@@ -167,7 +167,7 @@
             <br>
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p ><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a><span translate>Jabbernewtrans.reportthismessage</span></p>
+                <p><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a><span translate>Jabbernewtrans.reportthismessage</span></p>
                 <p>
                 </p>
             </div>
