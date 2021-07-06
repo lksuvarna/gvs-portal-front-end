@@ -503,7 +503,7 @@ export class Fac_Reset
     Curr_Location !: String;
     authLevel_final !: String;
     request_type !: String;
-    business_unit !: String;
+    businessunit !: String;
     siteaddress !: String;
     authLevel !: String
 
@@ -520,7 +520,7 @@ Fac_Reset()
     this.Curr_Location  ="";
     this.authLevel_final ="";
     this.request_type  ="";  
-    this.business_unit = "";
+    this.businessunit = "";
     this.siteaddress = "";
     this.authLevel = ""
  }

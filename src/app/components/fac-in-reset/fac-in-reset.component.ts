@@ -119,11 +119,11 @@ export class FacInResetComponent implements OnInit {
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
       this.payload.ReqNo=this.reqno;
-      this.payload.Curr_Location=this.currLocation;
+      this.payload.Curr_Location='';
       this.payload.authLevel_final = this.authValue;
       this.payload.authLevel = this.currAuthorizationLevel
-      this.payload.business_unit = this.business_unit;
-      this.payload.siteaddress = ''
+      this.payload.businessunit = this.business_unit;
+      this.payload.siteaddress = this.currLocation;
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
       this.payload.countryname=this.countrydetails.name;	
@@ -154,7 +154,7 @@ export class FacInResetComponent implements OnInit {
     this.countrydetails = sessionStorage.getItem('countrydetails');
     this.employeeInfo1 = sessionStorage.getItem('employeeInfo')	
     this.employeeInfo = JSON.parse(this.employeeInfo1);	
-    this.business_unit =  this.employeeInfo.businessUnit;
+    this.business_unit =  this.employeeInfo.businessUnit.trim();
     this.countrydetails = JSON.parse(this.countrydetails);
 
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
