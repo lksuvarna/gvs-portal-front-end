@@ -125,8 +125,8 @@ export class HpEmeaUpdateComponent implements OnInit {
           
           this.currentMac = data.message[0].ATTRIBUTE1;
           this.currentPhone = data.message[0].IDENTIFIER;
-          this.currentdesc = data.message[0].ATTRIBUTE2;
-          this.currentmodel = data.message[0].ATTRIBUTE4;
+          this.currentdesc = data.message[0].ATTRIBUTE4;
+          this.currentmodel = data.message[0].ATTRIBUTE2;
           this.currentMac = this.currentMac.substring(3,this.currentMac.length);
           this.showSearch =true;
           this.hideNextButton = false;
@@ -271,7 +271,7 @@ backClick(formData: NgForm){
       alert(this.mainConfiguration.fixedphonenew.entermacadd);
       return;	
     }
-    if(this.showformacadd == true && formData.value.MAC1 == this.currentMac) {
+    if(this.showformacadd == true && formData.value.MAC1?.toLowerCase() == this.currentMac?.toLowerCase()) {
       alert(this.mainConfiguration.fixedphonenew.enternewMACaddress);
       return;
     }
@@ -291,7 +291,7 @@ backClick(formData: NgForm){
       return;
       	
     }
-    if(this.showforNewDesc == true && formData.value.Newdesc == this.currentdesc) {
+    if(this.showforNewDesc == true && formData.value.Newdesc?.toLowerCase() == this.currentdesc?.toLowerCase()) {
       alert(this.mainConfiguration.fixedphonenew.differentDescriptionasisalready);
       return;
     }
@@ -383,12 +383,12 @@ backClick(formData: NgForm){
       this.payload.Comments_Disp = removeDiacritics(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
       this.payload.Newdesc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
       this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
-      this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
+      this.payload.MAC_Disp = this.reviewDetailsIndia.newMac;
       this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();
       this.payload.currmodel = this.reviewDetailsIndia.model;
       this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
       this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
-      this.payload.MAC = this.reviewDetailsIndia.newMac;
+      this.payload.MAC = this.reviewDetailsIndia.mac;
       this.payload.Location_final = "";
       this.payload.LocationCorrectnew = "";
       this.payload.LocationCorrect = "";

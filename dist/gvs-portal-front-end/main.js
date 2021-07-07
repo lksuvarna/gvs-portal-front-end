@@ -6635,8 +6635,8 @@ class HpEmeaUpdateComponent {
                 if (data.message != '') {
                     this.currentMac = data.message[0].ATTRIBUTE1;
                     this.currentPhone = data.message[0].IDENTIFIER;
-                    this.currentdesc = data.message[0].ATTRIBUTE2;
-                    this.currentmodel = data.message[0].ATTRIBUTE4;
+                    this.currentdesc = data.message[0].ATTRIBUTE4;
+                    this.currentmodel = data.message[0].ATTRIBUTE2;
                     this.currentMac = this.currentMac.substring(3, this.currentMac.length);
                     this.showSearch = true;
                     this.hideNextButton = false;
@@ -6749,6 +6749,7 @@ class HpEmeaUpdateComponent {
         }
     }
     entryDetails(formData) {
+        var _a, _b, _c, _d;
         if (this.newModel.toUpperCase() == '' || this.newModel.toUpperCase() == 'SELECT ONE') {
             this.showformodel1 = false;
         }
@@ -6760,7 +6761,7 @@ class HpEmeaUpdateComponent {
             alert(this.mainConfiguration.fixedphonenew.entermacadd);
             return;
         }
-        if (this.showformacadd == true && formData.value.MAC1 == this.currentMac) {
+        if (this.showformacadd == true && ((_a = formData.value.MAC1) === null || _a === void 0 ? void 0 : _a.toLowerCase()) == ((_b = this.currentMac) === null || _b === void 0 ? void 0 : _b.toLowerCase())) {
             alert(this.mainConfiguration.fixedphonenew.enternewMACaddress);
             return;
         }
@@ -6777,7 +6778,7 @@ class HpEmeaUpdateComponent {
             alert(this.mainConfiguration.fixedphonenew.provideNewDescription);
             return;
         }
-        if (this.showforNewDesc == true && formData.value.Newdesc == this.currentdesc) {
+        if (this.showforNewDesc == true && ((_c = formData.value.Newdesc) === null || _c === void 0 ? void 0 : _c.toLowerCase()) == ((_d = this.currentdesc) === null || _d === void 0 ? void 0 : _d.toLowerCase())) {
             alert(this.mainConfiguration.fixedphonenew.differentDescriptionasisalready);
             return;
         }
@@ -6862,12 +6863,12 @@ class HpEmeaUpdateComponent {
         this.payload.Comments_Disp = Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.justification.replace(/[\n\r"\\+]/g, ' '));
         this.payload.Newdesc_Disp = Object(config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
         this.payload.NewModel_Disp = this.reviewDetailsIndia.newModel;
-        this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
+        this.payload.MAC_Disp = this.reviewDetailsIndia.newMac;
         this.payload.updatereq_Disp = this.reviewDetailsIndia.device.toLowerCase();
         this.payload.currmodel = this.reviewDetailsIndia.model;
         this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
         this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
-        this.payload.MAC = this.reviewDetailsIndia.newMac;
+        this.payload.MAC = this.reviewDetailsIndia.mac;
         this.payload.Location_final = "";
         this.payload.LocationCorrectnew = "";
         this.payload.LocationCorrect = "";
@@ -13230,26 +13231,25 @@ function EmployeeinfoComponent_div_1_div_54_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "employeeinfotrans.alreadyonerequestinprogress");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "span", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "employeeinfotrans.isalreadybeingprocessed");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "span", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "employeeinfotrans.isalreadybeingprocessed");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "br");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "span", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, " employeeinfotrans.Ifyoucannotsee ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "span", 5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " employeeinfotrans.Ifyoucannotsee ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "a", 52);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "employeeinfotrans.helpdesk");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "a", 52);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "employeeinfotrans.helpdesk");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, ".");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, ".");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r14.identifier1, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r14.identifier1, " ");
 } }
 function EmployeeinfoComponent_div_1_div_55_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 66);
@@ -13383,7 +13383,7 @@ function EmployeeinfoComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](51, EmployeeinfoComponent_div_1_div_51_Template, 4, 0, "div", 27);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](52, EmployeeinfoComponent_div_1_div_52_Template, 15, 1, "div", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](53, EmployeeinfoComponent_div_1_div_53_Template, 15, 1, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](54, EmployeeinfoComponent_div_1_div_54_Template, 16, 1, "div", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](54, EmployeeinfoComponent_div_1_div_54_Template, 15, 1, "div", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](55, EmployeeinfoComponent_div_1_div_55_Template, 15, 1, "div", 31);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](56, EmployeeinfoComponent_div_1_div_56_Template, 3, 0, "div", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](57, EmployeeinfoComponent_div_1_div_57_Template, 3, 0, "div", 32);
