@@ -22,8 +22,8 @@
     },
 
     "footer": {
-        "aditional-question": "If you have additional questions about the GVS Portal,",
-        "please consult": "please refer to ",
+        "aditional-question": "",
+        "please consult": "If you have additional questions about the GVS Portal, please refer to ",
         "consult": "This website supports Mozilla Firefox, Google Chrome, IE, Edge and Safari."
     },
 
@@ -276,7 +276,7 @@
         "EXITREQUEST": "EXIT REQUEST",
         "digitserialnumber": "Employee Serial Number should be of 6 characters",
         "enterserialnumber": "Please enter a serial number",
-        "moverequest": "This move request will delete the current Jabber / Phone number and assign a new one. Select OK to proceed, to Cancel to go back.",
+        "moverequest": "This move request will delete the current Jabber / Phone number and assign a new one. Select OK to proceed, Cancel to go back.",
         "selectcountrycode": "Please select the Country Code",
         "Only": "Only",
         "serialnumbersareallowed": "serial numbers are permitted to create",
