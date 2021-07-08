@@ -163,12 +163,14 @@
         "notauthorizedtoaccessjabber": "The serial number that you have entered is not authorized to access Jabber service. You can access IP Extension option available on the left side menu. For any further queries about Jabber, please contact",
         "notauthorizedtoaccessip": "The serial number that you have entered is not authorized to access IP Extension service. You can access Jabber option available on the left side menu. For any further queries about IP Extension, please contact",
         "Jabber/ITN": "Jabber/ITN",
-        "jabberconfiguration": "is already registered for this user. If you cannot see this Jabber ITN listed in Bluepages under Contact information, please reach out to the",
+        "JabberphnNumber": "Jabber / Phone number",
+        "jabberconfiguration": "is already registered for this user. If you cannot see this Jabber ITN listed in Bluepages under Contact information, please reach out to the ",
         "toinstallbegin": "To install and begin using your Jabber account, please see",
         "CiscoJabber": "Cisco Jabber.",
         "isalreadybeingprocessed": " is already being processed for this user. To view the status of this request, please click on Requests in the sidebar menu.",
         "Ifyoucannotsee": "If you cannot see the request listed, or for any other issues, please reach out to the ",
         "helpdesk": "help desk",
+        "helpdeskalert":"help desk",
         "nooutstandingreq": "There are no outstanding requests associated with the entered serial number.",
         "noresources": "There are no accounts associated with the entered serial number.",
         "nojabberforthisserial": "There is no active Jabber account for this serial number. Please verify and try again.",
@@ -183,7 +185,6 @@
         "egyptnotauthorized": "The serial number that you have entered is not authorized to request Jabber.",
         "egyptemsubmit": "For an Extension Mobility phone number (including voicemail), please submit a",
         "furtherassistance": "For further assistance, please reach out to the",
-        "help desk": "help desk",
         "noteligibletoraise": "The serial number that you have entered is not eligible to request more than one FAC Code / IDD PIN.",
         "nofac": "There is no FAC Code / IDD PIN associated to this serial number."
     },
@@ -284,6 +285,7 @@
         "selectlocation": "Please select the appropriate location.",
         "selectjabbernumberdel": "Please select the Jabber / Phone number being deleted.",
         "selectlocationsp": "Please select the Jabber / Phone number Location",
+        "describerequirements":"Please describe your requirements.",
         "Homeandmobilealert": "The serial number you have entered does not belong to the selected office location. Please choose your correct location, or select Home and Mobile.",
         "usaschedule": "Selecting Home and Mobile will result in your service being assigned a phone number in the 720 area code. If you wish to have a number local to your office, or if you'd like to retain your existing office number, please wait for your site to be migrated to CHCS/Jabber. The USA site migration schedule can be found"
 

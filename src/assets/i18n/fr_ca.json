@@ -81,8 +81,8 @@
         "availablefromBluePages" :"dans BluePages Veuillez vérifier et réessayer.",
         "Pleaseverifyandtryagain" :"Veuillez vérifier et réessayer.",
         "EMAILcouldnotbefoundinbp":"Adresse courriel pour le matricule entré introuvable dans Bluepages. Veuillez réessayer plus tard. ",
-        "opps":"Quelque chose semble avoir mal tourné. Merci d'essayer plus tard [Erreur]",
-        "reportthismessage":" to report this message. [Error]",
+        "opps":"Nous rencontrons actuellement des difficultés pour répondre à votre demande en raison d'une erreur inattendue. Veuillez contacter ",
+        "reportthismessage":" pour signaler ce message. [Erreur]",
         "JabberLocation" : "Emplacement du numéro de téléphone Jabber",
         "pleasesubmittostart":"En soumettant cette demande, vous donnez votre consentement écrit à IBM de traiter les renseignements personnels fournis."
 
@@ -106,9 +106,9 @@
 
     },
     "employeeinfotrans":{
-        "ifinfoiscorrect":"Si les informations suivantes sont correctes, s'il te plaît cliquez sur Suivant. Toute erreur doit être corrigée dans le",
-        "BluePagesrecord":"enregistrer BluePages",
-        "beforecontinuing":"avant de continuer.",
+        "ifinfoiscorrect":"Si les informations suivantes sont exactes, cliquez sur Suivant. Toute erreur doit être corrigée dans",
+        "BluePagesrecord":"l'enregistrement BluePages",
+        "beforecontinuing":"avant de continuer.",
         "EmployeeInformation":"Informations sur l'employé",
         "EmployeeEntryDetails":"Détails sur l'entrée en service de l'employé",
         "Name":"Nom :",
@@ -127,18 +127,23 @@
         "notauthorizedtoaccessjabber": "Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter",
         "notauthorizedtoaccessip":"Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter",
         "Jabber/ITN": "Numéro de téléphone",
-        "jabberconfiguration":"Jabber déjà enregistré pour cet utilisateur. Si vous ne pouvez pas voir ce numéro  Jabber dans Bluepages sous Informations de contact, veuillez faire appel au service de dépannage. ",
-        "toinstallbegin":"Pour installer et commencer à utiliser votre compte Jabber, consultez la rubrique",
-        "CiscoJabber" :"Cisco Jabber dans.",
+        "JabberphnNumber": "Numéro de téléphone",
+        "jabberconfiguration":"Jabber déjà enregistré pour cet utilisateur. Si vous ne pouvez pas voir ce numéro  Jabber dans Bluepages sous Informations de contact, veuillez faire appel ",
+                               
+        "toinstallbegin":"Pour installer et commencer à utiliser votre compte Jabber, consultez la rubrique Cisco Jabber dans",
+        "CiscoJabber" :".",
         "ongoingrequestsbyclickonrequestpage":"Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.",
         "isalreadybeingprocessed":" est déjà en cours de traitement pour cet utilisateur. Pour en afficher l'état, veuillez cliquer sur Demandes dans le menu latéral.",
-        "Ifyoucannotsee":"Si vous ne pouvez pas voir la demande, ou pour tout autre problème, veuillez contacter le service de dépannage ",
+        "Ifyoucannotsee":"Si vous ne pouvez pas voir la demande, ou pour tout autre problème, veuillez contacter ",
         "nooutstandingreq":"Aucune demande en suspens n'a été trouvée pour le numéro de série.",
         "noresources":"Il n'y a pas de ressources pour ce numéro de série.",
+        "nojabberforthisserial": "Il n'y a pas de compte Jabber actif pour ce matricule. Veuillez vérifier et réessayer.",
         "BACK":"RETOUR",
         "NEXT":"SUIVANT",
         "SUBMIT1" : "SOUMETTRE",
-        "alreadyonerequestinprogress":"Demander "
+        "alreadyonerequestinprogress":"La demande ",
+        "helpdesk": "le service de dépannage",
+        "helpdeskalert":"au service de dépannage."
     },
     "Jabberentrydetails":{
         "Fieldsasterisk":"Champs marqués d'un astérisque",
@@ -170,6 +175,7 @@
     },
     "resultpagetrans" : {
         "Yourrequestfor" : "La demande ",
+        "YourrequestforSpl": "Demande spéciale ",
         "jabbernew":"pour un nouveau numéro de téléphone Jabber ",
         "jabberdelete":"pour supprimer un numéro de téléphone Jabber ",
         "newfixedphone":"pour un nouveau téléphone fixe ",
@@ -192,9 +198,10 @@
         "enterserialnumber" : "Veuillez entrer un matricule",
         "selectcountrycode":"Veuillez sélectionner le code de pays",
         "Only" : "Seuls les matricules",  
-        "serialnumbersareallowed":"sont autorisés à créer des",
-        "requests":"demandes.",
+        "serialnumbersareallowed":"sont autorisés à créer des demandes",
+        "requests":".",
         "selectlocation":"Veuillez sélectionner l'emplacement approprié.",
+        "describerequirements":"Veuillez décrire vos besoins.",
         "selectjabbernumberdel":"Veuillez sélectionner le numéro de téléphone Jabber à supprimer.",
         "selectlocationsp" : "Veuillez sélectionner l'emplacement du téléphone Jabber"
 
@@ -347,15 +354,15 @@
         "EnterSerialNumberorTrackingNumber":"Entrez le matricule ou le numéro de suivi",
         "CLEAR":"Effacer",
         "PendingRequests":"Demandes en attente",
-        "There are no pending approvals":"There are no pending approvals.",
+        "There are no pending approvals":"Aucune approbation n'est en attente.",
         "No search results found":"Aucun résultat de recherche trouvé.",
         "There are no pending revalidation documents":"There are no pending revalidation documents.",
         "SELECT ALL":"TOUT SÉLECTIONNER",
         "DESELECT ALL":"TOUT DÉSELECTIONNER",
         "APPROVE SELECTED ONE":"APPROUVER L'ÉLÉMENT SÉLECTIONNÉ",
-        "Selectrequesttoapprove":"Select request to approve",
+        "Selectrequesttoapprove":"Sélectionner la demande à approuver",
         "Entersearchtext":"Entrer le texte de recherche",
-        "rejectserialnumber":"To reject a request click on the respective serial number."
+        "rejectserialnumber":"Pour rejeter une demande, cliquez sur le numéro de série correspondant."
         
         }
 }

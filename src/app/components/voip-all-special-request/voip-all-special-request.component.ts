@@ -192,7 +192,7 @@ export class VoipAllSpecialRequestComponent implements OnInit {
   }
 
     if(formData.value.requirement.trim() == '') {
-      alert("Please describe your requirements.");
+      alert(this.mainConfiguration.alerttranslation.describerequirements);
       return;
     }
   
