@@ -99,7 +99,6 @@ export class EmployeesearchComponent implements OnInit {
     this.selectedCountry = sessionStorage.getItem('selectedCountry')
     this.checked = sessionStorage.getItem('moback')
     this.langchecking =sessionStorage.getItem('currentlang1')
-    alert( '33' +this.langchecking)
 
     if(this.selectedCountry === null || this.selectedCountry === ''){
       this.selectedCountry = 'Select One'
