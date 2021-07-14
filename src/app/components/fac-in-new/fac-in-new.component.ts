@@ -44,6 +44,8 @@ export class FacInNewComponent implements OnInit {
   authLevel = ''
   validity = ''
   countryroute:any;
+  locdisplay=true;
+  locdisplay1=true;
 
   employeeInfo: any;
   employeeInfo1: any;
@@ -106,7 +108,15 @@ export class FacInNewComponent implements OnInit {
       this.build[k] = this.buildA[i];
       k = k+1;	
       }	
-      }  	
+      } 
+      
+      if (this.build.length === 1){
+        this.locdisplay1=false
+        this.campus = this.build[0]
+      } else {
+        this.locdisplay1=true
+        this.campus = ''
+      }
     // alert("HIIII"+this.build);	
              
     } else {	
@@ -323,6 +333,14 @@ export class FacInNewComponent implements OnInit {
         this.camp[this.j] = this.campA[i];	
         this.j++;	
       }	
+    }
+
+    if(this.camp.length==1){
+      this.selected_location=this.camp[0]
+      this.locdisplay=false
+      this.hideBuilding = false;
+      this.locdisplay1=false
+      this.selectedLocation(this.selected_location)
     }
 
     if (this.countryroute === '744' || this.countryroute === '652' ) {
