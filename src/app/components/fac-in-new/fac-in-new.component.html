@@ -31,7 +31,7 @@
                         <td class="ds-pad-l-8" height="10">
                             <div *ngIf="facIn" class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="Location_1" cols="40" id="LocationId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Office Location" #location (change)='selectedLocation(location.value)' [(ngModel)]='selected_location'>
-                                    <option value ="">Select One</option>
+                                    <option value ="" *ngIf=locdisplay>Select One</option>
                                     <option name="Location_1" *ngFor='let fl_location of camp' [value]='fl_location' >
                     {{ fl_location }}</option>
                 </select>
@@ -54,7 +54,7 @@
                         <td class="ds-pad-l-8">
                             <div class="ds-dropdown ds-secondary" role="menu" aria-label="w3DS Dropdown1">
                                 <select name="Buildings" rows="2" cols="40" id="LocationId_1_1" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="Campus" [(ngModel)]='campus'>
-                                    <option value ="">Select One</option>
+                                    <option value ="" *ngIf=locdisplay1>Select One</option>
                                     <option *ngFor="let fl_campus of build" [value]='fl_campus'>{{ fl_campus }}</option>
                 </select>
                             </div>
@@ -281,8 +281,8 @@
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
                 <p>We're currently having trouble completing your request due to an unexpected error. Please reach out to the help desk to report this message. [Error] </p>
-                    <p>
-                    </p>
+                <p>
+                </p>
             </div>
 
             <div class="ds-hr-thick ds-mar-b-1_5  ds-mar-t-1_5"></div>
