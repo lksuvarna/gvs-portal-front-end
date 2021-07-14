@@ -797,6 +797,8 @@ export class EmployeesearchComponent implements OnInit {
           this.routingname = "/entrydetailsfemeanew";
         } else if (this.countrydetails.fnavpage == 'SG') {
           this.routingname = "/entrydetailsfemeanew";
+        } else if (this.countrydetails.fnavpage == 'NZ') {
+          this.routingname = "/entrydetailsfemeanew";
         }
         this.reqname = "-NS-";
         break;
@@ -813,6 +815,8 @@ export class EmployeesearchComponent implements OnInit {
         }else if (this.countrydetails.fnavpage == 'US') {
           this.routingname = '/entrydetailsaufu';
         }else if (this.countrydetails.fnavpage == 'ID') {
+          this.routingname = '/entrydetailsidfu';
+        } else if (this.countrydetails.fnavpage == 'SG') {
           this.routingname = '/entrydetailsidfu';
         }
         this.reqname = "-US-";
