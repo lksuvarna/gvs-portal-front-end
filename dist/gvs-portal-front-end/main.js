@@ -24787,7 +24787,14 @@ class EmployeesearchComponent {
                                     alert(this.countrydetails.alert_messagefr.replace(/<br>/g, "\n"));
                                 }
                                 else {
-                                    alert(this.countrydetails.alert_message.replace(/<br>/g, "\n"));
+                                    if (this.countrydetails.confirm_message) {
+                                        if (confirm(this.countrydetails.confirm_message.replace(/<br>/g, "\n"))) {
+                                            window.open(this.countrydetails.confirm_url, '_blank');
+                                        }
+                                    }
+                                    else {
+                                        alert(this.countrydetails.alert_message.replace(/<br>/g, "\n"));
+                                    }
                                 }
                                 this.router.navigate(['fixedphoneservices'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                             }
@@ -24873,7 +24880,14 @@ class EmployeesearchComponent {
                             alert(this.countrydetails.alert_messagefr.replace(/<br>/g, "\n"));
                         }
                         else {
-                            alert(this.countrydetails.alert_message.replace(/<br>/g, "\n"));
+                            if (this.countrydetails.confirm_message) {
+                                if (confirm(this.countrydetails.confirm_message.replace(/<br>/g, "\n"))) {
+                                    window.open(this.countrydetails.confirm_url, '_blank');
+                                }
+                            }
+                            else {
+                                alert(this.countrydetails.alert_message.replace(/<br>/g, "\n"));
+                            }
                         }
                         this.router.navigate(['fixedphoneservices'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                     }
