@@ -166,11 +166,11 @@
         "JabberphnNumber": "Jabber / Phone number",
         "jabberconfiguration": "is already registered for this user. If you cannot see this Jabber ITN listed in Bluepages under Contact information, please reach out to the ",
         "toinstallbegin": "To install and begin using your Jabber account, please see",
-        "CiscoJabber": "Cisco Jabber.",
+        "CiscoJabber": ": Cisco Jabber.",
         "isalreadybeingprocessed": " is already being processed for this user. To view the status of this request, please click on Requests in the sidebar menu.",
         "Ifyoucannotsee": "If you cannot see the request listed, or for any other issues, please reach out to the ",
         "helpdesk": "help desk",
-        "helpdeskalert":"help desk",
+        "helpdeskalert": "help desk",
         "nooutstandingreq": "There are no outstanding requests associated with the entered serial number.",
         "noresources": "There are no accounts associated with the entered serial number.",
         "nojabberforthisserial": "There is no active Jabber account for this serial number. Please verify and try again.",
@@ -285,7 +285,7 @@
         "selectlocation": "Please select the appropriate location.",
         "selectjabbernumberdel": "Please select the Jabber / Phone number being deleted.",
         "selectlocationsp": "Please select the Jabber / Phone number Location",
-        "describerequirements":"Please describe your requirements.",
+        "describerequirements": "Please describe your requirements.",
         "Homeandmobilealert": "The serial number you have entered does not belong to the selected office location. Please choose your correct location, or select Home and Mobile.",
         "usaschedule": "Selecting Home and Mobile will result in your service being assigned a phone number in the 720 area code. If you wish to have a number local to your office, or if you'd like to retain your existing office number, please wait for your site to be migrated to CHCS/Jabber. The USA site migration schedule can be found"
 
@@ -422,9 +422,9 @@
         "NoteThisfeedback": "Note: This feedback only concerns the useability of the GVS Portal. For any other feedback, please use ",
         "Help": "Help@IBM",
         "Thankyoufeedback": "Thank you for your valuable feedback!",
-        "providereview":"Please provide Review.",
-        "providefeedback":"Please provide feedback.",
-        "feedbackchars":"Feedback length should be more than 5 characters."
+        "providereview": "Please provide Review.",
+        "providefeedback": "Please provide feedback.",
+        "feedbackchars": "Feedback length should be more than 5 characters."
     },
     "approvalpending": {
         "Thank You for your response": "Thank You for your response.",
