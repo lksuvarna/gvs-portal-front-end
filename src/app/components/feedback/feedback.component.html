@@ -1,168 +1,173 @@
 <!-- <br><br><br><br>Page under construction !!!!
 <br><br><br><br> -->
 
-<div *ngIf ="displayFeedbackSuccessMsg" class = "ds-row">
+<div *ngIf="displayFeedbackSuccessMsg" class="ds-row">
 
-  <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
-    <div class="ds-row" *ngIf=translatecountryname1>
-      <div class="ds-col-12">
-          <p class="ds-text-small ds-text-align-right ds-font-weight-light">
-  
-              <b><span translate style="color: black">home.select-language</span></b><br>
-              <a (click)="changeLanguage('en')" style="color: black"><span class="ds-font-weight-light"> English </span></a><span>|</span>
-              <a (click)="changeLanguage('fr_ca')" style="color: black"><span class="ds-font-weight-light"> Français </span></a>
-  
-          </p>
-      </div>
-  </div>
+    <form #formData="ngForm" (ngSubmit)="onSubmit(formData)">
 
+        <div class="ds-row ds-pad-t-4">
+            <div class="ds-col-12">
+                <div class="ds-row" *ngIf=translatecountryname1>
+                    <div class="ds-col-12">
+                        <p class="ds-text-small ds-text-align-right ds-font-weight-light">
 
-  <div class="ds-row ds-pad-t-4">
-      <div class="ds-col-12">
-        <div class="ds-text-align-center" translate>
-          feedback.Donotincludeanypersonal
+                            <b><span translate style="color: black">home.select-language</span></b><br>
+                            <a (click)="changeLanguage('en')" style="color: black"><span class="ds-font-weight-light"> English </span></a><span>|</span>
+                            <a (click)="changeLanguage('fr_ca')" style="color: black"><span class="ds-font-weight-light"> Français </span></a>
+
+                        </p>
+                    </div>
+                </div>
+                <div class="ds-text-align-center" translate>
+                    feedback.Donotincludeanypersonal
+                </div>
+                <p class="ds-text-align-center ds-pad-t-1" translate>
+                    feedback.Onascale <span class="ds-text-contextual-red-2">*</span>
+                </p><br>
+            </div>
         </div>
-        <p class="ds-text-align-center ds-pad-t-1" translate>
-          feedback.Onascale <span class="ds-text-contextual-red-2">*</span>
-        </p><br>
-      </div>
-  </div>
-  
-  
-  
-    <div class="ds-row">
-      <div class="ds-input-container">
-        <div class="ds-input-radio-group">
-          <div align="center">
-            <table class="ds-align-text-center" cellspacing="0" cellpadding="0" border="0">
-              <tbody>
-                <tr valign="top">
-                  <td width="130"></td>
-                   <td class="ds-align-text-center" width="79">0</td>
-                   <td width="78">1</td><td width="78">2</td>
-                   <td width="78">3</td><td width="78">4</td>
-                   <td width="78">5</td><td width="78">6</td>
-                   <td width="78">7</td><td width="78">8</td>
-                   <td width="78">9</td><td width="78">10</td>
-                   <td width="126">
-                   </td>
-                  </tr>
-                <tr valign="top">
-                  <td width="160"><b translate>feedback.Not at all likely </b></td>
-                  <td class="ds-align-text-center" width="78">
-                    <label for="radio0" class="ds-input-radio  ds-padding-left-0_5">
+
+
+
+        <div class="ds-row">
+            <div class="ds-input-container">
+                <div class="ds-input-radio-group">
+                    <div align="center">
+                        <table class="ds-align-text-center" cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                                <tr valign="top">
+                                    <td width="130"></td>
+                                    <td class="ds-align-text-center" width="79">0</td>
+                                    <td width="78">1</td>
+                                    <td width="78">2</td>
+                                    <td width="78">3</td>
+                                    <td width="78">4</td>
+                                    <td width="78">5</td>
+                                    <td width="78">6</td>
+                                    <td width="78">7</td>
+                                    <td width="78">8</td>
+                                    <td width="78">9</td>
+                                    <td width="78">10</td>
+                                    <td width="126">
+                                    </td>
+                                </tr>
+                                <tr valign="top">
+                                    <td width="160"><b translate>feedback.Not at all likely </b></td>
+                                    <td class="ds-align-text-center" width="78">
+                                        <label for="radio0" class="ds-input-radio  ds-padding-left-0_5">
                     <input type="radio" ngModel name="ratingRadio" [(ngModel)]="radioReview" id="radio0" (change)="radioSelectAction()" class="ds-input" value="0">
                       <div class="ds-input-control"></div>
                       <span class="ds-padding-left-0_5 ds-text-capitalize"></span>
                     </label>
-                  </td>
-                  <td width="78">
-                    <label for="radio1" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
+                                    </td>
+                                    <td width="78">
+                                        <label for="radio1" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
                     <input type="radio" ngModel name="ratingRadio" [(ngModel)]="radioReview" id="radio1" (change)="radioSelectAction()" class="ds-input" value="1">
                       <div class="ds-input-control"></div>
                       <span class="ds-padding-left-0_5 ds-text-capitalize"></span>
                     </label>
-                  </td>
-                  <td width="78">
-                    <label for="radio2" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
+                                    </td>
+                                    <td width="78">
+                                        <label for="radio2" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
                     <input type="radio" ngModel name="ratingRadio" [(ngModel)]="radioReview" id="radio2"  (change)="radioSelectAction()" class="ds-input" value="2">
                       <div class="ds-input-control"></div>
                       <span class="ds-padding-left-0_5 ds-text-capitalize"></span>
                     </label>
-                  </td>
-                  <td width="78">
-                    <label for="radio3" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
+                                    </td>
+                                    <td width="78">
+                                        <label for="radio3" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
                     <input type="radio" ngModel name="ratingRadio" [(ngModel)]="radioReview" id="radio3"  (change)="radioSelectAction()" class="ds-input" value="3">
                       <div class="ds-input-control"></div>
                       <span class="ds-padding-left-0_5 ds-text-capitalize"></span>
                     </label>
-                  </td>
-                  <td width="78">
-                    <label for="radio4" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
+                                    </td>
+                                    <td width="78">
+                                        <label for="radio4" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
                     <input type="radio"  ngModel name="ratingRadio" [(ngModel)]="radioReview"  id="radio4"  (change)="radioSelectAction()" class="ds-input" value="4">
                       <div class="ds-input-control"></div>
                       <span class="ds-padding-left-0_5 ds-text-capitalize"></span>
                     </label>
-                  </td>
-                  <td width="78">
-                    <label for="radio5" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
+                                    </td>
+                                    <td width="78">
+                                        <label for="radio5" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
                     <input type="radio" ngModel name="ratingRadio" [(ngModel)]="radioReview" id="radio5"  (change)="radioSelectAction()" class="ds-input" value="5">
                       <div class="ds-input-control"></div>
                       <span class="ds-padding-left-0_5 ds-text-capitalize"></span>
                     </label>
-                  </td>
-                  <td width="78">
-                    <label for="radio6" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
+                                    </td>
+                                    <td width="78">
+                                        <label for="radio6" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
                     <input type="radio" ngModel name="ratingRadio" [(ngModel)]="radioReview"  id="radio6"  (change)="radioSelectAction()" class="ds-input" value="6">
                       <div class="ds-input-control"></div>
                       <span class="ds-padding-left-0_5 ds-text-capitalize"></span>
                     </label>
-                  </td>
-                  <td width="78">
-                    <label for="radio7" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
+                                    </td>
+                                    <td width="78">
+                                        <label for="radio7" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
                     <input type="radio" ngModel name="ratingRadio" [(ngModel)]="radioReview"  id="radio7"  (change)="radioSelectAction()" class="ds-input" value="7">
                       <div class="ds-input-control"></div>
                       <span class="ds-padding-left-0_5 ds-text-capitalize"></span>
                     </label>
-                  </td>
-                  <td width="78">
-                    <label for="radio8" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
+                                    </td>
+                                    <td width="78">
+                                        <label for="radio8" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
                     <input type="radio" ngModel name="ratingRadio"  [(ngModel)]="radioReview" id="radio8" (change)="radioSelectAction()" class="ds-input" value="8">
                       <div class="ds-input-control"></div>
                       <span class="ds-padding-left-0_5 ds-text-capitalize"></span>
                     </label>
-                  </td>
-                  <td width="78">
-                    <label for="radio9" style="display:inline" class="ds-input-radio ds-padding-left-0_5">
+                                    </td>
+                                    <td width="78">
+                                        <label for="radio9" style="display:inline" class="ds-input-radio ds-padding-left-0_5">
                     <input type="radio" ngModel name="ratingRadio" [(ngModel)]="radioReview"  id="radio9" (change)="radioSelectAction()" class="ds-input" value="9">
                       <div class="ds-input-control"></div>
                       <span class="ds-padding-left-0_5 ds-text-capitalize"></span>
                     </label>
-                  </td>
-                  <td width="78">
-                    <label for="radio10" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
+                                    </td>
+                                    <td width="78">
+                                        <label for="radio10" style="display:inline" class="ds-input-radio ds-padding-left-0_5 ">
                     <input type="radio" ngModel name="ratingRadio" [(ngModel)]="radioReview"  id="radio10" (change)="radioSelectAction()" class="ds-input" value="10">
                       <div class="ds-input-control"></div>
                       <span class="ds-padding-left-0_5 ds-text-capitalize"></span>
                     </label>
-                  </td>
-                <td width="126"><b translate>feedback.Extremely likely</b></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-      
-      <div class="ds-row">
-        <div class="ds-col-12">
-          <div class="ds-text-align-center">
-            <div *ngIf = "hiddenOn9n10" translate>feedback.Caretotell
-              <span class="ds-text-contextual-red-2">*</span>
-            </div>	
-            <div *ngIf = "displayOn9n10" translate>feedback.Wearesopleasedthat 
-              <span class="ds-text-contextual-red-2">*</span>
+                                    </td>
+                                    <td width="126"><b translate>feedback.Extremely likely</b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div *ngIf = "textAreaDisplay" class="ds-col-4 ds-pad-t-1 ds-pad-b-0_5" id="comment">
-            <textarea ngModel name="feedbackArea" class="ds-input"  tabindex="3" rows="2" cols="40"></textarea>
-            </div>
-            <!-- <p>{{feedBack.value}}</p> -->
-            <div *ngIf = "textAreaDisplay" class="ds-align-text-left ds-caption" translate>feedback.NoteThisfeedback <a href="https://w3.ibm.com/help/#/" target="_blank" translate>feedback.Help</a>.</div>
-          </div>   
         </div>
-      </div>
-    
-  
-  <div class="ds-row ds-text-align-center ds-pad-t-1">
-    <div class="ds-col-2">
-       <button class="ds-button" translate>employeeinfotrans.SUBMIT1</button>
-    </div>
-  </div>
-  </form>
-  </div>
-  
-  <div *ngIf = "!displayFeedbackSuccessMsg" class="ds-text-align-center ds-pad-b-5 ds-pad-t-5">
+
+        <div class="ds-row">
+            <div class="ds-col-12">
+                <div class="ds-text-align-center">
+                    <div *ngIf="hiddenOn9n10" translate>feedback.Caretotell
+                        <span class="ds-text-contextual-red-2">*</span>
+                    </div>
+                    <div *ngIf="displayOn9n10" translate>feedback.Wearesopleasedthat
+                        <span class="ds-text-contextual-red-2">*</span>
+                    </div>
+                    <div *ngIf="textAreaDisplay" class="ds-col-4 ds-pad-t-1 ds-pad-b-0_5" id="comment">
+                        <textarea ngModel name="feedbackArea" class="ds-input" tabindex="3" rows="2" cols="40"></textarea>
+                    </div>
+                    <!-- <p>{{feedBack.value}}</p> -->
+                    <div *ngIf="textAreaDisplay" class="ds-align-text-left ds-caption" translate>feedback.NoteThisfeedback <a href="https://w3.ibm.com/help/#/" target="_blank" translate>feedback.Help</a>.</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ds-row ds-text-align-center ds-pad-t-1">
+            <div class="ds-col-2">
+                <button class="ds-button" translate>employeeinfotrans.SUBMIT1</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div *ngIf="!displayFeedbackSuccessMsg" class="ds-text-align-center ds-pad-b-5 ds-pad-t-5">
     <div class="ds-text-align-center ds-set-height-group-1 ds-col-xs-12 ds-col-md-4 ds-padding-1 ds-bg-contextual-yellow-2" style="height: 151px;">
         <p class="ds-heading-4 ds-pad-b-2 ds-pad-t-4" translate>feedback.Thankyoufeedback</p>
     </div>
-    </div>
+</div>
