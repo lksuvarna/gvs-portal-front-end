@@ -75,6 +75,9 @@ export class HpEmeaUpdateComponent implements OnInit {
   reasonForUpdate: any = "";
   FixedPhoneData: any = [];
   hideNextButton = true;
+  showforNZJPUpdate: boolean = true;
+  showforJPUpdate: boolean = false;
+  currentloc: any;
 
 
   payload : fixedphone_update = new fixedphone_update();
@@ -122,7 +125,7 @@ export class HpEmeaUpdateComponent implements OnInit {
           this.db2.search_db2(this.cnum,"fixedphone_search",this.currentMacOrPhone,this.currentMacOrPhone,this.countrydetails.name).subscribe(data =>{
         if(data.message != '')
         {
-          
+          console.log(data);
           this.currentMac = data.message[0].ATTRIBUTE1;
           this.currentPhone = data.message[0].IDENTIFIER;
           this.currentdesc = data.message[0].ATTRIBUTE2;
@@ -131,6 +134,9 @@ export class HpEmeaUpdateComponent implements OnInit {
           this.showSearch =true;
           this.hideNextButton = false;
           this.showerrormessage = false;
+          if(this.showforJPUpdate == true){
+            this.currentloc = data.message[0].ATTRIBUTE3;
+          }
 
         }else
         {
@@ -233,7 +239,7 @@ backClick(formData: NgForm){
       "showerrormessage": this.showerrormessage,
       "currentMac": this.currentMac,
       "currentPhone": this.currentPhone,
-     // "currentloc": this.currentloc,
+      "currentloc": this.currentloc,
       "currentdesc": this.currentdesc,
       "hideNextButton":this.hideNextButton,
       "currentmodel" :this.currentmodel
@@ -309,7 +315,11 @@ backClick(formData: NgForm){
     } else if(formData.value.UpdateReq.toUpperCase() == 'REPLACE THE HARDPHONE ONLY') {
       this.reviewDetailsIndia.officeLocation = "";
       this.reviewDetailsIndia.campus = "";
-      this.reviewDetailsIndia.newModel = formData.value.NewModel;
+      if(formData.value.NewModel == undefined){
+        this.reviewDetailsIndia.newModel = "";
+      } else {
+        this.reviewDetailsIndia.newModel = formData.value.NewModel;
+      }
       this.reviewDetailsIndia.newMac = formData.value.MAC1;
      // this.reviewDetailsIndia.location_final = "";
       this.reviewDetailsIndia.newMac = formData.value.MAC1;
@@ -335,6 +345,7 @@ backClick(formData: NgForm){
      // this.reviewDetailsIndia.description = formData.value.Newdesc;
       this.reviewDetailsIndia.officeLocation = formData.value.Location_1;
       this.reviewDetailsIndia.campus = this.campus;
+      this.reviewDetailsIndia.Location_final = this.currentloc;
     
  
     this.create_cache(formData);
@@ -348,7 +359,7 @@ backClick(formData: NgForm){
     this.cache.currentMacOrPhone = formData.value.IdNum1;
     this.cache.currentMac = this.currentMac?.trim();
     this.cache.currentPhone = this.currentPhone?.trim();
-    //this.cache.currentLocation = this.currentloc?.trim();
+    this.cache.currentLocation = this.currentloc?.trim();
     this.cache.currentDescription = this.currentdesc?.trim();
     this.cache.currentmodel = this.currentmodel?.trim();
     this.cache.newModel = formData.value.NewModel;
@@ -389,7 +400,7 @@ backClick(formData: NgForm){
       this.payload.olddesc = this.reviewDetailsIndia.Currentdescription;
       this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
       this.payload.MAC = this.reviewDetailsIndia.newMac;
-      this.payload.Location_final = "";
+      this.payload.Location_final = this.reviewDetailsIndia.Location_final;
       this.payload.LocationCorrectnew = "";
       this.payload.LocationCorrect = "";
       this.payload.ReqNo=this.reqno;
@@ -434,7 +445,14 @@ backClick(formData: NgForm){
   this.countrydetails = JSON.parse(this.countrydetails);	
    // Submit to Snow Jabber new code added by Swarnava ends	
 
-    
+    //code for Japan and New Zealand - ends
+    if(this.countrydetails.showforNZJPUpdate == false) {
+      this.showforNZJPUpdate = this.countrydetails.showforNZJPUpdate;
+    }
+    if(this.countrydetails.showforJPUpdate == true) {
+      this.showforJPUpdate = this.countrydetails.showforJPUpdate;
+    }
+    //code for Japan and New Zealand - ends
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);	
   this.route.queryParams	
   .subscribe(params => {	
@@ -491,7 +509,7 @@ backClick(formData: NgForm){
     //this.showerrormessage = Boolean(this.cache_disp.showerrormessage);
     this.currentMac = String(this.cache_disp.currentMac);
     this.currentPhone = String(this.cache_disp.currentPhone);
-    //this.currentloc = String(this.cache_disp.currentLocation);
+    this.currentloc = String(this.cache_disp.currentLocation);
     this.currentmodel = String(this.cache_disp.currentmodel);
     this.currentdesc = String(this.cache_disp.currentDescription);
     if(this.cache_disp.updateRequired != undefined){

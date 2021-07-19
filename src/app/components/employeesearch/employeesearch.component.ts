@@ -797,8 +797,6 @@ export class EmployeesearchComponent implements OnInit {
           this.routingname = "/entrydetailsfemeanew";
         } else if (this.countrydetails.fnavpage == 'SG') {
           this.routingname = "/entrydetailsfemeanew";
-        } else if (this.countrydetails.fnavpage == 'NZ') {
-          this.routingname = "/entrydetailsfemeanew";
         }
         this.reqname = "-NS-";
         break;

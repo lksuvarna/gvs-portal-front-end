@@ -277,7 +277,8 @@
         "FixedPhoneLocation" :"Emplacement du téléphone fixe",
         "SelectOne" :"Sélectionnez-en un",
         "cos" :"Veuillez sélectionner une classe de service.",
-        "NoteCombination":"Remarque: combinaison de (0 à 9, A à F) et longueur: 12"
+        "NoteCombination":"Remarque: combinaison de (0 à 9, A à F) et longueur: 12",
+        "CurrentLocation": "Localisation actuelle"
     },
     "specialrequest" :{
     "OnlyusetheSpecialRequest":"Les demandes spéciales sont utilisées pour gérer des services supplémentaires pour un numéro de téléphone Jabber existant; pour indiquer le besoin d'une consultation liée à la téléphonie; ou pour créer/gérer des services spéciaux : identifiants secondaires, lignes de dépannage de groupe d'assistance et/ou lignes partagées ou groupes de recherche." ,

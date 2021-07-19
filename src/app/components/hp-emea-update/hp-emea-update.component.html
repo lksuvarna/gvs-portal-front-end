@@ -73,6 +73,13 @@
                         </td>
                     </tr>
 
+                    <tr valign="top" *ngIf='showSearch && showforJPUpdate'>
+                        <td width="50%"><br>
+                            <label for="sear" class="" translate>fixedphonenew.CurrentLocation</label>
+                        </td>
+                        <td width="50%"><br>{{currentloc}}</td>
+                    </tr>
+
                     <tr valign="top" *ngIf='showSearch'>
                         <td width="50%"><br>
                             <label for="sear" class="" translate>fixedphonenew.CurrentDescription</label>
@@ -80,7 +87,7 @@
                         <td width="50%"><br>{{currentdesc}}</td>
                     </tr>
 
-                    <tr valign="top" *ngIf='showSearch'>
+                    <tr valign="top" *ngIf='showSearch && showforNZJPUpdate'>
                         <td width="50%"><br>
                             <label for="sear" class="" translate>fixedphonenew.CurrentModel</label>
                         </td>
@@ -109,7 +116,7 @@
 
             <table id="t3" width="100%" height="10" cellspacing="0" cellpadding="0" *ngIf='showSearch' border="0">
                 <tbody>
-                    <tr valign="top" *ngIf='showformodel'>
+                    <tr valign="top" *ngIf='showformodel && showforNZJPUpdate'>
                         <td width="50%">
                             <span id="modelid"><br>
                             <label for="modelid" translate>fixedphonenew.NewPhonemodel</label>
@@ -205,6 +212,12 @@
                             <label for="addId1" translate>fixedphonenew.CurrentPhoneNumber</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.phoneNunmer}}</td>
+                    </tr>
+                    <tr valign="top" *ngIf='showforJPUpdate'>
+                        <td colspan="2" width="46%">
+                            <label for="addId1" translate>fixedphonenew.CurrentLocation</label>
+                        </td>
+                        <td width="54%">{{reviewDetailsIndia.Location_final}}</td>
                     </tr>
                     <tr valign="top" *ngIf='showSearch'>
                         <td colspan="2" width="46%">
