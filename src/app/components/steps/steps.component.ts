@@ -272,7 +272,6 @@ export class StepsComponent implements OnInit {
   this.cache_fixed.device = this.formData.value.Device_Type;
   this.cache_fixed.model = this.formData.value.Model_Type;
   //this.cache_fixed.employeeId = this.FixedPhoneData.empID;
-  this.cache_fixed.voicemail = this.formData.value.Voicemail;
   this.cache_fixed.justification = this.formData.value.Justification;
   this.cache_fixed.description = this.formData.value.Description;
   this.cache_fixed.mac = this.formData.value.MACAddress;
@@ -281,6 +280,11 @@ export class StepsComponent implements OnInit {
   // this.cache_fixed.emailResult = this.FixedPhoneData.emailResult;
   this.cache_fixed.showBusinessNeed = this.FixedPhoneData.showBusinessNeed;
   this.cache_fixed.cos = this.FixedPhoneData.COS;
+  if(this.FixedPhoneData.voicemail == undefined){
+    this.cache_fixed.voicemail = this.formData.value.Voicemail;
+  } else {
+    this.cache_fixed.voicemail = this.FixedPhoneData.voicemail;
+  }
   //this.cache_fixed.employeeIDDisplay = this.FixedPhoneData.employeeID;
   sessionStorage.setItem('cache',JSON.stringify(this.cache_fixed));
   console.log("cached");

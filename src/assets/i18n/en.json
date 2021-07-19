@@ -368,7 +368,8 @@
         "FixedPhoneLocation": "Fixed Phone Location",
         "SelectOne": "Select One",
         "cos": "Please select a class of service.",
-        "NoteCombination": "Note: Combination of (0 to 9 , A to F) and Length:12"
+        "NoteCombination": "Note: Combination of (0 to 9 , A to F) and Length:12",
+        "CurrentLocation": "Current location"
     },
     "specialrequest": {
         "OnlyusetheSpecialRequest": "Special Requests are used to manage additional services for an existing Jabber / Phone number; to indicate the need for a telephony-related consultancy; or to create/manage special services: secondary IDs, support group hotlines, and/or shared lines or hunt groups. ",
