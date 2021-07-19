@@ -173,6 +173,7 @@ getFixedPhoneData(){
   this.FixedPhoneData = {
     "showBusinessNeed": this.showBusinessNeed,
     "COS": this.COS,
+    "voicemail": this.voicemail
   }
 }
 
@@ -255,7 +256,7 @@ getFixedPhoneData(){
     this.cache.officeLocation = formData.value.Location_1;
     this.cache.device = formData.value.Device_Type;
     this.cache.model = formData.value.Model_Type;
-    this.cache.voicemail = formData.value.Voicemail;
+    this.cache.voicemail = this.voicemail;
     this.cache.justification = formData.value.Justification;
     this.cache.description = formData.value.Description;
     this.cache.mac = formData.value.MACAddress;

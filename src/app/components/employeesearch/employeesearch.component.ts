@@ -88,6 +88,7 @@ export class EmployeesearchComponent implements OnInit {
   mainConfiguration :any;
   selectedCountry: any
   emailblank=false;
+  langchecking:any
 
 
   profile_location:any = [];
@@ -97,6 +98,7 @@ export class EmployeesearchComponent implements OnInit {
     this.showloader = false
     this.selectedCountry = sessionStorage.getItem('selectedCountry')
     this.checked = sessionStorage.getItem('moback')
+    this.langchecking =sessionStorage.getItem('currentlang1')
 
     if(this.selectedCountry === null || this.selectedCountry === ''){
       this.selectedCountry = 'Select One'
@@ -115,6 +117,7 @@ export class EmployeesearchComponent implements OnInit {
     this.fullName = this.fullName.replace(",", ", ");
     this.ccode = this.cookie.getCookie('ccode');
     this.countryroute=sessionStorage.getItem('countryroute')
+
   //  alert(this.countryroute)
   // alert(this.pcode)
 //if(sessionStorage.getItem('countrydetails')==undefined ) {
@@ -161,7 +164,18 @@ export class EmployeesearchComponent implements OnInit {
         setTimeout(() => {
           if (this.service.includes('fixed')) {
             if (!(this.countrydetails.power_users.includes(this.ccode))) {
-              alert(this.countrydetails.alert_message.replace(/<br>/g,"\n"));
+              if(this.langchecking == 'fr_ca') {
+                alert(this.countrydetails.alert_messagefr.replace(/<br>/g,"\n"));
+              }
+              else{
+                if(this.countrydetails.confirm_message){
+                  if(confirm(this.countrydetails.confirm_message.replace(/<br>/g,"\n"))) {
+                    window.open(this.countrydetails.confirm_url, '_blank');
+                  }
+                } else { 
+                  alert(this.countrydetails.alert_message.replace(/<br>/g,"\n"));
+                }
+              }
               this.router.navigate(['fixedphoneservices'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
             }
           }
@@ -262,7 +276,18 @@ export class EmployeesearchComponent implements OnInit {
     setTimeout(() => {
       if (this.service.includes('fixed')) {
         if (!(this.countrydetails.power_users.includes(this.ccode))) {
-          alert(this.countrydetails.alert_message.replace(/<br>/g,"\n"));
+          if(this.langchecking == 'fr_ca') {
+            alert(this.countrydetails.alert_messagefr.replace(/<br>/g,"\n"));
+            } 
+            else {
+              if(this.countrydetails.confirm_message){
+                if(confirm(this.countrydetails.confirm_message.replace(/<br>/g,"\n"))) {
+                  window.open(this.countrydetails.confirm_url, '_blank');
+                }
+              } else { 
+                alert(this.countrydetails.alert_message.replace(/<br>/g,"\n"));
+              }
+            }
           this.router.navigate(['fixedphoneservices'], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
         }
       }
