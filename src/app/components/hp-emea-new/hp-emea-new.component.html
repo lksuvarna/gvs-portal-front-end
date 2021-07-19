@@ -82,12 +82,12 @@
                     </tr>
 
 
-                    <!-- <tr class='ds-mar-t-1_5' valign="top" [hidden]='showforFixedPhone'>
+                    <tr class='ds-mar-t-1_5' valign="top" *ngIf='showforNZJP'>
                       <td colspan="2" width="46%" height="10"><label for="Voicemail"
-                          class="ds-text-capitalize ds-mar-t-1" style="display: inline-block;">Voicemail Required</label>
+                           style="display: inline-block;">Voicemail Required</label>
                       </td>
                       <td width="54%" height="10">
-                        <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                        <!-- <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                           <select rows="2" name="Voicemail" cols="40" id="VoicemailId"
                             class="ds-title ds-align-text-left ds-mar-t-1"
                             style="width:300px !important; text-transform: uppercase;" title="Voicemail"  [(ngModel)]="voicemail"
@@ -95,9 +95,27 @@
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
                           </select>
+                        </div> -->
+                        <div class="ds-input-container">
+                            <div class="ds-input-radio-group ds-flex" role="group" aria-labelledby="horizontal-radio-buttons-example">
+                                <div class="ds-input-radio ds-mar-r-1">
+                                    <input type="radio" name="Voicemail" id="radio4" class="ds-input" value="Yes" ngModel [(ngModel)]="voicemail">
+                                    <div class="ds-input-control"></div>
+                                    <label for="radio4" translate>YES</label>
+                                </div>
+                                <div class="ds-input-radio">
+                                    <input type="radio" name="Voicemail" id="radio5" class="ds-input" value="No" ngModel [(ngModel)]="voicemail" aria-selected="true">
+                                    <div class="ds-input-control"></div>
+                                    <label for="radio5" translate>NO</label>
+                                </div>
+                            </div>
                         </div>
                       </td>
-                    </tr> -->
+                    </tr>
+                    <tr class='ds-mar-b-1_5' *ngIf='showforNZ'>
+                        <td colspan="3"><span><label>If no voicemail is selected, callers will be played a standard message for unanswered calls. 
+                            More information can be found at the<a href="https://w3-01.ibm.com/helpcentral/Content/View/1/c8e9f52e-23bc-40de-9c78-8d1c17d5669e/voicemail_low_function_alternative_vmlfa_-_faqs" target="_blank">VMLFA FAQs.</a></label></span><br><br></td>
+                    </tr>
 
                     <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%" height="10"><label for="cos" translate>fixedphonenew.SelectClassofService (COS)</label>
@@ -213,12 +231,12 @@
                     </tr>
 
 
-                    <!-- <tr valign="top" [hidden]='hideVoicemail'>
+                    <tr valign="top" *ngIf='showforNZJP'>
                         <td colspan="2" width="46%">
                             <label for="voiemail">Voicemail Required</label>
                         </td>
                         <td width="54%">{{reviewDetailsIndia.voicemail}}</td>
-                    </tr> -->
+                    </tr>
 
                     <tr valign="top" [hidden]='showforFixedPhone'>
                         <td colspan="2" width="46%">

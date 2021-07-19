@@ -51,7 +51,7 @@ employeeInfo1: any;
 hideProjectId = false;
 locationlist: any;	
 selected_device:any = '';
-voicemail = 'no';
+voicemail = 'No';
 locdisplay=true
 mainConfiguration :any;
 cache_tmp:  any = [];
@@ -61,7 +61,9 @@ descValue:any = '';
 justificationValue:any = '';
 FixedPhoneData: any = [];
 locSelected : any
-jabberDept: any
+jabberDept: any;
+showforNZJP: boolean = false;
+showforNZ: boolean = false;
 
 
 payload : fixedphone_new = new fixedphone_new();	
@@ -124,6 +126,12 @@ selectedDevice(device:string) {
     if(this.COS == 'international') {
       this.showBusinessNeed = false;
     }
+    if(this.countrydetails.showforNZJP == true) {
+      this.showforNZJP = true;
+    }
+    if(this.countrydetails.showforNZ == true) {
+      this.showforNZ = true;
+    }
   }
   if(device.toUpperCase() == 'EXTENSION MOBILITY STATION') {
     this.showforAnyDevice = false;
@@ -132,6 +140,8 @@ selectedDevice(device:string) {
     this.hideEmpID = true;
     this.hideVoicemail = true;
     this.showBusinessNeed = true;
+    this.showforNZJP = false;
+    this.showforNZ = false;
   }
   if(device.toUpperCase() == 'CONFERENCE / MEETING ROOM PHONE') {
     this.showforAnyDevice = false;
@@ -140,6 +150,8 @@ selectedDevice(device:string) {
     this.hideEmpID = true;
     this.hideVoicemail = true;
     this.showBusinessNeed = true;
+    this.showforNZJP = false;
+    this.showforNZ = false;
   }
   this.getFixedPhoneData();
 
@@ -161,6 +173,7 @@ getFixedPhoneData(){
   this.FixedPhoneData = {
     "showBusinessNeed": this.showBusinessNeed,
     "COS": this.COS,
+    "voicemail": this.voicemail
   }
 }
 
@@ -223,7 +236,11 @@ getFixedPhoneData(){
     this.reviewDetailsIndia.device = formData.value.Device_Type;
     this.reviewDetailsIndia.model = formData.value.Model_Type;
     // this.reviewDetailsIndia.employeeId = formData.value.StepMentor;
-    this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
+    if(formData.value.Voicemail == undefined) {
+      this.reviewDetailsIndia.voicemail = "";
+    } else {
+      this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
+    }
     this.reviewDetailsIndia.cos = formData.value.cos;
     this.reviewDetailsIndia.justification = formData.value.Justification;
     this.reviewDetailsIndia.description = formData.value.Description;
@@ -239,7 +256,7 @@ getFixedPhoneData(){
     this.cache.officeLocation = formData.value.Location_1;
     this.cache.device = formData.value.Device_Type;
     this.cache.model = formData.value.Model_Type;
-    this.cache.voicemail = formData.value.Voicemail;
+    this.cache.voicemail = this.voicemail;
     this.cache.justification = formData.value.Justification;
     this.cache.description = formData.value.Description;
     this.cache.mac = formData.value.MACAddress;
@@ -271,7 +288,7 @@ getFixedPhoneData(){
       this.payload.Device_Type_Disp = this.reviewDetailsIndia.device;
       this.payload.Model_Disp =  this.reviewDetailsIndia.model;
       this.payload.MAC_Disp = this.reviewDetailsIndia.mac;
-      this.payload.Voicemail_Disp = '';
+      this.payload.Voicemail_Disp = this.reviewDetailsIndia.voicemail;
       //this.payload.Desc_Disp = this.reviewDetailsIndia.description;
       this.payload.Desc_Disp = removeDiacritics(this.reviewDetailsIndia.description.replace(/[\n\r"\\+]/g, ' '));
 
@@ -306,7 +323,7 @@ getFixedPhoneData(){
       this.payload.request_type='fixedphone_new';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;
       this.payload.country_code = this.countrydetails.code;
-      this.payload.Voice_Type_Disp = 'yes';
+      this.payload.Voice_Type_Disp = 'Yes';
       this.payload.Department_number_Disp = '';
       this.payload.accid_Disp = '';
       this.payload.icano_Disp = '';

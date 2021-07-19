@@ -124,6 +124,13 @@
                         <td width="54%">{{currentPhone}}</td>
                     </tr>
                     <br>
+                    <tr valign="top" *ngIf="showforJPDelete">
+                        <td colspan="2" width="46%">
+                            <label for="addId1" translate>fixedphonenew.CurrentLocation</label>
+                        </td>
+                        <td width="54%">{{currentloc}}</td>
+                    </tr>
+                    <br *ngIf="showforJPDelete">
                     <tr valign="top">
                         <td colspan="2" width="46%">
                             <label for="addId1" translate>fixedphonenew.Description</label>

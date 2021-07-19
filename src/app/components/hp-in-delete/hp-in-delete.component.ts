@@ -47,6 +47,8 @@ export class HpInDeleteComponent implements OnInit {
   errorinfo=false;
   reqno:any;
   showerrormessage = false;
+  showforJPDelete: boolean = false;
+  currentloc: any;
 
   hideNextButton = true;
 
@@ -94,6 +96,9 @@ export class HpInDeleteComponent implements OnInit {
           this.hideSteps = false;
 
           this.currentMacSep = this.currentMac.toLowerCase().includes("sep") ? this.currentMac.slice(3,this.currentMac.length) :this.currentMac;
+          if(this.showforJPDelete == true) {
+            this.currentloc = data.message[0].ATTRIBUTE3;
+          }
         }
         else
         {
@@ -203,6 +208,12 @@ export class HpInDeleteComponent implements OnInit {
   this.countrydetails = sessionStorage.getItem('countrydetails');	
   this.countrydetails = JSON.parse(this.countrydetails);	
    // Submit to Snow Jabber new code added by Swarnava ends	
+
+       //code for Japan- ends
+      if(this.countrydetails.showforJPDelete == true) {
+        this.showforJPDelete = this.countrydetails.showforJPDelete;
+      }
+      //code for Japan- ends
 
     this.ccode=this.cookie.getCookie('ccode').substring(6,9);
     this.route.queryParams	

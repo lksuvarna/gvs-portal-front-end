@@ -239,7 +239,7 @@ export class HpIndonesiaUpdateComponent implements OnInit {
       alert('Please provide the MAC address; only the following alphanumeric characters are permitted: 0-9, A-F.');
       return;	
     }
-    if(this.showformacadd == true && formData.value.MAC1 == this.currentMac) {
+    if(this.showformacadd == true && formData.value.MAC1.toUpperCase() == this.currentMac.toUpperCase()) {
       alert('Please verify the MAC address; the information entered is the same as the current MAC address.');
       return;
     }
@@ -261,7 +261,7 @@ export class HpIndonesiaUpdateComponent implements OnInit {
       return;
     }
 
-    if(this.showforNewDesc == true && formData.value.Newdesc == this.currentdesc) {
+    if(this.showforNewDesc == true && formData.value.Newdesc.toUpperCase() == this.currentdesc.toUpperCase()) {
       alert('Please verify the phone description; the information entered is the same as the current phone description.');
       return;
     }
@@ -352,8 +352,8 @@ export class HpIndonesiaUpdateComponent implements OnInit {
     this.payload.Identifier = this.reviewDetailsIndia.phoneNunmer;
     this.payload.MAC = this.reviewDetailsIndia.mac;
     this.payload.Location_final = this.reviewDetailsIndia.location;
-    this.payload.LocationCorrectnew = this.reviewDetailsIndia.location_final;
-    this.payload.LocationCorrect = this.reviewDetailsIndia.location_final;
+    this.payload.LocationCorrectnew = "";
+    this.payload.LocationCorrect = "";
     this.payload.ReqNo=this.reqno;
     this.payload.Location_Disp = "";
 
