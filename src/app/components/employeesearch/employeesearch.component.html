@@ -108,9 +108,16 @@
                             </div>
                         </td>
                         <td colspan="2">
-                            <div class=" row ds-pad-t-2">
+                            <div class="row ds-pad-t-2">
                                 <div class="ds-col-4">
-                                    <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                                    <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Secondary Dropdown">
+
+                                        <div class="select-one">
+                                            <div class="ds-title"></div>
+                                            <div class="ds-options" role="group">
+                                                <div class="ds-option" role="menuitem" tabindex="-1"></div>
+                                            </div>
+                                        </div>
                                         <select name="selectedCountry" rows="2" cols="40" id="sub-Countries" class="ds-title ds-align-text-left" (click)="hidedata()" style="width:230px !important; text-transform: uppercase;" title="{{ 'Jabbernewtrans.CountryCode' | translate}}" tabindex="1"
                                             [(ngModel)]="selectedCountry">	
                                             <option value ="Select One" translate>Jabbernewtrans.SelectOne</option>	
@@ -119,6 +126,7 @@
                                     </div>
                                 </div>
                             </div>
+
                         </td>
                     </tr>
                 </tbody>
@@ -153,7 +161,7 @@
 
             <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=errorinfo>
                 <p></p>
-                <p ><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a><span translate>Jabbernewtrans.reportthismessage</span></p>
+                <p><span translate>Jabbernewtrans.opps</span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a><span translate>Jabbernewtrans.reportthismessage</span></p>
                 <p>
                 </p>
             </div>
