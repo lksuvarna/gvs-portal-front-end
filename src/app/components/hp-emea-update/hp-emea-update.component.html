@@ -160,7 +160,7 @@
                         <td width="50%">
                             <textarea name="Comments" class="ds-input " style="width:300px !important;" title="{{ 'tooltips.ReasonforUpdate'| translate}}" rows="2" cols="40" maxlength="500;" [(ngModel)]='reasonForUpdate'>
                         </textarea>
-                            <label>Note:Length should not exceed 500</label>
+                            <label translate>specialrequest.notexceed200</label>
                             <br>
                         </td>
                     </tr>
@@ -249,17 +249,18 @@
                         </td>
                         <td width="54%">{{reviewDetailsIndia.newMac}}</td>
                     </tr>
-                    <tr valign="top">
-                        <td colspan="2" width="46%">
-                            <label for="addId1" translate>fixedphonenew.ReasonforUpdation</label>
-                        </td>
-                        <td width="54%" style="word-break:break-all;">{{reviewDetailsIndia.justification}}</td>
-                    </tr>
+                    
                     <tr valign="top" *ngIf='showforNewDesc'>
                         <td colspan="2" width="46%">
                             <label for="addId1" translate>fixedphonenew.NewDescriptiontoUpdate</label>
                         </td>
                         <td width="54%" style="word-break:break-all;">{{reviewDetailsIndia.description}}</td>
+                    </tr>
+                    <tr valign="top">
+                        <td colspan="2" width="46%">
+                            <label for="addId1" translate>fixedphonenew.ReasonforUpdation</label>
+                        </td>
+                        <td width="54%" style="word-break:break-all;">{{reviewDetailsIndia.justification}}</td>
                     </tr>
 
                 </tbody>

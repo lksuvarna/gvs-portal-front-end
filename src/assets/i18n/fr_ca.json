@@ -2,7 +2,7 @@
 
     "home": {
         "select-language": "Choisissez une langue : ",
-        "app-name": "Services vocaux mondiaux",
+        "app-name": "Global Voice Services",
         "app-function": "Point d'entrée unique pour commander des services vocaux dans votre pays",
         "sponsor": "Construit sur le nuage hybride CIO - Propulsé par Red Hat OpenShift",
         "welcomemessage": "Bienvenue,",
@@ -81,9 +81,10 @@
         "availablefromBluePages": "dans BluePages Veuillez vérifier et réessayer.",
         "Pleaseverifyandtryagain": "Veuillez vérifier et réessayer.",
         "EMAILcouldnotbefoundinbp": "Adresse courriel pour le matricule entré introuvable dans Bluepages. Veuillez réessayer plus tard. ",
-        "opps": "Nous rencontrons actuellement des difficultés pour répondre à votre demande en raison d'une erreur inattendue. Veuillez contacter ",
+        "opps": "Nous rencontrons actuellement des difficultés pour répondre à votre demande en raison d'une erreur inattendue. Veuillez contacter le",
         "reportthismessage": " pour signaler ce message. [Erreur]",
         "JabberLocation": "Emplacement du numéro de téléphone Jabber",
+        "ClassofService": "Classe de service (COS)",
         "pleasesubmittostart": "En soumettant cette demande, vous donnez votre consentement écrit à IBM de traiter les renseignements personnels fournis."
 
     },
@@ -128,13 +129,13 @@
         "notauthorizedtoaccessip": "Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter",
         "Jabber/ITN": "Numéro de téléphone",
         "JabberphnNumber": "Numéro de téléphone",
-        "jabberconfiguration": "Jabber déjà enregistré pour cet utilisateur. Si vous ne pouvez pas voir ce numéro  Jabber dans Bluepages sous Informations de contact, veuillez faire appel ",
+        "jabberconfiguration": "Jabber déjà enregistré pour cet utilisateur. Si vous ne pouvez pas voir ce numéro  Jabber dans Bluepages sous Informations de contact, veuillez faire appel au",
 
         "toinstallbegin": "Pour installer et commencer à utiliser votre compte Jabber, consultez la rubrique Cisco Jabber dans",
         "CiscoJabber": ".",
         "ongoingrequestsbyclickonrequestpage": "Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.",
         "isalreadybeingprocessed": " est déjà en cours de traitement pour cet utilisateur. Pour en afficher l'état, veuillez cliquer sur Demandes dans le menu latéral.",
-        "Ifyoucannotsee": "Si vous ne pouvez pas voir la demande, ou pour tout autre problème, veuillez contacter ",
+        "Ifyoucannotsee": "Si vous ne pouvez pas voir la demande, ou pour tout autre problème, veuillez contacter le",
         "nooutstandingreq": "Aucune demande en cours n'est associée au matricule entré.",
         "noresources": "Aucun compte n'est associé au matricule entré.",
         "nojabberforthisserial": "Il n'y a pas de compte Jabber actif pour ce matricule. Veuillez vérifier et réessayer.",
@@ -142,8 +143,8 @@
         "NEXT": "SUIVANT",
         "SUBMIT1": "SOUMETTRE",
         "alreadyonerequestinprogress": "La demande ",
-        "helpdesk": "le service de dépannage",
-        "helpdeskalert": "au service de dépannage."
+        "helpdesk": "service de dépannage",
+        "helpdeskalert": "service de dépannage."
     },
     "Jabberentrydetails": {
         "Fieldsasterisk": "Champs marqués d'un astérisque",
@@ -221,7 +222,7 @@
         "Employee Information": "Informations sur l'employé",
         "Employee Entry Details": "Détails sur l'entrée en service de l'employé",
         "Review Details": "Revoyez les détails",
-        "Employee Resources Details": "Détails des ressources des employés",
+        "Employee Resources Details": "Détails des ressources employé",
         "Employee Requests Details": "Détails des demandes d'employé",
         "Phone Number Search": "Recherche par numéro de téléphone",
         "Phone Number Details": "Détails du numéro de téléphone",
@@ -240,7 +241,7 @@
         "SelectClassofService (COS)": "Classe de service (COS)",
         "National": "National",
         "International": "International",
-        "BusinessNeed(Whyisinternationalrequired?)": "Besoin d'affaires (pourquoi international) ",
+        "BusinessNeed(Whyisinternationalrequired?)": "Justification d'affaires (pourquoi international) ",
         "DescriptionoftheDevice": "Description de l'appareil ",
         "IBMCLv21EMdesk": "ex. : IBMC Lv21 EM desk ",
         "IBMCLv21conferenceroom3": "ex. : IBMC Lv21 conference room 3 ",
@@ -251,9 +252,9 @@
         "Somethingseemswrong": "Nous rencontrons actuellement des difficultés pour traiter votre demande en raison d'une erreur inattendue. Veuillez contacter le service de dépannage pour signaler ce message. [Erreur]",
         "selectdevice": "Veuillez sélectionner le type d'appareil.",
         "selectmodel": "Veuillez sélectionner le type de modèle.",
-        "businesscos": "Veuillez fournir une justification d'affaires pour la classe de service sélectionnée.",
+        "businesscos": "Veuillez fournir une justification d'affaires pour la classe de service sélectionnée .",
         "descriptioncharacters": "Veuillez fournir une description (30 caractères maximum).",
-        "entermacadd": "Veuillez fournir l'adresse MAC (limite de 12 caractères).",
+        "entermacadd": "Veuillez fournir l'adresse MAC ; seuls les caractères alphanumériques suivants sont autorisés: 0-9, A-F.",
         "MACfieldAtoF": "Veuillez vérifier l'adresse MAC; seuls les caractères alphanumériques suivants sont autorisés : 0-9, A-F.",
         "initiateFixedPhoneservice": "Veuillez sélectionner un type de demande ci-dessous.",
         "MACAddressorPhoneNumber": "Entrez l'adresse MAC ou le numéro de téléphone actuels",
@@ -271,7 +272,7 @@
         "TypeOfModel": "Type de modèle",
         "SelectPhoneModel": "Sélectionnez le modèle de téléphone",
         "NewMACAddress": "Nouvelle adresse MAC",
-        "NewDescriptiontoUpdate": "Nouveau descriptif",
+        "NewDescriptiontoUpdate": "Nouveau description",
         "ReasonforUpdation": "Raison de la mise à jour",
         "MACAddresssearch": "Veuillez fournir l'adresse MAC ou le numéro de téléphone mis à jour.",
         "updaterequiredfor": "Veuillez fournir les exigences de mise à jour.",
@@ -294,12 +295,12 @@
         "JabberLocationspecial": "Emplacement du numéro de téléphone Jabber",
         "Description of Requirement": "Description du besoin",
         "notexceed200": "Remarque : la longueur ne doit pas dépasser 500",
-        "Note": "Noter:",
+        "Note": "Remarque:",
         "Fieldsasteriskspl": "Les champs marqués d'un astérisque ",
         "arerequiredspl": " sont obligatoires.",
         "selectjabbernumberwishtoupdate": "Numéro de téléphone Jabber",
         "JabberLocationslect": "Emplacement du numéro de téléphone Jabber",
-        "devicehelpmessage": "P - Primaire, SEP - Fixe Téléphone"
+        "devicehelpmessage": "P - Primaire, SEP - Téléphone fixe"
 
     },
     "otheralerts": {
@@ -315,19 +316,20 @@
         "NewMACAddress": "Nouvelle adresse MAC",
         "NewDescription": "Nouvelle description",
         "ReasonforUpdate": "Raison de la mise à jour",
-        "samemodelupdate": "Vous avez sélectionné le même modèle que le modèle de téléphone actuel."
+        "samemodelupdate": "Vous avez sélectionné le même modèle que le modèle de téléphone actuel.",
+        "cMACAddressorPhoneNumber": "Entrez l'adresse MAC ou le numéro de téléphone actuels"
     },
     "feedback": {
         "Donotincludeanypersonal": "Veuillez ne pas inclure d'informations personnelles ou sensibles dans les champs de texte.",
         "Onascale": "Sur une échelle de 0 à 10, quelle est votre probabilité de recommander ce service à un ami ou à un collègue?",
         "Not at all likely": "Pas du tout probable",
         "Extremely likely": "Extrêmement probable",
-        "Caretotell": "Nous sommes très heureux de votre appréciation de Global Voice Services! Pouvez-vous nous dire pourquoi? ",
-        "Wearesopleasedthat": "Nous sommes ravis que vous vous sentiez ainsi à propos de Global Voice Services ! Voulez-vous nous dire pourquoi ?",
+        "Caretotell": "Pouvez-vous nous dire pourquoi? Vos commentaires nous aideront à nous améliorer. ",
+        "Wearesopleasedthat": "Nous sommes très heureux de votre appréciation de Global Voice Services! Pouvez-vous nous dire pourquoi?",
         "NoteThisfeedback": "Remarque: Cette rétroaction concerne uniquement l'utilisation du portail GVS. Pour toute autre rétroaction, veuillez utiliser",
-        "Help": "Aider@IBM",
+        "Help": "Help@IBM",
         "Thankyoufeedback": "Merci pour votre rétroaction!",
-        "providereview": "Veuillez fournir un examen.",
+        "providereview": "Veuillez fournir une évaluation.",
         "providefeedback": "Veuillez fournir vos commentaires.",
         "feedbackchars": "La longueur des commentaires doit être supérieure à 5 caractères."
 

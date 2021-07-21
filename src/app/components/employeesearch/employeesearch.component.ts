@@ -820,7 +820,10 @@ export class EmployeesearchComponent implements OnInit {
           this.routingname = '/entrydetailsfusanew';
         } else if (this.countrydetails.fnavpage == 'ID') {
           this.routingname = "/entrydetailsfemeanew";
-        } else if (this.countrydetails.fnavpage == 'SG') {
+        } else if (this.countrydetails.fnavpage == 'MY') {
+          this.routingname = '/entrydetailsfemeanew';
+          //Add routingname here for EMEA
+        }else if (this.countrydetails.fnavpage == 'SG') {
           this.routingname = "/entrydetailsfemeanew";
         }
         this.reqname = "-NS-";
@@ -839,7 +842,9 @@ export class EmployeesearchComponent implements OnInit {
           this.routingname = '/entrydetailsaufu';
         }else if (this.countrydetails.fnavpage == 'ID') {
           this.routingname = '/entrydetailsidfu';
-        } else if (this.countrydetails.fnavpage == 'SG') {
+        } else if (this.countrydetails.fnavpage == 'MY') {
+          this.routingname = '/entrydetailsidfu';
+        }else if (this.countrydetails.fnavpage == 'SG') {
           this.routingname = '/entrydetailsidfu';
         }
         this.reqname = "-US-";
@@ -938,3 +943,6 @@ export class EmployeesearchComponent implements OnInit {
 
   }
 }
+
+
+ 
