@@ -24,7 +24,7 @@
             <table id="t2" width="100%" cellspacing="0" cellpadding="0" border="0">
                 <tbody>
                     <tr valign="top">
-                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text-capitalize" translate>fixedphonenew.FixedPhoneLocation</label>
+                        <td colspan="2" width="46%" height="10"><label for="LocationId" class="ds-text" translate>fixedphonenew.FixedPhoneLocation</label>
                             <span class="ds-text-contextual-red-2"> *</span>
                         </td>
                         <td width="54%" height="10">
@@ -138,7 +138,7 @@
                             <span class="ds-text-contextual-red-2">*</span></td>
                         <td width="54%">
                             <textarea name="Justification" class="ds-input" style="width:300px !important;" title="{{ 'fixedphonenew.BusinessJustification' | translate}}" tabindex="2" rows="2" cols="40" maxlength="500;" ngModel [(ngModel)]='justificationValue'></textarea>
-                            <label>Note:Length should not exceed 500</label>
+                            <label translate>specialrequest.notexceed200</label>
                         </td>
                     </tr>
 
