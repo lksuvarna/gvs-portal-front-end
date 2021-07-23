@@ -183,8 +183,8 @@
         "alreadyonedeleterequestinprogress": "The serial number that you have entered has already one delete Jabber request is in progress and request number is",
         "alreadyonefacdeleterequestinprogress": "The serial number that you have entered has already one delete FAC request is in progress and request number is",
         "egyptnotauthorized": "The serial number that you have entered is not authorized to request Jabber.",
-        "egyptemsubmit": "For an Extension Mobility phone number (including voicemail), please submit a",
-        "furtherassistance": "For further assistance, please reach out to the",
+        "egyptemsubmit": "For an Extension Mobility phone number (including voicemail), please submit a ",
+        "furtherassistance": "For further assistance, please reach out to the ",
         "noteligibletoraise": "The serial number that you have entered is not eligible to request more than one FAC Code / IDD PIN.",
         "nofac": "There is no FAC Code / IDD PIN associated to this serial number."
     },
