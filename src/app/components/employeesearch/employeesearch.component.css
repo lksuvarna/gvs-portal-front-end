@@ -22,3 +22,7 @@
     opacity: 0.5;
     background: #CCC;
 }
+
+.select-one {
+    display: none;
+}
