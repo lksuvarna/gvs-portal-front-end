@@ -7,11 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\polyfills.ts */"hN/g");
-=======
-module.exports = __webpack_require__(/*! C:\Users\VivekRatnesh\Desktop\Project Work\Cirrus\GVS-Portal\gvs-portal-front-end\src\polyfills.ts */"hN/g");
->>>>>>> d7e07e581f472659c9265fd46df5c9d08e7480d6
 
 
 /***/ }),
