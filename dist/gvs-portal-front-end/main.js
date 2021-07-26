@@ -1180,7 +1180,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\PavanKumarB\GVS-FE-MASTER\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -26650,10 +26650,10 @@ class ApprovalpendingComponent {
         this.router.navigate(['/employeeinfo']);
     }
     ngOnInit() {
-        this.mainConfiguration = this.servicesd.readConfigFile();
         this.route.queryParams
             .subscribe(params => {
             console.log(params);
+            this.mainConfiguration = this.servicesd.readConfigFile();
             this.service = params.service;
             this.pcode = params.country;
             console.log("navigation component" + this.pcode);
@@ -26684,6 +26684,11 @@ class ApprovalpendingComponent {
                         sessionStorage.setItem('reval', 'approval');
                     }
                     console.log("CCCODE VALUE= " + this.ccode);
+                    if (this.countrydetails.homepagecodes) {
+                        if (this.countrydetails.homepagecodes.includes(this.ccode)) {
+                            this.ccode = this.pcode;
+                        }
+                    }
                     if (this.pcode == this.ccode) {
                         this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction, "", "").subscribe(data => {
                             console.log(' snow response', data.message);
@@ -26724,6 +26729,11 @@ class ApprovalpendingComponent {
                     sessionStorage.setItem('reval', 'approval');
                 }
                 console.log("CCCODE VALUE= " + this.ccode);
+                if (this.countrydetails.homepagecodes) {
+                    if (this.countrydetails.homepagecodes.includes(this.ccode)) {
+                        this.ccode = this.pcode;
+                    }
+                }
                 if (this.pcode == this.ccode) {
                     this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction, "", "").subscribe(data => {
                         console.log(' snow response', data.message);
