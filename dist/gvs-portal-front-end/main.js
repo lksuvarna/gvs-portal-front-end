@@ -13679,9 +13679,9 @@ function EmployeeinfoComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warningDeptEgypt);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac && ctx_r0.cnum == ctx_r0.resourceid);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac && ctx_r0.cnum.trim() == ctx_r0.resourceid.trim());
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac && ctx_r0.cnum != ctx_r0.resourceid);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac && ctx_r0.cnum.trim() != ctx_r0.resourceid.trim());
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfosnowfac && ctx_r0.cnum == ctx_r0.resourceid);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -13693,9 +13693,9 @@ function EmployeeinfoComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofacr);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warningkyndral == true && ctx_r0.selfinfo == false);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warningkyndral == true && ctx_r0.selfinfo == false && ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warningkyndral && ctx_r0.selfinfo == true);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warningkyndral == false && ctx_r0.selfinfo == true && ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfosnow && ctx_r0.cnum == ctx_r0.resourceid);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -13817,7 +13817,7 @@ class EmployeeinfoComponent {
                 this.identifier = sessionStorage.getItem('identifier');
                 this.isDataLoaded = true;
             }
-            else if (sessionStorage.getItem('enterid') == "ibmid" && (this.service == "jabber_new" || this.service == "fac_new" || this.service == "fixedphone_new" || this.service == "specialrequest")) {
+            else if (this.cnum != this.resourceid && sessionStorage.getItem('enterid') == "ibmid" && (this.service == "jabber_new" || this.service == "fac_new" || this.service == "fixedphone_new" || this.service == "specialrequest")) {
                 this.warningkyndral = true;
             }
             else if (this.sessionwarninginfosnow == 'true1' && this.service == "fac_new") {
@@ -25317,13 +25317,14 @@ class EmployeesearchComponent {
                     ename = data.username.callupname;
                 }
                 console.log("data.NewCo" + data.NewCo + data.NewCo_userdetails.uid);
-                if (data.NewCo + data == false) {
+                if (data.NewCo == false) {
                     this.kyndraldata = false;
                 }
                 else {
                     this.kyndraldata = true;
                     this.kyndraluid = data.NewCo_userdetails.uid;
                 }
+                console.log("this.kyndraldata" + this.kyndraldata);
                 this.employeeInfo = {
                     employeeName: ename,
                     jobResponsibility: data.username.jobresponsibilities,
@@ -25425,7 +25426,7 @@ class EmployeesearchComponent {
                     // if (this.service == "jabber_new" && this.kyndralchk==false){
                     //   this.getLocationdata()
                     // }
-                    else if (this.enterid == "ibmid" && (this.service == "jabber_new" || this.service == "fac_new")) {
+                    else if (sessionStorage.getItem('cnum') != sessionStorage.getItem('resourceid') && (this.service == "jabber_new" || this.service == "fac_new")) {
                         this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                     }
                     else if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new" || this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_delete") {

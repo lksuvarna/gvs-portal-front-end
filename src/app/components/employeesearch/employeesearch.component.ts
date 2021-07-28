@@ -483,12 +483,13 @@ export class EmployeesearchComponent implements OnInit {
           ename = data.username.callupname
         }
        console.log("data.NewCo"+ data.NewCo+data.NewCo_userdetails.uid)
-       if (data.NewCo+data==false){
+       if (data.NewCo==false){
          this.kyndraldata=false;}
         
        else{this.kyndraldata=true
         this.kyndraluid=data.NewCo_userdetails.uid
       }
+      console.log("this.kyndraldata"+this.kyndraldata)
         this.employeeInfo = {
 
           employeeName: ename,
@@ -595,7 +596,7 @@ export class EmployeesearchComponent implements OnInit {
   
         else {
           this.datasnow = "nodata";
-          if ((this.service == "jabber_new" || this.service == "fac_new") && this.kyndraldata==true && this.kyndralchk==false){
+          if ((this.service == "jabber_new"  || this.service == "fac_new") && this.kyndraldata==true && this.kyndralchk==false){
             this.kyndralchk=true;
             this.employeeSerial=this.kyndraluid;
             this.getBPData();
@@ -603,7 +604,7 @@ export class EmployeesearchComponent implements OnInit {
          // if (this.service == "jabber_new" && this.kyndralchk==false){
          //   this.getLocationdata()
          // }
-         else if(this.enterid=="ibmid" && (this.service == "jabber_new" || this.service == "fac_new")){
+         else if(sessionStorage.getItem('cnum')!=sessionStorage.getItem('resourceid') && (this.service == "jabber_new" || this.service == "fac_new")){
           this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
          }
           else if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_delete") {
