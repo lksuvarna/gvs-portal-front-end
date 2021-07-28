@@ -83,11 +83,10 @@
 
 
                     <tr class='ds-mar-t-1_5' valign="top" *ngIf='showforNZJP'>
-                      <td colspan="2" width="46%" height="10"><label for="Voicemail"
-                           style="display: inline-block;">Voicemail Required</label>
-                      </td>
-                      <td width="54%" height="10">
-                        <!-- <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
+                        <td colspan="2" width="46%" height="10"><label for="Voicemail" style="display: inline-block;">Voicemail Required</label>
+                        </td>
+                        <td width="54%" height="10">
+                            <!-- <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                           <select rows="2" name="Voicemail" cols="40" id="VoicemailId"
                             class="ds-title ds-align-text-left ds-mar-t-1"
                             style="width:300px !important; text-transform: uppercase;" title="Voicemail"  [(ngModel)]="voicemail"
@@ -96,21 +95,21 @@
                             <option value="no">No</option>
                           </select>
                         </div> -->
-                        <div class="ds-input-container">
-                            <div class="ds-input-radio-group ds-flex" role="group" aria-labelledby="horizontal-radio-buttons-example">
-                                <div class="ds-input-radio ds-mar-r-1">
-                                    <input type="radio" name="Voicemail" id="radio4" class="ds-input" value="Yes" ngModel [(ngModel)]="voicemail">
-                                    <div class="ds-input-control"></div>
-                                    <label for="radio4" translate>YES</label>
-                                </div>
-                                <div class="ds-input-radio">
-                                    <input type="radio" name="Voicemail" id="radio5" class="ds-input" value="No" ngModel [(ngModel)]="voicemail" aria-selected="true">
-                                    <div class="ds-input-control"></div>
-                                    <label for="radio5" translate>NO</label>
+                            <div class="ds-input-container">
+                                <div class="ds-input-radio-group ds-flex" role="group" aria-labelledby="horizontal-radio-buttons-example">
+                                    <div class="ds-input-radio ds-mar-r-1">
+                                        <input type="radio" name="Voicemail" id="radio4" class="ds-input" value="Yes" ngModel [(ngModel)]="voicemail">
+                                        <div class="ds-input-control"></div>
+                                        <label for="radio4" translate>YES</label>
+                                    </div>
+                                    <div class="ds-input-radio">
+                                        <input type="radio" name="Voicemail" id="radio5" class="ds-input" value="No" ngModel [(ngModel)]="voicemail" aria-selected="true">
+                                        <div class="ds-input-control"></div>
+                                        <label for="radio5" translate>NO</label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                      </td>
+                        </td>
                     </tr>
                     <tr class='ds-mar-b-1_5' *ngIf='showforNZ'>
                         <td colspan="3"><span><label>If no voicemail is selected, callers will be played a standard message for unanswered calls. 
@@ -121,7 +120,7 @@
                         <td colspan="2" width="46%" height="10"><label for="cos" translate>fixedphonenew.SelectClassofService (COS)</label>
                             <span class="ds-text-contextual-red-2">*</span>
                         </td>
-                        <td width="54%" height="10">
+                        <td *ngIf="!defaulCos" width="54%" height="10">
                             <div class="ds-dropdown ds-secondary" tabindex="0" role="menu" aria-label="w3DS Dropdown1">
                                 <select rows="2" name="cos" cols="40" id="COSId" class="ds-title ds-align-text-left" style="width:300px !important; text-transform: uppercase;" title="{{ 'Jabbernewtrans.ClassofService' | translate}}" [(ngModel)]='COS' #cos (change)='classofservice(cos.value)'
                                     ngModel>
@@ -130,6 +129,9 @@
                               <option value="international" translate>fixedphonenew.International</option>
                             </select>
                             </div>
+                        </td>
+                        <td *ngIf="defaulCos" width="54%" height="10">
+                            <p class='ds-text-capitalize'>{{COS}}</p>
                         </td>
                     </tr>
 
@@ -242,7 +244,7 @@
                         <td colspan="2" width="46%">
                             <label for="cos" translate>Jabbernewtrans.ClassofService</label>
                         </td>
-                        <td width="54%">{{reviewDetailsIndia.cos}}</td>
+                        <td width="54%" class='ds-text-capitalize'>{{reviewDetailsIndia.cos}}</td>
                     </tr>
 
                     <tr valign="top" [hidden]='showBusinessNeed'>
