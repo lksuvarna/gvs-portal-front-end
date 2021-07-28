@@ -36,6 +36,7 @@ export class EmployeeinfoComponent implements OnInit {
   warninginfosnowreq = false;
   warninginfosnowres=false;
   warninginfoothers = false;
+  warningkyndral=false;
   warninginfosnowothers = false;
   warninginfosnowothersfac = false
   warninginfofac = false;
@@ -60,6 +61,8 @@ export class EmployeeinfoComponent implements OnInit {
   navpage:any;
   navpage1:any;
   page:any;
+  resourceid:any;
+  resourcetype:any;
   warn = false;
   countryroute:any;
   countrydetails:any;
@@ -113,6 +116,14 @@ export class EmployeeinfoComponent implements OnInit {
     this.warningDeptEgypt=false
     this.sessionwarninginfo=sessionStorage.getItem('warninginfo')
     this.sessionwarninginfosnow=sessionStorage.getItem('warninginfosnow')
+    this.resourceid=sessionStorage.getItem('resourceid')
+    this.resourcetype=sessionStorage.getItem('resourceidtype')
+    if(this.resourcetype=="ibmid"){
+      this.resourcetype="IBM Serial number"
+    }
+    else{
+      this.resourcetype="Kyndryl Serial number"
+    }
     console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
    if (this.sessionwarninginfo =='true1'&& this.service=="jabber_new"){
     this.warninginfo = true
@@ -125,6 +136,9 @@ export class EmployeeinfoComponent implements OnInit {
     
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
+   }
+   else if(sessionStorage.getItem('enterid')=="ibmid" && (this.service=="jabber_new" || this.service=="fac_new" || this.service=="fixedphone_new" || this.service=="specialrequest")){
+    this.warningkyndral=true
    }
    else if (this.sessionwarninginfosnow =='true1' && this.service=="fac_new"){
     this.warninginfosnowfac = true

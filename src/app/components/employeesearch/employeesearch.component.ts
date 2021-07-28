@@ -55,6 +55,10 @@ export class EmployeesearchComponent implements OnInit {
   s: any;
   i:any;
   sno: any;
+  kyndraldata=false;
+  kyndraluid:any;
+  kyndralchk=false;
+  enterid: any;
   identifier: any;
   warninginfo = true;
   warninginfosnow = true;
@@ -478,6 +482,13 @@ export class EmployeesearchComponent implements OnInit {
         if (data.username.preferredlastname == undefined || data.username.preferredfirstname == undefined) {
           ename = data.username.callupname
         }
+       console.log("data.NewCo"+ data.NewCo+data.NewCo_userdetails.uid)
+       if (data.NewCo+data==false){
+         this.kyndraldata=false;}
+        
+       else{this.kyndraldata=true
+        this.kyndraluid=data.NewCo_userdetails.uid
+      }
         this.employeeInfo = {
 
           employeeName: ename,
@@ -488,9 +499,21 @@ export class EmployeesearchComponent implements OnInit {
           email: data.username.preferredidentity,
           sno: data.username.uid,
           workloc: data.username.workloc,
+          kyndral:data.NewCo
         }
+        if(this.kyndralchk==false){
         sessionStorage.setItem('employeeInfo', JSON.stringify(this.employeeInfo))
         sessionStorage.setItem('cnum', this.employeeSerial)
+        if((data.username.preferredidentity.toUpperCase().includes('OCEAN.IBM.COM'))){
+          this.enterid="kyndralid"}
+       else{this.enterid="ibmid"}
+       sessionStorage.setItem('enterid', this.enterid)
+      }
+      sessionStorage.setItem('resourceid', data.username.uid)
+      if((data.username.preferredidentity.toUpperCase().includes('OCEAN.IBM.COM'))){
+        sessionStorage.setItem('resourceidtype', "kyndralid")
+        }
+     else{ sessionStorage.setItem('resourceidtype', "ibmid")}
         this.warninginfo = false
         this.warninginfosnow = false
         sessionStorage.setItem('warninginfo', 'false1');
@@ -512,7 +535,12 @@ export class EmployeesearchComponent implements OnInit {
           
         }
         if (this.service.includes("fixedphone")) {
+          if(this.enterid=="ibmid" && this.kyndraldata==true && this.service =="fixedphone_new"){
+            this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+           }
+           else{
           this.getLocationdata();
+           }
 
         }
 
@@ -540,7 +568,11 @@ export class EmployeesearchComponent implements OnInit {
   getSNOWdata(): any {
 
     if (this.service.includes("specialrequest")) {
-      this.getLocationdata();
+      if(this.enterid=="ibmid" && this.kyndraldata==true){
+        this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+       }
+       else{
+      this.getLocationdata();}
     }else{
 
       this.servicenowservice.searchsnow(this.employeeSerial, this.service, this.countrydetails.isocode + this.reqname + this.employeeSerial.substr(0, 6)).subscribe(data => {
@@ -563,7 +595,18 @@ export class EmployeesearchComponent implements OnInit {
   
         else {
           this.datasnow = "nodata";
-          if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_delete") {
+          if ((this.service == "jabber_new" || this.service == "fac_new") && this.kyndraldata==true && this.kyndralchk==false){
+            this.kyndralchk=true;
+            this.employeeSerial=this.kyndraluid;
+            this.getBPData();
+          }
+         // if (this.service == "jabber_new" && this.kyndralchk==false){
+         //   this.getLocationdata()
+         // }
+         else if(this.enterid=="ibmid" && (this.service == "jabber_new" || this.service == "fac_new")){
+          this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+         }
+          else if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_delete") {
             this.getLocationdata()
           }
   
