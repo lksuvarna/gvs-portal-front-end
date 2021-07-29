@@ -536,7 +536,10 @@ export class EmployeesearchComponent implements OnInit {
           
         }
         if (this.service.includes("fixedphone")) {
-          if(this.enterid=="ibmid" && this.kyndraldata==true && this.service =="fixedphone_new"){
+          if(this.kyndraldata==true && this.kyndralchk==false){this.kyndralchk=true;
+            this.employeeSerial=this.kyndraluid;
+            this.getBPData();}
+          else if(this.enterid="ibmid" && this.kyndraldata==true && this.service =="fixedphone_new"){
             this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
            }
            else{
@@ -569,7 +572,10 @@ export class EmployeesearchComponent implements OnInit {
   getSNOWdata(): any {
 
     if (this.service.includes("specialrequest")) {
-      if(this.enterid=="ibmid" && this.kyndraldata==true){
+      if(this.kyndraldata==true && this.kyndralchk==false){this.kyndralchk=true;
+        this.employeeSerial=this.kyndraluid;
+        this.getBPData();}
+      else if(this.enterid="ibmid" && this.kyndraldata==true){
         this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
        }
        else{

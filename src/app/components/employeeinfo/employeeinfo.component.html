@@ -159,10 +159,10 @@
         <div id="fac_reset" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacr">
             <p><span style="font-size: 1rem;" translate>employeeinfotrans.nofac</span></p>
         </div>
-        <div id="k1kk" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warningkyndral==true && selfinfo==false && warninginfo==false&&warninginfosnow==false">
+        <div id="k1kk" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofac==false && warninginfosnowfac==false && warningkyndral==true && selfinfo==false && warninginfo==false&&warninginfosnow==false">
             <p><span style="font-size: 1rem;" translate>employeeinfotrans.kyndrylonbehalfof</span></p>
         </div>
-        <div id="k1k" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warningkyndral==false && selfinfo==true && warninginfo==false&&warninginfosnow==false">
+        <div id="k1k" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofac==false && warninginfosnowfac==false && warningkyndral==false && selfinfo==true && warninginfo==false&&warninginfosnow==false">
             <p><span style="font-size: 1rem;" translate>employeeinfotrans.kyndryl</span></p>
         </div>
 

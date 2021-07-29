@@ -13693,9 +13693,9 @@ function EmployeeinfoComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofacr);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warningkyndral == true && ctx_r0.selfinfo == false && ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac == false && ctx_r0.warninginfosnowfac == false && ctx_r0.warningkyndral == true && ctx_r0.selfinfo == false && ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warningkyndral == false && ctx_r0.selfinfo == true && ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac == false && ctx_r0.warninginfosnowfac == false && ctx_r0.warningkyndral == false && ctx_r0.selfinfo == true && ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfosnow && ctx_r0.cnum == ctx_r0.resourceid);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -13917,7 +13917,7 @@ class EmployeeinfoComponent {
                     this.warninginfosnowothers = false;
                 }
             }
-            if (this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr || this.warninginfofacdelete || this.warninginfofacdeletesnow || this.warninginfosnowfac || this.warninginfosnowlegacy || this.warningDeptEgypt) {
+            if (this.warningkyndral || this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr || this.warninginfofacdelete || this.warninginfofacdeletesnow || this.warninginfosnowfac || this.warninginfosnowlegacy || this.warningDeptEgypt) {
                 this.hideSteps = true;
                 this.warn = true;
             }
@@ -25372,7 +25372,12 @@ class EmployeesearchComponent {
                     this.getSNOWdata();
                 }
                 if (this.service.includes("fixedphone")) {
-                    if (this.enterid == "ibmid" && this.kyndraldata == true && this.service == "fixedphone_new") {
+                    if (this.kyndraldata == true && this.kyndralchk == false) {
+                        this.kyndralchk = true;
+                        this.employeeSerial = this.kyndraluid;
+                        this.getBPData();
+                    }
+                    else if (this.enterid =  true && this.kyndraldata == true && this.service == "fixedphone_new") {
                         this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                     }
                     else {
@@ -25395,7 +25400,12 @@ class EmployeesearchComponent {
     }
     getSNOWdata() {
         if (this.service.includes("specialrequest")) {
-            if (this.enterid == "ibmid" && this.kyndraldata == true) {
+            if (this.kyndraldata == true && this.kyndralchk == false) {
+                this.kyndralchk = true;
+                this.employeeSerial = this.kyndraluid;
+                this.getBPData();
+            }
+            else if (this.enterid =  true && this.kyndraldata == true) {
                 this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
             }
             else {

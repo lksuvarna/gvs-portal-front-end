@@ -239,7 +239,7 @@ export class EmployeeinfoComponent implements OnInit {
   }
 
     
-    if(this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdelete ||this.warninginfofacdeletesnow || this.warninginfosnowfac || this.warninginfosnowlegacy || this.warningDeptEgypt){
+    if(this.warningkyndral || this.warninginfo || this.warninginfosnow || this.warninginfosnowres || this.warninginfosnowreq || this.warninginfosnowothers || this.warninginfoothers || this.warninginfosnowothersfac || this.warninginfofac || this.warninginfofacu || this.warninginfofacr ||this.warninginfofacdelete ||this.warninginfofacdeletesnow || this.warninginfosnowfac || this.warninginfosnowlegacy || this.warningDeptEgypt){
 
       this.hideSteps = true;
       this.warn = true;
