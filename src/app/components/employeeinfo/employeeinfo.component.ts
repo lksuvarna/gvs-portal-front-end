@@ -192,6 +192,7 @@ export class EmployeeinfoComponent implements OnInit {
    else if(this.cnum!=this.resourceid && sessionStorage.getItem('enterid')=="ibmid" && (this.service=="jabber_new"  || this.service=="fac_new" || this.service=="fixedphone_new" || this.service=="specialrequest")){
     this.warningkyndral=true
    }
+   
    else if ( this.service=="jabber_delete" || this.service=="jabber_update"|| this.service=="jabber_move"){
      console.log("deletes"+this.warninginfosnowothers)
      console.log("deletes"+sessionStorage.getItem('warninginfosnow'))
