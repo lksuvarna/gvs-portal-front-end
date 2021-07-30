@@ -64,7 +64,7 @@ locSelected : any
 jabberDept: any;
 showforNZJP: boolean = false;
 showforNZ: boolean = false;
-
+defaulCos : boolean = false
 
 payload : fixedphone_new = new fixedphone_new();	
 cache : Create_Cache_fixedphone = new Create_Cache_fixedphone();
@@ -241,7 +241,11 @@ getFixedPhoneData(){
     } else {
       this.reviewDetailsIndia.voicemail = formData.value.Voicemail;
     }
-    this.reviewDetailsIndia.cos = formData.value.cos;
+    if(this.countrydetails.hp_cos){
+      this.reviewDetailsIndia.cos = this.countrydetails.hp_cos
+    } else {
+      this.reviewDetailsIndia.cos = formData.value.cos;
+    }
     this.reviewDetailsIndia.justification = formData.value.Justification;
     this.reviewDetailsIndia.description = formData.value.Description;
     this.reviewDetailsIndia.mac = formData.value.MACAddress;
@@ -356,6 +360,11 @@ getFixedPhoneData(){
   this.countryroute = sessionStorage.getItem('countryroute');	
   this.countrydetails = JSON.parse(this.countrydetails);	
    // Submit to Snow Jabber new code added by Swarnava ends	
+
+  if(this.countrydetails.hp_cos){
+    this.defaulCos = true
+    this.COS = this.countrydetails.hp_cos
+  }
 
    this.ccode=this.cookie.getCookie('ccode').substring(6,9);	
   this.route.queryParams	

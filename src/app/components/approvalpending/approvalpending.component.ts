@@ -46,12 +46,13 @@ export class ApprovalpendingComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.mainConfiguration = this.servicesd.readConfigFile();
+    
 
     
     this.route.queryParams	
     .subscribe(params => {	
       console.log(params);	
+      this.mainConfiguration = this.servicesd.readConfigFile();
       this.service=params.service;	
       this.pcode = params.country;	
       console.log("navigation component" + this.pcode);	
@@ -73,6 +74,7 @@ export class ApprovalpendingComponent implements OnInit {
       else{this.ccode = this.cookie.getCookie('ccode');}
       this.empserial = this.ccode; 
     this.ccode=this.ccode.substring(6,9);
+   
    if(this.service.includes('revalidationpending')){
      this.snowaction='snow_revalidation'
    // this.empserial="467756744";
@@ -85,8 +87,13 @@ export class ApprovalpendingComponent implements OnInit {
      }
    
   console.log("CCCODE VALUE= "+ this.ccode) ;
- 
+
+ if(this.countrydetails.homepagecodes){
+ if(this.countrydetails.homepagecodes.includes(this.ccode)){
+  this.ccode=this.pcode;
+ }}
    if(this.pcode == this.ccode){
+     
       this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction,"","").subscribe(data => {
         console.log(' snow response', data.message);
         console.log(' snow response', data.message.length);
@@ -116,6 +123,7 @@ export class ApprovalpendingComponent implements OnInit {
       else{this.ccode = this.cookie.getCookie('ccode');}
       this.empserial = this.ccode; 
     this.ccode=this.ccode.substring(6,9);
+    
    if(this.service.includes('revalidationpending')){
      this.snowaction='snow_revalidation'
    // this.empserial="467756744";
@@ -129,7 +137,12 @@ export class ApprovalpendingComponent implements OnInit {
    
   console.log("CCCODE VALUE= "+ this.ccode) ;
  
+ if(this.countrydetails.homepagecodes){
+  if(this.countrydetails.homepagecodes.includes(this.ccode)){
+   this.ccode=this.pcode;
+  }}
    if(this.pcode == this.ccode){
+    
       this.servicenowservice.searchsnowcoments(this.empserial, this.snowaction,"","").subscribe(data => {
         console.log(' snow response', data.message);
         console.log(' snow response', data.message.length);

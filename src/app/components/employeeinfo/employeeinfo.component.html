@@ -100,30 +100,51 @@
         <div id="err-dept2" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
             <p translate>employeeinfotrans.notauthorizedtoaccessip <a style="color:blue" target="_blank" href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
-        <div id="w1" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfo>
+        <div id="w1" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf="warninginfo && cnum==resourceid">
             <p><span style="font-size: 1rem;" translate> <span translate>employeeinfotrans.JabberphnNumber</span> {{identifier}} <span translate> employeeinfotrans.jabberconfiguration </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/"
                     translate>employeeinfotrans.helpdeskalert</a><br><br> <span translate> employeeinfotrans.toinstallbegin </span>
                 <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>
                 <span translate> employeeinfotrans.CiscoJabber </span> <br></span>
             </p>
         </div>
-
+        <div id="w1k" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo && cnum!=resourceid">
+            <p><span style="font-size: 1rem;" translate> <span translate>employeeinfotrans.JabberphnNumber</span> {{identifier}} <span translate> employeeinfotrans.jabberconfigurationkyndryal1</span> {{this.resourcetype}} {{this.resourceid}}<span translate> employeeinfotrans.jabberconfigurationkyndryal2</span> <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/"
+                    translate>employeeinfotrans.helpdeskalert</a><br><br> <span translate> employeeinfotrans.toinstallbegin </span>
+                <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>
+                <span translate> employeeinfotrans.CiscoJabber </span> <br></span>
+            </p>
+        </div>
         <div id="dept-egypt" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warningDeptEgypt">
             <p> <span translate>employeeinfotrans.egyptnotauthorized</span><br> <span translate>employeeinfotrans.egyptemsubmit</span><a style="color:blue" [routerLink]="['/employeesearch']" [queryParams]="{country:pcode,service:'specialrequest'}" translate>servicestitle.Special Request</a>.
-                <span translate>employeeinfotrans.furtherassistance</span> <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser" translate>employeeinfotrans.help desk</a>.</p>
+                <span translate>employeeinfotrans.furtherassistance</span> <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser" translate>employeeinfotrans.helpdesk</a>.</p>
         </div>
 
-        <div id="fac_new" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfofac>
+        <div id="fac_new" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofac  && cnum.trim()==resourceid.trim()">
             <p><span style="font-size: 1rem;" translate>employeeinfotrans.noteligibletoraise</span></p>
         </div>
+        <div id="fac_new_k" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofac && cnum.trim()!=resourceid.trim()">
+            <p><span style="font-size: 1rem;" translate>employeeinfotrans.noteligibletoraisekyndryl1</span>{{this.resourcetype}} {{this.resourceid}}
+                <span translate>employeeinfotrans.noteligibletoraisekyndryl2</span>
+            </p>
+        </div>
 
-        <div id="fac_new_snow" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfosnowfac>
+        <div id="fac_new_snow" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf="warninginfosnowfac  && cnum==resourceid">
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
                 <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
             </p>
         </div>
+        <div id="fac_new_snow_k" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfosnowfac && cnum!=resourceid">
+            
+            <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
+                <span translate>employeeinfotrans.isalreadybeingprocessedkyndryl1</span> {{this.resourcetype}} {{this.resourceid}} 
+                <span translate>employeeinfotrans.isalreadybeingprocessedkyndryl2</span>
+                <br><br>
+
+                <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
+            </p>
+        </div>
         <div id="fac_delete" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacdelete">
             <p><span style="font-size: 1rem;" translate>employeeinfotrans.nofac</span></p>
         </div>
@@ -138,12 +159,28 @@
         <div id="fac_reset" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofacr">
             <p><span style="font-size: 1rem;" translate>employeeinfotrans.nofac</span></p>
         </div>
+        <div id="k1kk" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofac==false && warninginfosnowfac==false && warningkyndral==true && selfinfo==false && warninginfo==false&&warninginfosnow==false">
+            <p><span style="font-size: 1rem;" translate>employeeinfotrans.kyndrylonbehalfof</span></p>
+        </div>
+        <div id="k1k" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfofac==false && warninginfosnowfac==false && warningkyndral==false && selfinfo==true && warninginfo==false&&warninginfosnow==false">
+            <p><span style="font-size: 1rem;" translate>employeeinfotrans.kyndryl</span></p>
+        </div>
 
 
-        <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfosnow>
+        <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=" warninginfosnow  && cnum==resourceid ">
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
+
+                <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
+            </p>
+        </div>
+        <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf="warninginfosnow && cnum!=resourceid">
+            <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
+
+                <span translate>employeeinfotrans.isalreadybeingprocessedkyndryl1</span> {{this.resourcetype}} {{this.resourceid}} 
+                <span translate>employeeinfotrans.isalreadybeingprocessedkyndryl2</span>
+                <br><br>
 
                 <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
             </p>
@@ -189,12 +226,12 @@
         <div class="ds-hr-thick"></div>
 
         <div class="ds-row ds-grid ds-mar-t-b-3_5 ds-pad-r-1">
-            <div [ngClass]="warninginfo==false&&warninginfosnow==false&&warninginfosnowfac==false&&warningDeptEgypt==false&& warninginfofac==false&&warn==false? 'ds-col-lg-2 ds-push-lg-8': 'ds-col-lg-2 ds-push-lg-10'">
+            <div [ngClass]="warningkyndral==false&&warninginfo==false&&warninginfosnow==false&&warninginfosnowfac==false&&warningDeptEgypt==false&& warninginfofac==false&&warn==false? 'ds-col-lg-2 ds-push-lg-8': 'ds-col-lg-2 ds-push-lg-10'">
                 <button (click)="backClick()" class="ds-button ds-secondary ds-no-expand ds-text-align-center ds-mar-b-0" style="width: 100%" translate>employeeinfotrans.BACK</button>
             </div>
             <div class="ds-col-lg-2 ds-push-lg-8">
 
-                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfosnowothersfac==false && warninginfosnowfac==false && warninginfofac== false && warninginfofacr== false  && warninginfofacu== false && warninginfofacdelete== false && warningDeptEgypt == false"
+                <button (click)="submit()" class="ds-button ds-primary ds-pad-l-0 ds-pad-r-0 ds-text-align-center" style="width: 100%" *ngIf="(warninginfo==false&&warninginfosnow==false) && warningkyndral==false && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfosnowothersfac==false && warninginfosnowfac==false && warninginfofac== false && warninginfofacr== false  && warninginfofacu== false && warninginfofacdelete== false && warningDeptEgypt == false"
                     translate>employeeinfotrans.NEXT</button>
 
             </div>
