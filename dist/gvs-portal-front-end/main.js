@@ -13693,7 +13693,7 @@ function EmployeeinfoComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac == false && ctx_r0.warninginfosnowfac == false && ctx_r0.warningkyndral == true && ctx_r0.selfinfo == false && ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac == false && ctx_r0.warninginfosnowfac == false && ctx_r0.warningkyndral == false && ctx_r0.selfinfo == true && ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac == false && ctx_r0.warninginfosnowfac == false && ctx_r0.warningkyndral == true && ctx_r0.selfinfo == true && ctx_r0.warninginfo == false && ctx_r0.warninginfosnow == false);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfosnow && ctx_r0.cnum == ctx_r0.resourceid);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -25407,7 +25407,6 @@ class EmployeesearchComponent {
                 this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
             }
             else {
-                alert("locationdata");
                 this.getLocationdata();
             }
         }
@@ -25435,7 +25434,9 @@ class EmployeesearchComponent {
                     // if (this.service == "jabber_new" && this.kyndralchk==false){
                     //   this.getLocationdata()
                     // }
-                    else if (sessionStorage.getItem('cnum') !== sessionStorage.getItem('resourceid') && (this.service == "jabber_new" || this.service == "fac_new")) {
+                    //this.enterid=="ibmid" && 
+                    //sessionStorage.getItem('cnum')!==sessionStorage.getItem('resourceid') 
+                    else if (this.enterid == "ibmid" && this.kyndraldata == true && (this.service == "jabber_new" || this.service == "fac_new")) {
                         this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                     }
                     else if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new" || this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_delete") {

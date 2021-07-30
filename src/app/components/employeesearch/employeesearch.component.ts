@@ -582,7 +582,7 @@ export class EmployeesearchComponent implements OnInit {
         this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
        }
        else{
-        alert("locationdata")
+        
       this.getLocationdata();}
     }else{
 
@@ -615,7 +615,9 @@ export class EmployeesearchComponent implements OnInit {
          // if (this.service == "jabber_new" && this.kyndralchk==false){
          //   this.getLocationdata()
          // }
-         else if(sessionStorage.getItem('cnum')!==sessionStorage.getItem('resourceid') && (this.service == "jabber_new" || this.service == "fac_new")){
+         //this.enterid=="ibmid" && 
+         //sessionStorage.getItem('cnum')!==sessionStorage.getItem('resourceid') 
+         else if(this.enterid=="ibmid" && this.kyndraldata==true && (this.service == "jabber_new" || this.service == "fac_new")){
           this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
          }
           else if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_delete") {
