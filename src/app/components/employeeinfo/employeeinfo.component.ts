@@ -119,10 +119,10 @@ export class EmployeeinfoComponent implements OnInit {
     this.resourceid=sessionStorage.getItem('resourceid')
     this.resourcetype=sessionStorage.getItem('resourceidtype')
     if(this.resourcetype=="ibmid"){
-      this.resourcetype="IBM Serial number"
+      this.resourcetype="IBM serial number"
     }
     else{
-      this.resourcetype="Kyndryl Serial number"
+      this.resourcetype="Kyndryl serial number"
     }
     console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
    if (this.sessionwarninginfo =='true1'&& this.service=="jabber_new"){
