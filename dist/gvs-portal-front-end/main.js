@@ -13677,9 +13677,9 @@ function EmployeeinfoComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warningDeptEgypt);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac && ctx_r0.cnum.trim() == ctx_r0.resourceid.trim());
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac == true && ctx_r0.cnum == ctx_r0.resourceid);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac && ctx_r0.cnum.trim() != ctx_r0.resourceid.trim());
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfofac == true && ctx_r0.cnum != ctx_r0.resourceid);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r0.warninginfosnowfac && ctx_r0.cnum == ctx_r0.resourceid);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -13815,9 +13815,6 @@ class EmployeeinfoComponent {
                 this.identifier = sessionStorage.getItem('identifier');
                 this.isDataLoaded = true;
             }
-            else if (this.cnum != this.resourceid && sessionStorage.getItem('enterid') == "ibmid" && (this.service == "jabber_new" || this.service == "fac_new" || this.service == "fixedphone_new" || this.service == "specialrequest")) {
-                this.warningkyndral = true;
-            }
             else if (this.sessionwarninginfosnow == 'true1' && this.service == "fac_new") {
                 this.warninginfosnowfac = true;
                 this.identifier = sessionStorage.getItem('identifier');
@@ -13869,6 +13866,9 @@ class EmployeeinfoComponent {
             else if (this.sessionwarninginfo == 'false1' && this.service == "resources") {
                 this.warninginfosnowres = true;
                 this.isDataLoaded = true;
+            }
+            else if (this.cnum != this.resourceid && sessionStorage.getItem('enterid') == "ibmid" && (this.service == "jabber_new" || this.service == "fac_new" || this.service == "fixedphone_new" || this.service == "specialrequest")) {
+                this.warningkyndral = true;
             }
             else if (this.service == "jabber_delete" || this.service == "jabber_update" || this.service == "jabber_move") {
                 console.log("deletes" + this.warninginfosnowothers);
