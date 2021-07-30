@@ -13825,7 +13825,10 @@ class EmployeeinfoComponent {
                 this.identifier = sessionStorage.getItem('identifier');
                 this.isDataLoaded = true;
             }
-            else if (this.cnum != this.resourceid && sessionStorage.getItem('enterid') == "ibmid" && (this.service == "jabber_new" || this.service == "fac_new" || this.service == "fixedphone_new" || this.service == "specialrequest")) {
+            else if (this.cnum != this.resourceid && sessionStorage.getItem('enterid') == "ibmid" && (this.service == "jabber_new" || this.service == "fac_new" || this.service == "fixedphone_new")) {
+                this.warningkyndral = true;
+            }
+            else if (sessionStorage.getItem('kyndralflag') == "true" && sessionStorage.getItem('enterid') == "ibmid" && (this.service == "specialrequest")) {
                 this.warningkyndral = true;
             }
             else if (this.sessionwarninginfo == 'false1' && this.service == "fac_delete") {
@@ -25317,11 +25320,14 @@ class EmployeesearchComponent {
                 console.log("data.NewCo" + data.NewCo + data.NewCo_userdetails.uid);
                 if (data.NewCo == false) {
                     this.kyndraldata = false;
+                    this.kyndralflag = "false";
                 }
                 else {
                     this.kyndraldata = true;
+                    this.kyndralflag = "true";
                     this.kyndraluid = data.NewCo_userdetails.uid;
                 }
+                sessionStorage.setItem('kyndralflag', this.kyndralflag);
                 console.log("this.kyndraldata" + this.kyndraldata);
                 this.employeeInfo = {
                     employeeName: ename,
@@ -25398,12 +25404,7 @@ class EmployeesearchComponent {
     }
     getSNOWdata() {
         if (this.service.includes("specialrequest")) {
-            if (this.kyndraldata == true && this.kyndralchk == false) {
-                this.kyndralchk = true;
-                this.employeeSerial = this.kyndraluid;
-                this.getBPData();
-            }
-            else if (this.enterid == "ibmid" && this.kyndraldata == true) {
+            if (this.enterid == "ibmid" && this.kyndraldata == true) {
                 this.router.navigate(["/employeeinfo"], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
             }
             else {

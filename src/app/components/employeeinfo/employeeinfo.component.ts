@@ -148,7 +148,10 @@ export class EmployeeinfoComponent implements OnInit {
     this.identifier=sessionStorage.getItem('identifier')
     this.isDataLoaded=true
    }
-   else if(this.cnum!=this.resourceid && sessionStorage.getItem('enterid')=="ibmid" && (this.service=="jabber_new"  || this.service=="fac_new" || this.service=="fixedphone_new" || this.service=="specialrequest")){
+   else if(this.cnum!=this.resourceid && sessionStorage.getItem('enterid')=="ibmid" && (this.service=="jabber_new"  || this.service=="fac_new" || this.service=="fixedphone_new")){
+    this.warningkyndral=true
+   }
+   else if(sessionStorage.getItem('kyndralflag')=="true" && sessionStorage.getItem('enterid')=="ibmid" && (this.service=="specialrequest")){
     this.warningkyndral=true
    }
    else if (this.sessionwarninginfo =='false1'&& this.service=="fac_delete"){

@@ -51,6 +51,7 @@ export class EmployeesearchComponent implements OnInit {
   fixedphone = '';
   itn = '';
   backbutton: any;
+  kyndralflag:any;
   step: any;
   s: any;
   i:any;
@@ -485,11 +486,14 @@ export class EmployeesearchComponent implements OnInit {
         }
        console.log("data.NewCo"+ data.NewCo+data.NewCo_userdetails.uid)
        if (data.NewCo==false){
-         this.kyndraldata=false;}
+         this.kyndraldata=false;
+        this.kyndralflag="false"}
         
        else{this.kyndraldata=true
+        this.kyndralflag="true"
         this.kyndraluid=data.NewCo_userdetails.uid
       }
+    sessionStorage.setItem('kyndralflag',this.kyndralflag)
       console.log("this.kyndraldata"+this.kyndraldata)
         this.employeeInfo = {
 
@@ -532,6 +536,7 @@ export class EmployeesearchComponent implements OnInit {
         if (this.service == "jabber_new" || this.service == "fac_new" || this.service == "specialrequest" || this.service == "mobile_new") {
           this.getDBdata()
         }
+        
         if (this.service == "requests") {
           this.getSNOWdata();
           
@@ -575,10 +580,8 @@ export class EmployeesearchComponent implements OnInit {
 
     if (this.service.includes("specialrequest")) {
       
-      if(this.kyndraldata==true && this.kyndralchk==false){this.kyndralchk=true;
-        this.employeeSerial=this.kyndraluid;
-        this.getBPData();}
-      else if(this.enterid=="ibmid" && this.kyndraldata==true){
+      
+       if(this.enterid=="ibmid" && this.kyndraldata==true){
         
         this.router.navigate(["/employeeinfo"], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
        }
