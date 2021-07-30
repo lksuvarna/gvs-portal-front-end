@@ -25377,7 +25377,7 @@ class EmployeesearchComponent {
                         this.employeeSerial = this.kyndraluid;
                         this.getBPData();
                     }
-                    else if (this.enterid =  true && this.kyndraldata == true && this.service == "fixedphone_new") {
+                    else if (this.enterid == "ibmid" && this.kyndraldata == true && this.service == "fixedphone_new") {
                         this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                     }
                     else {
@@ -25405,10 +25405,11 @@ class EmployeesearchComponent {
                 this.employeeSerial = this.kyndraluid;
                 this.getBPData();
             }
-            else if (this.enterid =  true && this.kyndraldata == true) {
+            else if (this.enterid == "ibmid" && this.kyndraldata == true) {
                 this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
             }
             else {
+                alert("locationdata");
                 this.getLocationdata();
             }
         }
@@ -25436,7 +25437,7 @@ class EmployeesearchComponent {
                     // if (this.service == "jabber_new" && this.kyndralchk==false){
                     //   this.getLocationdata()
                     // }
-                    else if (sessionStorage.getItem('cnum') != sessionStorage.getItem('resourceid') && (this.service == "jabber_new" || this.service == "fac_new")) {
+                    else if (sessionStorage.getItem('cnum') !== sessionStorage.getItem('resourceid') && (this.service == "jabber_new" || this.service == "fac_new")) {
                         this.router.navigate([this.navpage1], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
                     }
                     else if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new" || this.service == "fac_update" || this.service == "fac_reset" || this.service == "fac_delete") {

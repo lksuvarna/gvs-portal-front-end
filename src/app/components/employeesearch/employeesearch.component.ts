@@ -478,6 +478,7 @@ export class EmployeesearchComponent implements OnInit {
         
       }
       if (data.userdata && data.username.preferredidentity!==undefined) {
+        
         var ename = data.username.preferredlastname + ", " + data.username.preferredfirstname
         if (data.username.preferredlastname == undefined || data.username.preferredfirstname == undefined) {
           ename = data.username.callupname
@@ -539,7 +540,7 @@ export class EmployeesearchComponent implements OnInit {
           if(this.kyndraldata==true && this.kyndralchk==false){this.kyndralchk=true;
             this.employeeSerial=this.kyndraluid;
             this.getBPData();}
-          else if(this.enterid="ibmid" && this.kyndraldata==true && this.service =="fixedphone_new"){
+          else if(this.enterid=="ibmid" && this.kyndraldata==true && this.service =="fixedphone_new"){
             this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
            }
            else{
@@ -572,13 +573,16 @@ export class EmployeesearchComponent implements OnInit {
   getSNOWdata(): any {
 
     if (this.service.includes("specialrequest")) {
+      
       if(this.kyndraldata==true && this.kyndralchk==false){this.kyndralchk=true;
         this.employeeSerial=this.kyndraluid;
         this.getBPData();}
-      else if(this.enterid="ibmid" && this.kyndraldata==true){
+      else if(this.enterid=="ibmid" && this.kyndraldata==true){
+        
         this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
        }
        else{
+        alert("locationdata")
       this.getLocationdata();}
     }else{
 
@@ -602,6 +606,7 @@ export class EmployeesearchComponent implements OnInit {
   
         else {
           this.datasnow = "nodata";
+         
           if ((this.service == "jabber_new"  || this.service == "fac_new") && this.kyndraldata==true && this.kyndralchk==false){
             this.kyndralchk=true;
             this.employeeSerial=this.kyndraluid;
@@ -610,7 +615,7 @@ export class EmployeesearchComponent implements OnInit {
          // if (this.service == "jabber_new" && this.kyndralchk==false){
          //   this.getLocationdata()
          // }
-         else if(sessionStorage.getItem('cnum')!=sessionStorage.getItem('resourceid') && (this.service == "jabber_new" || this.service == "fac_new")){
+         else if(sessionStorage.getItem('cnum')!==sessionStorage.getItem('resourceid') && (this.service == "jabber_new" || this.service == "fac_new")){
           this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
          }
           else if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_delete") {
