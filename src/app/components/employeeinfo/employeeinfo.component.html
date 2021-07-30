@@ -2,7 +2,7 @@
 
 
 
-<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4" *ngIf="isDataLoaded">
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4 texthypen-rapper" *ngIf="isDataLoaded">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
     </div>
@@ -10,7 +10,7 @@
 
 
         <b translate>servicestitle.{{this.title}}</b>
-        <div class="ds-pad-t-0_5 ds-pad-b-1">
+        <div class="ds-pad-t-0_5 ds-pad-b-1 texthypen-rapper">
 
             <span *ngIf="(warninginfo==false&&warninginfosnow==false) && warninginfosnowreq==false && warninginfosnowres==false && warninginfoothers==false && warninginfosnowothers==false && warninginfosnowothersfac==false && warningDeptEgypt==false && warninginfosnowfac==false && warninginfofac== false && warninginfosnowlegacy==false && warninginfofacr== false  && warninginfofacu== false && warninginfofacdelete== false">  <p translate>employeeinfotrans.ifinfoiscorrect <a translate href="https://w3.ibm.com/bluepages/" target="_blank">employeeinfotrans.BluePagesrecord </a> <span translate>employeeinfotrans.beforecontinuing </span></p>
             </span>
@@ -77,14 +77,14 @@
         </table>
 
         <p id="war11" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;"></p>
-        <div id="war2" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
+        <div id="war2" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" style="display: none;">
             <p>
                 <span style="font-size: 1rem;" translate>employeeInfo.noteligiblejabber<br>
                 <span translate>employeeInfo.itnexistsforuser </span><br>
                 </span>
             </p>
         </div>
-        <div id="war3" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
+        <div id="war3" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" style="display: none;">
             <p translate>employeeinfotrans.nojabber</p>
         </div>
         <div id="war4" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
@@ -100,7 +100,7 @@
         <div id="err-dept2" class="ds-col-xs-12 ds-alert ds-warning" style="display: none;">
             <p translate>employeeinfotrans.notauthorizedtoaccessip <a style="color:blue" target="_blank" href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
-        <div id="w1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfo>
+        <div id="w1" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfo>
             <p><span style="font-size: 1rem;" translate> <span translate>employeeinfotrans.JabberphnNumber</span> {{identifier}} <span translate> employeeinfotrans.jabberconfiguration </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/"
                     translate>employeeinfotrans.helpdeskalert</a><br><br> <span translate> employeeinfotrans.toinstallbegin </span>
                 <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>
@@ -117,7 +117,7 @@
             <p><span style="font-size: 1rem;" translate>employeeinfotrans.noteligibletoraise</span></p>
         </div>
 
-        <div id="fac_new_snow" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowfac>
+        <div id="fac_new_snow" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfosnowfac>
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
                 <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
@@ -140,7 +140,7 @@
         </div>
 
 
-        <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnow>
+        <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfosnow>
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
@@ -148,7 +148,7 @@
                 <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
             </p>
         </div>
-        <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowothers>
+        <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfosnowothers>
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier1}}
 
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
@@ -156,7 +156,7 @@
                 <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
             </p>
         </div>
-        <div id="fac_others" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowothersfac>
+        <div id="fac_others" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfosnowothersfac>
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier1}}
 
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
@@ -165,7 +165,7 @@
             </p>
 
         </div>
-        <div id="legacy" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowlegacy>
+        <div id="legacy" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfosnowlegacy>
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
                 <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
@@ -173,16 +173,16 @@
                 <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
             </p>
         </div>
-        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowreq>
+        <div class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfosnowreq>
 
             <p translate>employeeinfotrans.nooutstandingreq</p>
 
         </div>
-        <div class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowres>
+        <div class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfosnowres>
             <p translate>employeeinfotrans.noresources</p>
 
         </div>
-        <div id="b1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfoothers>
+        <div id="b1" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf=warninginfoothers>
             <p translate>employeeinfotrans.nojabberforthisserial </p>
         </div>
 

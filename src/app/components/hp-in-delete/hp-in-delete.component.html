@@ -4,7 +4,7 @@
 
 
 
-<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4 textlabels-rapper">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
     </div>
@@ -44,8 +44,8 @@
                         <td width="50%">
                             <div class="ds-col-12">
                                 <div class="ds-row">
-                                    <div class="ds-col-12">
-                                        <div class="ds-row">
+                                    <!-- <div class="ds-col-12">
+                                        <div class="ds-row"> -->
                                             <div class="ds-col-7">
                                                 <input name="IdNum1" [(ngModel)]="currentMacOrPhone" value="" maxlength="15;" title="{{ 'tooltips.cMACAddressorPhoneNumber' | translate}}" (click)='onMacClick()' class="ds-input" style="width:180px !important;">
                                             </div>
@@ -55,8 +55,8 @@
 
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
+                                       <!--  </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </td>
@@ -97,7 +97,7 @@
             <b translate>servicestitle.Fixed Phone - Delete Request</b>
 
 
-            <div class="ds-pad-t-0_5 ds-pad-b-1" translate>
+            <div class="ds-pad-t-0_5 ds-pad-b-1 " translate>
                 Jabbernewtrans.pleasesubmittostart
             </div>
 
@@ -157,7 +157,7 @@
                     <div class="button-bar ds-tray-fit-content ds-pad-t-1   ds-float-lg-right ">
                         <span class="ds-pad-l-4" id="button1">
                     <input type="button" name="back"
-                    class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="{{ 'Jabberentrydetails.Back' | translate}}"
+                    class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" value="{{ 'Jabberentrydetails.Back' | translate}}" 
                     (click)='BackButton()' *ngIf="this.isButtonVisible">
                     </span>
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2">

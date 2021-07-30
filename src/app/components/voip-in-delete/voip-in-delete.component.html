@@ -2,7 +2,7 @@
 
 
 
-<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4">
+<div class="ds-row ds-pad-l-7 ds-pad-t-1 ds-pad-b-4 texthypen-rapper">
     <div class="ds-col-md-4 ds-col-xl-4">
         <app-navigation [dataNav]="servicesData" [cloudantData]="cloudantData"></app-navigation>
     </div>
@@ -116,11 +116,11 @@
 
               <input type="button" name="back"
                 class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32765"
-                value="BACK" (click)='BackButton()' *ngIf="this.isButtonVisible  && !errorinfo">
+                value="{{'employeeinfotrans.BACK'|translate}}"  (click)='BackButton()' *ngIf="this.isButtonVisible  && !errorinfo">
             </span>
 
                         <span class="ds-pad-l-1 ds-pad-r-1" id="button2" *ngIf="warninginfo==false">
-              <input type="submit" name="next"  (click)="submit_snow()" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="SUBMIT" *ngIf="this.isButtonVisible  && !errorinfo" >
+              <input type="submit" name="next"  (click)="submit_snow()" class="ds-button ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" tabindex="32767" value="{{ 'employeeinfotrans.SUBMIT1' | translate}}" *ngIf="this.isButtonVisible  && !errorinfo" >
             </span>
                         <input type="button" name="exit" *ngIf="errorinfo" type="button" class="ds-button ds-secondary ds-width-auto ds-mar-b-0 ds-pad-l-3 ds-pad-r-3" [routerLink]="['/jabberservices']" [queryParams]="{country:pcode,service:service}" value="{{'alerttranslation.EXITREQUEST'|translate}}">
                     </div>

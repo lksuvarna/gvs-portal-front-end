@@ -16,9 +16,10 @@
         "most-viewed-services": "Services les plus consultés",
         "find-right-service": "Trouvez les bons services, vérifiez leur disponibilité,",
         "find-right-service2": "puis choisissez la façon dont vous vous connectez et travaillez ensemble.",
-        "jabber-description": "Cisco Jabber est une application de téléphonie logicielle multiplateforme pour passer et recevoir des appels téléphoniques.",
+        "jabber-description": "Cisco Jabber est une application de téléphonie logicielle multiplateforme pour passer et recevoir des appels téléphoniques .",
         "button-value": "Démarrez",
-        "Searchservice": "Recherchez le service"
+        "Searchservice": "Recherchez le service",
+        "FixedPhone":" : Téléphone Fixe"
     },
 
     "footer": {
@@ -65,7 +66,7 @@
         "jdelete": "Supprimer un service existant"
     },
     "Jabbernewtrans": {
-        "Reqnewservice": "Cette demande peut être soumise pour vous-même ou au nom d'un autre employé. Les champs marqués d'un astérisque ",
+        "Reqnewservice": "Cette demande peut être soumise pour vous-même ou au nom d'un autre employé. Les champs marqués d'un astérisque ",
         "arerequired": " sont obligatoires.",
         "EmployeeSearch": "Recherche d'employé",
         "requestfor": "Cette demande est faite pour",
@@ -81,7 +82,7 @@
         "availablefromBluePages": "dans BluePages Veuillez vérifier et réessayer.",
         "Pleaseverifyandtryagain": "Veuillez vérifier et réessayer.",
         "EMAILcouldnotbefoundinbp": "Adresse courriel pour le matricule entré introuvable dans Bluepages. Veuillez réessayer plus tard. ",
-        "opps": "Nous rencontrons actuellement des difficultés pour répondre à votre demande en raison d'une erreur inattendue. Veuillez contacter le",
+        "opps": "Nous rencontrons actuellement des difficultés pour répondre à votre demande en raison d'une erreur inattendue. Veuillez contacter le ",
         "reportthismessage": " pour signaler ce message. [Erreur]",
         "JabberLocation": "Emplacement du numéro de téléphone Jabber",
         "ClassofService": "Classe de service (COS)",
@@ -157,7 +158,7 @@
         "Select Location": "Sélectionnez l'emplacement"
     },
     "Jabberupdate": {
-        "SELECTONE": "SÉLECTIONNER-EN UN",
+        "SELECTONE": "SÉLECTIONNEZ-EN UN",
         "ReviewDetails": "Revoyez les détails",
         "JabberNumber": "Numéro de téléphone Jabber",
         "SelectJabberNumber": "Numéro de téléphone Jabber",
@@ -191,7 +192,9 @@
         "Supplier": "Fournisseur",
         "Phone/Dial": "No de téléphone/",
         "Innumber": "No entrant",
-        "AdditionalInformation": "Informations complémentaires"
+        "AdditionalInformation": "Informations complémentaires",
+        "Primary":"Primaire",
+        "add-on":"Module complémentaire"
     },
     "alerttranslation": {
         "EXITREQUEST": "DEMANDE DE SORTIE",
@@ -355,7 +358,7 @@
         "Enterrejectioncomments": "Entrer la raison du rejet",
         "Revalidation": "Revalidation",
         "EnterSerialNumberorTrackingNumber": "Entrez le matricule ou le numéro de suivi",
-        "CLEAR": "Effacer",
+        "CLEAR": "EFFACER",
         "PendingRequests": "Demandes en attente",
         "There are no pending approvals": "Aucune approbation n'est en attente.",
         "No search results found": "Aucun résultat de recherche trouvé.",
@@ -365,7 +368,12 @@
         "APPROVE SELECTED ONE": "APPROUVER L'ÉLÉMENT SÉLECTIONNÉ",
         "Selectrequesttoapprove": "Sélectionnez la demande à approuver.",
         "Entersearchtext": "Entrer le texte de recherche",
-        "rejectserialnumber": "Pour rejeter une demande, cliquez sur le matricule correspondant."
+        "rejectserialnumber": "Pour rejeter une demande, cliquez sur le matricule correspondant.",
+        "approved":"approuvées",
+        "rejected":"rejetées"
 
+    },
+    "phonenumber": {
+        "UserName": "Nom d'utilisateur"
     }
 }

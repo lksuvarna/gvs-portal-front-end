@@ -18,7 +18,8 @@
         "find-right-service2": "and then choose the way you connect and work together.",
         "jabber-description": "Cisco Jabber is a multiple platform soft phone application to make and receive phone calls.",
         "button-value": "Get Started",
-        "Searchservice": "Search service..."
+        "Searchservice": "Search service...",
+        "FixedPhone":" : Fixed Phone"
     },
 
     "footer": {
@@ -263,7 +264,9 @@
         "Supplier": "Supplier",
         "Phone/Dial": "Phone/Dial",
         "Innumber": "In number",
-        "AdditionalInformation": "Additional Information"
+        "AdditionalInformation": "Additional Information",
+        "Primary":"Primary",
+        "add-on":"add-one"
     },
     "phonenumber": {
         "PhoneNumberSearch": "Phone Number Search",
@@ -458,7 +461,9 @@
         "APPROVE SELECTED ONE": "APPROVE SELECTED ONE",
         "Selectrequesttoapprove": "Select request to approve",
         "Entersearchtext": "Enter search text",
-        "rejectserialnumber": "To reject a request click on the respective serial number."
+        "rejectserialnumber": "To reject a request click on the respective serial number.",
+        "approved":"approved",
+        "rejected":"rejected"
 
     }
 }

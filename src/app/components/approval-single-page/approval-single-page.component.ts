@@ -107,7 +107,7 @@ export class ApprovalSinglePageComponent implements OnInit {
      
     if(action=='approve')
     {
-      sessionStorage.setItem('approval_status','approved');	
+      sessionStorage.setItem('approval_status',this.mainConfiguration.approvalpending.approved);	
       this.rejectioncomments='';
       this.flag=true;
     }else{
@@ -116,7 +116,7 @@ export class ApprovalSinglePageComponent implements OnInit {
         this.flag=false;
       }else
       this.flag=true;
-      sessionStorage.setItem('approval_status','rejected');	
+      sessionStorage.setItem('approval_status',this.mainConfiguration.approvalpending.rejected);	
     }
 
 
