@@ -36,6 +36,14 @@
     left: 80%;
     margin-left: -100px;
   }
+  .texthypen-rapper
+{
+ /*word-break:break-all; */
+hyphens: auto;
+overflow-wrap: break-word;
+
+
+}
   
   .tooltip:hover .newtooltiptext {
     visibility: visible;

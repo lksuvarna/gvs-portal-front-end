@@ -71,3 +71,14 @@
 img.a {
     vertical-align: baseline;
 }
+
+.textui-rapper
+{
+padding: 15.8px 12px;
+hyphens: auto;
+/* word-break:break-all; */
+overflow-wrap: break-word;
+
+
+
+}
