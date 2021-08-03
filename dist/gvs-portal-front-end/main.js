@@ -1180,7 +1180,7 @@ function gettime() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\GVSNewPortal\gvs-portal-front-end\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Users\HARSHITHAARAVA\Desktop\Cirrus Latest\Cirrus latest new\gvs-portal-front-end\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -27000,7 +27000,7 @@ class ApprovalpendingComponent {
                 yield this.process2(this.checkedList[i].trim());
             }
             if (this.flag) {
-                sessionStorage.setItem('approval_status', 'approved');
+                sessionStorage.setItem('approval_status', this.mainConfiguration.approvalpending.approved);
                 this.router.navigate(['/approvalresult'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
             }
             else {
