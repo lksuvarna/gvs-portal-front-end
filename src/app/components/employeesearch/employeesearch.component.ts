@@ -51,6 +51,7 @@ export class EmployeesearchComponent implements OnInit {
   fixedphone = '';
   itn = '';
   backbutton: any;
+  kyndralflag:any;
   step: any;
   s: any;
   i:any;
@@ -478,17 +479,21 @@ export class EmployeesearchComponent implements OnInit {
         
       }
       if (data.userdata && data.username.preferredidentity!==undefined) {
+        
         var ename = data.username.preferredlastname + ", " + data.username.preferredfirstname
         if (data.username.preferredlastname == undefined || data.username.preferredfirstname == undefined) {
           ename = data.username.callupname
         }
        console.log("data.NewCo"+ data.NewCo+data.NewCo_userdetails.uid)
        if (data.NewCo==false){
-         this.kyndraldata=false;}
+         this.kyndraldata=false;
+        this.kyndralflag="false"}
         
        else{this.kyndraldata=true
+        this.kyndralflag="true"
         this.kyndraluid=data.NewCo_userdetails.uid
       }
+    sessionStorage.setItem('kyndralflag',this.kyndralflag)
       console.log("this.kyndraldata"+this.kyndraldata)
         this.employeeInfo = {
 
@@ -531,16 +536,18 @@ export class EmployeesearchComponent implements OnInit {
         if (this.service == "jabber_new" || this.service == "fac_new" || this.service == "specialrequest" || this.service == "mobile_new") {
           this.getDBdata()
         }
+        
         if (this.service == "requests") {
           this.getSNOWdata();
           
         }
+     
         if (this.service.includes("fixedphone")) {
           if(this.kyndraldata==true && this.kyndralchk==false){this.kyndralchk=true;
             this.employeeSerial=this.kyndraluid;
             this.getBPData();}
-          else if(this.enterid="ibmid" && this.kyndraldata==true && this.service =="fixedphone_new"){
-            this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+          else if(this.enterid=="ibmid" && this.kyndraldata==true && this.service =="fixedphone_new"){
+            this.router.navigate(["/employeeinfo"], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
            }
            else{
           this.getLocationdata();
@@ -572,13 +579,14 @@ export class EmployeesearchComponent implements OnInit {
   getSNOWdata(): any {
 
     if (this.service.includes("specialrequest")) {
-      if(this.kyndraldata==true && this.kyndralchk==false){this.kyndralchk=true;
-        this.employeeSerial=this.kyndraluid;
-        this.getBPData();}
-      else if(this.enterid="ibmid" && this.kyndraldata==true){
-        this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
+      
+      
+       if(this.enterid=="ibmid" && this.kyndraldata==true){
+        
+        this.router.navigate(["/employeeinfo"], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
        }
        else{
+        
       this.getLocationdata();}
     }else{
 
@@ -602,6 +610,7 @@ export class EmployeesearchComponent implements OnInit {
   
         else {
           this.datasnow = "nodata";
+         
           if ((this.service == "jabber_new"  || this.service == "fac_new") && this.kyndraldata==true && this.kyndralchk==false){
             this.kyndralchk=true;
             this.employeeSerial=this.kyndraluid;
@@ -610,7 +619,9 @@ export class EmployeesearchComponent implements OnInit {
          // if (this.service == "jabber_new" && this.kyndralchk==false){
          //   this.getLocationdata()
          // }
-         else if(sessionStorage.getItem('cnum')!=sessionStorage.getItem('resourceid') && (this.service == "jabber_new" || this.service == "fac_new")){
+         //this.enterid=="ibmid" && 
+         //sessionStorage.getItem('cnum')!==sessionStorage.getItem('resourceid') 
+         else if(this.enterid=="ibmid" && this.kyndraldata==true && (this.service == "jabber_new" || this.service == "fac_new")){
           this.router.navigate([this.navpage1], { skipLocationChange: true ,queryParams: { country: this.pcode, service: this.service } });
          }
           else if (this.service == "jabber_new" || this.service == "jabber_move" || this.service == "fac_new"  || this.service == "fac_update"  || this.service == "fac_reset" ||this.service == "fac_delete") {
