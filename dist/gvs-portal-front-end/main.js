@@ -26997,7 +26997,7 @@ class ApprovalpendingComponent {
                 yield this.process2(this.checkedList[i].trim());
             }
             if (this.flag) {
-                sessionStorage.setItem('approval_status', 'approved');
+                sessionStorage.setItem('approval_status', this.mainConfiguration.approvalpending.approved);
                 this.router.navigate(['/approvalresult'], { skipLocationChange: true, queryParams: { country: this.pcode, service: this.service } });
             }
             else {
