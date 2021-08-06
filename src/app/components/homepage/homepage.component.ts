@@ -56,6 +56,7 @@ export class HomepageComponent implements OnInit {
   searchData:any = [];
   list:any = [];
   s:any;
+  mainConfiguration :any;
   flow_state:any;
 
   generate(cnum : string): void{
@@ -84,7 +85,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     //this.userDetails = (this.cookie.getCookie('user'));
-   
+    this.mainConfiguration = this.translateconfigservice.readConfigFile();
     this.fullName = this.cookie.getCookie('usernamehome');
     if(this.fullName==undefined){
       this.fullName=this.cookie.getCookie('user');
@@ -230,7 +231,13 @@ export class HomepageComponent implements OnInit {
         }
         if (element.isfixphone === true) {
           this.searchObj =  Object.create(this.searchObj)
+         // if(data.countrydetails.isLtFrench == true && sessionStorage.getItem("currentlang1") === 'fr_ca' && element.code === this.ccode){
           this.searchObj.name = element.name + ' : Fixed Phone'
+        // this.searchObj.name = element.name + this.mainConfiguration.lhs.FixedPhone
+       
+         // else{
+
+         // }
           this.searchObj.flag = element.flagname
           this.searchObj.code = element.code
           this.searchObj.path = 'fixedphoneservices'
@@ -257,6 +264,7 @@ export class HomepageComponent implements OnInit {
           this.searchItems.push(this.searchObj)
 
         }
+      
         // alert(JSON.stringify(this.searchItems))
       });
       

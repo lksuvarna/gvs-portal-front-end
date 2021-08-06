@@ -66,15 +66,33 @@ export class UitoplinksComponent implements OnInit {
       }
  
       this.countrydetails=sessionStorage.getItem('countrydetails')
-      this.countrydetails = JSON.parse(this.countrydetails)
+      this.countrydetails = JSON.parse(this.countrydetails) 
+      if (this.countrydetails.isLtFrench && sessionStorage.getItem("currentlang1") === 'fr_ca' ){
+        this.langType=sessionStorage.getItem("currentlang1")
+        this.translateconfigservice.changeLanguage1(this.langType);
+      } else{
+       this.translateconfigservice.changeLanguage1('en');
+      }
+      if(this.routerPath === '/feedback' || this.routerPath === '/'){
+        this.langType=sessionStorage.getItem("currentlang1")
+        this.translateconfigservice.changeLanguage1(this.langType);
+      }
+ 
+      setTimeout(() => {
+        this.countrydetails=sessionStorage.getItem('countrydetails')
+        this.countrydetails = JSON.parse(this.countrydetails) 
+        if (this.countrydetails.isLtFrench && sessionStorage.getItem("currentlang1") === 'fr_ca' ){
+          this.langType=sessionStorage.getItem("currentlang1")
+          this.translateconfigservice.changeLanguage1(this.langType);
+        } else{
+         this.translateconfigservice.changeLanguage1('en');
+        }
+        if(this.routerPath === '/feedback' || this.routerPath === '/'){
+          this.langType=sessionStorage.getItem("currentlang1")
+          this.translateconfigservice.changeLanguage1(this.langType);
+        }
+      }, 3000);
 
-    if (this.countrydetails.isLtFrench){
-      this.langType=sessionStorage.getItem("currentLang1")
-      this.translateconfigservice.changeLanguage1(this.langType);
-    }
-    else{
-      this.translateconfigservice.changeLanguage1('en');
-    }  
     
   })
 
@@ -132,7 +150,10 @@ export class UitoplinksComponent implements OnInit {
       this.langType=sessionStorage.getItem("currentlang1")
       this.translateconfigservice.changeLanguage1(this.langType);
     }   
-      
+    if(id === 'feed-nav'){
+      this.langType=sessionStorage.getItem("currentlang1")
+      this.translateconfigservice.changeLanguage1(this.langType);
+      }
   }
 
   toggleHighlight(id : any){
