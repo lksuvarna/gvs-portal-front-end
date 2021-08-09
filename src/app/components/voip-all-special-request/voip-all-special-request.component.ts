@@ -235,7 +235,12 @@ export class VoipAllSpecialRequestComponent implements OnInit {
       this.payload.Identifier_Disp=this.selectedJabber;	 
       else
       this.payload.Identifier_Disp=this.selectedJabber.substring(0,8);
-      this.payload.countryname=this.countrydetails.name;	
+      if(this.countrydetails.geo){
+        // Assign geo value from cloudant.
+        eval(this.countrydetails.geo);
+      } else {
+        this.payload.countryname=this.countrydetails.name;
+      } 		
       this.payload.request_type='special_request';	
       this.payload.Location_Disp=this.getLocationCorrect();
       this.payload.Comments = removeDiacritics(this.requirements_disp.replace(/[\n\r"\\+]/g, ' '));

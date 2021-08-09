@@ -302,8 +302,13 @@ export class VoipLaUpdateComponent implements OnInit {
       this.payload.New_COS=this.new_cos_disp
       // fields to be picked up from form -- ends	
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
-      this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
-      this.payload.countryname=this.countrydetails.name;	
+      this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;		
+      if(this.countrydetails.geo){
+        // Assign geo value from cloudant.
+        eval(this.countrydetails.geo);
+      } else {
+        this.payload.countryname=this.countrydetails.name;
+      } 
       this.payload.request_type='jabber_update';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
       this.payload.prov_type=this.countrydetails.provision_type;
