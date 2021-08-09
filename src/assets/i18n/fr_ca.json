@@ -16,7 +16,7 @@
         "most-viewed-services": "Services les plus consultés",
         "find-right-service": "Trouvez les bons services, vérifiez leur disponibilité,",
         "find-right-service2": "puis choisissez la façon dont vous vous connectez et travaillez ensemble.",
-        "jabber-description": "Cisco Jabber est une application de téléphonie logicielle multiplateforme pour passer et recevoir des appels téléphoniques .",
+        "jabber-description": "Cisco Jabber est une application \n de téléphonie logicielle \n multiplateforme pour passer et \n recevoir des appels téléphoniques.",
         "button-value": "Démarrez",
         "Searchservice": "Recherchez le service",
         "FixedPhone":" : Téléphone Fixe"
@@ -57,7 +57,8 @@
         "To check the outstanding request status": "Pour vérifier l'état de la demande en cours",
         "IBM office telephone number": "Numéro de téléphone de bureau IBM",
         "IBM office physical desk phone": "Téléphone de bureau physique IBM",
-        "Special request": "Pour faire une demande spéciale"
+        "Special request": "Pour faire une demande spéciale",
+        "FixedPhone": " : Téléphone Fixe"
 
     },
     "Jabberservices": {
@@ -86,8 +87,7 @@
         "reportthismessage": " pour signaler ce message. [Erreur]",
         "JabberLocation": "Emplacement du numéro de téléphone Jabber",
         "ClassofService": "Classe de service (COS)",
-        "pleasesubmittostart": "En soumettant cette demande, vous donnez votre consentement écrit à IBM de traiter les renseignements personnels fournis."
-
+        "pleasesubmittostart": "En soumettant cette demande, vous donnez votre consentement écrit à IBM de \n traiter les renseignements personnels fournis."
     },
 
     "servicestitle": {
@@ -108,7 +108,7 @@
 
     },
     "employeeinfotrans": {
-        "ifinfoiscorrect": "Si les informations suivantes sont exactes, cliquez sur Suivant. Toute erreur doit être corrigée dans",
+        "ifinfoiscorrect": "Si les informations suivantes sont exactes, cliquez sur Suivant. Toute erreur doit \n être corrigée dans",
         "BluePagesrecord": "l'enregistrement BluePages",
         "beforecontinuing": "avant de continuer.",
         "EmployeeInformation": "Informations sur l'employé",
@@ -130,13 +130,13 @@
         "notauthorizedtoaccessip": "Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter",
         "Jabber/ITN": "Numéro de téléphone",
         "JabberphnNumber": "Numéro de téléphone",
-        "jabberconfiguration": "Jabber déjà enregistré pour cet utilisateur. Si vous ne pouvez pas voir ce numéro  Jabber dans Bluepages sous Informations de contact, veuillez faire appel au",
+        "jabberconfiguration": "Jabber déjà enregistré pour cet utilisateur. \nSi vous ne pouvez pas voir ce numéro Jabber dans Bluepages sous Informations \nde contact, veuillez faire appel au",
 
         "toinstallbegin": "Pour installer et commencer à utiliser votre compte Jabber, consultez la rubrique Cisco Jabber dans",
         "CiscoJabber": ".",
         "ongoingrequestsbyclickonrequestpage": "Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.",
         "isalreadybeingprocessed": " est déjà en cours de traitement pour cet utilisateur. Pour en afficher l'état, veuillez cliquer sur Demandes dans le menu latéral.",
-        "Ifyoucannotsee": "Si vous ne pouvez pas voir la demande, ou pour tout autre problème, veuillez contacter le",
+        "Ifyoucannotsee": "Si vous ne pouvez pas voir la demande, ou pour tout autre problème, veuillez \ncontacter le",
         "nooutstandingreq": "Aucune demande en cours n'est associée au matricule entré.",
         "noresources": "Aucun compte n'est associé au matricule entré.",
         "nojabberforthisserial": "Il n'y a pas de compte Jabber actif pour ce matricule. Veuillez vérifier et réessayer.",
@@ -150,7 +150,7 @@
     "Jabberentrydetails": {
         "Fieldsasterisk": "Champs marqués d'un astérisque",
         "arerequired": "sont obligatoires.",
-        "toprocessPI": "En soumettant cette demande, vous donnez votre consentement écrit à IBM de traiter les renseignements personnels fournis.",
+        "toprocessPI": "En soumettant cette demande, vous donnez votre consentement écrit à IBM de \n traiter les renseignements personnels fournis.",
         "Submissioninprogress": "Soumission de la demande en cours. Ne revenez pas en arrière et n'actualisez pas la page.",
         "Submissionbeinginprogress": "Demande en cours de soumission. Ne pas actualiser ni revenir en arrière.",
         "Back": "RETOUR",
@@ -194,7 +194,9 @@
         "Innumber": "No entrant",
         "AdditionalInformation": "Informations complémentaires",
         "Primary":"Primaire",
-        "add-on":"Module complémentaire"
+        "add-on":"Module complémentaire",
+        "FixedPhone":"Téléphone Fixe",
+        "jabberandFixedPhone":"Jabber,Téléphone \n Fixe "
     },
     "alerttranslation": {
         "EXITREQUEST": "DEMANDE DE SORTIE",
@@ -260,7 +262,7 @@
         "entermacadd": "Veuillez fournir l'adresse MAC ; seuls les caractères alphanumériques suivants sont autorisés: 0-9, A-F.",
         "MACfieldAtoF": "Veuillez vérifier l'adresse MAC; seuls les caractères alphanumériques suivants sont autorisés : 0-9, A-F.",
         "initiateFixedPhoneservice": "Veuillez sélectionner un type de demande ci-dessous.",
-        "MACAddressorPhoneNumber": "Entrez l'adresse MAC ou le numéro de téléphone actuels",
+        "MACAddressorPhoneNumber": "Entrez l'adresse MAC ou le numéro de \n téléphone actuels",
         "norecordfoundformac": "Aucun enregistrement n'a été trouvé pour l'adresse MAC ou le numéro de téléphone. Veuillez vérifier et réessayer.",
         "Pleaseenternumber": "Veuillez saisir un numéro à rechercher",
         "MACAddress": "Adresse Mac ",

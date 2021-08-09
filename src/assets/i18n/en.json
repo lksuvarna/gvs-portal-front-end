@@ -65,7 +65,8 @@
         "Fac services": "Fac services",
         "Mobile services": "Mobile services",
         "Special request": "To raise a Special request",
-        "To check ITN or phone number search": "To check ITN or phone number search"
+        "To check ITN or phone number search": "To check ITN or phone number search",
+        "FixedPhone": " : Fixed Phone"
 
     },
     "Jabberservices": {
@@ -274,7 +275,9 @@
         "Innumber": "In number",
         "AdditionalInformation": "Additional Information",
         "Primary":"Primary",
-        "add-on":"add-one"
+        "add-on":"add-one",
+        "FixedPhone":"Fixed Phone",
+        "jabberandFixedPhone":"Jabber,Fixed Phone"
     },
     "phonenumber": {
         "PhoneNumberSearch": "Phone Number Search",
