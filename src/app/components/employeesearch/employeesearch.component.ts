@@ -675,10 +675,17 @@ export class EmployeesearchComponent implements OnInit {
               this.voice_mail[i] = 'NA'
             else
               this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
-            if (data.message[i].ATTRIBUTE5 == null)
-              this.cos[i] = 'NA';
-            else
-              this.cos[i] = data.message[i].ATTRIBUTE5.trim();
+
+              if(this.countrydetails.cos_formula){
+                // Assign cos value from cloudant.
+                eval(this.countrydetails.cos_formula);
+              } else {
+                if (data.message[i].ATTRIBUTE5 == null)
+                  this.cos[i] = 'NA';
+                else
+                  this.cos[i] = data.message[i].ATTRIBUTE5.trim();
+              }     
+
           }
          
          }
