@@ -174,7 +174,12 @@ export class VoipEmeaNewComponent implements OnInit {
       this.payload.SLA_type=this.countrydetails.SLA_type;	
       this.payload.gvs_approval_link=this.countrydetails.gvs_approval_link;	
       this.payload.gvs_portal_link=this.countrydetails.gvs_portal_link;	
-      this.payload.countryname=this.countrydetails.name;	
+      if(this.countrydetails.geo){
+        // Assign geo value from cloudant.
+        eval(this.countrydetails.geo);
+      } else {
+          this.payload.countryname=this.countrydetails.name;
+      }
       this.payload.request_type='jabber_new';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;	
       this.payload.qag =this.countrydetails.qag ;	
