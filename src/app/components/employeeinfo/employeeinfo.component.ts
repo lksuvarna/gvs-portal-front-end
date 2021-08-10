@@ -8,6 +8,7 @@ import { servicenowservice } from '../../_services/servicenow.service'
 import { bpservices } from '../../_services/bp.service'
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateConfigService } from '../../_services/translate-config.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EmployeeinfoComponent implements OnInit {
 
   
-  constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private Db2Service: Db2Service, private servicenowservice: servicenowservice, private bpservices: bpservices,private location: Location,private route: ActivatedRoute) { }
+  constructor(private router: Router, private cookie: CookieHandlerService, private cloudantservice: cloudantservice, private Db2Service: Db2Service, private servicenowservice: servicenowservice, private bpservices: bpservices,private location: Location,private route: ActivatedRoute, private translateconfigservice : TranslateConfigService) { }
   countryname: any;
   ccode = '';
   pcode = '';
@@ -41,6 +42,7 @@ export class EmployeeinfoComponent implements OnInit {
   warninginfosnowothersfac = false
   warninginfofac = false;
   warningDeptEgypt = false;
+  mainConfiguration :any;
 
   warninginfofacdelete = false;
   warninginfofacdeletesnow=false;
@@ -83,7 +85,7 @@ export class EmployeeinfoComponent implements OnInit {
   }
   
   ngOnInit(): void {
-
+    this.mainConfiguration = this.translateconfigservice.readConfigFile();
     this.route.queryParams
     .subscribe(params => {
       console.log(params);
@@ -119,10 +121,10 @@ export class EmployeeinfoComponent implements OnInit {
     this.resourceid=sessionStorage.getItem('resourceid')
     this.resourcetype=sessionStorage.getItem('resourceidtype')
     if(this.resourcetype=="ibmid"){
-      this.resourcetype="IBM serial number"
+      this.resourcetype=this.mainConfiguration.Kyndryl.IBMserialnumber
     }
     else{
-      this.resourcetype="Kyndryl serial number"
+      this.resourcetype= this.mainConfiguration.Kyndryl.Kyndrylserialnumber
     }
     console.log("from12345"+this.sessionwarninginfo+this.sessionwarninginfosnow)
    if (this.sessionwarninginfo =='true1'&& this.service=="jabber_new"){

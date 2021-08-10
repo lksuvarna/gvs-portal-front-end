@@ -128,14 +128,15 @@
         "receiveITN": "vous avez reçu l'ITN, vous pouvez alors demander Jabber. Merci.",
         "notauthorizedtoaccessjabber": "Le numéro de série que vous avez entré n'est pas autorisé à accéder au service Jabber. Vous pouvez accéder à l'option Extension IP disponible dans le menu de gauche. Pour toute question complémentaire concernant Jabber, veuillez contacter",
         "notauthorizedtoaccessip": "Le numéro de série que vous avez entré n'est pas autorisé à accéder au service d'extension IP. Vous pouvez accéder à l'option Jabber disponible dans le menu de gauche. Pour toute question complémentaire concernant l'extension IP, veuillez contacter",
-        "Jabber/ITN": "Numéro de téléphone",
-        "JabberphnNumber": "Numéro de téléphone",
-        "jabberconfiguration": "Jabber déjà enregistré pour cet utilisateur. \nSi vous ne pouvez pas voir ce numéro Jabber dans Bluepages sous Informations \nde contact, veuillez faire appel au",
-
-        "toinstallbegin": "Pour installer et commencer à utiliser votre compte Jabber, consultez la rubrique Cisco Jabber dans",
-        "CiscoJabber": ".",
+        "Jabber/ITN": "L’",
+        "JabberphnNumber": "L’",
+        "jabberconfiguration": "Jabber ou du numéro de téléphone est déjà enregistré pour cet employé, sous le ",
+                                
+        "toinstallbegin": "Pour installer et commencer à utiliser votre compte Jabber, veuillez consulter",
         "ongoingrequestsbyclickonrequestpage": "Vous pouvez afficher l'état de la demande en cours en cliquant sur le lien Demandes dans le menu de navigation de gauche.",
+        "isalreadybeingprocessednewkyndryl": " est déjà en cours de traitement pour cet employé, sous le ",
         "isalreadybeingprocessed": " est déjà en cours de traitement pour cet utilisateur. Pour en afficher l'état, veuillez cliquer sur Demandes dans le menu latéral.",
+        "Ifyoucannotseenewkyndryl": "Si vous ne pouvez pas voir la demande ou pour toute autre question, veuillez \ncontacter le",
         "Ifyoucannotsee": "Si vous ne pouvez pas voir la demande, ou pour tout autre problème, veuillez \ncontacter le",
         "nooutstandingreq": "Aucune demande en cours n'est associée au matricule entré.",
         "noresources": "Aucun compte n'est associé au matricule entré.",
@@ -145,7 +146,13 @@
         "SUBMIT1": "SOUMETTRE",
         "alreadyonerequestinprogress": "La demande ",
         "helpdesk": "service de dépannage",
-        "helpdeskalert": "service de dépannage."
+        "helpdeskalert": "service d'assistance.",
+        "jabberconfigurationkyndryal1": "Jabber ou du numéro de téléphone est déjà enregistré pour cet employé, sous le ",
+        "jabberconfigurationkyndryal2": ". Si vous ne pouvez pas voir cet ITN Jabber dans Bluepages, sous Informations de contact, veuillez contacter le ",
+        "isalreadybeingprocessedkyndryl1": " est déjà en cours de traitement pour cet employé, sous le numéro de série Kyndryl ",
+        "isalreadybeingprocessedkyndryl2": ". Pour connaître l’état de cette demande, cliquez sur Demandes dans le menu latéral.",
+        "kyndryl":"Veuillez vous connecter à l’aide de votre ID de transition Kyndryl pour soumettre une demande.",
+        "kyndrylonbehalfof":"Cet employé possède un ID de transition Kyndryl. Pour soumettre une demande, veuillez saisir le numéro de série Kyndryl."
     },
     "Jabberentrydetails": {
         "Fieldsasterisk": "Champs marqués d'un astérisque",
@@ -377,5 +384,9 @@
     },
     "phonenumber": {
         "UserName": "Nom d'utilisateur"
+    },
+    "Kyndryl":{
+        "Kyndrylserialnumber":"numéro de série Kyndryl",
+        "IBMserialnumber":"numéro de série IBM"
     }
 }

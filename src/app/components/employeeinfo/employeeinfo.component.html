@@ -101,17 +101,17 @@
             <p translate>employeeinfotrans.notauthorizedtoaccessip <a style="color:blue" target="_blank" href="mailto:Ladislav.Kosar@sk.ibm.com">Ladislav.Kosar@sk.ibm.com</a></p>
         </div>
         <div id="w1" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo && cnum==resourceid">
-            <p><span style="font-size: 1rem;" translate> <span translate>employeeinfotrans.JabberphnNumber</span> {{identifier}} <span translate> employeeinfotrans.jabberconfiguration </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/"
+            <p><span style="font-size: 1rem;" translate> <span translate>employeeinfotrans.JabberphnNumber</span> {{identifier}} <span translate> employeeinfotrans.jabberconfiguration </span>{{this.resourcetype}} {{this.resourceid}}<span translate> employeeinfotrans.jabberconfigurationkyndryal2</span> <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/"
                     translate>employeeinfotrans.helpdeskalert</a><br><br> <span translate> employeeinfotrans.toinstallbegin </span>
-                <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>
-                <span translate> employeeinfotrans.CiscoJabber </span> <br></span>
+                <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM : Cisco Jabber.</a>
+                 <br></span>
             </p>
         </div>
         <div id="w1k" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfo && cnum!=resourceid">
             <p><span style="font-size: 1rem;" translate> <span translate>employeeinfotrans.JabberphnNumber</span> {{identifier}} <span translate> employeeinfotrans.jabberconfigurationkyndryal1</span> {{this.resourcetype}} {{this.resourceid}}<span translate> employeeinfotrans.jabberconfigurationkyndryal2</span> <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/"
                     translate>employeeinfotrans.helpdeskalert</a><br><br> <span translate> employeeinfotrans.toinstallbegin </span>
-                <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM</a>
-                <span translate> employeeinfotrans.CiscoJabber </span> <br></span>
+                <a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/article/jabbernewuser">Help@IBM : Cisco Jabber.</a>
+                 <br></span>
             </p>
         </div>
         <div id="dept-egypt" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warningDeptEgypt">
@@ -130,7 +130,9 @@
 
         <div id="fac_new_snow" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfosnowfac  && cnum==resourceid">
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
-                <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
+                <span translate>employeeinfotrans.isalreadybeingprocessed</span>{{this.resourcetype}} {{this.resourceid}} 
+                <span translate>employeeinfotrans.isalreadybeingprocessedkyndryl2</span>
+                <br><br>
                 <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
             </p>
         </div>
@@ -138,7 +140,7 @@
             
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
-                <span translate>employeeinfotrans.isalreadybeingprocessedkyndryl1</span> {{this.resourcetype}} {{this.resourceid}} 
+                <span translate>employeeinfotrans.isalreadybeingprocessed</span> {{this.resourcetype}} {{this.resourceid}} 
                 <span translate>employeeinfotrans.isalreadybeingprocessedkyndryl2</span>
                 <br><br>
 
@@ -170,19 +172,21 @@
         <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=" warninginfosnow  && cnum==resourceid ">
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
-                <span translate>employeeinfotrans.isalreadybeingprocessed</span><br><br>
+                <span translate>employeeinfotrans.isalreadybeingprocessednewkyndryl</span>{{this.resourcetype}} {{this.resourceid}} 
+                <span translate>employeeinfotrans.isalreadybeingprocessedkyndryl2</span>
+                <br><br>
 
-                <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
+                <span translate> employeeinfotrans.Ifyoucannotseenewkyndryl </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdeskalert</a>.</span>
             </p>
         </div>
-        <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning texthypen-rapper" *ngIf="warninginfosnow && cnum!=resourceid">
+        <div id="req_stat" class="ds-col-xs-12 ds-alert ds-warning" *ngIf="warninginfosnow && cnum!=resourceid">
             <p><span style="font-size: 1rem;"> <span translate>employeeinfotrans.alreadyonerequestinprogress</span> {{identifier}}
 
                 <span translate>employeeinfotrans.isalreadybeingprocessedkyndryl1</span> {{this.resourcetype}} {{this.resourceid}} 
                 <span translate>employeeinfotrans.isalreadybeingprocessedkyndryl2</span>
                 <br><br>
 
-                <span translate> employeeinfotrans.Ifyoucannotsee </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdesk</a>.</span>
+                <span translate> employeeinfotrans.Ifyoucannotseenewkyndryl </span><a style="color:blue" target="_blank" href="https://w3.ibm.com/help/#/" translate>employeeinfotrans.helpdeskalert</a>.</span>
             </p>
         </div>
         <div id="req_stat_del" class="ds-col-xs-12 ds-alert ds-warning" *ngIf=warninginfosnowothers>
