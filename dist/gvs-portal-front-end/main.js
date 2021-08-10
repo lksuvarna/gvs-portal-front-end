@@ -8426,7 +8426,13 @@ class VoipLaUpdateComponent {
         // fields to be picked up from form -- ends	
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
-        this.payload.countryname = this.countrydetails.name;
+        if (this.countrydetails.geo) {
+            // Assign geo value from cloudant.
+            eval(this.countrydetails.geo);
+        }
+        else {
+            this.payload.countryname = this.countrydetails.name;
+        }
         this.payload.request_type = 'jabber_update';
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
         this.payload.prov_type = this.countrydetails.provision_type;
@@ -9018,7 +9024,7 @@ class VoipLaNewComponent {
         // fields picked up from form -- begins	
         this.payload.Buildings_Disp = this.reviewDetailsIndia.campus;
         // by default set to true. below line can be removed if needed.	
-        this.payload.Voice_Type_Disp = "yes";
+        this.payload.Voice_Type_Disp = "Yes";
         this.payload.Projectid_Disp = this.reviewDetailsIndia.projectId;
         this.payload.icano_Disp = "";
         this.payload.identifier_hp_Disp = this.reviewDetailsIndia.fixPhoneIdentifier;
@@ -9053,7 +9059,13 @@ class VoipLaNewComponent {
         this.payload.SLA_type = this.countrydetails.SLA_type;
         this.payload.gvs_approval_link = this.countrydetails.gvs_approval_link;
         this.payload.gvs_portal_link = this.countrydetails.gvs_portal_link;
-        this.payload.countryname = this.countrydetails.name;
+        if (this.countrydetails.geo) {
+            // Assign geo value from cloudant.
+            eval(this.countrydetails.geo);
+        }
+        else {
+            this.payload.countryname = this.countrydetails.name;
+        }
         this.payload.request_type = 'jabber_new';
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
         this.payload.qag = this.countrydetails.qag;
@@ -10133,12 +10145,24 @@ class VoipInDeleteComponent {
         this.isSpinnerVisible = true;
         this.payload.orinator_payload = this.orgi;
         this.payload.cNum_payload = this.cnum;
-        this.payload.site_address = this.data[0].ATTRIBUTE3;
+        if (this.countrydetails.loc_formula) {
+            // Assign geo value from cloudant.
+            eval(this.countrydetails.loc_formula);
+        }
+        else {
+            this.payload.site_address = this.data[0].ATTRIBUTE3;
+        }
         //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
         this.payload.ReqNo = this.reqno;
         // fields to be picked up from form -- ends	
         this.payload.Identifier_Disp = this.selectedJabber.substring(0, 8);
-        this.payload.countryname = this.countrydetails.name;
+        if (this.countrydetails.geo) {
+            // Assign geo value from cloudant.
+            eval(this.countrydetails.geo);
+        }
+        else {
+            this.payload.countryname = this.countrydetails.name;
+        }
         this.payload.request_type = 'jabber_delete';
         this.payload.evolution_instance = this.countrydetails.evolution_instance;
         this.payload.country_code = this.countrydetails.code;
@@ -14517,7 +14541,13 @@ class VoipAllSpecialRequestComponent {
             this.payload.Identifier_Disp = this.selectedJabber;
         else
             this.payload.Identifier_Disp = this.selectedJabber.substring(0, 8);
-        this.payload.countryname = this.countrydetails.name;
+        if (this.countrydetails.geo) {
+            // Assign geo value from cloudant.
+            eval(this.countrydetails.geo);
+        }
+        else {
+            this.payload.countryname = this.countrydetails.name;
+        }
         this.payload.request_type = 'special_request';
         this.payload.Location_Disp = this.getLocationCorrect();
         this.payload.Comments = Object(_config_payload__WEBPACK_IMPORTED_MODULE_1__["removeDiacritics"])(this.requirements_disp.replace(/[\n\r"\\+]/g, ' '));
@@ -25536,10 +25566,16 @@ class EmployeesearchComponent {
                             this.voice_mail[i] = 'NA';
                         else
                             this.voice_mail[i] = data.message[i].VOICEMAIL.trim();
-                        if (data.message[i].ATTRIBUTE5 == null)
-                            this.cos[i] = 'NA';
-                        else
-                            this.cos[i] = data.message[i].ATTRIBUTE5.trim();
+                        if (this.countrydetails.cos_formula) {
+                            // Assign cos value from cloudant.
+                            eval(this.countrydetails.cos_formula);
+                        }
+                        else {
+                            if (data.message[i].ATTRIBUTE5 == null)
+                                this.cos[i] = 'NA';
+                            else
+                                this.cos[i] = data.message[i].ATTRIBUTE5.trim();
+                        }
                     }
                 }
                 // this.identifier = data.message[0].IDENTIFIER

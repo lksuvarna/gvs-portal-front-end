@@ -101,14 +101,24 @@ export class VoipInDeleteComponent implements OnInit {
     this.isSpinnerVisible=true;	
       this.payload.orinator_payload=this.orgi;	
       this.payload.cNum_payload=this.cnum;	
-     
-      this.payload.site_address =this.data[0].ATTRIBUTE3	
+
+      if(this.countrydetails.loc_formula){
+        // Assign geo value from cloudant.
+        eval(this.countrydetails.loc_formula);
+      } else {
+        this.payload.site_address =this.data[0].ATTRIBUTE3	
+      } 	
       //this.payload.accid_Disp=this.reviewDetailsIndia.accid_Disp;	
       this.payload.ReqNo=this.reqno;	
   
       // fields to be picked up from form -- ends	
       this.payload.Identifier_Disp=this.selectedJabber.substring(0,8)	      	
-      this.payload.countryname=this.countrydetails.name;	
+      if(this.countrydetails.geo){
+        // Assign geo value from cloudant.
+        eval(this.countrydetails.geo);
+      } else {
+        this.payload.countryname=this.countrydetails.name;
+      } 		
       this.payload.request_type='jabber_delete';	
       this.payload.evolution_instance=this.countrydetails.evolution_instance ;    
       this.payload.country_code = this.countrydetails.code ;
