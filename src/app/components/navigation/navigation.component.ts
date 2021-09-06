@@ -212,13 +212,21 @@ export class NavigationComponent implements OnInit {
       }
         if (this.service=="services")
       {
+        
         this.dataNav123 = { 
           "data": [
             {    
               "lhs": [
                 {"name" : "Services","routingname":"/services", "indented" : this.serin, "highlighted": this.serhl,"param":"services","tooltip":"To check all available services"},
                // {"name" : "Jabber","routingname":"/services", "indented" : this.jin, "highlighted": this.jhl},              
-                {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending","tooltip":"To check pending approvals"},
+               {"name" : "Jabber","routingname":"/jabberservices", "indented" : true, "highlighted": false,"param":"jabberservices","tooltip":"IBM office telephone number"}, 
+               {"name" : "FAC Code / IDD PIN","routingname":"/facservices", "indented" : true, "highlighted": false,"param":"facservices","tooltip":"Fac services"},  
+               {"name" : "Mobile","routingname":"/mobileservices", "indented" : true, "highlighted": false,"param":"mobileservices","tooltip":"Mobile services"},                       
+ 
+               {"name" : "Fixed Phone","routingname":"/fixedphoneservices", "indented" : true, "highlighted": false,"param":"fixedphoneservices","tooltip":"IBM office physical desk phone"},            
+               {"name" : "Special Request","routingname":"/employeesearchsp", "indented" : true, "highlighted": false,"param":"specialrequest","tooltip":"Special request"},            
+              
+               {"name" : "Approvals Pending","routingname":"/approvalpending", "indented" : this.appin, "highlighted": this.apphl,"param":"approvalpending","tooltip":"To check pending approvals"},
                 {"name" : "Revalidation Pending","routingname":"/revalidationpending", "indented" : this.revalin, "highlighted": this.revalhl,"param":"revalidationpending","tooltip":"To check revalidation pending"},
                 {"name" : "Phone Number Search","routingname":"/extensionsummaryau", "indented" : this.pnsin, "highlighted": this.pnshl,"param":"phone_search","tooltip":"phone_search"},
                 {"name" : "Resources","routingname":"/employeesearchres", "indented" : this.resin, "highlighted": this.reshl,"param":"resources","tooltip":"To check the voice services ownership"},
